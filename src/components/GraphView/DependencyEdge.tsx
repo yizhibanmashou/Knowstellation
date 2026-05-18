@@ -5,21 +5,20 @@ export function DependencyEdge(props: EdgeProps) {
   const [edgePath, labelX, labelY] = getSmoothStepPath(props);
   const data = props.data as unknown as DependencyEdgeData | undefined;
   const cross = Boolean(data?.crossChapter);
+  const animated = cross || Boolean(props.animated);
 
   return (
     <>
       <BaseEdge
         path={edgePath}
         markerEnd={props.markerEnd}
-        className={`dependency-edge ${cross ? 'dependency-edge--cross' : ''}`}
+        className={`dependency-edge ${cross ? 'dependency-edge--cross' : ''} ${animated ? 'dependency-edge--animated' : ''}`}
         style={{
-          stroke: cross ? '#6366f1' : '#94a3b8',
           strokeWidth: 1.5,
-          strokeDasharray: cross ? '6 3' : undefined,
         }}
       />
       <EdgeLabelRenderer>
-        <div className="edge-label" style={{ transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)` }}>
+        <div className="edge-label nodrag nopan" style={{ transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)` }}>
           {data?.via || 'via'}
         </div>
       </EdgeLabelRenderer>

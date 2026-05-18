@@ -15,9 +15,10 @@ import {
   type EdgeChange,
   type Node,
   type NodeChange,
+  type XYPosition,
 } from '@xyflow/react';
 import { ArrowLeft, RefreshCcw } from 'lucide-react';
-import type { SearchFormula } from '../../types/formula';
+import type { ChapterFormula, SearchFormula } from '../../types/formula';
 import type { DependencyEdgeData, FormulaNodeData, VariableNodeData } from '../../types/graph';
 import type { LearningPath } from '../../types/path';
 import { useDependencyGraph } from '../../hooks/useDependencyGraph';
@@ -48,7 +49,7 @@ const edgeTypes = {
 function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
   const { focusFormulaId = '' } = useParams();
   const navigate = useNavigate();
-  const graph = useDependencyGraph();
+  const { getFormula, getDependency, loadChapter, error } = useDependencyGraph();
   const reactFlow = useReactFlow();
   const path = useLearningPath(paths);
   const markExpanded = useGraphStore((state) => state.markExpanded);
@@ -56,8 +57,13 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [loadingIds, setLoadingIds] = useState<Set<string>>(new Set());
+  const nodesRef = useRef<Node[]>([]);
   const expandFormulaRef = useRef<(formulaId: string) => void>(() => undefined);
   const searchLookup = useMemo(() => new Map(searchIndex.map((item) => [item.id, item])), [searchIndex]);
+
+  useEffect(() => {
+    nodesRef.current = nodes;
+  }, [nodes]);
 
   const setNodeLoading = useCallback((id: string, loading: boolean) => {
     setLoadingIds((current) => {
@@ -67,6 +73,21 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
       return next;
     });
   }, []);
+
+  const makeFormulaNode = useCallback(
+    (formula: ChapterFormula, position: XYPosition, focused = false): Node => ({
+      id: formula.id,
+      type: 'formula',
+      position,
+      data: {
+        formula,
+        focused,
+        loading: false,
+        onExpand: (id: string) => expandFormulaRef.current(id),
+      } satisfies FormulaNodeData,
+    }),
+    [],
+  );
 
   const refreshNodeData = useCallback(
     (items: Node[]) =>
@@ -86,102 +107,94 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
     [focusFormulaId, loadingIds],
   );
 
-  const addFormulaNode = useCallback(
-    async (formulaId: string, position = { x: 420, y: 260 }, focused = false): Promise<Node | null> => {
-      const formula = await graph.getFormula(formulaId);
-      if (!formula) return null;
-      return {
-        id: formula.id,
-        type: 'formula',
-        position,
-        data: {
-          formula,
-          focused,
-          loading: loadingIds.has(formula.id),
-          onExpand: (id: string) => expandFormulaRef.current(id),
-        } satisfies FormulaNodeData,
-      };
-    },
-    [graph, loadingIds],
-  );
-
   const expandFormula = useCallback(
     async (formulaId: string) => {
-      const parent = nodes.find((node) => node.id === formulaId);
-      if (!parent) return;
+      const initialParent = nodesRef.current.find((node) => node.id === formulaId);
+      if (!initialParent) return;
+
       setNodeLoading(formulaId, true);
-      const dependency = await graph.getDependency(formulaId);
-      if (!dependency) {
-        setNodeLoading(formulaId, false);
-        return;
-      }
+      try {
+        const dependency = await getDependency(formulaId);
+        if (!dependency) return;
 
-      const newPrereqs = dependency.prerequisites.filter((prereq) => {
-        if (prereq.type === 'formula') return Boolean(prereq.target_id);
-        return Boolean(prereq.symbol);
-      });
-      const positions = layoutPrerequisites(parent, newPrereqs.length, nodes);
-      const nextNodes = [...nodes];
-      const nextEdges = [...edges];
+        const prerequisites = dependency.prerequisites.filter((prereq) => {
+          if (prereq.type === 'formula') return Boolean(prereq.target_id);
+          return Boolean(prereq.symbol);
+        });
 
-      for (let index = 0; index < newPrereqs.length; index += 1) {
-        const prereq = newPrereqs[index];
-        let sourceId = '';
-        if (prereq.type === 'formula' && prereq.target_id) {
-          sourceId = prereq.target_id;
-          if (!nextNodes.some((node) => node.id === sourceId)) {
-            const chapterId = formulaChapter(sourceId);
-            await graph.loadChapter(chapterId);
-            const formula = await graph.getFormula(sourceId);
-            if (!formula) continue;
-            nextNodes.push({
-              id: sourceId,
-              type: 'formula',
-              position: positions[index],
-              data: {
-                formula,
-                focused: sourceId === focusFormulaId,
-                loading: false,
-                onExpand: (id: string) => expandFormulaRef.current(id),
-              } satisfies FormulaNodeData,
-            });
-          }
-        } else if (prereq.type === 'variable_definition') {
-          sourceId = `${formulaId}::var::${prereq.symbol}`;
-          if (!nextNodes.some((node) => node.id === sourceId)) {
-            nextNodes.push({
-              id: sourceId,
-              type: 'variableDefinition',
-              position: positions[index],
-              data: { prerequisite: prereq } satisfies VariableNodeData,
-              draggable: false,
-              selectable: false,
-            });
-          }
+        const formulaPrereqs = new Map<string, ChapterFormula>();
+        for (const prereq of prerequisites) {
+          if (prereq.type !== 'formula' || !prereq.target_id) continue;
+          await loadChapter(formulaChapter(prereq.target_id));
+          const formula = await getFormula(prereq.target_id);
+          if (formula) formulaPrereqs.set(prereq.target_id, formula);
         }
-        if (sourceId && !nextEdges.some((edge) => edge.id === `${sourceId}->${formulaId}`)) {
-          nextEdges.push({
-            id: `${sourceId}->${formulaId}`,
-            source: sourceId,
-            target: formulaId,
-            type: 'dependency',
-            markerEnd: prereq.type === 'formula' ? { type: MarkerType.ArrowClosed, color: prereq.cross_chapter ? '#6366f1' : '#94a3b8' } : undefined,
-            data: {
-              via: prereq.via_symbol || prereq.symbol || 'via',
-              crossChapter: Boolean(prereq.cross_chapter),
-              confidence: prereq.confidence,
-            } satisfies DependencyEdgeData,
+
+        setNodes((currentNodes) => {
+          const parent = currentNodes.find((node) => node.id === formulaId);
+          if (!parent) return currentNodes;
+          const nextNodes = [...currentNodes];
+          const positions = layoutPrerequisites(parent, prerequisites.length, currentNodes);
+
+          prerequisites.forEach((prereq, index) => {
+            if (prereq.type === 'formula' && prereq.target_id) {
+              if (nextNodes.some((node) => node.id === prereq.target_id)) return;
+              const formula = formulaPrereqs.get(prereq.target_id);
+              if (!formula) return;
+              nextNodes.push(makeFormulaNode(formula, positions[index], prereq.target_id === focusFormulaId));
+              return;
+            }
+
+            if (prereq.type === 'variable_definition') {
+              const variableNodeId = `${formulaId}::var::${prereq.symbol}`;
+              if (nextNodes.some((node) => node.id === variableNodeId)) return;
+              nextNodes.push({
+                id: variableNodeId,
+                type: 'variableDefinition',
+                position: positions[index],
+                data: { prerequisite: prereq } satisfies VariableNodeData,
+                draggable: false,
+                selectable: false,
+              });
+            }
           });
-        }
-      }
 
-      markExpanded(formulaId);
-      setNodes(refreshNodeData(nextNodes));
-      setEdges(nextEdges);
-      setNodeLoading(formulaId, false);
-      window.setTimeout(() => reactFlow.fitView({ padding: 0.24, duration: 650 }), 50);
+          return refreshNodeData(nextNodes);
+        });
+
+        setEdges((currentEdges) => {
+          const nextEdges = [...currentEdges];
+          prerequisites.forEach((prereq) => {
+            const sourceId = prereq.type === 'formula' ? prereq.target_id : `${formulaId}::var::${prereq.symbol}`;
+            if (!sourceId) return;
+            const edgeId = `${sourceId}->${formulaId}`;
+            if (nextEdges.some((edge) => edge.id === edgeId)) return;
+            nextEdges.push({
+              id: edgeId,
+              source: sourceId,
+              target: formulaId,
+              type: 'dependency',
+              markerEnd:
+                prereq.type === 'formula'
+                  ? { type: MarkerType.ArrowClosed, color: prereq.cross_chapter ? '#6366f1' : '#94a3b8' }
+                  : undefined,
+              data: {
+                via: prereq.via_symbol || prereq.symbol || 'via',
+                crossChapter: Boolean(prereq.cross_chapter),
+                confidence: prereq.confidence,
+              } satisfies DependencyEdgeData,
+            });
+          });
+          return nextEdges;
+        });
+
+        markExpanded(formulaId);
+        window.setTimeout(() => reactFlow.fitView({ padding: 0.24, duration: 650 }), 50);
+      } finally {
+        setNodeLoading(formulaId, false);
+      }
     },
-    [edges, focusFormulaId, graph, markExpanded, nodes, reactFlow, refreshNodeData, setNodeLoading],
+    [focusFormulaId, getDependency, getFormula, loadChapter, makeFormulaNode, markExpanded, reactFlow, refreshNodeData, setNodeLoading],
   );
 
   useEffect(() => {
@@ -193,16 +206,19 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
     resetGraph();
     setNodes([]);
     setEdges([]);
+    setLoadingIds(new Set());
     if (!focusFormulaId) return;
-    addFormulaNode(focusFormulaId, { x: 520, y: 280 }, true).then((node) => {
-      if (cancelled || !node) return;
-      setNodes([node]);
+
+    getFormula(focusFormulaId).then((formula) => {
+      if (cancelled || !formula) return;
+      setNodes([makeFormulaNode(formula, { x: 520, y: 280 }, true)]);
       window.setTimeout(() => reactFlow.fitView({ padding: 0.35, duration: 500 }), 60);
     });
+
     return () => {
       cancelled = true;
     };
-  }, [addFormulaNode, focusFormulaId, reactFlow, resetGraph]);
+  }, [focusFormulaId, getFormula, makeFormulaNode, reactFlow, resetGraph]);
 
   useEffect(() => {
     setNodes((current) => refreshNodeData(current));
@@ -212,18 +228,18 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
   const onEdgesChange = useCallback((changes: EdgeChange[]) => setEdges((current) => applyEdgeChanges(changes, current)), []);
 
   return (
-    <div className="relative h-[calc(100vh-80px)] w-full">
+    <div className="relative h-[calc(100vh-80px)] w-full overflow-hidden bg-slate-50">
       <div className="absolute left-6 top-4 z-20 flex gap-2">
-        <button type="button" onClick={() => navigate('/')} className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow">
+        <button type="button" onClick={() => navigate('/')} className="graph-toolbar-button inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-700">
           <ArrowLeft size={16} />
           Home
         </button>
-        <button type="button" onClick={() => expandFormula(focusFormulaId)} className="inline-flex items-center gap-2 rounded-md bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow">
+        <button type="button" onClick={() => expandFormula(focusFormulaId)} className="graph-toolbar-button inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-700">
           <RefreshCcw size={16} />
           Expand
         </button>
       </div>
-      {graph.error ? <div className="absolute right-6 top-4 z-20 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 shadow">{graph.error}</div> : null}
+      {error ? <div className="graph-error-card absolute right-6 top-4 z-20 max-w-sm rounded-md px-3 py-2 text-sm font-medium text-red-700">{error}</div> : null}
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -236,11 +252,18 @@ function GraphCanvasInner({ paths, searchIndex }: GraphCanvasProps) {
         proOptions={{ hideAttribution: true }}
         className="bg-[#f0f4f8]"
       >
-        <Background color="#cbd5e1" gap={28} />
-        <MiniMap zoomable pannable nodeColor={(node) => (node.type === 'formula' ? '#3b82f6' : '#cbd5e1')} />
+        <Background color="#cbd5e1" gap={30} size={1.2} />
+        <MiniMap
+          zoomable
+          pannable
+          maskColor="rgba(241, 245, 249, 0.68)"
+          nodeBorderRadius={8}
+          nodeStrokeWidth={3}
+          nodeColor={(node) => (node.type === 'formula' ? '#3b82f6' : '#cbd5e1')}
+        />
         <Controls />
       </ReactFlow>
-      <div className="pointer-events-none absolute bottom-6 right-6 z-10 rounded-md bg-white/85 px-3 py-2 text-xs text-slate-500 shadow">
+      <div className="graph-context-chip pointer-events-none absolute bottom-6 right-6 z-10 rounded-md px-3 py-2 text-xs font-medium text-slate-500">
         {searchLookup.get(focusFormulaId)?.label || rawFormulaNumber(focusFormulaId)}
       </div>
       <PathProgressBar path={path} />
