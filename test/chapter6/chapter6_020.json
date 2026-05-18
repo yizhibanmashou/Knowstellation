@@ -1,0 +1,31 @@
+{
+  "id": "chapter6_020",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [
+      "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [],
+    "table_references": [],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION",
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+      "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION"
+    ],
+    "display_heading": "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION"
+  },
+  "blocks": [
+    {
+      "type": "proposition",
+      "content": "The breeder’s equation forms the backbone for much of the theory of selection response in quantitative genetics (Chapters 13–20). Almost all of the theory of breeding is framed around it, as is much of evolutionary quantitative genetics, although Robertson’s secondary theorem has been gaining some recent traction in studies in natural populations (reviewed in Chapter 20). As these results show, the breeder’s equation is an approximation, with a linear parent-offspring regression as a necessary, but not sufficient, condition (Example 6.1). When viewed in a population-genetic framework, Example 5.12 showed that the breeder’s equation is generally a fairly good approximation under weak selection on each of the loci underlying a trait. Conversely, as highlighted in Example 6.3, the performance of the breeder’s equation can be compromised if there are major genes, especially if they display dominance. Here we conclude our discussion on theorems of selection by expanding upon our earlier discussion (Equations 6.12 and 6.13) to fully place the breeder’s equation into the exact Price equation framework."
+    },
+    {
+      "type": "discussion",
+      "content": "Equation 6.12 shows that when the parent-offspring regression is linear, the expression for selection response reduces to the breeder's equation plus two correction terms. What can be said if we make no assumptions about the functional form of this regression? The most general solution is Heywood's decomposition (2005), which we build up to after introducing the partial covariance and the effect of the reference population on the parent-offspring regression. Based on the Price equation, Heywood's decomposition yields components with biologically meaningful interpretations that go beyond simply being mathematically convenient correction terms. A key point from this decomposition was foreshadowed in Example 6.3—it is the parent-offspring regression after, as opposed to before, selection that is more appropriate for predicting the response to selection."
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+﻿{
+    "schema":  "example_library.v1",
+    "example_count":  8,
+    "source_filter":  "chapter6",
+    "original_example_count":  323,
+    "examples":  [
+                     {
+                         "example_id":  "6.2",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.2",
+                         "title":  "Consider the change in allele frequency when a single diallelic locus (alleles A and a) determines fitness. Assume random mating among the survivors, with $ p =",
+                         "source_file":  "chapter6_003.json",
+                         "start_block_index":  1,
+                         "end_block_index":  1,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.2. Consider the change in allele frequency when a single diallelic locus (alleles A and a) determines fitness. Assume random mating among the survivors, with $ p = \\text{freq}(A) $, and [[TABLE:inline_1]] To apply Price’s theorem, we need to specify the categories to be followed, which we take as the alleles A and a. We index these by $i = 1$ and $i = 2$, respectively, and code their associated values as $z_1 = 1$ and $z_2 = 0$, which implies a mean value of $\\bar{z} = (1 \\cdot p) + (0 \\cdot [1 - p]) = p$, so $R_z$ represents the change in $p$. In the absence of mutation, transmission is perfect, as the descendant allele from an A allele is always A, resulting in $\\bar{\\delta}_i = 0$. Putting these together, Equation 6.6 becomes $$ \\Delta p=R_{z}=\\sigma(w_{i},z_{i})+E(w_{i}\\cdot0)=\\sigma(w_{i},z_{i}) $$ Under random mating, the fitness $ W_1 $ of an $ A $ allele is simply its marginal fitness (Equation 5.7b), $ W_1 = pW_{AA} + (1 - p)W_{Aa} $. Similarly, $ W_2 = pW_{Aa} + (1 - p)W_{aa} $ and $ E(W_i) = \\overline{W} = pW_1 + (1 - p)W_2 $. Recalling that $ w_i = W_i/\\overline{W} $ and the definition of a covariance, we have $$ \\Delta p=\\sigma(w_{i},z_{i})=\\frac{\\sigma(W_{i},z_{i})}{\\overline{W}}=\\frac{1}{\\overline{W}}\\Biggl(E(W_{i}z_{i})-E(W_{i})E(z_{i})\\Biggr) $$ To show that this recovers the standard population-genetic equation for allele-frequency change, note that $$ E(W_{i}z_{i})=\\sum_{i=1}^{2}W_{i}z_{i}freq(category i)=\\left[W_{1}\\cdot1\\cdot p\\right]+\\left[W_{2}\\cdot0\\cdot(1-p)\\right]=p\\cdot W_{1} $$ Using this result along with $ E(W_i) = \\overline{W} $ and $ E(z_i) = p $ $$ \\Delta p=\\frac{1}{\\overline{W}}\\left(p W_{1}-\\overline{W}p\\right)=p\\frac{\\left(W_{1}-\\overline{W}\\right)}{\\overline{W}} $$ which recovers Equation 5.7c.",
+                         "content_plain":  "Example 6.2. Consider the change in allele frequency when a single diallelic locus (alleles A and a) determines fitness. Assume random mating among the survivors, with $ p = \\text{freq}(A) $, and Table inline_1 To apply Price’s theorem, we need to specify the categories to be followed, which we take as the alleles A and a. We index these by $i = 1$ and $i = 2$, respectively, and code their associated values as $z_1 = 1$ and $z_2 = 0$, which implies a mean value of $\\bar{z} = (1 \\cdot p) + (0 \\cdot [1 - p]) = p$, so $R_z$ represents the change in $p$. In the absence of mutation, transmission is perfect, as the descendant allele from an A allele is always A, resulting in $\\bar{\\delta}_i = 0$. Putting these together, Equation 6.6 becomes $$ \\Delta p=R_{z}=\\sigma(w_{i},z_{i})+E(w_{i}\\cdot0)=\\sigma(w_{i},z_{i}) $$ Under random mating, the fitness $ W_1 $ of an $ A $ allele is simply its marginal fitness (Equation 5.7b), $ W_1 = pW_{AA} + (1 - p)W_{Aa} $. Similarly, $ W_2 = pW_{Aa} + (1 - p)W_{aa} $ and $ E(W_i) = \\overline{W} = pW_1 + (1 - p)W_2 $. Recalling that $ w_i = W_i/\\overline{W} $ and the definition of a covariance, we have $$ \\Delta p=\\sigma(w_{i},z_{i})=\\frac{\\sigma(W_{i},z_{i})}{\\overline{W}}=\\frac{1}{\\overline{W}}\\Biggl(E(W_{i}z_{i})-E(W_{i})E(z_{i})\\Biggr) $$ To show that this recovers the standard population-genetic equation for allele-frequency change, note that $$ E(W_{i}z_{i})=\\sum_{i=1}^{2}W_{i}z_{i}freq(category i)=\\left[W_{1}\\cdot1\\cdot p\\right]+\\left[W_{2}\\cdot0\\cdot(1-p)\\right]=p\\cdot W_{1} $$ Using this result along with $ E(W_i) = \\overline{W} $ and $ E(z_i) = p $ $$ \\Delta p=\\frac{1}{\\overline{W}}\\left(p W_{1}-\\overline{W}p\\right)=p\\frac{\\left(W_{1}-\\overline{W}\\right)}{\\overline{W}} $$ which recovers Equation 5.7c.",
+                         "formula_refs":  [
+                                              "6.6",
+                                              "5.7b",
+                                              "5.7c"
+                                          ],
+                         "table_refs":  [
+                                            "inline_1"
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+
+                                           ],
+                         "evidence":  {
+                                          "source":  "paddle_raw_layout+structured_blocks",
+                                          "detection_method":  "sequence_gap_raw_layout_recovery",
+                                          "confidence":  0.93,
+                                          "source_page":  6,
+                                          "structured_anchor_offset":  3,
+                                          "raw_anchor_offset":  139,
+                                          "existing_library_repair":  "missing_placeholder_restored_from_raw_anchor",
+                                          "placeholder_restore_reason":  "after_previous_raw_body_anchor"
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  true,
+                                          "has_figure":  false,
+                                          "word_count":  257,
+                                          "needs_review":  false,
+                                          "replacement_start_char":  19,
+                                          "replacement_end_char":  77,
+                                          "sequence_gap_recovery":  true,
+                                          "source_block_span":  [
+                                                                    1,
+                                                                    9
+                                                                ]
+                                      },
+                         "example_ref":  "6.2",
+                         "placeholder":  "[[SEE_EXAMPLE:6.2]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       1,
+                                                                       10
+                                                                   ],
+                                             "placeholder_block_index":  10,
+                                             "placeholder_source_file":  "chapter6_004.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.1",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.1",
+                         "title":  "Let the ancestor (i) be the midparent (the average value of the two parents) with a phenotypic value of $ z_i $ and the descendants be the offspring in the next",
+                         "source_file":  "chapter6_003.json",
+                         "start_block_index":  2,
+                         "end_block_index":  2,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.1. Let the ancestor (i) be the midparent (the average value of the two parents) with a phenotypic value of $ z_i $ and the descendants be the offspring in the next generation. If the average value of offspring, $ \\overline{z}_i $, is exactly the same as the value, $ z_i $, of their ancestral midparent, then $ \\delta_i = 0 $ for all $ i $ and, from Equation 6.6, the response is simply $ R = \\sigma(w_i, z_i) $. From the Robertson-Price identity (Table 6.1, Equation 6.10), $ \\sigma(w_i, z_i) = S $, the selection differential, so that $ R = S $ in this case of perfect transmission. However, the mean value of offspring generally differs from the average value of their parents, in which case the second term in Equation 6.6 is nonzero. The simplest transmission model is a linear midparent-offspring regression, $ z_{ij} = \\mu + b(z_i - \\mu) + e_{ij} $. Here $ z_{ij} $ is the trait value for the $ j $th offspring from midparent $ i $, giving the mean value of offspring from $ i $ as $ \\overline{z}_i = \\mu + b(z_i - \\mu) + e_i $. The expected deviation then becomes $$ \\overline{\\delta}_{i}=\\overline{z}_{i}-z_{i}=\\mu+b(z_{i}-\\mu)+e_{i}-z_{i}=(b-1)(z_{i}-\\mu)+e_{i} $$ (6.9a) Hence, $$ \\begin{aligned}E(w_{i}\\overline{\\delta}_{i})\u0026=E\\{w_{i}\\left[(b-1)(z_{i}-\\mu)+e_{i}\\right]\\}\\\\\u0026=(b-1)[E(w_{i}z_{i})-\\mu E(w_{i})]+E(w_{i}e_{i})\\end{aligned} $$ Recalling that $ E(w_i) = 1 $ gives $$ E(w_{i}\\overline{\\delta}_{i})=(b-1)\\left[E(w_{i}z_{i})-\\mu\\right]+E(w_{i}e_{i}) $$ From the definition of a covariance $$ E(w_{i}z_{i})=\\sigma(w_{i},z_{i})+E(w_{i})E(z_{i})=S+1\\cdot\\mu $$ $$ E(w_{i}e_{i})=\\sigma(w_{i},e_{i})+E(w_{i})E(e_{i})=\\sigma(w_{i},e_{i})+1\\cdot0 $$ Putting these results together into Equation 6.6 yields $$ R_{z}=S+E(w_{i}\\overline{\\delta}_{i})=S+(b-1)(S+\\mu-\\mu)+\\sigma(w_{i},e_{i})=bS+\\sigma(w_{i},e_{i}) $$ (6.9b) Provided that the residual, $ e_i $, of the midparent-offspring regression and the fitness, $ w_i $, of the midparent are uncorrelated, $ R = bS $. When these are uncorrelated and the midparent-offspring slope equals the heritability, $ b = h^2 $, we recover the breeder\u0027s equation. While at first blush Equation 6.9b appears to be a rather general statement about the accuracy of the breeder\u0027s equation, we made a few subtle assumptions (besides the obvious one of linearity) about the parent-offspring relationship, although we will defer discussion of these until later sections of this chapter.",
+                         "content_plain":  "Example 6.1. Let the ancestor (i) be the midparent (the average value of the two parents) with a phenotypic value of $ z_i $ and the descendants be the offspring in the next generation. If the average value of offspring, $ \\overline{z}_i $, is exactly the same as the value, $ z_i $, of their ancestral midparent, then $ \\delta_i = 0 $ for all $ i $ and, from Equation 6.6, the response is simply $ R = \\sigma(w_i, z_i) $. From the Robertson-Price identity (Table 6.1, Equation 6.10), $ \\sigma(w_i, z_i) = S $, the selection differential, so that $ R = S $ in this case of perfect transmission. However, the mean value of offspring generally differs from the average value of their parents, in which case the second term in Equation 6.6 is nonzero. The simplest transmission model is a linear midparent-offspring regression, $ z_{ij} = \\mu + b(z_i - \\mu) + e_{ij} $. Here $ z_{ij} $ is the trait value for the $ j $th offspring from midparent $ i $, giving the mean value of offspring from $ i $ as $ \\overline{z}_i = \\mu + b(z_i - \\mu) + e_i $. The expected deviation then becomes $$ \\overline{\\delta}_{i}=\\overline{z}_{i}-z_{i}=\\mu+b(z_{i}-\\mu)+e_{i}-z_{i}=(b-1)(z_{i}-\\mu)+e_{i} $$ (6.9a) Hence, $$ \\begin{aligned}E(w_{i}\\overline{\\delta}_{i})\u0026=E\\{w_{i}\\left[(b-1)(z_{i}-\\mu)+e_{i}\\right]\\}\\\\\u0026=(b-1)[E(w_{i}z_{i})-\\mu E(w_{i})]+E(w_{i}e_{i})\\end{aligned} $$ Recalling that $ E(w_i) = 1 $ gives $$ E(w_{i}\\overline{\\delta}_{i})=(b-1)\\left[E(w_{i}z_{i})-\\mu\\right]+E(w_{i}e_{i}) $$ From the definition of a covariance $$ E(w_{i}z_{i})=\\sigma(w_{i},z_{i})+E(w_{i})E(z_{i})=S+1\\cdot\\mu $$ $$ E(w_{i}e_{i})=\\sigma(w_{i},e_{i})+E(w_{i})E(e_{i})=\\sigma(w_{i},e_{i})+1\\cdot0 $$ Putting these results together into Equation 6.6 yields $$ R_{z}=S+E(w_{i}\\overline{\\delta}_{i})=S+(b-1)(S+\\mu-\\mu)+\\sigma(w_{i},e_{i})=bS+\\sigma(w_{i},e_{i}) $$ (6.9b) Provided that the residual, $ e_i $, of the midparent-offspring regression and the fitness, $ w_i $, of the midparent are uncorrelated, $ R = bS $. When these are uncorrelated and the midparent-offspring slope equals the heritability, $ b = h^2 $, we recover the breeder\u0027s equation. While at first blush Equation 6.9b appears to be a rather general statement about the accuracy of the breeder\u0027s equation, we made a few subtle assumptions (besides the obvious one of linearity) about the parent-offspring relationship, although we will defer discussion of these until later sections of this chapter.",
+                         "formula_refs":  [
+                                              "6.6",
+                                              "6.10",
+                                              "6.9b"
+                                          ],
+                         "table_refs":  [
+                                            "6.1"
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+
+                                           ],
+                         "evidence":  {
+                                          "source":  "paddle_raw_layout+structured_blocks",
+                                          "detection_method":  "raw_layout_example_recovery",
+                                          "confidence":  0.93,
+                                          "source_page":  5,
+                                          "existing_library_repair":  "raw_layout_global_order_relocated",
+                                          "source_file_recomputed_from_raw_order":  "chapter6_003.json",
+                                          "raw_order":  70,
+                                          "raw_source_page":  5,
+                                          "relocated_from_source_file":  "chapter6_005.json"
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  true,
+                                          "has_figure":  false,
+                                          "word_count":  345,
+                                          "needs_review":  false,
+                                          "raw_layout_order_anchor":  true,
+                                          "source_block_span":  [
+                                                                    0,
+                                                                    0
+                                                                ]
+                                      },
+                         "example_ref":  "6.1",
+                         "placeholder":  "[[SEE_EXAMPLE:6.1]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       0,
+                                                                       0
+                                                                   ],
+                                             "placeholder_block_index":  2,
+                                             "placeholder_source_file":  "chapter6_003.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.3",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.3",
+                         "title":  "The setting in which the breeder’s equation is expected to be least accurate involves a trait entirely determined by a single dominant locus. This results in bo",
+                         "source_file":  "chapter6_008.json",
+                         "start_block_index":  2,
+                         "end_block_index":  7,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.3. The setting in which the breeder’s equation is expected to be least accurate involves a trait entirely determined by a single dominant locus. This results in both a nonlinear parent-offspring regression and the potential for significant allele-frequency change following even a single generation of selection. Suppose that, at such a locus, genotypes QQ and Qq have a phenotypic value of 1, while qq has a value of 0 (there is no environmental variance), and that qq individuals have a survival rate twice as high as the survival rate of QQ and Qq individuals. We now contrast the exact response from single-locus models (Chapter 5) with that predicted by the breeder’s equation. Starting with the exact population-genetic model, and letting p be the frequency of allele q [[TABLE:inline_2]] The trait mean before selection is $ \\mu(p) = 1 - p^2 $, with a mean fitness of $ \\overline{W}(p) = 1 + p^2 $. The new frequency, $ p\u0027 $, of allele $ q $ after selection is half the frequency of $ Qq $ plus the frequency of $ qq $ (both after selection) $$ p^{\\prime}=\\frac{(1/2)2p(1-p)+2p^{2}}{1+p^{2}}=\\frac{p(1+p)}{1+p^{2}} $$ (6.16a) yielding an allele-frequency change of $$ \\Delta p=p^{\\prime}-p=\\frac{p(1+p)}{1+p^{2}}-p\\frac{1+p^{2}}{1+p^{2}}=\\frac{p^{2}(1-p)}{1+p^{2}} $$ which translates into a change in mean phenotype of $$ R_{z}=\\mu(p^{\\prime})-\\mu(p)=p^{2}-(p^{\\prime})^{2}=-2p^{3}\\left(\\frac{1-p(1+p^{2})/2}{(1+p^{2})^{2}}\\right) $$ (6.16b) This exact single-generation response in the trait mean is plotted in Figure 6.4. Now consider the response predicted from the breeder’s equation. Applying the standard trait-value parameterization of $ 2a : a(1 + k) : 0 $ to the preceding trait values, we have $ a = 1/2 $ and $ k = 1 $, yielding (LW Chapter 4) the additive and dominance variances of the trait $$ \\sigma_{A}^{2}=2p(1-p)a^{2}[1+k(2p-1)]^{2}=2p(1-p)(1/4)(2p)^{2}=2p^{3}(1-p) $$ $$ \\sigma_{D}^{2}=[2p(1-p)a k]^{2}=p^{2}(1-p)^{2} $$ Because $ \\sigma_{E}^{2} $ is assumed to be zero, the heritability becomes $$ h^{2}=\\frac{\\sigma_{A}^{2}}{\\sigma_{A}^{2}+\\sigma_{D}^{2}}=\\frac{2p^{3}(1-p)}{2p^{3}(1-p)+p^{2}(1-p)^{2}}=\\frac{2p}{1+p} $$ (6.16c) Following selection (but before reproduction), only QQ and Qq survive, each with a trait value of one, yielding the fitness-weighted mean $$ \\mu^{*}=1\\cdot\\frac{1}{\\overline{W}}\\left(1-p^{2}\\right)+0\\cdot\\frac{2}{\\overline{W}}p^{2}=\\frac{1-p^{2}}{\\overline{W}}=\\frac{1-p^{2}}{1+p^{2}} $$ (6.16d) yielding the selectional differential $$ S=\\mu^{*}-\\mu=\\frac{1-p^{2}}{1+p^{2}}-\\left(1-p^{2}\\right)=-p^{2}\\frac{1-p^{2}}{1+p^{2}} $$ (6.16e) Equations 6.16c and 6.16e give the predicted response from the breeder’s equation as $$ R_{z}=h^{2}S=\\left(\\frac{2p}{1+p}\\right)\\left(-p^{2}\\frac{1-p^{2}}{1+p^{2}}\\right)=-\\frac{2p^{3}(1-p)}{1+p^{2}} $$ (6.16f) As shown in Figure 6.1, we see that the approximation given by the breeder\u0027s equation (Equation 6.16f) generally does well but slightly underestimates the exact response (Equation 6.16b), predicting (in the worst case) only about 90% of the actual response when $ p \\simeq 0.4 $. For this simple one-locus model, two factors account for this discrepancy. First, owing to dominance, the parent-offspring regression is not linear. Second, the change in allele frequency in the selected parents results in changes in the parent-offspring covariance, and hence the parent-offspring regression slope. Figure 6.1 Analysis of the model from Example 6.3. (Left) Graph of the exact (using one-locus theory; Equation 6.16b) and predicted (via the breeder\u0027s equation; Equation 6.16f) response as a function of allele-frequency p, for a trait under selection determined by a single dominant locus. (Right) The relative accuracies of the breeder\u0027s equation as a function of p.",
+                         "content_plain":  "Example 6.3. The setting in which the breeder’s equation is expected to be least accurate involves a trait entirely determined by a single dominant locus. This results in both a nonlinear parent-offspring regression and the potential for significant allele-frequency change following even a single generation of selection. Suppose that, at such a locus, genotypes QQ and Qq have a phenotypic value of 1, while qq has a value of 0 (there is no environmental variance), and that qq individuals have a survival rate twice as high as the survival rate of QQ and Qq individuals. We now contrast the exact response from single-locus models (Chapter 5) with that predicted by the breeder’s equation. Starting with the exact population-genetic model, and letting p be the frequency of allele q Table inline_2 The trait mean before selection is $ \\mu(p) = 1 - p^2 $, with a mean fitness of $ \\overline{W}(p) = 1 + p^2 $. The new frequency, $ p\u0027 $, of allele $ q $ after selection is half the frequency of $ Qq $ plus the frequency of $ qq $ (both after selection) $$ p^{\\prime}=\\frac{(1/2)2p(1-p)+2p^{2}}{1+p^{2}}=\\frac{p(1+p)}{1+p^{2}} $$ (6.16a) yielding an allele-frequency change of $$ \\Delta p=p^{\\prime}-p=\\frac{p(1+p)}{1+p^{2}}-p\\frac{1+p^{2}}{1+p^{2}}=\\frac{p^{2}(1-p)}{1+p^{2}} $$ which translates into a change in mean phenotype of $$ R_{z}=\\mu(p^{\\prime})-\\mu(p)=p^{2}-(p^{\\prime})^{2}=-2p^{3}\\left(\\frac{1-p(1+p^{2})/2}{(1+p^{2})^{2}}\\right) $$ (6.16b) This exact single-generation response in the trait mean is plotted in Figure 6.4. Now consider the response predicted from the breeder’s equation. Applying the standard trait-value parameterization of $ 2a : a(1 + k) : 0 $ to the preceding trait values, we have $ a = 1/2 $ and $ k = 1 $, yielding (LW Chapter 4) the additive and dominance variances of the trait $$ \\sigma_{A}^{2}=2p(1-p)a^{2}[1+k(2p-1)]^{2}=2p(1-p)(1/4)(2p)^{2}=2p^{3}(1-p) $$ $$ \\sigma_{D}^{2}=[2p(1-p)a k]^{2}=p^{2}(1-p)^{2} $$ Because $ \\sigma_{E}^{2} $ is assumed to be zero, the heritability becomes $$ h^{2}=\\frac{\\sigma_{A}^{2}}{\\sigma_{A}^{2}+\\sigma_{D}^{2}}=\\frac{2p^{3}(1-p)}{2p^{3}(1-p)+p^{2}(1-p)^{2}}=\\frac{2p}{1+p} $$ (6.16c) Following selection (but before reproduction), only QQ and Qq survive, each with a trait value of one, yielding the fitness-weighted mean $$ \\mu^{*}=1\\cdot\\frac{1}{\\overline{W}}\\left(1-p^{2}\\right)+0\\cdot\\frac{2}{\\overline{W}}p^{2}=\\frac{1-p^{2}}{\\overline{W}}=\\frac{1-p^{2}}{1+p^{2}} $$ (6.16d) yielding the selectional differential $$ S=\\mu^{*}-\\mu=\\frac{1-p^{2}}{1+p^{2}}-\\left(1-p^{2}\\right)=-p^{2}\\frac{1-p^{2}}{1+p^{2}} $$ (6.16e) Equations 6.16c and 6.16e give the predicted response from the breeder’s equation as $$ R_{z}=h^{2}S=\\left(\\frac{2p}{1+p}\\right)\\left(-p^{2}\\frac{1-p^{2}}{1+p^{2}}\\right)=-\\frac{2p^{3}(1-p)}{1+p^{2}} $$ (6.16f) As shown in Figure 6.1, we see that the approximation given by the breeder\u0027s equation (Equation 6.16f) generally does well but slightly underestimates the exact response (Equation 6.16b), predicting (in the worst case) only about 90% of the actual response when $ p \\simeq 0.4 $. For this simple one-locus model, two factors account for this discrepancy. First, owing to dominance, the parent-offspring regression is not linear. Second, the change in allele frequency in the selected parents results in changes in the parent-offspring covariance, and hence the parent-offspring regression slope. Figure 6.1 Analysis of the model from Example 6.3. (Left) Graph of the exact (using one-locus theory; Equation 6.16b) and predicted (via the breeder\u0027s equation; Equation 6.16f) response as a function of allele-frequency p, for a trait under selection determined by a single dominant locus. (Right) The relative accuracies of the breeder\u0027s equation as a function of p.",
+                         "formula_refs":  [
+                                              "6.16c",
+                                              "6.16f",
+                                              "6.16b"
+                                          ],
+                         "table_refs":  [
+                                            "inline_2"
+                                        ],
+                         "figure_refs":  [
+                                             "6.4",
+                                             "6.1"
+                                         ],
+                         "external_refs":  [
+                                               "LW Chapter 4"
+                                           ],
+                         "evidence":  {
+                                          "source":  "paddle_raw_layout+structured_blocks",
+                                          "detection_method":  "sequence_gap_raw_layout_recovery",
+                                          "confidence":  0.93,
+                                          "source_page":  8,
+                                          "structured_anchor_offset":  0,
+                                          "raw_anchor_offset":  99
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  true,
+                                          "has_figure":  true,
+                                          "word_count":  500,
+                                          "needs_review":  false,
+                                          "replacement_start_char":  0,
+                                          "replacement_end_char":  702,
+                                          "sequence_gap_recovery":  true,
+                                          "source_block_span":  [
+                                                                    2,
+                                                                    7
+                                                                ],
+                                          "sequence_gap_extended_blocks":  5
+                                      },
+                         "example_ref":  "6.3",
+                         "placeholder":  "[[SEE_EXAMPLE:6.3]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       2,
+                                                                       7
+                                                                   ],
+                                             "placeholder_block_index":  2,
+                                             "placeholder_source_file":  "chapter6_008.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.4",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.4",
+                         "title":  "The accuracy of the first-order Taylor-series approximation used in Equation 6.18b was examined by Li (1967). Because $ \\overline{W} $ is a quadratic polynomial",
+                         "source_file":  "chapter6_010.json",
+                         "start_block_index":  9,
+                         "end_block_index":  11,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.4. The accuracy of the first-order Taylor-series approximation used in Equation 6.18b was examined by Li (1967). Because $ \\overline{W} $ is a quadratic polynomial of p, the second-order Taylor series is exact, $$ \\Delta\\overline{W}=\\frac{d\\overline{W}}{d p}\\Delta p+\\frac{1}{2}\\frac{d^{2}\\overline{W}}{d p^{2}}\\left(\\Delta p\\right)^{2} $$ As shown by Equations 6.18c and 6.18f, the first term recovers Fisher\u0027s theorem, while the second term is the error resulting from this approximation.\n\nTaking the derivative of Equation 6.18d yields $$ \\frac{d^{2}\\overline{W}}{d p^{2}}=2\\left(W_{A A}-2W_{A a}+W_{a a}\\right) $$ and recalling Equation 6.18f, the residual term becomes $$ \\frac{1}{2}\\frac{d^{2}\\overline{W}}{d p^{2}}\\Delta p^{2}=\\left(W_{A A}-2W_{A a}+W_{a a}\\right)\\left(\\frac{p(1-p)}{\\overline{W}}\\alpha\\right)^{2} $$\n\nThus, if fitnesses are additive, meaning that $ [W_{AA} + W_{aa}]/2 = W_{Aa} $, the residual term is zero, and Fisher\u0027s theorem holds. However, when dominance in fitness is present, Fisher\u0027s theorem fails even for a single locus under random mating.",
+                         "content_plain":  "Example 6.4. The accuracy of the first-order Taylor-series approximation used in Equation 6.18b was examined by Li (1967). Because $ \\overline{W} $ is a quadratic polynomial of p, the second-order Taylor series is exact, $$ \\Delta\\overline{W}=\\frac{d\\overline{W}}{d p}\\Delta p+\\frac{1}{2}\\frac{d^{2}\\overline{W}}{d p^{2}}\\left(\\Delta p\\right)^{2} $$ As shown by Equations 6.18c and 6.18f, the first term recovers Fisher\u0027s theorem, while the second term is the error resulting from this approximation. Taking the derivative of Equation 6.18d yields $$ \\frac{d^{2}\\overline{W}}{d p^{2}}=2\\left(W_{A A}-2W_{A a}+W_{a a}\\right) $$ and recalling Equation 6.18f, the residual term becomes $$ \\frac{1}{2}\\frac{d^{2}\\overline{W}}{d p^{2}}\\Delta p^{2}=\\left(W_{A A}-2W_{A a}+W_{a a}\\right)\\left(\\frac{p(1-p)}{\\overline{W}}\\alpha\\right)^{2} $$ Thus, if fitnesses are additive, meaning that $ [W_{AA} + W_{aa}]/2 = W_{Aa} $, the residual term is zero, and Fisher\u0027s theorem holds. However, when dominance in fitness is present, Fisher\u0027s theorem fails even for a single locus under random mating.",
+                         "formula_refs":  [
+                                              "6.18b",
+                                              "6.18c",
+                                              "6.18d",
+                                              "6.18f"
+                                          ],
+                         "table_refs":  [
+
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+
+                                           ],
+                         "evidence":  {
+                                          "source":  "structured_blocks",
+                                          "detection_method":  "example_heading_regex",
+                                          "confidence":  0.97
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  false,
+                                          "has_figure":  false,
+                                          "word_count":  136,
+                                          "needs_review":  false,
+                                          "source_block_span":  [
+                                                                    9,
+                                                                    11
+                                                                ]
+                                      },
+                         "example_ref":  "6.4",
+                         "placeholder":  "[[SEE_EXAMPLE:6.4]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       9,
+                                                                       11
+                                                                   ],
+                                             "placeholder_block_index":  9,
+                                             "placeholder_source_file":  "chapter6_010.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.5",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.5",
+                         "title":  "Consider a locus with two alleles $ (A_{1} $ and $ A_{2}) $ and overdominance in fitness, $$ W_{11}=1-s\\quad W_{12}=1\\quad W_{22}=1-s $$ Letting $ p = \\text{fre",
+                         "source_file":  "chapter6_012.json",
+                         "start_block_index":  2,
+                         "end_block_index":  4,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.5. Consider a locus with two alleles $ (A_{1} $ and $ A_{2}) $ and overdominance in fitness, $$ W_{11}=1-s\\quad W_{12}=1\\quad W_{22}=1-s $$\n\nLetting $ p = \\text{freq}(A_1) $, from Equation 6.18e and the definition of the average effect of a substitution under random mating, we have $$ \\alpha=\\alpha_{A}-\\alpha_{a}=p\\big[\\big(1-s\\big)-1\\big]+\\big(1-p\\big)\\big[1-\\big(1-s\\big)\\big]=s(1-2p) $$ giving the additive genetic variance in fitness as $$ \\sigma_{A}^{2}(W)=2p(1-p)\\alpha^{2}=2p(1-p)s^{2}(1-2p)^{2} $$\n\nThe dominance variance is computed from LW Equation 4.12b to be $ \\sigma_D^2(W) = [2p(1-p)s]^2 $. For simplicity, the plot of $ h^2 $ for fitness (Figure 6.2) assumes no environmental effects, so $ h^2 = \\sigma_A^2/\\sigma_G^2 = \\sigma_A^2/(\\sigma_A^2 + \\sigma_D^2) $. As illustrated in Figure 6.2, these variance components change dramatically with p. The maximum total genetic variance in fitness occurs at $ p = 1/2 $, but in this particular example none of this variance is additive, so the heritability in fitness is zero, as the corollary of Fisher\u0027s theorem predicts. Even though total genetic variation in fitness is maximized at $ p = 1/2 $, no change in $ \\overline{W} $ occurs at this frequency, as none of the variance is additive.",
+                         "content_plain":  "Example 6.5. Consider a locus with two alleles $ (A_{1} $ and $ A_{2}) $ and overdominance in fitness, $$ W_{11}=1-s\\quad W_{12}=1\\quad W_{22}=1-s $$ Letting $ p = \\text{freq}(A_1) $, from Equation 6.18e and the definition of the average effect of a substitution under random mating, we have $$ \\alpha=\\alpha_{A}-\\alpha_{a}=p\\big[\\big(1-s\\big)-1\\big]+\\big(1-p\\big)\\big[1-\\big(1-s\\big)\\big]=s(1-2p) $$ giving the additive genetic variance in fitness as $$ \\sigma_{A}^{2}(W)=2p(1-p)\\alpha^{2}=2p(1-p)s^{2}(1-2p)^{2} $$ The dominance variance is computed from LW Equation 4.12b to be $ \\sigma_D^2(W) = [2p(1-p)s]^2 $. For simplicity, the plot of $ h^2 $ for fitness (Figure 6.2) assumes no environmental effects, so $ h^2 = \\sigma_A^2/\\sigma_G^2 = \\sigma_A^2/(\\sigma_A^2 + \\sigma_D^2) $. As illustrated in Figure 6.2, these variance components change dramatically with p. The maximum total genetic variance in fitness occurs at $ p = 1/2 $, but in this particular example none of this variance is additive, so the heritability in fitness is zero, as the corollary of Fisher\u0027s theorem predicts. Even though total genetic variation in fitness is maximized at $ p = 1/2 $, no change in $ \\overline{W} $ occurs at this frequency, as none of the variance is additive.",
+                         "formula_refs":  [
+                                              "6.18e",
+                                              "4.12b"
+                                          ],
+                         "table_refs":  [
+
+                                        ],
+                         "figure_refs":  [
+                                             "6.2"
+                                         ],
+                         "external_refs":  [
+                                               "LW Equation 4.12b"
+                                           ],
+                         "evidence":  {
+                                          "source":  "structured_blocks",
+                                          "detection_method":  "example_heading_regex",
+                                          "confidence":  0.97
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  false,
+                                          "has_figure":  true,
+                                          "word_count":  187,
+                                          "needs_review":  false,
+                                          "source_block_span":  [
+                                                                    2,
+                                                                    4
+                                                                ]
+                                      },
+                         "example_ref":  "6.5",
+                         "placeholder":  "[[SEE_EXAMPLE:6.5]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       2,
+                                                                       4
+                                                                   ],
+                                             "placeholder_block_index":  2,
+                                             "placeholder_source_file":  "chapter6_012.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.6",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.6",
+                         "title":  "Even if Fisher\u0027s theorem holds exactly, its implication for character evolution can often be misinterpreted. Suppose that locus A in Example 6.5 completely dete",
+                         "source_file":  "chapter6_013.json",
+                         "start_block_index":  7,
+                         "end_block_index":  7,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.6. Even if Fisher\u0027s theorem holds exactly, its implication for character evolution can often be misinterpreted. Suppose that locus A in Example 6.5 completely determines a character under stabilizing selection. Let the genotypes AA, Aa, and aa have discrete phenotypic values of z = -1, 0, and 1, respectively (so that this locus is strictly additive with respect to the trait), and let the fitness function be $ W(z) = 1 - sz^2 $. If we assume no environmental variance, this generates the fitnesses for each genotype assumed in Example 6.5. The additive genetic variance for the trait z is $ 2(1)^2 p(1 - p) $, which is maximized at p = 1/2, precisely the allele frequency at which the additive genetic variance in fitness, $ \\sigma_A^2(W) $, equals zero. This difference emphasizes that Fisher\u0027s theorem concerns additive genetic variance in fitness, not in the character. In this example, the nonlinear mapping of the phenotypic character value, z, into the trait fitness, W, results in a situation where a character that is correlated with fitness retains additive variance in the trait but not in fitness at its equilibrium value.",
+                         "content_plain":  "Example 6.6. Even if Fisher\u0027s theorem holds exactly, its implication for character evolution can often be misinterpreted. Suppose that locus A in Example 6.5 completely determines a character under stabilizing selection. Let the genotypes AA, Aa, and aa have discrete phenotypic values of z = -1, 0, and 1, respectively (so that this locus is strictly additive with respect to the trait), and let the fitness function be $ W(z) = 1 - sz^2 $. If we assume no environmental variance, this generates the fitnesses for each genotype assumed in Example 6.5. The additive genetic variance for the trait z is $ 2(1)^2 p(1 - p) $, which is maximized at p = 1/2, precisely the allele frequency at which the additive genetic variance in fitness, $ \\sigma_A^2(W) $, equals zero. This difference emphasizes that Fisher\u0027s theorem concerns additive genetic variance in fitness, not in the character. In this example, the nonlinear mapping of the phenotypic character value, z, into the trait fitness, W, results in a situation where a character that is correlated with fitness retains additive variance in the trait but not in fitness at its equilibrium value.",
+                         "formula_refs":  [
+
+                                          ],
+                         "table_refs":  [
+
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+
+                                           ],
+                         "evidence":  {
+                                          "source":  "structured_blocks",
+                                          "detection_method":  "example_heading_regex",
+                                          "confidence":  0.97,
+                                          "standalone_numbered_table_boundary_stop":  true,
+                                          "standalone_numbered_table_boundary_block_index":  8
+                                      },
+                         "metadata":  {
+                                          "has_formula":  false,
+                                          "has_table":  false,
+                                          "has_figure":  false,
+                                          "word_count":  190,
+                                          "needs_review":  false,
+                                          "source_block_span":  [
+                                                                    7,
+                                                                    7
+                                                                ],
+                                          "standalone_numbered_table_boundary_stop":  true,
+                                          "standalone_numbered_table_boundary_block_index":  8
+                                      },
+                         "example_ref":  "6.6",
+                         "placeholder":  "[[SEE_EXAMPLE:6.6]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       7,
+                                                                       7
+                                                                   ],
+                                             "placeholder_block_index":  7,
+                                             "placeholder_source_file":  "chapter6_013.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.7",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.7",
+                         "title":  "Mackay (1985b) examined total fitness (measured by competition against a marked balancer stock) of 41 third chromosomes extracted from a natural population of D",
+                         "source_file":  "chapter6_013.json",
+                         "start_block_index":  8,
+                         "end_block_index":  8,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.7. Mackay (1985b) examined total fitness (measured by competition against a marked balancer stock) of 41 third chromosomes extracted from a natural population of Drosophila melanogaster. Using these chromosomes, lines with an otherwise common background could be made homozygous for a particular extracted third chromosome, and likewise the performance of that chromosome as a heterozygote could also be assayed. If there is significant additive genetic variance in fitness, a correlation between homozygote and heterozygote fitness is expected. Such a correlation was found for viability, suggesting some additive genetic variance in this character. However, when total fitness was examined, no correlation was found, suggesting no significant additive variation in total fitness. Mackay observed strong inbreeding depression, consistent with the total genetic variation in fitness being caused by segregation of rare deleterious recessive alleles (LW Chapter 10). A very similar experiment using segregating third chromosomes within a Drosophila population selected for domestication, Fowler et al. (1997) and Gardner et al. (2005) found high homozygote-heterozygote correlations for total fitness, and thus significant additive variance in fitness.",
+                         "content_plain":  "Example 6.7. Mackay (1985b) examined total fitness (measured by competition against a marked balancer stock) of 41 third chromosomes extracted from a natural population of Drosophila melanogaster. Using these chromosomes, lines with an otherwise common background could be made homozygous for a particular extracted third chromosome, and likewise the performance of that chromosome as a heterozygote could also be assayed. If there is significant additive genetic variance in fitness, a correlation between homozygote and heterozygote fitness is expected. Such a correlation was found for viability, suggesting some additive genetic variance in this character. However, when total fitness was examined, no correlation was found, suggesting no significant additive variation in total fitness. Mackay observed strong inbreeding depression, consistent with the total genetic variation in fitness being caused by segregation of rare deleterious recessive alleles (LW Chapter 10). A very similar experiment using segregating third chromosomes within a Drosophila population selected for domestication, Fowler et al. (1997) and Gardner et al. (2005) found high homozygote-heterozygote correlations for total fitness, and thus significant additive variance in fitness.",
+                         "formula_refs":  [
+
+                                          ],
+                         "table_refs":  [
+
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+                                               "LW Chapter 10"
+                                           ],
+                         "evidence":  {
+                                          "source":  "paddle_raw_layout+structured_blocks",
+                                          "detection_method":  "sequence_gap_raw_layout_neighbor_insert_placeholder",
+                                          "confidence":  0.93,
+                                          "source_page":  21,
+                                          "visual_stop_clipped":  true,
+                                          "visual_stop_source":  "pdf_rendered_horizontal_rule",
+                                          "visual_stop_page":  21,
+                                          "visual_stop_row_index":  3,
+                                          "visual_stop_vertical_gap":  89.0,
+                                          "visual_stop_rule_bbox":  [
+                                                                        137.88,
+                                                                        584.0,
+                                                                        897.25,
+                                                                        586.0
+                                                                    ],
+                                          "visual_stop_rule_coverage":  0.6393,
+                                          "alignment_rejected":  "different_example_block",
+                                          "existing_library_repair":  "sequence_gap_neighbor_relocated",
+                                          "sequence_gap_neighbor_relocation_reason":  "previous_neighbor_has_smaller_page_distance",
+                                          "relocated_from_source_file":  "chapter6_021.json"
+                                      },
+                         "metadata":  {
+                                          "has_formula":  false,
+                                          "has_table":  false,
+                                          "has_figure":  false,
+                                          "word_count":  174,
+                                          "needs_review":  false,
+                                          "visual_stop_clipped":  true,
+                                          "visual_stop":  {
+                                                              "included_tail":  "Example 6.7. Mackay (1985b) examined total fitness (measured by competition against a marked balancer stock) of 41 third chromosomes extracted from a natural population of Drosophila melanogaster. Using these chromosomes, lines with an otherwise common background could be made homozygous for a particular extracted third chromosome, and likewise the performance of that chromosome as a heterozygote could also be assayed. If there is significant additive genetic variance in fitness, a correlation between homozygote and heterozygote fitness is expected. Such a correlation was found for viability, suggesting some additive genetic variance in this character. However, when total fitness was examined, no correlation was found, suggesting no significant additive variation in total fitness. Mackay observed strong inbreeding depression, consistent with the total genetic variation in fitness being caused by segregation of rare deleterious recessive alleles (LW Chapter 10). A very similar experiment using segregating third chromosomes within a Drosophila population selected for domestication, Fowler et al. (1997) and Gardner et al. (2005) found high homozygote-heterozygote correlations for total fitness, and thus significant additive variance in fitness.",
+                                                              "stop_text":  "ROBERTSON\u0027S SECONDARY THEOREM OF NATURAL SELECTION",
+                                                              "page_index":  20,
+                                                              "row_index":  3,
+                                                              "source":  "pdf_rendered_horizontal_rule"
+                                                          },
+                                          "insert_placeholder_only":  true,
+                                          "replacement_start_char":  0,
+                                          "replacement_end_char":  0,
+                                          "sequence_gap_neighbor_insert":  true,
+                                          "sequence_gap_neighbor_insert_reason":  "previous_neighbor_has_smaller_page_distance"
+                                      },
+                         "example_ref":  "6.7",
+                         "placeholder":  "[[SEE_EXAMPLE:6.7]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       8,
+                                                                       8
+                                                                   ],
+                                             "placeholder_block_index":  8,
+                                             "placeholder_source_file":  "chapter6_013.json"
+                                         }
+                     },
+                     {
+                         "example_id":  "6.8",
+                         "chapter":  "chapter6",
+                         "label":  "Example 6.8",
+                         "title":  "One can imagine several measures of the residual dependency between two variables (say x and y) once the effects of a third (z) is removed. One is conditional c",
+                         "source_file":  "chapter6_021.json",
+                         "start_block_index":  8,
+                         "end_block_index":  11,
+                         "block_ids":  [
+
+                                       ],
+                         "content_markdown":  "Example 6.8. One can imagine several measures of the residual dependency between two variables (say x and y) once the effects of a third (z) is removed. One is conditional covariance, $ \\sigma(x, y \\mid z) $, defined as the covariance conditioned on the value of z: $$ \\sigma(x,y\\mid z)=E\\Biggl[\\biggl(x-E(x\\mid z)\\biggr)\\biggl(y-E(y\\mid z)\\biggr)\\mid z\\Biggr] $$ (6.33a) Heywood’s decomposition uses an alternative measure of dependency, the partial covariance $$ \\sigma(x,y||z)=\\sigma(e_{x},e_{y}) $$ (6.33b) where $ e_x $ and $ e_y $ are the residuals for the linear regression of $ x $ on $ z $ and of $ y $ on $ z $. We use the notation $ \\|z $ in place of $ |z $ to distinguish between partial and conditional covariances. If the three variables are multivariate normal, the conditional and partial covariances are equal, but generally they differ (Lawrance 1976; Baba et al. 2006). The partial covariance can be expressed in terms of the various pairwise covariances between the three variables, as follows. The linear regression of x on z can be written as $$ x=\\mu_{x}+\\beta_{x|z}z+e_{x}=\\mu_{x}+\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z+e_{x} $$ implying that $$ e_{x}=x-\\left(\\mu_{x}+\\beta_{x|z}z\\right)=x-\\mu_{x}-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z $$ (6.33c) with a similar expression for $ e_{y} $. Substituting these into Equation 6.33b and ignoring the mean terms (which, as constants, do not factor in the covariance) yields $$ \\sigma(x,y||z)=\\sigma(e_{x},e_{y})=\\sigma\\left[x-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z,y-\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)z\\right] $$ which, by expansion, leads to $$ \\begin{aligned}\\sigma(x,y||z)\u0026=\\sigma(x,y)-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)\\sigma(y,z)-\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)\\sigma(x,z)+\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)\\sigma_{z}^{2}\\\\\u0026=\\sigma(x,y)-\\frac{\\sigma(x,z)\\sigma(y,z)}{\\sigma_{z}^{2}}\\quad(6.33\\mathrm{d})\\end{aligned} $$ The last term can be expressed as either $ \\beta_{x|z}\\sigma(y,z) $ or $ \\beta_{y|z}\\sigma(x,z) $. Applying Equation 6.33d by taking $ x = w $ and $ y = \\overline{z} $ yields $$ \\begin{align*}\\sigma(w,\\overline{z}||z)=\\sigma(w,\\overline{z})-\\frac{\\sigma(\\overline{z},z)}{\\sigma_{\\overline{z}}^2}\\sigma(w,z)=\\sigma(w,\\overline{z})-\\beta_{\\overline{z}|z}\\sigma(w,z)\\end{align*} $$ (6.33e) Rearranging this last expression yields $$ \\begin{aligned}\\sigma(w,\\overline{z})\u0026=\\sigma(w,\\overline{z}||z)+\\beta_{\\overline{z}|z}\\sigma(w,z)\\\\\u0026=\\sigma(w,\\overline{z}||z)+\\beta_{\\overline{z}|z}S\\end{aligned} $$ (6.33f) which is used to obtain Equation 6.32.",
+                         "content_plain":  "Example 6.8. One can imagine several measures of the residual dependency between two variables (say x and y) once the effects of a third (z) is removed. One is conditional covariance, $ \\sigma(x, y \\mid z) $, defined as the covariance conditioned on the value of z: $$ \\sigma(x,y\\mid z)=E\\Biggl[\\biggl(x-E(x\\mid z)\\biggr)\\biggl(y-E(y\\mid z)\\biggr)\\mid z\\Biggr] $$ (6.33a) Heywood’s decomposition uses an alternative measure of dependency, the partial covariance $$ \\sigma(x,y||z)=\\sigma(e_{x},e_{y}) $$ (6.33b) where $ e_x $ and $ e_y $ are the residuals for the linear regression of $ x $ on $ z $ and of $ y $ on $ z $. We use the notation $ \\|z $ in place of $ |z $ to distinguish between partial and conditional covariances. If the three variables are multivariate normal, the conditional and partial covariances are equal, but generally they differ (Lawrance 1976; Baba et al. 2006). The partial covariance can be expressed in terms of the various pairwise covariances between the three variables, as follows. The linear regression of x on z can be written as $$ x=\\mu_{x}+\\beta_{x|z}z+e_{x}=\\mu_{x}+\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z+e_{x} $$ implying that $$ e_{x}=x-\\left(\\mu_{x}+\\beta_{x|z}z\\right)=x-\\mu_{x}-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z $$ (6.33c) with a similar expression for $ e_{y} $. Substituting these into Equation 6.33b and ignoring the mean terms (which, as constants, do not factor in the covariance) yields $$ \\sigma(x,y||z)=\\sigma(e_{x},e_{y})=\\sigma\\left[x-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)z,y-\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)z\\right] $$ which, by expansion, leads to $$ \\begin{aligned}\\sigma(x,y||z)\u0026=\\sigma(x,y)-\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)\\sigma(y,z)-\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)\\sigma(x,z)+\\left(\\frac{\\sigma(y,z)}{\\sigma_{z}^{2}}\\right)\\left(\\frac{\\sigma(x,z)}{\\sigma_{z}^{2}}\\right)\\sigma_{z}^{2}\\\\\u0026=\\sigma(x,y)-\\frac{\\sigma(x,z)\\sigma(y,z)}{\\sigma_{z}^{2}}\\quad(6.33\\mathrm{d})\\end{aligned} $$ The last term can be expressed as either $ \\beta_{x|z}\\sigma(y,z) $ or $ \\beta_{y|z}\\sigma(x,z) $. Applying Equation 6.33d by taking $ x = w $ and $ y = \\overline{z} $ yields $$ \\begin{align*}\\sigma(w,\\overline{z}||z)=\\sigma(w,\\overline{z})-\\frac{\\sigma(\\overline{z},z)}{\\sigma_{\\overline{z}}^2}\\sigma(w,z)=\\sigma(w,\\overline{z})-\\beta_{\\overline{z}|z}\\sigma(w,z)\\end{align*} $$ (6.33e) Rearranging this last expression yields $$ \\begin{aligned}\\sigma(w,\\overline{z})\u0026=\\sigma(w,\\overline{z}||z)+\\beta_{\\overline{z}|z}\\sigma(w,z)\\\\\u0026=\\sigma(w,\\overline{z}||z)+\\beta_{\\overline{z}|z}S\\end{aligned} $$ (6.33f) which is used to obtain Equation 6.32.",
+                         "formula_refs":  [
+                                              "6.33b",
+                                              "6.33d",
+                                              "6.32"
+                                          ],
+                         "table_refs":  [
+
+                                        ],
+                         "figure_refs":  [
+
+                                         ],
+                         "external_refs":  [
+
+                                           ],
+                         "evidence":  {
+                                          "source":  "structured_blocks",
+                                          "detection_method":  "example_heading_regex",
+                                          "confidence":  0.97,
+                                          "raw_layout_merge":  {
+                                                                   "added_table_refs":  [
+
+                                                                                        ],
+                                                                   "before_word_count":  261,
+                                                                   "raw_word_count":  276
+                                                               },
+                                          "existing_library_repair":  "missing_placeholder_restored_from_raw_anchor",
+                                          "placeholder_restore_reason":  "after_previous_raw_body_anchor"
+                                      },
+                         "metadata":  {
+                                          "has_formula":  true,
+                                          "has_table":  false,
+                                          "has_figure":  false,
+                                          "word_count":  276,
+                                          "needs_review":  false,
+                                          "source_block_span":  [
+                                                                    8,
+                                                                    12
+                                                                ],
+                                          "raw_layout_merged":  true
+                                      },
+                         "example_ref":  "6.8",
+                         "placeholder":  "[[SEE_EXAMPLE:6.8]]",
+                         "replacement":  {
+                                             "status":  "replaced",
+                                             "reason":  "placeholder_block_written",
+                                             "source_block_span":  [
+                                                                       8,
+                                                                       11
+                                                                   ],
+                                             "placeholder_block_index":  8,
+                                             "placeholder_source_file":  "chapter6_021.json"
+                                         }
+                     }
+                 ]
+}

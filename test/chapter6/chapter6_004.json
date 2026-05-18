@@ -1,0 +1,80 @@
+{
+  "id": "chapter6_004",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [
+      "The Life and Times of George Price"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.5a",
+      "6.5b",
+      "6.6",
+      "6.7a",
+      "6.7b",
+      "6.7c",
+      "6.8"
+    ],
+    "table_references": [
+      "6.1"
+    ],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": "The Life and Times of George Price",
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+      "The Life and Times of George Price"
+    ],
+    "display_heading": "The Life and Times of George Price",
+    "table_reference_keys": [
+      "chapter6:6.1"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "discussion",
+      "content": "The second line follows by adding and subtracting $ \\sum q_i' z_i $, and the third by suitably gathering terms. This version of the Price equation is based on Frank (1997, 2012). The first term (containing $ \\Delta q_i z_i $) represents the change due to selection based entirely on ancestral values, or the partial evolutionary change caused by natural selection (Price 1972b; Ewens 1989; Frank 2012). The second term (containing $ q_i' \\bar{\\delta}_i $) is the part of total change caused by imperfect transmission of ancestral values to their descendants. Equation 6.4 is conceptually very powerful, as it decomposes the response into two separate components, one strictly based on the nature of selection ($ \\Delta q_i $) and the other on transmission ($ \\bar{\\delta}_i $)."
+    },
+    {
+      "type": "derivation",
+      "content": "Both these terms can be expressed in a more transparent form. For the first term, [[SEE_FORMULA:6.5a]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Note that to obtain this result, we use the identity $ E(w) = 1 $. For the second term, [[SEE_FORMULA:6.5b]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Substituting Equations 6.5a and 6.5b into Equation 6.4 yields the more traditional form of the Price equation, [[SEE_FORMULA:6.6]]"
+    },
+    {
+      "type": "discussion",
+      "content": "(Price 1970, 1972a). Note that all expectations are computed with respect to the pre-selection frequencies of the ancestral categories $ (q_{i}) $. The first term is the covariance between phenotype and fitness (the within-generation change, S, in the mean of ancestral values), while the second is the fitness-weighted transmission of any changes between the value of an ancestor and the mean of its descendants."
+    },
+    {
+      "type": "derivation",
+      "content": "Several equivalent expressions for the Price equation are useful in that they emphasize different features. For example, using the definition of a covariance [[SEE_FORMULA:6.7a]] and substituting this result into Equation 6.6 yields [[SEE_FORMULA:6.7b]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Using Equation 6.3a to combine the first two covariances in Equation 6.7b gives [[SEE_FORMULA:6.7c]]"
+    },
+    {
+      "type": "discussion",
+      "content": "Equation 6.7c relates the selection response to the covariance between the fitness, $ w_i $, of an ancestor and the mean value, $ \\overline{z}_i $, of its descendants. The second term, $ E(\\overline{\\delta}_i) $, is often thought of as the expected change in mean value from ancestor to descendant in the absence of selection. As we will see at the end of the chapter, this interpretation is not quite correct, as this last term does contain a contribution from selection (Equation 6.38)."
+    },
+    {
+      "type": "derivation",
+      "content": "To summarize, if $ z_i $ denotes the average value in category $ i $, which has a frequency of $ q_i $ before selection and a frequency of $ q'_i $ after selection, and whose offspring have average value $ \\overline{z}_i = z_i + \\overline{\\delta}_i $, then equivalent forms of Price's theorem are [[SEE_FORMULA:6.8]] As noted in [[SEE_TABLE:6.1]], and as will be shown shortly (Equation 6.10), the selection differential, S, can be substituted for $ \\sigma(w_i, z_i) $ in the middle two expressions of Equation 6.8. As is further shown below, many of the standard approximations for evolutionary response (e.g., the breeder's equation, Fisher's fundamental theorem, Robertson's secondary theorem) follow directly from the $ \\sigma(w_i, z_i) $ selection term under the assumption that the residual term $ E(w_i \\bar{\\delta}_i) $ is zero. Hence, these approximations fail when this term is significant."
+    },
+    {
+      "type": "proposition",
+      "content": "While a discussion of Price’s theorem often assumes the ancestor to be a parent or midparent and the descendants to be their offspring in the next generation, the theorem holds for any time interval and for any set of ancestors (such as a group of individuals; Chapter 22) that one wishes to consider. In this sense, Price’s theorem is completely general and makes absolutely no assumptions about the mechanism of transmission of trait values from ancestors to their descendants, although it does make the assumption that all descendants have ancestors. This may seem trivial, but it is violated by migration, wherein an individual appears in the next generation from ancestors not considered. Kerr and Godfrey-Smith (2008) generalized the Price equation to accommodate missing ancestors and more general causal connections between ancestors and descendants."
+    },
+    {
+      "type": "example",
+      "content": "[[SEE_EXAMPLE:6.2]]"
+    }
+  ]
+}

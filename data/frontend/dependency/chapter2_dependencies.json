@@ -1,0 +1,3269 @@
+{
+  "chapter_id": "chapter2",
+  "version": 1,
+  "generated_at": "2026-05-18T14:17:02Z",
+  "formulas": [
+    {
+      "id": "formula_2.1",
+      "latex": "P_{ij}=\\binom{2N}{j}(i/2N)^{j}[1-(i/2N)]^{2N-j}",
+      "label": "Formula 2.1",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE WRIGHT-FISHER MODEL",
+      "position": 0,
+      "context_text": "qual to j follows the binomial distribution. Assuming the Wright-Fisher model, each of the 2N sampled gametes has probability $ i/(2N) $ of being B and probability $ [1-(i/2N)] $ of being b, yielding $$ P_{ij}=\\binom{2N}{j}(i/2N)^{j}[1-(i/2N)]^{2N-j} $$ (2.1) where the first term in large parentheses is the binomial coefficient. This expression holds for all possible values of $ i,j=0,1,\\ldots,2N $. Note that throughout we will be referring to a diploid p",
+      "symbols_used": [
+        "N",
+        "P",
+        "i",
+        "j"
+      ],
+      "symbols_defined": [
+        "P",
+        "i",
+        "j"
+      ]
+    },
+    {
+      "id": "formula_2.2a",
+      "latex": "\\mathbf{x}(t+1)=\\mathbf{x}(t)\\mathbf{P}",
+      "label": "Formula 2.2a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE WRIGHT-FISHER MODEL",
+      "position": 1,
+      "context_text": "Letting P be the $ (2N+1)\\times(2N+1) $ matrix of all the $ P_{ij} $, the probability distribution of the number of copies of allele B in a population can then be expressed succinctly as $$ \\mathbf{x}(t+1)=\\mathbf{x}(t)\\mathbf{P} $$ (2.2a) where the elements of the row vector $ \\mathbf{x}(t) $ are the probabilities that the allele is present in $ i = 0, 1, \\ldots, 2N $ copies in generation $ t $. Note that $ P_{ij} $, which refers to t",
+      "symbols_used": [
+        "\\mathbf{P}",
+        "\\mathbf{x}",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\mathbf{x}",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.2b",
+      "latex": "\\mathbf{x}(t)=\\mathbf{x}(0)\\mathbf{P}^{t}",
+      "label": "Formula 2.2b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE WRIGHT-FISHER MODEL",
+      "position": 2,
+      "context_text": "B to j copies, conditional on starting at i. If the transition matrix P remains constant from generation to generation, as it does under the assumptions given previously, Equation 2.2a generalizes to $$ \\mathbf{x}(t)=\\mathbf{x}(0)\\mathbf{P}^{t} $$ (2.2b)",
+      "symbols_used": [
+        "\\mathbf{P}",
+        "\\mathbf{x}",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\mathbf{x}",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.3",
+      "latex": "f_{t}=\\frac{1}{2N}+\\left(1-\\frac{1}{2N}\\right)f_{t-1}",
+      "label": "Formula 2.3",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 3,
+      "context_text": "he parental generation. Thus, because the probability of drawing genes that are not direct copies of the same parental gene is $ [1 - (1/2N)] $, the expected inbreeding coefficient in generation t is $$ f_{t}=\\frac{1}{2N}+\\left(1-\\frac{1}{2N}\\right)f_{t-1} $$ (2.3)",
+      "symbols_used": [
+        "N",
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.4a",
+      "latex": "\\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)(1-f_{t-1})\\end{align*}",
+      "label": "Formula 2.4a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 4,
+      "context_text": "Subtracting both sides from one yields the recursion formula $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)(1-f_{t-1})\\end{align*} $$ (2.4a) which generalizes to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t(1-f_0)\\end{align*} $$ (2.4b) and finally to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t\\end{align*} $$ (2.4c) if we",
+      "symbols_used": [
+        "N",
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.4b",
+      "latex": "\\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t(1-f_0)\\end{align*}",
+      "label": "Formula 2.4b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 5,
+      "context_text": "Subtracting both sides from one yields the recursion formula $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)(1-f_{t-1})\\end{align*} $$ (2.4a) which generalizes to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t(1-f_0)\\end{align*} $$ (2.4b) and finally to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t\\end{align*} $$ (2.4c) if we assume a noninbred base population $ (f_0 = 0) $. Again, we see the central role that population size p",
+      "symbols_used": [
+        "N",
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.4c",
+      "latex": "\\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t\\end{align*}",
+      "label": "Formula 2.4c",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 6,
+      "context_text": "\\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)(1-f_{t-1})\\end{align*} $$ (2.4a) which generalizes to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t(1-f_0)\\end{align*} $$ (2.4b) and finally to $$ \\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t\\end{align*} $$ (2.4c) if we assume a noninbred base population $ (f_0 = 0) $. Again, we see the central role that population size plays in the dynamics of genetic variation. As $ t \\to \\infty $, the fraction of the popula",
+      "symbols_used": [
+        "N",
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.5",
+      "latex": "H_{t}=H_{0}\\left(1-\\frac{1}{2N}\\right)^{t}",
+      "label": "Formula 2.5",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 7,
+      "context_text": "nt applies regardless of the initial heterozygosity (and regardless of the number of segregating alleles), Equation 2.4c may be rewritten to describe the expected population heterozygosity at time t. $$ H_{t}=H_{0}\\left(1-\\frac{1}{2N}\\right)^{t} $$ (2.5)",
+      "symbols_used": [
+        "H",
+        "N",
+        "t"
+      ],
+      "symbols_defined": [
+        "H",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.6a",
+      "latex": "H_{t}\\simeq H_{0}e^{-t/(2N)}",
+      "label": "Formula 2.6a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 8,
+      "context_text": "course for the loss of heterozygosity can be clarified by using an exponential approximation to Equation 2.5. Because $ (1 - x)^t \\simeq e^{-xt} $ for $ |x| \\ll 1 $, for $ N $ greater than 10 or so, $$ H_{t}\\simeq H_{0}e^{-t/(2N)} $$ (2.6a)",
+      "symbols_used": [
+        "H",
+        "N",
+        "e",
+        "t"
+      ],
+      "symbols_defined": [
+        "H"
+      ]
+    },
+    {
+      "id": "formula_2.6b",
+      "latex": "t=-2N\\ln(H_{t}/H_{0})",
+      "label": "Formula 2.6b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 9,
+      "context_text": "Rearrangement then leads to the expected time to reach a certain reduction in heterozygosity, $$ t=-2N\\ln(H_{t}/H_{0}) $$ (2.6b) which shows that the heterozygosity is reduced to half of its initial value in $ \\sim 1.4N $ generations and to 5% of $ H_0 $ in $ \\sim 6N $ generations. Thus, a population twice the size of another",
+      "symbols_used": [
+        "H",
+        "N",
+        "\\ln",
+        "t"
+      ],
+      "symbols_defined": [
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.7",
+      "latex": "H_{t}=H_{0}\\prod_{i=1}^{t}\\left(1-\\frac{1}{2N_{i}}\\right)\\simeq H_{0}\\exp\\left[-\\sum_{i=1}^{t}1/(2N_{i})\\right]",
+      "label": "Formula 2.7",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 10,
+      "context_text": "$ generations. Thus, a population twice the size of another requires twice the number of generations to reach the same expected state. With a temporally varying population size, Equation 2.6a becomes $$ H_{t}=H_{0}\\prod_{i=1}^{t}\\left(1-\\frac{1}{2N_{i}}\\right)\\simeq H_{0}\\exp\\left[-\\sum_{i=1}^{t}1/(2N_{i})\\right] $$ (2.7) where the $ \\prod $ sign denotes a product of terms, and $ N_i $ is the population size in generation $ i $. This expression illustrates an important point. Because each of the generation-specific te",
+      "symbols_used": [
+        "H",
+        "N",
+        "\\exp",
+        "i",
+        "t"
+      ],
+      "symbols_defined": [
+        "H",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.8",
+      "latex": "\\begin{align*}\\varphi(p_{t}|p_{0})&=p_{0}(1-p_{0})\\sum_{i=1}^{\\infty}i(2i+1)(i+1)\\cdot\\\\&F(1-i,i+2,2,p_{0})\\cdot F(1-i,i+2,2,p_{t})\\cdot e^{-i(i+1)t/(4N)}\\end{align*}",
+      "label": "Formula 2.8",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LOSS OF HETEROZYGOSITY BY RANDOM GENETIC DRIFT",
+      "position": 11,
+      "context_text": "s developed by Kimura (1955b), who used diffusion theory (Appendix 1) to obtain an analytical expression for the probability density of allele frequency at time t, given the starting value $ p_{0} $, $$ \\begin{align*}\\varphi(p_{t}|p_{0})&=p_{0}(1-p_{0})\\sum_{i=1}^{\\infty}i(2i+1)(i+1)\\cdot\\\\&F(1-i,i+2,2,p_{0})\\cdot F(1-i,i+2,2,p_{t})\\cdot e^{-i(i+1)t/(4N)}\\end{align*} $$ (2.8) where $ F(1-i, i+2, 2, p_0) $ and $ F(1-i, i+2, 2, p_t) $ are specific variants of the hypergeometric function (Equation 15.1.1 in Abramowitz and Stegun 1972). When we use this expression, $ [\\varphi",
+      "symbols_used": [
+        "F",
+        "N",
+        "\\varphi",
+        "e",
+        "i",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\varphi",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.9a",
+      "latex": "\\Omega(p_{0},t)=\\int_{1/(2N)}^{1-1/(2N)}\\varphi(p_{t}|p_{0})d p_{t}",
+      "label": "Formula 2.9a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 13,
+      "context_text": "Because Equation 2.8 denotes the probability density of allele frequency p given that the population is still polymorphic, $$ \\Omega(p_{0},t)=\\int_{1/(2N)}^{1-1/(2N)}\\varphi(p_{t}|p_{0})d p_{t} $$ (2.9a) is the probability that both alleles are still present in generation t. The probability that an allele with initial frequency $ p_{0} $ has been fixed by generation t is $$ \\begin{align*}p_{f}(p_{0},",
+      "symbols_used": [
+        "N",
+        "\\Omega",
+        "\\varphi",
+        "d",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\Omega",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.9b",
+      "latex": "\\begin{align*}p_{f}(p_{0},t)=p_{0}+p_{0}(1-p_{0})\\sum_{i=1}^{\\infty}(2i+1)(-1)^{i}\\\\ \\cdot F(1-i,i+2,2,p_{0})\\cdot e^{-i(i+1)t/4N}\\end{align*}",
+      "label": "Formula 2.9b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 14,
+      "context_text": "p_{t}|p_{0})d p_{t} $$ (2.9a) is the probability that both alleles are still present in generation t. The probability that an allele with initial frequency $ p_{0} $ has been fixed by generation t is $$ \\begin{align*}p_{f}(p_{0},t)=p_{0}+p_{0}(1-p_{0})\\sum_{i=1}^{\\infty}(2i+1)(-1)^{i}\\\\ \\cdot F(1-i,i+2,2,p_{0})\\cdot e^{-i(i+1)t/4N}\\end{align*} $$ (2.9b) whereas the probability of loss of the allele, $ p_l(p_0, t) $, is given by Equation 2.9b with $ (1 - p_0) $ exchanged for $ p_0 $ (Kimura 1955b). Summing up, $$ \\Omega(p_{0},t)+p_{f}(p_{0},t)+p_{l}(",
+      "symbols_used": [
+        "F",
+        "N",
+        "e",
+        "f",
+        "i",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.10",
+      "latex": "\\Omega(p_{0},t)+p_{f}(p_{0},t)+p_{l}(p_{0},t)=1",
+      "label": "Formula 2.10",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 15,
+      "context_text": "ot e^{-i(i+1)t/4N}\\end{align*} $$ (2.9b) whereas the probability of loss of the allele, $ p_l(p_0, t) $, is given by Equation 2.9b with $ (1 - p_0) $ exchanged for $ p_0 $ (Kimura 1955b). Summing up, $$ \\Omega(p_{0},t)+p_{f}(p_{0},t)+p_{l}(p_{0},t)=1 $$ (2.10) As can be seen from the negative exponential terms in the previous expressions, as $ t \\to \\infty $, $ \\Omega(p_0, t) \\to 0 $, $ p_f(p_0, t) \\to p_0 $, and $ p_i(p_0, t) \\to (1 - p_0) $. Thus, under",
+      "symbols_used": [
+        "\\Omega",
+        "f",
+        "l",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\Omega",
+        "f",
+        "l",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.11a",
+      "latex": "\\bar{t}_{a}(p_{0})\\simeq-4N[p_{0}\\ln(p_{0})+(1-p_{0})\\ln(1-p_{0})]",
+      "label": "Formula 2.11a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 16,
+      "context_text": "Performing the double integration with respect to p leads to the solution $$ \\bar{t}_{a}(p_{0})\\simeq-4N[p_{0}\\ln(p_{0})+(1-p_{0})\\ln(1-p_{0})] $$ (2.11a) which is the mean time until an allele with initial frequency $ p_{0} $ is either lost or fixed in a population.",
+      "symbols_used": [
+        "N",
+        "\\bar{t}",
+        "\\ln",
+        "a",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\bar{t}"
+      ]
+    },
+    {
+      "id": "formula_2.11b",
+      "latex": "\\overline{t}_{f}(p_{0})\\simeq-\\frac{4N(1-p_{0})\\ln(1-p_{0})}{p_{0}}",
+      "label": "Formula 2.11b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 17,
+      "context_text": "The solution of this second-order differential equation requires several steps, which we omit, the final result being $$ \\overline{t}_{f}(p_{0})\\simeq-\\frac{4N(1-p_{0})\\ln(1-p_{0})}{p_{0}} $$ (2.11b)",
+      "symbols_used": [
+        "N",
+        "\\ln",
+        "\\overline{t}",
+        "f",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\overline{t}"
+      ]
+    },
+    {
+      "id": "formula_2.11c",
+      "latex": "\\bar{t}_{l}(p_{0})\\simeq-\\frac{4N p_{0}\\ln(p_{0})}{1-p_{0}}",
+      "label": "Formula 2.11c",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 18,
+      "context_text": "The mean time to loss of an allele conditional upon loss is identical to the previous expression, but with $ (1 - p_0) $ interchanged with $ p_0 $, $$ \\bar{t}_{l}(p_{0})\\simeq-\\frac{4N p_{0}\\ln(p_{0})}{1-p_{0}} $$ (2.11c)",
+      "symbols_used": [
+        "N",
+        "\\bar{t}",
+        "\\ln",
+        "l",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\bar{t}"
+      ]
+    },
+    {
+      "id": "formula_2.11d",
+      "latex": "\\overline{t}_{a}(p_{0})=p_{0}\\overline{t}_{f}(p_{0})+(1-p_{0})\\overline{t}_{l}(p_{0})",
+      "label": "Formula 2.11d",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "PROBABILITIES AND TIMES TO FIXATION OR LOSS",
+      "position": 19,
+      "context_text": "Finally, because the probability of ultimate fixation of a neutral allele is equal to its initial frequency $ (p_{0}) $ and the probability of ultimate loss is $ (1 - p_{0}) $, it follows that $$ \\overline{t}_{a}(p_{0})=p_{0}\\overline{t}_{f}(p_{0})+(1-p_{0})\\overline{t}_{l}(p_{0}) $$ (2.11d)",
+      "symbols_used": [
+        "\\overline{t}",
+        "a",
+        "f",
+        "l",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\overline{t}",
+        "a",
+        "p"
+      ]
+    },
+    {
+      "id": "formula_2.12",
+      "latex": "E(t)=-\\frac{4Np\\ln(p)}{1-p}",
+      "label": "Formula 2.12",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE AGE OF A NEUTRAL ALLELE",
+      "position": 20,
+      "context_text": "ele to its frequency (Kimura and Ohta 1973; Maruyama 1974; Watterson 1976; Slatkin and Rannala 1997, 2000). In particular, the expected age t (in generations) of an allele with current frequency p is $$ E(t)=-\\frac{4Np\\ln(p)}{1-p} $$ (2.12) assuming a constant population size during the allele's sojourn through the population (Kimura and Ohta 1973). As shown in Figure 2.3, alleles at higher frequency are expected to be older. Most notab",
+      "symbols_used": [
+        "E",
+        "N",
+        "\\ln",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.13",
+      "latex": "\\Pr(t\\leq\\tau)=(1-p)^{-1+[n/(1+nN\\tau)]}",
+      "label": "Formula 2.13",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE AGE OF A NEUTRAL ALLELE",
+      "position": 21,
+      "context_text": "highly asymmetric about the mean. Slatkin and Rannala (2000) provide an approximation for the cumulative probability for the age of an allele, given a frequency of p in a random sample of n alleles, $$ \\Pr(t\\leq\\tau)=(1-p)^{-1+[n/(1+nN\\tau)]} $$ (2.13)",
+      "symbols_used": [
+        "N",
+        "\\Pr",
+        "\\tau",
+        "n",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "\\tau",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.14a",
+      "latex": "\\sigma_{p}^{2}(t)=p_{0}(1-p_{0})\\left[1-\\left(1-\\frac{1}{2N}\\right)^{t}\\right]",
+      "label": "Formula 2.14a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "ALLELE-FREQUENCY DIVERGENCE AMONG POPULATIONS",
+      "position": 22,
+      "context_text": "first quantity on the right is $ p_0(1 - p_0) $. The quantity $ E[p_t(1 - p_t)] $ is half the expected heterozygosity in a population in generation t, which was already defined in Equation 2.5. Thus $$ \\sigma_{p}^{2}(t)=p_{0}(1-p_{0})\\left[1-\\left(1-\\frac{1}{2N}\\right)^{t}\\right] $$ (2.14a) which is well approximated by $$ \\sigma_{p}^{2}(t)\\simeq p_{0}(1-p_{0})(1-e^{-t/2N}) $$ for $N > 10$. This shows that the among-population variance asymptotically approaches $p_0(1 - p_0)$, which is",
+      "symbols_used": [
+        "N",
+        "\\sigma",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\sigma",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.15",
+      "latex": "E(p_{t})=p_{0}",
+      "label": "Formula 2.15",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 25,
+      "context_text": "In the case of neutrality, there are no directional forces, so $ E(\\delta p) = 0 $, and the expected frequency of an allele remains perpetually at its initial value $ (p_{0}) $, $$ E(p_{t})=p_{0} $$ (2.15)",
+      "symbols_used": [
+        "E",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.16a",
+      "latex": "E(p_{t}^{2})=p_{0}-[p_{0}(1-p_{0})]\\lambda_{1}^{t}",
+      "label": "Formula 2.16a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 26,
+      "context_text": "and noting that $ E(p_{t})=p_{0} $, this expression can be rearranged to give the recursion equation $$ E[p_{t+1}^{2}|p_{t}]-p_{0}=[E(p_{t}^{2})-p_{0}]\\lambda_{1} $$ the general solution of which is $$ E(p_{t}^{2})=p_{0}-[p_{0}(1-p_{0})]\\lambda_{1}^{t} $$ (2.16a)",
+      "symbols_used": [
+        "E",
+        "\\lambda",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.16b",
+      "latex": "\\begin{aligned}E[p_{t+1}^{k}|p_{t}]&=E[(p_{t}+\\delta p)^{k}|p_{t}]\\\\&=\\sum_{i=0}^{k}\\binom{k}{i}p_{t}^{i}E\\left[(\\delta p)^{k-i}|p_{t}\\right]\\end{aligned}",
+      "label": "Formula 2.16b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 27,
+      "context_text": "The general starting expression, which can be extended to all higher-order moments, is $$ \\begin{aligned}E[p_{t+1}^{k}|p_{t}]&=E[(p_{t}+\\delta p)^{k}|p_{t}]\\\\&=\\sum_{i=0}^{k}\\binom{k}{i}p_{t}^{i}E\\left[(\\delta p)^{k-i}|p_{t}\\right]\\end{aligned} $$ (2.16b) where the summation gives the terms in the polynomial expansion. For binomial sampling theory, expressions are available for all expected values of $ \\delta p $ (e.g., Johnson et al. 2005), so Equati",
+      "symbols_used": [
+        "E",
+        "\\delta",
+        "i",
+        "k",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "k",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.16c",
+      "latex": "E(p_{t}^{3})=p_{0}-\\frac{3}{2}p_{0}(1-p_{0})\\lambda_{1}^{t}-\\frac{1}{2}p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t}",
+      "label": "Formula 2.16c",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 28,
+      "context_text": "Using expectations for higher-order $ \\delta p^{k} $ terms, expressions for all higher-order moments can be acquired, two of which prove to be particularly useful (Crow and Kimura 1970): $$ E(p_{t}^{3})=p_{0}-\\frac{3}{2}p_{0}(1-p_{0})\\lambda_{1}^{t}-\\frac{1}{2}p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t} $$ (2.16c) $$ \\begin{aligned}E(p_{t}^{4})&=p_{0}-\\frac{18N-11}{10N-6}p_{0}(1-p_{0})\\lambda_{1}^{t}-p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t}\\\\&\\quad+p_{0}(1-p_{0})\\left(p_{0}(1-p_{0})-\\frac{2N-1}{10-",
+      "symbols_used": [
+        "E",
+        "\\lambda",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.16d",
+      "latex": "\\begin{aligned}E(p_{t}^{4})&=p_{0}-\\frac{18N-11}{10N-6}p_{0}(1-p_{0})\\lambda_{1}^{t}-p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t}\\\\&\\quad+p_{0}(1-p_{0})\\left(p_{0}(1-p_{0})-\\frac{2N-1}{10-6}\\right)(\\lambda_{1}\\lambda_{2}\\lambda_{3})^{t}\\end{aligned}",
+      "label": "Formula 2.16d",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 29,
+      "context_text": "which prove to be particularly useful (Crow and Kimura 1970): $$ E(p_{t}^{3})=p_{0}-\\frac{3}{2}p_{0}(1-p_{0})\\lambda_{1}^{t}-\\frac{1}{2}p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t} $$ (2.16c) $$ \\begin{aligned}E(p_{t}^{4})&=p_{0}-\\frac{18N-11}{10N-6}p_{0}(1-p_{0})\\lambda_{1}^{t}-p_{0}(1-p_{0})(2p_{0}-1)(\\lambda_{1}\\lambda_{2})^{t}\\\\&\\quad+p_{0}(1-p_{0})\\left(p_{0}(1-p_{0})-\\frac{2N-1}{10-6}\\right)(\\lambda_{1}\\lambda_{2}\\lambda_{3})^{t}\\end{aligned} $$ (2.16d) where $ \\lambda_{i}=1-(i/2N) $. Modifications for these expressions for populations with separate sexes and 1:1 sex ratios are given by Lynch and Hill (1986).",
+      "symbols_used": [
+        "E",
+        "N",
+        "\\lambda",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "E",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.17",
+      "latex": "\\begin{align*}\\sigma^2(H_t)\\simeq H_0\\left[{2\\over5}e^{-t/2N}+\\left(H_0-{2\\over5}\\right)e^{-3t/N}-H_0e^{-t/N}\\right]\\end{align*}",
+      "label": "Formula 2.17",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "HIGHER-ORDER ALLELE-FREQUENCY MOMENTS",
+      "position": 30,
+      "context_text": "frequency moments, with further simplification made possible by using the approximations $ \\lambda_1 \\simeq e^{-t/2N} $, $ \\lambda_2 \\simeq e^{-2t/2N} $, and $ \\lambda_3 \\simeq e^{-3t/2N} $, yielding $$ \\begin{align*}\\sigma^2(H_t)\\simeq H_0\\left[{2\\over5}e^{-t/2N}+\\left(H_0-{2\\over5}\\right)e^{-3t/N}-H_0e^{-t/N}\\right]\\end{align*} $$ (2.17)",
+      "symbols_used": [
+        "H",
+        "N",
+        "\\sigma",
+        "e",
+        "t"
+      ],
+      "symbols_defined": [
+        "e"
+      ]
+    },
+    {
+      "id": "formula_2.18",
+      "latex": "D_{AB}=p_{AB}-pq",
+      "label": "Formula 2.18",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LINKAGE DISEQUILIBRIUM",
+      "position": 31,
+      "context_text": "- q) $, respectively, under the assumption of independence. A natural measure of the deviation of the frequency of a gametic type from such expectations is the coefficient of linkage disequilibrium. $$ D_{AB}=p_{AB}-pq $$ (2.18) where $ p_{AB} $ denotes the observed frequency of the ABth gamete.",
+      "symbols_used": [
+        "A",
+        "B",
+        "D",
+        "p",
+        "q"
+      ],
+      "symbols_defined": [
+        "A",
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "formula_2.19",
+      "latex": "\\begin{aligned}E(D_{t})&=[(1-c)\\lambda_{1}]^{t}D_{0}\\\\&\\simeq D_{0}e^{-(2Nc+1)t/(2N)}\\end{aligned}",
+      "label": "Formula 2.19",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LINKAGE DISEQUILIBRIUM",
+      "position": 32,
+      "context_text": "the frequency of recombination between loci, and $ \\lambda_1 = 1 - (1/2N) $, the expected disequilibrium (under random mating) resulting from the joint forces of recombination and gametic sampling is $$ \\begin{aligned}E(D_{t})&=[(1-c)\\lambda_{1}]^{t}D_{0}\\\\&\\simeq D_{0}e^{-(2Nc+1)t/(2N)}\\end{aligned} $$ (2.19)",
+      "symbols_used": [
+        "D",
+        "E",
+        "N",
+        "\\lambda",
+        "c",
+        "e",
+        "t"
+      ],
+      "symbols_defined": [
+        "D",
+        "E",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.20",
+      "latex": "\\begin{align*}\\left(\\begin{array}{c}E[p(1-p)q(1-q)]\\\\E[D(1-2p)(1-2q)]\\\\E(D^{2})\\end{array}\\right)_{t+1}&=\\lambda_{1}\\cdot\\left(\\begin{array}{ccc}\\lambda_{1}&\\lambda_{1}(1-c)/(2N)&2(1-c)^{2}/(4N^{2})\\\\0&\\lambda_{2}^{2}(1-c)&4\\lambda_{2}(1-c)^{2}/(2N)\\\\1/(2N)&\\lambda_{1}(1-c)/(2N)&[\\lambda_{2}^{2}+(1/4N^{2})](1-c)^{2}\\end{array}\\right),\\\\\\left(\\begin{array}{c}E[p(1-p)q(1-q)]\\\\E[D(1-2p)(1-2q)]\\\\E(D^{2})\\end{array}\\right)_{t}&\\end{align*}",
+      "label": "Formula 2.20",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LINKAGE DISEQUILIBRIUM",
+      "position": 33,
+      "context_text": "nce of D can be quite substantial even when its expected value is zero. The problem can be evaluated by use of the following set of recursion equations for fourth-order moments of allele frequencies, $$ \\begin{align*}\\left(\\begin{array}{c}E[p(1-p)q(1-q)]\\\\E[D(1-2p)(1-2q)]\\\\E(D^{2})\\end{array}\\right)_{t+1}&=\\lambda_{1}\\cdot\\left(\\begin{array}{ccc}\\lambda_{1}&\\lambda_{1}(1-c)/(2N)&2(1-c)^{2}/(4N^{2})\\\\0&\\lambda_{2}^{2}(1-c)&4\\lambda_{2}(1-c)^{2}/(2N)\\\\1/(2N)&\\lambda_{1}(1-c)/(2N)&[\\lambda_{2}^{2}+(1/4N^{2})](1-c)^{2}\\end{array}\\right),\\\\\\left(\\begin{array}{c}E[p(1-p)q(1-q)]\\\\E[D(1-2p)(1-2q)]\\\\E(D^{2})\\end{array}\\right)_{t}&\\end{align*} $$ (2.20) where, as previously, $ \\lambda_{i}=1-[i/(2N)] $ (Hill and Robertson 1968). The evolutionary variance of D associated with drift among replicated populations or among loci starting from the same alle",
+      "symbols_used": [
+        "D",
+        "E",
+        "N",
+        "\\lambda",
+        "c",
+        "p",
+        "q",
+        "t"
+      ],
+      "symbols_defined": [
+        "D",
+        "E",
+        "p",
+        "q",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.21",
+      "latex": "\\sigma^{2}(D)=E(D^{2})-E^{2}(D)",
+      "label": "Formula 2.21",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LINKAGE DISEQUILIBRIUM",
+      "position": 34,
+      "context_text": "sly, $ \\lambda_{i}=1-[i/(2N)] $ (Hill and Robertson 1968). The evolutionary variance of D associated with drift among replicated populations or among loci starting from the same allele frequencies is $$ \\sigma^{2}(D)=E(D^{2})-E^{2}(D) $$ (2.21)",
+      "symbols_used": [
+        "D",
+        "E",
+        "\\sigma"
+      ],
+      "symbols_defined": [
+        "D",
+        "\\sigma"
+      ]
+    },
+    {
+      "id": "formula_2.22",
+      "latex": "r^{2}=\\frac{D^{2}}{p(1-p)q(1-q)}",
+      "label": "Formula 2.22",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "LINKAGE DISEQUILIBRIUM",
+      "position": 35,
+      "context_text": "Hill and Robertson (1968) introduced a standardized measure of linkage disequilibrium, often referred to as the squared within-gamete correlation of allele frequencies at two loci $$ r^{2}=\\frac{D^{2}}{p(1-p)q(1-q)} $$ (2.22)",
+      "symbols_used": [
+        "D",
+        "p",
+        "q",
+        "r"
+      ],
+      "symbols_defined": [
+        "r"
+      ]
+    },
+    {
+      "id": "formula_2.23",
+      "latex": "H_{t+1}=H_{t}\\lambda_{1}\\left((1-2u)+\\frac{2u(k-2)}{k-1}\\right)+2u(1-\\lambda_{1}H_{t})",
+      "label": "Formula 2.23",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 38,
+      "context_text": "qually mutationally exchangeable. On the other hand, homozygotes will be mutationally converted to heterozygotes at a rate of $ 2u $. Thus, the expected dynamics of heterozygosity can be expressed as $$ H_{t+1}=H_{t}\\lambda_{1}\\left((1-2u)+\\frac{2u(k-2)}{k-1}\\right)+2u(1-\\lambda_{1}H_{t}) $$ (2.23)",
+      "symbols_used": [
+        "H",
+        "\\lambda",
+        "k",
+        "t",
+        "u"
+      ],
+      "symbols_defined": [
+        "H",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.24a",
+      "latex": "E(H)=\\frac{\\theta}{1+[\\theta k/(k-1)]}",
+      "label": "Formula 2.24a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 39,
+      "context_text": "Setting $ H_{t+1} = H_t $, the expected value of heterozygosity under drift-mutation balance is found to be $$ E(H)=\\frac{\\theta}{1+[\\theta k/(k-1)]} $$ (2.24a) where $ \\theta = 4N u $, a result first given by Kimura (1968a). Note that $ \\theta $ has the pleasing interpretation of being the ratio of the rates of mutational production of heterozygotes from ho",
+      "symbols_used": [
+        "E",
+        "H",
+        "\\theta",
+        "k"
+      ],
+      "symbols_defined": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "formula_2.24b",
+      "latex": "E(H)\\simeq\\frac{\\theta}{1+\\theta}",
+      "label": "Formula 2.24b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 40,
+      "context_text": "of loss of heterozygosity by drift (1/2N). If a large number of alternative alleles ( $ k \\gg 1 $) is assumed, as is reasonable when the unit of analysis is an entire gene, Equation 2.24a reduces to $$ E(H)\\simeq\\frac{\\theta}{1+\\theta} $$ (2.24b) which is equivalent to the infinite-alleles model of Kimura and Crow (1964). On the other hand, if the unit of analysis is a nucleotide site, then k = 4, and $$ E(H)=\\frac{\\theta}{1+(4/3)\\theta} $$ (",
+      "symbols_used": [
+        "E",
+        "H",
+        "\\theta"
+      ],
+      "symbols_defined": [
+        "E"
+      ]
+    },
+    {
+      "id": "formula_2.24c",
+      "latex": "E(H)=\\frac{\\theta}{1+(4/3)\\theta}",
+      "label": "Formula 2.24c",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 41,
+      "context_text": ")\\simeq\\frac{\\theta}{1+\\theta} $$ (2.24b) which is equivalent to the infinite-alleles model of Kimura and Crow (1964). On the other hand, if the unit of analysis is a nucleotide site, then k = 4, and $$ E(H)=\\frac{\\theta}{1+(4/3)\\theta} $$ (2.24c) where $u$ is now the mutation rate per nucleotide site. Equation 2.24a needs to be modified if alleles mutate at different rates or are not equally mutationally accessible (Kimura 1983; Nei and Kumar",
+      "symbols_used": [
+        "E",
+        "H",
+        "\\theta"
+      ],
+      "symbols_defined": [
+        "E",
+        "H"
+      ]
+    },
+    {
+      "id": "formula_2.25a",
+      "latex": "\\phi(p)=\\frac{\\Gamma(\\theta+\\beta)}{\\Gamma(\\theta)\\Gamma(\\beta)}(1-p)^{\\theta-1}p^{\\beta-1}",
+      "label": "Formula 2.25a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 42,
+      "context_text": "frequency. Although this expression is quite complicated, a highly useful result is that regardless of the starting point, a steady-state distribution of allele frequencies p is eventually attained. $$ \\phi(p)=\\frac{\\Gamma(\\theta+\\beta)}{\\Gamma(\\theta)\\Gamma(\\beta)}(1-p)^{\\theta-1}p^{\\beta-1} $$ (2.25a) where $ \\theta = 4Nu $, $ \\beta = 4Nu/(k - 1) $, with $$ \\Gamma(\\alpha)=\\int_{0}^{\\infty}x^{\\alpha-1}e^{-x}d x $$ (2.25b) being the gamma function (Appendix 2). Equation 2.25a may be viewed as either",
+      "symbols_used": [
+        "\\Gamma",
+        "\\beta",
+        "\\phi",
+        "\\theta",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\phi",
+        "p"
+      ]
+    },
+    {
+      "id": "formula_2.25b",
+      "latex": "\\Gamma(\\alpha)=\\int_{0}^{\\infty}x^{\\alpha-1}e^{-x}d x",
+      "label": "Formula 2.25b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 43,
+      "context_text": "e frequencies p is eventually attained. $$ \\phi(p)=\\frac{\\Gamma(\\theta+\\beta)}{\\Gamma(\\theta)\\Gamma(\\beta)}(1-p)^{\\theta-1}p^{\\beta-1} $$ (2.25a) where $ \\theta = 4Nu $, $ \\beta = 4Nu/(k - 1) $, with $$ \\Gamma(\\alpha)=\\int_{0}^{\\infty}x^{\\alpha-1}e^{-x}d x $$ (2.25b) being the gamma function (Appendix 2). Equation 2.25a may be viewed as either the expected distribution of allele frequencies over all neutral loci within a single population in mutation-drift equili",
+      "symbols_used": [
+        "\\Gamma",
+        "\\alpha",
+        "d",
+        "e",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\Gamma",
+        "\\alpha"
+      ]
+    },
+    {
+      "id": "formula_2.26a",
+      "latex": "E(p)=\\frac{\\beta}{\\theta+\\beta}=\\frac{1}{k}",
+      "label": "Formula 2.26a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 44,
+      "context_text": "l that Equation 2.25a defines a beta distribution (Appendix 2), as many of its properties are already well known. For example, the mean of the distribution, which is the expected allele frequency, is $$ E(p)=\\frac{\\beta}{\\theta+\\beta}=\\frac{1}{k} $$ (2.26a) and the allele-frequency variance among replicates is $$ \\sigma^{2}(p)=\\frac{\\theta\\beta}{(\\theta+\\beta)^{2}(\\theta+\\beta+1)}=\\frac{k-1}{k^{2}[2N u k(k-1)+1]} $$ (2.26b)",
+      "symbols_used": [
+        "E",
+        "\\beta",
+        "\\theta",
+        "k",
+        "p"
+      ],
+      "symbols_defined": [
+        "E",
+        "p"
+      ]
+    },
+    {
+      "id": "formula_2.26b",
+      "latex": "\\sigma^{2}(p)=\\frac{\\theta\\beta}{(\\theta+\\beta)^{2}(\\theta+\\beta+1)}=\\frac{k-1}{k^{2}[2N u k(k-1)+1]}",
+      "label": "Formula 2.26b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 45,
+      "context_text": ". For example, the mean of the distribution, which is the expected allele frequency, is $$ E(p)=\\frac{\\beta}{\\theta+\\beta}=\\frac{1}{k} $$ (2.26a) and the allele-frequency variance among replicates is $$ \\sigma^{2}(p)=\\frac{\\theta\\beta}{(\\theta+\\beta)^{2}(\\theta+\\beta+1)}=\\frac{k-1}{k^{2}[2N u k(k-1)+1]} $$ (2.26b)",
+      "symbols_used": [
+        "N",
+        "\\beta",
+        "\\sigma",
+        "\\theta",
+        "k",
+        "p",
+        "u"
+      ],
+      "symbols_defined": [
+        "\\sigma",
+        "p"
+      ]
+    },
+    {
+      "id": "formula_2.27a",
+      "latex": "\\sigma^{2}(H)=\\frac{2\\theta[1+(\\theta/\\ell)]}{[1+\\theta+(\\theta/\\ell)]^{2}[2+\\theta+(\\theta/\\ell)][3+\\theta+(\\theta/\\ell)]}",
+      "label": "Formula 2.27a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 46,
+      "context_text": "Expressions for the variance of heterozygosity for a population en route to equilibrium were derived by Li and Nei (1975) and Lessard (1981), and at equilibrium $$ \\sigma^{2}(H)=\\frac{2\\theta[1+(\\theta/\\ell)]}{[1+\\theta+(\\theta/\\ell)]^{2}[2+\\theta+(\\theta/\\ell)][3+\\theta+(\\theta/\\ell)]} $$ (2.27a) where $ \\ell = k - 1 $ (Stewart 1976). Note that as $ k \\to \\infty $ (the infinite-alleles model), $$ \\sigma^{2}(H)=\\frac{2\\theta}{(1+\\theta)^{2}(2+\\theta)(3+\\theta)} $$ (2.27b) which reduces to abou",
+      "symbols_used": [
+        "H",
+        "\\sigma",
+        "\\theta"
+      ],
+      "symbols_defined": [
+        "H",
+        "\\sigma"
+      ]
+    },
+    {
+      "id": "formula_2.27b",
+      "latex": "\\sigma^{2}(H)=\\frac{2\\theta}{(1+\\theta)^{2}(2+\\theta)(3+\\theta)}",
+      "label": "Formula 2.27b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 47,
+      "context_text": "eta/\\ell)]}{[1+\\theta+(\\theta/\\ell)]^{2}[2+\\theta+(\\theta/\\ell)][3+\\theta+(\\theta/\\ell)]} $$ (2.27a) where $ \\ell = k - 1 $ (Stewart 1976). Note that as $ k \\to \\infty $ (the infinite-alleles model), $$ \\sigma^{2}(H)=\\frac{2\\theta}{(1+\\theta)^{2}(2+\\theta)(3+\\theta)} $$ (2.27b) which reduces to about $ \\theta/3 $ for $ \\theta \\ll 1 $.",
+      "symbols_used": [
+        "H",
+        "\\sigma",
+        "\\theta"
+      ],
+      "symbols_defined": [
+        "H",
+        "\\sigma"
+      ]
+    },
+    {
+      "id": "formula_2.28a",
+      "latex": "\\begin{aligned}E[p(1-p)q(1-q)]&=M(22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2})\\\\E[D(1-2p)(1-2q)]&=8M\\\\E[D^{2}]&=M(10+\\rho+4\\theta)\\end{aligned}",
+      "label": "Formula 2.28a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 48,
+      "context_text": "stochastic drift-mutation equilibrium. Letting $ \\rho = 4Nc $ and $ \\theta = 4Nu $, where c is the recombination rate between sites, and u is the mutation rate per site, Hill's expressions reduce to $$ \\begin{aligned}E[p(1-p)q(1-q)]&=M(22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2})\\\\E[D(1-2p)(1-2q)]&=8M\\\\E[D^{2}]&=M(10+\\rho+4\\theta)\\end{aligned} $$ (2.28a) where $$ M=\\theta^{2}/[(\\theta+1)(18+13\\rho+54\\theta^{2}+\\rho^{2}+19\\rho\\theta+40\\theta^{2}+6\\rho\\theta^{2}+8\\theta)], $$ (2.28b) and the standardized linkage disequilibrium is given by $$ E(r^{2})=\\",
+      "symbols_used": [
+        "D",
+        "E",
+        "M",
+        "\\rho",
+        "\\theta",
+        "p",
+        "q"
+      ],
+      "symbols_defined": [
+        "E",
+        "p",
+        "q"
+      ]
+    },
+    {
+      "id": "formula_2.28b",
+      "latex": "M=\\theta^{2}/[(\\theta+1)(18+13\\rho+54\\theta^{2}+\\rho^{2}+19\\rho\\theta+40\\theta^{2}+6\\rho\\theta^{2}+8\\theta)],",
+      "label": "Formula 2.28b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 49,
+      "context_text": "ill's expressions reduce to $$ \\begin{aligned}E[p(1-p)q(1-q)]&=M(22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2})\\\\E[D(1-2p)(1-2q)]&=8M\\\\E[D^{2}]&=M(10+\\rho+4\\theta)\\end{aligned} $$ (2.28a) where $$ M=\\theta^{2}/[(\\theta+1)(18+13\\rho+54\\theta^{2}+\\rho^{2}+19\\rho\\theta+40\\theta^{2}+6\\rho\\theta^{2}+8\\theta)], $$ (2.28b) and the standardized linkage disequilibrium is given by $$ E(r^{2})=\\frac{10+\\rho+4\\theta}{22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2}} $$ (2.29a) As will be seen in Chapter 4, for individual",
+      "symbols_used": [
+        "M",
+        "\\rho",
+        "\\theta"
+      ],
+      "symbols_defined": [
+        "M"
+      ]
+    },
+    {
+      "id": "formula_2.29a",
+      "latex": "E(r^{2})=\\frac{10+\\rho+4\\theta}{22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2}}",
+      "label": "Formula 2.29a",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 50,
+      "context_text": "d} $$ (2.28a) where $$ M=\\theta^{2}/[(\\theta+1)(18+13\\rho+54\\theta^{2}+\\rho^{2}+19\\rho\\theta+40\\theta^{2}+6\\rho\\theta^{2}+8\\theta)], $$ (2.28b) and the standardized linkage disequilibrium is given by $$ E(r^{2})=\\frac{10+\\rho+4\\theta}{22+13\\rho+32\\theta+\\rho^{2}+6\\rho\\theta+8\\theta^{2}} $$ (2.29a) As will be seen in Chapter 4, for individual nucleotide sites $ \\theta $ is generally substantially smaller than one, whereas for sites separated by hundreds of base pairs or more, $ \\rho $ is genera",
+      "symbols_used": [
+        "E",
+        "\\rho",
+        "\\theta",
+        "r"
+      ],
+      "symbols_defined": [
+        "E",
+        "r"
+      ]
+    },
+    {
+      "id": "formula_2.29b",
+      "latex": "E(r^{2})\\simeq\\frac{10+\\rho}{22+13\\rho+\\rho^{2}}",
+      "label": "Formula 2.29b",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "MUTATION-DRIFT EQUILIBRIUM",
+      "position": 51,
+      "context_text": "nucleotide sites $ \\theta $ is generally substantially smaller than one, whereas for sites separated by hundreds of base pairs or more, $ \\rho $ is generally greater than one. Under such conditions, $$ E(r^{2})\\simeq\\frac{10+\\rho}{22+13\\rho+\\rho^{2}} $$ (2.29b) which asymptotically approaches $ 1/\\rho $ for large $ \\rho $. Additional theoretical points of interest were developed in Strobeck and Morgan (1978) and Golding and Strobeck (1980). A more daunting",
+      "symbols_used": [
+        "E",
+        "\\rho",
+        "r"
+      ],
+      "symbols_defined": [
+        "E"
+      ]
+    },
+    {
+      "id": "formula_2.30a",
+      "latex": "\\begin{align*}\\Pr(k\\mid\\theta_L,n)=\\frac{S_n^k\\;\\theta_L^k}{S_n(\\theta_L)}\\end{align*}",
+      "label": "Formula 2.30a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 53,
+      "context_text": "he number of different alleles in a sample. Insight into this quantity under drift-mutation equilibrium is given the probability of having $ k $ different alleles in a sample of $ n $ genes, which is $$ \\begin{align*}\\Pr(k\\mid\\theta_L,n)=\\frac{S_n^k\\;\\theta_L^k}{S_n(\\theta_L)}\\end{align*} $$ (2.30a) $$ S_{n}(\\theta_{L})=\\theta_{L}(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1) $$ (2.30b) where and $ S_n^k $ is the coefficient on the $ \\theta_L^k $ term obtained by expanding the polynomial in",
+      "symbols_used": [
+        "L",
+        "S",
+        "\\Pr",
+        "\\theta",
+        "k",
+        "n"
+      ],
+      "symbols_defined": [
+        "L",
+        "\\Pr",
+        "\\theta",
+        "k",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.30b",
+      "latex": "S_{n}(\\theta_{L})=\\theta_{L}(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1)",
+      "label": "Formula 2.30b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 54,
+      "context_text": "um is given the probability of having $ k $ different alleles in a sample of $ n $ genes, which is $$ \\begin{align*}\\Pr(k\\mid\\theta_L,n)=\\frac{S_n^k\\;\\theta_L^k}{S_n(\\theta_L)}\\end{align*} $$ (2.30a) $$ S_{n}(\\theta_{L})=\\theta_{L}(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1) $$ (2.30b) where and $ S_n^k $ is the coefficient on the $ \\theta_L^k $ term obtained by expanding the polynomial in Equation 2.30b (Ewens 1972). This formula opened up the field of formal statistical tests for",
+      "symbols_used": [
+        "L",
+        "S",
+        "\\theta",
+        "n"
+      ],
+      "symbols_defined": [
+        "L",
+        "S",
+        "\\theta",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.31a",
+      "latex": "\\Pr(k=1)=\\frac{(n-1)!}{(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1)}",
+      "label": "Formula 2.31a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 55,
+      "context_text": "Several useful results follow from Equation 2.30a. First, the probability of a monomorphic sample is $$ \\Pr(k=1)=\\frac{(n-1)!}{(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1)} $$ (2.31a)",
+      "symbols_used": [
+        "L",
+        "\\Pr",
+        "\\theta",
+        "k",
+        "n"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k"
+      ]
+    },
+    {
+      "id": "formula_2.31b",
+      "latex": "\\begin{align*}E(k)=1+\\theta_L\\cdot\\sum\\limits_{j=2}^n\\frac{1}{\\theta_L+j-1},\\qquad\\sigma^2(k)=\\theta_L\\cdot\\sum\\limits_{j=1}^{n-1}\\frac{j}{(\\theta_L+j)^2}\\end{align*}",
+      "label": "Formula 2.31b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 56,
+      "context_text": "Second, a bit of algebra gives the mean and variance for the number of alleles in a sample as $$ \\begin{align*}E(k)=1+\\theta_L\\cdot\\sum\\limits_{j=2}^n\\frac{1}{\\theta_L+j-1},\\qquad\\sigma^2(k)=\\theta_L\\cdot\\sum\\limits_{j=1}^{n-1}\\frac{j}{(\\theta_L+j)^2}\\end{align*} $$ (2.31b)",
+      "symbols_used": [
+        "E",
+        "L",
+        "\\sigma",
+        "\\theta",
+        "j",
+        "k",
+        "n"
+      ],
+      "symbols_defined": [
+        "E",
+        "k"
+      ]
+    },
+    {
+      "id": "formula_2.32",
+      "latex": "\\sum_{i=1}^{n}i\\cdot n_{i}=n",
+      "label": "Formula 2.32",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 57,
+      "context_text": ", one allele appears as a singleton, whereas the other two alleles both appear as two copies, giving $ n_1 = 1 $, $ n_2 = 2 $, and $ n_3 $, $ n_4 $, $ n_5 = 0 $. The constraint on the $ n_i $ is that $$ \\sum_{i=1}^{n}i\\cdot n_{i}=n $$ (2.32)",
+      "symbols_used": [
+        "i",
+        "n"
+      ],
+      "symbols_defined": [
+        "i",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.33a",
+      "latex": "\\Pr(n_{1},n_{2},\\cdots,n_{n},k\\mid n)=\\frac{n!\\theta_{L}^{k}}{S_{n}(\\theta_{L})\\left(1^{n_{1}}2^{n_{2}}\\cdots n^{n_{n}}\\right)n_{1}!n_{2}!\\cdots n_{n}!}",
+      "label": "Formula 2.33a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 58,
+      "context_text": "y powerful result, due to Ewens (1972) and Karlin and McGregor (1972), is that the joint probability distribution of $ n_{1}, \\cdots, n_{n} $ and k is given by the Ewens sampling formula (Ewens 1972) $$ \\Pr(n_{1},n_{2},\\cdots,n_{n},k\\mid n)=\\frac{n!\\theta_{L}^{k}}{S_{n}(\\theta_{L})\\left(1^{n_{1}}2^{n_{2}}\\cdots n^{n_{n}}\\right)n_{1}!n_{2}!\\cdots n_{n}!} $$ (2.33a)",
+      "symbols_used": [
+        "L",
+        "S",
+        "\\Pr",
+        "\\theta",
+        "k",
+        "n"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.33b",
+      "latex": "\\Pr(n_{1},n_{2},\\cdots,n_{n}\\mid n,\\ k)=\\frac{n!}{S_{n}^{k}\\left(1^{n_{1}}2^{n_{2}}\\cdots n^{n_{n}}\\right)n_{1}!n_{2}!\\cdots n_{n}!}",
+      "label": "Formula 2.33b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-alleles Model and the Associated Allele-frequency Spectrum",
+      "position": 59,
+      "context_text": "that the sample is monomorphic, Equation 2.31a, directly follows by setting $ k = 1, n_1 = n $. Equations 2.30a and 2.33a show that the conditional distribution of $ n_1, \\cdots, n_n $ given $ k $ is $$ \\Pr(n_{1},n_{2},\\cdots,n_{n}\\mid n,\\ k)=\\frac{n!}{S_{n}^{k}\\left(1^{n_{1}}2^{n_{2}}\\cdots n^{n_{n}}\\right)n_{1}!n_{2}!\\cdots n_{n}!} $$ (2.33b)",
+      "symbols_used": [
+        "S",
+        "\\Pr",
+        "k",
+        "n"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.34a",
+      "latex": "\\phi(x)=\\frac{\\theta}{x}\\quad for\\quad\\frac{1}{2N}\\leq x\\leq1-\\frac{1}{2N}",
+      "label": "Formula 2.34a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 60,
+      "context_text": "and mutation-drift equilibrium), the fraction of sites in the entire population that have a derived nucleotide at frequency x (for 0 < x < 1) is given by the (unfolded) Watterson (1975) distribution, $$ \\phi(x)=\\frac{\\theta}{x}\\quad for\\quad\\frac{1}{2N}\\leq x\\leq1-\\frac{1}{2N} $$ (2.34a)",
+      "symbols_used": [
+        "N",
+        "\\phi",
+        "\\theta",
+        "f",
+        "o",
+        "r",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\phi",
+        "x"
+      ]
+    },
+    {
+      "id": "formula_2.34b",
+      "latex": "\\phi(x)=\\frac{\\theta}{x}+\\frac{\\theta}{1-x}=\\frac{\\theta}{x(1-x)}\\quad for\\quad\\frac{1}{2N}\\leq x\\leq1/2",
+      "label": "Formula 2.34b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 61,
+      "context_text": "derived nucleotides in the population. Reconfiguring Equation 2.34a for unpolarized alleles, so that $ 0 < x \\leq 0.5 $ where x is the minor-allele frequency, gives the folded Watterson distribution, $$ \\phi(x)=\\frac{\\theta}{x}+\\frac{\\theta}{1-x}=\\frac{\\theta}{x(1-x)}\\quad for\\quad\\frac{1}{2N}\\leq x\\leq1/2 $$ (2.34b)",
+      "symbols_used": [
+        "N",
+        "\\phi",
+        "\\theta",
+        "f",
+        "o",
+        "r",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\phi",
+        "x"
+      ]
+    },
+    {
+      "id": "formula_2.35a",
+      "latex": "E(s_{i})=\\frac{\\theta_{L}}{i},\\quad for\\quad1\\leq i\\leq n-1",
+      "label": "Formula 2.35a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 62,
+      "context_text": "ows from the Watterson distribution. In the case of an unfolded frequency spectrum, for a sample of size n, the number $ s_{i} $ of the L total sites with i derived nucleotides has the expected value $$ E(s_{i})=\\frac{\\theta_{L}}{i},\\quad for\\quad1\\leq i\\leq n-1 $$ (2.35a)",
+      "symbols_used": [
+        "E",
+        "L",
+        "\\theta",
+        "f",
+        "i",
+        "n",
+        "o",
+        "r",
+        "s"
+      ],
+      "symbols_defined": [
+        "E",
+        "i",
+        "s"
+      ]
+    },
+    {
+      "id": "formula_2.35b",
+      "latex": "E(s_{i})=\\frac{\\theta_{L}}{i}+\\frac{\\theta_{L}}{n-i}=\\frac{\\theta_{L}n}{i(n-i)},\\quad for\\quad1\\leq i\\leq[n/2]",
+      "label": "Formula 2.35b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 63,
+      "context_text": "opulation size, and absence of selection) can be tested (Chapter 9). Similarly, for a folded frequency spectrum, where $ s_i $ now denotes the number of sites with minor-nucleotide frequency $ i/n $, $$ E(s_{i})=\\frac{\\theta_{L}}{i}+\\frac{\\theta_{L}}{n-i}=\\frac{\\theta_{L}n}{i(n-i)},\\quad for\\quad1\\leq i\\leq[n/2] $$ (2.35b) where $ [n/2] $ denotes the largest integer $ \\leq n/2 $.",
+      "symbols_used": [
+        "E",
+        "L",
+        "\\theta",
+        "f",
+        "i",
+        "n",
+        "o",
+        "r",
+        "s"
+      ],
+      "symbols_defined": [
+        "E",
+        "i",
+        "s"
+      ]
+    },
+    {
+      "id": "formula_2.36a",
+      "latex": "\\Pr(k\\mid x,n)=\\binom{n}{k}x^{k}(1-x)^{n-k}",
+      "label": "Formula 2.36a",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 64,
+      "context_text": "dix 4) require the full distribution within a sample, not just the expected value. The probability of seeing exactly k derived nucleotides at a site with allele-frequency x follows from the binomial, $$ \\Pr(k\\mid x,n)=\\binom{n}{k}x^{k}(1-x)^{n-k} $$ (2.36a)",
+      "symbols_used": [
+        "\\Pr",
+        "k",
+        "n",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k",
+        "n",
+        "x"
+      ]
+    },
+    {
+      "id": "formula_2.36b",
+      "latex": "\\Pr(1\\leq k\\leq n-1)=1-x^{n}-(1-x)^{n}",
+      "label": "Formula 2.36b",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 65,
+      "context_text": "hat a sample is polymorphic at a site with allele-frequency x is just one minus the probability of a sample monomorphic for either the derived $ (x^{n}) $ or the ancestral $ (1 - x)^{n} $ nucleotide, $$ \\Pr(1\\leq k\\leq n-1)=1-x^{n}-(1-x)^{n} $$ (2.36b)",
+      "symbols_used": [
+        "\\Pr",
+        "k",
+        "n",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.36c",
+      "latex": "\\Pr(k\\mid n)=\\binom{n}{k}\\int_{1/(2N)}^{1-1/(2N)}x^{k}(1-x)^{n-k}\\phi(x)dx",
+      "label": "Formula 2.36c",
+      "section": "THE DETAILED STRUCTURE OF NEUTRAL VARIATION",
+      "subsection": "The Infinite-Sites Model and the Associated Site-frequency Spectrum",
+      "position": 66,
+      "context_text": "The probability of seeing k derived nucleotides at a random site in a sample is the average of Equation 2.36a over the possible x values, $$ \\Pr(k\\mid n)=\\binom{n}{k}\\int_{1/(2N)}^{1-1/(2N)}x^{k}(1-x)^{n-k}\\phi(x)dx $$ (2.36c) where $ \\phi(x) $ is defined by Equation 2.34a. This formula, which forms the null model for several of the likelihood-based tests for a selective sweep (Chapters 8 and 9), is the infinite-sites anal",
+      "symbols_used": [
+        "N",
+        "\\Pr",
+        "\\phi",
+        "d",
+        "k",
+        "n",
+        "x"
+      ],
+      "symbols_defined": [
+        "\\Pr",
+        "k",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.37",
+      "latex": "P_{c}(t)=\\lambda_{1}^{t-1}(1/2N)",
+      "label": "Formula 2.37",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE GENEALOGICAL STRUCTURE OF A POPULATION",
+      "position": 67,
+      "context_text": "$\\lambda_1(1/2N)$ as the unconditional probability of coalescence two generations back. This simple rule can be generalized to give the probability of coalescence exactly $t$ generations in the past, $$ P_{c}(t)=\\lambda_{1}^{t-1}(1/2N) $$ (2.37) which defines a geometric distribution, with the sum of $ P_c(t) $ over the interval $ t = 1 $ to $ \\infty $ being equal to one. One simple related point is that the probability that the most recent",
+      "symbols_used": [
+        "N",
+        "P",
+        "\\lambda",
+        "c",
+        "t"
+      ],
+      "symbols_defined": [
+        "P",
+        "c",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.38",
+      "latex": "\\bar{t}_{c}(2)=\\sum_{t=1}^{\\infty}t\\cdot P_{c}(t)=2N",
+      "label": "Formula 2.38",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE GENEALOGICAL STRUCTURE OF A POPULATION",
+      "position": 68,
+      "context_text": "The mean coalescence time for two randomly sampled genes is simply $$ \\bar{t}_{c}(2)=\\sum_{t=1}^{\\infty}t\\cdot P_{c}(t)=2N $$ (2.38)",
+      "symbols_used": [
+        "N",
+        "P",
+        "\\bar{t}",
+        "c",
+        "t"
+      ],
+      "symbols_defined": [
+        "\\bar{t}",
+        "c"
+      ]
+    },
+    {
+      "id": "formula_2.39",
+      "latex": "P_{c}(p_{n},t)=[1-(p_{n}/2N)]^{t-1}[p_{n}/(2N)]",
+      "label": "Formula 2.39",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE GENEALOGICAL STRUCTURE OF A POPULATION",
+      "position": 69,
+      "context_text": "cence for any pair in the sample in the preceding generation is simply the product $p_n/(2N)$. Thus, the probability distribution for the coalescence time of one pair within a set of $n$ sequences is $$ P_{c}(p_{n},t)=[1-(p_{n}/2N)]^{t-1}[p_{n}/(2N)] $$ (2.39)",
+      "symbols_used": [
+        "N",
+        "P",
+        "c",
+        "n",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "P",
+        "c",
+        "n",
+        "p",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_2.40",
+      "latex": "\\bar{t}_{n}=2N/p_{n}=\\frac{4N}{n(n-1)}",
+      "label": "Formula 2.40",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE GENEALOGICAL STRUCTURE OF A POPULATION",
+      "position": 70,
+      "context_text": "$ (p_n=1) $, which again has an expected coalescence time of 2N generations (Figure 2.10). The implication of these results is that the expected time for merging n random lineages into n-1 lineages, $$ \\bar{t}_{n}=2N/p_{n}=\\frac{4N}{n(n-1)} $$ (2.40) increases with decreasing sample size.",
+      "symbols_used": [
+        "N",
+        "\\bar{t}",
+        "n",
+        "p"
+      ],
+      "symbols_defined": [
+        "\\bar{t}",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.41",
+      "latex": "\\begin{align*}\\bar t_c(n)=\\sum_{i=2}^n{4N\\over i(i-1)}=4N\\left(1-{1\\over n}\\right)\\end{align*}",
+      "label": "Formula 2.41",
+      "section": "Neutral Evolution in One- and Two-Locus Systems: Introduction",
+      "subsection": "THE GENEALOGICAL STRUCTURE OF A POPULATION",
+      "position": 71,
+      "context_text": "The total expected genealogical depth of a sample, obtained by summing the expectations of each coalescence event, is $$ \\begin{align*}\\bar t_c(n)=\\sum_{i=2}^n{4N\\over i(i-1)}=4N\\left(1-{1\\over n}\\right)\\end{align*} $$ (2.41)",
+      "symbols_used": [
+        "N",
+        "\\bar{t}",
+        "c",
+        "i",
+        "n"
+      ],
+      "symbols_defined": [
+        "\\bar{t}",
+        "c",
+        "n"
+      ]
+    },
+    {
+      "id": "formula_2.42",
+      "latex": "F_{ST}=\\frac{\\sigma^{2}(p)}{p_{0}(1-p_{0})}",
+      "label": "Formula 2.42",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Quantifying Population Structure: $ F_{ST} $",
+      "position": 72,
+      "context_text": "total metapopulation is just $ p_0(1 - p_0) $. $ F_{ST} $ is then defined as the fraction of the total variance attributable to the variance in the frequency of allele B among demes, $ \\sigma^2(p) $, $$ F_{ST}=\\frac{\\sigma^{2}(p)}{p_{0}(1-p_{0})} $$ (2.42)",
+      "symbols_used": [
+        "F",
+        "S",
+        "T",
+        "\\sigma",
+        "p"
+      ],
+      "symbols_defined": [
+        "F",
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "formula_2.43",
+      "latex": "F_{ST}=\\left[1-\\left(1-\\frac{1}{2N_{e}}\\right)^{t}\\right]\\simeq\\frac{t}{2N_{e}}\\quad for\\quad t\\ll N_{e}",
+      "label": "Formula 2.43",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Quantifying Population Structure: $ F_{ST} $",
+      "position": 73,
+      "context_text": "e expected variance in the allele frequency between two populations separated from a common ancestor t generations in the past (ignoring mutation and assuming no migration among groups), we have that $$ F_{ST}=\\left[1-\\left(1-\\frac{1}{2N_{e}}\\right)^{t}\\right]\\simeq\\frac{t}{2N_{e}}\\quad for\\quad t\\ll N_{e} $$ (2.43)",
+      "symbols_used": [
+        "F",
+        "N",
+        "S",
+        "T",
+        "e",
+        "f",
+        "o",
+        "r",
+        "t"
+      ],
+      "symbols_defined": [
+        "F",
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "formula_2.44",
+      "latex": "F_{S T}=\\frac{\\overline{t}-\\overline{t}_{0}}{\\overline{t}}=1-\\frac{\\overline{t}_{0}}{\\overline{t}}",
+      "label": "Formula 2.44",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Quantifying Population Structure: $ F_{ST} $",
+      "position": 74,
+      "context_text": "at $ F_{ST} $ values are closely related to the average coalescence times of alleles within subpopulations, $ \\bar{t}_{0} $, and of alleles drawn randomly from the entire metapopulation, $ \\bar{t} $, $$ F_{S T}=\\frac{\\overline{t}-\\overline{t}_{0}}{\\overline{t}}=1-\\frac{\\overline{t}_{0}}{\\overline{t}} $$ (2.44)",
+      "symbols_used": [
+        "F",
+        "S",
+        "T",
+        "\\overline{t}"
+      ],
+      "symbols_defined": [
+        "F",
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "formula_2.45a",
+      "latex": "\\bar{t}_{0}=2N d",
+      "label": "Formula 2.45a",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Mutation-migration-drift Equilibrium Values of $ F_{ST} $",
+      "position": 75,
+      "context_text": "1971; Nagylaki 1982). Provided there is some potential migratory route between all demes, regardless of the level of migration, the mean coalescence time between random pairs of genes within demes is $$ \\bar{t}_{0}=2N d $$ (2.45a) generations, i.e., twice the sum of the demic population sizes (Li 1976; Strobeck 1987; Hey 1991; Nagylaki 2000). Under this model, the independence of the within-deme variation of the migration rate",
+      "symbols_used": [
+        "N",
+        "\\bar{t}",
+        "d"
+      ],
+      "symbols_defined": [
+        "\\bar{t}"
+      ]
+    },
+    {
+      "id": "formula_2.45b",
+      "latex": "\\begin{align*}\\overline{t}=2Nd+{(d-1)^2\\over2dm}\\end{align*}",
+      "label": "Formula 2.45b",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Mutation-migration-drift Equilibrium Values of $ F_{ST} $",
+      "position": 76,
+      "context_text": "On the other hand, the mean coalescence time for two genes randomly drawn from the entire metapopulation is $$ \\begin{align*}\\overline{t}=2Nd+{(d-1)^2\\over2dm}\\end{align*} $$ (2.45b)",
+      "symbols_used": [
+        "N",
+        "\\overline{t}",
+        "d",
+        "m"
+      ],
+      "symbols_defined": [
+        "\\overline{t}"
+      ]
+    },
+    {
+      "id": "formula_2.46",
+      "latex": "F_{ST}=\\frac{1}{1+4N\\frac{md^{2}}{(1-d)^{2}}}\\simeq\\frac{1}{1+4Nm}\\quad for\\quad d\\gg1",
+      "label": "Formula 2.46",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Mutation-migration-drift Equilibrium Values of $ F_{ST} $",
+      "position": 77,
+      "context_text": "les to coalesce into the same deme. Unlike the amount of variation within demes, the differentiation among demes clearly depends on m. Substituting Equations 2.45a and 2.45b into Equation 2.44 yields $$ F_{ST}=\\frac{1}{1+4N\\frac{md^{2}}{(1-d)^{2}}}\\simeq\\frac{1}{1+4Nm}\\quad for\\quad d\\gg1 $$ (2.46)",
+      "symbols_used": [
+        "F",
+        "N",
+        "S",
+        "T",
+        "d",
+        "f",
+        "m",
+        "o",
+        "r"
+      ],
+      "symbols_defined": [
+        "F",
+        "S",
+        "T"
+      ]
+    },
+    {
+      "id": "formula_2.47a",
+      "latex": "\\begin{aligned}F_{DG}&=\\frac{\\bar{t}_{1}-\\bar{t}_{0}}{\\bar{t}_{1}}\\\\F_{GT}&=\\frac{\\bar{t}_{2}-\\bar{t}_{1}}{\\bar{t}_{2}}\\\\F_{ST}&=\\frac{\\bar{t}_{2}-\\bar{t}_{0}}{\\bar{t}_{2}}\\end{aligned}",
+      "label": "Formula 2.47a",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Mutation-migration-drift Equilibrium Values of $ F_{ST} $",
+      "position": 78,
+      "context_text": "the partitioning of the total population variation: $ F_{DG} $ among demes within groups, $ F_{GT} $ among groups within the total population, and $ F_{ST} $ among demes within the total population: $$ \\begin{aligned}F_{DG}&=\\frac{\\bar{t}_{1}-\\bar{t}_{0}}{\\bar{t}_{1}}\\\\F_{GT}&=\\frac{\\bar{t}_{2}-\\bar{t}_{1}}{\\bar{t}_{2}}\\\\F_{ST}&=\\frac{\\bar{t}_{2}-\\bar{t}_{0}}{\\bar{t}_{2}}\\end{aligned} $$ (2.47a)",
+      "symbols_used": [
+        "D",
+        "F",
+        "G",
+        "S",
+        "T",
+        "\\bar{t}"
+      ],
+      "symbols_defined": [
+        "D",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "formula_2.47b",
+      "latex": "\\begin{aligned}&F_{DG}\\simeq\\frac{1}{1+4Nm_{1}}\\\\&F_{GT}\\simeq F_{ST}\\simeq\\frac{1}{1+4Ndm_{2}}\\\\ \\end{aligned}",
+      "label": "Formula 2.47b",
+      "section": "MUTATION-MIGRATION-DRIFT EQUILIBRIUM",
+      "subsection": "Mutation-migration-drift Equilibrium Values of $ F_{ST} $",
+      "position": 79,
+      "context_text": "et al. 2009b). Substituting in the values for the various mean coalescence times noted previously, and assuming $d$ and $g$ moderately large and $m_{2} \\ll m_{1}$, results in further simplification, $$ \\begin{aligned}&F_{DG}\\simeq\\frac{1}{1+4Nm_{1}}\\\\&F_{GT}\\simeq F_{ST}\\simeq\\frac{1}{1+4Ndm_{2}}\\\\ \\end{aligned} $$ (2.47b)",
+      "symbols_used": [
+        "D",
+        "F",
+        "G",
+        "N",
+        "S",
+        "T",
+        "d",
+        "m"
+      ],
+      "symbols_defined": [
+        "d"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependent_id": "formula_2.1",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.2a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\mathbf{P}",
+          "definition": "Local variable used near Formula 2.2a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_002",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.2b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.2a",
+          "via_symbol": "Equation 2.2a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.2a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\mathbf{P}",
+          "definition": "Local variable used near Formula 2.2b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_002",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.3",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.4a",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.4b",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.4c",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.5",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.4c",
+          "via_symbol": "Equation 2.4c",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.4c",
+          "confidence": 0.95,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.6a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.5",
+          "via_symbol": "Equation 2.5",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.5",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "e",
+          "definition": "Local variable used near Formula 2.6a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_003",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.6b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.6a",
+          "via_symbol": "H",
+          "relation": "defines_symbol",
+          "reason": "H defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\ln",
+          "definition": "Local variable used near Formula 2.6b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_003",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.7",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.6a",
+          "via_symbol": "Equation 2.6a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.6a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\exp",
+          "definition": "Local variable used near Formula 2.7",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_003",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.8",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "F",
+          "definition": "Local variable used near Formula 2.8",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_003",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "e",
+          "definition": "Local variable used near Formula 2.8",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_003",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.9a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.8",
+          "via_symbol": "Equation 2.8",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.8",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.9a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.9b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "F",
+          "definition": "Local variable used near Formula 2.9b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "e",
+          "definition": "Local variable used near Formula 2.9b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.10",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.9b",
+          "via_symbol": "Equation 2.9b",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.9b",
+          "confidence": 0.95,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.11a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\ln",
+          "definition": "Local variable used near Formula 2.11a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "a",
+          "definition": "Local variable used near Formula 2.11a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.11b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\ln",
+          "definition": "Local variable used near Formula 2.11b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.11c",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\ln",
+          "definition": "Local variable used near Formula 2.11c",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_004",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "l",
+          "relation": "defines_symbol",
+          "reason": "l defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.11d",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.12",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\ln",
+          "definition": "Local variable used near Formula 2.12",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_005",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.11d",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.13",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.11d",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.14a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.5",
+          "via_symbol": "Equation 2.5",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.5",
+          "confidence": 0.95,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.15",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.16a",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.16b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.16c",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.16d",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.17",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.7",
+          "via_symbol": "H",
+          "relation": "defines_symbol",
+          "reason": "H defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16d",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.18",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.16d",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.19",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "c",
+          "definition": "Local variable used near Formula 2.19",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_009",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.17",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.20",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "c",
+          "definition": "Local variable used near Formula 2.20",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_009",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.21",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.20",
+          "via_symbol": "E",
+          "relation": "defines_symbol",
+          "reason": "E defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.22",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "D",
+          "relation": "defines_symbol",
+          "reason": "D defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.20",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.23",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.24a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.24a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.24b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.24a",
+          "via_symbol": "Equation 2.24a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.24a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.24b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.24c",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.24a",
+          "via_symbol": "Equation 2.24a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.24a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.24c",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.25a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\Gamma",
+          "definition": "Local variable used near Formula 2.25a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.25a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.25b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "Equation 2.25a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.25a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.25b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.17",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.26a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "Equation 2.25a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.25a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.26a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.26b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.26b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.27a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.27a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.27b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.27b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.28a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "D",
+          "relation": "defines_symbol",
+          "reason": "D defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "M",
+          "definition": "Local variable used near Formula 2.28a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\rho",
+          "definition": "Local variable used near Formula 2.28a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.28a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.28b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\rho",
+          "definition": "Local variable used near Formula 2.28b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.28b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.29a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\rho",
+          "definition": "Local variable used near Formula 2.29a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "\\theta",
+          "definition": "Local variable used near Formula 2.29a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.29b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "\\rho",
+          "definition": "Local variable used near Formula 2.29b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_010",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.30a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "S",
+          "definition": "Local variable used near Formula 2.30a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_013",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.30b",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.31a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "Equation 2.30a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.30a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.31b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "j",
+          "relation": "defines_symbol",
+          "reason": "j defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.32",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.33a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.33b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "Equation 2.30a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.30a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "Equation 2.31a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.31a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.33a",
+          "via_symbol": "Equation 2.33a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.33a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "S",
+          "relation": "defines_symbol",
+          "reason": "S defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.34a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "\\theta",
+          "relation": "defines_symbol",
+          "reason": "\\theta defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.34a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_014",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.34b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "Equation 2.34a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.34a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "\\theta",
+          "relation": "defines_symbol",
+          "reason": "\\theta defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.34b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_014",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.35a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.33b",
+          "via_symbol": "n",
+          "relation": "defines_symbol",
+          "reason": "n defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.35a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_014",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.35b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.33b",
+          "via_symbol": "n",
+          "relation": "defines_symbol",
+          "reason": "n defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.35b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_014",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.36a",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.36b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.36a",
+          "via_symbol": "x",
+          "relation": "defines_symbol",
+          "reason": "x defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.36c",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "Equation 2.34a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.34a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.36a",
+          "via_symbol": "Equation 2.36a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.36a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34b",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.36c",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_014",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.37",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.38",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.37",
+          "via_symbol": "P",
+          "relation": "defines_symbol",
+          "reason": "P defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.39",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_2.40",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.39",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.41",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.42",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.27b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.39",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.43",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.17",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.43",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_017",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.39",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.44",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.41",
+          "via_symbol": "\\overline{t}",
+          "relation": "defines_symbol",
+          "reason": "\\overline{t} defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.45a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.45a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_018",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.45b",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.45b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_018",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.46",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.44",
+          "via_symbol": "Equation 2.44",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.44",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.45a",
+          "via_symbol": "Equation 2.45a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.45a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.45b",
+          "via_symbol": "Equation 2.45b",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.45b",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "d",
+          "definition": "Local variable used near Formula 2.46",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_018",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 2.46",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter2_018",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.29a",
+          "via_symbol": "r",
+          "relation": "defines_symbol",
+          "reason": "r defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.47a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.46",
+          "via_symbol": "S",
+          "relation": "defines_symbol",
+          "reason": "S defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.45b",
+          "via_symbol": "\\bar{t}",
+          "relation": "defines_symbol",
+          "reason": "\\bar{t} defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_2.47b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.47a",
+          "via_symbol": "D",
+          "relation": "defines_symbol",
+          "reason": "D defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.46",
+          "via_symbol": "S",
+          "relation": "defines_symbol",
+          "reason": "S defined by nearest upstream formula in chapter2",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    }
+  ],
+  "symbol_index": {
+    "P": [
+      "formula_2.1::P",
+      "formula_2.37::P",
+      "formula_2.39::P"
+    ],
+    "i": [
+      "formula_2.1::i",
+      "formula_2.32::i",
+      "formula_2.35a::i",
+      "formula_2.35b::i"
+    ],
+    "j": [
+      "formula_2.1::j"
+    ],
+    "\\mathbf{x}": [
+      "formula_2.2a::\\mathbf{x}",
+      "formula_2.2b::\\mathbf{x}"
+    ],
+    "t": [
+      "formula_2.2a::t",
+      "formula_2.2b::t",
+      "formula_2.3::t",
+      "formula_2.4a::t",
+      "formula_2.4b::t",
+      "formula_2.4c::t",
+      "formula_2.5::t",
+      "formula_2.6b::t",
+      "formula_2.7::t",
+      "formula_2.8::t",
+      "formula_2.9a::t",
+      "formula_2.9b::t",
+      "formula_2.10::t",
+      "formula_2.12::t",
+      "formula_2.13::t",
+      "formula_2.14a::t",
+      "formula_2.15::t",
+      "formula_2.16a::t",
+      "formula_2.16b::t",
+      "formula_2.16c::t",
+      "formula_2.16d::t",
+      "formula_2.19::t",
+      "formula_2.20::t",
+      "formula_2.23::t",
+      "formula_2.37::t",
+      "formula_2.39::t"
+    ],
+    "f": [
+      "formula_2.3::f",
+      "formula_2.4a::f",
+      "formula_2.4b::f",
+      "formula_2.4c::f",
+      "formula_2.9b::f",
+      "formula_2.10::f"
+    ],
+    "H": [
+      "formula_2.5::H",
+      "formula_2.6a::H",
+      "formula_2.7::H",
+      "formula_2.23::H",
+      "formula_2.24a::H",
+      "formula_2.24c::H",
+      "formula_2.27a::H",
+      "formula_2.27b::H"
+    ],
+    "\\varphi": [
+      "formula_2.8::\\varphi"
+    ],
+    "p": [
+      "formula_2.8::p",
+      "formula_2.9a::p",
+      "formula_2.9b::p",
+      "formula_2.10::p",
+      "formula_2.11d::p",
+      "formula_2.14a::p",
+      "formula_2.15::p",
+      "formula_2.16a::p",
+      "formula_2.16b::p",
+      "formula_2.16c::p",
+      "formula_2.16d::p",
+      "formula_2.20::p",
+      "formula_2.25a::p",
+      "formula_2.26a::p",
+      "formula_2.26b::p",
+      "formula_2.28a::p",
+      "formula_2.39::p"
+    ],
+    "\\Omega": [
+      "formula_2.9a::\\Omega",
+      "formula_2.10::\\Omega"
+    ],
+    "l": [
+      "formula_2.10::l"
+    ],
+    "\\bar{t}": [
+      "formula_2.11a::\\bar{t}",
+      "formula_2.11c::\\bar{t}",
+      "formula_2.38::\\bar{t}",
+      "formula_2.40::\\bar{t}",
+      "formula_2.41::\\bar{t}",
+      "formula_2.45a::\\bar{t}"
+    ],
+    "\\overline{t}": [
+      "formula_2.11b::\\overline{t}",
+      "formula_2.11d::\\overline{t}",
+      "formula_2.45b::\\overline{t}"
+    ],
+    "a": [
+      "formula_2.11d::a"
+    ],
+    "E": [
+      "formula_2.12::E",
+      "formula_2.15::E",
+      "formula_2.16a::E",
+      "formula_2.16b::E",
+      "formula_2.16c::E",
+      "formula_2.16d::E",
+      "formula_2.19::E",
+      "formula_2.20::E",
+      "formula_2.24a::E",
+      "formula_2.24b::E",
+      "formula_2.24c::E",
+      "formula_2.26a::E",
+      "formula_2.28a::E",
+      "formula_2.29a::E",
+      "formula_2.29b::E",
+      "formula_2.31b::E",
+      "formula_2.35a::E",
+      "formula_2.35b::E"
+    ],
+    "\\Pr": [
+      "formula_2.13::\\Pr",
+      "formula_2.30a::\\Pr",
+      "formula_2.31a::\\Pr",
+      "formula_2.33a::\\Pr",
+      "formula_2.33b::\\Pr",
+      "formula_2.36a::\\Pr",
+      "formula_2.36b::\\Pr",
+      "formula_2.36c::\\Pr"
+    ],
+    "\\tau": [
+      "formula_2.13::\\tau"
+    ],
+    "\\sigma": [
+      "formula_2.14a::\\sigma",
+      "formula_2.21::\\sigma",
+      "formula_2.26b::\\sigma",
+      "formula_2.27a::\\sigma",
+      "formula_2.27b::\\sigma"
+    ],
+    "k": [
+      "formula_2.16b::k",
+      "formula_2.30a::k",
+      "formula_2.31a::k",
+      "formula_2.31b::k",
+      "formula_2.33a::k",
+      "formula_2.33b::k",
+      "formula_2.36a::k",
+      "formula_2.36b::k",
+      "formula_2.36c::k"
+    ],
+    "e": [
+      "formula_2.17::e"
+    ],
+    "A": [
+      "formula_2.18::A"
+    ],
+    "B": [
+      "formula_2.18::B"
+    ],
+    "D": [
+      "formula_2.18::D",
+      "formula_2.19::D",
+      "formula_2.20::D",
+      "formula_2.21::D",
+      "formula_2.47a::D"
+    ],
+    "q": [
+      "formula_2.20::q",
+      "formula_2.28a::q"
+    ],
+    "r": [
+      "formula_2.22::r",
+      "formula_2.29a::r"
+    ],
+    "\\phi": [
+      "formula_2.25a::\\phi",
+      "formula_2.34a::\\phi",
+      "formula_2.34b::\\phi"
+    ],
+    "\\Gamma": [
+      "formula_2.25b::\\Gamma"
+    ],
+    "\\alpha": [
+      "formula_2.25b::\\alpha"
+    ],
+    "M": [
+      "formula_2.28b::M"
+    ],
+    "L": [
+      "formula_2.30a::L",
+      "formula_2.30b::L"
+    ],
+    "\\theta": [
+      "formula_2.30a::\\theta",
+      "formula_2.30b::\\theta"
+    ],
+    "n": [
+      "formula_2.30a::n",
+      "formula_2.30b::n",
+      "formula_2.32::n",
+      "formula_2.33a::n",
+      "formula_2.33b::n",
+      "formula_2.36a::n",
+      "formula_2.36b::n",
+      "formula_2.36c::n",
+      "formula_2.39::n",
+      "formula_2.40::n",
+      "formula_2.41::n"
+    ],
+    "S": [
+      "formula_2.30b::S",
+      "formula_2.42::S",
+      "formula_2.43::S",
+      "formula_2.44::S",
+      "formula_2.46::S"
+    ],
+    "x": [
+      "formula_2.34a::x",
+      "formula_2.34b::x",
+      "formula_2.36a::x"
+    ],
+    "s": [
+      "formula_2.35a::s",
+      "formula_2.35b::s"
+    ],
+    "c": [
+      "formula_2.37::c",
+      "formula_2.38::c",
+      "formula_2.39::c",
+      "formula_2.41::c"
+    ],
+    "F": [
+      "formula_2.42::F",
+      "formula_2.43::F",
+      "formula_2.44::F",
+      "formula_2.46::F",
+      "formula_2.47a::F"
+    ],
+    "T": [
+      "formula_2.42::T",
+      "formula_2.43::T",
+      "formula_2.44::T",
+      "formula_2.46::T"
+    ],
+    "G": [
+      "formula_2.47a::G"
+    ],
+    "d": [
+      "formula_2.47b::d"
+    ]
+  },
+  "ambiguous": []
+}

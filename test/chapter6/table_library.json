@@ -1,0 +1,436 @@
+﻿{
+    "metadata":  {
+                     "total_tables":  6,
+                     "numbered_tables":  3,
+                     "inline_tables":  3,
+                     "source_filter":  "chapter6",
+                     "original_total_tables":  164
+                 },
+    "tables":  [
+                   {
+                       "id":  "6.1",
+                       "label_format":  "Table 6.1",
+                       "title":  "Table 6.1 General expressions for the response of a trait to selection, with fitness as an important special case. Here $w$ denotes relative fitness (with mean value $E[w]=1$); $z$, the value of an arbitrary trait; $A_{z}$, the breeding value of trait $z$ (with $A_{w}$ as the breeding value for relative fitness); $R_{z}$, the total response to selection (change in the mean across generations) of trait $z$ (with $R_{w}$ for the special case where the trait is mean fitness); $\\partial R_{w}$, the partial response in mean fitness due exclusively to allele-frequency change (see the text for details); $S_{z}$, the within-generation change in $z$ following selection but prior to gene transmission (the selection differential); and $\\bar{\\delta}_{z}$, the expected change between the mean value of a trait in selected parents and their progeny (also see text for details). Expressions denoted by $\\dagger$ are true mathematical theorems, whereas the rest are approximations.",
+                       "table_type":  "numbered",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd colspan=\"2\"\u003eFisher\u0026#x27;s Fundamental Theorem\u003c/td\u003e\u003ctd\u003eFisher (1930)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eClassical interpretation\u003c/td\u003e\u003ctd\u003e$ R_{w}=\\sigma^{2}(A_{w}) $\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eExact version $ ^{\\dagger} $\u003c/td\u003e\u003ctd\u003e$ \\partial R_{w}=\\sigma^{2}(A_{w}) $\u003c/td\u003e\u003ctd\u003ePrice (1972b), Ewens (1989)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eBreeder\u0026#x27;s Equation\u003c/td\u003e\u003ctd\u003e$ R_{z}=h_{z}^{2}S_{z} $\u003c/td\u003e\u003ctd\u003eLush (1937)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eRobertson-Price Identity $ ^{\\dagger} $\u003c/td\u003e\u003ctd\u003e$ S_{z}=\\sigma(w,z) $\u003c/td\u003e\u003ctd\u003eRobertson (1966a), Price (1970)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd colspan=\"3\"\u003eRobertson\u0026#x27;s Secondary Theorem\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e1966 version\u003c/td\u003e\u003ctd\u003e$ R_{z}=\\sigma(w,A_{z}) $\u003c/td\u003e\u003ctd\u003eRobertson (1966a)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e1968 version\u003c/td\u003e\u003ctd\u003e$ R_{z}=\\sigma(A_{w},A_{z}) $\u003c/td\u003e\u003ctd\u003eRobertson (1968)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd rowspan=\"3\"\u003ePrice\u0026#x27;s Theorem $ ^{\\dagger} $\u003c/td\u003e\u003ctd\u003e$ \\sigma_{A}(w,z) $\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ R_{z}=\\sigma(w,z)+E(w\\overline{\\delta}_{z}) $\u003c/td\u003e\u003ctd\u003ePrice (1970)\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ S+E(w\\overline{\\delta}_{z}) $\u003c/td\u003e\u003ctd\u003e\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Fisher\u0027s Fundamental Theorem",
+                                        "Fisher (1930)"
+                                    ],
+                                    [
+                                        "Classical interpretation",
+                                        "$ R_{w}=\\sigma^{2}(A_{w}) $",
+                                        ""
+                                    ],
+                                    [
+                                        "Exact version $ ^{\\dagger} $",
+                                        "$ \\partial R_{w}=\\sigma^{2}(A_{w}) $",
+                                        "Price (1972b), Ewens (1989)"
+                                    ],
+                                    [
+                                        "Breeder\u0027s Equation",
+                                        "$ R_{z}=h_{z}^{2}S_{z} $",
+                                        "Lush (1937)"
+                                    ],
+                                    [
+                                        "Robertson-Price Identity $ ^{\\dagger} $",
+                                        "$ S_{z}=\\sigma(w,z) $",
+                                        "Robertson (1966a), Price (1970)"
+                                    ],
+                                    [
+                                        "Robertson\u0027s Secondary Theorem"
+                                    ],
+                                    [
+                                        "1966 version",
+                                        "$ R_{z}=\\sigma(w,A_{z}) $",
+                                        "Robertson (1966a)"
+                                    ],
+                                    [
+                                        "1968 version",
+                                        "$ R_{z}=\\sigma(A_{w},A_{z}) $",
+                                        "Robertson (1968)"
+                                    ],
+                                    [
+                                        "Price\u0027s Theorem $ ^{\\dagger} $",
+                                        "$ \\sigma_{A}(w,z) $",
+                                        ""
+                                    ],
+                                    [
+                                        "$ R_{z}=\\sigma(w,z)+E(w\\overline{\\delta}_{z}) $",
+                                        "Price (1970)"
+                                    ],
+                                    [
+                                        "$ S+E(w\\overline{\\delta}_{z}) $",
+                                        ""
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  2,
+                                      "bbox":  [
+                                                   295,
+                                                   418,
+                                                   1056,
+                                                   713
+                                               ],
+                                      "caption_bbox":  [
+                                                           287,
+                                                           207,
+                                                           1058,
+                                                           403
+                                                       ],
+                                      "extraction_channel":  "paddle_raw_layout",
+                                      "unit_id":  "chapter6_001",
+                                      "subsection":  "The Life and Times of George Price",
+                                      "table_order":  3.0,
+                                      "following_body":  {
+                                                             "label":  "paragraph_title",
+                                                             "content":  "PRICE\u0027S GENERAL THEOREM OF SELECTION",
+                                                             "bbox":  [
+                                                                          288,
+                                                                          768,
+                                                                          728,
+                                                                          792
+                                                                      ],
+                                                             "order":  1.0,
+                                                             "index":  4
+                                                         },
+                                      "physical_evidence_channel":  "paddle_visual",
+                                      "physical_evidence_path":  "tmp\\paddle_output\\chapter6_full\\intermediate\\paddle_raw_response.json",
+                                      "physical_evidence_hash":  "c436e418e4b84080ac2984a5e28791b9f4fc6b4c6e032ab90ba2c833b1e0e615",
+                                      "fusion_repair_physical_source":  "ocr_physical_table_evidence",
+                                      "physical_owner_rebound_by":  "structured_fusion_table_before_following_heading",
+                                      "has_physical_placeholder":  true,
+                                      "physical_placeholder_inserted_by":  "structured_fusion_following_body_anchor",
+                                      "physical_placeholder_block_index":  3
+                                  },
+                       "description":  null
+                   },
+                   {
+                       "id":  "6.2",
+                       "label_format":  "Table 6.2",
+                       "title":  "Table 6.2 Heritabilities and coefficients of additive genetic $ (CV_{A}) $ and residual $ (CV_{R}) $ variation for representative traits in Drosophila melanogaster. Both $ CV_{A} $ and $ CV_{R} $ values are multiplied by 100. Here n is the number of studies, and the median estimates are reported. (After Houle 1992.)",
+                       "table_type":  "numbered",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eTrait\u003c/td\u003e\u003ctd\u003en\u003c/td\u003e\u003ctd\u003e$ h^{2} $\u003c/td\u003e\u003ctd\u003e$ CV_{A} $\u003c/td\u003e\u003ctd\u003e$ CV_{R} $\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eSternopleural bristles\u003c/td\u003e\u003ctd\u003e21\u003c/td\u003e\u003ctd\u003e0.44\u003c/td\u003e\u003ctd\u003e8.39\u003c/td\u003e\u003ctd\u003e7.97\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eWing length\u003c/td\u003e\u003ctd\u003e31\u003c/td\u003e\u003ctd\u003e0.36\u003c/td\u003e\u003ctd\u003e1.56\u003c/td\u003e\u003ctd\u003e2.09\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eFecundity\u003c/td\u003e\u003ctd\u003e12\u003c/td\u003e\u003ctd\u003e0.06\u003c/td\u003e\u003ctd\u003e11.90\u003c/td\u003e\u003ctd\u003e39.02\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLongevity\u003c/td\u003e\u003ctd\u003e7\u003c/td\u003e\u003ctd\u003e0.11\u003c/td\u003e\u003ctd\u003e9.89\u003c/td\u003e\u003ctd\u003e27.73\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Trait",
+                                        "n",
+                                        "$ h^{2} $",
+                                        "$ CV_{A} $",
+                                        "$ CV_{R} $"
+                                    ],
+                                    [
+                                        "Sternopleural bristles",
+                                        "21",
+                                        "0.44",
+                                        "8.39",
+                                        "7.97"
+                                    ],
+                                    [
+                                        "Wing length",
+                                        "31",
+                                        "0.36",
+                                        "1.56",
+                                        "2.09"
+                                    ],
+                                    [
+                                        "Fecundity",
+                                        "12",
+                                        "0.06",
+                                        "11.90",
+                                        "39.02"
+                                    ],
+                                    [
+                                        "Longevity",
+                                        "7",
+                                        "0.11",
+                                        "9.89",
+                                        "27.73"
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  18,
+                                      "source_channel":  "paddle",
+                                      "source_path":  "tmp\\paddle_output\\chapter6_full\\intermediate\\paddle_raw_response.json",
+                                      "evidence_hash":  "936f1527124d7ce761d2134a0e2f0d1a4f1f8b2d3e822a9b565ae76b2c49361f",
+                                      "table_body_expanded_from_following_blocks":  false,
+                                      "caption_bbox":  [
+                                                           286,
+                                                           208,
+                                                           1059,
+                                                           273
+                                                       ],
+                                      "table_order":  3.0,
+                                      "caption_order":  2.0,
+                                      "following_body":  {
+                                                             "label":  "paragraph_title",
+                                                             "content":  "Traits Correlated With Fitness Have Higher Levels of Both Additive and Residual Variance",
+                                                             "bbox":  [
+                                                                          286,
+                                                                          451,
+                                                                          889,
+                                                                          499
+                                                                      ],
+                                                             "order":  1.0,
+                                                             "index":  4
+                                                         },
+                                      "bbox":  [
+                                                   369,
+                                                   286,
+                                                   971,
+                                                   415
+                                               ],
+                                      "unit_id":  "chapter6_013",
+                                      "subsection":  "Traits Correlated With Fitness Have Lower Heritabilities",
+                                      "has_physical_placeholder":  true,
+                                      "fusion_repair":  "missing_stub_recovered_from_ocr_table_evidence",
+                                      "original_entry_hash":  "d64563026f94dcf0f9339cc1b01f33f6397c7822d7c2349e8650443c10348996",
+                                      "structured_score":  {
+                                                               "overall":  0.25,
+                                                               "id":  1.0,
+                                                               "caption":  0.0,
+                                                               "body":  0.0,
+                                                               "body_token":  0.0,
+                                                               "body_sequence":  0.0,
+                                                               "evidence_hash":  "936f1527124d7ce761d2134a0e2f0d1a4f1f8b2d3e822a9b565ae76b2c49361f",
+                                                               "source_channel":  "paddle",
+                                                               "source_path":  "tmp\\paddle_output\\chapter6_full\\intermediate\\paddle_raw_response.json",
+                                                               "page":  18
+                                                           },
+                                      "physical_owner_rebound_by":  "structured_fusion_table_before_following_heading"
+                                  },
+                       "description":  null
+                   },
+                   {
+                       "id":  "6.3",
+                       "label_format":  "Table 6.3",
+                       "title":  "Table 6.3 Terms in Heywood’s (2005) decomposition of response and their biological interpretations. See the text for further details.",
+                       "table_type":  "numbered",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eTerm\u003c/td\u003e\u003ctd\u003eHeywood\u0026#x27;s Interpretation\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ \\beta S $\u003c/td\u003e\u003ctd\u003eLinear response to selection. Breeder\u0026#x27;s equation analog.\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ \\sigma(w,\\overline{z}^{\\circ}||z) $\u003c/td\u003e\u003ctd\u003eSpurious response to selection. Nonadaptive response to selection (i. e., uncorrelated with selection on the parent).\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ E(\\delta^{\\circ}) $\u003c/td\u003e\u003ctd\u003eGeneral induced transmission bias. Difference between offspring mean when the selected parent is crossed to a selected vs. unselected individual.\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ \\sigma(w,\\delta^{\\circ}),\\sigma(w,\\delta^{\\circ}||z) $\u003c/td\u003e\u003ctd\u003eSpecial induced transmission bias. Covariance between parental fitness and difference in offspring mean when a parent is crossed to a selected vs. unselected individual. Which version is used depends on whether regression is based on selected (Equation 6.40) or unselected (Equation 6.39) parents.\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e$ E(\\overline{z}^{\\circ}-z) $\u003c/td\u003e\u003ctd\u003eConstitutive transmission bias. Change in offspring mean in unselected individuals.\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Term",
+                                        "Heywood\u0027s Interpretation"
+                                    ],
+                                    [
+                                        "$ \\beta S $",
+                                        "Linear response to selection. Breeder\u0027s equation analog."
+                                    ],
+                                    [
+                                        "$ \\sigma(w,\\overline{z}^{\\circ}||z) $",
+                                        "Spurious response to selection. Nonadaptive response to selection (i. e., uncorrelated with selection on the parent)."
+                                    ],
+                                    [
+                                        "$ E(\\delta^{\\circ}) $",
+                                        "General induced transmission bias. Difference between offspring mean when the selected parent is crossed to a selected vs. unselected individual."
+                                    ],
+                                    [
+                                        "$ \\sigma(w,\\delta^{\\circ}),\\sigma(w,\\delta^{\\circ}||z) $",
+                                        "Special induced transmission bias. Covariance between parental fitness and difference in offspring mean when a parent is crossed to a selected vs. unselected individual. Which version is used depends on whether regression is based on selected (Equation 6.40) or unselected (Equation 6.39) parents."
+                                    ],
+                                    [
+                                        "$ E(\\overline{z}^{\\circ}-z) $",
+                                        "Constitutive transmission bias. Change in offspring mean in unselected individuals."
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  28,
+                                      "bbox":  [
+                                                   298,
+                                                   261,
+                                                   1067,
+                                                   691
+                                               ],
+                                      "caption_bbox":  [
+                                                           286,
+                                                           207,
+                                                           1059,
+                                                           253
+                                                       ],
+                                      "extraction_channel":  "paddle_raw_layout",
+                                      "unit_id":  "chapter6_022",
+                                      "subsection":  "Parent-Offspring Regressions Before and After Selection",
+                                      "table_order":  3.0,
+                                      "following_body":  {
+                                                             "label":  "paragraph_title",
+                                                             "content":  "Hence",
+                                                             "bbox":  [
+                                                                          288,
+                                                                          728,
+                                                                          352,
+                                                                          752
+                                                                      ],
+                                                             "order":  1.0,
+                                                             "index":  4
+                                                         },
+                                      "physical_evidence_channel":  "paddle_visual",
+                                      "physical_evidence_path":  "tmp\\paddle_output\\chapter6_full\\intermediate\\paddle_raw_response.json",
+                                      "physical_evidence_hash":  "6d69564123fd702a559d0cd9a5acb67b63778a7933a25f23dc2a5f739950cd85",
+                                      "fusion_repair_physical_source":  "ocr_physical_table_evidence"
+                                  },
+                       "description":  null
+                   },
+                   {
+                       "id":  "inline_1",
+                       "label_format":  "Inline Table 1",
+                       "title":  "Inline Table 1",
+                       "table_type":  "inline",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eGenotype\u003c/td\u003e\u003ctd\u003eFrequency (before selection)\u003c/td\u003e\u003ctd\u003eFitness\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eAA\u003c/td\u003e\u003ctd\u003e$ p^{2} $\u003c/td\u003e\u003ctd\u003e$ W_{AA} $\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eAa\u003c/td\u003e\u003ctd\u003e$ 2p(1-p) $\u003c/td\u003e\u003ctd\u003e$ W_{Aa} $\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eaa\u003c/td\u003e\u003ctd\u003e$ (1-p)^{2} $\u003c/td\u003e\u003ctd\u003e$ W_{aa} $\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Genotype",
+                                        "Frequency (before selection)",
+                                        "Fitness"
+                                    ],
+                                    [
+                                        "AA",
+                                        "$ p^{2} $",
+                                        "$ W_{AA} $"
+                                    ],
+                                    [
+                                        "Aa",
+                                        "$ 2p(1-p) $",
+                                        "$ W_{Aa} $"
+                                    ],
+                                    [
+                                        "aa",
+                                        "$ (1-p)^{2} $",
+                                        "$ W_{aa} $"
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  6,
+                                      "bbox":  [
+                                                   510,
+                                                   572,
+                                                   849,
+                                                   695
+                                               ],
+                                      "caption_bbox":  null,
+                                      "extraction_channel":  "paddle_raw_layout",
+                                      "unit_id":  "chapter6_003",
+                                      "subsection":  "The Life and Times of George Price"
+                                  },
+                       "description":  null
+                   },
+                   {
+                       "id":  "inline_2",
+                       "label_format":  "Inline Table 2",
+                       "title":  "Inline Table 2",
+                       "table_type":  "inline",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eGenotype\u003c/td\u003e\u003ctd\u003eQQ\u003c/td\u003e\u003ctd\u003eQq\u003c/td\u003e\u003ctd\u003eqq\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eTrait value  $ z $\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e0\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eFrequency (before selection)\u003c/td\u003e\u003ctd\u003e$ (1-p)^{2} $\u003c/td\u003e\u003ctd\u003e$ 2p(1-p) $\u003c/td\u003e\u003ctd\u003e$ p^{2} $\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eFitness\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e2\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eFrequency (after selection)\u003c/td\u003e\u003ctd\u003e$ (1-p)^{2}/\\overline{W} $\u003c/td\u003e\u003ctd\u003e$ 2p(1-p)/\\overline{W} $\u003c/td\u003e\u003ctd\u003e$ p^{2}(2/\\overline{W}) $\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Genotype",
+                                        "QQ",
+                                        "Qq",
+                                        "qq"
+                                    ],
+                                    [
+                                        "Trait value $ z $",
+                                        "1",
+                                        "1",
+                                        "0"
+                                    ],
+                                    [
+                                        "Frequency (before selection)",
+                                        "$ (1-p)^{2} $",
+                                        "$ 2p(1-p) $",
+                                        "$ p^{2} $"
+                                    ],
+                                    [
+                                        "Fitness",
+                                        "1",
+                                        "1",
+                                        "2"
+                                    ],
+                                    [
+                                        "Frequency (after selection)",
+                                        "$ (1-p)^{2}/\\overline{W} $",
+                                        "$ 2p(1-p)/\\overline{W} $",
+                                        "$ p^{2}(2/\\overline{W}) $"
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  8,
+                                      "bbox":  [
+                                                   376,
+                                                   1362,
+                                                   994,
+                                                   1474
+                                               ],
+                                      "caption_bbox":  null,
+                                      "extraction_channel":  "paddle_raw_layout",
+                                      "unit_id":  "chapter6_008",
+                                      "subsection":  "The Breeder\u0027s Equation, $ R = h^{2} S $",
+                                      "source_rebound_by":  "example_pipeline_inline_table_source"
+                                  },
+                       "description":  null
+                   },
+                   {
+                       "id":  "inline_3",
+                       "label_format":  "Inline Table 3",
+                       "title":  "Inline Table 3",
+                       "table_type":  "inline",
+                       "html":  "\u003ctable\u003e\u003ctr\u003e\u003ctd\u003eTrait\u003c/td\u003e\u003ctd\u003en\u003c/td\u003e\u003ctd\u003e$ h^{2} $\u003c/td\u003e\u003ctd\u003e$ CV_{A} $\u003c/td\u003e\u003ctd\u003e$ CV_{R} $\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eSternopleural bristles\u003c/td\u003e\u003ctd\u003e21\u003c/td\u003e\u003ctd\u003e0.44\u003c/td\u003e\u003ctd\u003e8.39\u003c/td\u003e\u003ctd\u003e7.97\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eWing length\u003c/td\u003e\u003ctd\u003e31\u003c/td\u003e\u003ctd\u003e0.36\u003c/td\u003e\u003ctd\u003e1.56\u003c/td\u003e\u003ctd\u003e2.09\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eFecundity\u003c/td\u003e\u003ctd\u003e12\u003c/td\u003e\u003ctd\u003e0.06\u003c/td\u003e\u003ctd\u003e11.90\u003c/td\u003e\u003ctd\u003e39.02\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003eLongevity\u003c/td\u003e\u003ctd\u003e7\u003c/td\u003e\u003ctd\u003e0.11\u003c/td\u003e\u003ctd\u003e9.89\u003c/td\u003e\u003ctd\u003e27.73\u003c/td\u003e\u003c/tr\u003e\u003c/table\u003e",
+                       "rows":  [
+                                    [
+                                        "Trait",
+                                        "n",
+                                        "$ h^{2} $",
+                                        "$ CV_{A} $",
+                                        "$ CV_{R} $"
+                                    ],
+                                    [
+                                        "Sternopleural bristles",
+                                        "21",
+                                        "0.44",
+                                        "8.39",
+                                        "7.97"
+                                    ],
+                                    [
+                                        "Wing length",
+                                        "31",
+                                        "0.36",
+                                        "1.56",
+                                        "2.09"
+                                    ],
+                                    [
+                                        "Fecundity",
+                                        "12",
+                                        "0.06",
+                                        "11.90",
+                                        "39.02"
+                                    ],
+                                    [
+                                        "Longevity",
+                                        "7",
+                                        "0.11",
+                                        "9.89",
+                                        "27.73"
+                                    ]
+                                ],
+                       "source":  {
+                                      "chapter":  "chapter6",
+                                      "page":  18,
+                                      "bbox":  [
+                                                   369,
+                                                   286,
+                                                   971,
+                                                   415
+                                               ],
+                                      "caption_bbox":  null,
+                                      "extraction_channel":  "paddle_raw_layout",
+                                      "unit_id":  "chapter6_007",
+                                      "subsection":  "The Breeder\u0027s Equation, $ R = h^{2} S $"
+                                  },
+                       "description":  null
+                   }
+               ]
+}

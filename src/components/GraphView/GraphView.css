@@ -1,0 +1,117 @@
+.formula-node {
+  width: 280px;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  cursor: pointer;
+}
+
+.formula-node--focused {
+  box-shadow: 0 0 0 2px #3b82f6, 0 14px 28px rgba(59, 130, 246, 0.18);
+}
+
+.formula-node--selected {
+  outline: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.variable-def-node {
+  width: 220px;
+  cursor: default;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 12px;
+  opacity: 0.7;
+  backdrop-filter: blur(6px);
+}
+
+.dependency-edge:hover,
+.react-flow__edge.selected .dependency-edge {
+  animation: dash-flow 0.65s linear infinite;
+  stroke-dasharray: 8 4;
+}
+
+.dependency-edge--cross {
+  filter: drop-shadow(0 0 3px #6366f1);
+}
+
+.edge-label {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  padding: 2px 8px;
+  color: #475569;
+  font-size: 11px;
+  pointer-events: all;
+}
+
+.loading-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #cbd5e1;
+  border-top-color: #3b82f6;
+  border-radius: 999px;
+  animation: spin 0.8s linear infinite;
+}
+
+.path-progress {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 20;
+  width: min(900px, calc(100vw - 48px));
+  transform: translateX(-50%);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 12px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.path-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: max-content;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.path-step-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #94a3b8;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.path-step--visited .path-step-dot {
+  border-color: #10b981;
+  background: #10b981;
+}
+
+.path-step--active .path-step-dot {
+  border-color: #10b981;
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.18);
+}
+
+@keyframes dash-flow {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

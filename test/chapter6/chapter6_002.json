@@ -1,0 +1,27 @@
+{
+  "id": "chapter6_002",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [
+      "PRICE'S GENERAL THEOREM OF SELECTION"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [],
+    "table_references": [],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": "PRICE'S GENERAL THEOREM OF SELECTION",
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+      "PRICE'S GENERAL THEOREM OF SELECTION"
+    ],
+    "display_heading": "PRICE'S GENERAL THEOREM OF SELECTION"
+  },
+  "blocks": [
+    {
+      "type": "proposition",
+      "content": "The thoughtful reader might ask if there is a general, assumption-free statement about selection response under any situation. There is: namely, Price's theorem (Price 1970, 1972a), also referred to as the Price equation. Price's theorem provides a notationally elegant way to describe any evolutionary response. It makes no assumptions about the mechanism of transmission of a trait from some ancestral category (such as an individual or group) to its descendants. As such, it works for traits transmitted by standard genetics, epigenetics, and culture, and as such has been applied to everything from the evolution of languages to community structure in ecology. Recent reviews include Frank (1995, 1997, 1998, 2012), Rice (2004a), Boyd and Richerson (2005), Okasha (2006), Gardner (2008), Helanterä and Uller (2010), and Luque (2017), while van Veelen (2005; van Veelen et al. 2012) championed a more cautious use of Price's theorem."
+    }
+  ]
+}

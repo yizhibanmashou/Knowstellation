@@ -1,0 +1,56 @@
+{
+  "id": "chapter6_014",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "IMPLICATIONS OF FISHER'S THEOREM FOR TRAIT VARIATION",
+    "subsections": [
+      "Traits Correlated With Fitness Have Higher Levels of Both Additive and Residual Variance"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [],
+    "table_references": [
+      "6.2"
+    ],
+    "section_level_1": "IMPLICATIONS OF FISHER'S THEOREM FOR TRAIT VARIATION",
+    "section_level_2": "Traits Correlated With Fitness Have Higher Levels of Both Additive and Residual Variance",
+    "heading_path": [
+      "IMPLICATIONS OF FISHER'S THEOREM FOR TRAIT VARIATION",
+      "Traits Correlated With Fitness Have Higher Levels of Both Additive and Residual Variance"
+    ],
+    "display_heading": "Traits Correlated With Fitness Have Higher Levels of Both Additive and Residual Variance",
+    "table_reference_keys": [
+      "chapter6:6.2"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "discussion",
+      "content": "While a reduced $ h^{2} $ value is often interpreted as resulting from a decrease in the additive variance, it can also result from an increase in the residual variance, and the argument made by Price and Schluter raises the question of whether traits that are more closely associated with fitness have increased residual variances. If this is the case, a simple comparison of heritabilities can be misleading (Houle 1992)."
+    },
+    {
+      "type": "discussion",
+      "content": "When comparing additive variances across traits, a standardized measure is required, and a common approach is to compare coefficients of variation, the ratio of the standard deviation to the mean. This led Houle (1992; see also Charlesworth 1984a) to suggest that the coefficient of additive genetic variance, $ CV_A = \\sigma_A / \\mu $ (where $ \\mu $ is the trait mean) is the appropriate scale-free measure for comparing the amount of additive genetic variation across traits. To distinguish this measure from the heritability, Houle coined the term evolvability for $ CV_A $ (a term that has unfortunately since been co-opted in a number of ill-defined ways by developmental biologists). As a representative sample of Drosophila traits illustrates ([[SEE_TABLE:6.2]]), traits with low $ h^2 $ values can have very high $ CV_A $ values. Indeed, in a recent meta-analysis, Hansen et al. (2011) found essentially no correlation between heritability and evolvability."
+    },
+    {
+      "type": "discussion",
+      "content": "However, in a survey of over 800 estimates for $ CV_A $ from a variety of traits, Houle (1992) found that characters assumed to be closely related to fitness (such as life-history traits) have higher evolvabilities (larger $ CV_A $ values) than do traits that are more loosely associated with fitness. Thus, the pattern of trait heritabilities decreasing with their correlation with fitness is not due to smaller additive variances, but instead is caused by larger residual (nonadditive plus environmental) variances, as quantified by the coefficient of residual variation ($ CV_R $)."
+    },
+    {
+      "type": "discussion",
+      "content": "A study by Kruuk et al. (2000) on Scottish red deer (Cervus elaphus) offers some additional insight. The authors estimated components of additive genetic, maternal, and residual variances from pedigree data for this wild population (on the Isle of Rum in Scotland) for five life-history and three morphological traits in addition to lifetime fitness. As shown in [[SEE_FIGURE:6.4]], they also found heritabilities to be negatively correlated with fitness, whereas the coefficient of additive genetic variance $ CV_{A} $, was positively correlated with fitness in males (but negatively correlated in females). Moreover, $ CV_{A} $ values were higher for life-history traits than for morphological traits, and the coefficient of residual variation $ CV_{R} $ was also positively correlated with fitness. Similar patterns of both $ CV_{A} $ and $ CV_{R} $ being positively correlated with fitness have been seen in the seed beetle Callosobruchus maculatus (Messina 1993), in an Alberta population of bighorn sheep (Coltman et al. 2006), in the perennial herb Ipomopsis aggregata (Campbell 1997), and in natural bird populations (collared flycatchers by Merilä and Sheldon 2000; great tits by McCleery et al. 2004). For these studies, high residual variance, not low $ \\sigma_{A}^{2} $, accounts for the observed lower $ h^{2} $ values for traits related to fitness. Conversely, while Teplitsky et al. (2009) also observed lower heritabilities for fitness-related traits in red-billed gulls, both higher residual variance and lower additive variance accounted for their trend."
+    },
+    {
+      "type": "figure",
+      "content": "[[FIGURE:6.4]]"
+    },
+    {
+      "type": "discussion",
+      "content": "What accounts for the higher coefficients of additive variance in traits associated with fitness? The prediction of lower additive variance in fitness-related traits is based on the notion that $ \\sigma_{A}^{2} $ is removed by selection. However, the loss of variation is partly countered by new mutational input, leaving some nonzero amount even in the face of strong selection (Chapter 28). If all traits have similar mutational variances, a faster removal of $ \\sigma_{A}^{2} $ by selection for the traits that are more closely related to fitness would indeed lead to lower equilibrium levels of additive genetic variance. However, it appears that traits that are more closely associated with fitness actually have higher mutational variances (Houle et al. 1996), most likely due to a larger number of loci influencing fitness (Houle 1992; Houle et al. 1996; Merilä and Sheldon 1999). As with any summary metric, $ CV_A $ should be used with a little caution. Garcia-Gonzalez et al. (2012) found that roughly 45% of the studies they examined used incorrect methods in calculating $ CV_A $ (the most common being use of the sire variance $ \\sigma_A^2 / 4 $ in place of $ \\sigma_A^2 $, which results in a two-fold lower estimate). A second issue is that coefficients of variation should only be compared among items with the same dimensions (Lande 1977c). CVs for linear measures tend to be less than those for volumetric measures. Hence, something like body mass might intrinsically have a higher $ CV_A $ than some linear morphological trait. These and other issues are discussed by Garcia-Gonzalez et al. (2012), who provide a delta-method approximation (LW Appendix 1) for the standard error of a CV estimate."
+    },
+    {
+      "type": "discussion",
+      "content": "A final caveat with these studies is that they examined the correlation between fitness (either total fitness or one of its components) and additive variance of a trait, while Fisher was concerned with the additive genetic variance of fitness itself. Estimates of the additive variance in total fitness in natural populations are very rare, as these require estimates of lifetime fitness (not a trivial task; see Chapter 29), further compounded by the difficulty of having to obtain such estimates over a set of relatives. To date, estimates of the additive variation associated with lifetime reproductive success in natural populations are from vertebrates with extensive known pedigrees. Kruuk et al. (2000) found no evidence for a significant heritability of this trait in red deer. McCleery et al. (2004) found positive, but not significant, estimates in great tits. Merilä and Sheldon (2000) found a significant additive variance for females and a positive (but not significant) variance for males in collared flycatchers. Teplitsky et al. (2009) found positive (but not significant) variance in females and no variance in males for red-billed gulls (Larus novaehollandiae). Blomquist (2010) obtained rather high ($ \\sim $0.4) estimates of heritability for lifetime reproductive success in a free-ranging population of rhesus macaques (Macaca mulatta) introduced in 1938 (from India) to a small island in Puerto Rico. Finally, Papaix et al. (2010) obtained a very low estimate (a posterior mean of 0.02) for heritability of adult survival in the wild for a population of blue tits (Cyanistes caeruleus). One issue with all of these studies is the expected low power to detect small amounts of variances, so negative results should be viewed cautiously."
+    }
+  ]
+}

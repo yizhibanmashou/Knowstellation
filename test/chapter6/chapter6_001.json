@@ -1,0 +1,41 @@
+{
+  "id": "chapter6_001",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [],
+    "table_references": [
+      "6.1"
+    ],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": null,
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction"
+    ],
+    "display_heading": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "table_reference_keys": [
+      "chapter6:6.1"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "discussion",
+      "content": "Is there some reorientation for the expression of natural selection that may provide subtle perspective, from which we can understand our subject more deeply and analyze our problems with greater ease and greater insight? My answer is... that the Price equation provides that sort of reorientation. Frank (2012, p. 1003)"
+    },
+    {
+      "type": "proposition",
+      "content": "One of the messages from Chapter 5 is that selection, even on just one or two loci, can have very complex dynamics. Indeed, outside of the special case of frequency-independent viability selection at a single locus, selection is not even guaranteed to increase mean fitness. Nonetheless, the search for general theorems (exact mathematical expressions) of selection response has motivated population and quantitative geneticists for over 80 years. By shifting attention away from trying to model individual allele-frequency change over a large number of loci to considering the dynamics of some composite feature of these loci, such as the mean of a trait, the hope was that some general statements might hold. Here we focus on three classical “theorems”—Fisher’s fundamental theorem of natural selection, Robertson’s secondary theorem of natural selection, and Price’s theorem—as well as Lush’s breeder’s equation, summarized in [[SEE_TABLE:6.1]]. Ironically, these attempts to bring some order to population- and quantitative-genetic theory have instead resulted in a considerable amount of confusion and chaos in the literature. As detailed below, the classical interpretation of Fisher's theorem, along with Robertson's theorem and the breeder's equation, are all approximations (albeit often good ones), and not formal mathematical theorems. In contrast, Price's general expression for any type of selection response is a formal theorem, as is a special case of it, the Robertson-Price identity for the within-generation response in a trait due to selection. A source of confusion is that the classical view assumed by most of the literature was apparently different from Fisher's own interpretation, which is a formal (but not very useful) theorem. As our discussion of these various \"theorems,\" exact and otherwise, will highlight, it is the transmission of trait values from parent to offspring that generally induces complications and makes the theoretician's job challenging. This can be seen in [[SEE_TABLE:6.1]] by simply comparing the exact Robertson-Price result for within-generation change (S) with results for cross-generational change $ (S + E[w\\delta_z]) $. The surprising result is not that these \"theorems\" are wrong, but rather that they often are reasonable-to-excellent approximations for much of the dynamics of a trait under short-term selection."
+    },
+    {
+      "type": "proposition",
+      "content": "Our treatment of this rather convoluted area is structured as follows. We start with Price's theorem, which is a completely general description of any selection response under any model of transmission. It does not rely on any explicit genetic model and thus serves as an ideal platform from which to examine the other \"theorems.\" We next turn to Fisher's fundamental theorem, which has a rich and somewhat checkered history, in part due to Fisher's failure to be fully explicit with his definitions. An important corollary of Fisher's theorem is that, in the absence of mutation, selection will drive the additive variance in fitness toward zero, and we next examine some of the biological implications and misunderstandings of this result. We then turn to Robertson's secondary theorem, which focuses on the selection response of any arbitrary trait, not just fitness. Finally, because the breeder's equation is the basic workhorse result for much of selection theory in quantitative genetics (Chapters 13–20), we conclude by examining its robustness in some detail."
+    },
+    {
+      "type": "table",
+      "content": "[[TABLE:6.1]]"
+    }
+  ]
+}

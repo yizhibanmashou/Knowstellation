@@ -1,0 +1,29 @@
+{
+  "id": "chapter6_006",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [
+      "The Robertson-Price Identity, $ S = \\sigma(w, z) $"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.10"
+    ],
+    "table_references": [],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": "The Robertson-Price Identity, $ S = \\sigma(w, z) $",
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+      "The Robertson-Price Identity, $ S = \\sigma(w, z) $"
+    ],
+    "display_heading": "The Robertson-Price Identity, $ S = \\sigma(w, z) $"
+  },
+  "blocks": [
+    {
+      "type": "derivation",
+      "content": "When our concern is strictly on the within-generation change in trait value, then $ \\Delta\\overline{z} = \\mu_{z}^{*} - \\mu_{z} $, the difference between the fitness-weighted mean after selection (but before reproduction), $ \\mu_{z}^{*} $, and the overall mean before selection, $ \\mu_{z} $, which is the selection differential S (Chapter 13). Because the within-generation change is not influenced by cross-generation transmission, any terms involving $ \\bar{\\delta} $ in Equation 6.6 are zero, and we recover the Robertson-Price identity [[SEE_FORMULA:6.10]] as first obtained by Robertson (1966a) and Price (1970). We derive this result by another route in Chapter 13, where we use this identity extensively in selection-response theory. The critical insight from Equation 6.10 is that no matter how complex the relationship between phenotype z and fitness w, the within-generation change in the mean only depends on the covariance between these measures."
+    }
+  ]
+}

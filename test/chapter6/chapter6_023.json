@@ -1,0 +1,29 @@
+{
+  "id": "chapter6_023",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION",
+    "subsections": [
+      "Hence"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.38"
+    ],
+    "table_references": [],
+    "section_level_1": "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION",
+    "section_level_2": "Hence",
+    "heading_path": [
+      "THE BREEDER'S EQUATION FRAMED WITHIN THE PRICE EQUATION",
+      "Hence"
+    ],
+    "display_heading": "Hence"
+  },
+  "blocks": [
+    {
+      "type": "derivation",
+      "content": "[[SEE_FORMULA:6.38]] where $ E(\\tilde{z}_i^0 - z_i) $, which Heywood calls the constitutive transmission bias, is the change from parent to offspring using unselected parents. Inbreeding, the decay of linkage disequilibrium, and randomization of correlated environmental effects are all examples of situations with the potential for a nonzero constitutive transmission bias (Chapters 15 and 23). The first component, $ E(\\delta_i^0) $, Heywood's general induced transmission bias, is the difference between the offspring mean when the parent is crossed to the selected population and the offspring mean when crossed to the unselected population. If the change in genotypic frequencies in the selected population is small relative to the unselected population, then the general induced transmission bias will be low. This is expected to be the case when the trait is determined by loosely linked loci, each with a small (to very small) effect."
+    }
+  ]
+}

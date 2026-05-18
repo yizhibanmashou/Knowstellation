@@ -1,0 +1,43 @@
+{
+  "id": "chapter6_017",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "subsections": [
+      "1966 Version: $ R_{z} = \\sigma(w, A_{z}) $"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.25a",
+      "6.25b",
+      "6.25c"
+    ],
+    "table_references": [],
+    "section_level_1": "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+    "section_level_2": "1966 Version: $ R_{z} = \\sigma(w, A_{z}) $",
+    "heading_path": [
+      "Theorems of Natural Selection: Results of Price, Fisher, and Robertson: Introduction",
+      "1966 Version: $ R_{z} = \\sigma(w, A_{z}) $"
+    ],
+    "display_heading": "1966 Version: $ R_{z} = \\sigma(w, A_{z}) $"
+  },
+  "blocks": [
+    {
+      "type": "derivation",
+      "content": "Although Robertson coined the term “secondary theorem” in his 1968 paper, a careful reading of Robertson’s rather opaque 1966 paper suggests that his original result arose as a natural extension of the Robertson-Price identity, with [[SEE_FORMULA:6.25a]]"
+    },
+    {
+      "type": "discussion",
+      "content": "Equation 6.10 shows that the within-generation change in the mean of a trait z is simply $ \\sigma(w, z) = S $. If one takes z as the breeding value of the trait, the Robertson-Price identity yields Equation 6.25a as the within-generation change in the breeding value of the trait caused by selection, and hence the expected response in the next generation when the average parental breeding value predicts the mean of their offspring. Equation 6.25a is widely used in evolutionary quantitative genetics (e.g., Lande 1976; Frank 1997), and is closely connected with the breeder's equation."
+    },
+    {
+      "type": "derivation",
+      "content": "To see this connection, taking the regression of breeding value on phenotype as $ A_z = h^2(z - \\mu) + e_A $ and substituting into Equation 6.25a yields [[SEE_FORMULA:6.25b]] and we recover the breeder’s equation when $ \\sigma(w, e_A) = 0 $. Biologically, this last assumption implies that the relative fitness of an individual is uncorrelated with the residual error, $ e_A $, when using their phenotype to predict their breeding value. The covariance, $ \\sigma(w, e_A) $, can be nonzero if an environmental factor influences both fitness and trait value, in which case the breeder’s equation can fail, while Robertson’s theorem (Equation 6.25a) may still hold. Indeed, as is detailed in Chapter 20, increased attention is being paid to Robertson’s theorem in ecological genetics, as a discrepancy between the predicted response using the breeder’s equation versus that using Robertson’s theorem suggests that the focal trait is not the only target of selection."
+    },
+    {
+      "type": "derivation",
+      "content": "Finally, we can connect the two versions of Robertson's theory by writing the phenotype, w, of relative fitness in terms of its breeding value, $ A_w $, plus a residual, $ e_w $ (note that this is different from the residual $ e_A $ from Equation 6.25b, which is the error in predicting trait breeding value given trait phenotypic value). Substituting this expression for w in Equation 6.25a yields [[SEE_FORMULA:6.25c]] showing that while the 1966 version is more general, the two versions (Equations 6.24a and 6.25a) are equal when $ \\sigma(e_w, A_z) = 0 $."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "chapter6_011",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+    "subsections": [
+      "What Did Fisher Really Mean?"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.21a",
+      "6.21b",
+      "6.21c",
+      "6.22a",
+      "6.22b"
+    ],
+    "table_references": [],
+    "section_level_1": "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+    "section_level_2": "What Did Fisher Really Mean?",
+    "heading_path": [
+      "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+      "What Did Fisher Really Mean?"
+    ],
+    "display_heading": "What Did Fisher Really Mean?"
+  },
+  "blocks": [
+    {
+      "type": "proposition",
+      "content": "Fisher (1930, p. 35) warned that his theorem “requires that the terms employed should be used strictly as defined,” and much of the confusion being referred to is concerned with what Fisher meant by “fitness.” Crow (2002) noted that in stating his theorem, “Fisher was indulging in his usual elegant obscurity.” Price (1972b) and Ewens (1989, 1992) argued that Fisher’s theorem is always true because he had a very narrow interpretation of the change in mean fitness (also see Edwards 1990, 1994; Frank 1995; Lessard and Castilloux 1995; Lessard 1997; Plutynski 2006). They argued that rather than considering the total rate of change in fitness, Fisher was instead concerned only with the partial rate of change, that due only to changes in allele frequency, without considering any corresponding changes in the average excesses or effects of these alleles."
+    },
+    {
+      "type": "derivation",
+      "content": "Placed in the framework of Price’s theorem, this “partial increase” interpretation becomes clear. From Equation 6.15d (setting $ b_j = \\alpha_j $), the total response in fitness can be decomposed into two components [[SEE_FORMULA:6.21a]] where $ \\alpha_j $ is the average effect of an allele on fitness. Recalling Equation 6.5a, the first sum is simply $ \\sigma(w_i, A_i) = \\sigma(A_i + \\epsilon_i, A_i) = \\sigma_A^2(w) $, yielding [[SEE_FORMULA:6.21b]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Note that the first term in Equation 6.21a is the partial change due solely to changes in allele frequencies $$ \\sum_{j}2\\alpha_{j}\\Delta p_{j} $$ which we denote by $ \\partial R_{w} $ to emphasize that only a specific part of the total change is being considered. Price argued that Fisher's interpretation of his theorem was that [[SEE_FORMULA:6.21c]]"
+    },
+    {
+      "type": "proposition",
+      "content": "Thus, the exact version of Fisher’s theorem (Equation 6.21c) simply concerns the partial evolutionary response caused by natural selection, as Price argued that Fisher essentially regarded the second term as a change in the “environment” within which alleles find themselves after selection, with Fisher having a very broad interpretation of"
+    },
+    {
+      "type": "discussion",
+      "content": "“environment,” referring to both physical and genetic backgrounds. In the words of Price (1972b, p. 130), Fisher regarded the natural selection effect on fitness as being limited to the additive or linear effects of changes in gene (allele) frequencies, while everything else—dominance, epistasis, population pressure, climate, and interactions with other species—he regarded as a matter of the environment."
+    },
+    {
+      "type": "derivation",
+      "content": "A nice discussion of this point was offered by Frank and Slatkin (1992), who pointed out that the change in mean fitness over a generation is also influenced by the change in “environment,” E. Specifically, [[SEE_FORMULA:6.22a]] where the prime denotes the fitness or environment in the next generation. Expanding the preceding expression, we can partition the contributions from the change in fitness and the change in the environment by writing [[SEE_FORMULA:6.22b]] where the first term in brackets represents the change in mean fitness under the initial “environment,” while the second represents the change in mean fitness due to changes in the environmental conditions. This decomposition is simply another way of stating Equation 6.21a. The exact version of Fisher’s theorem relates solely to changes in the first component, $ (\\overline{W}'|E)-(\\overline{W}|E) $, which he called the change in fitness due to natural selection. In considering this exact version of Fisher’s theorem, Ewens (1994, p. 187) stated"
+    },
+    {
+      "type": "proposition",
+      "content": "I believe that the often-made statement that the theorem concerns changes in mean fitness, assumes random-mating populations, is an approximation, and is not correct in the multi-locus setting, embodies four errors. The theorem relates the so-called partial increase in mean fitness, makes no assumption about random mating, is an exact statement containing no approximation, and finally is correct (as a theorem) no matter how many loci are involved."
+    },
+    {
+      "type": "proposition",
+      "content": "Nagylaki (1993) suggested that the statement $ R_W = \\sigma_A^2(W)/W $ be referred to as the asymptotic fundamental theorem of natural selection, while Fisher's more narrow (and correct) interpretation based on partial change should be referred to as the Fisher-Price-Ewens theorem of natural selection. A clear distinction between these two very different interpretations seems quite reasonable given their considerable past history of confusion. Warren Ewens (personal communication, 2005) said it best by noting that one should think of two totally different results, holding under totally different sets of circumstances, not intersecting with each other much, and which should not be put under the same umbrella."
+    },
+    {
+      "type": "discussion",
+      "content": "Thus, the bold, sweeping classical interpretation of Fisher’s statement is replaced in the exact version by an unfortunately all-too common outcome of mathematics—a result that is absolutely correct, but not really useful. While the nature of the partial response is certainly elegant, our interest is in the total response."
+    }
+  ]
+}

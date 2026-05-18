@@ -1,0 +1,3249 @@
+{
+  "chapter_id": "chapter3",
+  "version": 1,
+  "generated_at": "2026-05-18T14:17:02Z",
+  "formulas": [
+    {
+      "id": "formula_3.1",
+      "latex": "\\begin{aligned}f_{t}&=\\left(\\frac{1}{N_{e}}\\right)\\left(\\frac{1}{2}\\right)+\\left(\\frac{1}{2}\\right)\\left(\\frac{1}{N_{e}}\\right)f_{t-1}+\\left(1-\\frac{1}{N_{e}}\\right)f_{t-1}\\\\&=\\frac{1}{2N_{e}}+\\left(1-\\frac{1}{2N_{e}}\\right)f_{t-1}\\end{aligned}",
+      "label": "Formula 3.1",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "GENERAL CONSIDERATIONS",
+      "position": 0,
+      "context_text": "spatial structure, so that the mean degree of inbreeding does not depend on the parental source of alleles.) Summing up the three ways by which identity-by-descent can arise between uniting gametes, $$ \\begin{aligned}f_{t}&=\\left(\\frac{1}{N_{e}}\\right)\\left(\\frac{1}{2}\\right)+\\left(\\frac{1}{2}\\right)\\left(\\frac{1}{N_{e}}\\right)f_{t-1}+\\left(1-\\frac{1}{N_{e}}\\right)f_{t-1}\\\\&=\\frac{1}{2N_{e}}+\\left(1-\\frac{1}{2N_{e}}\\right)f_{t-1}\\end{aligned} $$ (3.1)",
+      "symbols_used": [
+        "N",
+        "e",
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.2",
+      "latex": "P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-1}}k_{i}(k_{i}-1)}{N_{t-1}\\mu_{k}(N_{t-1}\\mu_{k}-1)}",
+      "label": "Formula 3.2",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 3,
+      "context_text": "1) $ total ways by which gametes can unite by self-fertilization. Because a total of $ N_{t-1}\\mu_k $ successful gametes are produced, the expected fraction of zygotes derived from the same parent is $$ P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-1}}k_{i}(k_{i}-1)}{N_{t-1}\\mu_{k}(N_{t-1}\\mu_{k}-1)} $$ (3.2) where the denominator is the total number of pairs of uniting gametes necessary to produce the next generation. This expression can be simplified greatly by noting that $ \\sum_{i=1}^{N_{t-1}} k_i(k_i",
+      "symbols_used": [
+        "N",
+        "P",
+        "\\mu",
+        "e",
+        "i",
+        "k",
+        "t"
+      ],
+      "symbols_defined": [
+        "P",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.3",
+      "latex": "N_{e}=\\frac{2N_{t}-1}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1}",
+      "label": "Formula 3.3",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 4,
+      "context_text": "(k_i - 1)/N_{t-1} = E(k^2) - \\mu_k = \\sigma_k^2 + \\mu_k(\\mu_k - 1) $, and that because all zygotes are derived from two gametes, $ N_{t-1}\\mu_k = 2N_t $. Substituting into Equation 3.2 and inverting, $$ N_{e}=\\frac{2N_{t}-1}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.3)",
+      "symbols_used": [
+        "N",
+        "\\mu",
+        "\\sigma",
+        "e",
+        "k",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.4",
+      "latex": "N_{e}=\\frac{4N-2}{\\sigma_{k}^{2}+2}",
+      "label": "Formula 3.4",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 5,
+      "context_text": "Equation 3.2 simplifies greatly under a number of conditions. For example, populations that are stable in size have, on average, two successful gametes per parent ( $ \\mu_k = 2 $), leading to $$ N_{e}=\\frac{4N-2}{\\sigma_{k}^{2}+2} $$ (3.4)",
+      "symbols_used": [
+        "N",
+        "\\sigma",
+        "e",
+        "k"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.5",
+      "latex": "P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-2}}k_{i}(k_{i}-1)}{N_{t-2}\\mu_{k}(N_{t-2}\\mu_{k}-2)}",
+      "label": "Formula 3.5",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 6,
+      "context_text": "$ ways of drawing gene pairs (the 4 because each parent carries two genes). Therefore, the probability that a generation- $ t $ individual carries a pair of genes derived from the same grandparent is $$ P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-2}}k_{i}(k_{i}-1)}{N_{t-2}\\mu_{k}(N_{t-2}\\mu_{k}-2)} $$ (3.5)",
+      "symbols_used": [
+        "N",
+        "P",
+        "\\mu",
+        "e",
+        "i",
+        "k",
+        "t"
+      ],
+      "symbols_defined": [
+        "P",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.6",
+      "latex": "N_{e}=\\frac{2(N_{t-1}-1)}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1}",
+      "label": "Formula 3.6",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 7,
+      "context_text": "Employing the same kinds of substitutions used for Equation 3.3, $$ N_{e}=\\frac{2(N_{t-1}-1)}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.6) and for constant N (which implies $ \\mu_{k}=2 $), $$ N_{e}=\\frac{4(N-1)}{\\sigma_{k}^{2}+2} $$ (3.7)",
+      "symbols_used": [
+        "N",
+        "\\mu",
+        "\\sigma",
+        "e",
+        "k",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.7",
+      "latex": "N_{e}=\\frac{4(N-1)}{\\sigma_{k}^{2}+2}",
+      "label": "Formula 3.7",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 8,
+      "context_text": "Employing the same kinds of substitutions used for Equation 3.3, $$ N_{e}=\\frac{2(N_{t-1}-1)}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.6) and for constant N (which implies $ \\mu_{k}=2 $), $$ N_{e}=\\frac{4(N-1)}{\\sigma_{k}^{2}+2} $$ (3.7)",
+      "symbols_used": [
+        "N",
+        "\\sigma",
+        "e",
+        "k"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.8",
+      "latex": "N_{e}=\\frac{N_{t-1}}{\\left(4\\sigma_{o,p}/\\mu_{k}^{2}\\right)+1}",
+      "label": "Formula 3.8",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "MONOECY",
+      "position": 9,
+      "context_text": "is random but selfing is prohibited, the effective population size is the same under isogamy and anisogamy, and Equation 3.6 still applies (Crow and Denniston 1988). However, with selfing permitted, $$ N_{e}=\\frac{N_{t-1}}{\\left(4\\sigma_{o,p}/\\mu_{k}^{2}\\right)+1} $$ (3.8) where $ \\sigma_{o,p} $ is the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988). If $ \\sigma_{o,p} $",
+      "symbols_used": [
+        "N",
+        "\\mu",
+        "\\sigma",
+        "e",
+        "k",
+        "o",
+        "p",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.9",
+      "latex": "P=\\frac{1}{N_{e}}=\\frac{1}{4N_{em}}+\\frac{1}{4N_{ef}}",
+      "label": "Formula 3.9",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "DIOECY",
+      "position": 10,
+      "context_text": "shared ancestor with probability 0.5, the probability that O inherits both genes from the shared grandparent is 1/4. Thus, the total probability that O inherits two genes from the same grandparent is $$ P=\\frac{1}{N_{e}}=\\frac{1}{4N_{em}}+\\frac{1}{4N_{ef}} $$ (3.9)",
+      "symbols_used": [
+        "N",
+        "P",
+        "e",
+        "f",
+        "m"
+      ],
+      "symbols_defined": [
+        "P"
+      ]
+    },
+    {
+      "id": "formula_3.10",
+      "latex": "N_{es}=\\frac{\\mu_{sk}N_{s,t-2}-1}{\\left(\\sigma_{sk}^{2}/\\mu_{sk}\\right)+\\mu_{sk}-1}",
+      "label": "Formula 3.10",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "DIOECY",
+      "position": 11,
+      "context_text": "(including no prohibition of mating between sibs), the effective number of each sex can be derived by the same method used to obtain Equation 3.3. Skipping the intermediate steps, we simply note that $$ N_{es}=\\frac{\\mu_{sk}N_{s,t-2}-1}{\\left(\\sigma_{sk}^{2}/\\mu_{sk}\\right)+\\mu_{sk}-1} $$ (3.10) where $s$ denotes the sex $(m$ or $f)$, and $\\mu_{sk}$ and $\\sigma_{sk}^{2}$ are the mean and variance of gamete production by sex $s$ (Crow and Denniston 1988). Latter (1959) provided a more elabora",
+      "symbols_used": [
+        "N",
+        "\\mu",
+        "\\sigma",
+        "e",
+        "k",
+        "s",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e",
+        "s"
+      ]
+    },
+    {
+      "id": "formula_3.11a",
+      "latex": "N_{em}=\\frac{4N_{m,t-2}}{2+\\sigma_{mm}^{2}+\\frac{2(1-\\phi)}{\\phi}\\sigma_{mm,mf}+\\left(\\frac{1-\\phi}{\\phi}\\right)^{2}\\sigma_{mf}^{2}}",
+      "label": "Formula 3.11a",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "DIOECY",
+      "position": 12,
+      "context_text": "vided a more elaborate expression for $N_{es}$ that explicitly accounts for the variance and covariance of male and female progeny production. Letting $\\phi$ be the sex ratio (proportion of females), $$ N_{em}=\\frac{4N_{m,t-2}}{2+\\sigma_{mm}^{2}+\\frac{2(1-\\phi)}{\\phi}\\sigma_{mm,mf}+\\left(\\frac{1-\\phi}{\\phi}\\right)^{2}\\sigma_{mf}^{2}} $$ (3.11a) $$ N_{ef}=\\frac{4N_{f,t-2}}{2+\\sigma_{ff}^{2}+\\frac{2\\phi}{1-\\phi}\\sigma_{fm,ff}+\\left(\\frac{\\phi}{1-\\phi}\\right)^{2}\\sigma_{fm}^{2}} $$ (3.11b) where for male parents, $ \\sigma_{mm}^{2} $ is the var",
+      "symbols_used": [
+        "N",
+        "\\phi",
+        "\\sigma",
+        "e",
+        "f",
+        "m",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e",
+        "m"
+      ]
+    },
+    {
+      "id": "formula_3.11b",
+      "latex": "N_{ef}=\\frac{4N_{f,t-2}}{2+\\sigma_{ff}^{2}+\\frac{2\\phi}{1-\\phi}\\sigma_{fm,ff}+\\left(\\frac{\\phi}{1-\\phi}\\right)^{2}\\sigma_{fm}^{2}}",
+      "label": "Formula 3.11b",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "DIOECY",
+      "position": 13,
+      "context_text": "ing $\\phi$ be the sex ratio (proportion of females), $$ N_{em}=\\frac{4N_{m,t-2}}{2+\\sigma_{mm}^{2}+\\frac{2(1-\\phi)}{\\phi}\\sigma_{mm,mf}+\\left(\\frac{1-\\phi}{\\phi}\\right)^{2}\\sigma_{mf}^{2}} $$ (3.11a) $$ N_{ef}=\\frac{4N_{f,t-2}}{2+\\sigma_{ff}^{2}+\\frac{2\\phi}{1-\\phi}\\sigma_{fm,ff}+\\left(\\frac{\\phi}{1-\\phi}\\right)^{2}\\sigma_{fm}^{2}} $$ (3.11b) where for male parents, $ \\sigma_{mm}^{2} $ is the variance of male progeny number, $ \\sigma_{mf}^{2} $ is the variance of female progeny number, and $ \\sigma_{mm,mf} $ is the covariance of male and",
+      "symbols_used": [
+        "N",
+        "\\phi",
+        "\\sigma",
+        "e",
+        "f",
+        "m",
+        "t"
+      ],
+      "symbols_defined": [
+        "N",
+        "e",
+        "f"
+      ]
+    },
+    {
+      "id": "formula_3.12",
+      "latex": "N_{e}=\\frac{4N_{m}N_{f}}{N_{m}+N_{f}}=4\\phi(1-\\phi)N",
+      "label": "Formula 3.12",
+      "section": "GENERAL CONSIDERATIONS",
+      "subsection": "DIOECY",
+      "position": 14,
+      "context_text": "{m,t-1} $ and $ N_{ef} = N_{f,t-1} $. Rearranging Equation 3.9, assuming constant population features and dropping the designation of time, and noting that $ N_m = (1 - \\phi)N $ and $ N_f = \\phi N $, $$ N_{e}=\\frac{4N_{m}N_{f}}{N_{m}+N_{f}}=4\\phi(1-\\phi)N $$ (3.12)",
+      "symbols_used": [
+        "N",
+        "\\phi",
+        "e",
+        "f",
+        "m"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.13",
+      "latex": "T=\\frac{\\sum\\limits_{i=1}^{\\tau}i\\ell_{i}b_{i}}{\\sum\\limits_{i=1}^{\\tau}\\ell_{i}b_{i}}",
+      "label": "Formula 3.13",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "AGE STRUCTURE",
+      "position": 15,
+      "context_text": "nown as the generation time (T), is the average age of parents giving birth, which in turn is a function of the age-specific schedules of survival and reproduction. For an ideal monocious population, $$ T=\\frac{\\sum\\limits_{i=1}^{\\tau}i\\ell_{i}b_{i}}{\\sum\\limits_{i=1}^{\\tau}\\ell_{i}b_{i}} $$ (3.13) where $ \\ell_i $ is the probability of surviving to age $ i $, $ b_i $ is the expected number of offspring produced by parents of age $ i $, and $ \\tau $ is the maximum reproductive age. The quantity",
+      "symbols_used": [
+        "T",
+        "\\tau",
+        "b",
+        "i"
+      ],
+      "symbols_defined": [
+        "T"
+      ]
+    },
+    {
+      "id": "formula_3.14",
+      "latex": "T=\\frac{T_{mm}+T_{mf}+T_{fm}+T_{ff}}{4}",
+      "label": "Formula 3.14",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "AGE STRUCTURE",
+      "position": 16,
+      "context_text": "umber of births by an individual of age $ i $, discounting for prior mortality. For a dioecious population, $ T $ is further complicated by the need to average over males $ (m) $ and females $ (f) $, $$ T=\\frac{T_{mm}+T_{mf}+T_{fm}+T_{ff}}{4} $$ (3.14) where $ T_{mf} $, for example, is the average age of male parents of daughters. The average generation length is the natural time scale for the evolutionary analysis of age-structured populations. Le",
+      "symbols_used": [
+        "T",
+        "f",
+        "m"
+      ],
+      "symbols_defined": [
+        "T"
+      ]
+    },
+    {
+      "id": "formula_3.15",
+      "latex": "N_{e}=\\frac{N_{eb}T}{1+\\left(1-\\phi_{b}\\right)\\sum_{i=1}^{\\tau_{f}}\\left(\\frac{1}{\\ell_{i+1}^{f}}-\\frac{1}{\\ell_{i}^{f}}\\right)\\left(\\sum_{f}\\right)^{2}+\\phi_{b}\\sum_{i=1}^{\\tau_{m}}\\left(\\frac{1}{\\ell_{i+1}^{m}}-\\frac{1}{\\ell_{i}^{m}}\\right)\\left(\\sum_{m}\\right)^{2}}",
+      "label": "Formula 3.15",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "AGE STRUCTURE",
+      "position": 17,
+      "context_text": "$ and $ b_{i} $. Again making the assumption that the population is stable in terms of size, sex ratio, and age composition, the effective size of an age-structured population with separate sexes is $$ N_{e}=\\frac{N_{eb}T}{1+\\left(1-\\phi_{b}\\right)\\sum_{i=1}^{\\tau_{f}}\\left(\\frac{1}{\\ell_{i+1}^{f}}-\\frac{1}{\\ell_{i}^{f}}\\right)\\left(\\sum_{f}\\right)^{2}+\\phi_{b}\\sum_{i=1}^{\\tau_{m}}\\left(\\frac{1}{\\ell_{i+1}^{m}}-\\frac{1}{\\ell_{i}^{m}}\\right)\\left(\\sum_{m}\\right)^{2}} $$ (3.15) where $ (\\sum_s)^2 = \\left( \\sum_{j \\geq i+1} \\ell_j^s b_j^s \\right)^2 $, $ \\tau_s $ is the maximum age of reproduction for sex $ s $, and $ s = m $ or $ f $ (Emigh and Pollak 1979). An analogous exp",
+      "symbols_used": [
+        "N",
+        "T",
+        "\\phi",
+        "\\tau",
+        "b",
+        "e",
+        "f",
+        "i",
+        "m"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.16",
+      "latex": "H_{t}=H_{0}\\prod_{i=0}^{t-1}\\left(1-\\frac{1}{2N_{e,i}}\\right)",
+      "label": "Formula 3.16",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "VARIABLE POPULATION SIZE",
+      "position": 18,
+      "context_text": "terozygosity over $ t $ generations is no longer $ [1 - (1/2N_e)]^t $ but rather is now a product of $ t $ terms, each incorporating the effective population size of a particular generation such that $$ H_{t}=H_{0}\\prod_{i=0}^{t-1}\\left(1-\\frac{1}{2N_{e,i}}\\right) $$ (3.16)",
+      "symbols_used": [
+        "H",
+        "N",
+        "e",
+        "i",
+        "t"
+      ],
+      "symbols_defined": [
+        "H",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.17",
+      "latex": "H_{t}\\simeq H_{0}\\exp\\left(-\\sum_{i=0}^{t-1}\\frac{1}{2N_{e,i}}\\right)",
+      "label": "Formula 3.17",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "VARIABLE POPULATION SIZE",
+      "position": 19,
+      "context_text": "sity after t generations as a population with variable size over the same period. An approximate answer can be obtained by noting that with a moderately large $ N_{e,i} $, Equation 3.16 simplifies to $$ H_{t}\\simeq H_{0}\\exp\\left(-\\sum_{i=0}^{t-1}\\frac{1}{2N_{e,i}}\\right) $$ (3.17) which may be compared to $$ H_{t}\\simeq H_{0}e^{-t/2N_{e}} $$ for the ideal case of constant effective size. Equating the exponents of these two expressions, $$ N_{e}^{*}\\simeq\\frac{t}{1/N_{e,0}+1/N_",
+      "symbols_used": [
+        "H",
+        "N",
+        "\\exp",
+        "e",
+        "i",
+        "t"
+      ],
+      "symbols_defined": [
+        "H",
+        "\\exp",
+        "i",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.18",
+      "latex": "N_{e}^{*}\\simeq\\frac{t}{1/N_{e,0}+1/N_{e,1}+\\cdots+1/N_{e,t-1}}",
+      "label": "Formula 3.18",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "VARIABLE POPULATION SIZE",
+      "position": 20,
+      "context_text": "^{t-1}\\frac{1}{2N_{e,i}}\\right) $$ (3.17) which may be compared to $$ H_{t}\\simeq H_{0}e^{-t/2N_{e}} $$ for the ideal case of constant effective size. Equating the exponents of these two expressions, $$ N_{e}^{*}\\simeq\\frac{t}{1/N_{e,0}+1/N_{e,1}+\\cdots+1/N_{e,t-1}} $$ (3.18)",
+      "symbols_used": [
+        "N",
+        "e",
+        "t"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.19",
+      "latex": "N_{e}=\\frac{2(2-\\beta)N}{\\sigma_{k}^{2}+2(1-\\beta)}",
+      "label": "Formula 3.19",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "PARTIAL INBREEDING",
+      "position": 22,
+      "context_text": "Assuming a constant number of adults, for a population in which a proportion $ \\beta $ of progeny from each family is a product of self-fertilization, $$ N_{e}=\\frac{2(2-\\beta)N}{\\sigma_{k}^{2}+2(1-\\beta)} $$ (3.19)",
+      "symbols_used": [
+        "N",
+        "\\beta",
+        "\\sigma",
+        "e",
+        "k"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.20",
+      "latex": "N_{e}=\\frac{(2-\\beta)N}{2}",
+      "label": "Formula 3.20",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "PARTIAL INBREEDING",
+      "position": 23,
+      "context_text": "gametes, the variance per draw is $ \\simeq 4/N $, yielding a total variance contribution $ \\simeq 4\\beta $; the total variance is then $ \\sigma_k^2 \\simeq 2(1 + \\beta) $, and Equation 3.19 reduces to $$ N_{e}=\\frac{(2-\\beta)N}{2} $$ (3.20)",
+      "symbols_used": [
+        "N",
+        "\\beta",
+        "e"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.21",
+      "latex": "N_{e}\\simeq\\frac{(4-3\\beta)N}{4-2\\beta}+1",
+      "label": "Formula 3.21",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "PARTIAL INBREEDING",
+      "position": 24,
+      "context_text": "e case of species with separate sexes, with $ \\beta $ being the fraction of offspring derived by full-sib mating, and assuming equal numbers of males and females and Poisson-distributed family sizes, $$ N_{e}\\simeq\\frac{(4-3\\beta)N}{4-2\\beta}+1 $$ (3.21)",
+      "symbols_used": [
+        "N",
+        "\\beta",
+        "e"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.22",
+      "latex": "H_{t}=H_{0}(1/2)^{t}",
+      "label": "Formula 3.22",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "position": 25,
+      "context_text": "n of such lines is equivalent to a series of populations, each consisting of a single individual, and after t generations of selfing, the expected fraction of heterozygotes at any locus is reduced to $$ H_{t}=H_{0}(1/2)^{t} $$ (3.22) where $ H_{0} $ denotes the initial level of variation. After t = 3 generations, only 12.5% of the initial heterozygosity remains (Figure 3.1).",
+      "symbols_used": [
+        "H",
+        "t"
+      ],
+      "symbols_defined": [
+        "H",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.23a",
+      "latex": "f_{t}=\\frac{1}{4}(1+2f_{t-1}+f_{t-2})",
+      "label": "Formula 3.23a",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "position": 26,
+      "context_text": "alleles identical by descent can appear in the same individual. Written in terms of the inbreeding coefficient, such that $ H_t = (1 - f_t)H_0 $, the exact recursion equation under full-sib mating is $$ f_{t}=\\frac{1}{4}(1+2f_{t-1}+f_{t-2}) $$ (3.23a) and in one of the first applications of matrices in population genetics, Haldane (1937a) provided the approximation $$ H_{t}\\simeq H_{0}(0.81)^{t} $$ (3.23b)",
+      "symbols_used": [
+        "f",
+        "t"
+      ],
+      "symbols_defined": [
+        "f",
+        "t"
+      ]
+    },
+    {
+      "id": "formula_3.23b",
+      "latex": "H_{t}\\simeq H_{0}(0.81)^{t}",
+      "label": "Formula 3.23b",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "position": 27,
+      "context_text": "uation under full-sib mating is $$ f_{t}=\\frac{1}{4}(1+2f_{t-1}+f_{t-2}) $$ (3.23a) and in one of the first applications of matrices in population genetics, Haldane (1937a) provided the approximation $$ H_{t}\\simeq H_{0}(0.81)^{t} $$ (3.23b)",
+      "symbols_used": [
+        "H",
+        "t"
+      ],
+      "symbols_defined": [
+        "H"
+      ]
+    },
+    {
+      "id": "formula_3.24",
+      "latex": "H_{t}\\simeq H_{0}(0.92)^{t}",
+      "label": "Formula 3.24",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "position": 28,
+      "context_text": "-cousins (Figure 3.2, left). Starting with four unrelated individuals, it then takes three generations for alleles that are identical by descent (IBD) to appear in the same individual, and thereafter $$ H_{t}\\simeq H_{0}(0.92)^{t} $$ (3.24)",
+      "symbols_used": [
+        "H",
+        "t"
+      ],
+      "symbols_defined": [
+        "H"
+      ]
+    },
+    {
+      "id": "formula_3.25",
+      "latex": "\\begin{align*}H_t\\simeq H_0\\left(1-{1\\over4N}\\right)^t\\end{align*}",
+      "label": "Formula 3.25",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "position": 29,
+      "context_text": "s the outcome of all families producing equal numbers of offspring. In fact, even under a random-mating scheme, if family sizes are equilibrated, provided $N \\geq 4$, the erosion of heterozygosity is $$ \\begin{align*}H_t\\simeq H_0\\left(1-{1\\over4N}\\right)^t\\end{align*} $$ (3.25) where $t$ is the number of generations after the onset of inbreeding (Wright 1951). This can be seen by returning to many of the formulae in the earlier sections of this chapter and setting $\\sigma_k",
+      "symbols_used": [
+        "H",
+        "N",
+        "t"
+      ],
+      "symbols_defined": [
+        "H"
+      ]
+    },
+    {
+      "id": "formula_3.26",
+      "latex": "N_{e}=Nd+\\frac{(d-1)^{2}}{4dm}",
+      "label": "Formula 3.26",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "POPULATION SUBDIVISION",
+      "position": 31,
+      "context_text": "for an ideal, random-mating population is 2N generations, Equation 2.45b (giving the mean coalescence time under this population structure) implies an effective size for the overall metapopulation of $$ N_{e}=Nd+\\frac{(d-1)^{2}}{4dm} $$ (3.26)",
+      "symbols_used": [
+        "N",
+        "d",
+        "e",
+        "m"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.27a",
+      "latex": "N_{e}\\simeq N d\\frac{\\left[4m+(1/N)\\right]}{4(e+m)}",
+      "label": "Formula 3.27a",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "POPULATION SUBDIVISION",
+      "position": 32,
+      "context_text": "e two examples for the propagule-pool model. If the extinction rate is smaller than the migration rate ( $ e \\leq m $) and much smaller than the relative size of the colonizing pool ( $ e \\ll k/N $), $$ N_{e}\\simeq N d\\frac{\\left[4m+(1/N)\\right]}{4(e+m)} $$ (3.27a) a result also obtained by Maruyama and Kimura (1980) and Whitlock and Barton (1997). Under these conditions, local extinctions are sufficiently rare that within-deme variation is able to recover subs",
+      "symbols_used": [
+        "N",
+        "d",
+        "e",
+        "m"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.27b",
+      "latex": "N_{e}\\simeq\\frac{d}{4e}",
+      "label": "Formula 3.27b",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "POPULATION SUBDIVISION",
+      "position": 33,
+      "context_text": "and although $ N_e < N_d $, it approaches the latter value as $ e \\to 0 $ unless $ N $ is tiny. On the other hand, if the extinction rate is relatively high, such that $ e \\gg m $ and $ e \\gg k/N $, $$ N_{e}\\simeq\\frac{d}{4e} $$ (3.27b)",
+      "symbols_used": [
+        "N",
+        "d",
+        "e"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.28",
+      "latex": "N_{e}\\simeq\\frac{d(1+4N m)}{4m+2\\sigma_{K}^{2}(1+2m)}",
+      "label": "Formula 3.28",
+      "section": "The Genetic Effective Size of a Population: Introduction",
+      "subsection": "POPULATION SUBDIVISION",
+      "position": 34,
+      "context_text": "al expression for the effective size of a metapopulation under the island model was derived by Whitlock and Barton (1997). Assuming large $d$, so that $d \\simeq d - 1$ as a first-order approximation, $$ N_{e}\\simeq\\frac{d(1+4N m)}{4m+2\\sigma_{K}^{2}(1+2m)} $$ (3.28) where $ \\sigma_K^2 $ denotes the among-deme variance in the number of gametes contributing to the next generation (the analogue for the variance $ \\sigma_k^2 $ in individual contributions). Comparing",
+      "symbols_used": [
+        "K",
+        "N",
+        "\\sigma",
+        "d",
+        "e",
+        "m"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.29a",
+      "latex": "N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4\\sigma_{w}^{2}}",
+      "label": "Formula 3.29a",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Effects From Selection at Unlinked Loci",
+      "position": 37,
+      "context_text": "d sex ratio and $ N/2 $ families. For populations with features in accordance with the standard Wright-Fisher model, a single generation of selection will then reduce the effective population size to $$ N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4\\sigma_{w}^{2}} $$ (3.29a) which is identical in form to Equation 3.4 except for the additional variance associated with selection in the denominator. Note that because $ \\sigma_w^2 $ is the variance in relative fitness among",
+      "symbols_used": [
+        "N",
+        "\\sigma",
+        "e",
+        "k",
+        "w"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.29b",
+      "latex": "N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4[2/(1+L)]^{2}\\sigma_{w}^{2}}",
+      "label": "Formula 3.29b",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Effects From Selection at Unlinked Loci",
+      "position": 38,
+      "context_text": "series simply has terms in powers of $ (1-L)/2 $ instead of $ 1/2 $, and again after converting the variance in relative fitness to the absolute scale, the long-term effective population size becomes $$ N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4[2/(1+L)]^{2}\\sigma_{w}^{2}} $$ (3.29b)",
+      "symbols_used": [
+        "L",
+        "N",
+        "\\sigma",
+        "e",
+        "k",
+        "w"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.29c",
+      "latex": "N_{e}=\\frac{N}{1+4\\sigma_{w}^{2}}",
+      "label": "Formula 3.29c",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Effects From Selection at Unlinked Loci",
+      "position": 39,
+      "context_text": "reflects random gamete sampling, then from above $ \\sigma_k^2 \\simeq 2 $, and under Robertson’s assumption of no reduction in variance by selection ( $ L = 0 $), the long-term effective size becomes $$ N_{e}=\\frac{N}{1+4\\sigma_{w}^{2}} $$ (3.29c)",
+      "symbols_used": [
+        "N",
+        "\\sigma",
+        "e",
+        "w"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.30a",
+      "latex": "N_{e}\\simeq\\frac{N}{1+2N\\delta}",
+      "label": "Formula 3.30a",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Selective Sweeps and Genetic Draft",
+      "position": 40,
+      "context_text": "ghted sum of both contributions $ \\sim p(1 - p)\\{[1 - \\delta)/(2N)] + \\delta\\} $. Because this expression applies to all initial allele frequencies, equating the term in braces to $ 1/(2N_e) $ yields $$ N_{e}\\simeq\\frac{N}{1+2N\\delta} $$ (3.30a) a result also obtained by Maruyama and Birky (1991) by a different method. Here and below, it is appropriate to view N as the effective size of a population based solely on the demographic considerat",
+      "symbols_used": [
+        "N",
+        "\\delta",
+        "e"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.30b",
+      "latex": "N_{e}\\simeq\\frac{N}{1+2N f_{s}\\delta}",
+      "label": "Formula 3.30b",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Selective Sweeps and Genetic Draft",
+      "position": 41,
+      "context_text": ") led to an expression identical in form to Equation 3.30a, with $ 2N\\delta $ being replaced by a term that is smaller in absolute value. Gillespie (2000) expressed this influence of recombination as $$ N_{e}\\simeq\\frac{N}{1+2N f_{s}\\delta} $$ (3.30b) where $ f_s $ is the probability that no recombination occurs between the selected site and the marker locus under consideration during the sweep. Following the completion of the sweep, $ f_s $ is eq",
+      "symbols_used": [
+        "N",
+        "\\delta",
+        "e",
+        "f",
+        "s"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.31",
+      "latex": "f_{s}\\simeq(4N s)^{-c/s}",
+      "label": "Formula 3.31",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Selective Sweeps and Genetic Draft",
+      "position": 42,
+      "context_text": "the gamete in which the new favorable mutation arose. With free recombination $ f_s \\simeq 0 $, but with complete linkage, $ f_s = 1 $, returning us to Equation 3.30a. The general form for $ f_s $ is $$ f_{s}\\simeq(4N s)^{-c/s} $$ (3.31) which will be further discussed in Chapter 8.",
+      "symbols_used": [
+        "N",
+        "c",
+        "f",
+        "s"
+      ],
+      "symbols_defined": [
+        "f"
+      ]
+    },
+    {
+      "id": "formula_3.32",
+      "latex": "N_{e}\\simeq\\frac{N}{1+2U s}\\simeq N e^{-2U s}",
+      "label": "Formula 3.32",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Background Selection",
+      "position": 43,
+      "context_text": "fitness is $Us/2$ after discounting by averaging over both parents. This shows that in the absence of any linkage, deleterious mutations are expected to cause a relatively small reduction in $N_{e}$, $$ N_{e}\\simeq\\frac{N}{1+2U s}\\simeq N e^{-2U s} $$ (3.32) with the exponential approximation applying under the assumption that $ U s \\ll 1 $. This assumption is justified by numerous observations suggesting that U is on the order of 0.1 to 1.0 and s is on",
+      "symbols_used": [
+        "N",
+        "U",
+        "e",
+        "s"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.33",
+      "latex": "N_{e}\\simeq N e^{-u s/c^{2}}",
+      "label": "Formula 3.33",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Background Selection",
+      "position": 44,
+      "context_text": "$ 1/c^{2} $ to the variance. Thus, a single selected locus is expected to reduce the variation at a linked neutral locus, which in effect causes a local depression in the effective population size to $$ N_{e}\\simeq N e^{-u s/c^{2}} $$ (3.33)",
+      "symbols_used": [
+        "N",
+        "c",
+        "e",
+        "s",
+        "u"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.34",
+      "latex": "N_{e}=N e^{-U/(2s)}",
+      "label": "Formula 3.34",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Background Selection",
+      "position": 45,
+      "context_text": "ruyama 1966), the frequency of such mutation-free gametes is simply $ e^{-U/(2s)} $, leading to the conclusion that with complete linkage, selection against segregating deleterious mutations leads to $$ N_{e}=N e^{-U/(2s)} $$ (3.34)",
+      "symbols_used": [
+        "N",
+        "U",
+        "e",
+        "s"
+      ],
+      "symbols_defined": [
+        "N",
+        "e"
+      ]
+    },
+    {
+      "id": "formula_3.35a",
+      "latex": "N_{e}\\simeq N e^{-U/(2s+C)}",
+      "label": "Formula 3.35a",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Background Selection",
+      "position": 46,
+      "context_text": "Hudson and Kaplan (1994) extended this result to allow for recombination, assuming that the latter operates at uniform rates per physical distance over chromosomal regions. Their results show that $$ N_{e}\\simeq N e^{-U/(2s+C)} $$ (3.35a) where $C$ denotes the rate of recombination between the ends of the region. Because $1/(2s + C) \\gg s$, Equation 3.35a predicts a much smaller $N_e$ than that obtained for freely recombining loci (Eq",
+      "symbols_used": [
+        "C",
+        "N",
+        "U",
+        "e",
+        "s"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    },
+    {
+      "id": "formula_3.35b",
+      "latex": "N_{e}\\simeq N e^{-U/C}",
+      "label": "Formula 3.35b",
+      "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
+      "subsection": "Background Selection",
+      "position": 47,
+      "context_text": "loci in the immediate vicinity of the neutral locus. Moreover, because $s$ is expected to be $\\ll 1$, and for an entire chromosome, $C$ is of order 1.0, Equation 3.35a can be roughly approximated as $$ N_{e}\\simeq N e^{-U/C} $$ (3.35b) where U/C is equivalent to the diploid deleterious mutation rate per unit of recombination (Hudson and Kaplan 1994, 1995). This result, which has been obtained by several different methods (Barton 19",
+      "symbols_used": [
+        "C",
+        "N",
+        "U",
+        "e"
+      ],
+      "symbols_defined": [
+        "N"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "dependent_id": "formula_3.1",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.17",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.2",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.17",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.32",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35a",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.3",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.2",
+          "via_symbol": "Equation 3.2",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.2",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.4",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.2",
+          "via_symbol": "Equation 3.2",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.2",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.5",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.4",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.32",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35a",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.6",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.3",
+          "via_symbol": "Equation 3.3",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.3",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.5",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.7",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.3",
+          "via_symbol": "Equation 3.3",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.3",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.8",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.6",
+          "via_symbol": "Equation 3.6",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.6",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "o",
+          "definition": "Local variable used near Formula 3.8",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_003",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.8",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.9a",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.9b",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.10",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.5",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.9",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.8",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.1",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.10",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.3",
+          "via_symbol": "Equation 3.3",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.3",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.5",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.11a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34b",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.1",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.5",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.11b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34b",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.5",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.12",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.9",
+          "via_symbol": "Equation 3.9",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.9",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34b",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11b",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.13",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.13",
+          "via_symbol": "\\tau",
+          "relation": "defines_symbol",
+          "reason": "\\tau matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "b",
+          "definition": "Local variable used near Formula 3.13",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_005",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.32",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35a",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.14",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.11b",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.15",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.14",
+          "via_symbol": "T",
+          "relation": "defines_symbol",
+          "reason": "T defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.25a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34a",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.34b",
+          "via_symbol": "\\phi",
+          "relation": "defines_symbol",
+          "reason": "\\phi matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.13",
+          "via_symbol": "\\tau",
+          "relation": "defines_symbol",
+          "reason": "\\tau matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "b",
+          "definition": "Local variable used near Formula 3.15",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_005",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11b",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.32",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35a",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.16",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.15",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.1",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.32",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35a",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.35b",
+          "via_symbol": "i",
+          "relation": "defines_symbol",
+          "reason": "i matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.17",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.16",
+          "via_symbol": "Equation 3.16",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.16",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.15",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.18",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.15",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.17",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.19",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.20",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.19",
+          "via_symbol": "Equation 3.19",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.19",
+          "confidence": 0.95,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.21",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.20",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.22",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_3.23a",
+      "prerequisites": []
+    },
+    {
+      "dependent_id": "formula_3.23b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.23a",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.24",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.23a",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.25",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.21",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.23a",
+          "via_symbol": "t",
+          "relation": "defines_symbol",
+          "reason": "t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.26",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.45b",
+          "via_symbol": "Equation 2.45b",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 2.45b",
+          "confidence": 0.95,
+          "cross_chapter": true
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.47b",
+          "via_symbol": "d",
+          "relation": "defines_symbol",
+          "reason": "d matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.27a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.47b",
+          "via_symbol": "d",
+          "relation": "defines_symbol",
+          "reason": "d matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.26",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.27b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.47b",
+          "via_symbol": "d",
+          "relation": "defines_symbol",
+          "reason": "d matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.26",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.28",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "K",
+          "definition": "Local variable used near Formula 3.28",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_009",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.47b",
+          "via_symbol": "d",
+          "relation": "defines_symbol",
+          "reason": "d matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.26",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.11a",
+          "via_symbol": "m",
+          "relation": "defines_symbol",
+          "reason": "m defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.29a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.4",
+          "via_symbol": "Equation 3.4",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.4",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.26",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.29b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.30a",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.30b",
+          "via_symbol": "L",
+          "relation": "defines_symbol",
+          "reason": "L matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.26",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.16b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31a",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.31b",
+          "via_symbol": "k",
+          "relation": "defines_symbol",
+          "reason": "k matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.29c",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.14a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.21",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.26b",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.27a",
+          "via_symbol": "\\sigma",
+          "relation": "defines_symbol",
+          "reason": "\\sigma matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.30a",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.29c",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.30b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.30a",
+          "via_symbol": "Equation 3.30a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.30a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.29c",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.23a",
+          "via_symbol": "f",
+          "relation": "defines_symbol",
+          "reason": "f defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.31",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.30a",
+          "via_symbol": "Equation 3.30a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.30a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.30b",
+          "via_symbol": "N",
+          "relation": "defines_symbol",
+          "reason": "N defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.37",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.38",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.39",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.41",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.32",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "U",
+          "definition": "Local variable used near Formula 3.32",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.29c",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.33",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_2.37",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.38",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.39",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_2.41",
+          "via_symbol": "c",
+          "relation": "defines_symbol",
+          "reason": "c matched earlier chapter definition",
+          "confidence": 0.78,
+          "cross_chapter": true,
+          "match_type": "exact"
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.29c",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.34",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "U",
+          "definition": "Local variable used near Formula 3.34",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.35a",
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "symbol": "C",
+          "definition": "Local variable used near Formula 3.35a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "U",
+          "definition": "Local variable used near Formula 3.35a",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.34",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.10",
+          "via_symbol": "s",
+          "relation": "defines_symbol",
+          "reason": "s defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.35b",
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.35a",
+          "via_symbol": "Equation 3.35a",
+          "relation": "explicit_reference",
+          "reason": "Context explicitly references Equation 3.35a",
+          "confidence": 0.95,
+          "cross_chapter": false
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "C",
+          "definition": "Local variable used near Formula 3.35b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "variable_definition",
+          "symbol": "U",
+          "definition": "Local variable used near Formula 3.35b",
+          "source": "nearby_text",
+          "source_chunk_id": "chapter3_013",
+          "confidence": 0.45
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_3.34",
+          "via_symbol": "e",
+          "relation": "defines_symbol",
+          "reason": "e defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false
+        }
+      ]
+    }
+  ],
+  "symbol_index": {
+    "f": [
+      "formula_3.1::f",
+      "formula_3.11b::f",
+      "formula_3.23a::f",
+      "formula_3.31::f"
+    ],
+    "t": [
+      "formula_3.1::t",
+      "formula_3.2::t",
+      "formula_3.5::t",
+      "formula_3.16::t",
+      "formula_3.17::t",
+      "formula_3.22::t",
+      "formula_3.23a::t"
+    ],
+    "P": [
+      "formula_3.2::P",
+      "formula_3.5::P",
+      "formula_3.9::P"
+    ],
+    "N": [
+      "formula_3.3::N",
+      "formula_3.4::N",
+      "formula_3.6::N",
+      "formula_3.7::N",
+      "formula_3.8::N",
+      "formula_3.10::N",
+      "formula_3.11a::N",
+      "formula_3.11b::N",
+      "formula_3.12::N",
+      "formula_3.15::N",
+      "formula_3.18::N",
+      "formula_3.19::N",
+      "formula_3.20::N",
+      "formula_3.21::N",
+      "formula_3.26::N",
+      "formula_3.27a::N",
+      "formula_3.27b::N",
+      "formula_3.28::N",
+      "formula_3.29a::N",
+      "formula_3.29b::N",
+      "formula_3.29c::N",
+      "formula_3.30a::N",
+      "formula_3.30b::N",
+      "formula_3.32::N",
+      "formula_3.33::N",
+      "formula_3.34::N",
+      "formula_3.35a::N",
+      "formula_3.35b::N"
+    ],
+    "e": [
+      "formula_3.3::e",
+      "formula_3.4::e",
+      "formula_3.6::e",
+      "formula_3.7::e",
+      "formula_3.8::e",
+      "formula_3.10::e",
+      "formula_3.11a::e",
+      "formula_3.11b::e",
+      "formula_3.12::e",
+      "formula_3.15::e",
+      "formula_3.19::e",
+      "formula_3.20::e",
+      "formula_3.26::e",
+      "formula_3.29c::e",
+      "formula_3.34::e"
+    ],
+    "s": [
+      "formula_3.10::s"
+    ],
+    "m": [
+      "formula_3.11a::m"
+    ],
+    "T": [
+      "formula_3.13::T",
+      "formula_3.14::T"
+    ],
+    "H": [
+      "formula_3.16::H",
+      "formula_3.17::H",
+      "formula_3.22::H",
+      "formula_3.23b::H",
+      "formula_3.24::H",
+      "formula_3.25::H"
+    ],
+    "\\exp": [
+      "formula_3.17::\\exp"
+    ],
+    "i": [
+      "formula_3.17::i"
+    ]
+  },
+  "ambiguous": []
+}

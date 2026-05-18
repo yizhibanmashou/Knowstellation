@@ -1,0 +1,77 @@
+{
+  "id": "chapter6_010",
+  "metadata": {
+    "chapter": "chapter6",
+    "section": "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+    "subsections": [
+      "The Classical Interpretation of Fisher's Fundamental Theorem, $ R_w = \\sigma_A^2(w) $"
+    ],
+    "source_file": "tmp\\paddle_output\\chapter6_full\\main.tex",
+    "source_title": "Evolution and Selection of Quantitative Traits",
+    "formula_references": [
+      "6.17a",
+      "6.17b",
+      "6.17c",
+      "6.18a",
+      "6.18b",
+      "6.18c",
+      "6.18d",
+      "6.18e",
+      "6.18f",
+      "6.18g",
+      "6.19",
+      "6.20a",
+      "6.20b"
+    ],
+    "table_references": [],
+    "section_level_1": "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+    "section_level_2": "The Classical Interpretation of Fisher's Fundamental Theorem, $ R_w = \\sigma_A^2(w) $",
+    "heading_path": [
+      "FISHER'S FUNDAMENTAL THEOREM OF NATURAL SELECTION",
+      "The Classical Interpretation of Fisher's Fundamental Theorem, $ R_w = \\sigma_A^2(w) $"
+    ],
+    "display_heading": "The Classical Interpretation of Fisher's Fundamental Theorem, $ R_w = \\sigma_A^2(w) $"
+  },
+  "blocks": [
+    {
+      "type": "derivation",
+      "content": "One way to demystify the classical version of Fisher's theorem is to suppose that fitness is just a trait, and use the breeder's equation, $ R = h^2 S $, to predict the response to selection on that trait. Letting $ z = W $, and recalling that $ w = W/\\overline{W} $, the Robertson-Price identity (Equation 6.10) yields the selection differential [[SEE_FORMULA:6.17a]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Substituting into the breeder's equation shows [[SEE_FORMULA:6.17b]]"
+    },
+    {
+      "type": "derivation",
+      "content": "Expressed in terms of relative fitnesses, [[SEE_FORMULA:6.17c]] recovering the classical view of Fisher’s theorem."
+    },
+    {
+      "type": "derivation",
+      "content": "One can also use a population-genetics framework to motivate Fisher’s theorem in terms of allele-frequency change. Consider a diallelic locus with constant fitnesses under random mating, and define $ \\overline{W}(p) $ to be the mean population fitness at allele frequency $ p $ (Equation 5.1a). The change in mean fitness is a function of the allele-frequency change, $ \\Delta p $, [[SEE_FORMULA:6.18a]]"
+    },
+    {
+      "type": "derivation",
+      "content": "If the allele-frequency change is small, a first-order Taylor-series approximation yields [[SEE_FORMULA:6.18b]] so [[SEE_FORMULA:6.18c]] From Equation 5.5a [[SEE_FORMULA:6.18d]] where the last equality follows from the definition of the average effects (under random mating; see LW Chapter 4) of alleles A and a on fitness, namely, [[SEE_FORMULA:6.18e]]"
+    },
+    {
+      "type": "discussion",
+      "content": "Recall that the quantity $ \\alpha = \\alpha_A - \\alpha_a $ is the average effect of an allelic substitution (LW Equation 4.6), as the difference in the average effects of these two alleles yields the mean effect on fitness from replacing a randomly chosen $ a $ allele with an $ A $ allele."
+    },
+    {
+      "type": "derivation",
+      "content": "Applying Wright’s formula (Equation 5.5b) together with Equation 6.18d returns [[SEE_FORMULA:6.18f]] and substitution into Equation 6.18c then yields [[SEE_FORMULA:6.18g]]"
+    },
+    {
+      "type": "derivation",
+      "content": "The last step follows from the fact that the additive genetic variance is related to $ \\alpha $ by $ \\sigma_A^2 = 2p(1 - p)\\alpha^2 $ (LW Equation 4.12a). Thus, under this approximation of small allele-frequency change (in which terms of order $ (\\Delta p)^2 $ can be ignored), the change in mean fitness is indeed proportional to the additive genetic variance in fitness. As Example 6.4 (below) highlights, Equation 6.18g, and thus the classical view of Fisher's theorem, is only approximate. Under what conditions does this expression actually hold? While Equation 6.18g is correct for multiple additive loci (i.e., no dominance or epistasis) under both random and nonrandom mating (Kempthorne 1957; Ewens 1969), it is generally compromised by departures from additivity. Even when the theorem does not hold exactly, does it still remain a good approximation? Nagylaki (1976a, 1977a, 1977b, 1991, 1992b, 1993) examined ever more general models of fitness under the assumption of weak selection (i.e., the fitness of genotypes being approximately $ 1 + bs $ with $ s $ small and $ |b| \\ll 1 $) and random mating. Selection is further assumed to be much weaker than the recombination frequency $ c_{min} $ for the closest pair of loci under selection ($ s \\ll c_{min} $). Under these conditions, the evolution of mean fitness falls into three distinct stages. During the first phase (roughly $ t < 2 \\ln s / \\ln [1 - c_{min}] $ generations), any initial disequilibrium has a transient impact on the dynamics until the point where disequilibrium reaches a steady-state value. At this point, we enter the central phase, with the change in mean fitness becoming [[SEE_FORMULA:6.19]] where $ O(s^{3}) $ means that terms on the order of $ s^{3} $ have been ignored. Because additive genetic variance is expected to be of order $ s^{2} $, Fisher's theorem is expected to hold to a good approximation during this period. The central phase of evolution lasts roughly 1/s generations. However, as gametic frequencies approach their equilibrium values, we reach the third phase, where the additive variance in fitness can be much smaller than order $ s^{2} $, in which case terms of order $ s^{3} $ can be important. During the first and third phases, mean fitness can decrease, but the fundamental theorem holds during the central phase of evolution. Because we expect the bulk of evolution (the majority of change in $ \\overline{W} $) to occur during this middle phase, Fisher's theorem approximately holds over the major part of evolutionary change. While Nagylaki's results are weak-selection approximations, we often expect weak selection to be the norm for quantitative traits, as even strong selection on a trait translates into weak selection on the underlying loci if each of these has a small effect (Equation 5.21)."
+    },
+    {
+      "type": "derivation",
+      "content": "Unlike Fisher’s theorem, because Price’s theorem is exact, we can go further and apply Price’s results to make an exact statement about the evolution of mean fitness. Letting $ z_{i} = A_{i} $ denote the breeding value for the fitness of the ith midparent, the mean breeding value in their offspring becomes [[SEE_FORMULA:6.20a]] where (as above) $ \\overline{\\delta}_i $ is the difference between the trait value in the ancestor (the breeding value of the midparent) and the mean value in its offspring. The phenotypic value of fitness for this midparent (the average of the two parental fitnesses) can be written as $ W_i = A_i + \\epsilon_i $. Substituting these results into Equation 6.7c gives the between-generation change in the mean breeding value ($ \\Delta \\overline{A}_W $) for fitness as [[SEE_FORMULA:6.20b]] where the last expression follows because $ \\sigma(A_i, \\epsilon_i) = 0 $ by construction. When $ E(\\bar{\\delta}_i) = \\sigma(w_i, \\bar{\\delta}_i) = 0 $, we recover the classic version of Fisher's fundamental theorem. If the mean breeding value for offspring is the average of their parent's breeding values, then $ \\bar{\\delta}_i = 0 $ and these conditions hold. Even if not exactly true, often $ \\bar{\\delta}_i $ is very close to zero and the leading term (and hence Fisher's theorem) dominates."
+    },
+    {
+      "type": "example",
+      "content": "[[SEE_EXAMPLE:6.4]]"
+    }
+  ]
+}

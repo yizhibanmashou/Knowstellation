@@ -1,0 +1,39 @@
+.starfield-root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 68% 42%, rgba(39, 174, 96, 0.18), transparent 26%),
+    linear-gradient(135deg, #06060f 0%, #0d1117 58%, #101827 100%);
+  transition: opacity 0.5s ease;
+}
+
+.starfield-root--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.starfield-root--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.starfield-root canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.evolution-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.16;
+  background:
+    repeating-linear-gradient(75deg, transparent 0 42px, rgba(125, 211, 252, 0.08) 43px 44px, transparent 45px 84px),
+    radial-gradient(ellipse at 15% 75%, rgba(167, 243, 208, 0.18), transparent 24%),
+    radial-gradient(ellipse at 82% 18%, rgba(147, 197, 253, 0.14), transparent 22%);
+  mix-blend-mode: screen;
+}

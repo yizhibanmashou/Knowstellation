@@ -1,0 +1,49 @@
+{
+  "paths": [
+    {
+      "id": "population-genetics-foundations",
+      "title": "群体遗传学基础",
+      "description": "Curated formula sequence for guided exploration.",
+      "formula_ids": [
+        "formula_2.1",
+        "formula_2.2a",
+        "formula_2.3",
+        "formula_3.1",
+        "formula_3.5"
+      ]
+    },
+    {
+      "id": "selection-detection",
+      "title": "选择检测方法",
+      "description": "Curated formula sequence for guided exploration.",
+      "formula_ids": [
+        "formula_9.21a",
+        "formula_10.1a",
+        "formula_10.2a",
+        "formula_10.5a",
+        "formula_10.6a"
+      ]
+    },
+    {
+      "id": "quantitative-traits",
+      "title": "数量性状建模",
+      "description": "Curated formula sequence for guided exploration.",
+      "formula_ids": [
+        "formula_4.1",
+        "formula_6.6",
+        "formula_6.10",
+        "formula_13.1"
+      ]
+    },
+    {
+      "id": "molecular-evolution",
+      "title": "分子进化",
+      "description": "Curated formula sequence for guided exploration.",
+      "formula_ids": [
+        "formula_3.1",
+        "formula_4.3a",
+        "formula_10.1a"
+      ]
+    }
+  ]
+}
