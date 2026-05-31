@@ -10,6 +10,8 @@
 </p>
 
 <p align="center">
+  <a href="https://litgraph-rag.pages.dev/"><strong>Live demo</strong></a>
+  |
   <a href="#quick-start"><strong>Quick start</strong></a>
   |
   <a href="#product-tour"><strong>Product tour</strong></a>
@@ -28,6 +30,8 @@
 </p>
 
 LitGraph-RAG turns a textbook's formulas into an explorable learning graph. It combines a conservative dependency pipeline with a polished React interface: students can search a formula, inspect its symbols, unfold prerequisites step by step, and follow storyline paths through the book.
+
+Live demo: [https://litgraph-rag.pages.dev/](https://litgraph-rag.pages.dev/)
 
 The project is intentionally strict about graph quality. Exact references, exact or canonical symbol matches, compound formula groups, and explicit text definitions can enter the main graph. Family-only symbol matches stay as ambiguous audit candidates instead of becoming accepted prerequisite edges.
 
@@ -68,10 +72,10 @@ Storylines turn scattered formulas into a readable sequence. Each route explains
 
 ### Formula dependency map
 
-The chapter graph makes formula relationships visible at a glance. Active edges show which formulas feed into the selected node, while the minimap stays available for fast navigation.
+Guided expansion turns a formula into a local dependency neighborhood. Active edges show how prerequisite formulas feed into the selected card, while the minimap keeps the chapter context available for fast navigation.
 
 <p align="center">
-  <img src="public/assets/readme/minimap.png" alt="Formula dependency map with active edges" width="100%">
+  <img src="public/assets/readme/minimap.png" alt="Formula 6.16b dependency neighborhood with active edges and minimap" width="100%">
 </p>
 
 ## Demo Flow
