@@ -45,6 +45,14 @@ input {
   background: rgba(8, 22, 43, 0.96) !important;
 }
 
+.app-header .search-bar {
+  flex: 0 1 360px;
+}
+
+.chapter-starfield-reserve {
+  --starfield-right-reserve: 400px;
+}
+
 .search-bar__input--nav:-webkit-autofill,
 .search-bar__input--nav:-webkit-autofill:hover,
 .search-bar__input--nav:-webkit-autofill:focus {
@@ -148,6 +156,16 @@ input {
   transition: opacity 160ms ease, transform 180ms ease, border-color 180ms ease;
 }
 
+.math-symbol-hotspot[data-compound-shape="fraction"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.math-symbol-hotspot[data-compound-shape="fraction"]::before {
+  inset: 0.02em -0.22em;
+  transform: none;
+}
+
 .math-symbol-hotspot:hover,
 .math-symbol-hotspot:focus-visible {
   color: #f0f9ff;
@@ -159,6 +177,11 @@ input {
   border-color: rgba(186, 230, 253, 0.55);
   opacity: 1;
   transform: scaleX(1);
+}
+
+.math-symbol-hotspot[data-compound-shape="fraction"]:hover::before,
+.math-symbol-hotspot[data-compound-shape="fraction"]:focus-visible::before {
+  transform: none;
 }
 
 .math-formula--inline .math-formula__viewport {
@@ -482,6 +505,192 @@ input {
   border-color: rgba(56, 189, 248, 0.4);
   color: #38bdf8;
   background: rgba(56, 189, 248, 0.08);
+}
+
+@media (max-width: 900px) {
+  .chapter-starfield-reserve {
+    --starfield-right-reserve: 0px;
+  }
+
+  .chapter-topbar {
+    left: 18px;
+    right: 18px;
+    top: 18px;
+    gap: 12px;
+  }
+
+  .chapter-topbar__search {
+    min-width: 0;
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    height: auto;
+    min-height: 72px;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .app-brand {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .app-brand__copy {
+    min-width: 0;
+  }
+
+  .app-brand__subtitle {
+    display: none;
+  }
+
+  .app-header .search-bar {
+    min-width: 0;
+    flex: 1 1 168px;
+    width: min(236px, 54vw);
+  }
+
+  .app-header .search-results-panel {
+    left: auto;
+    right: 0;
+    width: min(360px, calc(100vw - 28px));
+  }
+
+  .chapter-back-button {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .chapter-entry-panel--mobile {
+    margin-top: 660px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-brand span.flex {
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-brand__copy > span:first-child {
+    max-width: 86px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .app-header .search-bar {
+    width: min(210px, 52vw);
+  }
+
+  .search-results-panel .math-formula__viewport {
+    max-width: 100%;
+  }
+
+  .star-node-card {
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) and (max-width: 960px) {
+  .app-header {
+    min-height: 58px;
+    padding: 7px 12px;
+  }
+
+  .app-brand span.flex {
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-brand__subtitle {
+    display: none;
+  }
+
+  .app-header .search-bar {
+    flex-basis: 260px;
+    width: min(360px, 46vw);
+  }
+
+  .graph-page {
+    padding-top: 58px;
+  }
+
+  .chapter-topbar {
+    left: 16px;
+    right: auto;
+    top: 14px;
+    width: min(420px, calc(100vw - 32px));
+  }
+
+  .chapter-entry-panel--mobile {
+    margin-top: 410px;
+  }
+
+  .home-shell {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .home-search-panel {
+    left: 40px;
+    top: 24px;
+    width: min(360px, calc(100vw - 96px));
+  }
+
+  .home-hero-copy {
+    left: 42px;
+    right: 32px;
+    bottom: 26px;
+    max-width: 720px;
+    padding-top: 0;
+  }
+
+  .home-hero-eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .home-hero-eyebrow p {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .home-hero-title {
+    font-size: clamp(54px, 14vw, 120px);
+    line-height: 0.88;
+  }
+
+  .home-hero-intro {
+    max-width: 560px;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .home-hero-stats {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .home-hero-stats > div {
+    padding: 7px 12px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) and (max-width: 960px) {
+  .app-header--graph {
+    display: none;
+  }
+
+  .graph-page {
+    padding-top: 0;
+  }
 }
 
 @keyframes fadeSlideUp {

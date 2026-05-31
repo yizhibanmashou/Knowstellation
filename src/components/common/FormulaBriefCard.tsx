@@ -1,8 +1,9 @@
 import { MoveUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { buildFormulaLearningCopy, type FormulaBrief } from '../../utils/formulaInfo';
+import { buildReadableFormulaCopy, type FormulaBrief } from '../../utils/formulaInfo';
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../utils/uiCopy';
 import { MathFormula } from './MathFormula';
+import { RichMathText } from './RichMathText';
 
 interface FormulaBriefCardProps {
   brief: FormulaBrief;
@@ -12,10 +13,14 @@ interface FormulaBriefCardProps {
 export function FormulaBriefCard({ brief, compact = false }: FormulaBriefCardProps) {
   const navigate = useNavigate();
   const copy = getUiCopy(DEFAULT_LANGUAGE).formulaCard;
-  const learningCopy = buildFormulaLearningCopy({
+  const learningCopy = buildReadableFormulaCopy({
     language: DEFAULT_LANGUAGE,
     context: compact ? brief.shortContext : brief.longContext,
     chapterTitle: brief.chapter ? copy.chapter.replace('{chapter}', String(brief.chapter)) : undefined,
+    formulaLabel: brief.title,
+    formulaNumber: brief.number,
+    latex: brief.latex,
+    section: brief.section,
   });
 
   return (
@@ -32,13 +37,21 @@ export function FormulaBriefCard({ brief, compact = false }: FormulaBriefCardPro
 
       <section className="formula-brief-card__section formula-brief-card__section--what-it-says">
         <h4>{copy.whatItSays}</h4>
+        <div className="formula-brief-card__copy-block formula-brief-card__copy-block--takeaway">
+          <span>一眼看懂</span>
+          <p><RichMathText text={learningCopy.takeaway} /></p>
+        </div>
         <div className="formula-brief-card__copy-block">
           <span>{copy.plain}</span>
-          <p>{learningCopy.plainMeaning}</p>
+          <p><RichMathText text={learningCopy.plainMeaning} /></p>
         </div>
         <div className="formula-brief-card__copy-block">
           <span>{copy.inChapter}</span>
-          <p>{learningCopy.inThisChapter}</p>
+          <p><RichMathText text={learningCopy.inThisChapter} /></p>
+        </div>
+        <div className="formula-brief-card__copy-block">
+          <span>下一步</span>
+          <p><RichMathText text={learningCopy.nextAction} /></p>
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import type { ChapterLayer, ChapterNavigatorPayload, StudyContext, ThemeRoute } from '../types/learning';
 import { getChapterById, getChapterByNumber } from '../utils/learningNavigator';
 
@@ -10,12 +10,13 @@ interface UseStudyContextInput {
 
 export function useStudyContext({ chapterNavigator, themeRoutes }: UseStudyContextInput): StudyContext {
   const [params] = useSearchParams();
+  const { chapterId: routeChapterId = '' } = useParams();
 
   return useMemo(() => {
     const study = params.get('study');
-    if (study === 'chapter') {
+    if (study === 'chapter' || routeChapterId) {
       const chapterNumber = Number(params.get('chapter'));
-      const chapterId = params.get('chapterId');
+      const chapterId = routeChapterId || params.get('chapterId');
       const chapter = chapterId ? getChapterById(chapterNavigator, chapterId) : getChapterByNumber(chapterNavigator, chapterNumber);
       const layer = params.get('layer') === 'full' ? 'full' : 'backbone';
       if (chapter) return { type: 'chapter', chapter, layer: layer as ChapterLayer };
@@ -26,5 +27,5 @@ export function useStudyContext({ chapterNavigator, themeRoutes }: UseStudyConte
       if (route) return { type: 'theme', route };
     }
     return { type: 'free' };
-  }, [chapterNavigator, params, themeRoutes]);
+  }, [chapterNavigator, params, routeChapterId, themeRoutes]);
 }

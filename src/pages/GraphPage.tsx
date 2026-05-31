@@ -12,7 +12,7 @@ interface GraphPageProps {
 
 export function GraphPage({ chapterNavigator, themeRoutes, searchIndex, formulaLearningCopy, storylines }: GraphPageProps) {
   return (
-    <section className="min-h-screen bg-[#02040a] pt-20 text-slate-100">
+    <section className="graph-page min-h-screen bg-[#02040a] pt-20 text-slate-100">
       <GraphWorkspace chapterNavigator={chapterNavigator} themeRoutes={themeRoutes} searchIndex={searchIndex} formulaLearningCopy={formulaLearningCopy} storylines={storylines} />
     </section>
   );

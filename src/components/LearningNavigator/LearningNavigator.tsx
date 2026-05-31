@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import type { SearchFormula } from '../../types/formula';
-import type { ChapterNavigatorPayload } from '../../types/learning';
-import type { ThemeRoute } from '../../types/path';
+import type { ChapterNavigatorPayload, ThemeRoute } from '../../types/learning';
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../utils/uiCopy';
 import { ChapterGroup } from './ChapterGroup';
 import { ThemeRouteCard } from './ThemeRouteCard';

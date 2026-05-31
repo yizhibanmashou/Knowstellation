@@ -1,4 +1,5 @@
 import type { FormulaPrerequisite, ChapterFormula } from './formula';
+import type { FocusAnnotationKind } from '../utils/focusAnnotations';
 
 export type FormulaExpansionIntent = 'auto' | 'prerequisites' | 'successors';
 
@@ -7,9 +8,11 @@ export interface FormulaNodeData {
   focused: boolean;
   loading?: boolean;
   role?: 'focus' | 'prerequisite' | 'expanded' | 'successor';
-  mode?: 'guided' | 'focus' | 'explore';
+  mode?: 'guided' | 'explore';
   locked?: boolean;
   lockedReason?: string;
+  lockedTargetFormulaId?: string;
+  lockedTargetLabel?: string;
   learned?: boolean;
   chapterGraph?: boolean;
   symbolExplanations?: Array<
@@ -17,9 +20,11 @@ export interface FormulaNodeData {
       shortLabel?: string;
       llmText?: string;
       llmStatus?: 'loading' | 'ready' | 'error';
+      kind?: FocusAnnotationKind;
     }
   >;
   onExpand: (formulaId: string, intent?: FormulaExpansionIntent) => void;
+  onLockedTarget?: (formulaId: string) => void;
 }
 
 export interface VariableNodeData {

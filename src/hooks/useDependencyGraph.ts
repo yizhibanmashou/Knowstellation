@@ -1,12 +1,14 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { ChapterDependencies, ChapterFormula, FormulaDependency } from '../types/formula';
 import { formulaChapter } from '../utils/constants';
 import { loadJSON } from '../utils/loadJSON';
 
 interface ChapterCache {
   chapters: Map<string, ChapterDependencies>;
-  pending: Map<string, Promise<ChapterDependencies | null>>;
+  pending: Map<string, Promise<ChapterDependencies>>;
 }
+
+const chapterCache: ChapterCache = { chapters: new Map(), pending: new Map() };
 
 export interface DependencyGraphApi {
   getFormula: (formulaId: string) => Promise<ChapterFormula | null>;
@@ -18,31 +20,37 @@ export interface DependencyGraphApi {
 }
 
 export function useDependencyGraph(): DependencyGraphApi {
-  const cacheRef = useRef<ChapterCache>({ chapters: new Map(), pending: new Map() });
   const [error, setError] = useState<string | null>(null);
 
   const resolveFormulaChapter = useCallback((formulaId: string) => formulaChapter(formulaId), []);
 
   const loadChapter = useCallback(async (chapterId: string) => {
-    const cache = cacheRef.current;
-    if (cache.chapters.has(chapterId)) return cache.chapters.get(chapterId)!;
-    if (cache.pending.has(chapterId)) return cache.pending.get(chapterId)!;
+    if (chapterCache.chapters.has(chapterId)) {
+      setError(null);
+      return chapterCache.chapters.get(chapterId)!;
+    }
 
-    const promise = loadJSON<ChapterDependencies>(`/data/dependency/${chapterId}_dependencies.json`)
-      .then((data) => {
-        cache.chapters.set(chapterId, data);
-        setError(null);
-        return data;
-      })
-      .catch((err: Error) => {
-        setError(err.message);
-        return null;
-      })
-      .finally(() => {
-        cache.pending.delete(chapterId);
-      });
-    cache.pending.set(chapterId, promise);
-    return promise;
+    let promise = chapterCache.pending.get(chapterId);
+    if (!promise) {
+      promise = loadJSON<ChapterDependencies>(`/data/dependency/${chapterId}_dependencies.json`)
+        .then((data) => {
+          chapterCache.chapters.set(chapterId, data);
+          return data;
+        })
+        .finally(() => {
+          chapterCache.pending.delete(chapterId);
+        });
+      chapterCache.pending.set(chapterId, promise);
+    }
+
+    try {
+      const chapter = await promise;
+      setError(null);
+      return chapter;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err));
+      return null;
+    }
   }, []);
 
   const getFormula = useCallback(

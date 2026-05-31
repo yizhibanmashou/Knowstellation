@@ -6,8 +6,9 @@ import type { FormulaPrerequisite } from '../../types/formula';
 import { chapterColor, chapterRank, rawFormulaNumber } from '../../utils/constants';
 import { buildFormulaSymbolPrerequisites } from '../../utils/formulaInfo';
 import { isFocusAnnotationLabel, resolveSymbolShortLabel } from '../../utils/symbolAnnotation';
-import { DEFAULT_LANGUAGE, formatChapterLabel, getUiCopy } from '../../utils/uiCopy';
-import { MathFormula, type MathAnnotation } from '../common/MathFormula';
+import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../../utils/uiCopy';
+import { MathFormula, renderMathToHtml, type MathAnnotation } from '../common/MathFormula';
+import { RichMathText } from '../common/RichMathText';
 
 function compareSymbolExplanations(a?: FormulaNodeData['symbolExplanations'], b?: FormulaNodeData['symbolExplanations']): boolean {
   if (a === b) return true;
@@ -22,7 +23,8 @@ function compareSymbolExplanations(a?: FormulaNodeData['symbolExplanations'], b?
       item.confidence === other.confidence &&
       item.shortLabel === other.shortLabel &&
       item.llmText === other.llmText &&
-      item.llmStatus === other.llmStatus
+      item.llmStatus === other.llmStatus &&
+      item.kind === other.kind
     );
   });
 }
@@ -31,6 +33,7 @@ type SymbolNote = FormulaPrerequisite & {
   shortLabel?: string;
   llmText?: string;
   llmStatus?: 'loading' | 'ready' | 'error';
+  kind?: 'symbol' | 'compound' | 'formula';
 };
 
 interface ActiveCallout {
@@ -44,20 +47,12 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-function estimateCalloutBox(note: string): { width: number; height: number } {
+function estimateCalloutBox(note: string, symbol = '', containerWidth = 320): { width: number; height: number } {
   const length = note.trim().length;
-  const width = clamp(Math.round(length * 15 + 28), 132, 220);
-  const height = length > 14 ? 50 : 36;
+  const maxWidth = clamp(containerWidth - 48, 190, 320);
+  const width = clamp(Math.max(Math.round(length * 9 + 112), symbol.length * 8 + 96), 190, maxWidth);
+  const height = length > 34 ? 126 : length > 18 ? 106 : 90;
   return { width, height };
-}
-
-function displaySymbolLabel(symbol: string): string {
-  return symbol
-    .replace(/\\mathrm\{([^{}]+)\}/g, '$1')
-    .replace(/\\overline\{([^{}]+)\}/g, '$1̄')
-    .replace(/[{}]/g, '')
-    .replace(/\\/g, '')
-    .trim();
 }
 
 export const FormulaNode = React.memo(
@@ -73,10 +68,11 @@ export const FormulaNode = React.memo(
     const chapter = chapterRank(formula.chapter_id, Number(rawFormulaNumber(formula.id).split('.')[0]));
     const active = nodeData.focused || selected;
     const role = nodeData.role || (nodeData.focused ? 'focus' : 'prerequisite');
+    const canAnnotateFormula = nodeData.mode === 'guided' && !nodeData.chapterGraph;
     const [activeCallout, setActiveCallout] = useState<ActiveCallout | null>(null);
     const annotations = useMemo(
       () =>
-        nodeData.mode === 'focus'
+        canAnnotateFormula
           ? symbolNotes
               .map((prereq) => {
                 const symbol = prereq.symbol || prereq.via_symbol || '';
@@ -84,11 +80,17 @@ export const FormulaNode = React.memo(
                   shortLabel: prereq.shortLabel,
                   llmText: prereq.llmText,
                 });
-                return { symbol, note };
+                return {
+                  symbol,
+                  note,
+                  text: prereq.llmText || prereq.meaning || prereq.definition,
+                  kind: prereq.kind || 'symbol',
+                  status: prereq.llmStatus,
+                };
               })
               .filter((item) => item.symbol && isFocusAnnotationLabel(item.note))
           : [],
-      [nodeData.mode, symbolNotes],
+      [canAnnotateFormula, symbolNotes],
     );
 
     const handleDoubleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -101,6 +103,12 @@ export const FormulaNode = React.memo(
       event.stopPropagation();
       if (nodeData.locked) return;
       nodeData.onExpand(id, intent);
+    };
+
+    const handleLockedTargetClick = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+      if (!nodeData.lockedTargetFormulaId) return;
+      nodeData.onLockedTarget?.(nodeData.lockedTargetFormulaId);
     };
 
     const handleAnnotationChange = useCallback((annotation: MathAnnotation | null, anchorRect?: DOMRect) => {
@@ -116,12 +124,16 @@ export const FormulaNode = React.memo(
       };
       const width = nodeRef.current.offsetWidth;
       const height = nodeRef.current.offsetHeight;
-      const { width: boxWidth, height: boxHeight } = estimateCalloutBox(annotation.note);
-      const placeRight = anchor.x >= width * 0.5;
-      const lowerBandY = clamp(anchor.y + 46, 122, height - boxHeight - 44);
+      const { width: boxWidth, height: boxHeight } = estimateCalloutBox(annotation.note, annotation.symbol, width);
+      const margin = 18;
+      const placeRight = anchor.x < width * 0.55;
+      const preferredY = anchor.y + 42;
+      const fallbackY = anchor.y - boxHeight - 34;
+      const maxY = Math.max(margin, height - boxHeight - margin);
+      const boxY = preferredY + boxHeight <= height - margin ? preferredY : clamp(fallbackY, margin, maxY);
       const box = {
-        x: placeRight ? clamp(anchor.x + 42, 34, width - boxWidth - 34) : clamp(anchor.x - boxWidth - 42, 34, width - boxWidth - 34),
-        y: lowerBandY,
+        x: placeRight ? clamp(anchor.x + 28, margin, Math.max(margin, width - boxWidth - margin)) : clamp(anchor.x - boxWidth - 28, margin, Math.max(margin, width - boxWidth - margin)),
+        y: boxY,
         width: boxWidth,
         height: boxHeight,
       };
@@ -141,16 +153,19 @@ export const FormulaNode = React.memo(
         aria-disabled={nodeData.locked}
         onDoubleClick={handleDoubleClick}
         onKeyDown={(event) => {
+          if (nodeData.locked) return;
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             nodeData.onExpand(id, 'auto');
           }
         }}
-        className={`formula-node formula-node--${role} ${nodeData.mode === 'focus' ? 'formula-node--focus-mode' : ''} ${nodeData.chapterGraph ? 'formula-node--chapter-graph' : ''} ${nodeData.focused ? 'formula-node--focused' : ''} ${selected ? 'formula-node--selected' : ''} ${nodeData.locked ? 'formula-node--locked' : ''} ${nodeData.learned ? 'formula-node--learned' : ''}`}
+        className={`formula-node formula-node--${role} ${annotations.length ? 'formula-node--annotated' : ''} ${activeCallout ? 'formula-node--has-callout' : ''} ${nodeData.chapterGraph ? 'formula-node--chapter-graph' : ''} ${nodeData.focused ? 'formula-node--focused' : ''} ${selected ? 'formula-node--selected' : ''} ${nodeData.locked ? 'formula-node--locked' : ''} ${nodeData.learned ? 'formula-node--learned' : ''}`}
+        data-testid="formula-node"
+        data-formula-id={id}
         style={{ '--chapter-color': chapterColor(chapter) } as React.CSSProperties}
       >
         <Handle type="target" position={Position.Left} />
-        {!nodeData.locked && nodeData.mode !== 'focus' ? (
+        {!nodeData.locked ? (
           <div className="formula-node__actions" aria-label={copy.actions}>
             <button type="button" className="formula-node__side-trigger formula-node__side-trigger--left" onClick={(e) => handleTriggerClick(e, 'prerequisites')} aria-label={copy.prerequisiteTrigger} title={copy.prerequisiteTrigger}>
               <span>{copy.prerequisiteTrigger}</span>
@@ -180,9 +195,9 @@ export const FormulaNode = React.memo(
           latex={formula.latex}
           className="formula-node__math mt-3"
           annotations={annotations}
-          onAnnotationChange={nodeData.mode === 'focus' ? handleAnnotationChange : undefined}
+          onAnnotationChange={canAnnotateFormula ? handleAnnotationChange : undefined}
         />
-        {nodeData.mode === 'focus' && activeCallout ? (
+        {canAnnotateFormula && activeCallout ? (
           <>
             <svg className="formula-node__callout-lines" aria-hidden="true">
               <path
@@ -201,15 +216,31 @@ export const FormulaNode = React.memo(
               }}
               aria-live="polite"
             >
-              <span className="formula-node__callout-symbol">{displaySymbolLabel(activeCallout.annotation.symbol)}</span>
-              <strong>{activeCallout.annotation.note}</strong>
+              <span
+                className="formula-node__callout-symbol"
+                dangerouslySetInnerHTML={{ __html: renderMathToHtml(activeCallout.annotation.symbol, true).html }}
+              />
+              <strong><RichMathText text={activeCallout.annotation.note} /></strong>
+              {activeCallout.annotation.text ? <p><RichMathText text={activeCallout.annotation.text} /></p> : null}
+              {activeCallout.annotation.status === 'loading' ? <small>{copy.symbolLoading}</small> : null}
+              {activeCallout.annotation.status === 'error' ? <small>{copy.symbolFallback}</small> : null}
             </div>
           </>
         ) : null}
         <div className="formula-node__footer mt-3 flex items-center justify-between gap-3 pt-2.5">
           <div className="min-w-0 text-left">
-            <div className="formula-node__section line-clamp-2">{formula.section || formula.subsection}</div>
-            {nodeData.locked && nodeData.lockedReason ? <div className="formula-node__locked-reason">{nodeData.lockedReason}</div> : null}
+            <div className="formula-node__section line-clamp-2">{formatSectionLabel(formula.section || formula.subsection)}</div>
+            {nodeData.locked && nodeData.lockedReason ? (
+              <div className="formula-node__locked-reason">
+                {nodeData.lockedTargetFormulaId ? (
+                  <button type="button" onClick={handleLockedTargetClick} title={nodeData.lockedTargetLabel || nodeData.lockedTargetFormulaId}>
+                    {nodeData.lockedReason}
+                  </button>
+                ) : (
+                  nodeData.lockedReason
+                )}
+              </div>
+            ) : null}
           </div>
           <span className="formula-node__dot" />
         </div>
@@ -229,6 +260,8 @@ export const FormulaNode = React.memo(
       prevData.mode === nextData.mode &&
       prevData.locked === nextData.locked &&
       prevData.lockedReason === nextData.lockedReason &&
+      prevData.lockedTargetFormulaId === nextData.lockedTargetFormulaId &&
+      prevData.lockedTargetLabel === nextData.lockedTargetLabel &&
       prevData.learned === nextData.learned &&
       compareSymbolExplanations(prevData.symbolExplanations, nextData.symbolExplanations)
     );

@@ -1,16 +1,146 @@
-# LitGraph-RAG
+<p align="center">
+  <img src="public/assets/readme/cover.png" alt="LitGraph-RAG formula graph reader cover" width="100%">
+</p>
 
-LitGraph-RAG is an interactive formula graph for textbook reading. It builds chapter-local prerequisite graphs from structured textbook data, then renders formulas, variable definitions, storylines, and chapter maps in a React frontend.
+<h1 align="center">LitGraph-RAG</h1>
 
-The current pipeline is intentionally conservative: exact references, exact symbol matches, canonical notation matches, compound formula groups, and explicit text definitions can enter the main graph. Family-only symbol matches are kept as ambiguous review candidates instead of accepted edges.
+<p align="center">
+  A product-grade formula graph reader for math-heavy textbooks.
+  Search a formula, read its symbols, unfold prerequisites, and move through the book as an interactive knowledge map.
+</p>
 
-## Current Focus
+<p align="center">
+  <a href="#quick-start"><strong>Quick start</strong></a>
+  |
+  <a href="#product-tour"><strong>Product tour</strong></a>
+  |
+  <a href="#verification"><strong>Verification</strong></a>
+  |
+  <a href="#deployment-notes"><strong>Deploy</strong></a>
+</p>
 
-- Preserve teacher/textbook notation in symbols such as `F_{ST}`, `p_0`, `\bar{t}_c`, and `\overline{t}_c`.
-- Filter mathematical operators such as `\sum`, `\prod`, `\ln`, `\exp`, `E(...)`, `\Pr(...)`, and `Var(...)` from variable dependency matching.
-- Keep `\bar` and `\overline` canonicalized together, while keeping `\hat`, `\tilde`, `\dot`, and the plain variable as separate entities.
-- Treat `family_key` as recall-only. It may create an ambiguous audit candidate, but it must not create a main graph prerequisite.
-- Only show variable definition nodes when a nearby textbook sentence explicitly defines the variable.
+<p align="center">
+  <a href="https://react.dev/"><img alt="React" src="https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white"></a>
+  <a href="https://vite.dev/"><img alt="Vite" src="https://img.shields.io/badge/Vite-6-646cff?logo=vite&logoColor=white"></a>
+  <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white"></a>
+  <a href="#verification"><img alt="Tests" src="https://img.shields.io/badge/tests-node%20%2B%20python%20%2B%20e2e-22c55e"></a>
+  <a href="#llm-configuration"><img alt="LLM proxy" src="https://img.shields.io/badge/LLM-server%20side%20proxy-0ea5e9"></a>
+</p>
+
+LitGraph-RAG turns a textbook's formulas into an explorable learning graph. It combines a conservative dependency pipeline with a polished React interface: students can search a formula, inspect its symbols, unfold prerequisites step by step, and follow storyline paths through the book.
+
+The project is intentionally strict about graph quality. Exact references, exact or canonical symbol matches, compound formula groups, and explicit text definitions can enter the main graph. Family-only symbol matches stay as ambiguous audit candidates instead of becoming accepted prerequisite edges.
+
+## Highlights
+
+- **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
+- **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
+- **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels.
+- **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
+- **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
+- **LLM-assisted explanations**: optional server-side proxy enriches chapter summaries and symbol explanations without exposing API keys in the browser.
+
+## Product Tour
+
+### Home star map
+
+Start from the whole book instead of a blank search box. The home view turns chapters, formulas, and curated routes into a navigable constellation.
+
+<p align="center">
+  <img src="public/assets/readme/home.png" alt="LitGraph-RAG home star map" width="100%">
+</p>
+
+### Guided formula reading
+
+Guided mode keeps the learner inside a single formula card first. Hover or tap highlighted terms to see compact semantic notes, then unfold prerequisites or successors when the formula is ready to connect.
+
+<p align="center">
+  <img src="public/assets/readme/guided.png" alt="Guided formula reading" width="100%">
+</p>
+
+### Storyline paths
+
+Storylines turn scattered formulas into a readable sequence. Each route explains why the current formula matters, what came before, and which graph view to open next.
+
+<p align="center">
+  <img src="public/assets/readme/storyline.png" alt="Storyline path" width="100%">
+</p>
+
+### Formula dependency map
+
+The chapter graph makes formula relationships visible at a glance. Active edges show which formulas feed into the selected node, while the minimap stays available for fast navigation.
+
+<p align="center">
+  <img src="public/assets/readme/minimap.png" alt="Formula dependency map with active edges" width="100%">
+</p>
+
+## Demo Flow
+
+```text
+Home star map -> Chapter entry point -> Guided formula graph
+               -> Inline symbol reading
+               -> Explore full chapter graph
+               -> Storyline path review
+```
+
+The UI is optimized around the current reading model:
+
+| Mode | Purpose |
+| --- | --- |
+| `guided` | Default study flow. Expand prerequisites and successors gradually while reading symbol-level callouts in the formula card. |
+| `explore` | Full chapter overview for browsing the formula network. |
+
+## Quick Start
+
+Requirements:
+
+- Node.js 20 or newer
+- Python 3.10 or newer
+- npm
+
+Install dependencies:
+
+```powershell
+npm install
+pip install -r requirements.txt
+```
+
+Run the local app:
+
+```powershell
+npm run dev
+```
+
+Open:
+
+```text
+http://127.0.0.1:5173/
+```
+
+Build for production:
+
+```powershell
+npm run build
+```
+
+Preview the production build:
+
+```powershell
+npm run preview
+```
+
+## LLM Configuration
+
+LLM features are optional. The frontend calls `/api/llm`; secrets stay on the server.
+
+Create `.env` from `.env.example`:
+
+```powershell
+DEEPSEEK_API_KEY=
+DEEPSEEK_API_BASE=https://api.deepseek.com
+```
+
+Do not expose provider keys through `VITE_*` variables. When the proxy is unavailable, the app falls back to local textbook explanations.
 
 ## Data Pipeline
 
@@ -20,24 +150,19 @@ Build all frontend dependency data:
 python scripts\build_dependencies.py --all
 ```
 
-Sync generated development data into the public frontend data folder:
+Sync generated data into `public/data`:
 
 ```powershell
 npm run sync:data
 ```
 
-Audit graph quality and regenerate the chapter 2 review bundle:
+Audit graph quality:
 
 ```powershell
 npm run audit:graph
 ```
 
-Audit outputs:
-
-- `tmp/dependency_graph_audit.json`
-- `tmp/chapter2_graph_review_bundle.json`
-
-Expected high-level audit invariants for the current conservative graph:
+Expected high-level audit invariants for the conservative graph:
 
 - `family_candidate_prerequisites` is `0`
 - `nonaccepted_prerequisites` is `0`
@@ -46,7 +171,7 @@ Expected high-level audit invariants for the current conservative graph:
 
 ## Symbol Sense Workflow
 
-The Symbol Sense workflow exports prompts for external LLM review, then imports validated results without directly calling an LLM from the repo.
+Symbol Sense exports prompts for external LLM review, imports validated results, and converts them into frontend-ready dependency data.
 
 ```powershell
 npm run symbol-sense -- export-prompts
@@ -54,77 +179,87 @@ npm run symbol-sense -- import-results --chapter chapter6 --input path\to\raw.js
 npm run symbol-sense -- convert --chapter chapter6
 ```
 
-The first implementation writes normalized intermediate files under `data/frontend/symbol_sense/` and only overwrites `data/frontend/dependency` during conversion. It does not automatically publish to `public/data`.
+Intermediate files live under `data/frontend/symbol_sense/`. Conversion updates `data/frontend/dependency`; run `npm run sync:data` before publishing those changes to the frontend.
 
-## Frontend
+## Project Structure
 
-Run the app locally:
-
-```powershell
-npm run dev
+```text
+api/                     Serverless LLM proxy
+data/frontend/           Generated frontend data before publishing
+docs/                    Design notes and implementation prep
+public/data/             Static data served by Vite
+scripts/                 Dependency, audit, and Symbol Sense tools
+src/
+  components/GraphView/  Formula graph canvas, nodes, controls
+  components/StarField/  Three.js chapter/formula star maps
+  components/SearchBar/  Search UI and worker
+  pages/                 Home, chapter, storyline, graph pages
+  services/              LLM client
+  utils/                 Formula, symbol, navigation helpers
+test/                    Node and Python tests
 ```
 
-Build for production:
+## Scripts
 
-```powershell
-npm run build
-```
-
-LLM-assisted explanations are optional enhancements. In development, Vite proxies
-`/api/llm` to DeepSeek using server-side environment variables. In production,
-deploy the `/api/llm` serverless proxy and configure:
-
-```powershell
-DEEPSEEK_API_KEY=
-DEEPSEEK_API_BASE=https://api.deepseek.com
-```
-
-Do not expose DeepSeek keys through `VITE_*` variables; browser code should only
-call `/api/llm`. When the proxy is unavailable, the frontend falls back to local
-textbook explanations.
-
-The graph supports three study modes:
-
-- `guided`: default formula entry, with staged expansion.
-- `focus`: single-formula close reading.
-- `explore`: full chapter graph or free exploration.
-
-Starter formulas, defined as formulas with `depth <= 0` and no accepted
-same-chapter formula prerequisites, automatically show up to four compact
-variable definition cards to the left of the formula card. Later formulas keep
-the staged interaction: learners choose prerequisites or successors explicitly.
-
-## Documentation
-
-- [design-and-optimization.md](docs/design-and-optimization.md) — 产品与设计基线（v0.2）
-- [implementation-prep.md](docs/implementation-prep.md) — Focus 优化开工清单（P0）
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Start Vite on `127.0.0.1`. |
+| `npm run build` | Type-check and build production assets. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run test:node` | Run TypeScript/Node tests. |
+| `npm run test:python` | Run Python pipeline tests. |
+| `npm run test:e2e` | Run Playwright browser interaction tests. |
+| `npm run sync:data` | Copy generated data into `public/data`. |
+| `npm run audit:graph` | Audit dependency graph quality. |
+| `npm run symbol-sense` | Export/import/convert Symbol Sense review data. |
 
 ## Verification
 
-Run the focused Python pipeline tests:
-
-```powershell
-npm run test:python
-```
-
-Run the Node/TypeScript tests:
+Before opening a PR or deploying:
 
 ```powershell
 npm run test:node
-```
-
-Run the production build:
-
-```powershell
+npm run test:python
+npm run test:e2e
 npm run build
 ```
 
-## Chapter 2 Calibration Notes
+### Manual QA Checklist
 
-The current chapter 2 review bundle is designed for external audit. Key corrected cases include:
+For frontend checks, manually verify:
 
-- `formula_2.12` no longer treats `E` or `\ln` as variables and no longer links `p` to `p_0`.
-- `formula_2.7` no longer emits `\exp` as a variable definition.
-- `formula_2.30a` and `formula_2.30b` are linked through a `compound_group` edge.
-- `F(...)` function calls are separated from `F_{ST}`, `F_{DG}`, and related population-structure symbols.
-- Family-only `F` or `T` matches remain in `ambiguous`, not in `dependencies[].prerequisites`.
+- `/` on desktop and mobile landscape widths
+- `/chapter/<chapterId>` from the home star map
+- search result navigation into a formula graph
+- `/graph/<formulaId>?chapterId=<chapterId>&mode=guided` symbol hover/tap callouts
+- `/graph/chapter/<chapterId>?mode=explore` minimap node selection
+- `/storyline/<storylineId>` and its "open graph" path
+
+## Deployment Notes
+
+- Deploy the Vite frontend as static assets.
+- Deploy `api/llm.js` or an equivalent server-side route at `/api/llm`.
+- Configure `DEEPSEEK_API_KEY` and `DEEPSEEK_API_BASE` only in the server environment.
+- Keep `public/data` in sync with the latest generated data.
+- Run `npm run audit:graph` before publishing a new textbook or chapter batch.
+- Keep the generated screenshots under `public/assets/readme` current when the visual design changes.
+- The UI includes user-readable fallbacks for data loading, LLM proxy failure, and WebGL initialization failure; check those paths before a public deployment.
+
+## Documentation
+
+- [Design and optimization notes](docs/design-and-optimization.md)
+- [Symbol annotation implementation prep](docs/implementation-prep.md)
+
+## Roadmap
+
+- Move more Guided symbol annotations from runtime LLM calls into offline JSON.
+- Add richer graph QA reports for ambiguous and rejected edges.
+- Validate zero-code textbook transfer on a second book.
+
+## Contributing
+
+Issues and pull requests are welcome. For graph-related changes, include the audit output or describe why the accepted-edge invariants still hold. For UI changes, include the routes and viewport sizes you checked.
+
+## License
+
+No license file is currently included. Add a repository license before public reuse or redistribution.

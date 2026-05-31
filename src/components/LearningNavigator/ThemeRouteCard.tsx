@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { ThemeRoute } from '../../types/path';
+import type { ThemeRoute } from '../../types/learning';
 import { rawFormulaNumber } from '../../utils/constants';
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../utils/uiCopy';
 

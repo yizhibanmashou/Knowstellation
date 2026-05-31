@@ -25,7 +25,7 @@ export function HomePage({ data }: HomePageProps) {
   return (
     <section className="home-shell flex min-h-screen w-full flex-col overflow-y-auto overflow-x-hidden bg-[#02040a] text-white font-['Space_Grotesk'] lg:h-screen lg:flex-row lg:overflow-hidden">
       <div className="relative min-h-[760px] min-w-0 flex-1 overflow-hidden sm:min-h-screen lg:min-h-0">
-        <StarField nodes={chapterNodes} visible onEnterNode={enterNode} />
+        <StarField nodes={chapterNodes} visible onEnterNode={enterNode} rightReserveClassName="home-starry-sky" />
 
         {/* HUD Elements */}
         <div className="pointer-events-none absolute inset-0 z-20 border-[24px] border-white/[0.02]" />
@@ -34,24 +34,24 @@ export function HomePage({ data }: HomePageProps) {
         <div className="pointer-events-none absolute bottom-10 left-10 z-20 h-4 w-4 border-b-2 border-l-2 border-cyan-500/30" />
         <div className="pointer-events-none absolute bottom-10 right-10 z-20 h-4 w-4 border-b-2 border-r-2 border-cyan-500/30" />
 
-        <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(2,4,10,0.72)_0%,transparent_45%,rgba(2,4,10,0.2)_100%),linear-gradient(180deg,rgba(2,4,10,0.1)_0%,transparent_40%,rgba(2,4,10,0.85)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(2,4,10,0.54)_0%,rgba(2,4,10,0.18)_34%,transparent_58%,rgba(2,4,10,0.14)_100%),linear-gradient(180deg,rgba(2,4,10,0.02)_0%,transparent_48%,rgba(2,4,10,0.48)_100%)]" />
 
-        <div className="absolute left-6 right-6 top-8 z-30 animate-[fadeSlideUp_0.8s_ease_both] sm:left-10 sm:right-auto sm:w-[min(420px,calc(100%-80px))]">
+        <div className="home-search-panel absolute left-6 right-6 top-8 z-30 animate-[fadeSlideUp_0.8s_ease_both] sm:left-10 sm:right-auto sm:w-[min(420px,calc(100%-80px))]">
           <SearchBar searchIndex={data.searchIndex} chapterNavigator={data.chapterNavigator} size="compact" />
         </div>
 
-        <div className="pointer-events-none absolute bottom-10 left-6 right-6 z-20 max-w-2xl pt-28 sm:left-10 sm:right-auto sm:pr-6 md:left-14 md:bottom-14">
-          <div className="flex items-center gap-3 mb-5 animate-[fadeSlideUp_0.7s_ease_0.1s_both]">
+        <div className="home-hero-copy pointer-events-none absolute bottom-10 left-6 right-6 z-20 max-w-2xl pt-28 sm:left-10 sm:right-auto sm:pr-6 md:left-14 md:bottom-14">
+          <div className="home-hero-eyebrow flex items-center gap-3 mb-5 animate-[fadeSlideUp_0.7s_ease_0.1s_both]">
             <span className="h-[1px] w-8 bg-cyan-500/50" />
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-400/80">{copy.home.eyebrow}</p>
           </div>
-          <h1 className="text-balance text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-8xl animate-[fadeSlideUp_0.7s_ease_0.25s_both] bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+          <h1 className="home-hero-title text-balance text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl md:text-8xl animate-[fadeSlideUp_0.7s_ease_0.25s_both] bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]">
             LitGraph<span className="text-cyan-400/90 font-light">.</span>RAG
           </h1>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-slate-300 sm:mt-8 sm:text-lg animate-[fadeSlideUp_0.7s_ease_0.45s_both]">
+          <p className="home-hero-intro mt-6 max-w-lg text-base leading-relaxed text-slate-300 sm:mt-8 sm:text-lg animate-[fadeSlideUp_0.7s_ease_0.45s_both]">
             {copy.home.intro}
           </p>
-          <div className="mt-10 flex flex-wrap gap-4 text-xs font-bold tracking-widest uppercase text-slate-500 animate-[fadeSlideUp_0.7s_ease_0.65s_both]">
+          <div className="home-hero-stats mt-10 flex flex-wrap gap-4 text-xs font-bold tracking-widest uppercase text-slate-500 animate-[fadeSlideUp_0.7s_ease_0.65s_both]">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/5 bg-white/[0.03] backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
               <span>{chapterNodes.length || '...'} {copy.home.sectors}</span>

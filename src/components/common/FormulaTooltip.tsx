@@ -1,10 +1,11 @@
 import { X } from 'lucide-react';
 import type { FeaturedFormula, SearchFormula } from '../../types/formula';
 import { rawFormulaNumber } from '../../utils/constants';
-import { buildFormulaBrief } from '../../utils/formulaInfo';
+import { buildFormulaBrief, buildReadableFormulaCopy } from '../../utils/formulaInfo';
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../utils/uiCopy';
 import { FormulaBriefCard } from './FormulaBriefCard';
 import { MathFormula } from './MathFormula';
+import { RichMathText } from './RichMathText';
 
 interface FormulaTooltipProps {
   formula: FeaturedFormula;
@@ -19,6 +20,15 @@ export function FormulaTooltip({ formula, searchFormula, x, y, pinned = false, o
   const copy = getUiCopy(DEFAULT_LANGUAGE).formulaCard;
   const latex = searchFormula?.latex_preview || formula.latex_preview || '';
   const brief = buildFormulaBrief({ id: formula.id, featured: formula, search: searchFormula });
+  const learningCopy = buildReadableFormulaCopy({
+    language: DEFAULT_LANGUAGE,
+    context: searchFormula?.context,
+    latex,
+    chapterTitle: searchFormula?.chapter ? copy.chapter.replace('{chapter}', String(searchFormula.chapter)) : formula.chapter,
+    formulaLabel: searchFormula?.label || formula.display_name || formula.label,
+    formulaNumber: rawFormulaNumber(formula.id),
+    section: searchFormula?.section,
+  });
   const tooltipW = pinned ? 420 : 360;
   const tooltipH = pinned ? 430 : 280;
   const gap = 24;
@@ -76,7 +86,7 @@ export function FormulaTooltip({ formula, searchFormula, x, y, pinned = false, o
 
             <MathFormula latex={latex} className="formula-tooltip__math mt-3" />
 
-            {searchFormula?.context ? <p className="mt-3 line-clamp-2 text-xs leading-5 text-slate-300">{searchFormula.context}</p> : null}
+            <p className="mt-3 line-clamp-3 text-xs leading-5 text-slate-300"><RichMathText text={learningCopy.plainMeaning} /></p>
 
             <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-3">
               <span className="text-[11px] text-slate-400">{copy.chapter.replace('{chapter}', String(searchFormula?.chapter || formula.chapter))}</span>

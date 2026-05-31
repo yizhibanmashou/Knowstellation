@@ -147,6 +147,99 @@
     #02040a;
 }
 
+.graph-space-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.graph-space-decor::before {
+  position: absolute;
+  inset: -8% -4%;
+  content: "";
+  background-image:
+    radial-gradient(circle, rgba(226, 232, 240, 0.52) 0 0.9px, transparent 1.7px),
+    radial-gradient(circle, rgba(125, 211, 252, 0.34) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(167, 139, 250, 0.24) 0 0.8px, transparent 1.6px);
+  background-position:
+    18px 26px,
+    112px 74px,
+    220px 18px;
+  background-size:
+    190px 172px,
+    310px 268px,
+    430px 356px;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse at 54% 44%, black 0 48%, transparent 86%);
+}
+
+.graph-space-decor__meteor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 132px;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(186, 230, 253, 0.72), transparent);
+  filter: drop-shadow(0 0 8px rgba(125, 211, 252, 0.28));
+  opacity: 0;
+  transform: translate3d(-18vw, -8vh, 0) rotate(-19deg);
+  animation: graph-meteor-drift 18s linear infinite;
+}
+
+.graph-space-decor__meteor::after {
+  position: absolute;
+  right: 15px;
+  top: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  content: "";
+  background: rgba(240, 249, 255, 0.72);
+}
+
+.graph-space-decor__meteor--one {
+  top: 17%;
+  animation-delay: 4s;
+}
+
+.graph-space-decor__meteor--two {
+  top: 43%;
+  width: 94px;
+  animation-delay: 11s;
+  animation-duration: 22s;
+}
+
+.graph-space-decor__meteor--three {
+  top: 71%;
+  width: 116px;
+  animation-delay: 17s;
+  animation-duration: 26s;
+}
+
+@keyframes graph-meteor-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(-20vw, -10vh, 0) rotate(-19deg);
+  }
+  5% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.22;
+  }
+  14% {
+    opacity: 0;
+    transform: translate3d(112vw, 28vh, 0) rotate(-19deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(112vw, 28vh, 0) rotate(-19deg);
+  }
+}
+
 .graph-workspace__main::before {
   position: absolute;
   inset: 0;
@@ -173,6 +266,12 @@
     431px 389px;
   opacity: 0.65;
   mask-image: radial-gradient(circle at 50% 46%, black 0 58%, transparent 92%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-space-decor__meteor {
+    animation: none;
+  }
 }
 
 .graph-workspace__main::after {
@@ -300,6 +399,56 @@
   margin-top: 10px;
 }
 
+.graph-info-panel__copy-block--takeaway {
+  border-color: rgba(34, 211, 238, 0.18);
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.09), rgba(15, 23, 42, 0.76)),
+    var(--graph-panel-muted);
+}
+
+.graph-info-panel__copy-block--takeaway p {
+  color: rgba(226, 232, 240, 0.92);
+  font-weight: 700;
+}
+
+.graph-info-panel__copy-block--local-focus {
+  border-color: rgba(20, 184, 166, 0.18);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(20, 184, 166, 0.09), transparent 46%),
+    var(--graph-panel-muted);
+}
+
+.graph-info-panel__symbol-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.graph-info-panel__symbol-strip > span {
+  display: inline-flex;
+  min-width: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(94, 234, 212, 0.18);
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.08);
+  padding: 4px 8px;
+  color: #ccfbf1;
+}
+
+.graph-info-panel__symbol-strip .math-formula,
+.graph-info-panel__symbol-strip .math-formula__viewport {
+  width: auto;
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.graph-info-panel__symbol-strip .math-formula__content {
+  min-width: 0;
+}
+
 .graph-info-panel__copy-heading {
   display: flex;
   min-width: 0;
@@ -334,6 +483,36 @@
   line-height: 1.6;
 }
 
+.graph-info-panel__section--chapter-overview {
+  display: grid;
+  align-content: start;
+  min-height: clamp(420px, calc(100vh - 430px), 760px);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(56, 189, 248, 0.14), transparent 42%),
+    linear-gradient(180deg, rgba(8, 47, 73, 0.34), rgba(15, 23, 42, 0.32)),
+    rgba(2, 6, 23, 0.28);
+  padding: 18px 18px 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.graph-info-panel__copy-heading--overview {
+  margin-bottom: 14px;
+}
+
+.graph-info-panel__section--chapter-overview p {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.88);
+  font-size: 14px;
+  font-weight: 560;
+  line-height: 1.78;
+  text-wrap: pretty;
+  white-space: pre-line;
+}
+
 /* Node Styling */
 .formula-node {
   position: relative;
@@ -364,13 +543,17 @@
   min-height: 54px;
 }
 
-.formula-node--focus-mode {
+.formula-node--annotated.formula-node--focus {
   width: min(620px, calc(100vw - 96px));
-  min-height: 228px;
+  min-height: 270px;
 }
 
-.formula-node--focus-mode .formula-node__math {
+.formula-node--annotated.formula-node--focus .formula-node__math {
   margin-bottom: 0;
+}
+
+.formula-node--has-callout {
+  z-index: 12;
 }
 
 .formula-node__label {
@@ -528,29 +711,51 @@
 .formula-node__callout {
   position: absolute;
   z-index: 9;
-  min-width: 132px;
-  max-width: 220px;
+  min-width: 210px;
+  max-width: 320px;
   border: 1.5px solid rgba(129, 140, 248, 0.95);
   border-radius: 8px;
   background:
     linear-gradient(180deg, rgba(241, 245, 249, 0.96), rgba(224, 242, 254, 0.92)),
     rgba(241, 245, 249, 0.95);
   color: #172554;
-  padding: 7px 12px 8px;
+  padding: 9px 13px 10px;
   box-shadow: 0 10px 24px rgba(2, 6, 23, 0.24), 0 0 16px rgba(56, 189, 248, 0.14);
   pointer-events: none;
   text-align: center;
 }
 
 .formula-node__callout-symbol {
-  display: block;
-  margin-bottom: 2px;
-  color: #334155;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.1;
-  opacity: 0.82;
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  border: 1px solid rgba(59, 130, 246, 0.16);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 4px 8px;
+  color: #1e3a8a;
+  line-height: 1.15;
+  opacity: 0.96;
+}
+
+.formula-node__callout-symbol .math-formula__viewport {
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  padding: 0;
+  overflow: visible;
+}
+
+.formula-node__callout-symbol .math-formula__content {
+  min-width: 0;
+  text-align: center;
+}
+
+.formula-node__callout-symbol .katex {
+  color: inherit;
+  font-size: 1.02em;
 }
 
 .formula-node__callout strong {
@@ -563,6 +768,30 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   white-space: normal;
+}
+
+.formula-node__callout p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 5px 0 0;
+  color: rgba(30, 41, 59, 0.86);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.36;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.formula-node__callout small {
+  display: block;
+  margin-top: 2px;
+  color: #475569;
+  font-size: 9.5px;
+  font-weight: 760;
+  line-height: 1.2;
 }
 
 .formula-node__footer {
@@ -583,6 +812,25 @@
   letter-spacing: 0;
   line-height: 1.25;
   text-wrap: pretty;
+}
+
+.formula-node__locked-reason button {
+  display: inline;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: rgba(248, 200, 106, 0.45);
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.formula-node__locked-reason button:hover {
+  color: #fde68a;
+  text-decoration-color: currentColor;
 }
 
 .formula-node__dot {
@@ -620,14 +868,6 @@
   opacity: 0.86;
 }
 
-.graph-canvas--chapter-focus .formula-node--chapter-graph:not(.formula-node--selected) {
-  opacity: 0.7;
-}
-
-.graph-canvas--chapter-focus .formula-node--chapter-graph.formula-node--selected {
-  transform: scale(1.04);
-}
-
 .dependency-edge--cross {
   stroke: rgba(221, 214, 254, 0.78);
   filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.26));
@@ -641,6 +881,7 @@
 }
 
 .edge-label {
+  position: absolute;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -737,22 +978,24 @@
 }
 
 .graph-atlas-panel {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  border-radius: 16px;
   background:
-    radial-gradient(circle at 22% 12%, rgba(56, 189, 248, 0.09), transparent 34%),
-    rgba(15, 23, 42, 0.86);
+    linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(5, 10, 24, 0.9)),
+    rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(20px);
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  width: 208px;
+  width: 214px;
 }
 
 .graph-atlas-panel__header {
-  padding: 12px 14px 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+  padding: 11px 13px 9px;
 }
 
 .graph-atlas-panel__header span {
@@ -762,27 +1005,80 @@
   text-transform: uppercase;
 }
 
-.graph-atlas-minimap {
-  background:
-    radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.12), transparent 38%),
-    #07101f !important;
-  width: 208px !important;
-  height: 132px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.graph-atlas-panel__header small {
+  overflow: hidden;
+  color: rgba(186, 230, 253, 0.72);
+  font-size: 10px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.graph-atlas-minimap svg {
+.graph-atlas-map {
+  display: block;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    radial-gradient(circle at 35% 35%, rgba(56, 189, 248, 0.11), transparent 38%),
+    #07101f;
+  width: 214px !important;
+  height: 126px !important;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.1);
+  background-size: 22px 22px, 22px 22px, auto, auto;
+  padding: 10px 13px;
   shape-rendering: geometricPrecision;
 }
 
-.graph-atlas-minimap .react-flow__minimap-mask {
-  fill: rgba(2, 4, 10, 0.52);
-  stroke: rgba(56, 189, 248, 0.44);
-  stroke-width: 1.4;
+.graph-atlas-map:focus {
+  outline: none;
 }
 
-.graph-atlas-minimap .react-flow__minimap-node {
-  filter: drop-shadow(0 1px 3px rgba(37, 99, 235, 0.2));
+.graph-atlas-map__plate {
+  fill: rgba(2, 6, 23, 0.18);
+  stroke: rgba(125, 211, 252, 0.18);
+  stroke-width: 1;
+}
+
+.graph-atlas-map__edge {
+  stroke: rgba(186, 230, 253, 0.22);
+  stroke-linecap: round;
+  stroke-width: 1.1;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-atlas-map__edge--active {
+  stroke: rgba(125, 211, 252, 0.72);
+  stroke-width: 1.5;
+}
+
+.graph-atlas-map__node {
+  opacity: 0.82;
+  stroke: rgba(219, 234, 254, 0.32);
+  stroke-width: 0.8;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 160ms ease, stroke 160ms ease, stroke-width 160ms ease, filter 160ms ease, transform 160ms ease;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-atlas-map__node--interactive {
+  cursor: pointer;
+}
+
+.graph-atlas-map__node--interactive:hover,
+.graph-atlas-map__node--interactive:focus-visible {
+  opacity: 1;
+  stroke: rgba(236, 254, 255, 0.86);
+  stroke-width: 1.35;
+  filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.5));
+  transform: scale(1.08);
+}
+
+.graph-atlas-map__node--active {
+  opacity: 1;
+  stroke: rgba(236, 254, 255, 0.92);
+  stroke-width: 1.3;
+  filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.55));
 }
 
 .graph-atlas-panel__legend {
@@ -790,7 +1086,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 10px 12px 12px;
+  padding: 9px 12px 11px;
   color: var(--graph-muted);
   font-size: 10px;
   font-weight: 800;
@@ -803,7 +1099,8 @@
   height: 7px;
   margin-right: 5px;
   border-radius: 999px;
-  background: var(--graph-accent);
+  background: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.44);
 }
 
 .study-timeline {
@@ -1083,7 +1380,7 @@
   .graph-workspace {
     grid-template-columns: minmax(0, 1fr);
     height: auto;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 72px);
   }
 
   .workspace-panel {
@@ -1099,6 +1396,8 @@
   .graph-toolbar {
     left: 14px !important;
     right: 14px !important;
+    max-width: calc(100% - 28px);
+    align-items: flex-start;
   }
 
   .graph-empty-card--top-notice {
@@ -1115,8 +1414,47 @@
 }
 
 @media (max-width: 520px) {
+  .workspace-panel {
+    max-height: 280px;
+  }
+
+  .graph-info-panel {
+    padding: 18px 16px 88px;
+  }
+
+  .graph-info-panel__hero {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .graph-info-panel h1 {
+    font-size: 22px;
+  }
+
+  .graph-info-panel__section--chapter-overview {
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .graph-workspace__main {
+    min-height: 620px;
+  }
+
+  .graph-toolbar {
+    top: 10px;
+    gap: 7px;
+  }
+
+  .graph-toolbar-button {
+    min-height: 40px;
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
   .graph-mode-controls {
     width: 100%;
+    min-height: 40px;
+    order: 5;
   }
 
   .graph-mode-controls__button {
@@ -1130,8 +1468,15 @@
     width: 260px;
   }
 
-  .formula-node--focus-mode {
-    width: min(340px, calc(100vw - 40px));
+  .formula-node--annotated.formula-node--focus {
+    width: min(352px, calc(100vw - 28px));
+    min-height: 244px;
+  }
+
+  .formula-node__callout {
+    min-width: 180px;
+    max-width: min(292px, calc(100vw - 36px));
+    padding: 8px 10px 9px;
   }
 
   .formula-node__side-trigger {
@@ -1149,5 +1494,251 @@
   .study-timeline__header {
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .study-timeline {
+    bottom: 10px;
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .study-timeline__layers {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .graph-onboarding-hint {
+    min-height: 40px;
+    flex: 1 1 100%;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) and (max-width: 960px) {
+  .graph-workspace {
+    position: relative;
+    display: block;
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .workspace-panel {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 40;
+    width: 324px;
+    max-width: 48vw;
+    max-height: none;
+    border-right: 1px solid rgba(125, 211, 252, 0.16);
+    border-bottom: 0;
+    box-shadow: 26px 0 70px rgba(0, 0, 0, 0.58);
+    transition: width 240ms cubic-bezier(0.22, 1, 0.36, 1), transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .workspace-panel--open {
+    width: 324px !important;
+    min-width: min(284px, 48vw);
+    max-width: 48vw;
+    inline-size: min(324px, 48vw);
+  }
+
+  .workspace-panel--collapsed,
+  .workspace-panel--half {
+    width: 44px !important;
+    min-width: 44px;
+    max-width: 44px;
+    inline-size: 44px;
+    box-shadow: 14px 0 34px rgba(0, 0, 0, 0.38);
+  }
+
+  .workspace-panel__rail {
+    min-height: 100vh;
+  }
+
+  .graph-info-panel {
+    padding: 12px 12px 54px;
+  }
+
+  .graph-info-panel__hero {
+    border-radius: 12px;
+    padding: 11px;
+  }
+
+  .graph-info-panel h1 {
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .graph-info-panel__origin,
+  .graph-info-panel__meta {
+    font-size: 10px;
+  }
+
+  .graph-info-panel__language-toggle {
+    margin-top: 10px;
+  }
+
+  .graph-info-panel__language-toggle button {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .graph-info-panel__section {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .graph-info-panel__copy-block p,
+  .graph-info-panel__section--chapter-overview p {
+    font-size: 12px;
+    line-height: 1.52;
+  }
+
+  .graph-info-panel__section--chapter-overview {
+    min-height: 0;
+    padding: 14px;
+  }
+
+  .graph-workspace__main {
+    height: 100vh;
+    min-height: 0;
+    margin-left: 0;
+  }
+
+  .graph-toolbar {
+    left: 58px !important;
+    right: 10px !important;
+    top: 8px;
+    max-width: calc(100% - 68px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .graph-toolbar-button,
+  .graph-mode-controls {
+    min-height: 34px;
+    border-radius: 12px;
+  }
+
+  .graph-toolbar-button {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  .graph-mode-controls__button {
+    min-width: 58px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .graph-onboarding-hint {
+    position: fixed;
+    left: 58px;
+    right: auto;
+    bottom: 12px;
+    z-index: 26;
+    width: min(286px, calc(100vw - 248px));
+    min-height: 34px;
+    max-width: none;
+    flex: 0 0 auto;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 6px 9px;
+    font-size: 11px;
+    line-height: 1.25;
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.86), rgba(2, 12, 27, 0.72)),
+      rgba(9, 18, 32, 0.8);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+  }
+
+  .graph-onboarding-hint__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .graph-onboarding-hint span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .graph-onboarding-hint button {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+  }
+
+  .formula-node--annotated.formula-node--focus {
+    width: min(560px, calc(100vw - 112px));
+    min-height: 228px;
+    padding: 12px 12px 12px 18px;
+  }
+
+  .formula-node__math {
+    min-height: 74px;
+    margin-top: 8px;
+  }
+
+  .formula-node__callout {
+    min-width: 190px;
+    max-width: min(300px, calc(100vw - 150px));
+  }
+
+  .study-timeline {
+    left: 12px;
+    right: 12px;
+    bottom: 8px;
+    border-radius: 14px;
+    padding: 8px 10px;
+  }
+
+  .study-timeline__header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .study-timeline__track {
+    margin-top: 6px;
+  }
+
+  .study-timeline__step {
+    min-width: 58px;
+    padding: 4px 8px;
+  }
+
+  .study-timeline__step-index {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .study-timeline__step-formula {
+    font-size: 12px;
+  }
+
+  .graph-atlas-panel {
+    display: block;
+    width: 168px;
+    border-radius: 14px;
+  }
+
+  .graph-atlas-panel__header {
+    padding: 8px 10px 7px;
+  }
+
+  .graph-atlas-map {
+    width: 168px !important;
+    height: 86px !important;
+    padding: 8px 9px;
+  }
+
+  .graph-atlas-panel__legend {
+    padding: 7px 9px 8px;
+    font-size: 9px;
   }
 }

@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "sync:data": "node scripts/sync-frontend-data.mjs",
+    "llm:cache": "node scripts/generate-llm-cache.mjs",
     "symbol-sense": "node scripts/symbol_sense/cli.mjs",
     "audit:graph": "python scripts/audit_dependency_graph.py",
     "test:node": "node --test test\\*.test.ts",
     "test:python": "python -m unittest discover -s test -p \"*_test.py\"",
+    "test:e2e": "playwright test",
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1"
@@ -25,6 +27,7 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@types/katex": "^0.16.7",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",

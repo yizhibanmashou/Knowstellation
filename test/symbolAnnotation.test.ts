@@ -20,8 +20,7 @@ test('resolveSymbolShortLabel compresses llmText when shortLabel is missing', ()
     { type: 'variable_definition', symbol: '\\sigma_w^2', confidence: 0.9 },
     { llmText: '家系间适合度方差会放大抽样方差，从而降低有效种群大小。' },
   );
-  assert.match(label, /^家系间适合度方差会放大抽样/);
-  assert.ok(label.length <= 16);
+  assert.equal(label, '家系间适合度方差');
 });
 
 test('resolveSymbolShortLabel falls back to prerequisite meaning', () => {
@@ -32,6 +31,98 @@ test('resolveSymbolShortLabel falls back to prerequisite meaning', () => {
     confidence: 0.8,
   });
   assert.equal(label, '群体间分化量');
+});
+
+test('resolveSymbolShortLabel keeps fallback labels while LLM is loading or failed', () => {
+  const prereq = {
+    type: 'variable_definition' as const,
+    symbol: 'N_e',
+    meaning: '有效种群大小',
+    confidence: 0.9,
+  };
+  assert.equal(resolveSymbolShortLabel({ ...prereq, llmStatus: 'loading' }), '有效种群大小');
+  assert.equal(resolveSymbolShortLabel({ ...prereq, llmStatus: 'error' }), '有效种群大小');
+});
+
+test('resolveSymbolShortLabel rejects wealth mistranslation for W-bar fitness', () => {
+  const label = resolveSymbolShortLabel(
+    {
+      type: 'variable_definition',
+      symbol: '\\overline{W}',
+      meaning: 'W 的横线表示群体平均适合度；它把各基因型或类别的适合度按频率加权成总体平均。',
+      confidence: 0.9,
+    },
+    { shortLabel: '平均财富', llmText: '平均财富表示总体财富水平。' },
+  );
+
+  assert.equal(label, '平均适合度');
+});
+
+test('resolveSymbolShortLabel keeps local domain labels over risky LLM labels', () => {
+  assert.equal(
+    resolveSymbolShortLabel(
+      {
+        type: 'variable_definition',
+        symbol: '\\overline{z}',
+        meaning: 'average trait value over all descendants',
+        confidence: 0.9,
+      },
+      { shortLabel: '平均身高', llmText: 'average height in the population' },
+    ),
+    '平均性状值',
+  );
+
+  assert.equal(
+    resolveSymbolShortLabel(
+      {
+        type: 'variable_definition',
+        symbol: '\\mu_i',
+        meaning: 'mutation rate at locus i',
+        confidence: 0.9,
+      },
+      { shortLabel: '微米 i', llmText: 'micrometer indexed by i' },
+    ),
+    '第 i 位点突变率',
+  );
+
+  assert.equal(
+    resolveSymbolShortLabel(
+      {
+        type: 'variable_definition',
+        symbol: 'R_z',
+        meaning: 'response of trait z to selection',
+        confidence: 0.9,
+      },
+      { shortLabel: 'z 响应' },
+    ),
+    'z 的选择响应',
+  );
+
+  assert.equal(
+    resolveSymbolShortLabel(
+      {
+        type: 'variable_definition',
+        symbol: '\\sigma_{z}',
+        meaning: 'sigma_z 表示表型标准差，是本式中衡量变异尺度的量。',
+        confidence: 0.9,
+      },
+      { shortLabel: 'sigma_z 表示表型标准差' },
+    ),
+    '表型标准差',
+  );
+
+  assert.equal(
+    resolveSymbolShortLabel(
+      {
+        type: 'variable_definition',
+        symbol: 'q_{i}^{\\prime}',
+        meaning: 'descendant category frequency used to average trait values',
+        confidence: 0.9,
+      },
+      { shortLabel: "q_i prime" },
+    ),
+    '第 i 类后代频率',
+  );
 });
 
 test('isFocusAnnotationLabel rejects generic placeholder copy', () => {
@@ -47,4 +138,23 @@ test('compressTextToShortLabel keeps short phrases intact', () => {
 test('isGenericAnnotationLabel detects template-like labels', () => {
   assert.equal(isGenericAnnotationLabel('关键符号'), true);
   assert.equal(isGenericAnnotationLabel('选择梯度'), false);
+});
+
+test('isGenericAnnotationLabel rejects ASCII math symbols as labels', () => {
+  assert.equal(isGenericAnnotationLabel('sigma_AA^2'), true);
+  assert.equal(isGenericAnnotationLabel('q_i'), true);
+  assert.equal(isGenericAnnotationLabel('加性遗传方差'), false);
+});
+
+test('resolveSymbolShortLabel falls back from ASCII label to epistatic variance meaning', () => {
+  const label = resolveSymbolShortLabel(
+    {
+      type: 'variable_definition',
+      symbol: '\\sigma_{AA}^{2}',
+      meaning: 'additive-by-additive epistatic variance',
+      confidence: 0.9,
+    },
+    { shortLabel: 'sigma_AA^2' },
+  );
+  assert.equal(label, '加性×加性方差');
 });

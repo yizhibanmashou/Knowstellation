@@ -1,5 +1,5 @@
 import type { SearchResult } from '../../types/search';
-import { DEFAULT_LANGUAGE, formatChapterLabel, getUiCopy } from '../../utils/uiCopy';
+import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../../utils/uiCopy';
 import { MathFormula } from '../common/MathFormula';
 
 interface SearchResultsProps {
@@ -7,6 +7,20 @@ interface SearchResultsProps {
   selectedIndex: number;
   onSelect: (id: string) => void;
   tone?: 'dark' | 'light' | 'nav';
+}
+
+function readableSearchContext(result: SearchResult): string {
+  if (result.resultType === 'chapter') {
+    return `${result.label} · ${result.formula_count} 个公式 · ${result.context}`;
+  }
+  const context = result.context.replace(/\s+/g, ' ').trim();
+  if (!context) return formatSectionLabel(result.section) || '打开后可查看通俗解释、符号和前置关系。';
+  const sentence = context
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$([^$]+)\$/g, '$1')
+    .split(/(?<=[。.!?！？])\s*/)
+    .find((item) => item.length > 18) || context;
+  return sentence.length > 92 ? `${sentence.slice(0, 92).replace(/\s+\S*$/, '')}…` : sentence;
 }
 
 export function SearchResults({ results, selectedIndex, onSelect, tone = 'dark' }: SearchResultsProps) {
@@ -52,7 +66,7 @@ export function SearchResults({ results, selectedIndex, onSelect, tone = 'dark' 
             <MathFormula latex={result.latex_preview} inline className={light ? 'mt-1 text-slate-700 [&_.katex]:text-[0.85em]' : 'mt-1 text-slate-200 [&_.katex]:text-[0.85em]'} />
           ) : null}
           <span className={light ? 'mt-1 block truncate text-xs text-slate-500' : nav ? 'mt-1 block truncate text-xs text-slate-500' : 'mt-1 block truncate text-xs text-slate-400'}>
-            {result.resultType === 'chapter' ? `${result.label} · ${result.formula_count} ${copy.search.formulaCount} · ${result.context}` : result.context}
+            {readableSearchContext(result)}
           </span>
         </button>
       ))}

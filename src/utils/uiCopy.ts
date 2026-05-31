@@ -81,17 +81,12 @@ const UI_COPY = {
       chapterGraphSuffix: '全章图谱',
       hints: {
         guided: '引导学习：先点公式卡片理解符号，再选择看前置概念或后续公式。',
-        focus: '精读公式：当前只展开这个公式里的关键符号，并调用 LLM 生成符号解释。',
         explore: '自由探索：点击公式，在当前章节里展开它的前置和后续关系。',
       },
       modes: {
         guided: {
           label: 'Guided',
           description: '先看符号，再看后续公式',
-        },
-        focus: {
-          label: 'Focus',
-          description: '专注阅读一个公式和它的符号',
         },
         explore: {
           label: 'Explore',
@@ -242,12 +237,10 @@ const UI_COPY = {
       chapterGraphSuffix: 'full graph',
       hints: {
         guided: 'Guided: click the formula card first, then choose prerequisites or successors.',
-        focus: 'Focus: read one formula and its symbols closely.',
         explore: 'Explore: click formulas to expand relationships inside this chapter.',
       },
       modes: {
         guided: { label: 'Guided', description: 'Symbols first, successors second' },
-        focus: { label: 'Focus', description: 'Read one formula and its symbols closely' },
         explore: { label: 'Explore', description: 'Open the chapter-scale relationship map' },
         locked: 'Chapter graphs use Explore mode.',
       },
@@ -325,6 +318,32 @@ export function formatChapterLabel(chapterId?: string, fallbackChapter?: number 
   if (chapterMatch) return language === 'zh' ? `第 ${chapterMatch[1]} 章` : `Chapter ${chapterMatch[1]}`;
   if (fallback) return language === 'zh' ? `第 ${fallback} 章` : `Chapter ${fallback}`;
   return language === 'zh' ? '章节' : 'Chapter';
+}
+
+export function formatSectionLabel(section?: string, language: LanguageCode = DEFAULT_LANGUAGE): string {
+  const value = (section || '').replace(/\s+/g, ' ').trim();
+  if (!value) return '';
+  if (language !== 'zh') return value;
+
+  const normalized = value.toLowerCase();
+  const mappings: Array<[RegExp, string]> = [
+    [/neutral evolution.*two-locus.*introduction/, '中性演化导论'],
+    [/wright-fisher/, 'Wright-Fisher 模型'],
+    [/selection.*mutation/, '选择与突变'],
+    [/single[- ]generation response|breeder/, '单代选择响应'],
+    [/neutrality test|hka|mcdonald/, '中性检验'],
+    [/polymorphism.*divergence|divergence.*polymorphism/, '多态性与分化'],
+    [/coalescent/, '溯祖过程'],
+    [/linkage disequilibrium/, '连锁不平衡'],
+    [/effective population size|effective size/, '有效群体大小'],
+    [/quantitative genetics|additive genetic/, '数量遗传基础'],
+  ];
+  const mapped = mappings.find(([pattern]) => pattern.test(normalized))?.[1];
+  if (mapped) return mapped;
+
+  const beforeColon = value.split(':')[0]?.trim();
+  const compact = beforeColon && beforeColon.length < value.length ? beforeColon : value;
+  return compact.length > 34 ? `${compact.slice(0, 34).replace(/\s+\S*$/, '')}...` : compact;
 }
 
 export function joinMeta(parts: Array<string | number | undefined | null>): string {

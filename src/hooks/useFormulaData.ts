@@ -11,6 +11,7 @@ export interface FormulaDataState {
   chapterNavigator: ChapterNavigatorPayload;
   themeRoutes: ThemeRoutesPayload['paths'];
   loading: boolean;
+  supplementalLoading: boolean;
   error: string | null;
 }
 
@@ -23,6 +24,7 @@ export function useFormulaData(): FormulaDataState {
     chapterNavigator: { groups: [] },
     themeRoutes: [],
     loading: true,
+    supplementalLoading: true,
     error: null,
   });
 
@@ -31,26 +33,48 @@ export function useFormulaData(): FormulaDataState {
     Promise.all([
       loadJSON<{ featured: FeaturedFormula[] }>('/data/featured_formulas.json', controller.signal),
       loadJSON<SearchFormula[]>('/data/formula_search_index.json', controller.signal),
-      loadJSON<FormulaLearningCopyPayload>('/data/formula_learning_copy.json', controller.signal),
       loadJSON<ChapterNavigatorPayload>('/data/chapter_navigator.json', controller.signal),
-      loadJSON<ThemeRoutesPayload>('/data/learning_paths.json', controller.signal),
-      loadJSON<StorylinePayload>('/data/storylines.json', controller.signal),
     ])
-      .then(([featuredPayload, searchIndex, learningCopyPayload, chapterNavigator, themeRoutesPayload, storylinePayload]) => {
-        setState({
+      .then(([featuredPayload, searchIndex, chapterNavigator]) => {
+        setState((current) => ({
+          ...current,
           featured: featuredPayload.featured,
           searchIndex,
-          formulaLearningCopy: learningCopyPayload.items,
-          storylines: storylinePayload.items,
           chapterNavigator,
-          themeRoutes: themeRoutesPayload.paths,
           loading: false,
           error: null,
-        });
+        }));
       })
       .catch((error: Error) => {
         if (controller.signal.aborted) return;
         setState((current) => ({ ...current, loading: false, error: error.message }));
+    });
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    Promise.all([
+      loadJSON<FormulaLearningCopyPayload>('/data/formula_learning_copy.json', controller.signal),
+      loadJSON<ThemeRoutesPayload>('/data/learning_paths.json', controller.signal),
+      loadJSON<StorylinePayload>('/data/storylines.json', controller.signal),
+    ])
+      .then(([learningCopyPayload, themeRoutesPayload, storylinePayload]) => {
+        setState((current) => ({
+          ...current,
+          formulaLearningCopy: learningCopyPayload.items,
+          themeRoutes: themeRoutesPayload.paths,
+          storylines: storylinePayload.items,
+          supplementalLoading: false,
+        }));
+      })
+      .catch((error: Error) => {
+        if (controller.signal.aborted) return;
+        setState((current) => ({
+          ...current,
+          supplementalLoading: false,
+          error: current.error || error.message,
+        }));
       });
     return () => controller.abort();
   }, []);

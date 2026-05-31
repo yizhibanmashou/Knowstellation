@@ -1,5 +1,6 @@
 import { ArrowRight, X } from 'lucide-react';
 import type { StarNode } from '../../utils/starNavigation';
+import { formatSectionLabel } from '../../utils/uiCopy';
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../utils/uiCopy';
 import { MathFormula } from '../common/MathFormula';
 
@@ -27,7 +28,7 @@ export function StarNodeCard({ node, x, y, onClose, onEnter }: StarNodeCardProps
       <p className="star-node-card__eyebrow">{node.kind === 'chapter' ? '章节节点' : node.isBackbone ? '推荐起点' : '公式节点'}</p>
       <h2>{node.title}</h2>
       <p className="star-node-card__meta">
-        {node.kind === 'chapter' ? `${node.formulaCount || 0} 个公式` : `${node.label} · ${node.section || '公式'}`}
+        {node.kind === 'chapter' ? `${node.formulaCount || 0} 个公式` : `${node.label} · ${formatSectionLabel(node.section) || '公式'}`}
       </p>
       {node.latex ? <MathFormula latex={node.latex} className="star-node-card__math" /> : null}
       <p className="star-node-card__copy">{node.kind === 'chapter' ? node.subtitle : node.context || node.subtitle}</p>

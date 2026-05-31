@@ -8,6 +8,13 @@ import { buildFormulaStarNodes, type StarNode } from '../utils/starNavigation';
 import { getChapterById, resolveRecommendedChapterFormulaId } from '../utils/learningNavigator';
 import { DEFAULT_LANGUAGE, formatChapterLabel, getUiCopy } from '../utils/uiCopy';
 
+function entryHint(index: number, isRecommended: boolean): string {
+  if (isRecommended) return '推荐先从这里进入：它最适合作为本章公式网络的第一颗锚点。';
+  if (index === 0) return '这一式通常承担开场定义，适合先用来熟悉本章符号。';
+  if (index <= 2) return '这一式能把前面的符号放进推导关系里，适合顺着主线继续读。';
+  return '当你已经掌握前几步后，再用这一式检查本章的延伸关系。';
+}
+
 interface ChapterPageProps {
   data: FormulaDataState;
 }
@@ -49,7 +56,7 @@ export function ChapterPage({ data }: ChapterPageProps) {
             <span className="chapter-entry-panel__content">
               <strong>{node.label}</strong>
               <span>{node.title}</span>
-              <em>{node.context || node.section || chapter.description_zh}</em>
+              <em>{entryHint(index, node.id === recommendedFormulaId)}</em>
             </span>
             <ArrowRight size={16} className="text-cyan-500/40" />
           </button>
@@ -60,7 +67,7 @@ export function ChapterPage({ data }: ChapterPageProps) {
 
   return (
     <section className="chapter-shell relative min-h-screen w-full overflow-y-auto overflow-x-hidden bg-[#02040a] text-white font-['Space_Grotesk'] lg:h-screen lg:overflow-hidden">
-      <StarField nodes={formulaNodes} visible={Boolean(chapter)} onEnterNode={enterNode} rightReserve={400} />
+      <StarField nodes={formulaNodes} visible={Boolean(chapter)} onEnterNode={enterNode} rightReserveClassName="chapter-starfield-reserve" />
 
       {/* HUD Elements */}
       <div className="pointer-events-none absolute inset-0 z-20 border-[24px] border-white/[0.01]" />
@@ -71,11 +78,11 @@ export function ChapterPage({ data }: ChapterPageProps) {
 
       <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(2,4,10,0.78)_0%,transparent_42%,rgba(2,4,10,0.18)_100%),linear-gradient(180deg,rgba(2,4,10,0.2)_0%,transparent_40%,rgba(2,4,10,0.8)_100%)]" />
 
-      <div className="absolute left-10 top-10 z-40 flex items-center gap-6 animate-[fadeSlideUp_0.8s_ease_both]">
+      <div className="chapter-topbar absolute left-10 top-10 z-40 flex items-center gap-6 animate-[fadeSlideUp_0.8s_ease_both]">
         <Link to="/" className="chapter-back-button" aria-label={copy.chapter.backToHome}>
           <ChevronLeft size={22} />
         </Link>
-        <div className="w-[320px]">
+        <div className="chapter-topbar__search w-[320px]">
           <SearchBar searchIndex={data.searchIndex} chapterNavigator={data.chapterNavigator} size="compact" />
         </div>
       </div>

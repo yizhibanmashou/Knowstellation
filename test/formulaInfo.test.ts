@@ -142,7 +142,7 @@ test('buildFormulaLearningCopy defaults to Chinese readable fallback instead of 
   assert.doesNotMatch(copy.plainMeaning, /^qual to j/);
   assert.match(copy.plainMeaning, /Formula 2\.1/);
   assert.match(copy.inThisChapter, /中性进化/);
-  assert.match(copy.inThisChapter, /学习检查点/);
+  assert.match(copy.inThisChapter, /推导路标/);
 });
 
 test('buildFormulaLearningCopy keeps English fallback when requested', () => {
@@ -189,6 +189,22 @@ test('buildFormulaLearningCopy gives formula-specific fallback for breeder equat
   assert.doesNotMatch(copy.plainMeaning, /数学关系/);
 });
 
+test('buildFormulaLearningCopy turns textbook context into readable Chinese hints', () => {
+  const copy = buildFormulaLearningCopy({
+    language: 'zh',
+    latex: '\\varphi(p_{t}|p_{0})=p_{0}(1-p_{0})',
+    context:
+      'Kimura used diffusion theory to obtain an analytical expression for the probability density of allele frequency at time t, given the starting value p0.',
+    chapterTitle: '第 2 章',
+    formulaLabel: 'Formula 2.8',
+    formulaNumber: '2.8',
+  });
+
+  assert.match(copy.plainMeaning, /p0 出发/);
+  assert.match(copy.plainMeaning, /pt 附近/);
+  assert.doesNotMatch(copy.plainMeaning, /Kimura|diffusion theory|probability density/);
+});
+
 test('buildFormulaSymbolPrerequisites creates local symbol notes when dependency graph has none', () => {
   const notes = buildFormulaSymbolPrerequisites({
     id: 'formula_2.1',
@@ -223,10 +239,39 @@ test('buildFormulaSymbolPrerequisites preserves formula 7.1 starter symbols', ()
 
   assert.deepEqual(notes.map((item) => item.symbol), ['p', 'p^{\\prime}', 'W_{\\mathrm{a}}', '\\overline{W}']);
   assert.match(notes[2].meaning || '', /W_a/);
+  assert.match(notes[3].meaning || '', /平均适合度/);
+});
+
+test('buildFormulaSymbolPrerequisites explains W-bar as mean fitness in selection formulas', () => {
+  const notes = buildFormulaSymbolPrerequisites({
+    id: 'formula_5.9c',
+    latex: '\\overline{W}=\\sum_{j=1}^{n}p_{j}W_{j}',
+    label: 'Formula 5.9c',
+    chapter_id: 'chapter5',
+    section: 'Selection',
+    subsection: 'Multiple alleles',
+    position: 1,
+    context_text: 'Further, note that the mean fitness is a weighted sum of allele fitnesses.',
+    symbols_defined: ['\\overline{W}'],
+    symbols_used: ['W_{j}', 'p_{j}', 'n'],
+  });
+
+  assert.equal(notes[0].symbol, '\\overline{W}');
+  assert.match(notes[0].meaning || '', /平均适合度/);
 });
 
 test('describeFormulaSymbol explains selection-gradient symbols locally', () => {
   assert.match(describeFormulaSymbol('\\beta', { latex: 'R=\\sigma_{A}^{2}\\beta', context_text: '' }), /选择梯度/);
+});
+
+test('describeFormulaSymbol keeps subscripted W labels specific in fitness context', () => {
+  assert.match(
+    describeFormulaSymbol('W_{j}', {
+      latex: '\\overline{W}=\\sum_{j=1}^{n}p_{j}W_{j}',
+      context_text: 'mean fitness is a weighted sum of allele fitnesses.',
+    }),
+    /^第 j 类适合度/,
+  );
 });
 
 test('conciseVariablePrerequisite keeps hover notes short', () => {
@@ -238,6 +283,129 @@ test('conciseVariablePrerequisite keeps hover notes short', () => {
       confidence: 0.9,
     }),
     '有效种群大小',
+  );
+});
+
+test('conciseVariablePrerequisite gives subscripted W a complete short label', () => {
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: 'W_{j}',
+      meaning: 'W_j 表示第 j 类或第 j 个基因型的适合度。',
+      confidence: 0.9,
+    }),
+    '第 j 类适合度',
+  );
+});
+
+test('conciseVariablePrerequisite covers common whole-book quantitative genetics symbols', () => {
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: '\\overline{z}_{i}',
+      meaning: 'the mean value of the descendants from category i, average trait value over all descendants',
+      confidence: 0.9,
+    }),
+    '第 i 类平均性状值',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: '\\bar{\\imath}',
+      meaning: 'the selection intensity or standardized selection differential',
+      confidence: 0.9,
+    }),
+    '平均选择强度',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: '\\sigma_{z}^{2}',
+      meaning: 'phenotypic variance used in the breeder equation',
+      confidence: 0.9,
+    }),
+    '表型方差',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: 'R_z',
+      meaning: 'response of trait z to selection',
+      confidence: 0.9,
+    }),
+    'z 的选择响应',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: 'q_{i}^{\\prime}',
+      meaning: 'descendant category frequency used to average trait values',
+      confidence: 0.9,
+    }),
+    '第 i 类后代频率',
+  );
+});
+
+test('conciseVariablePrerequisite handles population-genetic locus symbols without LLM', () => {
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: 'p_i',
+      meaning: 'allele frequency at locus i',
+      confidence: 0.9,
+    }),
+    '第 i 类等位基因频率',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: '\\pi_i',
+      meaning: 'nucleotide diversity at locus i',
+      confidence: 0.9,
+    }),
+    '第 i 位点多样性',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: 'D_i',
+      meaning: 'divergence at locus i',
+      confidence: 0.9,
+    }),
+    '第 i 位点分化',
+  );
+  assert.equal(
+    conciseVariablePrerequisite({
+      type: 'variable_definition',
+      symbol: '\\mu_i',
+      meaning: 'mutation rate at locus i',
+      confidence: 0.9,
+    }),
+    '第 i 位点突变率',
+  );
+});
+
+test('describeFormulaSymbol respects context for multi-use symbols', () => {
+  assert.match(
+    describeFormulaSymbol('R', {
+      latex: 'R=h^{2}S',
+      context_text: 'The breeder equation predicts response to selection for a trait.',
+    }),
+    /选择响应/,
+  );
+  assert.doesNotMatch(
+    describeFormulaSymbol('R', {
+      latex: 'R=\\frac{\\widehat{\\sigma^{2}}}{W}',
+      context_text: 'Gelman and Rubin defined the potential scale reduction factor for MCMC convergence.',
+    }),
+    /选择响应/,
+  );
+  assert.doesNotMatch(
+    describeFormulaSymbol('\\beta', {
+      latex: 'p(x\\mid\\beta)=\\beta e^{-\\beta x}',
+      context_text: 'The gamma distribution rate parameter beta controls an exponential waiting-time distribution.',
+    }),
+    /选择梯度/,
   );
 });
 
