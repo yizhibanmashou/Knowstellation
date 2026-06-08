@@ -40,6 +40,16 @@ interface GraphCanvasProps {
   toolbar?: ReactNode;
 }
 
+interface ConceptHistoryEntry {
+  conceptId: string;
+  formulaId: string;
+  label: string;
+}
+
+function conceptHistoryLabel(view: ConceptView): string {
+  return view.name || view.supporting_formula_label || '上一概念图';
+}
+
 function isCompactLandscapeViewport(): boolean {
   return window.matchMedia('(orientation: landscape) and (max-height: 520px) and (max-width: 960px)').matches;
 }
@@ -59,10 +69,9 @@ const CONCEPT_FOCUS_POSITION = { x: 360, y: 80 };
 const CONCEPT_PREREQ_X = -140;
 const CONCEPT_PREREQ_MULTI_X = -430;
 const CONCEPT_INTRO_X = 900;
-const CONCEPT_PREREQ_COLUMN_GAP = 320;
-const CONCEPT_PREREQ_ROW_GAP = 304;
-const CONCEPT_INTRO_ROW_GAP = 286;
-const CONCEPT_FOCUS_SIZE = { width: 368, height: 374 };
+const CONCEPT_PREREQ_COLUMN_GAP = 336;
+const CONCEPT_PREREQ_ROW_GAP = 326;
+const CONCEPT_INTRO_ROW_GAP = 310;
 
 function conceptReferenceKey(reference: ConceptReference, index: number): string {
   return `${reference.concept_id || reference.symbol || reference.name || 'concept'}:${reference.defined_by_formula_id || reference.from_formula_id || index}`;
@@ -243,6 +252,7 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
   const [graphNotice, setGraphNotice] = useState<string | null>(null);
   const [guidedStages, setGuidedStages] = useState<Record<string, GuidedExpansionStage>>({});
   const [conceptReveals, setConceptReveals] = useState<Record<string, Partial<Record<ConceptRevealGroup, boolean>>>>({});
+  const [conceptHistory, setConceptHistory] = useState<ConceptHistoryEntry[]>([]);
   const nodesRef = useRef<Node[]>([]);
   const conceptRevealsRef = useRef<Record<string, Partial<Record<ConceptRevealGroup, boolean>>>>({});
   const expandFormulaRef = useRef<(formulaId: string, intent?: FormulaExpansionIntent) => void>(() => undefined);
@@ -256,6 +266,9 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
   const focusChapterId = routeChapterId || params.get('chapterId') || chapterIdForFormula(focusFormulaId, searchLookup) || resolveFormulaChapter(focusFormulaId);
   const routeConceptId = params.get('conceptId');
   const linkedFormulaId = params.get('selected');
+  const sourceConceptId = params.get('fromConceptId');
+  const sourceFormulaId = params.get('fromFormulaId');
+  const sourceConceptLabel = params.get('fromConceptLabel');
   const routeSelectedFormulaId = isChapterGraph ? params.get('selected') : null;
   const guidedUnlock = params.get('entry') === 'chapter' && params.get('study') === 'chapter';
   const shouldShowLockedReason = !isChapterGraph && mode === 'guided' && guidedUnlock;
@@ -265,6 +278,14 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
     return storyline?.title_zh || storyline?.title_en || storylineId;
   }, [storylineId, storylines]);
   const chapterGraphModeClass = isChapterGraph ? `graph-canvas--chapter graph-canvas--chapter-${mode}` : isConceptMode ? 'graph-canvas--concept' : '';
+  const conceptBackTarget = conceptHistory[conceptHistory.length - 1] || (!isConceptMode && sourceConceptId && sourceFormulaId
+    ? {
+        conceptId: sourceConceptId,
+        formulaId: sourceFormulaId,
+        label: sourceConceptLabel || '上一概念图',
+      }
+    : null);
+  const conceptBackLabel = conceptBackTarget ? `返回 ${conceptBackTarget.label}` : null;
 
   useEffect(() => {
     nodesRef.current = nodes;
@@ -292,18 +313,49 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
     });
   }, []);
 
+  const rememberCurrentConcept = useCallback((skipConceptId?: string) => {
+    const currentView = activeConceptViewRef.current;
+    if (!currentView || currentView.concept_id === skipConceptId) return;
+    setConceptHistory((current) => {
+      const entry: ConceptHistoryEntry = {
+        conceptId: currentView.concept_id,
+        formulaId: currentView.defined_by_formula_id,
+        label: conceptHistoryLabel(currentView),
+      };
+      const last = current[current.length - 1];
+      if (last?.conceptId === entry.conceptId && last.formulaId === entry.formulaId) return current;
+      return [...current, entry].slice(-6);
+    });
+  }, []);
+
   const openFormulaEvidence = useCallback(
     (formulaId: string) => {
       if (!formulaId) return;
+      const currentView = activeConceptViewRef.current;
+      rememberCurrentConcept();
       const next = new URLSearchParams(paramsKey);
       next.set('mode', 'guided');
       next.set('chapterId', focusChapterId);
       next.set('selected', formulaId);
       next.delete('conceptId');
+      if (currentView) {
+        next.set('fromConceptId', currentView.concept_id);
+        next.set('fromFormulaId', currentView.defined_by_formula_id);
+        next.set('fromConceptLabel', conceptHistoryLabel(currentView));
+      } else {
+        next.delete('fromConceptId');
+        next.delete('fromFormulaId');
+        next.delete('fromConceptLabel');
+      }
       navigate(`/graph/${formulaId}?${next.toString()}`);
     },
-    [focusChapterId, navigate, paramsKey],
+    [focusChapterId, navigate, paramsKey, rememberCurrentConcept],
   );
+
+  const openLinkedConcept = useCallback((conceptId: string) => {
+    rememberCurrentConcept(conceptId);
+    loadConceptSceneRef.current(conceptId);
+  }, [rememberCurrentConcept]);
 
   const syncLinkedFormula = useCallback(
     (formulaId: string) => {
@@ -316,22 +368,14 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
     [isChapterGraph, mode, params, setParams],
   );
 
-  const centerConceptFocus = useCallback(
+  const fitConceptScene = useCallback(
     (duration = 420) => {
       window.setTimeout(() => {
-        reactFlow.setCenter(
-          CONCEPT_FOCUS_POSITION.x + CONCEPT_FOCUS_SIZE.width / 2,
-          CONCEPT_FOCUS_POSITION.y + CONCEPT_FOCUS_SIZE.height / 2,
-          { zoom: 0.9, duration },
-        );
-      }, 120);
+        reactFlow.fitView({ padding: 0.34, duration, maxZoom: 0.92 });
+      }, 80);
       window.setTimeout(() => {
-        reactFlow.setCenter(
-          CONCEPT_FOCUS_POSITION.x + CONCEPT_FOCUS_SIZE.width / 2,
-          CONCEPT_FOCUS_POSITION.y + CONCEPT_FOCUS_SIZE.height / 2,
-          { zoom: 0.9, duration: 220 },
-        );
-      }, 420);
+        reactFlow.fitView({ padding: 0.34, duration: 220, maxZoom: 0.92 });
+      }, 360);
     },
     [reactFlow],
   );
@@ -342,7 +386,7 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
       const scene = buildConceptScene(
         view,
         revealedGroups,
-        (conceptId) => loadConceptSceneRef.current(conceptId),
+        openLinkedConcept,
         openFormulaEvidence,
         (group) => {
           setConceptReveals((current) => ({
@@ -361,7 +405,7 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
       setStandaloneFocusId(null);
       setShowHint(true);
     },
-    [openFormulaEvidence, searchLookup],
+    [openFormulaEvidence, openLinkedConcept, searchLookup],
   );
 
   const loadConceptScene = useCallback(
@@ -398,31 +442,44 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
         next.set('conceptId', view.concept_id);
         next.set('chapterId', focusChapterId);
         next.set('selected', view.defined_by_formula_id);
+        next.delete('fromConceptId');
+        next.delete('fromFormulaId');
+        next.delete('fromConceptLabel');
         setParams(next, { replace: true });
       }
       window.dispatchEvent(new CustomEvent('litgraph:concept-details', { detail: { conceptView: enrichedView } }));
-      window.setTimeout(() => {
-      reactFlow.fitView({ padding: 0.3, duration: 620, maxZoom: 1.02 });
-      }, 80);
-      centerConceptFocus(520);
+      fitConceptScene(520);
     },
-    [centerConceptFocus, copy.missingFormula, focusChapterId, focusFormulaId, getConceptView, paramsKey, reactFlow, renderConceptScene, searchLookup, setParams],
+    [copy.missingFormula, fitConceptScene, focusChapterId, focusFormulaId, getConceptView, paramsKey, renderConceptScene, searchLookup, setParams],
   );
 
   useEffect(() => {
     const view = activeConceptViewRef.current;
     if (!isConceptMode || !view) return;
     renderConceptScene(view, conceptReveals[view.concept_id] || {});
-    window.setTimeout(() => {
-      reactFlow.fitView({ padding: 0.3, duration: 420, maxZoom: 1.02 });
-    }, 40);
-  }, [conceptReveals, isConceptMode, reactFlow, renderConceptScene]);
+    fitConceptScene(420);
+  }, [conceptReveals, fitConceptScene, isConceptMode, renderConceptScene]);
 
   useEffect(() => {
     loadConceptSceneRef.current = (conceptOrFormulaId: string) => {
       void loadConceptScene(conceptOrFormulaId, { syncUrl: true });
     };
   }, [loadConceptScene]);
+
+  const returnToPreviousConcept = useCallback(() => {
+    const target = conceptBackTarget;
+    if (!target) return;
+    setConceptHistory((current) => current.slice(0, -1));
+    const next = new URLSearchParams(paramsKey);
+    next.delete('mode');
+    next.delete('fromConceptId');
+    next.delete('fromFormulaId');
+    next.delete('fromConceptLabel');
+    next.set('chapterId', focusChapterId);
+    next.set('conceptId', target.conceptId);
+    next.set('selected', target.formulaId);
+    navigate(`/graph/${target.formulaId}?${next.toString()}`);
+  }, [conceptBackTarget, focusChapterId, navigate, paramsKey]);
 
   const canUseFormula = useCallback(
     (formulaId: string) => {
@@ -666,6 +723,8 @@ function GraphCanvasInner({ searchIndex, mode = 'concept', storylines, toolbar }
       nodes={nodes}
       edges={edges}
       chapterGraphModeClass={chapterGraphModeClass}
+      conceptBackLabel={conceptBackLabel}
+      onBackToConcept={returnToPreviousConcept}
       onBackToStoryline={() => navigate(`/storyline/${storylineId}`)}
       onHome={() => navigate('/')}
       onExpand={() => expandFormula(selectedFormulaId || focusFormulaId)}

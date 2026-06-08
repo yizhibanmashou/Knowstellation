@@ -3,6 +3,9 @@ import type { ChapterFormula, FormulaDependency, FormulaPrerequisite } from '../
 
 const FORMULA_X_GAP = 460;
 const VARIABLE_X_GAP = 260;
+const FORMULA_CARD_WIDTH = 276;
+const FOCUSED_FORMULA_CARD_WIDTH = 620;
+const FORMULA_SIDE_GUTTER = FORMULA_X_GAP - FORMULA_CARD_WIDTH;
 const FORMULA_Y_GAP = 320;
 const VARIABLE_Y_GAP = 118;
 const FORMULA_SAFE_HEIGHT = 310;
@@ -41,6 +44,11 @@ function usedSlotsForLane(existingNodes: Node[], x: number, safeHeight: number):
     .map((node) => ({ yMin: node.position.y - safeHeight / 2, yMax: node.position.y + safeHeight / 2 }));
 }
 
+function formulaNodeWidth(node: Node): number {
+  const data = node.data as { focused?: boolean } | undefined;
+  return data?.focused ? FOCUSED_FORMULA_CARD_WIDTH : FORMULA_CARD_WIDTH;
+}
+
 export function layoutPrerequisites(parent: Node, prerequisites: FormulaPrerequisite[], existingNodes: Node[]): XYPosition[] {
   const formulaX = parent.position.x - FORMULA_X_GAP;
   const variableX = parent.position.x - VARIABLE_X_GAP;
@@ -67,7 +75,7 @@ export function layoutPrerequisites(parent: Node, prerequisites: FormulaPrerequi
 }
 
 export function layoutSuccessors(parent: Node, count: number, existingNodes: Node[]): XYPosition[] {
-  const formulaX = parent.position.x + FORMULA_X_GAP;
+  const formulaX = parent.position.x + formulaNodeWidth(parent) + FORMULA_SIDE_GUTTER;
   const slots = usedSlotsForLane(existingNodes, formulaX, FORMULA_SAFE_HEIGHT);
   const startY = parent.position.y - ((count - 1) * FORMULA_Y_GAP) / 2;
   return Array.from({ length: count }, (_, index) => ({

@@ -7,10 +7,12 @@ interface GraphToolbarProps {
   copy: ReturnType<typeof getUiCopy>['graph'];
   mode: GraphStudyMode;
   toolbar?: ReactNode;
+  conceptBackLabel?: string | null;
   storylineId: string | null;
   storylineTitle?: string | null;
   isChapterGraph: boolean;
   showHint: boolean;
+  onBackToConcept?: () => void;
   onBackToStoryline: () => void;
   onHome: () => void;
   onExpand: () => void;
@@ -21,10 +23,12 @@ export function GraphToolbar({
   copy,
   mode,
   toolbar,
+  conceptBackLabel,
   storylineId,
   storylineTitle,
   isChapterGraph,
   showHint,
+  onBackToConcept,
   onBackToStoryline,
   onHome,
   onExpand,
@@ -46,6 +50,17 @@ export function GraphToolbar({
       <button type="button" onClick={onHome} className="graph-toolbar-button inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold">
         {copy.home}
       </button>
+      {!isChapterGraph && conceptBackLabel && onBackToConcept ? (
+        <button
+          type="button"
+          onClick={onBackToConcept}
+          className="graph-toolbar-button graph-toolbar-button--return inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold"
+          title={conceptBackLabel}
+        >
+          <ArrowLeft size={16} />
+          <span>{conceptBackLabel}</span>
+        </button>
+      ) : null}
       {toolbar}
       {!isChapterGraph && mode !== 'concept' ? (
         <button type="button" onClick={onExpand} className="graph-toolbar-button inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold">

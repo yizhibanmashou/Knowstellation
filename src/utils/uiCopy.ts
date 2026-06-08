@@ -174,7 +174,7 @@ const UI_COPY = {
   },
   en: {
     app: {
-      subtitle: 'Formula prerequisite atlas',
+      subtitle: 'A LitGraph Learning System',
       searchPlaceholder: 'Search formula, chapter, or topic',
       home: 'Home',
       clearSearch: 'Clear search',

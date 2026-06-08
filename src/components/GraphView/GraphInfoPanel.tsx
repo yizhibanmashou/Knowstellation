@@ -227,14 +227,6 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
     const storyline = storylines.find((item) => item.id === story);
     return storyline?.title_zh || storyline?.title_en || story;
   }, [story, storylines]);
-  const explorableSymbols = useMemo(
-    () =>
-      prerequisites
-        .filter((item) => item.type === 'variable_definition' && (item.edge_status ?? 'accepted') === 'accepted' && item.symbol)
-        .slice(0, 5),
-    [prerequisites],
-  );
-
   useEffect(() => {
     if (!formula?.id || isChapterGraph) {
       setPrerequisites([]);
@@ -434,18 +426,12 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
       {!isChapterGraph && !conceptView ? (
         <section className="graph-info-panel__section graph-info-panel__section--primary graph-info-panel__section--what-it-says">
           <h2>公式整体读法</h2>
-          <div className="graph-info-panel__copy-block">
-            <div className="graph-info-panel__copy-heading">
-              <span>{copy.plain}</span>
-              {llmState.status === 'loading' ? <small>{copy.loading}</small> : null}
-              {llmState.status === 'ready' ? <small>{copy.source}</small> : null}
-              {llmState.status === 'error' ? <small>{copy.fallback}</small> : null}
-            </div>
-            <p><RichMathText text={learningCopy.plainMeaning} /></p>
-          </div>
           <div className="graph-info-panel__copy-block graph-info-panel__copy-block--takeaway">
             <div className="graph-info-panel__copy-heading">
               <span>一眼看懂</span>
+              {llmState.status === 'loading' ? <small>{copy.loading}</small> : null}
+              {llmState.status === 'ready' ? <small>{copy.source}</small> : null}
+              {llmState.status === 'error' ? <small>{copy.fallback}</small> : null}
             </div>
             <p><RichMathText text={learningCopy.takeaway} /></p>
           </div>
@@ -454,27 +440,6 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
               <span>{copy.chapter}</span>
             </div>
             <p><RichMathText text={learningCopy.inThisChapter} /></p>
-          </div>
-          <div className="graph-info-panel__copy-block">
-            <div className="graph-info-panel__copy-heading">
-              <span>下一步读法</span>
-            </div>
-            <p><RichMathText text={learningCopy.nextAction} /></p>
-          </div>
-          <div className="graph-info-panel__copy-block graph-info-panel__copy-block--local-focus">
-            <div className="graph-info-panel__copy-heading">
-              <span>局部精读</span>
-            </div>
-            <p>扫过公式本体里的蓝色高亮区域，可以直接看单个符号、括号组合或整式片段在当前公式中的含义。</p>
-            {explorableSymbols.length ? (
-              <div className="graph-info-panel__symbol-strip" aria-label="可精读符号">
-                {explorableSymbols.map((item) => (
-                  <span key={`${item.symbol}:${item.sense_id || item.meaning || item.definition || ''}`}>
-                    <MathFormula latex={item.symbol || ''} inline />
-                  </span>
-                ))}
-              </div>
-            ) : null}
           </div>
         </section>
       ) : null}

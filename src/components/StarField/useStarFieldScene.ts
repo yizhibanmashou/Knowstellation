@@ -56,7 +56,7 @@ export function useStarFieldScene({
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
     } catch (error) {
-      console.error('LitGraph star map WebGL initialization failed', error);
+      console.error('Formula Atlas star map WebGL initialization failed', error);
       setRenderError('星图 3D 渲染暂不可用，已切换为静态星空背景。');
       return;
     }

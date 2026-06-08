@@ -47,6 +47,8 @@ interface GraphCanvasViewProps {
   nodes: Node[];
   edges: Edge[];
   chapterGraphModeClass: string;
+  conceptBackLabel?: string | null;
+  onBackToConcept?: () => void;
   onBackToStoryline: () => void;
   onHome: () => void;
   onExpand: () => void;
@@ -99,6 +101,8 @@ export function GraphCanvasView({
   nodes,
   edges,
   chapterGraphModeClass,
+  conceptBackLabel,
+  onBackToConcept,
   onBackToStoryline,
   onHome,
   onExpand,
@@ -117,10 +121,12 @@ export function GraphCanvasView({
         copy={copy}
         mode={mode}
         toolbar={toolbar}
+        conceptBackLabel={conceptBackLabel}
         storylineId={storylineId}
         storylineTitle={storylineTitle}
         isChapterGraph={isChapterGraph}
         showHint={showHint}
+        onBackToConcept={onBackToConcept}
         onBackToStoryline={onBackToStoryline}
         onHome={onHome}
         onExpand={onExpand}

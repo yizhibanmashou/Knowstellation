@@ -1,16 +1,18 @@
 <p align="center">
-  <img src="public/assets/readme/cover.png" alt="LitGraph-RAG formula graph reader cover" width="100%">
+  <img src="public/assets/readme/cover.png" alt="Formula Atlas cover" width="100%">
 </p>
 
-<h1 align="center">LitGraph-RAG</h1>
+<h1 align="center">Formula Atlas</h1>
 
 <p align="center">
-  A product-grade formula graph reader for math-heavy textbooks.
+  <strong>A LitGraph Learning System</strong>
+  <br>
+  A product-grade formula atlas for math-heavy textbooks.
   Search a formula, read its symbols, unfold prerequisites, and move through the book as an interactive knowledge map.
 </p>
 
 <p align="center">
-  <a href="https://litgraph-rag.pages.dev/"><strong>Live demo</strong></a>
+  <a href="https://formula-atlas.13260051624.workers.dev/"><strong>Live demo</strong></a>
   |
   <a href="#quick-start"><strong>Quick start</strong></a>
   |
@@ -29,9 +31,9 @@
   <a href="#llm-configuration"><img alt="LLM proxy" src="https://img.shields.io/badge/LLM-server%20side%20proxy-0ea5e9"></a>
 </p>
 
-LitGraph-RAG turns a textbook's formulas into an explorable learning graph. It combines a conservative dependency pipeline with a polished React interface: students can search a formula, inspect its symbols, unfold prerequisites step by step, and follow storyline paths through the book.
+Formula Atlas turns a textbook's formulas into an explorable learning graph. As a LitGraph learning system, it combines a conservative dependency pipeline with a polished React interface: students can search a formula, inspect its symbols, unfold prerequisites step by step, read concept definitions in layers, and follow storyline paths through the book.
 
-Live demo: [https://litgraph-rag.pages.dev/](https://litgraph-rag.pages.dev/)
+Live demo: [https://formula-atlas.13260051624.workers.dev/](https://formula-atlas.13260051624.workers.dev/)
 
 The project is intentionally strict about graph quality. Exact references, exact or canonical symbol matches, compound formula groups, and explicit text definitions can enter the main graph. Family-only symbol matches stay as ambiguous audit candidates instead of becoming accepted prerequisite edges.
 
@@ -40,7 +42,7 @@ The project is intentionally strict about graph quality. Exact references, exact
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
 - **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
-- **Layered concept graph**: Concept mode opens one layer at a time, keeps formula evidence folded by default, and lets learners drag concept cards apart when they are arranging a dense local view.
+- **Layered concept graph**: Concept mode starts from the concept defined by the current formula, reveals prerequisite and introduced concepts in controlled layers, keeps formula evidence folded by default, and lets learners drag concept cards apart when arranging a dense local view.
 - **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
 - **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
 - **LLM-assisted explanations**: optional server-side proxy enriches chapter summaries and symbol explanations without exposing API keys in the browser.
@@ -49,18 +51,34 @@ The project is intentionally strict about graph quality. Exact references, exact
 
 ### Home star map
 
-Start from the whole book instead of a blank search box. The home view turns chapters, formulas, and curated routes into a navigable constellation.
+Start from the whole book instead of a blank search box. The home view turns chapters, formulas, and curated routes into a navigable constellation, so learners can enter by chapter, formula, or storyline.
 
 <p align="center">
-  <img src="public/assets/readme/home.png" alt="LitGraph-RAG home star map" width="100%">
+  <img src="public/assets/readme/home.png" alt="Formula Atlas home star map" width="100%">
+</p>
+
+### Concept graph reading
+
+Concept mode answers the question "what is this formula defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. This makes dense local concept neighborhoods readable instead of dropping the whole graph at once.
+
+<p align="center">
+  <img src="public/assets/readme/concept.png" alt="Formula Atlas concept graph with layered concept cards and folded formula evidence" width="100%">
 </p>
 
 ### Guided formula reading
 
-Guided mode keeps the learner inside a single formula card first. Hover or tap highlighted terms to see compact semantic notes, then unfold prerequisites or successors when the formula is ready to connect.
+Guided mode keeps the learner inside a single formula card first. Hover or tap highlighted terms to see compact semantic notes, then unfold prerequisites or successors when the formula is ready to connect. The left panel keeps the full-formula reading concise: one quick takeaway plus the formula's role in the chapter.
 
 <p align="center">
   <img src="public/assets/readme/guided.png" alt="Guided formula reading" width="100%">
+</p>
+
+### Formula dependency map
+
+Explore mode opens the chapter-scale dependency map. It is designed for orientation rather than close reading: drag across the chapter, zoom through formula clusters, and use the minimap to keep the current focus visible while scanning the larger structure.
+
+<p align="center">
+  <img src="public/assets/readme/minimap.png" alt="Formula Atlas chapter dependency map with minimap and highlighted formula cluster" width="100%">
 </p>
 
 ### Storyline paths
@@ -70,18 +88,6 @@ Storylines turn scattered formulas into a readable sequence. Each route explains
 <p align="center">
   <img src="public/assets/readme/storyline.png" alt="Storyline path" width="100%">
 </p>
-
-### Formula dependency map
-
-Guided expansion turns a formula into a local dependency neighborhood. Active edges show how prerequisite formulas feed into the selected card, while the minimap keeps the chapter context available for fast navigation.
-
-<p align="center">
-  <img src="public/assets/readme/minimap.png" alt="Formula 6.16b dependency neighborhood with active edges and minimap" width="100%">
-</p>
-
-### Concept graph reading
-
-Concept mode focuses on the definition behind a formula. It starts with the current concept and one revealed layer, then lets the reader expand prerequisite concepts or introduced symbols on demand. Formula evidence stays folded until the reader asks for it, so the graph remains readable before the proof/context details appear.
 
 ## Demo Flow
 

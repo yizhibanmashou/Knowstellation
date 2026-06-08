@@ -1,6 +1,7 @@
 import React from 'react';
 import type { NodeProps } from '@xyflow/react';
 import { Handle, Position } from '@xyflow/react';
+import { ArrowRight } from 'lucide-react';
 import type { ConceptNodeData, ConceptRevealGroup } from '../../types/graph';
 import { formatSectionLabel } from '../../utils/uiCopy';
 import { MathFormula } from '../common/MathFormula';
@@ -70,22 +71,9 @@ export const ConceptNode = React.memo(({ data }: NodeProps) => {
         clickable ? 'concept-node--clickable' : '',
         nodeData.active ? 'concept-node--active' : '',
       ].filter(Boolean).join(' ')}
-      role={clickable ? 'button' : undefined}
-      tabIndex={clickable ? 0 : undefined}
-      aria-label={clickable ? `打开前置概念 ${title}` : undefined}
       data-testid="concept-node"
       data-concept-role={role}
       data-concept-id={role === 'focus' ? view.concept_id : reference?.concept_id}
-      onClick={clickable ? openConcept : undefined}
-      onKeyDown={
-        clickable
-          ? (event) => {
-              if (event.key !== 'Enter' && event.key !== ' ') return;
-              event.preventDefault();
-              openConcept(event);
-            }
-          : undefined
-      }
     >
       <Handle type="target" position={Position.Left} />
       <div className="concept-node__header">
@@ -113,6 +101,17 @@ export const ConceptNode = React.memo(({ data }: NodeProps) => {
         <span>{formulaLabel}</span>
         {role === 'focus' && view.formula_section ? <span>{formatSectionLabel(view.formula_section)}</span> : null}
       </div>
+      {clickable ? (
+        <button
+          type="button"
+          className="concept-node__open-button nodrag nopan"
+          onClick={openConcept}
+          aria-label={`进入前置概念 ${title}`}
+        >
+          <span>进入概念</span>
+          <ArrowRight size={13} aria-hidden="true" />
+        </button>
+      ) : null}
       {teachingMove ? (
         <div className="concept-node__teaching">
           <span>教材引入</span>

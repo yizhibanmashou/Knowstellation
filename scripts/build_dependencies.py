@@ -1,4 +1,4 @@
-"""Build LitGraph-RAG frontend dependency data from structured JSON."""
+"""Build Formula Atlas frontend dependency data from structured JSON."""
 
 from __future__ import annotations
 
