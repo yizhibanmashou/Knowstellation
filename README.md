@@ -40,7 +40,7 @@ The project is intentionally strict about graph quality. Exact references, exact
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
 - **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
-- **Concept graph explanations**: deterministic domain labels keep MK-test quantities such as `D_a`, `D_s`, `P_a`, and `P_s` tied to their replacement/silent-site meanings.
+- **Layered concept graph**: Concept mode opens one layer at a time, keeps formula evidence folded by default, and lets learners drag concept cards apart when they are arranging a dense local view.
 - **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
 - **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
 - **LLM-assisted explanations**: optional server-side proxy enriches chapter summaries and symbol explanations without exposing API keys in the browser.
@@ -79,11 +79,16 @@ Guided expansion turns a formula into a local dependency neighborhood. Active ed
   <img src="public/assets/readme/minimap.png" alt="Formula 6.16b dependency neighborhood with active edges and minimap" width="100%">
 </p>
 
+### Concept graph reading
+
+Concept mode focuses on the definition behind a formula. It starts with the current concept and one revealed layer, then lets the reader expand prerequisite concepts or introduced symbols on demand. Formula evidence stays folded until the reader asks for it, so the graph remains readable before the proof/context details appear.
+
 ## Demo Flow
 
 ```text
 Home star map -> Chapter entry point -> Guided formula graph
                -> Inline symbol reading
+               -> Concept graph explanation
                -> Explore full chapter graph
                -> Storyline path review
 ```
@@ -93,6 +98,7 @@ The UI is optimized around the current reading model:
 | Mode | Purpose |
 | --- | --- |
 | `guided` | Default study flow. Expand prerequisites and successors gradually while reading symbol-level callouts in the formula card. |
+| `concept` | Layered concept view. Start from the formula's defined concept, reveal prerequisite/introduced concept layers, and drag cards to arrange dense neighborhoods. |
 | `explore` | Full chapter overview for browsing the formula network. |
 
 ## Quick Start
@@ -238,7 +244,7 @@ For frontend checks, manually verify:
 - search result navigation into a formula graph
 - `/graph/<formulaId>?chapterId=<chapterId>&mode=guided` symbol hover/tap callouts, including indexed symbols such as `d_s` / `p_s`
 - fraction annotations: hover the fraction bar or surrounding fraction body for the whole-ratio meaning, then hover numerator/denominator symbols for their own labels
-- concept view for `formula_10.7b`: verify `D_a`, `D_s`, `P_a`, and `P_s` show replacement/silent-site definitions without review flags
+- concept view for a formula with several prerequisites: verify one concept layer opens by default, formula evidence stays folded, concept cards do not overlap, and cards can be dragged
 - `/graph/chapter/<chapterId>?mode=explore` minimap node selection
 - `/storyline/<storylineId>` and its "open graph" path
 

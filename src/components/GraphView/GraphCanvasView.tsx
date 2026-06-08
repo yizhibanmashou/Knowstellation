@@ -143,8 +143,8 @@ export function GraphCanvasView({
         onNodeClick={onNodeClick}
         onConnect={(connection) => onSetEdges((current) => addEdge(connection, current))}
         fitView
-        nodesDraggable={mode !== 'concept'}
-        elementsSelectable={mode !== 'concept'}
+        nodesDraggable
+        elementsSelectable
         panOnDrag
         zoomOnDoubleClick={mode !== 'concept'}
         nodesConnectable={false}

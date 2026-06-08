@@ -57,9 +57,11 @@ function focusCenterTarget(parent?: Node | null): { x: number; y: number; zoom: 
 
 const CONCEPT_FOCUS_POSITION = { x: 360, y: 80 };
 const CONCEPT_PREREQ_X = -140;
+const CONCEPT_PREREQ_MULTI_X = -430;
 const CONCEPT_INTRO_X = 900;
-const CONCEPT_PREREQ_SPACING = 176;
-const CONCEPT_INTRO_SPACING = 260;
+const CONCEPT_PREREQ_COLUMN_GAP = 320;
+const CONCEPT_PREREQ_ROW_GAP = 304;
+const CONCEPT_INTRO_ROW_GAP = 286;
 const CONCEPT_FOCUS_SIZE = { width: 368, height: 374 };
 
 function conceptReferenceKey(reference: ConceptReference, index: number): string {
@@ -123,6 +125,7 @@ function buildConceptScene(
   const showIntroduced = Boolean(revealedGroups.introduced);
   const prereqColumns = prerequisites.length > 5 ? 2 : 1;
   const prereqRows = Math.ceil(prerequisites.length / prereqColumns);
+  const prereqStartX = prereqColumns > 1 ? CONCEPT_PREREQ_MULTI_X : CONCEPT_PREREQ_X;
   const nodes: Node[] = [
     {
       id: view.concept_id,
@@ -150,11 +153,11 @@ function buildConceptScene(
     const id = `prereq:${conceptReferenceKey(reference, index)}`;
     const column = prerequisites.length > 5 ? index % 2 : 0;
     const row = prerequisites.length > 5 ? Math.floor(index / 2) : index;
-    const y = CONCEPT_FOCUS_POSITION.y - Math.max(0, prereqRows - 1) * (CONCEPT_PREREQ_SPACING / 2) + row * CONCEPT_PREREQ_SPACING;
+    const y = CONCEPT_FOCUS_POSITION.y - Math.max(0, prereqRows - 1) * (CONCEPT_PREREQ_ROW_GAP / 2) + row * CONCEPT_PREREQ_ROW_GAP;
     nodes.push({
       id,
       type: 'concept',
-      position: { x: CONCEPT_PREREQ_X + column * 274, y },
+      position: { x: prereqStartX + column * CONCEPT_PREREQ_COLUMN_GAP, y },
       data: {
         view,
         role: 'prerequisite',
@@ -185,7 +188,7 @@ function buildConceptScene(
 
   if (showIntroduced) introduced.forEach((reference, index) => {
     const id = `introduced:${conceptReferenceKey(reference, index)}`;
-    const y = CONCEPT_FOCUS_POSITION.y - Math.max(0, introduced.length - 1) * (CONCEPT_INTRO_SPACING / 2) + index * CONCEPT_INTRO_SPACING;
+    const y = CONCEPT_FOCUS_POSITION.y - Math.max(0, introduced.length - 1) * (CONCEPT_INTRO_ROW_GAP / 2) + index * CONCEPT_INTRO_ROW_GAP;
     nodes.push({
       id,
       type: 'concept',
@@ -198,7 +201,6 @@ function buildConceptScene(
         onOpenConcept,
         onOpenFormula,
       } satisfies ConceptNodeData,
-      draggable: false,
     });
     edges.push({
       id: `${id}->${view.concept_id}`,
