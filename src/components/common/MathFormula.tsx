@@ -42,17 +42,28 @@ export function MathFormula({ latex = '', className = '', inline = false, annota
 
     const readAnnotation = (target: Element | null, point?: { x: number; y: number }) => {
       const stack = point ? document.elementsFromPoint(point.x, point.y) : [];
+      const containsPoint = (element: HTMLElement) => {
+        if (!point) return false;
+        const rect = element.getBoundingClientRect();
+        return (
+          point.x >= rect.left - 3 &&
+          point.x <= rect.right + 3 &&
+          point.y >= rect.top - 3 &&
+          point.y <= rect.bottom + 3
+        );
+      };
+      const nearbyFractionPart = point
+        ? Array.from(root.querySelectorAll<HTMLElement>('.math-symbol-hotspot[data-compound-shape^="fraction-"]'))
+            .filter(containsPoint)
+            .sort((a, b) => {
+              const rectA = a.getBoundingClientRect();
+              const rectB = b.getBoundingClientRect();
+              return rectA.width * rectA.height - rectB.width * rectB.height;
+            })[0] || null
+        : null;
       const nearbySymbol = point
         ? Array.from(root.querySelectorAll<HTMLElement>('.math-symbol-hotspot[data-kind="symbol"]'))
-            .filter((element) => {
-              const rect = element.getBoundingClientRect();
-              return (
-                point.x >= rect.left - 3 &&
-                point.x <= rect.right + 3 &&
-                point.y >= rect.top - 3 &&
-                point.y <= rect.bottom + 3
-              );
-            })
+            .filter(containsPoint)
             .sort((a, b) => {
               const rectA = a.getBoundingClientRect();
               const rectB = b.getBoundingClientRect();
@@ -74,10 +85,10 @@ export function MathFormula({ latex = '', className = '', inline = false, annota
         .filter((element) => element.dataset.kind === 'symbol')
         .sort((a, b) => (a.getBoundingClientRect().width * a.getBoundingClientRect().height) - (b.getBoundingClientRect().width * b.getBoundingClientRect().height));
       const fractionPart = hotspots.find((element) => element.dataset.compoundShape?.startsWith('fraction-')) || null;
-      const hotspot = nearbySymbol
-        && !fractionPart
-        ? nearbySymbol
-        : fractionPart
+      const nearbyStandaloneSymbol = nearbySymbol && !fractionPart ? nearbySymbol : null;
+      const hotspot = nearbyFractionPart
+        || fractionPart
+        || nearbyStandaloneSymbol
         || symbolHotspots[0]
         || lineFraction
         || hotspots.find((element) => element.dataset.kind === 'compound')
@@ -108,7 +119,12 @@ export function MathFormula({ latex = '', className = '', inline = false, annota
       onAnnotationChange(active.annotation, active.anchorRect);
     };
     const handleFocus = (event: FocusEvent) => {
-      const active = readAnnotation(event.target instanceof Element ? event.target : null);
+      const target = event.target instanceof Element ? event.target : null;
+      const rect = target?.getBoundingClientRect();
+      const active = readAnnotation(
+        target,
+        rect ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 } : undefined,
+      );
       onAnnotationChange(active?.annotation ?? null, active?.anchorRect);
     };
     const handleLeave = () => {
