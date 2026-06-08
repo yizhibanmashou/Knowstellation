@@ -223,6 +223,62 @@ test('buildFormulaSymbolPrerequisites creates local symbol notes when dependency
   assert.match(notes[0].meaning || '', /转移到下一代 j 个 B 拷贝/);
 });
 
+test('buildFormulaSymbolPrerequisites scans missing latex variables for hover annotations', () => {
+  const notes = buildFormulaSymbolPrerequisites({
+    id: 'formula_runtime_scan',
+    latex: '\\frac{d_s}{p_s}=q+\\sigma_z^2',
+    label: 'Formula runtime scan',
+    chapter_id: 'chapter-test',
+    section: 'Runtime symbols',
+    subsection: '',
+    position: 0,
+    context_text: 'A local ratio compares d_s with p_s and adds q plus sigma_z squared.',
+    symbols_defined: [],
+    symbols_used: [],
+  });
+
+  const symbols = notes.map((item) => item.symbol);
+  assert.ok(symbols.includes('d_s'));
+  assert.ok(symbols.includes('p_s'));
+  assert.ok(symbols.includes('q'));
+  assert.ok(symbols.includes('\\sigma_z^2'));
+});
+
+test('buildFormulaSymbolPrerequisites keeps MK estimator subscripts and explains per-gene symbols', () => {
+  const notes = buildFormulaSymbolPrerequisites({
+    id: 'formula_10.9c',
+    latex: '\\widehat{\\overline{\\alpha}}_{TG}=1-NI_{TG}=1-\\frac{\\sum_{i}D_{si}P_{ai}/(P_{si}+D_{si})}{\\sum_{i}P_{si}D_{ai}/(P_{si}+D_{si})}',
+    label: 'Formula 10.9c',
+    chapter_id: 'chapter10',
+    section: 'Estimating the Fraction of Adaptive Substitutions',
+    subsection: '',
+    position: 34,
+    context_text: 'The MK estimator uses replacement and silent-site polymorphism and divergence across genes; i denotes the ith gene.',
+    symbols_defined: ['\\widehat{\\overline{\\alpha}}_{TG}'],
+    symbols_used: ['D_{ai}', 'D_{si}', 'P_{ai}', 'P_{si}', 'NI_{TG}'],
+  });
+
+  const bySymbol = new Map(notes.map((item) => [item.symbol, item.meaning || '']));
+  assert.match(bySymbol.get('\\widehat{\\overline{\\alpha}}_{TG}') || '', /适应性替换比例估计量/);
+  assert.match(bySymbol.get('NI_{TG}') || '', /中性指数/);
+  assert.match(bySymbol.get('D_{ai}') || '', /替换位点分化/);
+  assert.match(bySymbol.get('D_{si}') || '', /沉默位点分化/);
+  assert.match(bySymbol.get('P_{ai}') || '', /替换位点多态性/);
+  assert.match(bySymbol.get('P_{si}') || '', /沉默位点多态性/);
+  assert.equal(notes.some((item) => item.symbol === 'G' || item.symbol === 'T'), false);
+});
+
+test('describeFormulaSymbol distinguishes stratified-selection variance components', () => {
+  const formula = {
+    latex: '\\sqrt{1+\\frac{\\sigma_{B}^{2}}{\\sigma_{G}^{2}+\\sigma_{e}^{2}}}',
+    context_text: 'The relative advantage of stratification compares among-block variance, genetic variance, and within-block residual environmental variance.',
+  };
+
+  assert.match(describeFormulaSymbol('\\sigma_{B}^{2}', formula), /组间方差/);
+  assert.match(describeFormulaSymbol('\\sigma_{G}^{2}', formula), /遗传方差/);
+  assert.match(describeFormulaSymbol('\\sigma_{e}^{2}', formula), /环境方差/);
+});
+
 test('buildFormulaSymbolPrerequisites preserves formula 7.1 starter symbols', () => {
   const notes = buildFormulaSymbolPrerequisites({
     id: 'formula_7.1',

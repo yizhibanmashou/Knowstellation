@@ -10,6 +10,7 @@ import {
 import type { DependencyEdgeData } from '../../types/graph';
 import { formatChapterLabel, type getUiCopy } from '../../utils/uiCopy';
 import { standaloneGraphCopy } from '../../utils/formulaInfo';
+import { ConceptNode } from './ConceptNode';
 import { DependencyEdge } from './DependencyEdge';
 import { FormulaNode } from './FormulaNode';
 import { GraphAtlas } from './GraphAtlas';
@@ -19,6 +20,7 @@ import type { GraphStudyMode } from './GraphModeControls';
 import { VariableDefNode } from './VariableDefNode';
 
 const nodeTypes = {
+  concept: ConceptNode,
   formula: FormulaNode,
   variableDefinition: VariableDefNode,
 };
@@ -41,6 +43,7 @@ interface GraphCanvasViewProps {
   focusFormulaId: string;
   focusChapterId: string;
   selectedFormulaId: string | null;
+  selectedConceptId: string | null;
   nodes: Node[];
   edges: Edge[];
   chapterGraphModeClass: string;
@@ -55,10 +58,13 @@ interface GraphCanvasViewProps {
   onSelectFormula: (formulaId: string) => void;
 }
 
-function decorateVisibleEdges(edges: Edge[], selectedFormulaId: string | null): Edge[] {
+function decorateVisibleEdges(edges: Edge[], selectedFormulaId: string | null, selectedConceptId: string | null): Edge[] {
   return edges.map((edge) => {
-    const related = Boolean(selectedFormulaId && (edge.source === selectedFormulaId || edge.target === selectedFormulaId));
     const data = edge.data as unknown as DependencyEdgeData | undefined;
+    const conceptEdge = data?.kind === 'concept' || data?.kind === 'introduced';
+    const selectedNodeId = conceptEdge ? selectedConceptId : selectedFormulaId;
+    const related = Boolean(selectedNodeId && (edge.source === selectedNodeId || edge.target === selectedNodeId));
+    const active = Boolean(data?.active || related);
     return {
       ...edge,
       animated: false,
@@ -67,9 +73,9 @@ function decorateVisibleEdges(edges: Edge[], selectedFormulaId: string | null): 
         via: data?.via || '',
         crossChapter: Boolean(data?.crossChapter),
         confidence: data?.confidence ?? 0,
-        active: related,
-        dimmed: Boolean(selectedFormulaId && !related),
-        labelVisible: related,
+        active,
+        dimmed: Boolean(selectedNodeId && !related),
+        labelVisible: conceptEdge ? Boolean(data?.labelVisible) : Boolean(data?.labelVisible || related),
       } satisfies DependencyEdgeData,
     };
   });
@@ -89,6 +95,7 @@ export function GraphCanvasView({
   focusFormulaId,
   focusChapterId,
   selectedFormulaId,
+  selectedConceptId,
   nodes,
   edges,
   chapterGraphModeClass,
@@ -102,7 +109,7 @@ export function GraphCanvasView({
   onSetEdges,
   onSelectFormula,
 }: GraphCanvasViewProps) {
-  const visibleEdges = decorateVisibleEdges(edges, selectedFormulaId);
+  const visibleEdges = decorateVisibleEdges(edges, selectedFormulaId, selectedConceptId);
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-transparent">
@@ -136,6 +143,11 @@ export function GraphCanvasView({
         onNodeClick={onNodeClick}
         onConnect={(connection) => onSetEdges((current) => addEdge(connection, current))}
         fitView
+        nodesDraggable={mode !== 'concept'}
+        elementsSelectable={mode !== 'concept'}
+        panOnDrag
+        zoomOnDoubleClick={mode !== 'concept'}
+        nodesConnectable={false}
         minZoom={isChapterGraph ? chapterGraphBounds(nodes.length).minZoom : 0.2}
         maxZoom={isChapterGraph ? 1.25 : 1.6}
         translateExtent={isChapterGraph ? [[-420, -420], [4200, 17000]] : undefined}
@@ -147,6 +159,7 @@ export function GraphCanvasView({
           nodes={nodes}
           edges={visibleEdges}
           selectedFormulaId={selectedFormulaId}
+          selectedConceptId={selectedConceptId}
           focusFormulaId={focusFormulaId}
           isChapterGraph={isChapterGraph}
           title={isChapterGraph ? copy.fullChapter : formatChapterLabel(focusChapterId)}

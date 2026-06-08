@@ -4,6 +4,7 @@ import {
   compressTextToShortLabel,
   isFocusAnnotationLabel,
   isGenericAnnotationLabel,
+  resolveSymbolMeaning,
   resolveSymbolShortLabel,
 } from '../src/utils/symbolAnnotation.ts';
 
@@ -31,6 +32,29 @@ test('resolveSymbolShortLabel falls back to prerequisite meaning', () => {
     confidence: 0.8,
   });
   assert.equal(label, '群体间分化量');
+});
+
+test('resolveSymbolShortLabel keeps compound labels over symbol-specific fallbacks', () => {
+  const label = resolveSymbolShortLabel({
+    type: 'variable_definition',
+    symbol: '\\sigma_{z}^{2}',
+    meaning: '分母整体，表示分子所参照的变量、尺度或归一化基准。',
+    confidence: 0.76,
+    kind: 'compound',
+  } as Parameters<typeof resolveSymbolShortLabel>[0]);
+
+  assert.equal(label, '分母整体');
+});
+
+test('resolveSymbolShortLabel keeps MK polymorphism symbols concise', () => {
+  const label = resolveSymbolShortLabel({
+    type: 'variable_definition',
+    symbol: 'P_{s}',
+    meaning: 'P_s 表示沉默位点多态性；先用这个短标签定位它在本式中的角色。',
+    confidence: 0.82,
+  });
+
+  assert.equal(label, '沉默位点多态性');
 });
 
 test('resolveSymbolShortLabel keeps fallback labels while LLM is loading or failed', () => {
@@ -123,6 +147,38 @@ test('resolveSymbolShortLabel keeps local domain labels over risky LLM labels', 
     ),
     '第 i 类后代频率',
   );
+});
+
+test('resolveSymbolMeaning keeps local domain explanations over generic LLM text', () => {
+  const meaning = resolveSymbolMeaning(
+    {
+      type: 'variable_definition',
+      symbol: '\\mu_i',
+      meaning: 'mu_i 表示第 i 位点突变率，决定该位点引入新变异的速率。',
+      confidence: 0.9,
+    },
+    { llmText: 'μ_i 表示第 i 个变量的平均值。' },
+  );
+
+  assert.match(meaning, /突变率/);
+  assert.doesNotMatch(meaning, /平均值/);
+});
+
+test('resolveSymbolMeaning keeps compound whole-part explanations over LLM text', () => {
+  const meaning = resolveSymbolMeaning(
+    {
+      type: 'variable_definition',
+      symbol: 'd_s',
+      target: '\\frac{d_s}{}',
+      meaning: '分子整体，表示被分母尺度归一化或比较的变化量、权重或组合项。',
+      confidence: 0.76,
+      kind: 'compound',
+    } as Parameters<typeof resolveSymbolMeaning>[0],
+    { llmText: 'd_s 表示沉默位点分化。' },
+  );
+
+  assert.match(meaning, /分子整体/);
+  assert.doesNotMatch(meaning, /沉默位点分化/);
 });
 
 test('isFocusAnnotationLabel rejects generic placeholder copy', () => {

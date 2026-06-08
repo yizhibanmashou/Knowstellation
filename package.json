@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "sync:data": "node scripts/sync-frontend-data.mjs",
+    "concept:graph": "node scripts/generate-concept-graph.mjs",
     "llm:cache": "node scripts/generate-llm-cache.mjs",
     "symbol-sense": "node scripts/symbol_sense/cli.mjs",
     "audit:graph": "python scripts/audit_dependency_graph.py",

@@ -5,7 +5,8 @@ import type { FormulaNodeData } from '../../types/graph';
 import type { FormulaPrerequisite } from '../../types/formula';
 import { chapterColor, chapterRank, rawFormulaNumber } from '../../utils/constants';
 import { buildFormulaSymbolPrerequisites } from '../../utils/formulaInfo';
-import { isFocusAnnotationLabel, resolveSymbolShortLabel } from '../../utils/symbolAnnotation';
+import { selectKeyConcepts } from '../../utils/keyConceptAnnotations';
+import { isFocusAnnotationLabel, resolveSymbolMeaning, resolveSymbolShortLabel } from '../../utils/symbolAnnotation';
 import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../../utils/uiCopy';
 import { MathFormula, renderMathToHtml, type MathAnnotation } from '../common/MathFormula';
 import { RichMathText } from '../common/RichMathText';
@@ -24,7 +25,10 @@ function compareSymbolExplanations(a?: FormulaNodeData['symbolExplanations'], b?
       item.shortLabel === other.shortLabel &&
       item.llmText === other.llmText &&
       item.llmStatus === other.llmStatus &&
-      item.kind === other.kind
+      item.kind === other.kind &&
+      item.target === other.target &&
+      item.meaning === other.meaning &&
+      item.definition === other.definition
     );
   });
 }
@@ -35,6 +39,33 @@ type SymbolNote = FormulaPrerequisite & {
   llmStatus?: 'loading' | 'ready' | 'error';
   kind?: 'symbol' | 'compound' | 'formula';
 };
+
+function normalizeAnnotationKey(value = ''): string {
+  return value
+    .replace(/\s+/g, '')
+    .replace(/_\{([^{}])\}/g, '_$1')
+    .replace(/\^\{([^{}])\}/g, '^$1');
+}
+
+function symbolNoteKey(note: SymbolNote): string {
+  const symbol = note.target || note.symbol || note.via_symbol || note.meaning || '';
+  return `${note.kind || 'symbol'}:${normalizeAnnotationKey(symbol)}`;
+}
+
+function mergeSymbolNotes(formula: FormulaNodeData['formula'], provided: SymbolNote[] = []): SymbolNote[] {
+  const merged: SymbolNote[] = [];
+  const seen = new Set<string>();
+  const add = (note: SymbolNote) => {
+    const key = symbolNoteKey(note);
+    if (!key || seen.has(key)) return;
+    seen.add(key);
+    merged.push(note);
+  };
+
+  provided.forEach(add);
+  buildFormulaSymbolPrerequisites(formula).forEach((note) => add({ ...note, kind: 'symbol' }));
+  return merged;
+}
 
 interface ActiveCallout {
   annotation: MathAnnotation;
@@ -62,7 +93,7 @@ export const FormulaNode = React.memo(
     const formula = nodeData.formula;
     const copy = getUiCopy(DEFAULT_LANGUAGE).graph.node;
     const symbolNotes: SymbolNote[] = useMemo(
-      () => (nodeData.symbolExplanations?.length ? nodeData.symbolExplanations : buildFormulaSymbolPrerequisites(formula)),
+      () => mergeSymbolNotes(formula, nodeData.symbolExplanations),
       [formula, nodeData.symbolExplanations],
     );
     const chapter = chapterRank(formula.chapter_id, Number(rawFormulaNumber(formula.id).split('.')[0]));
@@ -70,27 +101,36 @@ export const FormulaNode = React.memo(
     const role = nodeData.role || (nodeData.focused ? 'focus' : 'prerequisite');
     const canAnnotateFormula = nodeData.mode === 'guided' && !nodeData.chapterGraph;
     const [activeCallout, setActiveCallout] = useState<ActiveCallout | null>(null);
+    const [activeKeySymbol, setActiveKeySymbol] = useState<string | null>(null);
     const annotations = useMemo(
       () =>
         canAnnotateFormula
           ? symbolNotes
               .map((prereq) => {
-                const symbol = prereq.symbol || prereq.via_symbol || '';
+                const symbol = prereq.symbol || prereq.via_symbol || prereq.target || '';
                 const note = resolveSymbolShortLabel(prereq, {
                   shortLabel: prereq.shortLabel,
+                  llmText: prereq.llmText,
+                });
+                const text = resolveSymbolMeaning(prereq, {
                   llmText: prereq.llmText,
                 });
                 return {
                   symbol,
                   note,
-                  text: prereq.llmText || prereq.meaning || prereq.definition,
+                  text,
                   kind: prereq.kind || 'symbol',
+                  target: prereq.target,
                   status: prereq.llmStatus,
                 };
               })
               .filter((item) => item.symbol && isFocusAnnotationLabel(item.note))
           : [],
       [canAnnotateFormula, symbolNotes],
+    );
+    const keyConcepts = useMemo(
+      () => selectKeyConcepts(annotations),
+      [annotations],
     );
 
     const handleDoubleClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -197,6 +237,53 @@ export const FormulaNode = React.memo(
           annotations={annotations}
           onAnnotationChange={canAnnotateFormula ? handleAnnotationChange : undefined}
         />
+        {canAnnotateFormula && keyConcepts.length ? (
+          <div className="formula-node__key-symbols" aria-label="重点符号">
+            {keyConcepts.map((item) => {
+              const detailText = item.text?.trim() || '';
+              const showDetail = detailText.replace(/\s+/g, ' ') !== item.note.replace(/\s+/g, ' ');
+              const key = `${item.kind || 'symbol'}:${item.symbol}:${item.note}`;
+              return (
+                <span
+                  className={`formula-node__key-symbol nodrag nopan ${activeKeySymbol === key ? 'formula-node__key-symbol--active' : ''}`}
+                  key={key}
+                  role="note"
+                  tabIndex={0}
+                  aria-label={`${item.symbol}: ${item.note}`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setActiveKeySymbol(key);
+                  }}
+                  onDoubleClick={(event) => event.stopPropagation()}
+                  onFocus={() => setActiveKeySymbol(key)}
+                  onBlur={() => setActiveKeySymbol((current) => (current === key ? null : current))}
+                  onMouseEnter={() => setActiveKeySymbol(key)}
+                  onMouseLeave={(event) => {
+                    if (document.activeElement === event.currentTarget) return;
+                    setActiveKeySymbol((current) => (current === key ? null : current));
+                  }}
+                  onKeyDown={(event) => {
+                    event.stopPropagation();
+                    if (event.key === 'Escape') {
+                      setActiveKeySymbol(null);
+                      event.currentTarget.blur();
+                    }
+                  }}
+                >
+                  <span
+                    className="formula-node__key-symbol-math"
+                    dangerouslySetInnerHTML={{ __html: renderMathToHtml(item.symbol, true).html }}
+                  />
+                  <span className="formula-node__key-symbol-badge">重点</span>
+                  <span className="formula-node__key-symbol-popover" role="tooltip">
+                    <strong><RichMathText text={item.note} /></strong>
+                    {showDetail ? <small><RichMathText text={detailText} /></small> : null}
+                  </span>
+                </span>
+              );
+            })}
+          </div>
+        ) : null}
         {canAnnotateFormula && activeCallout ? (
           <>
             <svg className="formula-node__callout-lines" aria-hidden="true">

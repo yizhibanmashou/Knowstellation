@@ -35,7 +35,9 @@ export function GraphWorkspace({ chapterNavigator, themeRoutes, searchIndex, for
   const mode = useMemo<GraphStudyMode>(() => {
     const requested = params.get('mode');
     if (routeChapterId) return 'explore';
-    return requested === 'explore' ? 'explore' : 'guided';
+    if (requested === 'guided') return 'guided';
+    if (requested === 'explore') return 'explore';
+    return 'concept';
   }, [params, routeChapterId]);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export function GraphWorkspace({ chapterNavigator, themeRoutes, searchIndex, for
       const next = new URLSearchParams(params);
       next.set('chapterId', routeChapterId);
       next.delete('selected');
-      if (nextMode === 'guided') next.delete('mode');
+      if (nextMode === 'concept') next.delete('mode');
       else next.set('mode', nextMode);
       navigate(`/graph/${targetFormulaId}?${next.toString()}`);
       return;
@@ -69,7 +71,7 @@ export function GraphWorkspace({ chapterNavigator, themeRoutes, searchIndex, for
       }
     }
     const next = new URLSearchParams(params);
-    if (nextMode === 'guided') next.delete('mode');
+    if (nextMode === 'concept') next.delete('mode');
     else next.set('mode', nextMode);
     setParams(next, { replace: true });
   };

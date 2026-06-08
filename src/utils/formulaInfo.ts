@@ -1,4 +1,5 @@
 import type { ChapterFormula, FeaturedFormula, FormulaDependency, FormulaLearningCopyEntry, FormulaPrerequisite, SearchFormula } from '../types/formula';
+import { readBracedGroup, skipWhitespace } from './latexHelpers.ts';
 
 export interface FormulaBrief {
   id: string;
@@ -58,6 +59,12 @@ function formulaLocation(input: BuildFormulaLearningCopyInput): string {
 
 function normalizeLatex(value = ''): string {
   return value.replace(/\s+/g, '');
+}
+
+function symbolKey(value: string): string {
+  return normalizeLatex(value)
+    .replace(/_\{([^{}])\}/g, '_$1')
+    .replace(/\^\{([^{}])\}/g, '^$1');
 }
 
 function cleanContext(value = ''): string {
@@ -357,6 +364,17 @@ function hasAnyContext(value: string, terms: string[]): boolean {
   return terms.some((term) => lower.includes(term.toLowerCase()));
 }
 
+function hasMkFormulaStructure(value = ''): boolean {
+  const compact = normalizeLatex(value);
+  if (!compact) return false;
+  const hasMkEstimator = /\\widehat\{\\overline\{\\alpha\}\}(?:_\{?[A-Za-z]+\}?)?/.test(compact)
+    || /^.*(?:^|=)1-NI_\{?[A-Za-z]+\}?/.test(compact)
+    || /NI_\{?[A-Za-z]+\}?/.test(compact);
+  const hasMkSiteTerms = /D_\{?[as][A-Za-z0-9]*\}?/.test(compact)
+    && /P_\{?[as][A-Za-z0-9]*\}?/.test(compact);
+  return hasMkEstimator && hasMkSiteTerms;
+}
+
 const FITNESS_CONTEXT_TERMS = [
   'fitness',
   'relative fitness',
@@ -504,11 +522,19 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
   const hasPopgenContext = hasAnyContext(context, POPGEN_CONTEXT_TERMS);
   const hasQuantGenContext = hasAnyContext(context, QUANT_GEN_CONTEXT_TERMS) || hasTraitContext;
   const hasOptimumContext = hasAnyContext(context, OPTIMUM_CONTEXT_TERMS);
+  const hasMkContext = hasMkFormulaStructure(context) || hasAnyContext(context, ['McDonald', 'Kreitman', 'MK test', 'neutrality index', 'neutral', 'Yule-Simpson', 'silent-site', 'silent site', 'replacement', 'adaptive substitutions', 'substitutions that are adaptive', 'polymorphism', 'divergence']);
   const compactContext = context.replace(/\s+/g, '');
   const hasSelectionGradientStructure =
+    /\\sigma_\{?z\}?\^\{?2\}?/.test(compactContext) ||
     /\\sigma\(?\{?z\}?\)?\^\{?2\}?/.test(compactContext) ||
     /R=.*\\beta/.test(compactContext) ||
     /\\sigma_\{?A\}?\^\{?2\}?\\beta/.test(compactContext);
+
+  if (/\\widehat\{\\overline\{\\alpha\}\}(?:_\{?[A-Za-z]+\}?)?$/.test(normalized) && hasMkContext) {
+    return '适应性替换比例估计量';
+  }
+  if (/^NI_\{?TG\}?$/.test(normalized) && hasMkContext) return 'Tarone-Greenland 加权中性指数';
+  if (/^NI(?:_\{?[A-Za-z]+\}?)?$/.test(normalized) && hasMkContext) return '中性指数';
 
   const fitnessSubscript = extractSubscript(normalized, 'W');
   if (fitnessSubscript && hasFitnessContext) return `第 ${fitnessSubscript} 类适合度`;
@@ -525,7 +551,7 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
   }
 
   const sigmaSubscript = extractSubscript(normalized, '\\sigma');
-  if (sigmaSubscript && hasQuantGenContext) {
+  if (sigmaSubscript && (hasQuantGenContext || hasSelectionGradientStructure)) {
     const label = sigmaComponentLabel(sigmaSubscript, /\^\{?2\}?/.test(normalized));
     if (label) return label;
   }
@@ -547,6 +573,9 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
 
   const pSubscript = extractSubscript(normalized, 'p');
   if (pSubscript && hasPopgenContext) return formatIndexedLabel(pSubscript, '等位基因频率');
+
+  const mkSiteLabel = mkSiteSymbolLabel(normalized, hasMkContext);
+  if (mkSiteLabel) return mkSiteLabel;
 
   const qSubscript = extractSubscript(normalized, 'q');
   if (qSubscript && hasTraitContext) {
@@ -618,6 +647,17 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
   return labels[normalized] || '';
 }
 
+function mkSiteSymbolLabel(normalized: string, hasMkContext: boolean): string {
+  if (!hasMkContext) return '';
+  const match = normalized.match(/^([DPS])_\{?([as])([A-Za-z0-9]*)\}?$/);
+  if (!match) return '';
+  const [, quantity, siteType, index] = match;
+  const siteLabel = siteType === 'a' ? '替换位点' : '沉默位点';
+  const quantityLabel = quantity === 'D' ? '分化' : quantity === 'P' ? '多态性' : '多态位点数';
+  const suffix = index ? `（第 ${index} 个基因）` : '';
+  return `${siteLabel}${quantityLabel}${suffix}`;
+}
+
 function cleanSymbolForText(symbol: string): string {
   return symbol
     .replace(/\\/g, '')
@@ -633,6 +673,9 @@ function describeKnownSymbolLabel(symbol: string, label: string): string {
   if (label.includes('选择梯度')) return `${plainSymbol} 表示${label}，描述性状值与适合度之间的局部关联强度。`;
   if (label.includes('选择响应')) return `${plainSymbol} 表示${label}，也就是选择后性状均值预期改变的量。`;
   if (label.includes('选择差')) return `${plainSymbol} 表示${label}，即被选亲本均值相对选择前群体均值的偏离。`;
+  if (label.includes('估计量')) return `${plainSymbol} 表示${label}，把多态性和分化信息合并成对自适应替换比例的估计。`;
+  if (label.includes('Tarone-Greenland')) return `${plainSymbol} 是 ${label}，用来把多个基因的 MK 比值按沉默位点信息加权合并。`;
+  if (label.includes('中性指数')) return `${plainSymbol} 表示${label}，用来比较替换位点和沉默位点的多态性/分化比例。`;
   if (label.includes('方差') || label.includes('标准差')) return `${plainSymbol} 表示${label}，是本式中衡量变异尺度的量。`;
   if (label.includes('遗传力')) return `${plainSymbol} 表示${label}，说明表型差异中可由加性遗传效应传递的比例。`;
   if (label.includes('等位基因频率')) return `${plainSymbol} 表示${label}，用于追踪群体中等位基因组成的变化。`;
@@ -640,6 +683,7 @@ function describeKnownSymbolLabel(symbol: string, label: string): string {
   if (label.includes('突变率')) return `${plainSymbol} 表示${label}，决定该位点引入新变异的速率。`;
   if (label.includes('多样性')) return `${plainSymbol} 表示${label}，用于衡量群体内的多态水平。`;
   if (label.includes('分化')) return `${plainSymbol} 表示${label}，用于衡量群体或谱系之间的差异。`;
+  if (label.includes('多态性')) return `${plainSymbol} 表示${label}，用于衡量群体内仍在分离的变异量。`;
   return `${plainSymbol} 表示${label}；先用这个短标签定位它在本式中的角色。`;
 }
 
@@ -723,11 +767,268 @@ function isAlleleFitnessUpdateFormula(formula: Pick<ChapterFormula, 'latex' | 'c
   );
 }
 
+const GREEK_SYMBOL_COMMANDS = new Set([
+  'alpha',
+  'beta',
+  'gamma',
+  'delta',
+  'epsilon',
+  'varepsilon',
+  'zeta',
+  'eta',
+  'theta',
+  'vartheta',
+  'iota',
+  'kappa',
+  'lambda',
+  'mu',
+  'nu',
+  'xi',
+  'pi',
+  'varpi',
+  'rho',
+  'varrho',
+  'sigma',
+  'varsigma',
+  'tau',
+  'upsilon',
+  'phi',
+  'varphi',
+  'chi',
+  'psi',
+  'omega',
+  'Gamma',
+  'Delta',
+  'Theta',
+  'Lambda',
+  'Xi',
+  'Pi',
+  'Sigma',
+  'Upsilon',
+  'Phi',
+  'Psi',
+  'Omega',
+  'imath',
+]);
+
+const SYMBOL_WRAPPER_COMMANDS = new Set([
+  'bar',
+  'boldsymbol',
+  'mathbf',
+  'mathbb',
+  'mathcal',
+  'mathit',
+  'mathsf',
+  'mathrm',
+  'overline',
+  'hat',
+  'widehat',
+  'tilde',
+  'widetilde',
+  'vec',
+]);
+
+const TEXT_COMMANDS = new Set(['begin', 'end', 'operatorname', 'text', 'textrm', 'textit', 'textbf']);
+const OPERATOR_COMMANDS = new Set(['frac', 'dfrac', 'tfrac', 'binom', 'sqrt', 'sum', 'prod', 'int', 'lim', 'left', 'right', 'quad', 'qquad', 'partial']);
+const TEXT_WORDS = new Set(['and', 'where', 'if', 'for', 'with', 'when']);
+
+function readLatexCommand(input: string, start: number): { name: string; end: number } | null {
+  if (input[start] !== '\\') return null;
+  let end = start + 1;
+  while (/[A-Za-z]/.test(input[end] || '')) end += 1;
+  if (end === start + 1) return null;
+  return { name: input.slice(start + 1, end), end };
+}
+
+function readScriptSuffix(input: string, start: number): { suffix: string; end: number } {
+  let index = skipWhitespace(input, start);
+  let suffix = '';
+  while (input[index] === '_' || input[index] === '^') {
+    const mark = input[index];
+    const valueStart = skipWhitespace(input, index + 1);
+    const group = readBracedGroup(input, valueStart);
+    if (group) {
+      suffix += `${mark}{${group.value}}`;
+      index = skipWhitespace(input, group.end);
+      continue;
+    }
+    const command = readLatexCommand(input, valueStart);
+    if (command) {
+      suffix += `${mark}\\${command.name}`;
+      index = skipWhitespace(input, command.end);
+      continue;
+    }
+    if (input[valueStart]) {
+      suffix += `${mark}${input[valueStart]}`;
+      index = skipWhitespace(input, valueStart + 1);
+      continue;
+    }
+    break;
+  }
+  return { suffix, end: index };
+}
+
+function readSymbolArgument(input: string, start: number): { raw: string; end: number } | null {
+  const index = skipWhitespace(input, start);
+  const group = readBracedGroup(input, index);
+  if (group) return { raw: group.value, end: group.end };
+
+  const command = readLatexCommand(input, index);
+  if (command && (GREEK_SYMBOL_COMMANDS.has(command.name) || SYMBOL_WRAPPER_COMMANDS.has(command.name))) {
+    const scripts = readScriptSuffix(input, command.end);
+    return { raw: `\\${command.name}${scripts.suffix}`, end: scripts.end };
+  }
+
+  if (/[A-Za-z]/.test(input[index] || '')) {
+    const scripts = readScriptSuffix(input, index + 1);
+    return { raw: `${input[index]}${scripts.suffix}`, end: scripts.end };
+  }
+
+  return null;
+}
+
+function lhsPrimarySymbol(latex = ''): string {
+  const lhs = latex
+    .replace(/\\begin\{[^{}]+\}/g, '')
+    .replace(/\\end\{[^{}]+\}/g, '')
+    .split('=')[0] || '';
+  const normalized = lhs.replace(/\s+/g, '');
+  if (!normalized || /[+\-*/(),]/.test(normalized)) return '';
+  if (!/^[\\A-Za-z]/.test(normalized)) return '';
+  if (/(?:\\sum|\\prod|\\int|\\frac|\\sqrt|\\left|\\right)/.test(normalized)) return '';
+  return lhs.trim();
+}
+
+function isSplitFromWholeSymbol(symbol: string, whole: string): boolean {
+  const symbolValue = symbolKey(symbol);
+  const wholeValue = symbolKey(whole);
+  return Boolean(/^[A-Z]$/.test(symbolValue) && wholeValue && wholeValue.includes(symbolValue));
+}
+
+function isLikelySymbolCore(value: string): boolean {
+  const compact = normalizeLatex(value);
+  if (!compact || TEXT_WORDS.has(compact.toLowerCase())) return false;
+  if (/^[A-Za-z](?:[_^].+)?$/.test(compact)) return true;
+  if (/^[A-Z]{2}(?:[_^].+)?$/.test(compact)) return true;
+  if (/^\\[A-Za-z]+(?:[_^].+)?$/.test(compact)) return true;
+  if (/^\\[A-Za-z]+\{.+\}(?:[_^].+)?$/.test(compact)) return true;
+  return false;
+}
+
+function addScannedSymbol(symbols: string[], seen: Set<string>, symbol: string) {
+  if (!isLikelySymbolCore(symbol)) return;
+  const key = symbolKey(symbol);
+  if (!key || seen.has(key)) return;
+  seen.add(key);
+  symbols.push(symbol);
+}
+
+function extractLatexVariableSymbols(latex = ''): string[] {
+  const symbols: string[] = [];
+  const seen = new Set<string>();
+  let index = 0;
+
+  while (index < latex.length) {
+    const char = latex[index];
+
+    if (char === '\\') {
+      const command = readLatexCommand(latex, index);
+      if (!command) {
+        index += 1;
+        continue;
+      }
+
+      if (TEXT_COMMANDS.has(command.name)) {
+        const group = readBracedGroup(latex, skipWhitespace(latex, command.end));
+        index = group?.end ?? command.end;
+        continue;
+      }
+
+      if (SYMBOL_WRAPPER_COMMANDS.has(command.name)) {
+        const argument = readSymbolArgument(latex, command.end);
+        if (!argument) {
+          index = command.end;
+          continue;
+        }
+        const scripts = readScriptSuffix(latex, argument.end);
+        const compactArgument = normalizeLatex(argument.raw);
+        if (!(command.name === 'mathrm' && (compactArgument === 'd' || TEXT_WORDS.has(compactArgument.toLowerCase())))) {
+          addScannedSymbol(symbols, seen, `\\${command.name}{${argument.raw}}${scripts.suffix}`);
+        }
+        index = scripts.end;
+        continue;
+      }
+
+      if (GREEK_SYMBOL_COMMANDS.has(command.name)) {
+        const scripts = readScriptSuffix(latex, command.end);
+        addScannedSymbol(symbols, seen, `\\${command.name}${scripts.suffix}`);
+        index = scripts.end;
+        continue;
+      }
+
+      index = OPERATOR_COMMANDS.has(command.name) ? command.end : command.end;
+      continue;
+    }
+
+    if (/[A-Za-z]/.test(char || '')) {
+      let runEnd = index + 1;
+      while (/[A-Za-z]/.test(latex[runEnd] || '')) runEnd += 1;
+      const run = latex.slice(index, runEnd);
+
+      if (run.length > 2 || TEXT_WORDS.has(run.toLowerCase())) {
+        index = runEnd;
+        continue;
+      }
+
+      if (/^[A-Z]{2}$/.test(run)) {
+        const scripts = readScriptSuffix(latex, runEnd);
+        addScannedSymbol(symbols, seen, `${run}${scripts.suffix}`);
+        index = scripts.end;
+        continue;
+      }
+
+      for (let offset = 0; offset < run.length; offset += 1) {
+        const letter = run[offset];
+        if (letter === 'd' && run.length === 2 && offset === 0) continue;
+        const scripts = offset === run.length - 1 ? readScriptSuffix(latex, runEnd) : { suffix: '', end: runEnd };
+        addScannedSymbol(symbols, seen, `${letter}${scripts.suffix}`);
+        if (offset === run.length - 1) {
+          index = scripts.end;
+        }
+      }
+      continue;
+    }
+
+    index += 1;
+  }
+
+  return symbols;
+}
+
 function fallbackSymbolsForFormula(formula: ChapterFormula): string[] {
   if (isAlleleFitnessUpdateFormula(formula)) return ['p', 'p^{\\prime}', 'W_{\\mathrm{a}}', '\\overline{W}'];
+  const lhsSymbol = lhsPrimarySymbol(formula.latex);
   const symbols = new Set<string>();
-  formula.symbols_defined?.forEach((symbol) => symbols.add(symbol));
-  formula.symbols_used?.forEach((symbol) => symbols.add(symbol));
+  if (lhsSymbol) symbols.add(lhsSymbol);
+  formula.symbols_defined?.forEach((symbol) => {
+    if (lhsSymbol && isSplitFromWholeSymbol(symbol, lhsSymbol)) return;
+    symbols.add(symbol);
+  });
+  formula.symbols_used?.forEach((symbol) => {
+    if (lhsSymbol && isSplitFromWholeSymbol(symbol, lhsSymbol)) return;
+    symbols.add(symbol);
+  });
+  extractLatexVariableSymbols(formula.latex).forEach((symbol) => {
+    if (![...symbols].some((item) => symbolKey(item) === symbolKey(symbol))) symbols.add(symbol);
+  });
+  const hasNeutralityIndex = [...symbols].some((symbol) => /^NI(?:_|\{|\b)/.test(symbol.replace(/\s+/g, '')));
+  if (hasNeutralityIndex) {
+    symbols.delete('N');
+    symbols.delete('I');
+    [...symbols].forEach((symbol) => {
+      if (/^I_\{?[A-Za-z]+\}?$/.test(symbol.replace(/\s+/g, ''))) symbols.delete(symbol);
+    });
+  }
   return [...symbols];
 }
 

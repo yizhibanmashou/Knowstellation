@@ -39,7 +39,8 @@ The project is intentionally strict about graph quality. Exact references, exact
 
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
-- **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels.
+- **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
+- **Concept graph explanations**: deterministic domain labels keep MK-test quantities such as `D_a`, `D_s`, `P_a`, and `P_s` tied to their replacement/silent-site meanings.
 - **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
 - **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
 - **LLM-assisted explanations**: optional server-side proxy enriches chapter summaries and symbol explanations without exposing API keys in the browser.
@@ -235,7 +236,9 @@ For frontend checks, manually verify:
 - `/` on desktop and mobile landscape widths
 - `/chapter/<chapterId>` from the home star map
 - search result navigation into a formula graph
-- `/graph/<formulaId>?chapterId=<chapterId>&mode=guided` symbol hover/tap callouts
+- `/graph/<formulaId>?chapterId=<chapterId>&mode=guided` symbol hover/tap callouts, including indexed symbols such as `d_s` / `p_s`
+- fraction annotations: hover the fraction bar or surrounding fraction body for the whole-ratio meaning, then hover numerator/denominator symbols for their own labels
+- concept view for `formula_10.7b`: verify `D_a`, `D_s`, `P_a`, and `P_s` show replacement/silent-site definitions without review flags
 - `/graph/chapter/<chapterId>?mode=explore` minimap node selection
 - `/storyline/<storylineId>` and its "open graph" path
 

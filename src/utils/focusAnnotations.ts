@@ -9,6 +9,7 @@ export type FocusAnnotationNote = FormulaPrerequisite & {
   shortLabel?: string;
   llmText?: string;
   llmStatus?: 'loading' | 'ready' | 'error';
+  target?: string;
 };
 
 const MAX_COMPOUND_NOTES = 24;
@@ -43,7 +44,7 @@ function formatPower(power = ''): string {
 }
 
 function normalizeLegacyOver(value: string): string {
-  return value.replace(/\{([^{}]+)\\over([^{}]+)\}/g, '\\frac{$1}{$2}');
+  return value.replace(/\{([^{}]+)\\over(?![A-Za-z])([^{}]+)\}/g, '\\frac{$1}{$2}');
 }
 
 function normalizeLegacyFontSwitches(value: string): string {
@@ -89,8 +90,8 @@ function collectFractions(latex: string): Array<{ raw: string; numerator: string
   return fractions;
 }
 
-function addCompound(seen: Set<string>, items: FocusAnnotationNote[], symbol: string, meaning: string, sourceExcerpt?: string) {
-  const normalized = normalizeLatex(canonicalizeDisplaySymbol(symbol));
+function addCompound(seen: Set<string>, items: FocusAnnotationNote[], symbol: string, meaning: string, sourceExcerpt?: string, target = symbol) {
+  const normalized = normalizeLatex(canonicalizeDisplaySymbol(target));
   if (!normalized || normalized.length < 3 || seen.has(normalized)) return;
   if (!/[A-Za-z\\]/.test(normalized) && !/(?:frac|\/)/.test(normalized)) return;
   seen.add(normalized);
@@ -104,7 +105,51 @@ function addCompound(seen: Set<string>, items: FocusAnnotationNote[], symbol: st
     source_excerpt: sourceExcerpt,
     confidence: 0.76,
     kind: 'compound',
+    target: canonicalizeDisplaySymbol(target),
   });
+}
+
+function addFractionPartCompounds(
+  seen: Set<string>,
+  items: FocusAnnotationNote[],
+  fraction: { raw: string; numerator: string; denominator: string },
+  sourceExcerpt?: string,
+) {
+  const numerator = stripOuterBraces(fraction.numerator);
+  const denominator = stripOuterBraces(fraction.denominator);
+  if (!shouldAnnotateFractionParts(numerator, denominator)) return;
+  if (normalizeLatex(numerator).length >= 1) {
+    addCompound(
+      seen,
+      items,
+      numerator,
+      '分子整体，表示被分母尺度归一化或比较的变化量、权重或组合项。',
+      sourceExcerpt,
+      `\\frac{${numerator}}{}`,
+    );
+  }
+  if (normalizeLatex(denominator).length >= 1) {
+    addCompound(
+      seen,
+      items,
+      denominator,
+      '分母整体，表示分子所参照的变量、尺度或归一化基准。',
+      sourceExcerpt,
+      `\\frac{}{${denominator}}`,
+    );
+  }
+}
+
+function shouldAnnotateFractionParts(numerator: string, denominator: string): boolean {
+  const compactNumerator = normalizeLatex(numerator);
+  const compactDenominator = normalizeLatex(denominator);
+  const joined = `${compactNumerator}|${compactDenominator}`;
+  if (/\\partial/.test(joined)) return true;
+  if (/\\sum|\\prod|\\int/.test(joined)) return false;
+  if (/[()]/.test(joined) || /[+]/.test(joined)) return false;
+  if (compactNumerator.includes('/') || compactDenominator.includes('/')) return false;
+  const simpleSymbol = /^\\?[A-Za-z]+(?:_\{?[A-Za-z0-9]+\}?|\^\{?[A-Za-z0-9]+\}?)*$/;
+  return simpleSymbol.test(compactNumerator) && simpleSymbol.test(compactDenominator);
 }
 
 function describeOneMinusFactor(inner: string): string {
@@ -114,6 +159,14 @@ function describeOneMinusFactor(inner: string): string {
   if (/^f_\{?s\}?$/.test(compact)) return '未受扫荡影响比例';
   if (/^q\(?0\)?$/.test(compact)) return '剩余频率份额';
   return '互补比例因子';
+}
+
+function isTaroneGreenlandMkFraction(value: string): boolean {
+  const compact = normalizeLatex(value).replace(/\\left|\\right/g, '');
+  return (
+    /\\sum_\{?i\}?D_\{?si\}?P_\{?ai\}?\/\(P_\{?si\}?\+D_\{?si\}?\)/.test(compact) &&
+    /\\sum_\{?i\}?P_\{?si\}?D_\{?ai\}?\/\(P_\{?si\}?\+D_\{?si\}?\)/.test(compact)
+  );
 }
 
 function describeCompound(symbol: string, latex: string): string {
@@ -139,6 +192,9 @@ function describeCompound(symbol: string, latex: string): string {
   }
 
   if (/^\\(?:dfrac|tfrac|frac)\{/.test(compact)) {
+    if (isTaroneGreenlandMkFraction(symbol) || isTaroneGreenlandMkFraction(latex)) {
+      return 'TG 加权 MK 比值。Tarone-Greenland 中性指数的核心比例：分子汇总沉默分化与替换多态性，分母汇总沉默多态性与替换分化。';
+    }
     if (compact.includes('\\partial')) return '导数分式，表示分子中的变化量相对于分母变量的局部变化率。';
     if (/2N|N_\{?e\}?/.test(compact)) return '按群体大小归一化的分式项，用来把概率、频率或漂变强度缩放到合适尺度。';
     return '分式比值，表示分子这一项相对于分母尺度的归一化结果。';
@@ -194,6 +250,7 @@ export function buildCompoundFocusAnnotations(formula?: Pick<ChapterFormula, 'la
   for (const fraction of collectFractions(latex)) {
     if (items.length >= MAX_COMPOUND_NOTES) break;
     addCompound(seen, items, fraction.raw, describeCompound(fraction.raw, latex), context);
+    addFractionPartCompounds(seen, items, fraction, context);
   }
 
   return items.slice(0, MAX_COMPOUND_NOTES);

@@ -76,6 +76,7 @@ export interface FormulaPrerequisite {
   edge_weight?: number;
   review_note?: string;
   symbol?: string;
+  target?: string;
   definition?: string;
   meaning?: string;
   source?: string;

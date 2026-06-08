@@ -9,7 +9,9 @@ export function DependencyEdge(props: EdgeProps) {
   const cross = Boolean(data?.crossChapter);
   const active = Boolean(data?.active);
   const dimmed = Boolean(data?.dimmed);
-  const labelVisible = Boolean(data?.labelVisible || active);
+  const conceptKind = data?.kind === 'concept';
+  const introducedKind = data?.kind === 'introduced';
+  const labelVisible = !introducedKind && (conceptKind ? Boolean(data?.labelVisible) : Boolean(data?.labelVisible || active));
   const animated = cross || Boolean(props.animated);
   const label = data?.via || 'via';
   const mathLabel = /\\|[_^{}]/.test(label) || /^[A-Za-z]$/.test(label);
@@ -20,9 +22,9 @@ export function DependencyEdge(props: EdgeProps) {
       <BaseEdge
         path={edgePath}
         markerEnd={props.markerEnd}
-        className={`dependency-edge ${cross ? 'dependency-edge--cross' : ''} ${animated ? 'dependency-edge--animated' : ''} ${active ? 'dependency-edge--active' : ''} ${dimmed ? 'dependency-edge--dimmed' : ''}`}
+        className={`dependency-edge ${conceptKind ? 'dependency-edge--concept' : ''} ${introducedKind ? 'dependency-edge--introduced' : ''} ${cross ? 'dependency-edge--cross' : ''} ${animated ? 'dependency-edge--animated' : ''} ${active ? 'dependency-edge--active' : ''} ${dimmed ? 'dependency-edge--dimmed' : ''}`}
         style={{
-          strokeWidth: active ? 3 : cross ? 2.35 : 2.1,
+          strokeWidth: active ? 3 : introducedKind ? 1.75 : cross ? 2.35 : 2.1,
         }}
       />
       {labelVisible ? (

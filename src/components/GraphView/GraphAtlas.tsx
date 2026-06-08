@@ -8,6 +8,7 @@ interface GraphAtlasProps {
   nodes: Node[];
   edges: Edge[];
   selectedFormulaId: string | null;
+  selectedConceptId?: string | null;
   focusFormulaId: string;
   isChapterGraph: boolean;
   title: string;
@@ -15,7 +16,12 @@ interface GraphAtlasProps {
   onSelectFormula: (formulaId: string) => void;
 }
 
-function minimapColorForNode(node: Node, selectedFormulaId: string | null, focusFormulaId: string, isChapterGraph: boolean): string {
+function minimapColorForNode(node: Node, selectedFormulaId: string | null, selectedConceptId: string | null | undefined, focusFormulaId: string, isChapterGraph: boolean): string {
+  if (node.type === 'concept') {
+    if (node.id === selectedConceptId) return '#5eead4';
+    if (node.id.startsWith('introduced:')) return '#fbbf24';
+    return '#2dd4bf';
+  }
   if (node.id === selectedFormulaId) return '#22d3ee';
   if (!isChapterGraph && node.id === focusFormulaId) return '#60a5fa';
   if (node.type !== 'formula') return '#14b8a6';
@@ -30,6 +36,7 @@ export function GraphAtlas({
   nodes,
   edges,
   selectedFormulaId,
+  selectedConceptId,
   focusFormulaId,
   isChapterGraph,
   title,
@@ -63,13 +70,13 @@ export function GraphAtlas({
         y: padding + (item.y - minY) * scale,
         width: w,
         height: h,
-        color: minimapColorForNode(item.node, selectedFormulaId, focusFormulaId, isChapterGraph),
-        active: item.node.id === selectedFormulaId || (!isChapterGraph && item.node.id === focusFormulaId),
+        color: minimapColorForNode(item.node, selectedFormulaId, selectedConceptId, focusFormulaId, isChapterGraph),
+        active: item.node.id === selectedFormulaId || item.node.id === selectedConceptId || (!isChapterGraph && item.node.type !== 'concept' && item.node.id === focusFormulaId),
         selectable: item.node.type === 'formula',
         label: item.node.type === 'formula' ? rawFormulaNumber(item.node.id) : item.node.id,
       };
     });
-  }, [focusFormulaId, isChapterGraph, nodes, selectedFormulaId]);
+  }, [focusFormulaId, isChapterGraph, nodes, selectedConceptId, selectedFormulaId]);
   const previewLookup = useMemo(() => new Map(previewNodes.map((node) => [node.id, node])), [previewNodes]);
   const previewEdges = useMemo(
     () =>
@@ -84,11 +91,14 @@ export function GraphAtlas({
             y1: source.y + source.height / 2,
             x2: target.x + target.width / 2,
             y2: target.y + target.height / 2,
-            active: Boolean(selectedFormulaId && (edge.source === selectedFormulaId || edge.target === selectedFormulaId)),
+            active: Boolean(
+              (selectedFormulaId && (edge.source === selectedFormulaId || edge.target === selectedFormulaId))
+                || (selectedConceptId && (edge.source === selectedConceptId || edge.target === selectedConceptId))
+            ),
           };
         })
         .filter((edge): edge is NonNullable<typeof edge> => Boolean(edge)),
-    [edges, previewLookup, selectedFormulaId],
+    [edges, previewLookup, selectedConceptId, selectedFormulaId],
   );
 
   return (

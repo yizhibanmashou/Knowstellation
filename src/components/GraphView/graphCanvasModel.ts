@@ -1,9 +1,9 @@
 import type { Edge, Node } from '@xyflow/react';
 import type { ChapterFormula, FormulaDependency, FormulaPrerequisite, SearchFormula } from '../../types/formula';
 import type { DependencyEdgeData, VariableNodeData } from '../../types/graph';
-import { buildCompoundFocusAnnotations, type FocusAnnotationNote } from '../../utils/focusAnnotations';
-import { buildFormulaSymbolPrerequisites, explainPrerequisite } from '../../utils/formulaInfo';
-import { layoutPrerequisites } from './graphLayout';
+import { buildCompoundFocusAnnotations, type FocusAnnotationNote } from '../../utils/focusAnnotations.ts';
+import { buildFormulaSymbolPrerequisites, explainPrerequisite } from '../../utils/formulaInfo.ts';
+import { layoutPrerequisites } from './graphLayout.ts';
 
 const NON_TEACHING_SYMBOLS = new Set(['\\pi', '\\infty']);
 

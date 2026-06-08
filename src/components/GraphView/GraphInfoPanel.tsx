@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+import type { ConceptView } from '../../types/conceptGraph';
 import type { FormulaLearningCopyPayload, FormulaPrerequisite, SearchFormula, StorylineEntry } from '../../types/formula';
 import type { LanguageCode, StudyContext } from '../../types/learning';
 import { useDependencyGraph } from '../../hooks/useDependencyGraph';
@@ -51,6 +52,7 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
   const { loadChapter } = useDependencyGraph();
   const [language, setLanguage] = useState<LanguageCode>(DEFAULT_LANGUAGE);
   const [selectedFormulaId, setSelectedFormulaId] = useState(focusFormulaId);
+  const [selectedConceptView, setSelectedConceptView] = useState<ConceptView | null>(null);
   const [prerequisites, setPrerequisites] = useState<FormulaPrerequisite[]>([]);
   const [prerequisitesLoadedFor, setPrerequisitesLoadedFor] = useState('');
   const [llmState, setLlmState] = useState<LlmFormulaState>({ key: '', status: 'idle', value: null });
@@ -59,15 +61,30 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
 
   useEffect(() => {
     setSelectedFormulaId(focusFormulaId);
+    setSelectedConceptView(null);
   }, [focusFormulaId]);
 
   useEffect(() => {
     const listener = (event: Event) => {
       const detail = (event as CustomEvent<{ formulaId?: string }>).detail;
-      if (detail?.formulaId) setSelectedFormulaId(detail.formulaId);
+      if (detail?.formulaId) {
+        setSelectedFormulaId(detail.formulaId);
+        setSelectedConceptView(null);
+      }
     };
     window.addEventListener('litgraph:formula-details', listener);
     return () => window.removeEventListener('litgraph:formula-details', listener);
+  }, []);
+
+  useEffect(() => {
+    const listener = (event: Event) => {
+      const detail = (event as CustomEvent<{ conceptView?: ConceptView }>).detail;
+      if (!detail?.conceptView) return;
+      setSelectedConceptView(detail.conceptView);
+      setSelectedFormulaId(detail.conceptView.defined_by_formula_id);
+    };
+    window.addEventListener('litgraph:concept-details', listener);
+    return () => window.removeEventListener('litgraph:concept-details', listener);
   }, []);
 
   const formula = lookup.get(selectedFormulaId) || lookup.get(focusFormulaId);
@@ -75,6 +92,16 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
   const copy = getUiCopy(language).graph.info;
   const studyContextText = getStudyContextText(studyContext, language);
   const isChapterGraph = Boolean(routeChapterId && !focusFormulaId);
+  const requestedMode = params.get('mode');
+  const isConceptMode = !routeChapterId && requestedMode !== 'guided' && requestedMode !== 'explore';
+  const conceptView = isConceptMode ? selectedConceptView : null;
+  const conceptMeta = conceptView
+    ? joinMeta([
+        conceptView.supporting_formula_label,
+        formatChapterLabel(conceptView.chapter_id, undefined, language),
+        formatSectionLabel(conceptView.formula_section, language),
+      ])
+    : '';
   const chapterOverviewFallback =
     studyContext.type === 'chapter'
       ? language === 'zh'
@@ -257,10 +284,20 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
   return (
     <div className="graph-info-panel">
       <div className="graph-info-panel__hero graph-info-panel__hero--learning-card">
-        <p className="graph-info-panel__eyebrow">{isChapterGraph ? copy.chapterGraph : copy.eyebrow}</p>
-        <h1>{isChapterGraph ? studyContextText?.title || formatChapterLabel(routeChapterId, undefined, language) : formula?.label || `Formula ${formulaNumber}`}</h1>
+        <p className="graph-info-panel__eyebrow">{isChapterGraph ? copy.chapterGraph : conceptView ? copy.conceptEyebrow : copy.eyebrow}</p>
+        <h1>
+          {conceptView && !isChapterGraph ? (
+            <RichMathText text={conceptView.name} />
+          ) : (
+            isChapterGraph ? studyContextText?.title || formatChapterLabel(routeChapterId, undefined, language) : formula?.label || `Formula ${formulaNumber}`
+          )}
+        </h1>
         <p className="graph-info-panel__meta">
-          {formula ? joinMeta([formula.number, formatChapterLabel(formula.chapter_id, formula.chapter, language), formatSectionLabel(formula.section, language)]) : `Formula ${formulaNumber}`}
+          {conceptView
+            ? conceptMeta
+            : formula
+              ? joinMeta([formula.number, formatChapterLabel(formula.chapter_id, formula.chapter, language), formatSectionLabel(formula.section, language)])
+              : `Formula ${formulaNumber}`}
         </p>
         {story ? <p className="graph-info-panel__origin">来自故事线：{storyTitle}</p> : null}
         <div className="graph-info-panel__metadata-row">
@@ -275,7 +312,61 @@ export function GraphInfoPanel({ searchIndex, formulaLearningCopy, studyContext,
         </div>
       </div>
 
-      {!isChapterGraph ? (
+      {conceptView && !isChapterGraph ? (
+        <section className="graph-info-panel__section graph-info-panel__section--concept-detail">
+          <div className="graph-info-panel__concept-symbol">
+            <span>{copy.conceptSymbol}</span>
+            <div>
+              <MathFormula latex={conceptView.defined_symbol} inline />
+            </div>
+          </div>
+          <div className="graph-info-panel__copy-block graph-info-panel__copy-block--concept-definition">
+            <div className="graph-info-panel__copy-heading">
+              <span>{copy.conceptDefinition}</span>
+              <small>{Math.round(conceptView.confidence * 100)}%</small>
+              {conceptView.review_flags.length ? <small>{copy.needsReview}</small> : null}
+            </div>
+            <p><RichMathText text={conceptView.definition_zh || conceptView.definition} /></p>
+          </div>
+          {conceptView.teaching_move_zh || conceptView.teaching_move ? (
+            <div className="graph-info-panel__copy-block graph-info-panel__copy-block--concept-teaching">
+              <div className="graph-info-panel__copy-heading">
+                <span>教材引入</span>
+                <small>{conceptView.supporting_formula_label}</small>
+              </div>
+              <p><RichMathText text={conceptView.teaching_move_zh || conceptView.teaching_move || ''} /></p>
+            </div>
+          ) : null}
+          <div className="graph-info-panel__concept-stats" aria-label="概念局部视图统计">
+            <div>
+              <strong>{conceptView.prerequisite_concepts.length}</strong>
+              <span>{copy.prerequisiteConcepts}</span>
+            </div>
+            <div>
+              <strong>{conceptView.introduced_concepts.length}</strong>
+              <span>{copy.introducedConcepts}</span>
+            </div>
+            <div>
+              <strong>{conceptView.evidence.length}</strong>
+              <span>{copy.evidence}</span>
+            </div>
+          </div>
+          <details className="graph-info-panel__copy-block graph-info-panel__copy-block--formula-evidence">
+            <summary className="graph-info-panel__copy-heading">
+              <span>{copy.supportingFormula}已折叠</span>
+              <small>{conceptView.supporting_formula_label}</small>
+            </summary>
+            {conceptView.source_sentence ? (
+              <p className="graph-info-panel__source-sentence">
+                <RichMathText text={conceptView.source_sentence} />
+              </p>
+            ) : null}
+            <MathFormula latex={conceptView.supporting_formula_latex} />
+          </details>
+        </section>
+      ) : null}
+
+      {!isChapterGraph && !conceptView ? (
         <section className="graph-info-panel__section graph-info-panel__section--primary graph-info-panel__section--what-it-says">
           <h2>公式整体读法</h2>
           <div className="graph-info-panel__copy-block">

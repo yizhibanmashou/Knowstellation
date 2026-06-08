@@ -49,6 +49,52 @@ test('buildCompoundFocusAnnotations extracts derivative fractions', () => {
 
   assert.ok(notes.some((item) => item.symbol === '\\frac{\\partial\\varphi(x,t)}{\\partial t}'));
   assert.ok(notes.some((item) => item.symbol === '\\frac{\\partial[m(x)\\varphi(x,t)]}{\\partial x}'));
+  assert.ok(notes.some((item) => item.symbol === '\\partial\\varphi(x,t)' && item.target === '\\frac{\\partial\\varphi(x,t)}{}'));
+  assert.ok(notes.some((item) => item.symbol === '\\partial t' && item.target === '\\frac{}{\\partial t}'));
+});
+
+test('buildCompoundFocusAnnotations extracts numerator and denominator parts', () => {
+  const notes = buildCompoundFocusAnnotations({
+    latex: '\\overline W=\\sum_{j=1}^{n}p_jW_j=\\frac{1}{2}\\sum_{j=1}^{n}p_j\\frac{\\partial\\overline W}{\\partial p_j}',
+    context_text: 'mean fitness gradient identity',
+  });
+
+  assert.ok(notes.some((item) => item.symbol === '\\partial\\overline W' && item.target === '\\frac{\\partial\\overline W}{}'));
+  assert.ok(notes.some((item) => item.symbol === '\\partial p_j' && item.target === '\\frac{}{\\partial p_j}'));
+});
+
+test('buildCompoundFocusAnnotations extracts simple ratio whole and part targets', () => {
+  const notes = buildCompoundFocusAnnotations({
+    latex: '\\frac{d_s}{p_s}=q',
+    context_text: 'local ratio of d_s to p_s',
+  });
+
+  assert.ok(notes.some((item) => item.symbol === '\\frac{d_s}{p_s}' && item.target === '\\frac{d_s}{p_s}'));
+  assert.ok(notes.some((item) => item.symbol === 'd_s' && item.target === '\\frac{d_s}{}'));
+  assert.ok(notes.some((item) => item.symbol === 'p_s' && item.target === '\\frac{}{p_s}'));
+});
+
+test('buildCompoundFocusAnnotations extracts single-letter numerator and denominator parts', () => {
+  const notes = buildCompoundFocusAnnotations({
+    latex: '\\widehat{h}_{r}^{2}=\\frac{R}{S}',
+    context_text: 'heritability as response over selection differential',
+  });
+
+  assert.ok(notes.some((item) => item.symbol === 'R' && item.target === '\\frac{R}{}'));
+  assert.ok(notes.some((item) => item.symbol === 'S' && item.target === '\\frac{}{S}'));
+});
+
+test('buildCompoundFocusAnnotations does not add generic parts for complex summation fractions', () => {
+  const notes = buildCompoundFocusAnnotations({
+    latex: '\\frac{\\sum_{i}D_{si}P_{ai}/(P_{si}+D_{si})}{\\sum_{i}P_{si}D_{ai}/(P_{si}+D_{si})}',
+    context_text: 'multi-gene MK estimator',
+  });
+
+  const whole = notes.find((item) => item.symbol.startsWith('\\frac{'));
+  assert.ok(whole);
+  assert.match(whole.meaning || '', /TG 加权 MK 比值|Tarone-Greenland/);
+  assert.equal(notes.some((item) => item.target === '\\frac{\\sum_{i}D_{si}P_{ai}/(P_{si}+D_{si})}{}'), false);
+  assert.equal(notes.some((item) => item.target === '\\frac{}{\\sum_{i}P_{si}D_{ai}/(P_{si}+D_{si})}'), false);
 });
 
 test('buildCompoundFocusAnnotations normalizes legacy over factors', () => {

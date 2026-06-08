@@ -26,6 +26,7 @@ type MakeStaticFormulaNode = (
 interface UseGraphInitialLoadParams {
   autoExpandedFocusRef: MutableRefObject<string | null>;
   copy: ReturnType<typeof getUiCopy>['graph'];
+  disabled?: boolean;
   focusChapterId: string;
   focusFormulaId: string;
   isChapterGraph: boolean;
@@ -73,6 +74,7 @@ function buildChapterGraphEdges(chapter: ChapterDependencies): Edge[] {
 export function useGraphInitialLoad({
   autoExpandedFocusRef,
   copy,
+  disabled = false,
   focusChapterId,
   focusFormulaId,
   isChapterGraph,
@@ -91,6 +93,7 @@ export function useGraphInitialLoad({
   setStandaloneFocusId,
 }: UseGraphInitialLoadParams) {
   useEffect(() => {
+    if (disabled) return;
     let cancelled = false;
     setNodes([]);
     setEdges([]);
@@ -170,6 +173,7 @@ export function useGraphInitialLoad({
     copy.dataError,
     copy.emptyChapter,
     copy.missingFormula,
+    disabled,
     focusChapterId,
     focusFormulaId,
     isChapterGraph,

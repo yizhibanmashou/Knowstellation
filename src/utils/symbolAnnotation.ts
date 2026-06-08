@@ -82,11 +82,32 @@ function hasDomainLockedFallback(symbol: string, fallback: string): boolean {
     '位点突变率',
     '位点多样性',
     '位点分化',
+    '多态性',
+    '沉默位点',
+    '替换位点',
     '有效种群大小',
+    '中性指数',
+    'Tarone-Greenland',
+    'MK 比值',
   ].some((keyword) => fallback.includes(keyword));
 }
 
+function compoundShortLabel(prereq: FormulaPrerequisite): string {
+  if ((prereq as { kind?: string }).kind !== 'compound') return '';
+  const meaning = prereq.meaning?.trim() || prereq.definition?.trim() || '';
+  const label = compressTextToShortLabel(meaning);
+  return label && !isGenericAnnotationLabel(label) ? label : '';
+}
+
+function compoundMeaning(prereq: FormulaPrerequisite): string {
+  if ((prereq as { kind?: string }).kind !== 'compound') return '';
+  return prereq.meaning?.trim() || prereq.definition?.trim() || '';
+}
+
 export function resolveSymbolShortLabel(prereq: FormulaPrerequisite, options: SymbolAnnotationOptions = {}): string {
+  const compoundLabel = compoundShortLabel(prereq);
+  if (compoundLabel) return compoundLabel;
+
   const localFallback = conciseVariablePrerequisite(prereq);
   const symbol = normalizedSymbol(prereq);
   const isDomainLocked = hasDomainLockedFallback(symbol, localFallback);
@@ -111,7 +132,13 @@ export function resolveSymbolShortLabel(prereq: FormulaPrerequisite, options: Sy
 }
 
 export function resolveSymbolMeaning(prereq: FormulaPrerequisite, options: SymbolAnnotationOptions = {}): string {
-  return options.llmText?.trim() || prereq.meaning?.trim() || prereq.definition?.trim() || conciseVariablePrerequisite(prereq);
+  const localCompoundMeaning = compoundMeaning(prereq);
+  if (localCompoundMeaning) return localCompoundMeaning;
+
+  const localFallback = conciseVariablePrerequisite(prereq);
+  const symbol = normalizedSymbol(prereq);
+  if (hasDomainLockedFallback(symbol, localFallback)) return localFallback;
+  return options.llmText?.trim() || prereq.meaning?.trim() || prereq.definition?.trim() || localFallback;
 }
 
 export function isFocusAnnotationLabel(note: string): boolean {

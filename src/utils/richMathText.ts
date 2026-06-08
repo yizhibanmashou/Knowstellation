@@ -2,50 +2,92 @@ export type RichTextPart =
   | { type: 'text'; value: string }
   | { type: 'math'; value: string; raw?: string; implicit?: boolean };
 
-const INLINE_MATH_RE = /(\\\([\s\S]+?\\\)|\$[^$\n]+?\$)/g;
+const INLINE_MATH_RE = /(\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)|\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
 
 const GREEK_NAME_PATTERN =
-  '(?:alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|iota|kappa|lambda|mu|nu|xi|pi|rho|varrho|sigma|tau|upsilon|phi|varphi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)';
-const BASE_PATTERN = `(?:\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|[A-Za-z\\u0370-\\u03FF])`;
+  '(?:Alpha|Beta|Epsilon|Zeta|Eta|Iota|Kappa|Mu|Nu|Rho|Tau|Chi|alpha|beta|gamma|delta|epsilon|varepsilon|zeta|eta|theta|vartheta|iota|kappa|lambda|mu|nu|xi|pi|rho|varrho|sigma|tau|upsilon|phi|varphi|chi|psi|omega|Gamma|Delta|Theta|Lambda|Xi|Pi|Sigma|Upsilon|Phi|Psi|Omega)';
+const MATH_WORD_BASE_PATTERN = '(?:Widetildesigma|Widetildep|Changemu|DCMS|rEHH|AIC|Aic|EHH|iHS|cdf|CL|NI|Change|Fracf|Prime|Msh)';
+const BASE_PATTERN = `(?:\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|${MATH_WORD_BASE_PATTERN}|[A-Za-z\\u0370-\\u03FF])`;
 const ASCII_SCRIPT_PATTERN = '(?:[_^](?:\\{[^{}]{1,24}\\}|\\\\(?:prime|mathrm\\{[A-Za-z]{1,12}\\})|[A-Za-z0-9]{1,12}))';
 const ASCII_EXPONENT_PATTERN = '(?:\\^(?:\\{[^{}]{1,24}\\}|[A-Za-z0-9]{1,12}))';
 const UNICODE_SUPERSCRIPT_PATTERN = '[\\u00B2\\u00B3\\u00B9\\u2070-\\u2079\\u207A-\\u207E]+';
 const UNICODE_SUBSCRIPT_PATTERN = '[\\u2080-\\u209C]+';
 const SCRIPT_PATTERN = `(?:${ASCII_SCRIPT_PATTERN}|${UNICODE_SUPERSCRIPT_PATTERN}|${UNICODE_SUBSCRIPT_PATTERN})`;
-const PAREN_ARGUMENT_PATTERN = '(?:\\([A-Za-z0-9\\u0370-\\u03FF\\u2080-\\u209C]{1,12}\\))?';
-const SCRIPTED_TOKEN_PATTERN = `${BASE_PATTERN}${SCRIPT_PATTERN}{1,4}${PAREN_ARGUMENT_PATTERN}`;
-const SCRIPTED_GROUP_PATTERN = `\\((?=[^)]*(?:[_^\\u00B2\\u00B3\\u00B9\\u2070-\\u2079\\u2080-\\u209C]))[A-Za-z0-9_\\u0370-\\u03FF\\\\\\s+\\-*/=|,.\\u00B2\\u00B3\\u00B9\\u2070-\\u2079\\u2080-\\u209C]{1,48}\\)(?:${ASCII_EXPONENT_PATTERN}|${UNICODE_SUPERSCRIPT_PATTERN})?`;
+const PAREN_ARGUMENT_PATTERN = '(?:\\([A-Za-z0-9_.+\\-*/|\\\\\\u0370-\\u03FF\\u2080-\\u209C]{1,24}\\))?';
+const TRAILING_EXPONENT_PATTERN = `(?:${ASCII_EXPONENT_PATTERN}|${UNICODE_SUPERSCRIPT_PATTERN})?`;
+const SCRIPTED_TOKEN_PATTERN = `${BASE_PATTERN}${SCRIPT_PATTERN}{1,4}${PAREN_ARGUMENT_PATTERN}${TRAILING_EXPONENT_PATTERN}`;
+const ACCENTED_SCRIPTED_TOKEN_PATTERN = `${BASE_PATTERN}-(?:bar|hat)${SCRIPT_PATTERN}{1,4}${PAREN_ARGUMENT_PATTERN}`;
+const SCRIPTED_GROUP_PATTERN = `\\((?=[^)]*(?:[_^\\u00B2\\u00B3\\u00B9\\u2070-\\u2079\\u2080-\\u209C]))[A-Za-z0-9_{}'\\u0370-\\u03FF\\\\\\s+\\-*/=|,.\\u00B2\\u00B3\\u00B9\\u2070-\\u2079\\u2080-\\u209C]{1,64}\\)(?:${ASCII_EXPONENT_PATTERN}|${UNICODE_SUPERSCRIPT_PATTERN})?`;
+const POWERED_GROUP_PATTERN = `\\([A-Za-z0-9_{}'\\u0370-\\u03FF\\\\\\s+\\-*/=|,.]{1,64}\\)(?:${ASCII_EXPONENT_PATTERN}|${UNICODE_SUPERSCRIPT_PATTERN})`;
+const TRAILING_POWERED_GROUP_RE = new RegExp(`^(${POWERED_GROUP_PATTERN})`, 'u');
+const NUMBER_PATTERN = '\\d+(?:\\.\\d+)?';
+const MATH_ATOM_PATTERN = `(?:${NUMBER_PATTERN})?(?:${SCRIPTED_TOKEN_PATTERN}|${BASE_PATTERN})`;
+const SCRIPTED_RATIO_PATTERN = `(?:${NUMBER_PATTERN})?${SCRIPTED_TOKEN_PATTERN}(?:\\s*[*/]\\s*${MATH_ATOM_PATTERN})+`;
+const SCRIPTED_PRODUCT_PATTERN = `(?:${NUMBER_PATTERN})?${SCRIPTED_TOKEN_PATTERN}(?:${SCRIPTED_TOKEN_PATTERN})+`;
+const SINGLE_PREFIX_SCRIPTED_PATTERN = `(?:${NUMBER_PATTERN})?[a-z]${SCRIPTED_TOKEN_PATTERN}`;
+const SINGLE_SUFFIX_SCRIPTED_PATTERN = `(?:${NUMBER_PATTERN})?${SCRIPTED_TOKEN_PATTERN}[a-z]`;
+const COEFFICIENT_SCRIPTED_PATTERN = `(?:${NUMBER_PATTERN})${SCRIPTED_TOKEN_PATTERN}`;
+const IMPLICIT_PRODUCT_BASE_RUN_PATTERN = `(?:(?:\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|[A-Z\\u0370-\\u03FF]){1,5})`;
+const IMPLICIT_PRODUCT_PREFIX_PATTERN = `(?:${NUMBER_PATTERN})?${IMPLICIT_PRODUCT_BASE_RUN_PATTERN}${SCRIPTED_TOKEN_PATTERN}(?:${SCRIPTED_TOKEN_PATTERN}|${IMPLICIT_PRODUCT_BASE_RUN_PATTERN})*`;
+const IMPLICIT_PRODUCT_SUFFIX_PATTERN = `(?:${NUMBER_PATTERN})?${SCRIPTED_TOKEN_PATTERN}${IMPLICIT_PRODUCT_BASE_RUN_PATTERN}(?:${SCRIPTED_TOKEN_PATTERN}|${IMPLICIT_PRODUCT_BASE_RUN_PATTERN})*`;
 const BARE_MATH_TOKEN_RE = new RegExp(
-  `(^|[^A-Za-z0-9_\\\\\\u0370-\\u03FF])(${SCRIPTED_GROUP_PATTERN}|${SCRIPTED_TOKEN_PATTERN})(?=$|[^A-Za-z0-9_\\u0370-\\u03FF])`,
+  `(^|[^A-Za-z0-9_\\\\\\u0370-\\u03FF])(${ACCENTED_SCRIPTED_TOKEN_PATTERN}|${POWERED_GROUP_PATTERN}|${SCRIPTED_GROUP_PATTERN}|${SCRIPTED_RATIO_PATTERN}|${SCRIPTED_PRODUCT_PATTERN}|${IMPLICIT_PRODUCT_PREFIX_PATTERN}|${IMPLICIT_PRODUCT_SUFFIX_PATTERN}|${SINGLE_PREFIX_SCRIPTED_PATTERN}|${SINGLE_SUFFIX_SCRIPTED_PATTERN}|${COEFFICIENT_SCRIPTED_PATTERN}|${SCRIPTED_TOKEN_PATTERN})(?=$|[^A-Za-z0-9_\\u0370-\\u03FF])`,
   'gu',
 );
+const SCRIPTED_TOKEN_RE = new RegExp(SCRIPTED_TOKEN_PATTERN, 'gu');
+const EXACT_SCRIPTED_TOKEN_RE = new RegExp(`^${SCRIPTED_TOKEN_PATTERN}$`, 'u');
+const ACCENTED_SCRIPTED_TOKEN_RE = new RegExp(`^(${BASE_PATTERN})-(bar|hat)(.+)$`, 'u');
+const BASE_MATCH_RE = new RegExp(`^(\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|${MATH_WORD_BASE_PATTERN}|[A-Za-z\\u0370-\\u03FF])`, 'u');
+const GREEK_CHAR_OR_NAME_RE = new RegExp(`\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|[\\u0370-\\u03FF]`, 'gu');
+const ROMAN_MATH_BASES = new Set(['AIC', 'Aic', 'DCMS', 'rEHH', 'EHH', 'iHS', 'cdf', 'CL', 'NI']);
+const NAMED_MATH_BASES: Record<string, string> = {
+  Widetildesigma: '\\widetilde{\\sigma}',
+  Widetildep: '\\widetilde{p}',
+  Changemu: '\\Delta\\mu',
+  Change: '\\Delta',
+  Fracf: 'F',
+  Prime: '\\prime',
+  Msh: 'Msh',
+};
 
 const GREEK_BY_NAME: Record<string, string> = {
   alpha: '\\alpha',
   beta: '\\beta',
+  Alpha: '\\alpha',
+  Beta: '\\beta',
   gamma: '\\gamma',
   delta: '\\delta',
   epsilon: '\\epsilon',
+  Epsilon: '\\epsilon',
   varepsilon: '\\varepsilon',
   zeta: '\\zeta',
+  Zeta: '\\zeta',
   eta: '\\eta',
+  Eta: '\\eta',
   theta: '\\theta',
   vartheta: '\\vartheta',
   iota: '\\iota',
+  Iota: '\\iota',
   kappa: '\\kappa',
+  Kappa: '\\kappa',
   lambda: '\\lambda',
   mu: '\\mu',
+  Mu: '\\mu',
   nu: '\\nu',
+  Nu: '\\nu',
   xi: '\\xi',
   pi: '\\pi',
   rho: '\\rho',
+  Rho: '\\rho',
   varrho: '\\varrho',
   sigma: '\\sigma',
   tau: '\\tau',
+  Tau: '\\tau',
   upsilon: '\\upsilon',
   phi: '\\phi',
   varphi: '\\varphi',
   chi: '\\chi',
+  Chi: '\\chi',
   psi: '\\psi',
   omega: '\\omega',
   Gamma: '\\Gamma',
@@ -154,7 +196,9 @@ const SUBSCRIPT_CHARS: Record<string, string> = {
 
 function stripInlineMathDelimiters(value: string): string {
   return value
+    .replace(/^\\\[([\s\S]+)\\\]$/, '$1')
     .replace(/^\\\(([\s\S]+)\\\)$/, '$1')
+    .replace(/^\$\$([\s\S]+)\$\$$/, '$1')
     .replace(/^\$([\s\S]+)\$$/, '$1')
     .trim();
 }
@@ -197,10 +241,66 @@ function readScriptValue(input: string, start: number): { value: string; end: nu
 
 function normalizeBase(base: string): string {
   if (base.startsWith('\\')) return base;
+  if (NAMED_MATH_BASES[base]) return NAMED_MATH_BASES[base];
+  if (ROMAN_MATH_BASES.has(base)) return `\\mathrm{${base}}`;
   return GREEK_BY_NAME[base] || GREEK_BY_CHAR[base] || base;
 }
 
+function normalizeCompositeMathToken(token: string): string {
+  const placeholders: string[] = [];
+  SCRIPTED_TOKEN_RE.lastIndex = 0;
+  const protectedToken = token.replace(SCRIPTED_TOKEN_RE, (scriptedToken) => {
+    const index = placeholders.push(bareMathTokenToLatex(scriptedToken)) - 1;
+    return `\uE000${index}\uE001`;
+  });
+  SCRIPTED_TOKEN_RE.lastIndex = 0;
+
+  return protectedToken
+    .replace(GREEK_CHAR_OR_NAME_RE, (base) => `${normalizeBase(base)} `)
+    .replace(/\uE000(\d+)\uE001/g, (_, index: string) => placeholders[Number(index)] || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function mergeTrailingPoweredGroups(parts: RichTextPart[]): RichTextPart[] {
+  const merged: RichTextPart[] = [];
+
+  for (const part of parts) {
+    const previous = merged[merged.length - 1];
+    if (part.type !== 'text' || previous?.type !== 'math') {
+      merged.push(part);
+      continue;
+    }
+
+    let text = part.value;
+    let appendedRaw = '';
+    while (text.startsWith('(')) {
+      const group = TRAILING_POWERED_GROUP_RE.exec(text)?.[1];
+      if (!group) break;
+      previous.value += bareMathTokenToLatex(group);
+      appendedRaw += group;
+      text = text.slice(group.length);
+    }
+    if (appendedRaw) {
+      previous.raw = `${previous.raw || previous.value}${appendedRaw}`;
+    }
+    if (text) merged.push({ type: 'text', value: text });
+  }
+
+  return merged;
+}
+
 export function bareMathTokenToLatex(token: string): string {
+  const accentedMatch = ACCENTED_SCRIPTED_TOKEN_RE.exec(token);
+  if (accentedMatch) {
+    const base = normalizeBase(accentedMatch[1]);
+    const accent = accentedMatch[2] === 'bar' ? 'overline' : 'widehat';
+    const scriptedRest = `${accentedMatch[1]}${accentedMatch[3]}`;
+    const normalized = bareMathTokenToLatex(scriptedRest);
+    const script = normalized.slice(normalizeBase(accentedMatch[1]).length);
+    return `\\${accent}{${base}}${script}`;
+  }
+
   const groupMatch = /^\(([\s\S]+)\)((?:\^(?:\{[^{}]{1,24}\}|[A-Za-z0-9]{1,12})|[\u00B2\u00B3\u00B9\u2070-\u2079\u207A-\u207E]+)?)$/u.exec(token);
   if (groupMatch) {
     const body = splitBareMathText(groupMatch[1])
@@ -213,7 +313,13 @@ export function bareMathTokenToLatex(token: string): string {
     return exponent ? `(${body})^{${normalizeScriptValue(exponent.value)}}` : `(${body})${script}`;
   }
 
-  const baseMatch = new RegExp(`^(\\\\${GREEK_NAME_PATTERN}|${GREEK_NAME_PATTERN}|[A-Za-z\\u0370-\\u03FF])`, 'u').exec(token);
+  if (!EXACT_SCRIPTED_TOKEN_RE.test(token) && SCRIPTED_TOKEN_RE.test(token)) {
+    SCRIPTED_TOKEN_RE.lastIndex = 0;
+    return normalizeCompositeMathToken(token);
+  }
+  SCRIPTED_TOKEN_RE.lastIndex = 0;
+
+  const baseMatch = BASE_MATCH_RE.exec(token);
   if (!baseMatch) return token;
 
   let latex = normalizeBase(baseMatch[0]);
@@ -269,7 +375,7 @@ function splitBareMathText(text: string): RichTextPart[] {
   }
 
   if (cursor < text.length) parts.push({ type: 'text', value: text.slice(cursor) });
-  return parts;
+  return mergeTrailingPoweredGroups(parts);
 }
 
 export function splitRichMathText(text = ''): RichTextPart[] {

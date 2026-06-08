@@ -8,6 +8,7 @@ interface FractionProfile {
   numeratorTokens: string[];
   denominatorTokens: string[];
   derivative: boolean;
+  part?: 'numerator' | 'denominator';
 }
 
 function buildFractionProfile(symbol: string): FractionProfile | null {
@@ -26,6 +27,7 @@ function buildFractionProfile(symbol: string): FractionProfile | null {
     numeratorTokens: latexToMathTokens(numerator.value),
     denominatorTokens: latexToMathTokens(denominator.value),
     derivative: /\\partial|∂/.test(numerator.value) || /\\partial|∂/.test(denominator.value),
+    part: numerator.value ? (denominator.value ? undefined : 'numerator') : 'denominator',
   };
 }
 
@@ -111,8 +113,12 @@ function compactAncestorWindowText(element: HTMLElement): string {
 function textMatchesCandidate(text: string, candidate: string): boolean {
   if (!candidate) return false;
   if (text === candidate) return true;
+  const remainder = text.startsWith(candidate) ? text.slice(candidate.length) : '';
+  if (remainder && !/[A-Za-zΑ-Ωα-ω0-9]/u.test(remainder)) return true;
   if (/[=+\-∂/∑×∗()[\]]/.test(text)) return false;
-  return candidate.length >= 2 && text.includes(candidate) && text.length <= candidate.length + 3;
+  if (!(candidate.length >= 2 && text.includes(candidate) && text.length <= candidate.length + 3)) return false;
+  const extraText = text.replace(candidate, '');
+  return !/[A-Za-zΑ-Ωα-ω0-9]/u.test(extraText);
 }
 
 function compoundTextMatchesCandidate(text: string, candidate: string): boolean {
@@ -200,6 +206,12 @@ function fractionProfileMatchesElement(element: HTMLElement, profile?: FractionP
   if (!profile) return true;
   const parts = splitFractionElementText(element);
   if (!parts) return false;
+  if (profile.part === 'numerator') {
+    return candidateGroupMatchesText(parts.numeratorText, profile.numeratorCandidates, profile.numeratorTokens);
+  }
+  if (profile.part === 'denominator') {
+    return candidateGroupMatchesText(parts.denominatorText, profile.denominatorCandidates, profile.denominatorTokens);
+  }
   return (
     candidateGroupMatchesText(parts.numeratorText, profile.numeratorCandidates, profile.numeratorTokens) &&
     candidateGroupMatchesText(parts.denominatorText, profile.denominatorCandidates, profile.denominatorTokens)
@@ -242,8 +254,9 @@ function isCompoundGroupingTarget(
     return className.includes('vlist') || (element.children.length > 0 && !className.includes('mfrac')) || /^[()1+\-∑/^0-9]+$/.test(ownText);
   }
   if (isFractionCandidate(candidate)) {
-    if (!isFractionLocalContext(broadText)) return false;
-    return className.includes('mfrac') || className.includes('frac-line') || className.includes('vlist') || element.children.length > 0 || ownText.length >= 2;
+    const isFractionElement = className.includes('mfrac') || className.includes('frac-line') || className.includes('vlist');
+    if (!isFractionElement && !isFractionLocalContext(broadText)) return false;
+    return isFractionElement || element.children.length > 0 || ownText.length >= 2;
   }
   if (isPoweredGroupCandidate(candidate)) {
     const hasPoweredContext = /\)[TΤ]/u.test(candidate) ? isTransposeGroupLocalContext(broadText) : isPoweredGroupLocalContext(broadText);
@@ -252,6 +265,47 @@ function isCompoundGroupingTarget(
     return element.children.length > 0 || /^[()0-9+\-∑/^]+$/.test(ownText);
   }
   return true;
+}
+
+function findFractionPartTarget(fraction: HTMLElement, profile: FractionProfile): HTMLElement | null {
+  const vlist = fraction.querySelector<HTMLElement>('.vlist');
+  if (!vlist || !profile.part) return null;
+  const rows = Array.from(vlist.children)
+    .map((child) => ({ element: child as HTMLElement, text: compactMathText(child.textContent || '') }))
+    .filter((row) => row.text && !/^\u200b?$/.test(row.text) && !/^[-—]+$/.test(row.text));
+  if (!rows.length) return null;
+  const matchesPart = profile.part === 'numerator'
+    ? (text: string) => candidateGroupMatchesText(text, profile.numeratorCandidates, profile.numeratorTokens)
+    : (text: string) => candidateGroupMatchesText(text, profile.denominatorCandidates, profile.denominatorTokens);
+  const orderedRows = profile.part === 'numerator' ? [...rows].reverse() : rows;
+  const row = orderedRows.find((item) => matchesPart(item.text));
+  return row ? visibleFractionPartTarget(row.element, matchesPart) : null;
+}
+
+function hasUsableTargetRect(element: HTMLElement): boolean {
+  const rect = element.getBoundingClientRect();
+  return rect.width >= 4 && rect.height >= 4;
+}
+
+function visibleFractionPartTarget(row: HTMLElement, matchesPart: (text: string) => boolean): HTMLElement | null {
+  if (hasUsableTargetRect(row)) return row;
+
+  const candidates = Array.from(row.querySelectorAll<HTMLElement>('span')).filter((element) => {
+    const text = compactMathText(element.textContent || '');
+    return text && matchesPart(text) && hasUsableTargetRect(element);
+  });
+  candidates.sort((a, b) => {
+    const score = (element: HTMLElement) => {
+      const rect = element.getBoundingClientRect();
+      const className = String(element.className || '');
+      return (className.includes('sizing') ? 80 : 0)
+        + (element.children.length ? 16 : 0)
+        + (className.includes('mord') ? 8 : 0)
+        + rect.width * rect.height;
+    };
+    return score(b) - score(a);
+  });
+  return candidates[0] || null;
 }
 
 function compoundWindowMatchesElement(
@@ -285,7 +339,13 @@ function annotationMatchesElement(
   annotation: MathAnnotation & { candidates: string[]; tokens: string[]; fractionProfile: FractionProfile | null; requiresOverline: boolean },
 ): boolean {
   const { candidates, requiresOverline, kind, tokens, fractionProfile } = annotation;
-  if (requiresOverline && !/(overline|accent)/.test(String(element.className || ''))) return false;
+  if (
+    requiresOverline &&
+    !/(overline|accent)/.test(String(element.className || '')) &&
+    !element.querySelector('.accent, .overline')
+  ) {
+    return false;
+  }
   const ownText = compactMathText(element.textContent || '');
   if (kind === 'formula') return false;
   const neighborhoodText = compactNeighborhoodText(element);
@@ -307,10 +367,15 @@ function annotationMatchesElement(
   });
 }
 
-function annotationTargetScore(element: HTMLElement): number {
+function annotationTargetScore(
+  element: HTMLElement,
+  annotation: MathAnnotation & { candidates: string[] },
+): number {
   const rect = element.getBoundingClientRect();
   const className = String(element.className || '');
+  const ownText = compactMathText(element.textContent || '');
   let score = 0;
+  if (annotation.candidates.some((candidate) => textMatchesCandidate(ownText, candidate))) score += 34;
   if (className.includes('mord')) score += 20;
   if (className.includes('mathnormal')) score -= 8;
   if (className.includes('vlist')) score -= 10;
@@ -327,15 +392,50 @@ function maxTargetsForAnnotation(annotation: MathAnnotation): number {
   return 1;
 }
 
+function shouldSkipCandidateElement(
+  element: HTMLElement,
+  annotation: MathAnnotation & { fractionProfile: FractionProfile | null },
+): boolean {
+  const ownHotspot = element.classList.contains('math-symbol-hotspot') ? element : null;
+  const ancestorHotspot = element.parentElement?.closest<HTMLElement>('.math-symbol-hotspot') || null;
+  const descendantHotspot = element.querySelector('.math-symbol-hotspot');
+
+  if (annotation.kind === 'compound') {
+    if (annotation.fractionProfile?.part && element.classList.contains('mfrac')) return false;
+    return Boolean(ownHotspot || ancestorHotspot || descendantHotspot);
+  }
+
+  if (annotation.kind === 'symbol') {
+    if (ownHotspot || descendantHotspot) return true;
+    return Boolean(ancestorHotspot && ancestorHotspot.dataset.kind !== 'compound');
+  }
+
+  return Boolean(ownHotspot || ancestorHotspot || descendantHotspot);
+}
+
+function findFractionAnnotationTargets(
+  root: HTMLElement,
+  annotation: MathAnnotation & { fractionProfile: FractionProfile },
+): HTMLElement[] {
+  return Array.from(root.querySelectorAll<HTMLElement>('.katex-html .mfrac')).flatMap((fraction) => {
+    if (!fractionProfileMatchesElement(fraction, annotation.fractionProfile)) return [];
+    if (annotation.fractionProfile.part) {
+      const partTarget = findFractionPartTarget(fraction, annotation.fractionProfile);
+      return partTarget ? [partTarget] : [];
+    }
+    return fraction.classList.contains('math-symbol-hotspot') ? [] : [fraction];
+  });
+}
+
 export function annotateRenderedMath(root: HTMLElement, annotations: MathAnnotation[]) {
   clearAnnotations(root);
   const available = annotations
     .filter((item) => item.symbol && item.note)
     .map((item) => ({
       ...item,
-      candidates: latexToReadableCandidates(item.symbol),
-      tokens: item.kind === 'compound' ? latexToMathTokens(item.symbol) : [],
-      fractionProfile: item.kind === 'compound' && /^\\(?:dfrac|tfrac|frac)\b/.test(item.symbol.trim()) ? buildFractionProfile(item.symbol) : null,
+      candidates: latexToReadableCandidates(item.target || item.symbol),
+      tokens: item.kind === 'compound' ? latexToMathTokens(item.target || item.symbol) : [],
+      fractionProfile: item.kind === 'compound' && /^\\(?:dfrac|tfrac|frac)\b/.test((item.target || item.symbol).trim()) ? buildFractionProfile(item.target || item.symbol) : null,
       requiresOverline: symbolRequiresOverline(item.symbol),
     }))
     .sort((a, b) => {
@@ -352,12 +452,19 @@ export function annotateRenderedMath(root: HTMLElement, annotations: MathAnnotat
   });
 
   for (const annotation of available) {
-    const matches = elements.filter((element) => {
-      if (element.closest('.math-symbol-hotspot') || element.querySelector('.math-symbol-hotspot')) return false;
-      if (annotation.kind === 'compound' && element.dataset.kind === 'compound') return false;
-      if (annotation.kind === 'symbol' && element.dataset.kind === 'compound') return false;
-      return annotationMatchesElement(element, annotation);
-    }).sort((a, b) => annotationTargetScore(b) - annotationTargetScore(a));
+    let matches: HTMLElement[];
+    if (annotation.kind === 'compound' && annotation.fractionProfile) {
+      matches = findFractionAnnotationTargets(root, { ...annotation, fractionProfile: annotation.fractionProfile });
+    } else {
+      matches = elements.flatMap<HTMLElement>((element) => {
+        if (shouldSkipCandidateElement(element, annotation)) return [];
+        if (annotation.kind === 'compound' && element.dataset.kind === 'compound') return [];
+        if (annotation.kind === 'symbol' && element.dataset.kind === 'compound') return [];
+        if (!annotationMatchesElement(element, annotation)) return [];
+        return [element];
+      });
+    }
+    matches.sort((a, b) => annotationTargetScore(b, annotation) - annotationTargetScore(a, annotation));
 
     const targets: HTMLElement[] = [];
     const maxTargets = maxTargetsForAnnotation(annotation);
@@ -373,7 +480,7 @@ export function annotateRenderedMath(root: HTMLElement, annotations: MathAnnotat
       target.setAttribute('data-text', annotation.text || '');
       target.setAttribute('data-kind', annotation.kind || 'symbol');
       if (annotation.kind === 'compound' && annotation.fractionProfile) {
-        target.setAttribute('data-compound-shape', 'fraction');
+        target.setAttribute('data-compound-shape', annotation.fractionProfile.part ? `fraction-${annotation.fractionProfile.part}` : 'fraction');
       }
       target.setAttribute('data-status', annotation.status || 'ready');
       target.setAttribute('tabindex', '0');

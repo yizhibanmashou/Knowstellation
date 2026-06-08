@@ -47,7 +47,7 @@ export function GraphToolbar({
         {copy.home}
       </button>
       {toolbar}
-      {!isChapterGraph ? (
+      {!isChapterGraph && mode !== 'concept' ? (
         <button type="button" onClick={onExpand} className="graph-toolbar-button inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold">
           <RefreshCcw size={16} />
           {copy.expand}

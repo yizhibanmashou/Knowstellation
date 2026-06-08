@@ -54,6 +54,10 @@ test('latexToReadableCandidates keeps scripted overline symbols specific', () =>
   const subscriptCandidates = latexToReadableCandidates('\\overline{z}_{i}');
   assert.ok(subscriptCandidates.includes('z_i'));
   assert.ok(!subscriptCandidates.includes('z'));
+
+  const nestedScriptCandidates = latexToReadableCandidates('\\widehat{\\overline{\\alpha}}_{TG}');
+  assert.ok(nestedScriptCandidates.includes('α_TG'));
+  assert.ok(nestedScriptCandidates.includes('αTG'));
 });
 
 test('compactMathText normalizes KaTeX accent and prime text', () => {
@@ -77,4 +81,10 @@ test('latexToReadableCandidates covers fractions and legacy over syntax', () => 
 
   const legacy = latexToReadableCandidates('{1\\over2N}');
   assert.ok(legacy.includes('1/2N'));
+});
+
+test('latexToReadableCandidates keeps two-letter indexed concepts whole', () => {
+  const candidates = latexToReadableCandidates('NI_{TG}');
+  assert.ok(candidates.includes('NI_TG'));
+  assert.ok(candidates.includes('NITG'));
 });

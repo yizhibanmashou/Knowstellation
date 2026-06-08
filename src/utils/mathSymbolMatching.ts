@@ -1,15 +1,15 @@
 const GREEK_COMMANDS: Array<[RegExp, string]> = [
-  [/\\sigma(?=[\s_^{]|$)/g, 'σ'],
-  [/\\Delta(?=[\s_^{]|$)/g, 'Δ'],
-  [/\\mu(?=[\s_^{]|$)/g, 'μ'],
-  [/\\pi(?=[\s_^{]|$)/g, 'π'],
-  [/\\beta(?=[\s_^{]|$)/g, 'β'],
-  [/\\alpha(?=[\s_^{]|$)/g, 'α'],
-  [/\\theta(?=[\s_^{]|$)/g, 'θ'],
-  [/\\rho(?=[\s_^{]|$)/g, 'ρ'],
-  [/\\varphi(?=[\s_^{]|$)/g, 'ϕ'],
-  [/\\phi(?=[\s_^{]|$)/g, 'ϕ'],
-  [/\\imath(?=[\s_^{]|$)/g, 'ı'],
+  [/\\sigma(?=[\s_^{(\[,;|]|$)/g, 'σ'],
+  [/\\Delta(?=[\s_^{(\[,;|]|$)/g, 'Δ'],
+  [/\\mu(?=[\s_^{(\[,;|]|$)/g, 'μ'],
+  [/\\pi(?=[\s_^{(\[,;|]|$)/g, 'π'],
+  [/\\beta(?=[\s_^{(\[,;|]|$)/g, 'β'],
+  [/\\alpha(?=[\s_^{(\[,;|]|$)/g, 'α'],
+  [/\\theta(?=[\s_^{(\[,;|]|$)/g, 'θ'],
+  [/\\rho(?=[\s_^{(\[,;|]|$)/g, 'ρ'],
+  [/\\varphi(?=[\s_^{(\[,;|]|$)/g, 'ϕ'],
+  [/\\phi(?=[\s_^{(\[,;|]|$)/g, 'ϕ'],
+  [/\\imath(?=[\s_^{(\[,;|]|$)/g, 'ı'],
 ];
 
 export function compactMathText(value: string): string {
@@ -33,7 +33,7 @@ function unwrapSimpleScripts(value: string): string {
 function replaceSimpleFractions(value: string): string {
   return value
     .replace(/\\(?:dfrac|tfrac|frac)\{([^{}]+)\}\{([^{}]+)\}/g, '$1/$2')
-    .replace(/\{([^{}]+)\\over([^{}]+)\}/g, '$1/$2');
+    .replace(/\{([^{}]+)\\over(?![A-Za-z])([^{}]+)\}/g, '$1/$2');
 }
 
 function replaceLatexCommands(value: string): string {
@@ -71,6 +71,16 @@ function addCandidate(candidates: Set<string>, value: string) {
   if (compacted) candidates.add(compacted);
 }
 
+function addScriptedWrapperCandidates(candidates: Set<string>, raw: string) {
+  const match = raw.match(/\\(?:widehat|hat|overline|bar|tilde|widetilde)\{(.+)\}(?:_(?:\{([^{}]+)\}|([^{}^]+)))?/);
+  if (!match?.[1]) return;
+  const inner = replaceLatexCommands(match[1]);
+  const subscript = match[2] || match[3] || '';
+  if (!subscript) return;
+  addCandidate(candidates, `${inner}_${subscript}`);
+  addCandidate(candidates, `${inner}${subscript}`);
+}
+
 export function latexToReadableCandidates(symbol: string): string[] {
   const candidates = new Set<string>();
   const raw = symbol.trim();
@@ -91,6 +101,8 @@ export function latexToReadableCandidates(symbol: string): string[] {
     scriptless(readable),
     scriptless(literal),
   ].forEach((candidate) => addCandidate(candidates, candidate));
+
+  addScriptedWrapperCandidates(candidates, unwrapped);
 
   if (/\\imath(?=[\s_^{]|$)/.test(raw)) {
     addCandidate(candidates, '\ue131');

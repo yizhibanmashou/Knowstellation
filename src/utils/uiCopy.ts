@@ -80,10 +80,15 @@ const UI_COPY = {
       standalone: '这个公式目前在本地图谱中没有已确认的前置或后续关系。',
       chapterGraphSuffix: '全章图谱',
       hints: {
+        concept: '概念视图：从当前概念出发，只展示一跳前置概念和本公式首次引入的背景概念；公式作为证据保留。',
         guided: '引导学习：先点公式卡片理解符号，再选择看前置概念或后续公式。',
         explore: '自由探索：点击公式，在当前章节里展开它的前置和后续关系。',
       },
       modes: {
+        concept: {
+          label: 'Concept',
+          description: '以概念为入口查看一跳前置关系',
+        },
         guided: {
           label: 'Guided',
           description: '先看符号，再看后续公式',
@@ -120,6 +125,14 @@ const UI_COPY = {
       info: {
         eyebrow: '公式旁注',
         chapterGraph: '整章图谱',
+        conceptEyebrow: '概念局部视图',
+        conceptSymbol: '概念符号',
+        conceptDefinition: '概念定义',
+        needsReview: '待复核',
+        prerequisiteConcepts: '前置概念',
+        introducedConcepts: '首次引入',
+        evidence: '证据',
+        supportingFormula: '支撑公式',
         plain: '通俗解释',
         chapter: '本章作用',
         context: '上下文',
@@ -236,10 +249,12 @@ const UI_COPY = {
       standalone: 'This formula currently stands alone in the local graph.',
       chapterGraphSuffix: 'full graph',
       hints: {
+        concept: 'Concept: start from the current concept, show one-hop prerequisites and first-introduced background concepts; formulas stay as evidence.',
         guided: 'Guided: click the formula card first, then choose prerequisites or successors.',
         explore: 'Explore: click formulas to expand relationships inside this chapter.',
       },
       modes: {
+        concept: { label: 'Concept', description: 'Use concepts as the graph entry point' },
         guided: { label: 'Guided', description: 'Symbols first, successors second' },
         explore: { label: 'Explore', description: 'Open the chapter-scale relationship map' },
         locked: 'Chapter graphs use Explore mode.',
@@ -270,6 +285,14 @@ const UI_COPY = {
       info: {
         eyebrow: 'Formula margin note',
         chapterGraph: 'Chapter graph',
+        conceptEyebrow: 'Concept view',
+        conceptSymbol: 'Concept symbol',
+        conceptDefinition: 'Concept definition',
+        needsReview: 'Needs review',
+        prerequisiteConcepts: 'Prerequisites',
+        introducedConcepts: 'Introduced',
+        evidence: 'Evidence',
+        supportingFormula: 'Supporting formula',
         plain: 'Plain meaning',
         chapter: 'In this chapter',
         context: 'Context',
