@@ -1,22 +1,22 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle2, Network } from 'lucide-react';
-import type { FormulaDataState } from '../hooks/useFormulaData';
-import type { ChapterDependencies, ChapterFormula, StorylineStep } from '../types/formula';
-import { useDependencyGraph } from '../hooks/useDependencyGraph';
-import { useGraphStore } from '../stores/graphStore';
-import { MathFormula } from '../components/common/MathFormula';
-import { RichMathText } from '../components/common/RichMathText';
-import { generateStorylineNarrative, type StorylineNarrativeResponse } from '../services/llmClient';
-import { formulaChapter, rawFormulaNumber } from '../utils/constants';
-import { buildReadableFormulaCopy } from '../utils/formulaInfo';
+import type { FormulaDataState } from '../features/learning/useFormulaData';
+import type { ChapterDependencies, ChapterFormula, StorylineStep } from '../shared/types/formula';
+import { useDependencyGraph } from '../features/graph/useDependencyGraph';
+import { useGraphStore } from '../features/graph/graphStore';
+import { MathFormula } from '../shared/components/MathFormula';
+import { RichMathText } from '../shared/components/RichMathText';
+import { generateStorylineNarrative, type StorylineNarrativeResponse } from '../shared/services/llmClient';
+import { formulaChapter, rawFormulaNumber } from '../shared/utils/constants';
+import { buildReadableFormulaCopy } from '../features/graph/formulaInfo';
 import {
   buildNarrativeBridge,
   buildStorylineNextStepText,
   buildStorylineRoleText,
   buildStorylineTransitionText,
-} from '../utils/storylineLearningCopy';
-import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../utils/uiCopy';
+} from '../features/learning/storylineLearningCopy';
+import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../shared/utils/uiCopy';
 import './StorylinePage.css';
 
 interface StorylinePageProps {

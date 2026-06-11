@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import type { FormulaDataState } from '../hooks/useFormulaData';
-import { SearchBar } from '../components/SearchBar/SearchBar';
-import { StarField } from '../components/StarField/StarField';
-import { MathFormula } from '../components/common/MathFormula';
-import { buildChapterStarNodes, type StarNode } from '../utils/starNavigation';
-import { rawFormulaNumber } from '../utils/constants';
-import { DEFAULT_LANGUAGE, getUiCopy } from '../utils/uiCopy';
+import type { FormulaDataState } from '../features/learning/useFormulaData';
+import { SearchBar } from '../features/search/SearchBar';
+import { StarField } from '../features/starfield/StarField';
+import { MathFormula } from '../shared/components/MathFormula';
+import { buildChapterStarNodes, type StarNode } from '../features/starfield/starNavigation';
+import { rawFormulaNumber } from '../shared/utils/constants';
+import { DEFAULT_LANGUAGE, getUiCopy } from '../shared/utils/uiCopy';
 
 interface HomePageProps {
   data: FormulaDataState;

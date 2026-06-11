@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { Search } from 'lucide-react';
-import { SearchBar } from './components/SearchBar/SearchBar';
-import { AppErrorBoundary } from './components/common/AppErrorBoundary';
-import { useFormulaData } from './hooks/useFormulaData';
-import { useStarFieldStore } from './stores/starFieldStore';
-import { DEFAULT_LANGUAGE, getUiCopy } from './utils/uiCopy';
+import { SearchBar } from './features/search/SearchBar';
+import { AppErrorBoundary } from './shared/components/AppErrorBoundary';
+import { useFormulaData } from './features/learning/useFormulaData';
+import { useStarFieldStore } from './features/starfield/starFieldStore';
+import { DEFAULT_LANGUAGE, getUiCopy } from './shared/utils/uiCopy';
 
 const HomePage = lazy(() => import('./pages/HomePage').then((module) => ({ default: module.HomePage })));
 const GraphPage = lazy(() => import('./pages/GraphPage').then((module) => ({ default: module.GraphPage })));

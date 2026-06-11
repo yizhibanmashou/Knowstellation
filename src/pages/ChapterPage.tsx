@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowRight, ChevronLeft } from 'lucide-react';
-import type { FormulaDataState } from '../hooks/useFormulaData';
-import { SearchBar } from '../components/SearchBar/SearchBar';
-import { StarField } from '../components/StarField/StarField';
-import { buildFormulaStarNodes, type StarNode } from '../utils/starNavigation';
-import { getChapterById, resolveRecommendedChapterFormulaId } from '../utils/learningNavigator';
-import { DEFAULT_LANGUAGE, formatChapterLabel, getUiCopy } from '../utils/uiCopy';
+import type { FormulaDataState } from '../features/learning/useFormulaData';
+import { SearchBar } from '../features/search/SearchBar';
+import { StarField } from '../features/starfield/StarField';
+import { buildFormulaStarNodes, type StarNode } from '../features/starfield/starNavigation';
+import { getChapterById, resolveRecommendedChapterFormulaId } from '../features/learning/learningNavigator';
+import { DEFAULT_LANGUAGE, formatChapterLabel, getUiCopy } from '../shared/utils/uiCopy';
 
 function entryHint(index: number, isRecommended: boolean): string {
   if (isRecommended) return '推荐先从这里进入：它最适合作为本章公式网络的第一颗锚点。';

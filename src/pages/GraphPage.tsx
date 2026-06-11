@@ -1,6 +1,6 @@
-import type { FormulaLearningCopyPayload, SearchFormula, StorylineEntry } from '../types/formula';
-import type { ChapterNavigatorPayload, ThemeRoute } from '../types/learning';
-import { GraphWorkspace } from '../components/GraphView/GraphWorkspace';
+import type { FormulaLearningCopyPayload, SearchFormula, StorylineEntry } from '../shared/types/formula';
+import type { ChapterNavigatorPayload, ThemeRoute } from '../shared/types/learning';
+import { GraphWorkspace } from '../features/graph/GraphWorkspace';
 
 interface GraphPageProps {
   chapterNavigator: ChapterNavigatorPayload;
