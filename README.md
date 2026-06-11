@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="public/assets/readme/cover.png" alt="Formula Atlas cover" width="100%">
+  <img src="public/assets/readme/cover.png" alt="Knowstellation cover" width="100%">
 </p>
 
-<h1 align="center">Formula Atlas</h1>
+<h1 align="center">Knowstellation</h1>
 
 <p align="center">
-  <strong>A LitGraph Learning System</strong>
+  <strong>Navigable Knowledge Constellations for Books and Papers</strong>
   <br>
-  A product-grade formula atlas for math-heavy textbooks.
-  Search a formula, read its symbols, unfold prerequisites, and move through the book as an interactive knowledge map.
+  Transform dense books and research papers into a navigable knowledge star structure.
+  Search formulas, read symbols, unfold concepts, and move through the source as an interactive constellation.
 </p>
 
 <p align="center">
-  <a href="https://formula-atlas.13260051624.workers.dev/"><strong>Live demo</strong></a>
+  <a href="https://knowstellation.13260051624.workers.dev/"><strong>Live demo</strong></a>
   |
   <a href="#quick-start"><strong>Quick start</strong></a>
   |
@@ -31,14 +31,19 @@
   <a href="#llm-configuration"><img alt="LLM proxy" src="https://img.shields.io/badge/LLM-server%20side%20proxy-0ea5e9"></a>
 </p>
 
-Formula Atlas turns a textbook's formulas into an explorable learning graph. As a LitGraph learning system, it combines a conservative dependency pipeline with a polished React interface: students can search a formula, inspect its symbols, unfold prerequisites step by step, read concept definitions in layers, and follow storyline paths through the book.
+Knowstellation turns dense source material into an explorable knowledge constellation. It starts with math-heavy textbooks today and is designed around the broader goal of converting books and papers into navigable structures: learners can search a formula, inspect its symbols, unfold prerequisites step by step, read concept definitions in layers, and follow storyline paths through the source instead of getting lost in a linear page sequence.
 
-Live demo: [https://formula-atlas.13260051624.workers.dev/](https://formula-atlas.13260051624.workers.dev/)
+Live demo: [https://knowstellation.13260051624.workers.dev/](https://knowstellation.13260051624.workers.dev/)
+
+## Why Knowstellation
+
+Books and papers are usually written as linear pages, but their ideas are not linear. Knowstellation treats a source as a sky of connected knowledge stars: formulas, symbols, concepts, prerequisites, citations, and narrative routes become visible nodes that learners can navigate. The current release focuses on formula-heavy textbook material, while the product direction is broader: turn dense academic sources into inspectable, searchable, source-backed constellations.
 
 The project is intentionally strict about graph quality. Exact references, exact or canonical symbol matches, compound formula groups, and explicit text definitions can enter the main graph. Family-only symbol matches stay as ambiguous audit candidates instead of becoming accepted prerequisite edges.
 
 ## Highlights
 
+- **Knowledge constellation reading**: dense chapters become connected stars of formulas, concepts, prerequisites, and source-backed evidence.
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
 - **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
@@ -54,15 +59,15 @@ The project is intentionally strict about graph quality. Exact references, exact
 Start from the whole book instead of a blank search box. The home view turns chapters, formulas, and curated routes into a navigable constellation, so learners can enter by chapter, formula, or storyline.
 
 <p align="center">
-  <img src="public/assets/readme/home.png" alt="Formula Atlas home star map" width="100%">
+  <img src="public/assets/readme/home.png" alt="Knowstellation home star map" width="100%">
 </p>
 
 ### Concept graph reading
 
-Concept mode answers the question "what is this formula defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. This makes dense local concept neighborhoods readable instead of dropping the whole graph at once.
+Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. This makes dense local concept neighborhoods readable instead of dropping the whole graph at once.
 
 <p align="center">
-  <img src="public/assets/readme/concept.png" alt="Formula Atlas concept graph with layered concept cards and folded formula evidence" width="100%">
+  <img src="public/assets/readme/concept.png" alt="Knowstellation concept graph with layered concept cards and folded formula evidence" width="100%">
 </p>
 
 ### Guided formula reading
@@ -78,7 +83,7 @@ Guided mode keeps the learner inside a single formula card first. Hover or tap h
 Explore mode opens the chapter-scale dependency map. It is designed for orientation rather than close reading: drag across the chapter, zoom through formula clusters, and use the minimap to keep the current focus visible while scanning the larger structure.
 
 <p align="center">
-  <img src="public/assets/readme/minimap.png" alt="Formula Atlas chapter dependency map with minimap and highlighted formula cluster" width="100%">
+  <img src="public/assets/readme/minimap.png" alt="Knowstellation chapter dependency map with minimap and highlighted formula cluster" width="100%">
 </p>
 
 ### Storyline paths
@@ -150,9 +155,15 @@ npm run preview
 
 LLM features are optional. The frontend calls `/api/llm`; secrets stay on the server.
 
-Create `.env` from `.env.example`:
+Create `.env.local` from `.env.example`:
 
 ```powershell
+Copy-Item .env.example .env.local
+```
+
+Then fill in `.env.local`:
+
+```dotenv
 DEEPSEEK_API_KEY=
 DEEPSEEK_API_BASE=https://api.deepseek.com
 ```
