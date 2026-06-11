@@ -6,6 +6,7 @@ __pycache__/
 *.log
 *.tsbuildinfo
 test-results/
+test/
 playwright-report/
 vite.config.js
 vite.config.d.ts
