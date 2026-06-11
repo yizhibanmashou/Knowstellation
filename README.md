@@ -29,6 +29,7 @@
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white"></a>
   <a href="#verification"><img alt="Tests" src="https://img.shields.io/badge/tests-node%20%2B%20python%20%2B%20e2e-22c55e"></a>
   <a href="#llm-configuration"><img alt="LLM proxy" src="https://img.shields.io/badge/LLM-server%20side%20proxy-0ea5e9"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 </p>
 
 Knowstellation turns dense source material into an explorable knowledge constellation. It starts with math-heavy textbooks today and is designed around the broader goal of converting books and papers into navigable structures: learners can search a formula, inspect its symbols, unfold prerequisites step by step, read concept definitions in layers, and follow storyline paths through the source instead of getting lost in a linear page sequence.
@@ -292,4 +293,4 @@ Issues and pull requests are welcome. For graph-related changes, include the aud
 
 ## License
 
-No license file is currently included. Add a repository license before public reuse or redistribution.
+Knowstellation is licensed under the [MIT License](LICENSE).

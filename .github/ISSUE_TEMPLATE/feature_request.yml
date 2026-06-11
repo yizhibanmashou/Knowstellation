@@ -1,0 +1,49 @@
+name: Feature request
+description: Suggest an improvement or new capability
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for sharing an idea for Knowstellation.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What user need, learning workflow, or maintainer pain would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the smallest useful version of the idea.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Learning experience
+        - Formula graph
+        - Concept graph
+        - Search
+        - Star map
+        - Data pipeline
+        - Documentation
+        - Developer experience
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Are there simpler approaches, existing workarounds, or related tools?
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add sketches, screenshots, examples, references, or affected routes.

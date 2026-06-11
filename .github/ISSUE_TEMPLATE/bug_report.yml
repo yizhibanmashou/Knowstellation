@@ -1,0 +1,56 @@
+name: Bug report
+description: Report something that is broken or confusing
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Knowstellation. Please do not include secrets, API keys, or private source material.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the issue and what you expected instead.
+      placeholder: Tell us what broke and what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can we reproduce it?
+      description: Include route, command, chapter, formula, or concept IDs when relevant.
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Frontend UI
+        - Formula graph
+        - Concept graph
+        - Search
+        - Star map
+        - Data pipeline
+        - LLM proxy
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include browser, OS, Node.js, Python, or deployment details when useful.
+      placeholder: Chrome 126, Windows 11, Node 20, Python 3.11
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Paste relevant console output, audit snippets, screenshots, or short recordings.
+      render: text
