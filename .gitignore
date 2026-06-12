@@ -30,3 +30,9 @@ docs/*
 tmp/
 data/book/
 data/book_ocr/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
