@@ -63,12 +63,20 @@ Start from the whole book instead of a blank search box. The home view turns cha
   <img src="public/assets/readme/home.png" alt="Knowstellation home star map" width="100%">
 </p>
 
-### Concept graph reading
+### Chapter learning entry
 
-Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. This makes dense local concept neighborhoods readable instead of dropping the whole graph at once.
+Each chapter opens as its own star map. Formula nodes keep the dependency structure visible, while lighter concept entry points give learners a first path into the chapter vocabulary before they start expanding formulas.
 
 <p align="center">
-  <img src="public/assets/readme/concept.png" alt="Knowstellation concept graph with layered concept cards and folded formula evidence" width="100%">
+  <img src="public/assets/readme/chapter.png" alt="Chapter star map with concept and formula learning entry points" width="100%">
+</p>
+
+### Concept graph reading
+
+Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. Learners can move to the next concept, step back to the previous concept, or jump across all concepts in the current chapter from the bottom concept navigator.
+
+<p align="center">
+  <img src="public/assets/readme/concept.png" alt="Knowstellation concept graph with chapter concept navigation" width="100%">
 </p>
 
 ### Guided formula reading
@@ -100,6 +108,7 @@ Storylines turn scattered formulas into a readable sequence. Each route explains
 ```text
 Home star map -> Chapter entry point -> Guided formula graph
                -> Inline symbol reading
+               -> Chapter concept entry
                -> Concept graph explanation
                -> Explore full chapter graph
                -> Storyline path review
@@ -110,7 +119,7 @@ The UI is optimized around the current reading model:
 | Mode | Purpose |
 | --- | --- |
 | `guided` | Default study flow. Expand prerequisites and successors gradually while reading symbol-level callouts in the formula card. |
-| `concept` | Layered concept view. Start from the formula's defined concept, reveal prerequisite/introduced concept layers, and drag cards to arrange dense neighborhoods. |
+| `concept` | Layered concept view. Start from the formula's defined concept, reveal prerequisite/introduced concept layers, drag cards to arrange dense neighborhoods, and continue through chapter concepts without returning to the chapter map. |
 | `explore` | Full chapter overview for browsing the formula network. |
 
 ## Quick Start
