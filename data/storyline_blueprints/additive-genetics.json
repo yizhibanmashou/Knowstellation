@@ -1,0 +1,19 @@
+{
+  "id": "additive-genetics",
+  "symbol": "G, A",
+  "title_zh": "加性遗传成分与育种值",
+  "title_en": "Additive Genetic Components and Breeding Value",
+  "intro_zh": "从 Fisher 1918 年区分 A 和 G 到基因组选择——加性遗传走过了一百年，从理论抽象变成了可以从一滴血中读出的育种值预测。",
+  "intro_en": "Follow G and A from genotypic effects into additive variance, breeding value, and genomic prediction.",
+  "backbone_zh": "育种值 → 加性响应 → 方差分解 → 预测",
+  "backbone_en": "breeding value -> additive response -> variance decomposition -> prediction",
+  "entity_keys": ["A", "G", "A_i", "G_i", "G_ij", "\\mathbf{A}", "\\mathbf{G}", "\\sigma_A^2"],
+  "formula_ids": [
+    "formula_6.20a",
+    "formula_6.24a",
+    "formula_11.5",
+    "formula_11.6a",
+    "formula_11.8",
+    "formula_13.12a"
+  ]
+}

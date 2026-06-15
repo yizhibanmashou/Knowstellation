@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, CheckCircle2, Network } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Network } from 'lucide-react';
 import type { FormulaDataState } from '../features/learning/useFormulaData';
 import type { ChapterDependencies, ChapterFormula, StorylineStep } from '../shared/types/formula';
 import { useDependencyGraph } from '../features/graph/useDependencyGraph';
@@ -46,6 +46,7 @@ export function StorylinePage({ data }: StorylinePageProps) {
   const { loadChapter } = useDependencyGraph();
   const learnedByChapter = useGraphStore((state: ReturnType<typeof useGraphStore.getState>) => state.learnedByChapter);
   const markLearned = useGraphStore((state: ReturnType<typeof useGraphStore.getState>) => state.markLearned);
+  const stepMarkedRef = useRef<Set<string>>(new Set());
   const storyline = useMemo(() => data.storylines.find((item) => item.id === storylineId), [data.storylines, storylineId]);
   const searchLookup = useMemo(() => new Map(data.searchIndex.map((item) => [item.id, item])), [data.searchIndex]);
   const timelineRef = useRef<HTMLDivElement | null>(null);
@@ -98,8 +99,14 @@ export function StorylinePage({ data }: StorylinePageProps) {
   const selectedFormula = relations.formula;
   const selectedChapterId = selectedSearch?.chapter_id || selectedFormula?.chapter_id || (selectedStep ? formulaChapter(selectedStep.formula_id) : '');
   const selectedLatex = selectedFormula?.latex || selectedSearch?.latex_preview || '';
-  const selectedFormulaSignature = buildFormulaSignatureLatex(selectedLatex);
-  const selectedLearned = Boolean(selectedStep && learnedByChapter[selectedChapterId]?.has(selectedStep.formula_id));
+  // 点开即已读：选中 step 时自动标记
+  useEffect(() => {
+    if (!selectedStep || !selectedChapterId) return;
+    const key = `${selectedChapterId}:${selectedStep.formula_id}`;
+    if (stepMarkedRef.current.has(key)) return;
+    stepMarkedRef.current.add(key);
+    markLearned(selectedChapterId, selectedStep.formula_id);
+  }, [selectedStep, selectedChapterId, markLearned]);
   const selectedCopy = useMemo(
     () =>
       selectedStep
@@ -153,7 +160,9 @@ export function StorylinePage({ data }: StorylinePageProps) {
   }, [nextStep, previousStep?.title, searchLookup, selectedChapterId, selectedCopy?.plainMeaning, selectedFormula?.context_text, selectedSearch?.chapter, selectedSearch?.context, selectedSearch?.label, selectedStep, storyline]);
   const isCuratedNarrative = storyline?.id === 'allele-frequency';
   const narrative = isCuratedNarrative ? fallbackNarrative : narrativeState.value || fallbackNarrative;
+  const storyText = selectedStep?.story_zh || narrative?.role || '';
   const narrativeBridge = narrative ? buildNarrativeBridge(narrative.transition, narrative.next) : '';
+  const bridgeText = selectedStep?.bridge_zh || narrativeBridge || '';
   const selectedProgress = storyline && selectedIndex >= 0 ? Math.round(((selectedIndex + 1) / storyline.steps.length) * 100) : 0;
 
   useEffect(() => {
@@ -213,12 +222,6 @@ export function StorylinePage({ data }: StorylinePageProps) {
     navigate(`/graph/${formulaId}?from=storyline&storyline=${storyline.id}&chapterId=${chapterId}`);
   };
 
-  const markSelectedLearned = () => {
-    if (!selectedStep || !selectedChapterId) return;
-    markLearned(selectedChapterId, selectedStep.formula_id);
-  };
-
-  const cleanSymbol = storyline?.symbol.replace(/\\/g, '') || '';
   const identityTitle = storyline?.id === 'allele-frequency' ? '等位基因频率' : storyline?.title_zh || storyline?.title_en || '';
   const identitySubtitle = storyline?.id === 'allele-frequency' ? '从计数到进化变化' : '';
 
@@ -255,13 +258,6 @@ export function StorylinePage({ data }: StorylinePageProps) {
         </Link>
 
         <div className="storyline-identity">
-          <div className="storyline-identity__meta">
-            <div className="storyline-identity__symbol-card">
-              <span>故事线主题</span>
-              <MathFormula latex={storyline.symbol} inline className="storyline-identity__symbol" />
-            </div>
-            <p>{cleanSymbol} 的 {storyline.steps.length} 步旅程</p>
-          </div>
           <h1>
             <span>{identityTitle}</span>
             {identitySubtitle ? <strong>{identitySubtitle}</strong> : null}
@@ -272,62 +268,21 @@ export function StorylinePage({ data }: StorylinePageProps) {
         {selectedStep ? (
           <div className="storyline-selection">
             <p className="storyline-selection__eyebrow">{copy.selectedFormula}</p>
-            <h2>{selectedSearch?.label || selectedStep.title}</h2>
-            {selectedCopy?.takeaway ? (
-              <div className="storyline-selection__takeaway">
-                <span>一眼看懂</span>
-                <strong>{selectedCopy.takeaway}</strong>
-              </div>
-            ) : null}
-            <div className="storyline-selection__math">
-              {selectedFormulaSignature ? (
-                <div className="storyline-selection__formula-focus">
-                  <span>公式线索</span>
-                  <MathFormula latex={selectedFormulaSignature} inline />
-                </div>
-              ) : null}
-              <details>
-                <summary>查看完整公式</summary>
-                <MathFormula latex={selectedLatex} />
-              </details>
-            </div>
-            <div className="storyline-selection__copy">
-              <span>通俗解释</span>
-              <p><RichMathText text={selectedCopy?.plainMeaning} /></p>
-            </div>
-            <div className="storyline-selection__copy">
-              <span>本章作用</span>
-              <p><RichMathText text={selectedCopy?.inThisChapter} /></p>
-            </div>
-            {selectedCopy?.nextAction ? (
-              <div className="storyline-selection__copy storyline-selection__copy--action">
-                <span>快速读法</span>
-                <p><RichMathText text={selectedCopy.nextAction} /></p>
-              </div>
-            ) : null}
-            <div className="storyline-selection__actions">
-              <button type="button" className="storyline-mark-learned" onClick={markSelectedLearned} disabled={selectedLearned}>
-                <CheckCircle2 size={15} />
-                {selectedLearned ? '已读过这一站' : '标记已读'}
-              </button>
-              {nextStep ? (
-                <button type="button" className="storyline-next-step" onClick={() => setSelectedId(nextStep.formula_id)}>
-                  下一站 {rawFormulaNumber(nextStep.formula_id)}
-                  <ArrowRight size={15} />
-                </button>
+            <h2>{selectedStep.display_name_zh || selectedSearch?.label || selectedStep.title}</h2>
+            <div className="storyline-selection__takeaway">
+              <span>一眼看懂</span>
+              <strong>{selectedCopy?.takeaway || ''}</strong>
+              {selectedCopy?.plainMeaning ? (
+                <p>{selectedCopy.plainMeaning}</p>
               ) : null}
             </div>
-            <div className="storyline-symbols">
-              {(selectedFormula?.symbols_defined?.length ? selectedFormula.symbols_defined : selectedFormula?.symbols_used || []).slice(0, 6).map((symbol) => (
-                <MathFormula key={symbol} latex={symbol} inline />
-              ))}
-            </div>
-            <button type="button" className="storyline-open-graph" onClick={() => openGraph()}>
-              <Network size={16} />
-              {copy.openGraph}
-            </button>
           </div>
         ) : null}
+
+        <button type="button" className="storyline-open-graph" onClick={() => openGraph()}>
+          <Network size={16} />
+          {copy.openGraph}
+        </button>
       </aside>
 
       <main className="storyline-main">
@@ -336,17 +291,13 @@ export function StorylinePage({ data }: StorylinePageProps) {
             <p>{copy.routeEyebrow}</p>
             <h2>{copy.routeTitle}</h2>
           </div>
-          <button type="button" className="storyline-collapse" onClick={() => openGraph()}>
-            <Network size={16} />
-            {copy.openCurrentGraph}
-          </button>
         </div>
 
         {selectedStep ? (
           <div className="storyline-reader" aria-label="故事线阅读进度">
             <div className="storyline-reader__topline">
               <span>第 {selectedIndex + 1} / {storyline.steps.length} 站</span>
-              <strong>{selectedSearch?.label || selectedStep.title}</strong>
+              <strong>{selectedStep.display_name_zh || selectedSearch?.label || selectedStep.title}</strong>
               <small>{selectedProgress}%</small>
             </div>
             <div className="storyline-reader__bar" aria-hidden="true">
@@ -360,13 +311,12 @@ export function StorylinePage({ data }: StorylinePageProps) {
             const formula = searchLookup.get(step.formula_id);
             const isSelected = step.formula_id === selectedStep?.formula_id;
             const stepChapterId = formula?.chapter_id || formulaChapter(step.formula_id);
-            const stepLearned = Boolean(learnedByChapter[stepChapterId]?.has(step.formula_id));
             const stepLatex = formula?.latex_preview || '';
             return (
               <article
                 key={step.formula_id}
                 role="listitem"
-                className={`storyline-step ${isSelected ? 'storyline-step--selected' : ''} ${stepLearned ? 'storyline-step--learned' : ''} animate-[fadeSlideUp_0.6s_ease_both]`}
+                className={`storyline-step ${isSelected ? 'storyline-step--selected' : ''} animate-[fadeSlideUp_0.6s_ease_both]`}
                 style={{ animationDelay: `${0.1 + index * 0.08}s` } as any}
                 onClick={() => setSelectedId(step.formula_id)}
                 onDoubleClick={() => openGraph(step.formula_id)}
@@ -381,8 +331,8 @@ export function StorylinePage({ data }: StorylinePageProps) {
                 <div className="storyline-step__header">
                   <div className="storyline-step__index">{String(index + 1).padStart(2, '0')}</div>
                   <div className="storyline-step__meta">
-                    <strong>{rawFormulaNumber(step.formula_id)}</strong>
-                    <span>{stepLearned ? '已读' : `第 ${index + 1} 站`}</span>
+                    <strong>{step.display_name_zh || rawFormulaNumber(step.formula_id)}</strong>
+                    <span>第 {index + 1} 站</span>
                   </div>
                   <ArrowRight className="storyline-step__arrow" size={16} />
                 </div>
@@ -403,11 +353,21 @@ export function StorylinePage({ data }: StorylinePageProps) {
               <span>{copy.role}</span>
               {!isCuratedNarrative && narrativeState.status === 'loading' ? <small className="block mb-2 text-cyan-500/60 text-[10px] font-bold tracking-widest">{copy.generating}</small> : null}
               {!isCuratedNarrative && narrativeState.status === 'error' ? <small className="block mb-2 text-cyan-500/60 text-[10px] uppercase font-bold tracking-widest">{copy.localNarrative}</small> : null}
-              <p><RichMathText text={narrative.role} /></p>
+              <p><RichMathText text={storyText} /></p>
             </div>
             <div className="storyline-narrative__card storyline-narrative__card--bridge animate-[fadeSlideUp_0.8s_ease_0.35s_both]">
-              <span>{copy.storyBridge || '故事串联'}</span>
-              <p><RichMathText text={narrativeBridge} /></p>
+              <span>{copy.storyBridge || 'But Wait…'}</span>
+              <p><RichMathText text={bridgeText} /></p>
+              {selectedStep?.image ? (
+                <div className="storyline-frame">
+                  <div className="storyline-frame__inner">
+                    <img src={selectedStep.image} alt={selectedStep.image_caption || ''} />
+                    {selectedStep.image_caption ? (
+                      <div className="storyline-frame__caption">{selectedStep.image_caption}</div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
             </div>
           </section>
         ) : null}
@@ -416,13 +376,3 @@ export function StorylinePage({ data }: StorylinePageProps) {
   );
 }
 
-function buildFormulaSignatureLatex(latex = ''): string {
-  const normalized = latex
-    .replace(/\r?\n/g, ' ')
-    .replace(/\\begin\{align\*?\}|\\end\{align\*?\}|\\begin\{aligned\}|\\end\{aligned\}/g, '')
-    .replace(/&/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  const lhs = normalized.split(/=(?!=)/)[0]?.trim();
-  return lhs && lhs.length <= 44 ? lhs : '';
-}
