@@ -1,5 +1,6 @@
 import type { SearchFormula } from '../../shared/types/formula';
 import type {
+  ChapterLayer,
   ChapterLearningEntry,
   ChapterNavigatorPayload,
   LanguageCode,
@@ -51,6 +52,28 @@ export function getStudyFormulaIds(context: StudyContext): string[] {
   }
   if (context.type === 'theme') return context.route.formula_ids;
   return [];
+}
+
+export function resolveNextStudyFormulaId(formulaIds: string[], currentFormulaId: string): string | null {
+  const currentIndex = formulaIds.indexOf(currentFormulaId);
+  if (currentIndex < 0 || currentIndex + 1 >= formulaIds.length) return null;
+  return formulaIds[currentIndex + 1] || null;
+}
+
+export function isChapterStudyFormulaLocked(input: {
+  formulaIds: string[];
+  formulaId: string;
+  currentFormulaId?: string | null;
+  learnedFormulaIds?: ReadonlySet<string>;
+  layer: ChapterLayer;
+}): boolean {
+  if (input.layer !== 'backbone') return false;
+  const index = input.formulaIds.indexOf(input.formulaId);
+  if (index <= 0) return false;
+  if (input.formulaId === input.currentFormulaId) return false;
+  if (input.learnedFormulaIds?.has(input.formulaId)) return false;
+  const previousFormulaId = input.formulaIds[index - 1];
+  return !input.learnedFormulaIds?.has(previousFormulaId);
 }
 
 export function getText(value: { en: string; zh?: string }, language: LanguageCode): string {

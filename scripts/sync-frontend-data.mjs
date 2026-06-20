@@ -28,20 +28,31 @@ const unsafePublicCopyPatterns = [
   /local mathematical quantity/i,
   /supporting formula/i,
   /local formula context/i,
+  /is a supporting quantity in this equation/i,
+  /is the main quantity to read from this equation/i,
+  /right-hand side shows/i,
+  /names the biological object/i,
+  /operation or transformation rule used by the equation/i,
+  /model parameter conventionally denoted/i,
+  /is a coefficient or parameter attached/i,
+  /local context/i,
+  /\[formula\]/i,
+  /\b(?:frac|left|right|leq|quad|bigg|mathrm)\b/i,
+  /^[A-Z]apter\b/i,
+  /^[A-Za-z]\s*=/,
   /帮你把符号/,
   /标记的是/,
   /places the symbol back/i,
   /marks the object/i,
+  /controls the strength, direction, or scaling of the relationship/i,
+  /调节关系强弱或方向/,
 ];
 
 const internalPublicFields = [
-  'review_status',
-  'review_flags',
   'reviewed_by',
   'reviewed_at',
   'review_notes',
   'symbol_concepts',
-  'source_sentence',
   'teaching_move',
   'teaching_move_zh',
   'extraction_model',
@@ -124,6 +135,7 @@ function sanitizeConceptView(view) {
     ...sanitizePublicCopy(sanitized, view),
     evidence: sanitizeEvidence(view.evidence || []),
     prerequisite_concepts: (view.prerequisite_concepts || []).map(sanitizeConceptReference),
+    successor_concepts: (view.successor_concepts || []).map(sanitizeConceptReference),
     introduced_concepts: (view.introduced_concepts || []).map(sanitizeConceptReference),
   };
 }
@@ -139,7 +151,7 @@ function sanitizeConceptReference(reference) {
 }
 
 function sanitizeEvidence(evidence) {
-  return evidence.map((item) => omitKeys(item, ['sentence', 'teaching_move', 'teaching_move_zh', 'source_sentence']));
+  return evidence.map((item) => omitKeys(item, ['teaching_move', 'teaching_move_zh', 'source_sentence']));
 }
 
 function omitKeys(value, keys) {
@@ -186,11 +198,13 @@ function readableFallbackDefinition(name, symbol, formulaLabel, zh) {
     if (/frequency|allele/.test(lower)) return `${label} 表示 ${formula} 中被追踪的群体比例或等位基因状态。`;
     if (/variance|sigma|covariance|correlation/.test(lower)) return `${label} 描述 ${formula} 中变量的离散程度或共同变化。`;
     if (/mean|average|expectation|expected/.test(lower)) return `${label} 表示 ${formula} 中一组取值的中心水平。`;
+    if (/^tau$/.test(lower) || /\\tau/.test(symbol || '')) return `${label} 表示 ${formula} 中控制时间间隔、滞后尺度或组内相关性的参数。`;
     return `${label} 是 ${formula} 中需要先定位的量，用来读清它和核心关系的连接方式。`;
   }
   if (/probability|density|likelihood/.test(lower)) return `${label} describes probability weight in ${formula}.`;
   if (/frequency|allele/.test(lower)) return `${label} is the population proportion or allele state tracked in ${formula}.`;
   if (/variance|sigma|covariance|correlation/.test(lower)) return `${label} describes spread or joint movement in ${formula}.`;
   if (/mean|average|expectation|expected/.test(lower)) return `${label} is the center of a set of values in ${formula}.`;
+  if (/^tau$/.test(lower) || /\\tau/.test(symbol || '')) return `${label} denotes the time lag, interval scale, or intraclass-correlation parameter used by ${formula}.`;
   return `${label} is a quantity to locate first when reading its relationship to the main term in ${formula}.`;
 }

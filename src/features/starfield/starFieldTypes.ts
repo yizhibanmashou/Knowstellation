@@ -7,6 +7,7 @@ export interface StarFieldProps {
   onEnterNode: (node: StarNode) => void;
   rightReserve?: number;
   rightReserveClassName?: string;
+  transitionKey?: string;
 }
 
 export interface NodeMesh extends THREE.Mesh {
@@ -14,6 +15,9 @@ export interface NodeMesh extends THREE.Mesh {
     node: StarNode;
     baseScale: number;
     targetScale: number;
+    nodeOpacity: number;
+    ringOpacity: number;
+    labelOpacity: number;
     pulse: number;
     ring: THREE.Mesh;
     label: THREE.Sprite;

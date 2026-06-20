@@ -2,17 +2,16 @@ import { useEffect, type Dispatch, type MutableRefObject, type SetStateAction } 
 import { MarkerType, type Edge, type Node, type XYPosition } from '@xyflow/react';
 import type { ReactFlowInstance } from '@xyflow/react';
 import type { ChapterDependencies, ChapterFormula, FormulaDependency } from '../../shared/types/formula';
+import type { ConceptGraphPayload } from '../../shared/types/conceptGraph';
 import type { DependencyEdgeData, FormulaNodeData } from '../../shared/types/graph';
 import { rawFormulaNumber } from '../../shared/utils/constants';
 import type { FocusAnnotationNote } from './focusAnnotations';
 import { explainPrerequisite } from './formulaInfo';
 import { formatChapterLabel, type getUiCopy } from '../../shared/utils/uiCopy';
-import { buildVariableEdges, buildVariableNodes, buildFocusSymbolPrerequisites, isChapterStarterFormula, markSelectedFormulaNode, shouldRenderFormulaPrerequisite } from './graphCanvasModel';
+import { buildConceptBackedFocusSymbolPrerequisites, markSelectedFormulaNode, shouldRenderFormulaPrerequisite } from './graphCanvasModel';
 import { chapterGraphBounds, layoutChapterGraph } from './graphLayout';
 import type { GraphStudyMode } from './GraphModeControls';
 import type { GuidedExpansionStage } from './useGraphExpansion';
-
-const MAX_STARTER_VARIABLES = 4;
 
 type MakeStaticFormulaNode = (
   formula: ChapterFormula,
@@ -21,6 +20,7 @@ type MakeStaticFormulaNode = (
   role?: FormulaNodeData['role'],
   symbolExplanations?: FocusAnnotationNote[],
   chapterGraph?: boolean,
+  chapter?: ChapterDependencies | null,
 ) => Node;
 
 interface UseGraphInitialLoadParams {
@@ -31,6 +31,7 @@ interface UseGraphInitialLoadParams {
   focusFormulaId: string;
   isChapterGraph: boolean;
   loadChapter: (chapterId: string) => Promise<ChapterDependencies | null | undefined>;
+  loadConceptChapter: (chapterId: string) => Promise<ConceptGraphPayload | null>;
   makeStaticFormulaNode: MakeStaticFormulaNode;
   mode: GraphStudyMode;
   reactFlow: ReactFlowInstance;
@@ -79,6 +80,7 @@ export function useGraphInitialLoad({
   focusFormulaId,
   isChapterGraph,
   loadChapter,
+  loadConceptChapter,
   makeStaticFormulaNode,
   mode,
   reactFlow,
@@ -112,7 +114,7 @@ export function useGraphInitialLoad({
           return;
         }
         const positions = layoutChapterGraph(chapter.formulas, chapter.dependencies);
-        const formulaNodes = chapter.formulas.map((formula) => makeStaticFormulaNode(formula, positions.get(formula.id) || { x: 120, y: 96 }, false, 'expanded', [], true));
+        const formulaNodes = chapter.formulas.map((formula) => makeStaticFormulaNode(formula, positions.get(formula.id) || { x: 120, y: 96 }, false, 'expanded', [], true, chapter));
         const graphEdges = buildChapterGraphEdges(chapter);
         const requestedFormulaId = routeSelectedFormulaId && chapter.formulas.some((formula) => formula.id === routeSelectedFormulaId)
           ? routeSelectedFormulaId
@@ -137,7 +139,10 @@ export function useGraphInitialLoad({
     }
     if (!focusFormulaId) return;
 
-    loadChapter(focusChapterId).then((chapter) => {
+    Promise.all([
+      loadChapter(focusChapterId),
+      mode === 'formula' ? loadConceptChapter(focusChapterId) : Promise.resolve(null),
+    ]).then(([chapter, conceptGraph]) => {
       if (!chapter) {
         if (!cancelled) setGraphNotice(`${copy.dataError} ${formatChapterLabel(focusChapterId)}`);
         return;
@@ -145,21 +150,15 @@ export function useGraphInitialLoad({
       const formula = chapter?.formulas.find((item) => item.id === focusFormulaId);
       if (cancelled) return;
       if (!formula) {
-        setGraphNotice(`${copy.missingFormula} ${rawFormulaNumber(focusFormulaId)} · ${formatChapterLabel(focusChapterId)}`);
+        setGraphNotice(`${copy.missingFormula} ${rawFormulaNumber(focusFormulaId)} 路 ${formatChapterLabel(focusChapterId)}`);
         return;
       }
       const dependency: FormulaDependency | null = chapter.dependencies.find((dep) => dep.dependent_id === focusFormulaId) || null;
-      const focusSymbolExplanations = buildFocusSymbolPrerequisites(formula, dependency);
-      const symbolExplanations = mode === 'guided' ? focusSymbolExplanations : [];
-      const formulaNode = makeStaticFormulaNode(formula, { x: 260, y: 280 }, true, 'focus', symbolExplanations);
-      if (isChapterStarterFormula(formula, dependency)) {
-        const starterVariables = focusSymbolExplanations.slice(0, MAX_STARTER_VARIABLES);
-        setNodes([formulaNode, ...buildVariableNodes(focusFormulaId, formulaNode, starterVariables, [formulaNode])]);
-        setEdges(buildVariableEdges(focusFormulaId, starterVariables));
-      } else {
-        setNodes([formulaNode]);
-        setEdges([]);
-      }
+      const focusSymbolExplanations = buildConceptBackedFocusSymbolPrerequisites(formula, dependency, conceptGraph);
+      const symbolExplanations = mode === 'formula' ? focusSymbolExplanations : [];
+      const formulaNode = makeStaticFormulaNode(formula, { x: 260, y: 280 }, true, 'focus', symbolExplanations, false, chapter);
+      setNodes([formulaNode]);
+      setEdges([]);
       window.setTimeout(() => {
         reactFlow.fitView({ padding: 0.35, duration: 500, maxZoom: 1.08 });
       }, 60);
@@ -178,6 +177,7 @@ export function useGraphInitialLoad({
     focusFormulaId,
     isChapterGraph,
     loadChapter,
+    loadConceptChapter,
     makeStaticFormulaNode,
     mode,
     reactFlow,

@@ -1,7 +1,7 @@
 {
   "chapter_id": "appendix6",
   "version": 1,
-  "generated_at": "2026-06-11T11:39:25.089Z",
+  "generated_at": "2026-06-20T05:36:13.131Z",
   "source": {
     "formula_dependency_graph": "data/frontend/dependency/appendix6_dependencies.json",
     "symbol_sense_prompts": "data/frontend/symbol_sense/prompts/appendix6.jsonl",
@@ -11,24 +11,25 @@
   "summary": {
     "chapter_id": "appendix6",
     "formulas_processed": 16,
-    "symbol_concept_entries": 86,
-    "unique_concepts": 86,
-    "concept_views": 16,
-    "prerequisite_edges": 4,
-    "introduced_edges": 61,
-    "low_confidence_entries": 26,
-    "formula_edges_used": 4
+    "symbol_concept_entries": 164,
+    "unique_concepts": 161,
+    "concept_views": 9,
+    "prerequisite_edges": 9,
+    "introduced_edges": 16,
+    "low_confidence_entries": 9,
+    "formula_edges_used": 9
   },
+  "chapter_storyline": [],
   "views": [
     {
       "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_1_defined_f",
-      "name": "Formula A6.1 Function",
-      "definition": "A rule that maps inputs to outputs in the model.",
-      "definition_zh": "把输入映射为输出的规则。",
-      "concept_type": "quantity_concept",
+      "concept_id": "canonical_data_vector",
+      "name": "Data Vector",
+      "definition": "A structured mathematical quantity represented as a vector or matrix.",
+      "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+      "concept_type": "math_concept",
       "defined_by_formula_id": "formula_A6.1",
-      "defined_symbol": "f",
+      "defined_symbol": "\\mathbf{x}",
       "supporting_formula_label": "Formula A6.1",
       "supporting_formula_latex": "\\nabla\\mathbf{x}[f]=\\frac{\\partial f}{\\partial\\mathbf{x}}=\\begin{pmatrix}\\frac{\\partial f}{\\partial x_{1}}\\\\ \\vdots\\\\ \\frac{\\partial f}{\\partial x_{n}}\\end{pmatrix}",
       "formula_position": 0,
@@ -38,40 +39,406 @@
       "prerequisite_concepts": [],
       "introduced_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_1_used_x_1",
-          "name": "Formula A6.1 Variable",
-          "symbol": "x_{1}",
+          "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+          "name": "Lambda Parameter",
+          "symbol": "\\lambda",
           "defined_by_formula_id": null,
-          "formula_label": "Formula A6.1",
+          "formula_label": "Formula A6.16",
           "clickable": false,
-          "confidence": 0.73,
+          "confidence": 0.76,
           "concept_type": "domain_concept",
-          "definition": "A placeholder quantity whose value can change within the equation.",
-          "definition_zh": "公式中取值可以变化的占位量。"
+          "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+          "canonical_concept_name": "Lambda Parameter",
+          "canonical_concept_id": "canonical_lambda_parameter",
+          "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": [
+            "weak_evidence",
+            "auto_canonical_merge"
+          ]
         }
       ],
       "edges": [
         {
-          "from": "concept_appendix6_formula_a6_1_used_x_1",
-          "to": "concept_appendix6_formula_a6_1_defined_f",
+          "from": "concept_appendix6_formula_a6_16_used_lambda",
+          "to": "canonical_data_vector",
           "relation": "introduced_for",
-          "symbol": "x_{1}",
+          "symbol": "\\lambda",
           "clickable": false,
-          "confidence": 0.73
+          "confidence": 0.76
         }
+      ],
+      "canonical_concept_id": "canonical_data_vector",
+      "canonical_concept_name": "Data Vector",
+      "view_id": "canonical_data_vector",
+      "formula_references": [
+        {
+          "formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "formula_latex": "\\nabla\\mathbf{x}[f]=\\frac{\\partial f}{\\partial\\mathbf{x}}=\\begin{pmatrix}\\frac{\\partial f}{\\partial x_{1}}\\\\ \\vdots\\\\ \\frac{\\partial f}{\\partial x_{n}}\\end{pmatrix}",
+          "formula_position": 0,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathbf{x}",
+          "concept_id": "concept_appendix6_formula_a6_1_defined_mathbf_x",
+          "view_id": "concept_appendix6_formula_a6_1_defined_mathbf_x",
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.16",
+          "formula_label": "Formula A6.16",
+          "formula_latex": "\\frac{d g(\\mathbf{x},\\lambda)}{d\\lambda}=h(\\mathbf{x})-c=0",
+          "formula_position": 15,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "OPTIMIZATION UNDER CONSTRAINTS",
+          "symbol": "\\mathbf{x}",
+          "concept_id": "concept_appendix6_formula_a6_16_used_mathbf_x",
+          "view_id": "concept_appendix6_formula_a6_16_used_mathbf_x",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited"
+        }
+      ],
+      "successor_concepts": [
+        {
+          "concept_id": "canonical_covariance_matrix",
+          "view_id": "canonical_covariance_matrix",
+          "name": "Covariance Matrix",
+          "canonical_concept_id": "canonical_covariance_matrix",
+          "canonical_concept_name": "Covariance Matrix",
+          "defined_by_formula_id": "formula_A6.2",
+          "from_formula_id": "formula_A6.2",
+          "formula_label": "Formula A6.2",
+          "symbol": "\\mathbf{V}",
+          "via_symbol": "\\mathbf{V}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_2_defined_varphi",
+          "view_id": "concept_appendix6_formula_a6_2_defined_varphi",
+          "name": "Probability Density",
+          "canonical_concept_id": "canonical_probability_density",
+          "canonical_concept_name": "Probability Density",
+          "defined_by_formula_id": "formula_A6.2",
+          "from_formula_id": "formula_A6.2",
+          "formula_label": "Formula A6.2",
+          "symbol": "\\varphi",
+          "via_symbol": "\\varphi",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "A probability density for a normally distributed vector, parameterized by a mean vector and covariance matrix.",
+          "definition_zh": "连续变量中积分后得到概率的函数。",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": []
+        },
+        {
+          "concept_id": "canonical_matrix_or_vector_quantity",
+          "view_id": "canonical_matrix_or_vector_quantity",
+          "name": "Matrix or Vector Quantity",
+          "canonical_concept_id": "canonical_matrix_or_vector_quantity",
+          "canonical_concept_name": "Matrix or Vector Quantity",
+          "defined_by_formula_id": "formula_A6.12",
+          "from_formula_id": "formula_A6.12",
+          "formula_label": "Formula A6.12",
+          "symbol": "\\mathbf{H}_{\\mathbf{X}}[f]",
+          "via_symbol": "\\mathbf{H}_{\\mathbf{X}}[f]",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "source_sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point.",
+          "review_status": "flagged",
+          "review_flags": [
+            "auto_canonical_merge",
+            "generic_defined_concept_name"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_14_defined_g",
+          "view_id": "concept_appendix6_formula_a6_14_defined_g",
+          "name": "Lagrangian Objective",
+          "canonical_concept_id": "canonical_lagrangian_objective",
+          "canonical_concept_name": "Lagrangian Objective",
+          "defined_by_formula_id": "formula_A6.14",
+          "from_formula_id": "formula_A6.14",
+          "formula_label": "Formula A6.14",
+          "symbol": "g",
+          "via_symbol": "g",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "An augmented objective function used to optimize a function subject to a constraint.",
+          "definition_zh": "Lagrangian Objective 是一种数学结构，用来把多个量整理成便于比较、缩放或计算的形式。",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": []
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_15_defined_lambda",
+          "view_id": "concept_appendix6_formula_a6_15_defined_lambda",
+          "name": "Lagrange Multiplier",
+          "canonical_concept_id": "canonical_lagrange_multiplier",
+          "canonical_concept_name": "Lagrange Multiplier",
+          "defined_by_formula_id": "formula_A6.15",
+          "from_formula_id": "formula_A6.15",
+          "formula_label": "Formula A6.15",
+          "symbol": "\\lambda",
+          "via_symbol": "\\lambda",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "A parameter introduced to optimize a function while enforcing a constraint.",
+          "definition_zh": "Lagrange Multiplier 是一种数学结构，用来把多个量整理成便于比较、缩放或计算的形式。",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": []
+        }
+      ],
+      "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+      "review_status": "edited",
+      "review_flags": [
+        "auto_canonical_merge"
       ],
       "evidence": [
         {
           "chunk_id": "formula_A6.1",
           "block_index": 0,
-          "block_type": "derivation"
+          "block_type": "derivation",
+          "sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS"
+        },
+        {
+          "chunk_id": "formula_A6.16",
+          "block_index": 15,
+          "block_type": "derivation",
+          "sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint."
+        }
+      ]
+    },
+    {
+      "chapter_id": "appendix6",
+      "concept_id": "canonical_covariance_matrix",
+      "name": "Covariance Matrix",
+      "definition": "A structured mathematical quantity represented as a vector or matrix.",
+      "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+      "concept_type": "math_concept",
+      "defined_by_formula_id": "formula_A6.2",
+      "defined_symbol": "\\mathbf{V}",
+      "supporting_formula_label": "Formula A6.2",
+      "supporting_formula_latex": "\\nabla_{\\mathbf{X}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=-\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)",
+      "formula_position": 1,
+      "formula_section": "Appendix: Introduction",
+      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+      "confidence": 0.82,
+      "prerequisite_concepts": [
+        {
+          "concept_id": "canonical_data_vector",
+          "name": "Data Vector",
+          "defined_by_formula_id": "formula_A6.1",
+          "from_formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "symbol": "\\mathbf{x}",
+          "via_symbol": "\\mathbf{x}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "defines_symbol",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "canonical_data_vector",
+          "prerequisite_concepts": [],
+          "introduced_concepts": [
+            {
+              "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "name": "Lambda Parameter",
+              "symbol": "\\lambda",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.16",
+              "clickable": false,
+              "confidence": 0.76,
+              "concept_type": "domain_concept",
+              "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+              "canonical_concept_name": "Lambda Parameter",
+              "canonical_concept_id": "canonical_lambda_parameter",
+              "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "review_status": "edited",
+              "review_flags": [
+                "weak_evidence",
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        }
+      ],
+      "introduced_concepts": [
+        {
+          "concept_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "name": "Inverse Covariance Matrix",
+          "symbol": "\\mathbf{V}^{-1}",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.2",
+          "clickable": false,
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Inverse Covariance Matrix",
+          "canonical_concept_id": "canonical_inverse_covariance_matrix",
+          "view_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_2_used_varphi",
+          "name": "Probability Density",
+          "symbol": "\\varphi",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.2",
+          "clickable": false,
+          "confidence": 0.82,
+          "concept_type": "domain_concept",
+          "definition": "A function whose integral gives probability over a continuous range.",
+          "definition_zh": "连续变量中积分后得到概率的函数。",
+          "canonical_concept_name": "Probability Density",
+          "canonical_concept_id": "canonical_probability_density",
+          "view_id": "concept_appendix6_formula_a6_2_used_varphi",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": []
+        }
+      ],
+      "edges": [
+        {
+          "from": "canonical_data_vector",
+          "to": "canonical_covariance_matrix",
+          "relation": "defines_symbol",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.1",
+            "to": "formula_A6.2",
+            "via_symbol": "\\mathbf{x}"
+          },
+          "clickable": true,
+          "confidence": 0.95
+        },
+        {
+          "from": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "to": "canonical_covariance_matrix",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{V}^{-1}",
+          "clickable": false,
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_2_used_varphi",
+          "to": "canonical_covariance_matrix",
+          "relation": "introduced_for",
+          "symbol": "\\varphi",
+          "clickable": false,
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_3_used_mathbf_v_1",
+          "to": "canonical_covariance_matrix",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{V}^{-1}",
+          "clickable": false,
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_3_used_varphi",
+          "to": "canonical_covariance_matrix",
+          "relation": "introduced_for",
+          "symbol": "\\varphi",
+          "clickable": false,
+          "confidence": 0.82
+        }
+      ],
+      "canonical_concept_id": "canonical_covariance_matrix",
+      "canonical_concept_name": "Covariance Matrix",
+      "view_id": "canonical_covariance_matrix",
+      "formula_references": [
+        {
+          "formula_id": "formula_A6.2",
+          "formula_label": "Formula A6.2",
+          "formula_latex": "\\nabla_{\\mathbf{X}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=-\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)",
+          "formula_position": 1,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathbf{V}",
+          "concept_id": "concept_appendix6_formula_a6_2_used_mathbf_v",
+          "view_id": "concept_appendix6_formula_a6_2_used_mathbf_v",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.3",
+          "formula_label": "Formula A6.3",
+          "formula_latex": "\\nabla_{\\boldsymbol{\\mu}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)",
+          "formula_position": 2,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathbf{V}",
+          "concept_id": "concept_appendix6_formula_a6_3_used_mathbf_v",
+          "view_id": "concept_appendix6_formula_a6_3_used_mathbf_v",
+          "source_sentence": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means $ \\mu $ is Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited"
+        }
+      ],
+      "successor_concepts": [],
+      "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+      "review_status": "edited",
+      "review_flags": [
+        "auto_canonical_merge"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "formula_A6.2",
+          "block_index": 1,
+          "block_type": "derivation",
+          "sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS"
+        },
+        {
+          "chunk_id": "formula_A6.3",
+          "block_index": 2,
+          "block_type": "derivation",
+          "sentence": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means $ \\mu $ is Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS"
         }
       ]
     },
     {
       "chapter_id": "appendix6",
       "concept_id": "concept_appendix6_formula_a6_2_defined_varphi",
-      "name": "Multivariate Normal Density",
+      "name": "Probability Density",
       "definition": "A probability density for a normally distributed vector, parameterized by a mean vector and covariance matrix.",
       "definition_zh": "连续变量中积分后得到概率的函数。",
       "concept_type": "math_concept",
@@ -83,1009 +450,571 @@
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "confidence": 0.92,
-      "prerequisite_concepts": [],
+      "prerequisite_concepts": [
+        {
+          "concept_id": "canonical_data_vector",
+          "name": "Data Vector",
+          "defined_by_formula_id": "formula_A6.1",
+          "from_formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "symbol": "\\mathbf{x}",
+          "via_symbol": "\\mathbf{x}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "defines_symbol",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "canonical_data_vector",
+          "prerequisite_concepts": [],
+          "introduced_concepts": [
+            {
+              "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "name": "Lambda Parameter",
+              "symbol": "\\lambda",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.16",
+              "clickable": false,
+              "confidence": 0.76,
+              "concept_type": "domain_concept",
+              "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+              "canonical_concept_name": "Lambda Parameter",
+              "canonical_concept_id": "canonical_lambda_parameter",
+              "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "review_status": "edited",
+              "review_flags": [
+                "weak_evidence",
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        }
+      ],
       "introduced_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_2_used_varphi",
-          "name": "Probability Density",
-          "symbol": "\\varphi",
-          "defined_by_formula_id": null,
+          "concept_id": "canonical_covariance_matrix",
+          "name": "Covariance Matrix",
+          "symbol": "\\mathbf{V}",
+          "defined_by_formula_id": "formula_A6.2",
           "formula_label": "Formula A6.2",
           "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A function whose integral gives probability over a continuous range.",
-          "definition_zh": "连续变量中积分后得到概率的函数。"
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Covariance Matrix",
+          "canonical_concept_id": "canonical_covariance_matrix",
+          "view_id": "canonical_covariance_matrix",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_2_used_mu",
-          "name": "Formula A6.2 Mean",
-          "symbol": "\\mu",
+          "concept_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "name": "Inverse Covariance Matrix",
+          "symbol": "\\mathbf{V}^{-1}",
           "defined_by_formula_id": null,
           "formula_label": "Formula A6.2",
           "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "The average value of a quantity in the relevant distribution or population.",
-          "definition_zh": "相关分布或群体中某个量的平均值。"
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Inverse Covariance Matrix",
+          "canonical_concept_id": "canonical_inverse_covariance_matrix",
+          "view_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         }
       ],
       "edges": [
         {
-          "from": "concept_appendix6_formula_a6_2_used_varphi",
+          "from": "canonical_data_vector",
           "to": "concept_appendix6_formula_a6_2_defined_varphi",
-          "relation": "introduced_for",
-          "symbol": "\\varphi",
-          "clickable": false,
-          "confidence": 0.73
+          "relation": "defines_symbol",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.1",
+            "to": "formula_A6.2",
+            "via_symbol": "\\mathbf{x}"
+          },
+          "clickable": true,
+          "confidence": 0.95
         },
         {
-          "from": "concept_appendix6_formula_a6_2_used_mu",
+          "from": "canonical_covariance_matrix",
           "to": "concept_appendix6_formula_a6_2_defined_varphi",
           "relation": "introduced_for",
-          "symbol": "\\mu",
+          "symbol": "\\mathbf{V}",
           "clickable": false,
-          "confidence": 0.68
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+          "to": "concept_appendix6_formula_a6_2_defined_varphi",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{V}^{-1}",
+          "clickable": false,
+          "confidence": 0.82
         }
       ],
+      "canonical_concept_id": "canonical_probability_density",
+      "canonical_concept_name": "Probability Density",
+      "view_id": "concept_appendix6_formula_a6_2_defined_varphi",
+      "successor_concepts": [
+        {
+          "concept_id": "concept_appendix6_formula_a6_4_coverage",
+          "view_id": "concept_appendix6_formula_a6_4_coverage",
+          "name": "Matrix Relation",
+          "canonical_concept_id": "canonical_matrix_relation",
+          "canonical_concept_name": "Matrix Relation",
+          "defined_by_formula_id": "formula_A6.4",
+          "from_formula_id": "formula_A6.4",
+          "formula_label": "Formula A6.4",
+          "symbol": "\\mathcal{R}_{a6_4}",
+          "via_symbol": "\\mathcal{R}_{a6_4}",
+          "clickable": true,
+          "confidence": 0.92,
+          "relation": "successor_for",
+          "concept_type": "math_relation",
+          "definition": "Matrix Relation keeps Formula A6.4 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+          "definition_zh": "Formula A6.4 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+          "source_sentence": "Now consider the log of the density,",
+          "review_status": "edited",
+          "review_flags": [
+            "coverage_backfill"
+          ]
+        }
+      ],
+      "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+      "review_status": "edited",
+      "review_flags": [],
       "evidence": [
         {
           "chunk_id": "formula_A6.2",
           "block_index": 1,
-          "block_type": "derivation"
+          "block_type": "derivation",
+          "sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS"
         }
       ]
     },
     {
       "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_3_statement",
-      "name": "Formula A6.3 Relationship",
-      "definition": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.3",
-      "defined_symbol": "Formula A6.3",
-      "supporting_formula_label": "Formula A6.3",
-      "supporting_formula_latex": "\\nabla_{\\boldsymbol{\\mu}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)",
-      "formula_position": 2,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_3_used_varphi",
-          "name": "Probability Density",
-          "symbol": "\\varphi",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.3",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A function whose integral gives probability over a continuous range.",
-          "definition_zh": "连续变量中积分后得到概率的函数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_3_used_mu",
-          "name": "Formula A6.3 Mean",
-          "symbol": "\\mu",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.3",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "The average value of a quantity in the relevant distribution or population.",
-          "definition_zh": "相关分布或群体中某个量的平均值。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_3_used_varphi",
-          "to": "concept_appendix6_formula_a6_3_statement",
-          "relation": "introduced_for",
-          "symbol": "\\varphi",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_3_used_mu",
-          "to": "concept_appendix6_formula_a6_3_statement",
-          "relation": "introduced_for",
-          "symbol": "\\mu",
-          "clickable": false,
-          "confidence": 0.68
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.3",
-          "block_index": 2,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_4_statement",
-      "name": "Formula A6.4 Relationship",
-      "definition": "Now consider the log of the density, Now consider the log of the density,",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
+      "concept_id": "concept_appendix6_formula_a6_4_coverage",
+      "view_id": "concept_appendix6_formula_a6_4_coverage",
+      "name": "Matrix Relation",
+      "definition": "Matrix Relation keeps Formula A6.4 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+      "definition_zh": "Formula A6.4 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+      "concept_type": "math_relation",
       "defined_by_formula_id": "formula_A6.4",
-      "defined_symbol": "Formula A6.4",
+      "defined_symbol": "\\mathcal{R}_{a6_4}",
       "supporting_formula_label": "Formula A6.4",
       "supporting_formula_latex": "\\ell=\\ln\\left[p(\\mathbf{y},\\mathbf{u})\\right]\\propto",
       "formula_position": 3,
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
+      "confidence": 0.82,
+      "canonical_concept_id": "canonical_appendix6_matrix_relation",
+      "canonical_concept_name": "Matrix Relation",
+      "prerequisite_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_4_used_p",
-          "name": "Probability",
-          "symbol": "p",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.4",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "quantity_concept",
-          "definition": "A quantity measuring how likely an event or state transition is.",
-          "definition_zh": "衡量某个事件或状态转移发生可能性的数量。"
+          "concept_id": "concept_appendix6_formula_a6_2_defined_varphi",
+          "view_id": "concept_appendix6_formula_a6_2_defined_varphi",
+          "name": "Probability Density",
+          "canonical_concept_id": "canonical_probability_density",
+          "canonical_concept_name": "Probability Density",
+          "defined_by_formula_id": "formula_A6.2",
+          "from_formula_id": "formula_A6.2",
+          "formula_label": "Formula A6.2",
+          "symbol": "\\varphi",
+          "via_symbol": "\\varphi",
+          "clickable": true,
+          "confidence": 0.92,
+          "relation": "context_prerequisite",
+          "concept_type": "math_concept",
+          "definition": "A probability density for a normally distributed vector, parameterized by a mean vector and covariance matrix.",
+          "definition_zh": "连续变量中积分后得到概率的函数。",
+          "prerequisite_concepts": [
+            {
+              "concept_id": "canonical_data_vector",
+              "name": "Data Vector",
+              "defined_by_formula_id": "formula_A6.1",
+              "from_formula_id": "formula_A6.1",
+              "formula_label": "Formula A6.1",
+              "symbol": "\\mathbf{x}",
+              "via_symbol": "\\mathbf{x}",
+              "clickable": true,
+              "confidence": 0.95,
+              "relation": "defines_symbol",
+              "concept_type": "math_concept",
+              "definition": "A structured mathematical quantity represented as a vector or matrix.",
+              "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+              "canonical_concept_name": "Data Vector",
+              "canonical_concept_id": "canonical_data_vector",
+              "view_id": "canonical_data_vector",
+              "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+              "review_status": "edited",
+              "review_flags": [
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "introduced_concepts": [
+            {
+              "concept_id": "canonical_covariance_matrix",
+              "name": "Covariance Matrix",
+              "symbol": "\\mathbf{V}",
+              "defined_by_formula_id": "formula_A6.2",
+              "formula_label": "Formula A6.2",
+              "clickable": false,
+              "confidence": 0.82,
+              "concept_type": "math_concept",
+              "definition": "A structured mathematical quantity represented as a vector or matrix.",
+              "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+              "canonical_concept_name": "Covariance Matrix",
+              "canonical_concept_id": "canonical_covariance_matrix",
+              "view_id": "canonical_covariance_matrix",
+              "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+              "review_status": "edited",
+              "review_flags": [
+                "auto_canonical_merge"
+              ]
+            },
+            {
+              "concept_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+              "name": "Inverse Covariance Matrix",
+              "symbol": "\\mathbf{V}^{-1}",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.2",
+              "clickable": false,
+              "confidence": 0.82,
+              "concept_type": "math_concept",
+              "definition": "A structured mathematical quantity represented as a vector or matrix.",
+              "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+              "canonical_concept_name": "Inverse Covariance Matrix",
+              "canonical_concept_id": "canonical_inverse_covariance_matrix",
+              "view_id": "concept_appendix6_formula_a6_2_used_mathbf_v_1",
+              "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+              "review_status": "edited",
+              "review_flags": [
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": []
         }
       ],
+      "introduced_concepts": [],
       "edges": [
         {
-          "from": "concept_appendix6_formula_a6_4_used_p",
-          "to": "concept_appendix6_formula_a6_4_statement",
-          "relation": "introduced_for",
-          "symbol": "p",
-          "clickable": false,
-          "confidence": 0.73
+          "from": "concept_appendix6_formula_a6_2_defined_varphi",
+          "to": "concept_appendix6_formula_a6_4_coverage",
+          "relation": "context_prerequisite",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.2",
+            "to": "formula_A6.4",
+            "via_symbol": "\\varphi"
+          },
+          "clickable": true,
+          "confidence": 0.92
         }
+      ],
+      "successor_concepts": [
+        {
+          "concept_id": "canonical_appendix6_distribution_relation",
+          "view_id": "canonical_appendix6_distribution_relation",
+          "name": "Distribution Relation",
+          "canonical_concept_id": "canonical_distribution_relation",
+          "canonical_concept_name": "Distribution Relation",
+          "defined_by_formula_id": "formula_A6.5",
+          "from_formula_id": "formula_A6.5",
+          "formula_label": "Formula A6.5",
+          "symbol": "\\mathcal{R}_{a6_5}",
+          "via_symbol": "\\mathcal{R}_{a6_5}",
+          "clickable": true,
+          "confidence": 0.82,
+          "relation": "successor_for",
+          "concept_type": "quantity_relation",
+          "definition": "Distribution Relation keeps Formula A6.5 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+          "definition_zh": "Formula A6.5 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+          "source_sentence": "Now consider the log of the density,",
+          "review_status": "edited",
+          "review_flags": [
+            "coverage_backfill"
+          ]
+        }
+      ],
+      "source_sentence": "Now consider the log of the density,",
+      "review_status": "edited",
+      "review_flags": [
+        "coverage_backfill"
       ],
       "evidence": [
         {
-          "chunk_id": "formula_A6.4",
-          "block_index": 3,
-          "block_type": "derivation"
+          "chunk_id": "formula_A6.4:coverage",
+          "formula_id": "formula_A6.4",
+          "symbol": "\\mathcal{R}_{a6_4}",
+          "role": "defined",
+          "sentence": "Now consider the log of the density,"
         }
       ]
     },
     {
       "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_5_statement",
-      "name": "Formula A6.5 Relationship",
-      "definition": "Now consider the log of the density, Now consider the log of the density,",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
+      "concept_id": "canonical_appendix6_distribution_relation",
+      "view_id": "canonical_appendix6_distribution_relation",
+      "name": "Distribution Relation",
+      "definition": "Distribution Relation keeps Formula A6.5 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+      "definition_zh": "Formula A6.5 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+      "concept_type": "quantity_relation",
       "defined_by_formula_id": "formula_A6.5",
-      "defined_symbol": "Formula A6.5",
+      "defined_symbol": "\\mathcal{R}_{a6_5}",
       "supporting_formula_label": "Formula A6.5",
       "supporting_formula_latex": "\\left(-\\frac{1}{2}\\right)\\left[\\ln(|\\mathbf{R}|)+\\ln(|\\mathbf{G}|)+(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})^{T}\\mathbf{R}^{-1}(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\right]",
       "formula_position": 4,
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
+      "confidence": 0.82,
+      "canonical_concept_id": "canonical_appendix6_distribution_relation",
+      "canonical_concept_name": "Distribution Relation",
       "prerequisite_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_3_statement",
-          "name": "Formula A6.3 Relationship",
-          "defined_by_formula_id": "formula_A6.3",
-          "from_formula_id": "formula_A6.3",
-          "formula_label": "Formula A6.3",
-          "symbol": "Formula A6.3",
-          "via_symbol": "\\boldsymbol",
+          "concept_id": "concept_appendix6_formula_a6_4_coverage",
+          "view_id": "concept_appendix6_formula_a6_4_coverage",
+          "name": "Matrix Relation",
+          "canonical_concept_id": "canonical_matrix_relation",
+          "canonical_concept_name": "Matrix Relation",
+          "defined_by_formula_id": "formula_A6.4",
+          "from_formula_id": "formula_A6.4",
+          "formula_label": "Formula A6.4",
+          "symbol": "\\mathcal{R}_{a6_4}",
+          "via_symbol": "\\mathcal{R}_{a6_4}",
           "clickable": true,
-          "confidence": 0.62,
-          "relation": "defines_symbol",
-          "concept_type": "theorem_or_principle",
-          "definition": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is",
-          "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-          "prerequisite_concepts": [],
-          "introduced_concepts": [
+          "confidence": 0.82,
+          "relation": "context_prerequisite",
+          "concept_type": "math_relation",
+          "definition": "Matrix Relation keeps Formula A6.4 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+          "definition_zh": "Formula A6.4 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+          "prerequisite_concepts": [
             {
-              "concept_id": "concept_appendix6_formula_a6_3_used_varphi",
+              "concept_id": "concept_appendix6_formula_a6_2_defined_varphi",
+              "view_id": "concept_appendix6_formula_a6_2_defined_varphi",
               "name": "Probability Density",
+              "canonical_concept_id": "canonical_probability_density",
+              "canonical_concept_name": "Probability Density",
+              "defined_by_formula_id": "formula_A6.2",
+              "from_formula_id": "formula_A6.2",
+              "formula_label": "Formula A6.2",
               "symbol": "\\varphi",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.3",
-              "clickable": false,
-              "confidence": 0.73,
-              "concept_type": "domain_concept",
-              "definition": "A function whose integral gives probability over a continuous range.",
-              "definition_zh": "连续变量中积分后得到概率的函数。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_3_used_mu",
-              "name": "Formula A6.3 Mean",
-              "symbol": "\\mu",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.3",
-              "clickable": false,
-              "confidence": 0.68,
-              "concept_type": "domain_concept",
-              "definition": "The average value of a quantity in the relevant distribution or population.",
-              "definition_zh": "相关分布或群体中某个量的平均值。"
+              "via_symbol": "\\varphi",
+              "clickable": true,
+              "confidence": 0.92,
+              "relation": "context_prerequisite",
+              "concept_type": "math_concept",
+              "definition": "A probability density for a normally distributed vector, parameterized by a mean vector and covariance matrix.",
+              "definition_zh": "连续变量中积分后得到概率的函数。",
+              "source_sentence": "Using this result along with Equation A6.1d returns Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+              "review_status": "edited",
+              "review_flags": []
             }
+          ],
+          "introduced_concepts": [],
+          "source_sentence": "Now consider the log of the density,",
+          "review_status": "edited",
+          "review_flags": [
+            "coverage_backfill"
           ]
         }
       ],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_5_used_t",
-          "name": "Time",
-          "symbol": "T",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.5",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A quantity indexing the stage, generation, or interval of the process.",
-          "definition_zh": "表示过程所处阶段、世代或时间间隔的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_5_used_beta",
-          "name": "Beta",
-          "symbol": "\\beta",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.5",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_5_used_frac_1_2_right",
-          "name": "-frac12right",
-          "symbol": "-\\frac{1}{2}\\right",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.5",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "-frac12right names the biological object or model condition being used in this formula.",
-          "definition_zh": "-frac12right 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        }
-      ],
+      "introduced_concepts": [],
       "edges": [
         {
-          "from": "concept_appendix6_formula_a6_3_statement",
-          "to": "concept_appendix6_formula_a6_5_statement",
-          "relation": "prerequisite_for",
+          "from": "concept_appendix6_formula_a6_4_coverage",
+          "to": "canonical_appendix6_distribution_relation",
+          "relation": "context_prerequisite",
           "derived_from_formula_edge": {
-            "from": "formula_A6.3",
+            "from": "formula_A6.4",
             "to": "formula_A6.5",
-            "via_symbol": "\\boldsymbol"
+            "via_symbol": "\\mathcal{R}_{a6_4}"
           },
           "clickable": true,
-          "confidence": 0.62
-        },
-        {
-          "from": "concept_appendix6_formula_a6_5_used_t",
-          "to": "concept_appendix6_formula_a6_5_statement",
-          "relation": "introduced_for",
-          "symbol": "T",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_5_used_beta",
-          "to": "concept_appendix6_formula_a6_5_statement",
-          "relation": "introduced_for",
-          "symbol": "\\beta",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_5_used_frac_1_2_right",
-          "to": "concept_appendix6_formula_a6_5_statement",
-          "relation": "introduced_for",
-          "symbol": "-\\frac{1}{2}\\right",
-          "clickable": false,
-          "confidence": 0.68
+          "confidence": 0.82
         }
       ],
-      "evidence": [
+      "formula_references": [
         {
-          "chunk_id": "formula_A6.5",
-          "block_index": 4,
-          "block_type": "derivation"
+          "formula_id": "formula_A6.5",
+          "formula_label": "Formula A6.5",
+          "formula_latex": "\\left(-\\frac{1}{2}\\right)\\left[\\ln(|\\mathbf{R}|)+\\ln(|\\mathbf{G}|)+(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})^{T}\\mathbf{R}^{-1}(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\right]",
+          "formula_position": 4,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_5}",
+          "concept_id": "concept_appendix6_formula_a6_5_coverage",
+          "view_id": "concept_appendix6_formula_a6_5_coverage",
+          "source_sentence": "Now consider the log of the density,",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.6",
+          "formula_label": "Formula A6.6",
+          "formula_latex": "\\begin{array}{r}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}+2\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\\\ (\\mathrm{A6.4d})\\end{array}",
+          "formula_position": 5,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_6}",
+          "concept_id": "concept_appendix6_formula_a6_6_coverage",
+          "view_id": "concept_appendix6_formula_a6_6_coverage",
+          "source_sentence": "We can expand the larger quadratic product to yield the last two terms of A6.4c as",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.7",
+          "formula_label": "Formula A6.7",
+          "formula_latex": "\\left(\\begin{array}{c}\\frac{\\partial\\ell}{\\partial\\boldsymbol{\\beta}}\\\\ \\frac{\\partial\\ell}{\\partial\\mathbf{u}}\\end{array}\\right)=\\left(\\begin{array}{c}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}-\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}\\\\ \\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}-\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{G}^{-1}\\mathbf{u}\\end{array}\\right)",
+          "formula_position": 6,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_7}",
+          "concept_id": "concept_appendix6_formula_a6_7_coverage",
+          "view_id": "concept_appendix6_formula_a6_7_coverage",
+          "source_sentence": "Using Equations A6.1c through A6.1e to take the derivatives of $ \\ell $ with respect to $ \\beta $ and u yields",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.8",
+          "formula_label": "Formula A6.8",
+          "formula_latex": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\end{pmatrix}=\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}+\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\widehat{\\mathbf{u}}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}+\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\widehat{\\mathbf{u}}+\\mathbf{G}^{-1}\\widehat{\\mathbf{u}}\\end{pmatrix}",
+          "formula_position": 7,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_8}",
+          "concept_id": "concept_appendix6_formula_a6_8_coverage",
+          "view_id": "concept_appendix6_formula_a6_8_coverage",
+          "source_sentence": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.9",
+          "formula_label": "Formula A6.9",
+          "formula_latex": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\end{pmatrix}=\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\end{pmatrix}\\begin{pmatrix}\\widehat{\\boldsymbol{\\beta}}\\\\\\widehat{\\mathbf{u}}\\end{pmatrix}",
+          "formula_position": 8,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_9}",
+          "concept_id": "concept_appendix6_formula_a6_9_coverage",
+          "view_id": "concept_appendix6_formula_a6_9_coverage",
+          "source_sentence": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,",
+          "review_status": "edited"
+        },
+        {
+          "formula_id": "formula_A6.11",
+          "formula_label": "Formula A6.11",
+          "formula_latex": "\\hat{\\mathbf{u}}=\\left(\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\right)^{-1}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\left(\\mathbf{y}-\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\right)",
+          "formula_position": 10,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "symbol": "\\mathcal{R}_{a6_11}",
+          "concept_id": "concept_appendix6_formula_a6_11_coverage",
+          "view_id": "concept_appendix6_formula_a6_11_coverage",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited"
         }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_6_statement",
-      "name": "Formula A6.6 Relationship",
-      "definition": "We can expand the larger quadratic product to yield the last two terms of A6.4c as We can expand the larger quadratic product to yield the last two terms of A6.4c as",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.6",
-      "defined_symbol": "Formula A6.6",
-      "supporting_formula_label": "Formula A6.6",
-      "supporting_formula_latex": "\\begin{array}{r}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}+2\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\\\ (\\mathrm{A6.4d})\\end{array}",
-      "formula_position": 5,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [
+      ],
+      "successor_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_3_statement",
-          "name": "Formula A6.3 Relationship",
-          "defined_by_formula_id": "formula_A6.3",
-          "from_formula_id": "formula_A6.3",
-          "formula_label": "Formula A6.3",
-          "symbol": "Formula A6.3",
-          "via_symbol": "\\boldsymbol",
+          "concept_id": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "view_id": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "name": "Estimated Beta Parameter",
+          "canonical_concept_id": "canonical_estimated_beta_parameter",
+          "canonical_concept_name": "Estimated Beta Parameter",
+          "defined_by_formula_id": "formula_A6.10",
+          "from_formula_id": "formula_A6.10",
+          "formula_label": "Formula A6.10",
+          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
+          "via_symbol": "\\widehat{\\boldsymbol{\\beta}}",
           "clickable": true,
-          "confidence": 0.62,
-          "relation": "defines_symbol",
-          "concept_type": "theorem_or_principle",
-          "definition": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means is",
-          "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-          "prerequisite_concepts": [],
-          "introduced_concepts": [
-            {
-              "concept_id": "concept_appendix6_formula_a6_3_used_varphi",
-              "name": "Probability Density",
-              "symbol": "\\varphi",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.3",
-              "clickable": false,
-              "confidence": 0.73,
-              "concept_type": "domain_concept",
-              "definition": "A function whose integral gives probability over a continuous range.",
-              "definition_zh": "连续变量中积分后得到概率的函数。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_3_used_mu",
-              "name": "Formula A6.3 Mean",
-              "symbol": "\\mu",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.3",
-              "clickable": false,
-              "confidence": 0.68,
-              "concept_type": "domain_concept",
-              "definition": "The average value of a quantity in the relevant distribution or population.",
-              "definition_zh": "相关分布或群体中某个量的平均值。"
-            }
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "quantity_concept",
+          "definition": "A vector of estimated fixed-effect coefficients used in mixed-model equations.",
+          "definition_zh": "用于同时估计多个参数的向量统计量。",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "flagged",
+          "review_flags": [
+            "generic_defined_concept_name"
           ]
         }
       ],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_6_used_a",
-          "name": "Additive Genetic Value",
-          "symbol": "A",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.6",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "quantity_concept",
-          "definition": "The additive genetic contribution to an individual or trait value.",
-          "definition_zh": "个体或性状值中的加性遗传贡献。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_6_used_beta",
-          "name": "Beta",
-          "symbol": "\\beta",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.6",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_6_used_d",
-          "name": "Formula A6.6 Distance",
-          "symbol": "d",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.6",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A measure of separation between states, values, or functions.",
-          "definition_zh": "衡量状态、数值或函数之间分离程度的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_6_used_r",
-          "name": "Formula A6.6 Rate",
-          "symbol": "r",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.6",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A parameter describing how quickly a process occurs.",
-          "definition_zh": "描述某个过程发生快慢的参数。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_3_statement",
-          "to": "concept_appendix6_formula_a6_6_statement",
-          "relation": "prerequisite_for",
-          "derived_from_formula_edge": {
-            "from": "formula_A6.3",
-            "to": "formula_A6.6",
-            "via_symbol": "\\boldsymbol"
-          },
-          "clickable": true,
-          "confidence": 0.62
-        },
-        {
-          "from": "concept_appendix6_formula_a6_6_used_a",
-          "to": "concept_appendix6_formula_a6_6_statement",
-          "relation": "introduced_for",
-          "symbol": "A",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_6_used_beta",
-          "to": "concept_appendix6_formula_a6_6_statement",
-          "relation": "introduced_for",
-          "symbol": "\\beta",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_6_used_d",
-          "to": "concept_appendix6_formula_a6_6_statement",
-          "relation": "introduced_for",
-          "symbol": "d",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_6_used_r",
-          "to": "concept_appendix6_formula_a6_6_statement",
-          "relation": "introduced_for",
-          "symbol": "r",
-          "clickable": false,
-          "confidence": 0.73
-        }
+      "source_sentence": "Now consider the log of the density,",
+      "review_status": "edited",
+      "review_flags": [
+        "coverage_backfill"
       ],
       "evidence": [
         {
-          "chunk_id": "formula_A6.6",
-          "block_index": 5,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_7_statement",
-      "name": "Formula A6.7 Relationship",
-      "definition": "Using Equations A6.1c through A6.1e to take the derivatives of with respect to and u yields Using Equations A6.1c through A6.1e to take the derivatives of with respect to and u yields",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.7",
-      "defined_symbol": "Formula A6.7",
-      "supporting_formula_label": "Formula A6.7",
-      "supporting_formula_latex": "\\left(\\begin{array}{c}\\frac{\\partial\\ell}{\\partial\\boldsymbol{\\beta}}\\\\ \\frac{\\partial\\ell}{\\partial\\mathbf{u}}\\end{array}\\right)=\\left(\\begin{array}{c}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}-\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}\\\\ \\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}-\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{G}^{-1}\\mathbf{u}\\end{array}\\right)",
-      "formula_position": 6,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_7_used_beta",
-          "name": "Beta",
-          "symbol": "\\beta",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.7",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
+          "chunk_id": "formula_A6.5:coverage",
+          "formula_id": "formula_A6.5",
+          "symbol": "\\mathcal{R}_{a6_5}",
+          "role": "defined",
+          "sentence": "Now consider the log of the density,"
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_7_used_c",
-          "name": "C",
-          "symbol": "c",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.7",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "C names the biological object or model condition being used in this formula.",
-          "definition_zh": "C 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_7_used_beta",
-          "to": "concept_appendix6_formula_a6_7_statement",
-          "relation": "introduced_for",
-          "symbol": "\\beta",
-          "clickable": false,
-          "confidence": 0.68
+          "chunk_id": "formula_A6.6:coverage",
+          "formula_id": "formula_A6.6",
+          "symbol": "\\mathcal{R}_{a6_6}",
+          "role": "defined",
+          "sentence": "We can expand the larger quadratic product to yield the last two terms of A6.4c as"
         },
         {
-          "from": "concept_appendix6_formula_a6_7_used_c",
-          "to": "concept_appendix6_formula_a6_7_statement",
-          "relation": "introduced_for",
-          "symbol": "c",
-          "clickable": false,
-          "confidence": 0.68
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.7",
-          "block_index": 6,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_8_statement",
-      "name": "Formula A6.8 Relationship",
-      "definition": "Denoting the value for and u that return a zero vector for Equation A6.4e as and yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations, Denoting the value for and u that return...",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.8",
-      "defined_symbol": "Formula A6.8",
-      "supporting_formula_label": "Formula A6.8",
-      "supporting_formula_latex": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\end{pmatrix}=\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}+\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\widehat{\\mathbf{u}}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}+\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\widehat{\\mathbf{u}}+\\mathbf{G}^{-1}\\widehat{\\mathbf{u}}\\end{pmatrix}",
-      "formula_position": 7,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_a",
-          "name": "Additive Genetic Value",
-          "symbol": "a",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "quantity_concept",
-          "definition": "The additive genetic contribution to an individual or trait value.",
-          "definition_zh": "个体或性状值中的加性遗传贡献。"
+          "chunk_id": "formula_A6.7:coverage",
+          "formula_id": "formula_A6.7",
+          "symbol": "\\mathcal{R}_{a6_7}",
+          "role": "defined",
+          "sentence": "Using Equations A6.1c through A6.1e to take the derivatives of $ \\ell $ with respect to $ \\beta $ and u yields"
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_8_used_widehat_boldsymbol_beta",
-          "name": "Estimator Vector",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "quantity_concept",
-          "definition": "A vector-valued statistic used to estimate several parameters.",
-          "definition_zh": "用于同时估计多个参数的向量统计量。"
+          "chunk_id": "formula_A6.8:coverage",
+          "formula_id": "formula_A6.8",
+          "symbol": "\\mathcal{R}_{a6_8}",
+          "role": "defined",
+          "sentence": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,"
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_8_used_t",
-          "name": "Time",
-          "symbol": "T",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A quantity indexing the stage, generation, or interval of the process.",
-          "definition_zh": "表示过程所处阶段、世代或时间间隔的量。"
+          "chunk_id": "formula_A6.9:coverage",
+          "formula_id": "formula_A6.9",
+          "symbol": "\\mathcal{R}_{a6_9}",
+          "role": "defined",
+          "sentence": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,"
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_8_used_z",
-          "name": "Z",
-          "symbol": "Z",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "Z names the biological object or model condition being used in this formula.",
-          "definition_zh": "Z 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_widehat_beta",
-          "name": "Beta",
-          "symbol": "\\widehat{\\beta}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_widehat_mathbf_u",
-          "name": "U Matrix-hat",
-          "symbol": "\\widehat{\\mathbf{u}}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "U Matrix-hat names the biological object or model condition being used in this formula.",
-          "definition_zh": "U Matrix-hat 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_b",
-          "name": "Formula A6.8 Coefficient",
-          "symbol": "b",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A scalar multiplier that controls the size of a term in the formula.",
-          "definition_zh": "控制公式中某一项大小的乘数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_f",
-          "name": "Formula A6.8 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_h",
-          "name": "Formula A6.8 Function",
-          "symbol": "h",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_8_used_m",
-          "name": "Formula A6.8 Mean",
-          "symbol": "m",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.8",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "The average value of a quantity in the relevant distribution or population.",
-          "definition_zh": "相关分布或群体中某个量的平均值。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_8_used_a",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "a",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_widehat_boldsymbol_beta",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_t",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "T",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_z",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "Z",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_widehat_beta",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\beta}",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_widehat_mathbf_u",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\mathbf{u}}",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_b",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "b",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_f",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_h",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "h",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_8_used_m",
-          "to": "concept_appendix6_formula_a6_8_statement",
-          "relation": "introduced_for",
-          "symbol": "m",
-          "clickable": false,
-          "confidence": 0.73
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.8",
-          "block_index": 7,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_9_statement",
-      "name": "Formula A6.9 Relationship",
-      "definition": "Denoting the value for and u that return a zero vector for Equation A6.4e as and yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations, Denoting the value for and u that return...",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.9",
-      "defined_symbol": "Formula A6.9",
-      "supporting_formula_label": "Formula A6.9",
-      "supporting_formula_latex": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\end{pmatrix}=\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\end{pmatrix}\\begin{pmatrix}\\widehat{\\boldsymbol{\\beta}}\\\\\\widehat{\\mathbf{u}}\\end{pmatrix}",
-      "formula_position": 8,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_a",
-          "name": "Additive Genetic Value",
-          "symbol": "a",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "quantity_concept",
-          "definition": "The additive genetic contribution to an individual or trait value.",
-          "definition_zh": "个体或性状值中的加性遗传贡献。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_widehat_boldsymbol_beta",
-          "name": "Estimator Vector",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "quantity_concept",
-          "definition": "A vector-valued statistic used to estimate several parameters.",
-          "definition_zh": "用于同时估计多个参数的向量统计量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_t",
-          "name": "Time",
-          "symbol": "T",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A quantity indexing the stage, generation, or interval of the process.",
-          "definition_zh": "表示过程所处阶段、世代或时间间隔的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_w",
-          "name": "Fitness",
-          "symbol": "w",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "quantity_concept",
-          "definition": "A measure of reproductive success or contribution to the next generation.",
-          "definition_zh": "衡量个体繁殖成功或对下一代贡献的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_z",
-          "name": "Z",
-          "symbol": "Z",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "Z names the biological object or model condition being used in this formula.",
-          "definition_zh": "Z 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_widehat_beta",
-          "name": "Beta",
-          "symbol": "\\widehat{\\beta}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_e",
-          "name": "E",
-          "symbol": "e",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "E names the biological object or model condition being used in this formula.",
-          "definition_zh": "E 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_b",
-          "name": "Formula A6.9 Coefficient",
-          "symbol": "b",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A scalar multiplier that controls the size of a term in the formula.",
-          "definition_zh": "控制公式中某一项大小的乘数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_d",
-          "name": "Formula A6.9 Distance",
-          "symbol": "d",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A measure of separation between states, values, or functions.",
-          "definition_zh": "衡量状态、数值或函数之间分离程度的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_9_used_f",
-          "name": "Formula A6.9 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.9",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_9_used_a",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "a",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_widehat_boldsymbol_beta",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_t",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "T",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_w",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "w",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_z",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "Z",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_widehat_beta",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\beta}",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_e",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "e",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_b",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "b",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_d",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "d",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_9_used_f",
-          "to": "concept_appendix6_formula_a6_9_statement",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.73
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.9",
-          "block_index": 8,
-          "block_type": "derivation"
+          "chunk_id": "formula_A6.11:coverage",
+          "formula_id": "formula_A6.11",
+          "symbol": "\\mathcal{R}_{a6_11}",
+          "role": "defined",
+          "sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u."
         }
       ]
     },
     {
       "chapter_id": "appendix6",
       "concept_id": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-      "name": "Fixed-Effect Estimator Vector",
+      "name": "Estimated Beta Parameter",
       "definition": "A vector of estimated fixed-effect coefficients used in mixed-model equations.",
       "definition_zh": "用于同时估计多个参数的向量统计量。",
       "concept_type": "quantity_concept",
@@ -1097,238 +1026,263 @@
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "confidence": 0.95,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_10_used_widehat_boldsymbol_beta",
-          "name": "Estimator Vector",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.10",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "quantity_concept",
-          "definition": "A vector-valued statistic used to estimate several parameters.",
-          "definition_zh": "用于同时估计多个参数的向量统计量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_10_used_widehat_beta",
-          "name": "Beta",
-          "symbol": "\\widehat{\\beta}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.10",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_10_used_widehat_mathbf_u",
-          "name": "U Matrix-hat",
-          "symbol": "\\widehat{\\mathbf{u}}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.10",
-          "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "U Matrix-hat names the biological object or model condition being used in this formula.",
-          "definition_zh": "U Matrix-hat 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_10_used_widehat_boldsymbol_beta",
-          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_10_used_widehat_beta",
-          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\beta}",
-          "clickable": false,
-          "confidence": 0.68
-        },
-        {
-          "from": "concept_appendix6_formula_a6_10_used_widehat_mathbf_u",
-          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-          "relation": "introduced_for",
-          "symbol": "\\widehat{\\mathbf{u}}",
-          "clickable": false,
-          "confidence": 0.68
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.10",
-          "block_index": 9,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_11_defined_hat_mathbf_u",
-      "name": "U Matrix-hat",
-      "definition": "U Matrix-hat is the main quantity to read from this equation; the right-hand side shows which terms determine it.",
-      "definition_zh": "U Matrix-hat 是这条公式要读出的核心量；等号右侧说明它由哪些条件和符号共同决定。",
-      "concept_type": "quantity_concept",
-      "defined_by_formula_id": "formula_A6.11",
-      "defined_symbol": "\\hat{\\mathbf{u}}",
-      "supporting_formula_label": "Formula A6.11",
-      "supporting_formula_latex": "\\hat{\\mathbf{u}}=\\left(\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\right)^{-1}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\left(\\mathbf{y}-\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\right)",
-      "formula_position": 10,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
-      "confidence": 0.87,
       "prerequisite_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-          "name": "Fixed-Effect Estimator Vector",
-          "defined_by_formula_id": "formula_A6.10",
-          "from_formula_id": "formula_A6.10",
-          "formula_label": "Formula A6.10",
-          "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-          "via_symbol": "\\hat{\\beta}",
+          "concept_id": "canonical_appendix6_distribution_relation",
+          "view_id": "canonical_appendix6_distribution_relation",
+          "name": "Distribution Relation",
+          "canonical_concept_id": "canonical_distribution_relation",
+          "canonical_concept_name": "Distribution Relation",
+          "defined_by_formula_id": "formula_A6.5",
+          "from_formula_id": "formula_A6.9",
+          "formula_label": "Formula A6.5",
+          "symbol": "\\mathcal{R}_{a6_5}",
+          "via_symbol": "\\mathcal{R}_{a6_9}",
           "clickable": true,
-          "confidence": 0.95,
-          "relation": "defines_symbol",
-          "concept_type": "quantity_concept",
-          "definition": "A vector of estimated fixed-effect coefficients used in mixed-model equations.",
-          "definition_zh": "用于同时估计多个参数的向量统计量。",
-          "prerequisite_concepts": [],
-          "introduced_concepts": [
+          "confidence": 0.82,
+          "relation": "context_prerequisite",
+          "concept_type": "quantity_relation",
+          "definition": "Distribution Relation keeps Formula A6.5 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+          "definition_zh": "Formula A6.5 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+          "prerequisite_concepts": [
             {
-              "concept_id": "concept_appendix6_formula_a6_10_used_widehat_boldsymbol_beta",
-              "name": "Estimator Vector",
-              "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.10",
-              "clickable": false,
-              "confidence": 0.76,
-              "concept_type": "quantity_concept",
-              "definition": "A vector-valued statistic used to estimate several parameters.",
-              "definition_zh": "用于同时估计多个参数的向量统计量。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_10_used_widehat_beta",
-              "name": "Beta",
-              "symbol": "\\widehat{\\beta}",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.10",
-              "clickable": false,
-              "confidence": 0.68,
-              "concept_type": "domain_concept",
-              "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-              "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_10_used_widehat_mathbf_u",
-              "name": "U Matrix-hat",
-              "symbol": "\\widehat{\\mathbf{u}}",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.10",
-              "clickable": false,
-              "confidence": 0.68,
-              "concept_type": "domain_concept",
-              "definition": "U Matrix-hat names the biological object or model condition being used in this formula.",
-              "definition_zh": "U Matrix-hat 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
+              "concept_id": "concept_appendix6_formula_a6_4_coverage",
+              "view_id": "concept_appendix6_formula_a6_4_coverage",
+              "name": "Matrix Relation",
+              "canonical_concept_id": "canonical_matrix_relation",
+              "canonical_concept_name": "Matrix Relation",
+              "defined_by_formula_id": "formula_A6.4",
+              "from_formula_id": "formula_A6.4",
+              "formula_label": "Formula A6.4",
+              "symbol": "\\mathcal{R}_{a6_4}",
+              "via_symbol": "\\mathcal{R}_{a6_4}",
+              "clickable": true,
+              "confidence": 0.82,
+              "relation": "context_prerequisite",
+              "concept_type": "math_relation",
+              "definition": "Matrix Relation keeps Formula A6.4 connected to the DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS derivation path by recording the relation, constraint, or transformation expressed by the displayed equation.",
+              "definition_zh": "Formula A6.4 的这个关系节点把概率、约束或变换接入同一小节的概念路径，帮助读者沿着推导顺序理解它的作用。",
+              "source_sentence": "Now consider the log of the density,",
+              "review_status": "edited",
+              "review_flags": [
+                "coverage_backfill"
+              ]
             }
+          ],
+          "introduced_concepts": [],
+          "source_sentence": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,",
+          "review_status": "edited",
+          "review_flags": [
+            "coverage_backfill"
           ]
         }
       ],
       "introduced_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_11_used_hat_beta",
-          "name": "Beta",
-          "symbol": "\\hat{\\beta}",
+          "concept_id": "concept_appendix6_formula_a6_10_used_mathbf_r_1",
+          "name": "Inverse Relationship Matrix",
+          "symbol": "\\mathbf{R}^{-1}",
           "defined_by_formula_id": null,
-          "formula_label": "Formula A6.11",
+          "formula_label": "Formula A6.10",
           "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "A model parameter, regression coefficient, or distribution-shape parameter named beta in the local context.",
-          "definition_zh": "局部模型中记为 beta 的参数、回归系数或分布形状参数。"
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Inverse Relationship Matrix",
+          "canonical_concept_id": "canonical_inverse_relationship_matrix",
+          "view_id": "concept_appendix6_formula_a6_10_used_mathbf_r_1",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_11_used_hat_boldsymbol_beta",
-          "name": "Beta Vector-hat",
-          "symbol": "\\hat{\\boldsymbol{\\beta}}",
+          "concept_id": "concept_appendix6_formula_a6_10_used_mathbf_u",
+          "name": "Mutation Rate",
+          "symbol": "\\mathbf{u}",
           "defined_by_formula_id": null,
-          "formula_label": "Formula A6.11",
+          "formula_label": "Formula A6.10",
           "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "Beta Vector-hat names the biological object or model condition being used in this formula.",
-          "definition_zh": "Beta Vector-hat 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "view_id": "concept_appendix6_formula_a6_10_used_mathbf_u",
+          "canonical_concept_id": "canonical_mutation_rate",
+          "canonical_concept_name": "Mutation Rate",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         },
         {
-          "concept_id": "concept_appendix6_formula_a6_11_used_hat_boldsymbol",
-          "name": "Boldsymbol-hat",
-          "symbol": "\\hat{\\boldsymbol}",
+          "concept_id": "concept_appendix6_formula_a6_10_used_mathbf_y",
+          "name": "Response Vector",
+          "symbol": "\\mathbf{y}",
           "defined_by_formula_id": null,
-          "formula_label": "Formula A6.11",
+          "formula_label": "Formula A6.10",
           "clickable": false,
-          "confidence": 0.68,
-          "concept_type": "domain_concept",
-          "definition": "Boldsymbol-hat names the biological object or model condition being used in this formula.",
-          "definition_zh": "Boldsymbol-hat 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Response Vector",
+          "canonical_concept_id": "canonical_response_vector",
+          "view_id": "concept_appendix6_formula_a6_10_used_mathbf_y",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_10_used_boldsymbol_beta",
+          "name": "Parameter Vector",
+          "symbol": "\\boldsymbol{\\beta}",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.10",
+          "clickable": false,
+          "confidence": 0.82,
+          "concept_type": "quantity_concept",
+          "definition": "A collection of model parameters treated as one vector.",
+          "definition_zh": "把多个模型参数作为一个向量整体表示。",
+          "canonical_concept_name": "Parameter Vector",
+          "canonical_concept_id": "canonical_parameter_vector",
+          "view_id": "concept_appendix6_formula_a6_10_used_boldsymbol_beta",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_10_used_mathbf_g",
+          "name": "Genetic Covariance Matrix",
+          "symbol": "\\mathbf{G}",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.10",
+          "clickable": false,
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "view_id": "concept_appendix6_formula_a6_10_used_mathbf_g",
+          "canonical_concept_id": "canonical_genetic_covariance_matrix",
+          "canonical_concept_name": "Genetic Covariance Matrix",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "concept_appendix6_formula_a6_10_used_mathbf_z_t",
+          "name": "Trait Vector",
+          "symbol": "\\mathbf{Z}^{T}",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.10",
+          "clickable": false,
+          "confidence": 0.82,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Trait Vector",
+          "canonical_concept_id": "canonical_trait_vector",
+          "view_id": "concept_appendix6_formula_a6_10_used_mathbf_z_t",
+          "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         }
       ],
       "edges": [
         {
-          "from": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
-          "to": "concept_appendix6_formula_a6_11_defined_hat_mathbf_u",
-          "relation": "prerequisite_for",
+          "from": "canonical_appendix6_distribution_relation",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "relation": "context_prerequisite",
           "derived_from_formula_edge": {
-            "from": "formula_A6.10",
-            "to": "formula_A6.11",
-            "via_symbol": "\\hat{\\beta}"
+            "from": "formula_A6.9",
+            "to": "formula_A6.10",
+            "via_symbol": "\\mathcal{R}_{a6_9}"
           },
           "clickable": true,
-          "confidence": 0.95
+          "confidence": 0.82
         },
         {
-          "from": "concept_appendix6_formula_a6_11_used_hat_beta",
-          "to": "concept_appendix6_formula_a6_11_defined_hat_mathbf_u",
+          "from": "concept_appendix6_formula_a6_10_used_mathbf_r_1",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
           "relation": "introduced_for",
-          "symbol": "\\hat{\\beta}",
+          "symbol": "\\mathbf{R}^{-1}",
           "clickable": false,
-          "confidence": 0.68
+          "confidence": 0.82
         },
         {
-          "from": "concept_appendix6_formula_a6_11_used_hat_boldsymbol_beta",
-          "to": "concept_appendix6_formula_a6_11_defined_hat_mathbf_u",
+          "from": "concept_appendix6_formula_a6_10_used_mathbf_u",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
           "relation": "introduced_for",
-          "symbol": "\\hat{\\boldsymbol{\\beta}}",
+          "symbol": "\\mathbf{u}",
           "clickable": false,
-          "confidence": 0.68
+          "confidence": 0.82
         },
         {
-          "from": "concept_appendix6_formula_a6_11_used_hat_boldsymbol",
-          "to": "concept_appendix6_formula_a6_11_defined_hat_mathbf_u",
+          "from": "concept_appendix6_formula_a6_10_used_mathbf_y",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
           "relation": "introduced_for",
-          "symbol": "\\hat{\\boldsymbol}",
+          "symbol": "\\mathbf{y}",
           "clickable": false,
-          "confidence": 0.68
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_10_used_boldsymbol_beta",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "relation": "introduced_for",
+          "symbol": "\\boldsymbol{\\beta}",
+          "clickable": false,
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_10_used_mathbf_g",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{G}",
+          "clickable": false,
+          "confidence": 0.82
+        },
+        {
+          "from": "concept_appendix6_formula_a6_10_used_mathbf_z_t",
+          "to": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{Z}^{T}",
+          "clickable": false,
+          "confidence": 0.82
         }
+      ],
+      "canonical_concept_id": "canonical_appendix6_estimated_beta_parameter",
+      "canonical_concept_name": "Estimated Beta Parameter",
+      "view_id": "concept_appendix6_formula_a6_10_defined_widehat_boldsymbol_beta",
+      "successor_concepts": [],
+      "source_sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
+      "review_status": "flagged",
+      "review_flags": [
+        "generic_defined_concept_name"
       ],
       "evidence": [
         {
-          "chunk_id": "formula_A6.11",
-          "block_index": 10,
-          "block_type": "derivation"
+          "chunk_id": "formula_A6.10",
+          "block_index": 9,
+          "block_type": "derivation",
+          "sentence": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u."
         }
       ]
     },
     {
       "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-      "name": "Vector or Matrix Quantity",
+      "concept_id": "canonical_matrix_or_vector_quantity",
+      "name": "Matrix or Vector Quantity",
       "definition": "A structured mathematical quantity represented as a vector or matrix.",
       "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
       "concept_type": "math_concept",
@@ -1342,193 +1296,74 @@
       "confidence": 0.95,
       "prerequisite_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_9_statement",
-          "name": "Formula A6.9 Relationship",
-          "defined_by_formula_id": "formula_A6.9",
-          "from_formula_id": "formula_A6.9",
-          "formula_label": "Formula A6.9",
-          "symbol": "Formula A6.9",
-          "via_symbol": "T",
+          "concept_id": "canonical_data_vector",
+          "name": "Data Vector",
+          "defined_by_formula_id": "formula_A6.1",
+          "from_formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "symbol": "\\mathbf{x}",
+          "via_symbol": "\\mathbf{x}",
           "clickable": true,
-          "confidence": 0.62,
+          "confidence": 0.95,
           "relation": "defines_symbol",
-          "concept_type": "theorem_or_principle",
-          "definition": "Denoting the value for and u that return a zero vector for Equation A6.4e as and yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations, Denoting the value for and u that return...",
-          "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "canonical_data_vector",
           "prerequisite_concepts": [],
           "introduced_concepts": [
             {
-              "concept_id": "concept_appendix6_formula_a6_9_used_a",
-              "name": "Additive Genetic Value",
-              "symbol": "a",
+              "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "name": "Lambda Parameter",
+              "symbol": "\\lambda",
               "defined_by_formula_id": null,
-              "formula_label": "Formula A6.9",
-              "clickable": false,
-              "confidence": 0.81,
-              "concept_type": "quantity_concept",
-              "definition": "The additive genetic contribution to an individual or trait value.",
-              "definition_zh": "个体或性状值中的加性遗传贡献。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_9_used_widehat_boldsymbol_beta",
-              "name": "Estimator Vector",
-              "symbol": "\\widehat{\\boldsymbol{\\beta}}",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.9",
+              "formula_label": "Formula A6.16",
               "clickable": false,
               "confidence": 0.76,
-              "concept_type": "quantity_concept",
-              "definition": "A vector-valued statistic used to estimate several parameters.",
-              "definition_zh": "用于同时估计多个参数的向量统计量。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_9_used_t",
-              "name": "Time",
-              "symbol": "T",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.9",
-              "clickable": false,
-              "confidence": 0.73,
               "concept_type": "domain_concept",
-              "definition": "A quantity indexing the stage, generation, or interval of the process.",
-              "definition_zh": "表示过程所处阶段、世代或时间间隔的量。"
-            },
-            {
-              "concept_id": "concept_appendix6_formula_a6_9_used_w",
-              "name": "Fitness",
-              "symbol": "w",
-              "defined_by_formula_id": null,
-              "formula_label": "Formula A6.9",
-              "clickable": false,
-              "confidence": 0.73,
-              "concept_type": "quantity_concept",
-              "definition": "A measure of reproductive success or contribution to the next generation.",
-              "definition_zh": "衡量个体繁殖成功或对下一代贡献的量。"
+              "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+              "canonical_concept_name": "Lambda Parameter",
+              "canonical_concept_id": "canonical_lambda_parameter",
+              "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "review_status": "edited",
+              "review_flags": [
+                "weak_evidence",
+                "auto_canonical_merge"
+              ]
             }
+          ],
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
           ]
         }
       ],
       "introduced_concepts": [
         {
-          "concept_id": "concept_appendix6_formula_a6_12_used_t",
-          "name": "Time",
-          "symbol": "T",
+          "concept_id": "concept_appendix6_formula_a6_12_used_mathbf_x_t",
+          "name": "Data Vector",
+          "symbol": "\\mathbf{x}^{T}",
           "defined_by_formula_id": null,
           "formula_label": "Formula A6.12",
           "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A quantity indexing the stage, generation, or interval of the process.",
-          "definition_zh": "表示过程所处阶段、世代或时间间隔的量。"
+          "confidence": 0.89,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "concept_appendix6_formula_a6_12_used_mathbf_x_t",
+          "source_sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point.",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
         },
-        {
-          "concept_id": "concept_appendix6_formula_a6_12_used_c",
-          "name": "C",
-          "symbol": "c",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.12",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "In univariate calculus, the local extrema of a function occur when its slope (first derivative) is zero.",
-          "definition_zh": "C 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_12_used_f",
-          "name": "Formula A6.12 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.12",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_12_used_x_1",
-          "name": "Formula A6.12 Variable",
-          "symbol": "x_{1}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.12",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A placeholder quantity whose value can change within the equation.",
-          "definition_zh": "公式中取值可以变化的占位量。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_9_statement",
-          "to": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-          "relation": "prerequisite_for",
-          "derived_from_formula_edge": {
-            "from": "formula_A6.9",
-            "to": "formula_A6.12",
-            "via_symbol": "T"
-          },
-          "clickable": true,
-          "confidence": 0.62
-        },
-        {
-          "from": "concept_appendix6_formula_a6_12_used_t",
-          "to": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-          "relation": "introduced_for",
-          "symbol": "T",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_12_used_c",
-          "to": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-          "relation": "introduced_for",
-          "symbol": "c",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_12_used_f",
-          "to": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_12_used_x_1",
-          "to": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
-          "relation": "introduced_for",
-          "symbol": "x_{1}",
-          "clickable": false,
-          "confidence": 0.81
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.12",
-          "block_index": 11,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
-      "name": "Vector or Matrix Quantity",
-      "definition": "A structured mathematical quantity represented as a vector or matrix.",
-      "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
-      "concept_type": "math_concept",
-      "defined_by_formula_id": "formula_A6.13",
-      "defined_symbol": "\\mathbf{H}_{ij}",
-      "supporting_formula_label": "Formula A6.13",
-      "supporting_formula_latex": "\\mathbf{H}_{ij}=\\frac{\\partial\\left(f(\\mathbf{x})/\\partial x_{i}\\right)}{\\partial x_{j}}=\\frac{\\partial^{2}f(\\mathbf{x})}{\\partial x_{i}\\partial x_{j}}",
-      "formula_position": 12,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
-      "confidence": 0.95,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
         {
           "concept_id": "concept_appendix6_formula_a6_13_used_x_i",
           "name": "State Probability",
@@ -1536,67 +1371,120 @@
           "defined_by_formula_id": null,
           "formula_label": "Formula A6.13",
           "clickable": false,
-          "confidence": 0.81,
+          "confidence": 0.82,
           "concept_type": "quantity_concept",
-          "definition": "State Probability describes how much probability weight the model assigns to an event, state, or continuous value.",
-          "definition_zh": "State Probability 表示事件、状态或连续变量取值的可能性，用来读出模型给出的概率权重。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_13_used_f",
-          "name": "Formula A6.13 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.13",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_13_used_x_j",
-          "name": "Formula A6.13 Variable",
-          "symbol": "x_{j}",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.13",
-          "clickable": false,
-          "confidence": 0.73,
-          "concept_type": "domain_concept",
-          "definition": "A placeholder quantity whose value can change within the equation.",
-          "definition_zh": "公式中取值可以变化的占位量。"
+          "definition": "The probability assigned to one state or category in a stochastic model.",
+          "definition_zh": "State Probability 表示事件、状态或连续变量取值的可能性，用来读出模型给出的概率权重。",
+          "canonical_concept_name": "State Probability",
+          "canonical_concept_id": "canonical_state_probability",
+          "view_id": "concept_appendix6_formula_a6_13_used_x_i",
+          "source_sentence": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself.",
+          "review_status": "edited",
+          "review_flags": []
         }
       ],
       "edges": [
         {
+          "from": "canonical_data_vector",
+          "to": "canonical_matrix_or_vector_quantity",
+          "relation": "defines_symbol",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.1",
+            "to": "formula_A6.12",
+            "via_symbol": "\\mathbf{x}"
+          },
+          "clickable": true,
+          "confidence": 0.95
+        },
+        {
+          "from": "concept_appendix6_formula_a6_12_used_mathbf_x_t",
+          "to": "canonical_matrix_or_vector_quantity",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{x}^{T}",
+          "clickable": false,
+          "confidence": 0.89
+        },
+        {
           "from": "concept_appendix6_formula_a6_13_used_x_i",
-          "to": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
+          "to": "canonical_matrix_or_vector_quantity",
           "relation": "introduced_for",
           "symbol": "x_{i}",
           "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_13_used_f",
-          "to": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.73
-        },
-        {
-          "from": "concept_appendix6_formula_a6_13_used_x_j",
-          "to": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
-          "relation": "introduced_for",
-          "symbol": "x_{j}",
-          "clickable": false,
-          "confidence": 0.73
+          "confidence": 0.82
         }
+      ],
+      "canonical_concept_id": "canonical_matrix_or_vector_quantity",
+      "canonical_concept_name": "Matrix or Vector Quantity",
+      "view_id": "canonical_matrix_or_vector_quantity",
+      "formula_references": [
+        {
+          "formula_id": "formula_A6.12",
+          "formula_label": "Formula A6.12",
+          "formula_latex": "\\mathbf{H}_{\\mathbf{X}}[f]=\\nabla_{\\mathbf{X}}\\left[\\left(\\nabla_{\\mathbf{X}}[f]\\right)^{T}\\right]=\\frac{\\partial^{2}f}{\\partial\\mathbf{x}\\partial\\mathbf{x}^{T}}=\\left(\\begin{array}{c c c}\\frac{\\partial^{2}f}{\\partial x_{1}^{2}}&\\cdots&\\frac{\\partial^{2}f}{\\partial x_{1}\\partial x_{n}}\\\\ \\vdots&\\ddots&\\vdots\\\\ \\frac{\\partial^{2}f}{\\partial x_{1}\\partial x_{n}}&\\cdots&\\frac{\\partial^{2}f}{\\partial x_{n}^{2}}\\end{array}\\right)",
+          "formula_position": 11,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
+          "symbol": "\\mathbf{H}_{\\mathbf{X}}[f]",
+          "concept_id": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
+          "view_id": "concept_appendix6_formula_a6_12_defined_mathbf_h_mathbf_x_f",
+          "source_sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point.",
+          "review_status": "flagged"
+        },
+        {
+          "formula_id": "formula_A6.13",
+          "formula_label": "Formula A6.13",
+          "formula_latex": "\\mathbf{H}_{ij}=\\frac{\\partial\\left(f(\\mathbf{x})/\\partial x_{i}\\right)}{\\partial x_{j}}=\\frac{\\partial^{2}f(\\mathbf{x})}{\\partial x_{i}\\partial x_{j}}",
+          "formula_position": 12,
+          "formula_section": "Appendix: Introduction",
+          "formula_subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
+          "symbol": "\\mathbf{H}_{ij}",
+          "concept_id": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
+          "view_id": "concept_appendix6_formula_a6_13_defined_mathbf_h_ij",
+          "source_sentence": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself.",
+          "review_status": "flagged"
+        }
+      ],
+      "successor_concepts": [
+        {
+          "concept_id": "concept_appendix6_formula_a6_15_defined_lambda",
+          "view_id": "concept_appendix6_formula_a6_15_defined_lambda",
+          "name": "Lagrange Multiplier",
+          "canonical_concept_id": "canonical_lagrange_multiplier",
+          "canonical_concept_name": "Lagrange Multiplier",
+          "defined_by_formula_id": "formula_A6.15",
+          "from_formula_id": "formula_A6.15",
+          "formula_label": "Formula A6.15",
+          "symbol": "\\lambda",
+          "via_symbol": "\\lambda",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "successor_for",
+          "concept_type": "math_concept",
+          "definition": "A parameter introduced to optimize a function while enforcing a constraint.",
+          "definition_zh": "Lagrange Multiplier 是一种数学结构，用来把多个量整理成便于比较、缩放或计算的形式。",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": []
+        }
+      ],
+      "source_sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point.",
+      "review_status": "flagged",
+      "review_flags": [
+        "auto_canonical_merge",
+        "generic_defined_concept_name"
       ],
       "evidence": [
         {
+          "chunk_id": "formula_A6.12",
+          "block_index": 11,
+          "block_type": "derivation",
+          "sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point."
+        },
+        {
           "chunk_id": "formula_A6.13",
           "block_index": 12,
-          "block_type": "derivation"
+          "block_type": "derivation",
+          "sentence": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself."
         }
       ]
     },
@@ -1605,7 +1493,7 @@
       "concept_id": "concept_appendix6_formula_a6_14_defined_g",
       "name": "Lagrangian Objective",
       "definition": "An augmented objective function used to optimize a function subject to a constraint.",
-      "definition_zh": "Solution 是这条公式要读出的核心量；等号右侧说明它由哪些条件和符号共同决定。",
+      "definition_zh": "Lagrangian Objective 是一种数学结构，用来把多个量整理成便于比较、缩放或计算的形式。",
       "concept_type": "math_concept",
       "defined_by_formula_id": "formula_A6.14",
       "defined_symbol": "g",
@@ -1615,11 +1503,59 @@
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "OPTIMIZATION UNDER CONSTRAINTS",
       "confidence": 0.95,
-      "prerequisite_concepts": [],
+      "prerequisite_concepts": [
+        {
+          "concept_id": "canonical_data_vector",
+          "name": "Data Vector",
+          "defined_by_formula_id": "formula_A6.1",
+          "from_formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "symbol": "\\mathbf{x}",
+          "via_symbol": "\\mathbf{x}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "defines_symbol",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "canonical_data_vector",
+          "prerequisite_concepts": [],
+          "introduced_concepts": [
+            {
+              "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "name": "Lambda Parameter",
+              "symbol": "\\lambda",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.16",
+              "clickable": false,
+              "confidence": 0.76,
+              "concept_type": "domain_concept",
+              "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+              "canonical_concept_name": "Lambda Parameter",
+              "canonical_concept_id": "canonical_lambda_parameter",
+              "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "review_status": "edited",
+              "review_flags": [
+                "weak_evidence",
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        }
+      ],
       "introduced_concepts": [
         {
           "concept_id": "concept_appendix6_formula_a6_14_used_lambda",
-          "name": "Lambda",
+          "name": "Lambda Parameter",
           "symbol": "\\lambda",
           "defined_by_formula_id": null,
           "formula_label": "Formula A6.14",
@@ -1627,46 +1563,31 @@
           "confidence": 0.76,
           "concept_type": "domain_concept",
           "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-          "definition_zh": "Lambda 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_14_used_c",
-          "name": "C",
-          "symbol": "c",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.14",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-          "definition_zh": "C 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_14_used_f",
-          "name": "Formula A6.14 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.14",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_14_used_h",
-          "name": "Formula A6.14 Function",
-          "symbol": "h",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.14",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
+          "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+          "canonical_concept_name": "Lambda Parameter",
+          "canonical_concept_id": "canonical_lambda_parameter",
+          "view_id": "concept_appendix6_formula_a6_14_used_lambda",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": [
+            "weak_evidence",
+            "auto_canonical_merge"
+          ]
         }
       ],
       "edges": [
+        {
+          "from": "canonical_data_vector",
+          "to": "concept_appendix6_formula_a6_14_defined_g",
+          "relation": "defines_symbol",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.1",
+            "to": "formula_A6.14",
+            "via_symbol": "\\mathbf{x}"
+          },
+          "clickable": true,
+          "confidence": 0.95
+        },
         {
           "from": "concept_appendix6_formula_a6_14_used_lambda",
           "to": "concept_appendix6_formula_a6_14_defined_g",
@@ -1674,37 +1595,21 @@
           "symbol": "\\lambda",
           "clickable": false,
           "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_14_used_c",
-          "to": "concept_appendix6_formula_a6_14_defined_g",
-          "relation": "introduced_for",
-          "symbol": "c",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_14_used_f",
-          "to": "concept_appendix6_formula_a6_14_defined_g",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_14_used_h",
-          "to": "concept_appendix6_formula_a6_14_defined_g",
-          "relation": "introduced_for",
-          "symbol": "h",
-          "clickable": false,
-          "confidence": 0.81
         }
       ],
+      "canonical_concept_id": "canonical_appendix6_lagrangian_objective",
+      "canonical_concept_name": "Lagrangian Objective",
+      "view_id": "concept_appendix6_formula_a6_14_defined_g",
+      "successor_concepts": [],
+      "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+      "review_status": "edited",
+      "review_flags": [],
       "evidence": [
         {
           "chunk_id": "formula_A6.14",
           "block_index": 13,
-          "block_type": "derivation"
+          "block_type": "derivation",
+          "sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint."
         }
       ]
     },
@@ -1713,7 +1618,7 @@
       "concept_id": "concept_appendix6_formula_a6_15_defined_lambda",
       "name": "Lagrange Multiplier",
       "definition": "A parameter introduced to optimize a function while enforcing a constraint.",
-      "definition_zh": "Lambda 是这条公式要读出的核心量；等号右侧说明它由哪些条件和符号共同决定。",
+      "definition_zh": "Lagrange Multiplier 是一种数学结构，用来把多个量整理成便于比较、缩放或计算的形式。",
       "concept_type": "math_concept",
       "defined_by_formula_id": "formula_A6.15",
       "defined_symbol": "\\lambda",
@@ -1723,11 +1628,169 @@
       "formula_section": "Appendix: Introduction",
       "formula_subsection": "OPTIMIZATION UNDER CONSTRAINTS",
       "confidence": 0.95,
-      "prerequisite_concepts": [],
+      "prerequisite_concepts": [
+        {
+          "concept_id": "canonical_data_vector",
+          "name": "Data Vector",
+          "defined_by_formula_id": "formula_A6.1",
+          "from_formula_id": "formula_A6.1",
+          "formula_label": "Formula A6.1",
+          "symbol": "\\mathbf{x}",
+          "via_symbol": "\\mathbf{x}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "defines_symbol",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Data Vector",
+          "canonical_concept_id": "canonical_data_vector",
+          "view_id": "canonical_data_vector",
+          "prerequisite_concepts": [],
+          "introduced_concepts": [
+            {
+              "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "name": "Lambda Parameter",
+              "symbol": "\\lambda",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.16",
+              "clickable": false,
+              "confidence": 0.76,
+              "concept_type": "domain_concept",
+              "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+              "canonical_concept_name": "Lambda Parameter",
+              "canonical_concept_id": "canonical_lambda_parameter",
+              "view_id": "concept_appendix6_formula_a6_16_used_lambda",
+              "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+              "review_status": "edited",
+              "review_flags": [
+                "weak_evidence",
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+          "review_status": "edited",
+          "review_flags": [
+            "auto_canonical_merge"
+          ]
+        },
+        {
+          "concept_id": "canonical_matrix_or_vector_quantity",
+          "view_id": "canonical_matrix_or_vector_quantity",
+          "name": "Matrix or Vector Quantity",
+          "canonical_concept_id": "canonical_matrix_or_vector_quantity",
+          "canonical_concept_name": "Matrix or Vector Quantity",
+          "defined_by_formula_id": "formula_A6.12",
+          "from_formula_id": "formula_A6.13",
+          "formula_label": "Formula A6.12",
+          "symbol": "\\mathbf{H}_{\\mathbf{X}}[f]",
+          "via_symbol": "\\mathbf{H}_{ij}",
+          "clickable": true,
+          "confidence": 0.95,
+          "relation": "concept_prerequisite",
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "prerequisite_concepts": [
+            {
+              "concept_id": "canonical_data_vector",
+              "name": "Data Vector",
+              "defined_by_formula_id": "formula_A6.1",
+              "from_formula_id": "formula_A6.1",
+              "formula_label": "Formula A6.1",
+              "symbol": "\\mathbf{x}",
+              "via_symbol": "\\mathbf{x}",
+              "clickable": true,
+              "confidence": 0.95,
+              "relation": "defines_symbol",
+              "concept_type": "math_concept",
+              "definition": "A structured mathematical quantity represented as a vector or matrix.",
+              "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+              "canonical_concept_name": "Data Vector",
+              "canonical_concept_id": "canonical_data_vector",
+              "view_id": "canonical_data_vector",
+              "source_sentence": "In matrix notation, the gradient operator is denoted by Appendix: Introduction DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+              "review_status": "edited",
+              "review_flags": [
+                "auto_canonical_merge"
+              ]
+            }
+          ],
+          "introduced_concepts": [
+            {
+              "concept_id": "concept_appendix6_formula_a6_12_used_mathbf_x_t",
+              "name": "Data Vector",
+              "symbol": "\\mathbf{x}^{T}",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.12",
+              "clickable": false,
+              "confidence": 0.89,
+              "concept_type": "math_concept",
+              "definition": "A structured mathematical quantity represented as a vector or matrix.",
+              "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+              "canonical_concept_name": "Data Vector",
+              "canonical_concept_id": "canonical_data_vector",
+              "view_id": "concept_appendix6_formula_a6_12_used_mathbf_x_t",
+              "source_sentence": "A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point.",
+              "review_status": "edited",
+              "review_flags": [
+                "auto_canonical_merge"
+              ]
+            },
+            {
+              "concept_id": "concept_appendix6_formula_a6_13_used_x_i",
+              "name": "State Probability",
+              "symbol": "x_{i}",
+              "defined_by_formula_id": null,
+              "formula_label": "Formula A6.13",
+              "clickable": false,
+              "confidence": 0.82,
+              "concept_type": "quantity_concept",
+              "definition": "The probability assigned to one state or category in a stochastic model.",
+              "definition_zh": "State Probability 表示事件、状态或连续变量取值的可能性，用来读出模型给出的概率权重。",
+              "canonical_concept_name": "State Probability",
+              "canonical_concept_id": "canonical_state_probability",
+              "view_id": "concept_appendix6_formula_a6_13_used_x_i",
+              "source_sentence": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself.",
+              "review_status": "edited",
+              "review_flags": []
+            }
+          ],
+          "source_sentence": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself.",
+          "review_status": "flagged",
+          "review_flags": [
+            "auto_canonical_merge",
+            "generic_defined_concept_name"
+          ]
+        }
+      ],
       "introduced_concepts": [
         {
+          "concept_id": "concept_appendix6_formula_a6_15_used_mathbf_0",
+          "name": "Matrix or Vector Quantity",
+          "symbol": "\\mathbf{0}",
+          "defined_by_formula_id": null,
+          "formula_label": "Formula A6.15",
+          "clickable": false,
+          "confidence": 0.84,
+          "concept_type": "math_concept",
+          "definition": "A structured mathematical quantity represented as a vector or matrix.",
+          "definition_zh": "以向量或矩阵形式表示的结构化数学量。",
+          "canonical_concept_name": "Matrix or Vector Quantity",
+          "canonical_concept_id": "canonical_matrix_or_vector_quantity",
+          "view_id": "concept_appendix6_formula_a6_15_used_mathbf_0",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "flagged",
+          "review_flags": [
+            "auto_canonical_merge",
+            "generic_defined_concept_name"
+          ]
+        },
+        {
           "concept_id": "concept_appendix6_formula_a6_15_used_lambda",
-          "name": "Lambda",
+          "name": "Lambda Parameter",
           "symbol": "\\lambda",
           "defined_by_formula_id": null,
           "formula_label": "Formula A6.15",
@@ -1735,46 +1798,51 @@
           "confidence": 0.76,
           "concept_type": "domain_concept",
           "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-          "definition_zh": "Lambda 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_15_used_g",
-          "name": "G",
-          "symbol": "g",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.15",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "The solution is to use Lagrange multipliers.",
-          "definition_zh": "G 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_15_used_f",
-          "name": "Formula A6.15 Function",
-          "symbol": "f",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.15",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_15_used_h",
-          "name": "Formula A6.15 Function",
-          "symbol": "h",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.15",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
+          "definition_zh": "Lambda Parameter 表示调节关系强弱、方向或尺度的参数，用来比较条件变化带来的影响。",
+          "canonical_concept_name": "Lambda Parameter",
+          "canonical_concept_id": "canonical_lambda_parameter",
+          "view_id": "concept_appendix6_formula_a6_15_used_lambda",
+          "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+          "review_status": "edited",
+          "review_flags": [
+            "weak_evidence",
+            "auto_canonical_merge"
+          ]
         }
       ],
       "edges": [
+        {
+          "from": "canonical_data_vector",
+          "to": "concept_appendix6_formula_a6_15_defined_lambda",
+          "relation": "defines_symbol",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.1",
+            "to": "formula_A6.15",
+            "via_symbol": "\\mathbf{x}"
+          },
+          "clickable": true,
+          "confidence": 0.95
+        },
+        {
+          "from": "canonical_matrix_or_vector_quantity",
+          "to": "concept_appendix6_formula_a6_15_defined_lambda",
+          "relation": "concept_prerequisite",
+          "derived_from_formula_edge": {
+            "from": "formula_A6.13",
+            "to": "formula_A6.15",
+            "via_symbol": "\\mathbf{H}_{ij}"
+          },
+          "clickable": true,
+          "confidence": 0.95
+        },
+        {
+          "from": "concept_appendix6_formula_a6_15_used_mathbf_0",
+          "to": "concept_appendix6_formula_a6_15_defined_lambda",
+          "relation": "introduced_for",
+          "symbol": "\\mathbf{0}",
+          "clickable": false,
+          "confidence": 0.84
+        },
         {
           "from": "concept_appendix6_formula_a6_15_used_lambda",
           "to": "concept_appendix6_formula_a6_15_defined_lambda",
@@ -1782,165 +1850,21 @@
           "symbol": "\\lambda",
           "clickable": false,
           "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_15_used_g",
-          "to": "concept_appendix6_formula_a6_15_defined_lambda",
-          "relation": "introduced_for",
-          "symbol": "g",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_15_used_f",
-          "to": "concept_appendix6_formula_a6_15_defined_lambda",
-          "relation": "introduced_for",
-          "symbol": "f",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_15_used_h",
-          "to": "concept_appendix6_formula_a6_15_defined_lambda",
-          "relation": "introduced_for",
-          "symbol": "h",
-          "clickable": false,
-          "confidence": 0.81
         }
       ],
+      "canonical_concept_id": "canonical_appendix6_lagrange_multiplier",
+      "canonical_concept_name": "Lagrange Multiplier",
+      "view_id": "concept_appendix6_formula_a6_15_defined_lambda",
+      "successor_concepts": [],
+      "source_sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
+      "review_status": "edited",
+      "review_flags": [],
       "evidence": [
         {
           "chunk_id": "formula_A6.15",
           "block_index": 14,
-          "block_type": "derivation"
-        }
-      ]
-    },
-    {
-      "chapter_id": "appendix6",
-      "concept_id": "concept_appendix6_formula_a6_16_statement",
-      "name": "Formula A6.16 Relationship",
-      "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-      "definition_zh": "这条关系式把左侧目标量和右侧条件连接起来，适合作为理解本公式符号关系的起点。",
-      "concept_type": "theorem_or_principle",
-      "defined_by_formula_id": "formula_A6.16",
-      "defined_symbol": "Formula A6.16",
-      "supporting_formula_label": "Formula A6.16",
-      "supporting_formula_latex": "\\frac{d g(\\mathbf{x},\\lambda)}{d\\lambda}=h(\\mathbf{x})-c=0",
-      "formula_position": 15,
-      "formula_section": "Appendix: Introduction",
-      "formula_subsection": "OPTIMIZATION UNDER CONSTRAINTS",
-      "confidence": 0.62,
-      "prerequisite_concepts": [],
-      "introduced_concepts": [
-        {
-          "concept_id": "concept_appendix6_formula_a6_16_used_lambda",
-          "name": "Lambda",
-          "symbol": "\\lambda",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.16",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-          "definition_zh": "Lambda 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_16_used_c",
-          "name": "C",
-          "symbol": "c",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.16",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint.",
-          "definition_zh": "C 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_16_used_g",
-          "name": "G",
-          "symbol": "g",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.16",
-          "clickable": false,
-          "confidence": 0.76,
-          "concept_type": "domain_concept",
-          "definition": "The solution is to use Lagrange multipliers.",
-          "definition_zh": "G 表示本式讨论的生物学对象或模型条件，读公式时先确认它对应哪一类群体、性状或过程。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_16_used_d",
-          "name": "Formula A6.16 Distance",
-          "symbol": "d",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.16",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A measure of separation between states, values, or functions.",
-          "definition_zh": "衡量状态、数值或函数之间分离程度的量。"
-        },
-        {
-          "concept_id": "concept_appendix6_formula_a6_16_used_h",
-          "name": "Formula A6.16 Function",
-          "symbol": "h",
-          "defined_by_formula_id": null,
-          "formula_label": "Formula A6.16",
-          "clickable": false,
-          "confidence": 0.81,
-          "concept_type": "domain_concept",
-          "definition": "A rule that maps inputs to outputs in the model.",
-          "definition_zh": "把输入映射为输出的规则。"
-        }
-      ],
-      "edges": [
-        {
-          "from": "concept_appendix6_formula_a6_16_used_lambda",
-          "to": "concept_appendix6_formula_a6_16_statement",
-          "relation": "introduced_for",
-          "symbol": "\\lambda",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_16_used_c",
-          "to": "concept_appendix6_formula_a6_16_statement",
-          "relation": "introduced_for",
-          "symbol": "c",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_16_used_g",
-          "to": "concept_appendix6_formula_a6_16_statement",
-          "relation": "introduced_for",
-          "symbol": "g",
-          "clickable": false,
-          "confidence": 0.76
-        },
-        {
-          "from": "concept_appendix6_formula_a6_16_used_d",
-          "to": "concept_appendix6_formula_a6_16_statement",
-          "relation": "introduced_for",
-          "symbol": "d",
-          "clickable": false,
-          "confidence": 0.81
-        },
-        {
-          "from": "concept_appendix6_formula_a6_16_used_h",
-          "to": "concept_appendix6_formula_a6_16_statement",
-          "relation": "introduced_for",
-          "symbol": "h",
-          "clickable": false,
-          "confidence": 0.81
-        }
-      ],
-      "evidence": [
-        {
-          "chunk_id": "formula_A6.16",
-          "block_index": 15,
-          "block_type": "derivation"
+          "block_type": "derivation",
+          "sentence": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint."
         }
       ]
     }

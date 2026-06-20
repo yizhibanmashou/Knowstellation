@@ -48,7 +48,7 @@ The project is intentionally strict about graph quality. Exact references, exact
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
 - **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
-- **Layered concept graph**: Concept mode starts from the concept defined by the current formula, reveals prerequisite and introduced concepts in controlled layers, keeps formula evidence folded by default, and lets learners drag concept cards apart when arranging a dense local view.
+- **Layered concept graph**: Concept mode starts from the concept defined by the current formula, opens prerequisite context in controlled layers, keeps formula evidence folded by default, and lets learners drag concept cards apart when arranging a dense local view.
 - **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
 - **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
 - **LLM-assisted explanations**: optional server-side proxy enriches chapter summaries and symbol explanations without exposing API keys in the browser.
@@ -73,7 +73,7 @@ Each chapter opens as its own star map. Formula nodes keep the dependency struct
 
 ### Concept graph reading
 
-Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and exposes introduced symbols as draggable cards. Learners can move to the next concept, step back to the previous concept, or jump across all concepts in the current chapter from the bottom concept navigator.
+Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and keeps the local concept view focused on learning relationships instead of symbol inventory. Learners can move to the next concept, step back to the previous concept, or jump across all concepts in the current chapter from the bottom concept navigator.
 
 <p align="center">
   <img src="public/assets/readme/concept.png" alt="Knowstellation concept graph with chapter concept navigation" width="100%">
@@ -119,7 +119,7 @@ The UI is optimized around the current reading model:
 | Mode | Purpose |
 | --- | --- |
 | `guided` | Default study flow. Expand prerequisites and successors gradually while reading symbol-level callouts in the formula card. |
-| `concept` | Layered concept view. Start from the formula's defined concept, reveal prerequisite/introduced concept layers, drag cards to arrange dense neighborhoods, and continue through chapter concepts without returning to the chapter map. |
+| `concept` | Layered concept view. Start from the formula's defined concept, reveal prerequisite context, drag cards to arrange dense neighborhoods, and continue through chapter concepts without returning to the chapter map. |
 | `explore` | Full chapter overview for browsing the formula network. |
 
 ## Quick Start
@@ -228,12 +228,11 @@ docs/                    Design notes and implementation prep
 public/data/             Static data served by Vite
 scripts/                 Dependency, audit, and Symbol Sense tools
 src/
-  components/GraphView/  Formula graph canvas, nodes, controls
-  components/StarField/  Three.js chapter/formula star maps
-  components/SearchBar/  Search UI and worker
+  features/graph/       Formula and concept graph canvas, nodes, controls
+  features/starfield/   Three.js chapter/formula star maps
+  features/search/      Search UI and matching logic
+  shared/               Shared components, services, types, and utilities
   pages/                 Home, chapter, storyline, graph pages
-  services/              LLM client
-  utils/                 Formula, symbol, navigation helpers
 test/                    Node and Python tests
 ```
 
@@ -269,9 +268,9 @@ For frontend checks, manually verify:
 - `/` on desktop and mobile landscape widths
 - `/chapter/<chapterId>` from the home star map
 - search result navigation into a formula graph
-- `/graph/<formulaId>?chapterId=<chapterId>&mode=guided` symbol hover/tap callouts, including indexed symbols such as `d_s` / `p_s`
+- `/graph/<formulaId>?chapterId=<chapterId>&mode=formula` symbol hover/tap callouts, including indexed symbols such as `d_s` / `p_s`
 - fraction annotations: hover the fraction bar or surrounding fraction body for the whole-ratio meaning, then hover numerator/denominator symbols for their own labels
-- concept view for a formula with several prerequisites: verify one concept layer opens by default, formula evidence stays folded, concept cards do not overlap, and cards can be dragged
+- concept view for a formula with several prerequisites: verify one concept layer opens by default, formula evidence stays folded, concept cards do not overlap, cards can be dragged, and the left minimap does not force a vertical scrollbar
 - `/graph/chapter/<chapterId>?mode=explore` minimap node selection
 - `/storyline/<storylineId>` and its "open graph" path
 
@@ -287,8 +286,10 @@ For frontend checks, manually verify:
 
 ## Documentation
 
-- [Design and optimization notes](docs/design-and-optimization.md)
-- [Symbol annotation implementation prep](docs/implementation-prep.md)
+- [Concept graph advisor progress report](docs/advisor-progress-report-concept-graph.md)
+- [Formula prerequisite graph design](docs/formula_prerequisite_graph_design.md)
+- [Product release acceptance checklist](docs/product-release-acceptance.md)
+- [V1 design architecture](docs/v1设计架构.md)
 
 ## Roadmap
 

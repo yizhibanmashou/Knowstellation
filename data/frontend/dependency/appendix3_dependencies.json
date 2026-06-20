@@ -1,7 +1,7 @@
 {
   "chapter_id": "appendix3",
   "version": 1,
-  "generated_at": "2026-05-25T07:34:53Z",
+  "generated_at": "2026-06-19T10:05:23Z",
   "formulas": [
     {
       "id": "formula_A3.1",
@@ -11,6 +11,7 @@
       "section": "Appendix: Introduction",
       "subsection": "MONTE CARLO INTEGRATION",
       "position": 0,
+      "source_position": 0,
       "depth": 0,
       "context_text": "To better understand the historical roots of MCMC, we digress for a moment to discuss the original Monte Carlo approach, which used random-number generation to approximate integrals. Suppose we wish to compute a complex integral,",
       "symbols_used": [
@@ -20,9 +21,7 @@
         "h",
         "x"
       ],
-      "symbols_defined": [
-        "a"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.2",
@@ -32,6 +31,7 @@
       "section": "Appendix: Introduction",
       "subsection": "MONTE CARLO INTEGRATION",
       "position": 1,
+      "source_position": 1,
       "depth": 0,
       "context_text": "If we can decompose $ h(x) $ into the product of a function, $ f(x) $, and a probability density function, $ p(x) $, defined over the interval $ (a, b) $, then which means that the integral can be expressed as the expectation of $f(x)$ over the density $p(x)$. After sampling a large number of random variables, $(x_{1},\\cdots,x_{n})$, from the density $p(x)$, we have that",
       "symbols_used": [
@@ -44,13 +44,7 @@
         "p",
         "x"
       ],
-      "symbols_defined": [
-        "a",
-        "b",
-        "d",
-        "h",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.3",
@@ -60,6 +54,7 @@
       "section": "Appendix: Introduction",
       "subsection": "MONTE CARLO INTEGRATION",
       "position": 2,
+      "source_position": 2,
       "depth": 0,
       "context_text": "If we can decompose $ h(x) $ into the product of a function, $ f(x) $, and a probability density function, $ p(x) $, defined over the interval $ (a, b) $, then which means that the integral can be expressed as the expectation of $f(x)$ over the density $p(x)$. After sampling a large number of random variables, $(x_{1},\\cdots,x_{n})$, from the density $p(x)$, we have that",
       "symbols_used": [
@@ -72,13 +67,7 @@
         "n",
         "x_{i}"
       ],
-      "symbols_defined": [
-        "a",
-        "b",
-        "d",
-        "h",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.4",
@@ -88,6 +77,7 @@
       "section": "Appendix: Introduction",
       "subsection": "MONTE CARLO INTEGRATION",
       "position": 3,
+      "source_position": 3,
       "depth": 0,
       "context_text": "This approach is referred to as Monte Carlo integration, and it can be used to approximate posterior (or marginal posterior) distributions required for a Bayesian analysis. Consider the integral $ I(y) = \\int f(y \\mid x) p(x) \\, dx $, which we approximate by where again $ x_{i} $ are draws from the density $ p(x) $. Since we have framed this integral as an expectation, individual random draws have expected value equal to the integral. The spread of those values around their mean allows us to estimate a Monte Carlo standard error for our approximation, with where the inner term estimates the sampling variance, $ \\sigma^2 $. Notice from Equation A3.1e that the standard error scales as $ \\sigma/\\sqrt{n} $, namely, with the square root of the sample size. Thus, a tenfold improvement in precision requires a hundredfold increase in the sample size.",
       "symbols_used": [
@@ -98,8 +88,7 @@
         "y"
       ],
       "symbols_defined": [
-        "\\widehat{I}",
-        "y"
+        "\\widehat{I}"
       ]
     },
     {
@@ -110,10 +99,10 @@
       "section": "Appendix: Introduction",
       "subsection": "MONTE CARLO INTEGRATION",
       "position": 4,
-      "depth": 0,
+      "source_position": 4,
+      "depth": 1,
       "context_text": "This approach is referred to as Monte Carlo integration, and it can be used to approximate posterior (or marginal posterior) distributions required for a Bayesian analysis. Consider the integral $ I(y) = \\int f(y \\mid x) p(x) \\, dx $, which we approximate by where again $ x_{i} $ are draws from the density $ p(x) $. Since we have framed this integral as an expectation, individual random draws have expected value equal to the integral. The spread of those values around their mean allows us to estimate a Monte Carlo standard error for our approximation, with where the inner term estimates the sampling variance, $ \\sigma^2 $. Notice from Equation A3.1e that the standard error scales as $ \\sigma/\\sqrt{n} $, namely, with the square root of the sample size. Thus, a tenfold improvement in precision requires a hundredfold increase in the sample size.",
       "symbols_used": [
-        "S",
         "\\mathrm{E}",
         "\\mathrm{S}",
         "\\widehat{I}",
@@ -123,11 +112,8 @@
         "y"
       ],
       "symbols_defined": [
-        "S",
         "\\mathrm{E}",
-        "\\mathrm{S}",
-        "\\widehat{I}",
-        "y"
+        "\\mathrm{S}"
       ]
     },
     {
@@ -138,6 +124,7 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 5,
+      "source_position": 5,
       "depth": 0,
       "context_text": "$$ \\int f(x)q(x)dx=\\int f(x)\\left(\\frac{q(x)}{p(x)}\\right)p(x)dx=E_{p(x)}\\left[f(x)\\left(\\frac{q(x)}{p(x)}\\right)\\right] $$",
       "symbols_used": [
@@ -148,12 +135,7 @@
         "q",
         "x"
       ],
-      "symbols_defined": [
-        "d",
-        "f",
-        "q",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.7",
@@ -163,6 +145,7 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 6,
+      "source_position": 6,
       "depth": 0,
       "context_text": "This forms the basis for the method of importance sampling, with where again the $ x_i $ values are drawn from the distribution given by $ p(x) $. For example, if we are interested in a marginal density as a function of $ y $, $ J(y) = \\int f(y | x) q(x) dx $, we approximate this by where $ x_{i} $ are drawn from the approximating density p.",
       "symbols_used": [
@@ -173,14 +156,7 @@
         "q",
         "x_{i}"
       ],
-      "symbols_defined": [
-        "d",
-        "f",
-        "i",
-        "n",
-        "q",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.8",
@@ -190,6 +166,7 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 7,
+      "source_position": 7,
       "depth": 0,
       "context_text": "This forms the basis for the method of importance sampling, with where again the $ x_i $ values are drawn from the distribution given by $ p(x) $. For example, if we are interested in a marginal density as a function of $ y $, $ J(y) = \\int f(y | x) q(x) dx $, we approximate this by where $ x_{i} $ are drawn from the approximating density p.",
       "symbols_used": [
@@ -202,10 +179,7 @@
         "y"
       ],
       "symbols_defined": [
-        "J",
-        "i",
-        "n",
-        "y"
+        "J"
       ]
     },
     {
@@ -216,21 +190,15 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 8,
+      "source_position": 8,
       "depth": 0,
       "context_text": "This method is so named in that a judicious choice of $ p(x) $ ensures that values for which $ f(x) $ is large (important) are appropriately sampled, which can result in a smaller Monte Carlo variance, and hence a more accurate estimate of the integral. Further, it can be faster to carry out in cases where p is more straightforward to sample from than q. Ideally, we would like $ p(x) $ to be large when $ f(x)q(x) $ is large, namely, $ p(x) \\propto f(x)q(x) $, although assessing when $ q(x) $ is large may be problematic. One issue that can arise is when $ q(x) $ denotes a posterior distribution whose integration constant is unknown, and hence $ q(x) $, as presented, will not be a formal probability distribution if $ \\int q(x) \\neq 1 $. If $ C^{-1} = \\int q(x) $, then $ Cq(x) $ is formally a pdf. Fortunately, a simple trick allows us to use importance sampling to obtain $C$. Since $C \\int q(x) dx = 1$, then with the $ x_{i} $ drawn from $ p(x) $. Hence which has an associated Monte Carlo variance of",
       "symbols_used": [
         "C^{-1}",
-        "\\mathrm{e}",
-        "\\mathrm{h}",
-        "\\mathrm{r}",
-        "\\mathrm{w}",
         "d",
-        "e",
-        "h",
         "n",
         "p",
         "q",
-        "r",
         "w_{i}",
         "x_{i}"
       ],
@@ -246,7 +214,8 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 9,
-      "depth": 0,
+      "source_position": 9,
+      "depth": 1,
       "context_text": "This method is so named in that a judicious choice of $ p(x) $ ensures that values for which $ f(x) $ is large (important) are appropriately sampled, which can result in a smaller Monte Carlo variance, and hence a more accurate estimate of the integral. Further, it can be faster to carry out in cases where p is more straightforward to sample from than q. Ideally, we would like $ p(x) $ to be large when $ f(x)q(x) $ is large, namely, $ p(x) \\propto f(x)q(x) $, although assessing when $ q(x) $ is large may be problematic. One issue that can arise is when $ q(x) $ denotes a posterior distribution whose integration constant is unknown, and hence $ q(x) $, as presented, will not be a formal probability distribution if $ \\int q(x) \\neq 1 $. If $ C^{-1} = \\int q(x) $, then $ Cq(x) $ is formally a pdf. Fortunately, a simple trick allows us to use importance sampling to obtain $C$. Since $C \\int q(x) dx = 1$, then with the $ x_{i} $ drawn from $ p(x) $. Hence which has an associated Monte Carlo variance of",
       "symbols_used": [
         "C",
@@ -258,14 +227,7 @@
         "w_{i}",
         "x_{i}"
       ],
-      "symbols_defined": [
-        "C",
-        "\\widehat{I}",
-        "d",
-        "f",
-        "q",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.11",
@@ -275,30 +237,20 @@
       "section": "MONTE CARLO INTEGRATION",
       "subsection": "Importance Sampling",
       "position": 10,
-      "depth": 0,
+      "source_position": 10,
+      "depth": 1,
       "context_text": "This method is so named in that a judicious choice of $ p(x) $ ensures that values for which $ f(x) $ is large (important) are appropriately sampled, which can result in a smaller Monte Carlo variance, and hence a more accurate estimate of the integral. Further, it can be faster to carry out in cases where p is more straightforward to sample from than q. Ideally, we would like $ p(x) $ to be large when $ f(x)q(x) $ is large, namely, $ p(x) \\propto f(x)q(x) $, although assessing when $ q(x) $ is large may be problematic. One issue that can arise is when $ q(x) $ denotes a posterior distribution whose integration constant is unknown, and hence $ q(x) $, as presented, will not be a formal probability distribution if $ \\int q(x) \\neq 1 $. If $ C^{-1} = \\int q(x) $, then $ Cq(x) $ is formally a pdf. Fortunately, a simple trick allows us to use importance sampling to obtain $C$. Since $C \\int q(x) dx = 1$, then with the $ x_{i} $ drawn from $ p(x) $. Hence which has an associated Monte Carlo variance of",
       "symbols_used": [
-        "V",
         "\\mathrm{V}",
         "\\mathrm{a}",
         "\\mathrm{r}",
         "\\widehat{I}",
-        "a",
         "f",
         "n",
-        "r",
         "w_{i}",
         "x_{i}"
       ],
-      "symbols_defined": [
-        "V",
-        "\\mathrm{V}",
-        "\\mathrm{a}",
-        "\\mathrm{r}",
-        "\\widehat{I}",
-        "a",
-        "r"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.12",
@@ -308,6 +260,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 11,
+      "source_position": 11,
       "depth": 0,
       "context_text": "Before introducing two of the most common MCMC methods, the Metropolis-Hastings algorithm and the Gibbs sampler, a few introductory comments on Markov chains are in order. Let $ X_t $ denote the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values. A random variable is said to follow a Markov process if the transition probabilities between different values in the state space depend only on the random variable's current state,",
       "symbols_used": [
@@ -328,6 +281,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 12,
+      "source_position": 12,
       "depth": 0,
       "context_text": "Thus, the only information about the past needed for a Markov random variable to predict the future is the current state of the random variable. Knowledge of the values of earlier states does not influence the transition probability. A Markov chain refers to a sequence of random variables, $ (X_0, \\cdots, X_n) $, generated by a Markov process. A particular chain is defined by its transition probabilities (or the transition kernel), $ P(i, j) = P(i \\to j) $, which is the probability that a process at state space $ s_i $ moves to state $ s_j $ in a single step.",
       "symbols_used": [
@@ -338,10 +292,7 @@
         "s_{i}",
         "s_{j}"
       ],
-      "symbols_defined": [
-        "i",
-        "j"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.14",
@@ -351,6 +302,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 13,
+      "source_position": 13,
       "depth": 0,
       "context_text": "We use the notation $ P(i \\to j) $ to imply a move from i to j, as some texts define $ P(i,j) = P(j \\to i) $, so we will use the arrow notation to avoid any potential confusion. Let denote the probability that the chain is in state $j$ at time $t$, and let $\\pi(t)$ denote the row vector of the state space probabilities at step (or time) $t$. We start the chain by specifying a starting row vector, $\\pi(0)$. Often all the elements of $\\pi(0)$ are zero except for a single element of $1$, which corresponds to the process starting in that particular state. As the chain progresses, the probability values become more dispersed over the state space. The probability that the chain has a state value of $s_j$ at time (or step) $t+1$ is obtained from the Chapman-Kolomogrov (CK) equation, which sums over the probability of being in a particular state at the current step value, $t$, and the transition probability from that state into state $s_j$.",
       "symbols_used": [
@@ -360,8 +312,7 @@
         "t"
       ],
       "symbols_defined": [
-        "\\pi_{j}",
-        "t"
+        "\\pi_{j}"
       ]
     },
     {
@@ -372,6 +323,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 14,
+      "source_position": 14,
       "depth": 0,
       "context_text": "We use the notation $ P(i \\to j) $ to imply a move from i to j, as some texts define $ P(i,j) = P(j \\to i) $, so we will use the arrow notation to avoid any potential confusion. Let denote the probability that the chain is in state $j$ at time $t$, and let $\\pi(t)$ denote the row vector of the state space probabilities at step (or time) $t$. We start the chain by specifying a starting row vector, $\\pi(0)$. Often all the elements of $\\pi(0)$ are zero except for a single element of $1$, which corresponds to the process starting in that particular state. As the chain progresses, the probability values become more dispersed over the state space. The probability that the chain has a state value of $s_j$ at time (or step) $t+1$ is obtained from the Chapman-Kolomogrov (CK) equation, which sums over the probability of being in a particular state at the current step value, $t$, and the transition probability from that state into state $s_j$.",
       "symbols_used": [
@@ -386,8 +338,7 @@
         "t"
       ],
       "symbols_defined": [
-        "\\pi_{j}",
-        "t"
+        "\\pi_{j}"
       ]
     },
     {
@@ -398,20 +349,16 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 15,
+      "source_position": 15,
       "depth": 0,
       "context_text": "We can more compactly write the CK equations in matrix form, as follows: first we define the probability transition matrix, P, as the matrix whose $ ij $th element is $ P(i,j) $, the probability of moving from state $ i $ to state $ j $, $ P(i \\rightarrow j) $. This implies that the rows of P sum to one, as when considering the $ ith $ row, $ \\sum_j P(i,j) = \\sum_j P(i \\rightarrow j) = 1 $. In matrix form, the Chapman-Kolomogrov equation becomes",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\pi}",
         "\\mathbf{P}",
-        "\\pi",
         "t"
       ],
       "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\pi}",
-        "\\pi",
-        "t"
+        "\\boldsymbol{\\pi}"
       ]
     },
     {
@@ -422,21 +369,17 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 16,
+      "source_position": 16,
       "depth": 0,
       "context_text": "Hence,",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\pi}",
         "\\mathbf{P}",
         "\\mathbf{P}^{2}",
-        "\\pi",
         "t"
       ],
       "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\pi}",
-        "\\pi",
-        "t"
+        "\\boldsymbol{\\pi}"
       ]
     },
     {
@@ -447,21 +390,16 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 17,
+      "source_position": 17,
       "depth": 0,
       "context_text": "Continuing in this fashion yields the probability distribution in generation t as",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\pi}",
         "\\mathbf{P}",
-        "\\mathbf{P}^{t}",
-        "\\pi",
-        "t"
+        "\\mathbf{P}^{t}"
       ],
       "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\pi}",
-        "\\pi",
-        "t"
+        "\\boldsymbol{\\pi}"
       ]
     },
     {
@@ -472,6 +410,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 18,
+      "source_position": 18,
       "depth": 0,
       "context_text": "Next we define the n-step transition probability, $ p_{ij}^{(n)} $, as the probability that the process is in state j, given that it started in state i some n steps ago, namely,",
       "symbols_used": [
@@ -482,10 +421,7 @@
         "s_{i}",
         "s_{j}"
       ],
-      "symbols_defined": [
-        "n",
-        "p_{ij}^{(n)}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.20",
@@ -495,16 +431,14 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 19,
+      "source_position": 19,
       "depth": 0,
       "context_text": "As the above example illustrates, a Markov chain may reach a stationary distribution, $ \\pi^{*} $, where the vector of probabilities of being in a particular state is independent of the initial starting distribution. The stationary distribution satisfies",
       "symbols_used": [
         "\\pi",
         "\\pi^{*}"
       ],
-      "symbols_defined": [
-        "\\pi",
-        "\\pi^{*}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.21",
@@ -514,6 +448,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 20,
+      "source_position": 20,
       "depth": 0,
       "context_text": "A sufficient condition for a unique stationary distribution is (for all i and j) that the detailed balance equation holds, namely, That is, at equilibrium, the amount of probability flux from state $j$ to stage $i$ is exactly matched by the probability flux in the opposite direction (for $i$ to $j$), so a balance is reached, with no net flow of probability over the states. If Equation A3.10 holds for all values of $i$ and $j$, the Markov chain is said to be reversible, and hence Equation A3.10 is also called the reversibility condition. Note that this condition implies that $\\pi^* = \\pi^* \\mathbf{P}$, as the $j$th element of the row vector $\\pi^* \\mathbf{P}$ is where the key middle step follows from Equation A3.10, while the last step follows because rows of P sum to one.",
       "symbols_used": [
@@ -522,11 +457,7 @@
         "i",
         "j"
       ],
-      "symbols_defined": [
-        "\\pi_{j}^{*}",
-        "i",
-        "j"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.22",
@@ -536,10 +467,10 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 21,
-      "depth": 1,
+      "source_position": 21,
+      "depth": 0,
       "context_text": "A sufficient condition for a unique stationary distribution is (for all i and j) that the detailed balance equation holds, namely, That is, at equilibrium, the amount of probability flux from state $j$ to stage $i$ is exactly matched by the probability flux in the opposite direction (for $i$ to $j$), so a balance is reached, with no net flow of probability over the states. If Equation A3.10 holds for all values of $i$ and $j$, the Markov chain is said to be reversible, and hence Equation A3.10 is also called the reversibility condition. Note that this condition implies that $\\pi^* = \\pi^* \\mathbf{P}$, as the $j$th element of the row vector $\\pi^* \\mathbf{P}$ is where the key middle step follows from Equation A3.10, while the last step follows because rows of P sum to one.",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\pi}^{*}",
         "\\mathbf{P}",
         "\\pi_{i}^{*}",
@@ -547,13 +478,7 @@
         "i",
         "j"
       ],
-      "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\pi}^{*}",
-        "\\mathbf{P}",
-        "\\pi",
-        "j"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.23",
@@ -563,6 +488,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 22,
+      "source_position": 22,
       "depth": 0,
       "context_text": "The basic idea of a discrete-state Markov chain can be generalized to a continuous-state Markov process by replacing P with a probability kernel, $ P(x, y) $, that satisfies",
       "symbols_used": [
@@ -570,11 +496,7 @@
         "x",
         "y"
       ],
-      "symbols_defined": [
-        "d",
-        "x",
-        "y"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.24",
@@ -584,6 +506,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 23,
+      "source_position": 23,
       "depth": 0,
       "context_text": "The continuous extension of the Chapman-Kolomogrov equation becomes",
       "symbols_used": [
@@ -594,8 +517,7 @@
         "y"
       ],
       "symbols_defined": [
-        "\\pi_{t}",
-        "y"
+        "\\pi_{t}"
       ]
     },
     {
@@ -606,6 +528,7 @@
       "section": "Appendix: Introduction",
       "subsection": "INTRODUCTION TO MARKOV CHAINS",
       "position": 24,
+      "source_position": 24,
       "depth": 0,
       "context_text": "Finally, at equilibrium, the stationary distribution satisfies",
       "symbols_used": [
@@ -615,11 +538,7 @@
         "x",
         "y"
       ],
-      "symbols_defined": [
-        "\\pi",
-        "\\pi^{*}",
-        "y"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.26",
@@ -629,6 +548,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
       "position": 25,
+      "source_position": 25,
       "depth": 0,
       "context_text": "3. Given the candidate point, $ \\theta^{*} $, calculate the ratio of the density at the candidate and current, $ \\theta_{t-1} $, points,",
       "symbols_used": [
@@ -651,6 +571,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
       "position": 26,
+      "source_position": 26,
       "depth": 0,
       "context_text": "We can summarize Metropolis sampling as first computing and then accepting a candidate value, $ \\theta^* $, with probability $ \\alpha $ (the probability of a move). This generates a Markov chain, $ (\\theta_0, \\theta_1, \\cdots, \\theta_k, \\cdots) $, as the transition probabilities from $ \\theta_t $ to $ \\theta_{t+1} $ depend only on $ \\theta_t $ and not on $ (\\theta_0, \\cdots, \\theta_{t-1}) $. Following a sufficient burn-in period (of, say, $ k $ steps), the chain approaches its stationary distribution and (as we will demonstrate shortly) samples from the vector $ (\\theta_{k+1}, \\cdots, \\theta_{k+n}) $ are samples from $ p(\\theta) $.",
       "symbols_used": [
@@ -672,6 +593,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
       "position": 27,
+      "source_position": 27,
       "depth": 0,
       "context_text": "Hastings (1970) generalized the Metropolis algorithm by using an arbitrary (as opposed to strictly symmetric) transition probability function, $ q(\\theta_1, \\theta_2) = \\Pr(\\theta_1 \\to \\theta_2) $, and setting the acceptance probability for a candidate point as",
       "symbols_used": [
@@ -694,6 +616,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
       "position": 28,
+      "source_position": 28,
       "depth": 0,
       "context_text": "We wish to use the Metropolis algorithm to simulate draws from this distribution with n = 3 degrees of freedom and a scaling factor of a = 4. Here",
       "symbols_used": [
@@ -703,8 +626,7 @@
         "x^{-5/2}"
       ],
       "symbols_defined": [
-        "f",
-        "x"
+        "f"
       ]
     },
     {
@@ -715,6 +637,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
       "position": 29,
+      "source_position": 29,
       "depth": 0,
       "context_text": "$ \\alpha, $",
       "symbols_used": [
@@ -736,6 +659,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Simulated Annealing",
       "position": 30,
+      "source_position": 30,
       "depth": 0,
       "context_text": "Simulated annealing was developed for finding the maximum of complex functions with multiple peaks where standard hill-climbing approaches may trap the algorithm on a less than optimal peak (Kirkpatrick et al. 1983). The idea is that when we initially start sampling the space, we will accept a reasonable probability of a down-hill move in order to explore the entire space. As the process proceeds, we decrease the probability of such down-hill moves. The analogy (and hence the term) is the annealing of a crystal as temperature decreases: initially there is a lot of movement, which gets smaller and smaller as the temperature cools. Simulated annealing is very closely related to Metropolis sampling, differing only in that the probability $ \\alpha $ of a move is given by where the function $ T(t) $ is called the cooling schedule (setting T = 1 recovers Metropolis sampling), and the particular value of T at any point in the chain is called the temperature. For example, suppose $ f(\\theta^*)/f(\\theta_{t-1}) = 0.5 $. If T = 100, $ \\alpha = 0.93 $, while for T = 1, $ \\alpha = 0.5 $, and for T = 1/10, $ \\alpha = 0.0098 $. Hence, we start off with a high probability of a jump and then cool down to a very low jump probability. Replacing $ \\alpha $ with the Hastings ratio (Equation A3.13) allows us to apply simulated annealing to Metropolis-Hastings.",
       "symbols_used": [
@@ -759,6 +683,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Simulated Annealing",
       "position": 31,
+      "source_position": 31,
       "depth": 0,
       "context_text": "A function with geometric decline is typically used for $ T(t) $. For example, to start at $ T_{0} $ and cool down to a final temperature of $ T_{f} $ over n steps, we can set",
       "symbols_used": [
@@ -768,8 +693,7 @@
         "t"
       ],
       "symbols_defined": [
-        "T",
-        "t"
+        "T"
       ]
     },
     {
@@ -780,6 +704,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Simulated Annealing",
       "position": 32,
+      "source_position": 32,
       "depth": 0,
       "context_text": "More generally, if we wish to cool off to $ T_{f} $ by time n and then keep the temperature constant at $ T_{f} $ for the rest of the run, we can take",
       "symbols_used": [
@@ -789,8 +714,7 @@
         "t"
       ],
       "symbols_defined": [
-        "T",
-        "t"
+        "T"
       ]
     },
     {
@@ -801,6 +725,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Simulated Annealing",
       "position": 33,
+      "source_position": 33,
       "depth": 0,
       "context_text": "In particular, to cool down to Metropolis sampling (by step n), we set $ T_{f} = 1 $ and the cooling schedule becomes",
       "symbols_used": [
@@ -809,8 +734,7 @@
         "t"
       ],
       "symbols_defined": [
-        "T",
-        "t"
+        "T"
       ]
     },
     {
@@ -821,6 +745,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Choosing a Jumping (Proposal) Distribution",
       "position": 34,
+      "source_position": 34,
       "depth": 0,
       "context_text": "The Metropolis sampler works with any symmetric proposal (or jumping) distribution, while Metropolis-Hastings allows for more general distributions. So how do we determine our best option for a proposal distribution? There are two general approaches: random walks and independent chain sampling. Under a sampler using a proposal distribution based on a random-walk chain, the new value, y, equals the current value, x, plus a random variable, namely, z,",
       "symbols_used": [
@@ -840,34 +765,21 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Autocorrelation and Sample Size Inflation",
       "position": 35,
+      "source_position": 35,
       "depth": 0,
       "context_text": "We often expect adjacent members from an MCMC sequence to be positively correlated, and we can quantify the nature of this correlation by using an autocorrelation function. Consider a sequence, $(\\theta_1, \\cdots, \\theta_n)$, of length $n$. Correlations can occur between adjacent members, $\\rho(\\theta_i, \\theta_{i+1}) \\neq 0$, and, more generally, between more distant members, $\\rho(\\theta_i, \\theta_{i+k}) \\neq 0$. The $k$th order autocorrelation, $\\rho_k$, can be estimated by",
       "symbols_used": [
-        "C",
-        "V",
         "\\mathrm{C}",
         "\\mathrm{V}",
         "\\mathrm{a}",
-        "\\mathrm{h}",
-        "\\mathrm{i}",
         "\\mathrm{o}",
         "\\mathrm{r}",
-        "\\mathrm{t}",
         "\\mathrm{v}",
-        "\\mathrm{w}",
         "\\overline{\\theta}",
         "\\theta_{t+k}",
         "\\theta_{t}",
         "\\widehat{\\rho}_{k}",
-        "a",
-        "h",
-        "i",
-        "n",
-        "o",
-        "r",
-        "t",
-        "v",
-        "w"
+        "n"
       ],
       "symbols_defined": [
         "\\widehat{\\rho}_{k}"
@@ -881,6 +793,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Autocorrelation and Sample Size Inflation",
       "position": 36,
+      "source_position": 36,
       "depth": 0,
       "context_text": "Some indication of the required sample size comes from the theory of a first-order autoregressive process $ (AR_{1}) $, where where $ |\\alpha| < 1 $ and $ \\epsilon $ is white noise, namely, $ \\epsilon \\sim N(0, \\sigma^2) $. Here $ \\rho_1 = \\alpha $ and the $ k $th order autocorrelation is given by $ \\rho_k = \\rho_1^k = \\alpha^k $. Under this process, $ E(\\bar{\\theta}) = \\mu $ with a standard error of",
       "symbols_used": [
@@ -902,22 +815,17 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "Autocorrelation and Sample Size Inflation",
       "position": 37,
-      "depth": 0,
+      "source_position": 37,
+      "depth": 2,
       "context_text": "Some indication of the required sample size comes from the theory of a first-order autoregressive process $ (AR_{1}) $, where where $ |\\alpha| < 1 $ and $ \\epsilon $ is white noise, namely, $ \\epsilon \\sim N(0, \\sigma^2) $. Here $ \\rho_1 = \\alpha $ and the $ k $th order autocorrelation is given by $ \\rho_k = \\rho_1^k = \\alpha^k $. Under this process, $ E(\\bar{\\theta}) = \\mu $ with a standard error of",
       "symbols_used": [
-        "S",
         "\\mathrm{E}",
         "\\mathrm{S}",
         "\\overline{\\theta}",
         "\\rho",
         "n"
       ],
-      "symbols_defined": [
-        "S",
-        "\\mathrm{E}",
-        "\\mathrm{S}",
-        "\\overline{\\theta}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.39",
@@ -927,6 +835,7 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
       "position": 38,
+      "source_position": 38,
       "depth": 0,
       "context_text": "Suppose we are interested in using a burned-in MCMC sequence, $ (\\theta_1, \\cdots, \\theta_n) $, to estimate some function, $ h(\\theta) $, of the target distribution, such as a mean, variance, or specific quantile (namely, a specific cumulative probability value). Since we are drawing random variables, associated with the Monte Carlo estimate, there is a sampling variance of",
       "symbols_used": [
@@ -947,35 +856,19 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
       "position": 39,
+      "source_position": 39,
       "depth": 0,
       "context_text": "One direct approach is to run several chains (or extract subsamples from a very long chain) and use the between-chain variance in $ \\widehat{h} $ as our variance estimate. Specifically, if $ \\widehat{h}_j $ denotes the estimate for chain $ j $ ($ 1 \\leq j \\leq c $), where each of the $ c $ chains has the same length, then the estimated variance of the Monte Carlo estimate is",
       "symbols_used": [
-        "V",
         "\\mathrm{V}",
         "\\mathrm{a}",
-        "\\mathrm{e}",
-        "\\mathrm{h}",
         "\\mathrm{r}",
-        "\\mathrm{w}",
         "\\widehat{h^{*}}",
         "\\widehat{h}_{j}",
-        "a",
         "c",
-        "e",
-        "h",
-        "h^{*}",
-        "r",
-        "w"
+        "h^{*}"
       ],
-      "symbols_defined": [
-        "V",
-        "\\mathrm{V}",
-        "\\mathrm{a}",
-        "\\mathrm{r}",
-        "\\widehat{h}",
-        "a",
-        "r"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.41",
@@ -985,7 +878,8 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
       "position": 40,
-      "depth": 0,
+      "source_position": 40,
+      "depth": 1,
       "context_text": "Using only a single chain, an alternative approach is to use results from the theory of time series to account for the correlations among members in the chain. To start, we estimate the lag-k autocovariance associated with h by",
       "symbols_used": [
         "\\theta_{i+k}",
@@ -997,8 +891,7 @@
         "n"
       ],
       "symbols_defined": [
-        "\\widehat{\\gamma}",
-        "k"
+        "\\widehat{\\gamma}"
       ]
     },
     {
@@ -1009,30 +902,20 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
       "position": 41,
-      "depth": 1,
+      "source_position": 41,
+      "depth": 2,
       "context_text": "This is natural generalization of the kth order autocorrelation (Equation A3.16) to the random variable generated by $ h(\\theta_{i}) $. Geyer (1992, 2011) obtained the resulting estimate of the Monte Carlo variance as",
       "symbols_used": [
-        "V",
         "\\delta",
         "\\mathrm{V}",
         "\\mathrm{a}",
         "\\mathrm{r}",
         "\\widehat{\\gamma}",
         "\\widehat{h}",
-        "a",
         "i",
-        "n",
-        "r"
+        "n"
       ],
-      "symbols_defined": [
-        "V",
-        "\\mathrm{V}",
-        "\\mathrm{a}",
-        "\\mathrm{r}",
-        "\\widehat{h}",
-        "a",
-        "r"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.43",
@@ -1042,18 +925,16 @@
       "section": "THE METROPOLIS-HASTINGS ALGORITHM",
       "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
       "position": 42,
-      "depth": 1,
+      "source_position": 42,
+      "depth": 2,
       "context_text": "One measure of the effects of autocorrelation between elements in the sampler is the effective chain size, where $ \\widehat{\\gamma}(0) $ is the standard sample variance for uncorrelated observations. In the absence of autocorrelation between members, $ \\widehat{n} = n $.",
       "symbols_used": [
-        "V",
         "\\mathrm{V}",
         "\\mathrm{a}",
         "\\mathrm{r}",
         "\\widehat{\\gamma}",
         "\\widehat{h}",
-        "\\widehat{n}",
-        "a",
-        "r"
+        "\\widehat{n}"
       ],
       "symbols_defined": [
         "\\widehat{n}"
@@ -1067,6 +948,7 @@
       "section": "CONVERGENCE DIAGNOSTICS",
       "subsection": "More Formal Approaches",
       "position": 43,
+      "source_position": 43,
       "depth": 0,
       "context_text": "Gelman and Rubin's (1992) proposal was to first generate m separate chains at initial locations that are widely dispersed in the parameter space, with each returning a burned-in and thinned (such that autocorrelations between estimates are near zero) sequence of length n. Their approach is essentially an ANOVA, contrasting the estimated among-chain variance with its within-chain value. For the univariate case, let be the among-chain variance, where $ \\bar{\\theta}_i $. is the mean parameter value for chain $ i $, and $ \\bar{\\theta}_i $ is the grand mean over all chains. Likewise, for the within-chain variance, we define",
       "symbols_used": [
@@ -1088,6 +970,7 @@
       "section": "CONVERGENCE DIAGNOSTICS",
       "subsection": "More Formal Approaches",
       "position": 44,
+      "source_position": 44,
       "depth": 0,
       "context_text": "Gelman and Rubin's (1992) proposal was to first generate m separate chains at initial locations that are widely dispersed in the parameter space, with each returning a burned-in and thinned (such that autocorrelations between estimates are near zero) sequence of length n. Their approach is essentially an ANOVA, contrasting the estimated among-chain variance with its within-chain value. For the univariate case, let be the among-chain variance, where $ \\bar{\\theta}_i $. is the mean parameter value for chain $ i $, and $ \\bar{\\theta}_i $ is the grand mean over all chains. Likewise, for the within-chain variance, we define",
       "symbols_used": [
@@ -1109,6 +992,7 @@
       "section": "CONVERGENCE DIAGNOSTICS",
       "subsection": "More Formal Approaches",
       "position": 45,
+      "source_position": 45,
       "depth": 1,
       "context_text": "A combined estimate of the variance is",
       "symbols_used": [
@@ -1118,10 +1002,7 @@
         "\\widehat{\\sigma^{2}}",
         "n"
       ],
-      "symbols_defined": [
-        "\\sigma^{2}",
-        "\\widehat{\\sigma^{2}}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.47",
@@ -1131,7 +1012,8 @@
       "section": "CONVERGENCE DIAGNOSTICS",
       "subsection": "More Formal Approaches",
       "position": 46,
-      "depth": 2,
+      "source_position": 46,
+      "depth": 1,
       "context_text": "Gelman and Rubin defined the potential scale reduction factor (PSRF) as with values of R near one being consistent with convergence. A plot of R over time should converge to a value near one, if the chains are converging. Because most MCMCs involve many variables, one could either look at the univariate R trace for each or use the multivariate version suggested by Brooks and Gelman (1998), where $ \\lambda_1 $ is the leading eigenvalue of the matrix product $ W^{-1}B/n $, and where W and B are the sample within- and among-covariance matrices for the parameters. Again, a value near 1 is consistent with convergence.",
       "symbols_used": [
         "B",
@@ -1153,6 +1035,7 @@
       "section": "CONVERGENCE DIAGNOSTICS",
       "subsection": "More Formal Approaches",
       "position": 47,
+      "source_position": 47,
       "depth": 0,
       "context_text": "Gelman and Rubin defined the potential scale reduction factor (PSRF) as with values of R near one being consistent with convergence. A plot of R over time should converge to a value near one, if the chains are converging. Because most MCMCs involve many variables, one could either look at the univariate R trace for each or use the multivariate version suggested by Brooks and Gelman (1998), where $ \\lambda_1 $ is the leading eigenvalue of the matrix product $ W^{-1}B/n $, and where W and B are the sample within- and among-covariance matrices for the parameters. Again, a value near 1 is consistent with convergence.",
       "symbols_used": [
@@ -1173,6 +1056,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 48,
+      "source_position": 48,
       "depth": 0,
       "context_text": "To introduce the Gibbs sampler, consider a bivariate random variable $ (x, y) $, and suppose we wish to compute one or both of the marginals, $ p(x) $ and $ p(y) $. The idea behind the sampler is that it is far easier to consider a sequence of conditional distributions, $ p(x \\mid y) $ and $ p(y \\mid x) $, than it is to obtain the marginal by integration of the joint density $ p(x, y) $, namely, $ p(x) = \\int p(x, y) \\, dy $. The sampler starts with some initial value, $ y_0 $, for y and obtains $ x_0 $ by generating a random variable from the conditional distribution $ p(x \\mid y = y_0) $. The sampler then uses $ x_0 $ to generate a new value of $ y_1 $, drawing from the conditional distribution based on the value of $ x_0 $, $ p(y \\mid x = x_0) $. The sampler proceeds as follows:",
       "symbols_used": [
@@ -1180,11 +1064,7 @@
         "x_{i}",
         "y_{i-1}"
       ],
-      "symbols_defined": [
-        "p",
-        "x_{i}",
-        "y"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.50",
@@ -1194,6 +1074,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 49,
+      "source_position": 49,
       "depth": 0,
       "context_text": "To introduce the Gibbs sampler, consider a bivariate random variable $ (x, y) $, and suppose we wish to compute one or both of the marginals, $ p(x) $ and $ p(y) $. The idea behind the sampler is that it is far easier to consider a sequence of conditional distributions, $ p(x \\mid y) $ and $ p(y \\mid x) $, than it is to obtain the marginal by integration of the joint density $ p(x, y) $, namely, $ p(x) = \\int p(x, y) \\, dy $. The sampler starts with some initial value, $ y_0 $, for y and obtains $ x_0 $ by generating a random variable from the conditional distribution $ p(x \\mid y = y_0) $. The sampler then uses $ x_0 $ to generate a new value of $ y_1 $, drawing from the conditional distribution based on the value of $ x_0 $, $ p(y \\mid x = x_0) $. The sampler proceeds as follows:",
       "symbols_used": [
@@ -1201,11 +1082,7 @@
         "x_{i}",
         "y_{i}"
       ],
-      "symbols_defined": [
-        "p",
-        "x",
-        "y_{i}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.51",
@@ -1215,6 +1092,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 50,
+      "source_position": 50,
       "depth": 0,
       "context_text": "When more than two variables are involved, the sampler is extended in the obvious fashion. In particular, the value of the $ k $th variable is drawn from the distribution $ p(\\theta^{(k)} \\mid \\boldsymbol{\\Theta}^{(-k)}) $, where $ \\boldsymbol{\\Theta}^{(-k)} $ denotes a vector containing all of the variables but $ k $. Thus, during the $ i $th iteration of the sample, to obtain the value of $ \\theta_i^{(k)} $, we draw from the distribution",
       "symbols_used": [
@@ -1232,13 +1110,7 @@
         "n",
         "p"
       ],
-      "symbols_defined": [
-        "\\theta^{(1)}",
-        "\\theta^{(k)}",
-        "\\theta_{i}^{(k)}",
-        "k",
-        "p"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.52",
@@ -1248,6 +1120,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 51,
+      "source_position": 51,
       "depth": 0,
       "context_text": "For example, if there are four variables, $ (w, x, y, z) $, the sampler becomes",
       "symbols_used": [
@@ -1257,11 +1130,7 @@
         "y_{i-1}",
         "z_{i-1}"
       ],
-      "symbols_defined": [
-        "p",
-        "w_{i}",
-        "x"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.53",
@@ -1271,7 +1140,8 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 52,
-      "depth": 1,
+      "source_position": 52,
+      "depth": 0,
       "context_text": "For example, if there are four variables, $ (w, x, y, z) $, the sampler becomes",
       "symbols_used": [
         "p",
@@ -1280,11 +1150,7 @@
         "y_{i-1}",
         "z_{i-1}"
       ],
-      "symbols_defined": [
-        "p",
-        "w",
-        "x_{i}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.54",
@@ -1294,7 +1160,8 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 53,
-      "depth": 1,
+      "source_position": 53,
+      "depth": 0,
       "context_text": "For example, if there are four variables, $ (w, x, y, z) $, the sampler becomes",
       "symbols_used": [
         "p",
@@ -1303,11 +1170,7 @@
         "y_{i}",
         "z_{i-1}"
       ],
-      "symbols_defined": [
-        "p",
-        "w",
-        "y_{i}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.55",
@@ -1317,6 +1180,7 @@
       "section": "Appendix: Introduction",
       "subsection": "THE GIBBS SAMPLER",
       "position": 54,
+      "source_position": 54,
       "depth": 0,
       "context_text": "For example, if there are four variables, $ (w, x, y, z) $, the sampler becomes",
       "symbols_used": [
@@ -1326,11 +1190,7 @@
         "y_{i}",
         "z_{i}"
       ],
-      "symbols_defined": [
-        "p",
-        "w",
-        "z_{i}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.56",
@@ -1340,6 +1200,7 @@
       "section": "THE GIBBS SAMPLER",
       "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
       "position": 55,
+      "source_position": 55,
       "depth": 0,
       "context_text": "Any feature of interest for the marginals can be computed from the m realizations of the Gibbs sequence. If $ \\theta_1, \\cdots, \\theta_m $ is an appropriately burned-in set of realizations from a Gibbs sampler, the expectation of any function, $ f $, of the random variable $ \\theta $ is approximated by",
       "symbols_used": [
@@ -1347,10 +1208,7 @@
         "f",
         "m"
       ],
-      "symbols_defined": [
-        "\\theta",
-        "f"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A3.57",
@@ -1360,7 +1218,8 @@
       "section": "THE GIBBS SAMPLER",
       "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
       "position": 56,
-      "depth": 1,
+      "source_position": 56,
+      "depth": 0,
       "context_text": "This is the Monte-Carlo (MC) estimate of $ f(x) $, as $ E[f(\\theta)]_m \\to E[f(\\theta)] $ as $ m \\to \\infty $. Likewise, the MC estimate for any function of $ n $ variables $ (\\theta^{(1)}, \\cdots, \\theta^{(n)}) $ is calculated by",
       "symbols_used": [
         "\\theta^{(1)}",
@@ -1381,6 +1240,7 @@
       "section": "THE GIBBS SAMPLER",
       "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
       "position": 57,
+      "source_position": 57,
       "depth": 0,
       "context_text": "While computing the MC estimate for any moment using the sampler is straightforward, computing the actual shape of the marginal density is slightly more involved. While one might use the empirical histogram of the Gibbs sequence as a rough approximation of the marginal distribution of x, this turns out to be inefficient, especially for obtaining the tails of the distribution. A better approach is to use the average of the conditional densities $ p(x \\mid y = y_i) $, as the function form of the conditional density contains more information about the shape of the entire distribution than the sequence of individual realizations, $ x_i $ (Gelfand and Smith 1990; Liu et al. 1991). Because one can approximate the marginal density using",
       "symbols_used": [
@@ -1391,8 +1251,7 @@
         "y"
       ],
       "symbols_defined": [
-        "p",
-        "x"
+        "p"
       ]
     },
     {
@@ -1403,7 +1262,8 @@
       "section": "THE GIBBS SAMPLER",
       "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
       "position": 58,
-      "depth": 0,
+      "source_position": 58,
+      "depth": 1,
       "context_text": "While computing the MC estimate for any moment using the sampler is straightforward, computing the actual shape of the marginal density is slightly more involved. While one might use the empirical histogram of the Gibbs sequence as a rough approximation of the marginal distribution of x, this turns out to be inefficient, especially for obtaining the tails of the distribution. A better approach is to use the average of the conditional densities $ p(x \\mid y = y_i) $, as the function form of the conditional density contains more information about the shape of the entire distribution than the sequence of individual realizations, $ x_i $ (Gelfand and Smith 1990; Liu et al. 1991). Because one can approximate the marginal density using",
       "symbols_used": [
         "\\widehat{p}_{m}",
@@ -1413,8 +1273,7 @@
         "y_{i}"
       ],
       "symbols_defined": [
-        "\\widehat{p}_{m}",
-        "x"
+        "\\widehat{p}_{m}"
       ]
     }
   ],
@@ -1433,51 +1292,27 @@
     },
     {
       "dependent_id": "formula_A3.4",
-      "prerequisites": [
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "x_{i}",
-          "relation": "text_definition",
-          "reason": "x_{i} is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "x_i",
-          "symbol_role": "parameter",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "draws from the density $ p(x) $",
-          "meaning": "draws from the density $ p(x) $",
-          "source_excerpt": "draws from the density $ p(x) $",
-          "source_chunk_id": "appendix3_002"
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.5",
       "prerequisites": [
         {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "x_{i}",
-          "relation": "text_definition",
-          "reason": "x_{i} is explained in nearby text",
-          "confidence": 0.55,
+          "type": "formula",
+          "target_id": "formula_A3.4",
+          "via_symbol": "\\widehat{I}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{I} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "x_i",
-          "symbol_role": "parameter",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "draws from the density $ p(x) $",
-          "meaning": "draws from the density $ p(x) $",
-          "source_excerpt": "draws from the density $ p(x) $",
-          "source_chunk_id": "appendix3_002"
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{I}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.4::\\widehat{I}",
+          "canonical_sense_id": "appendix3::monte-carlo-integration::\\hat{I}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
         }
       ]
     },
@@ -1501,8 +1336,9 @@
           "canonical_symbol": "x_i",
           "symbol_role": "parameter",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
+          "review_note": "nearby_text:where_definition",
           "definition": "drawn from the approximating density p",
           "meaning": "drawn from the approximating density p",
           "source_excerpt": "drawn from the approximating density p",
@@ -1526,8 +1362,9 @@
           "canonical_symbol": "x_i",
           "symbol_role": "parameter",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
+          "review_note": "nearby_text:where_definition",
           "definition": "drawn from the approximating density p",
           "meaning": "drawn from the approximating density p",
           "source_excerpt": "drawn from the approximating density p",
@@ -1537,19 +1374,120 @@
     },
     {
       "dependent_id": "formula_A3.9",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "p",
+          "relation": "text_definition",
+          "reason": "p is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "p",
+          "symbol_role": "variable",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:where_definition",
+          "definition": "more straightforward to sample from than q",
+          "meaning": "more straightforward to sample from than q",
+          "source_excerpt": "more straightforward to sample from than q",
+          "source_chunk_id": "appendix3_003"
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.10",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A3.4",
+          "via_symbol": "\\widehat{I}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{I} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{I}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.4::\\widehat{I}",
+          "canonical_sense_id": "appendix3::monte-carlo-integration::\\hat{I}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.11",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A3.4",
+          "via_symbol": "\\widehat{I}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{I} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{I}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.4::\\widehat{I}",
+          "canonical_sense_id": "appendix3::monte-carlo-integration::\\hat{I}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.12",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "X_{0}",
+          "relation": "text_definition",
+          "reason": "X_{0} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "X_0",
+          "symbol_role": "parameter",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:let_definition",
+          "definition": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "meaning": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "source_excerpt": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "source_chunk_id": "appendix3_004"
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "X_{t}",
+          "relation": "text_definition",
+          "reason": "X_{t} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "X_t",
+          "symbol_role": "parameter",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:let_definition",
+          "definition": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "meaning": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "source_excerpt": "the value of a random variable at time $ t $, and let the state space refer to the range of possible $ X $ values",
+          "source_chunk_id": "appendix3_004"
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.13",
@@ -1589,24 +1527,7 @@
     },
     {
       "dependent_id": "formula_A3.22",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A3.21",
-          "via_symbol": "\\pi_{j}^{*}",
-          "relation": "defines_symbol",
-          "reason": "\\pi_{j}^{*} defined by nearest upstream formula in appendix3",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "\\pi_j^*",
-          "symbol_role": "symbol",
-          "sense_id": "formula_A3.21::\\pi_{j}^{*}",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.23",
@@ -1642,28 +1563,7 @@
     },
     {
       "dependent_id": "formula_A3.31",
-      "prerequisites": [
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "T",
-          "relation": "text_definition",
-          "reason": "T is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "T",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "called the cooling schedule (setting T = 1 recovers Metropolis sampling), and the particular value of T at any point in the chain is called the temperature",
-          "meaning": "called the cooling schedule (setting T = 1 recovers Metropolis sampling), and the particular value of T at any point in the chain is called the temperature",
-          "source_excerpt": "called the cooling schedule (setting T = 1 recovers Metropolis sampling), and the particular value of T at any point in the chain is called the temperature",
-          "source_chunk_id": "appendix3_009"
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.32",
@@ -1691,7 +1591,25 @@
     },
     {
       "dependent_id": "formula_A3.38",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A3.5",
+          "via_symbol": "\\mathrm{E}",
+          "relation": "defines_symbol",
+          "reason": "\\mathrm{E} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "E",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.5::\\mathrm{E}",
+          "canonical_sense_id": "appendix3::monte-carlo-integration::E",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.39",
@@ -1699,11 +1617,51 @@
     },
     {
       "dependent_id": "formula_A3.40",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "\\widehat{h}_{j}",
+          "relation": "text_definition",
+          "reason": "\\widehat{h}_{j} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "\\hat{h}_j",
+          "symbol_role": "symbol",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "the estimate",
+          "meaning": "the estimate",
+          "source_excerpt": "the estimate",
+          "source_chunk_id": "appendix3_012"
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.41",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A3.39",
+          "via_symbol": "\\widehat{h}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{h} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{h}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.39::\\widehat{h}",
+          "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{h}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.42",
@@ -1721,6 +1679,24 @@
           "canonical_symbol": "\\hat{\\gamma}",
           "symbol_role": "symbol",
           "sense_id": "formula_A3.41::\\widehat{\\gamma}",
+          "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{\\gamma}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_A3.39",
+          "via_symbol": "\\widehat{h}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{h} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{h}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.39::\\widehat{h}",
+          "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{h}",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1742,6 +1718,24 @@
           "canonical_symbol": "\\hat{\\gamma}",
           "symbol_role": "symbol",
           "sense_id": "formula_A3.41::\\widehat{\\gamma}",
+          "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{\\gamma}",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        },
+        {
+          "type": "formula",
+          "target_id": "formula_A3.39",
+          "via_symbol": "\\widehat{h}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{h} defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{h}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A3.39::\\widehat{h}",
+          "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{h}",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1771,6 +1765,7 @@
           "canonical_symbol": "B",
           "symbol_role": "variable",
           "sense_id": "formula_A3.44::B",
+          "canonical_sense_id": "appendix3::more-formal-approaches::B",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1792,22 +1787,7 @@
           "canonical_symbol": "B",
           "symbol_role": "variable",
           "sense_id": "formula_A3.44::B",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_A3.46",
-          "via_symbol": "\\sigma^{2}",
-          "relation": "defines_symbol",
-          "reason": "\\sigma^{2} defined by nearest upstream formula in appendix3",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "\\sigma^2",
-          "symbol_role": "statistic_variance",
-          "sense_id": "formula_A3.46::\\sigma^{2}",
+          "canonical_sense_id": "appendix3::more-formal-approaches::B",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1815,7 +1795,29 @@
     },
     {
       "dependent_id": "formula_A3.48",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "\\lambda_{1}",
+          "relation": "text_definition",
+          "reason": "\\lambda_{1} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "\\lambda_1",
+          "symbol_role": "symbol",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:where_definition",
+          "definition": "the leading eigenvalue of the matrix product $ W^{-1}B/n $",
+          "meaning": "the leading eigenvalue of the matrix product $ W^{-1}B/n $",
+          "source_excerpt": "the leading eigenvalue of the matrix product $ W^{-1}B/n $",
+          "source_chunk_id": "appendix3_015"
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.49",
@@ -1835,45 +1837,11 @@
     },
     {
       "dependent_id": "formula_A3.53",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A3.52",
-          "via_symbol": "w_{i}",
-          "relation": "defines_symbol",
-          "reason": "w_{i} defined by nearest upstream formula in appendix3",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "w_i",
-          "symbol_role": "parameter",
-          "sense_id": "formula_A3.52::w_{i}",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.54",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A3.52",
-          "via_symbol": "w_{i}",
-          "relation": "defines_symbol",
-          "reason": "w_{i} defined by nearest upstream formula in appendix3",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "w_i",
-          "symbol_role": "parameter",
-          "sense_id": "formula_A3.52::w_{i}",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.55",
@@ -1881,28 +1849,33 @@
     },
     {
       "dependent_id": "formula_A3.56",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "\\theta_{i}",
+          "relation": "text_definition",
+          "reason": "\\theta_{i} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "\\theta_i",
+          "symbol_role": "symbol",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "appropriately burned-in set of realizations from a Gibbs sampler, the expectation of any function, $ f $, of the random variable $ \\theta $ is approximated by",
+          "meaning": "appropriately burned-in set of realizations from a Gibbs sampler, the expectation of any function, $ f $, of the random variable $ \\theta $ is approximated by",
+          "source_excerpt": "appropriately burned-in set of realizations from a Gibbs sampler, the expectation of any function, $ f $, of the random variable $ \\theta $ is approximated by",
+          "source_chunk_id": "appendix3_019"
+        }
+      ]
     },
     {
       "dependent_id": "formula_A3.57",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A3.51",
-          "via_symbol": "\\theta^{(1)}",
-          "relation": "defines_symbol",
-          "reason": "\\theta^{(1)} defined by nearest upstream formula in appendix3",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "\\theta^(1)",
-          "symbol_role": "symbol",
-          "sense_id": "formula_A3.51::\\theta^{(1)}",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A3.58",
@@ -1910,185 +1883,45 @@
     },
     {
       "dependent_id": "formula_A3.59",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A3.58",
+          "via_symbol": "p",
+          "relation": "defines_symbol",
+          "reason": "p defined by nearest upstream formula in appendix3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "p",
+          "symbol_role": "variable",
+          "sense_id": "formula_A3.58::p",
+          "canonical_sense_id": "appendix3::using-the-gibbs-sampler-to-approximate-marginal-distributions::p",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     }
   ],
   "symbol_index": {
-    "a": [
-      "formula_A3.1::a",
-      "formula_A3.2::a",
-      "formula_A3.3::a",
-      "formula_A3.11::a",
-      "formula_A3.40::a",
-      "formula_A3.42::a"
-    ],
-    "canonical:a": [
-      "formula_A3.1::a",
-      "formula_A3.2::a",
-      "formula_A3.3::a",
-      "formula_A3.11::a",
-      "formula_A3.40::a",
-      "formula_A3.42::a"
-    ],
-    "b": [
-      "formula_A3.2::b",
-      "formula_A3.3::b"
-    ],
-    "canonical:b": [
-      "formula_A3.2::b",
-      "formula_A3.3::b"
-    ],
-    "d": [
-      "formula_A3.2::d",
-      "formula_A3.3::d",
-      "formula_A3.6::d",
-      "formula_A3.7::d",
-      "formula_A3.10::d",
-      "formula_A3.23::d"
-    ],
-    "canonical:d": [
-      "formula_A3.2::d",
-      "formula_A3.3::d",
-      "formula_A3.6::d",
-      "formula_A3.7::d",
-      "formula_A3.10::d",
-      "formula_A3.23::d"
-    ],
-    "h": [
-      "formula_A3.2::h",
-      "formula_A3.3::h"
-    ],
-    "canonical:h": [
-      "formula_A3.2::h",
-      "formula_A3.3::h"
-    ],
-    "x": [
-      "formula_A3.2::x",
-      "formula_A3.3::x",
-      "formula_A3.6::x",
-      "formula_A3.7::x",
-      "formula_A3.10::x",
-      "formula_A3.23::x",
-      "formula_A3.29::x",
-      "formula_A3.50::x",
-      "formula_A3.52::x",
-      "formula_A3.58::x",
-      "formula_A3.59::x"
-    ],
-    "canonical:x": [
-      "formula_A3.2::x",
-      "formula_A3.3::x",
-      "formula_A3.6::x",
-      "formula_A3.7::x",
-      "formula_A3.10::x",
-      "formula_A3.23::x",
-      "formula_A3.29::x",
-      "formula_A3.50::x",
-      "formula_A3.52::x",
-      "formula_A3.58::x",
-      "formula_A3.59::x"
-    ],
     "\\widehat{I}": [
-      "formula_A3.4::\\widehat{I}",
-      "formula_A3.5::\\widehat{I}",
-      "formula_A3.10::\\widehat{I}",
-      "formula_A3.11::\\widehat{I}"
+      "formula_A3.4::\\widehat{I}"
     ],
     "canonical:\\hat{I}": [
-      "formula_A3.4::\\widehat{I}",
-      "formula_A3.5::\\widehat{I}",
-      "formula_A3.10::\\widehat{I}",
-      "formula_A3.11::\\widehat{I}"
-    ],
-    "y": [
-      "formula_A3.4::y",
-      "formula_A3.5::y",
-      "formula_A3.8::y",
-      "formula_A3.23::y",
-      "formula_A3.24::y",
-      "formula_A3.25::y",
-      "formula_A3.35::y",
-      "formula_A3.49::y"
-    ],
-    "canonical:y": [
-      "formula_A3.4::y",
-      "formula_A3.5::y",
-      "formula_A3.8::y",
-      "formula_A3.23::y",
-      "formula_A3.24::y",
-      "formula_A3.25::y",
-      "formula_A3.35::y",
-      "formula_A3.49::y"
-    ],
-    "S": [
-      "formula_A3.5::S",
-      "formula_A3.38::S"
-    ],
-    "canonical:S": [
-      "formula_A3.5::S",
-      "formula_A3.38::S"
+      "formula_A3.4::\\widehat{I}"
     ],
     "\\mathrm{E}": [
-      "formula_A3.5::\\mathrm{E}",
-      "formula_A3.38::\\mathrm{E}"
+      "formula_A3.5::\\mathrm{E}"
     ],
-    "canonical:\\mathrm{E}": [
-      "formula_A3.5::\\mathrm{E}",
-      "formula_A3.38::\\mathrm{E}"
+    "canonical:E": [
+      "formula_A3.5::\\mathrm{E}"
     ],
     "\\mathrm{S}": [
-      "formula_A3.5::\\mathrm{S}",
-      "formula_A3.38::\\mathrm{S}"
+      "formula_A3.5::\\mathrm{S}"
     ],
-    "canonical:\\mathrm{S}": [
-      "formula_A3.5::\\mathrm{S}",
-      "formula_A3.38::\\mathrm{S}"
-    ],
-    "f": [
-      "formula_A3.6::f",
-      "formula_A3.7::f",
-      "formula_A3.10::f",
-      "formula_A3.29::f",
-      "formula_A3.56::f"
-    ],
-    "canonical:f": [
-      "formula_A3.6::f",
-      "formula_A3.7::f",
-      "formula_A3.10::f",
-      "formula_A3.29::f",
-      "formula_A3.56::f"
-    ],
-    "q": [
-      "formula_A3.6::q",
-      "formula_A3.7::q",
-      "formula_A3.10::q"
-    ],
-    "canonical:q": [
-      "formula_A3.6::q",
-      "formula_A3.7::q",
-      "formula_A3.10::q"
-    ],
-    "i": [
-      "formula_A3.7::i",
-      "formula_A3.8::i",
-      "formula_A3.13::i",
-      "formula_A3.21::i"
-    ],
-    "canonical:i": [
-      "formula_A3.7::i",
-      "formula_A3.8::i",
-      "formula_A3.13::i",
-      "formula_A3.21::i"
-    ],
-    "n": [
-      "formula_A3.7::n",
-      "formula_A3.8::n",
-      "formula_A3.19::n"
-    ],
-    "canonical:n": [
-      "formula_A3.7::n",
-      "formula_A3.8::n",
-      "formula_A3.19::n"
+    "canonical:S": [
+      "formula_A3.5::\\mathrm{S}"
     ],
     "J": [
       "formula_A3.8::J"
@@ -2102,72 +1935,6 @@
     "canonical:C^-1": [
       "formula_A3.9::C^{-1}"
     ],
-    "C": [
-      "formula_A3.10::C"
-    ],
-    "canonical:C": [
-      "formula_A3.10::C"
-    ],
-    "V": [
-      "formula_A3.11::V",
-      "formula_A3.40::V",
-      "formula_A3.42::V"
-    ],
-    "canonical:V": [
-      "formula_A3.11::V",
-      "formula_A3.40::V",
-      "formula_A3.42::V"
-    ],
-    "\\mathrm{V}": [
-      "formula_A3.11::\\mathrm{V}",
-      "formula_A3.40::\\mathrm{V}",
-      "formula_A3.42::\\mathrm{V}"
-    ],
-    "canonical:\\mathrm{V}": [
-      "formula_A3.11::\\mathrm{V}",
-      "formula_A3.40::\\mathrm{V}",
-      "formula_A3.42::\\mathrm{V}"
-    ],
-    "\\mathrm{a}": [
-      "formula_A3.11::\\mathrm{a}",
-      "formula_A3.40::\\mathrm{a}",
-      "formula_A3.42::\\mathrm{a}"
-    ],
-    "canonical:\\mathrm{a}": [
-      "formula_A3.11::\\mathrm{a}",
-      "formula_A3.40::\\mathrm{a}",
-      "formula_A3.42::\\mathrm{a}"
-    ],
-    "\\mathrm{r}": [
-      "formula_A3.11::\\mathrm{r}",
-      "formula_A3.40::\\mathrm{r}",
-      "formula_A3.42::\\mathrm{r}"
-    ],
-    "canonical:\\mathrm{r}": [
-      "formula_A3.11::\\mathrm{r}",
-      "formula_A3.40::\\mathrm{r}",
-      "formula_A3.42::\\mathrm{r}"
-    ],
-    "r": [
-      "formula_A3.11::r",
-      "formula_A3.40::r",
-      "formula_A3.42::r"
-    ],
-    "canonical:r": [
-      "formula_A3.11::r",
-      "formula_A3.40::r",
-      "formula_A3.42::r"
-    ],
-    "j": [
-      "formula_A3.13::j",
-      "formula_A3.21::j",
-      "formula_A3.22::j"
-    ],
-    "canonical:j": [
-      "formula_A3.13::j",
-      "formula_A3.21::j",
-      "formula_A3.22::j"
-    ],
     "\\pi_{j}": [
       "formula_A3.14::\\pi_{j}",
       "formula_A3.15::\\pi_{j}"
@@ -2176,95 +1943,15 @@
       "formula_A3.14::\\pi_{j}",
       "formula_A3.15::\\pi_{j}"
     ],
-    "t": [
-      "formula_A3.14::t",
-      "formula_A3.15::t",
-      "formula_A3.16::t",
-      "formula_A3.17::t",
-      "formula_A3.18::t",
-      "formula_A3.32::t",
-      "formula_A3.33::t",
-      "formula_A3.34::t"
-    ],
-    "canonical:t": [
-      "formula_A3.14::t",
-      "formula_A3.15::t",
-      "formula_A3.16::t",
-      "formula_A3.17::t",
-      "formula_A3.18::t",
-      "formula_A3.32::t",
-      "formula_A3.33::t",
-      "formula_A3.34::t"
-    ],
-    "\\boldsymbol": [
-      "formula_A3.16::\\boldsymbol",
-      "formula_A3.17::\\boldsymbol",
-      "formula_A3.18::\\boldsymbol",
-      "formula_A3.22::\\boldsymbol"
-    ],
-    "canonical:\\boldsymbol": [
-      "formula_A3.16::\\boldsymbol",
-      "formula_A3.17::\\boldsymbol",
-      "formula_A3.18::\\boldsymbol",
-      "formula_A3.22::\\boldsymbol"
-    ],
     "\\boldsymbol{\\pi}": [
       "formula_A3.16::\\boldsymbol{\\pi}",
       "formula_A3.17::\\boldsymbol{\\pi}",
       "formula_A3.18::\\boldsymbol{\\pi}"
     ],
-    "canonical:\\boldsymbol{\\pi}": [
+    "canonical:\\pi": [
       "formula_A3.16::\\boldsymbol{\\pi}",
       "formula_A3.17::\\boldsymbol{\\pi}",
       "formula_A3.18::\\boldsymbol{\\pi}"
-    ],
-    "\\pi": [
-      "formula_A3.16::\\pi",
-      "formula_A3.17::\\pi",
-      "formula_A3.18::\\pi",
-      "formula_A3.20::\\pi",
-      "formula_A3.22::\\pi",
-      "formula_A3.25::\\pi"
-    ],
-    "canonical:\\pi": [
-      "formula_A3.16::\\pi",
-      "formula_A3.17::\\pi",
-      "formula_A3.18::\\pi",
-      "formula_A3.20::\\pi",
-      "formula_A3.22::\\pi",
-      "formula_A3.25::\\pi"
-    ],
-    "p_{ij}^{(n)}": [
-      "formula_A3.19::p_{ij}^{(n)}"
-    ],
-    "canonical:p_ij^(n)": [
-      "formula_A3.19::p_{ij}^{(n)}"
-    ],
-    "\\pi^{*}": [
-      "formula_A3.20::\\pi^{*}",
-      "formula_A3.25::\\pi^{*}"
-    ],
-    "canonical:\\pi^*": [
-      "formula_A3.20::\\pi^{*}",
-      "formula_A3.25::\\pi^{*}"
-    ],
-    "\\pi_{j}^{*}": [
-      "formula_A3.21::\\pi_{j}^{*}"
-    ],
-    "canonical:\\pi_j^*": [
-      "formula_A3.21::\\pi_{j}^{*}"
-    ],
-    "\\boldsymbol{\\pi}^{*}": [
-      "formula_A3.22::\\boldsymbol{\\pi}^{*}"
-    ],
-    "canonical:\\boldsymbol{\\pi}^*": [
-      "formula_A3.22::\\boldsymbol{\\pi}^{*}"
-    ],
-    "\\mathbf{P}": [
-      "formula_A3.22::\\mathbf{P}"
-    ],
-    "canonical:\\mathbf{P}": [
-      "formula_A3.22::\\mathbf{P}"
     ],
     "\\pi_{t}": [
       "formula_A3.24::\\pi_{t}"
@@ -2284,6 +1971,12 @@
       "formula_A3.28::\\alpha",
       "formula_A3.30::\\alpha"
     ],
+    "f": [
+      "formula_A3.29::f"
+    ],
+    "canonical:f": [
+      "formula_A3.29::f"
+    ],
     "\\alpha_{SA}": [
       "formula_A3.31::\\alpha_{SA}"
     ],
@@ -2300,6 +1993,12 @@
       "formula_A3.33::T",
       "formula_A3.34::T"
     ],
+    "y": [
+      "formula_A3.35::y"
+    ],
+    "canonical:y": [
+      "formula_A3.35::y"
+    ],
     "\\widehat{\\rho}_{k}": [
       "formula_A3.36::\\widehat{\\rho}_{k}"
     ],
@@ -2312,35 +2011,17 @@
     "canonical:\\theta_t": [
       "formula_A3.37::\\theta_{t}"
     ],
-    "\\overline{\\theta}": [
-      "formula_A3.38::\\overline{\\theta}"
-    ],
-    "canonical:\\overline{\\theta}": [
-      "formula_A3.38::\\overline{\\theta}"
-    ],
     "\\widehat{h}": [
-      "formula_A3.39::\\widehat{h}",
-      "formula_A3.40::\\widehat{h}",
-      "formula_A3.42::\\widehat{h}"
+      "formula_A3.39::\\widehat{h}"
     ],
     "canonical:\\hat{h}": [
-      "formula_A3.39::\\widehat{h}",
-      "formula_A3.40::\\widehat{h}",
-      "formula_A3.42::\\widehat{h}"
+      "formula_A3.39::\\widehat{h}"
     ],
     "\\widehat{\\gamma}": [
       "formula_A3.41::\\widehat{\\gamma}"
     ],
     "canonical:\\hat{\\gamma}": [
       "formula_A3.41::\\widehat{\\gamma}"
-    ],
-    "k": [
-      "formula_A3.41::k",
-      "formula_A3.51::k"
-    ],
-    "canonical:k": [
-      "formula_A3.41::k",
-      "formula_A3.51::k"
     ],
     "\\widehat{n}": [
       "formula_A3.43::\\widehat{n}"
@@ -2360,18 +2041,6 @@
     "canonical:W": [
       "formula_A3.45::W"
     ],
-    "\\sigma^{2}": [
-      "formula_A3.46::\\sigma^{2}"
-    ],
-    "canonical:\\sigma^2": [
-      "formula_A3.46::\\sigma^{2}"
-    ],
-    "\\widehat{\\sigma^{2}}": [
-      "formula_A3.46::\\widehat{\\sigma^{2}}"
-    ],
-    "canonical:\\hat{\\sigma^2}": [
-      "formula_A3.46::\\widehat{\\sigma^{2}}"
-    ],
     "R": [
       "formula_A3.47::R",
       "formula_A3.48::R"
@@ -2381,86 +2050,10 @@
       "formula_A3.48::R"
     ],
     "p": [
-      "formula_A3.49::p",
-      "formula_A3.50::p",
-      "formula_A3.51::p",
-      "formula_A3.52::p",
-      "formula_A3.53::p",
-      "formula_A3.54::p",
-      "formula_A3.55::p",
       "formula_A3.58::p"
     ],
     "canonical:p": [
-      "formula_A3.49::p",
-      "formula_A3.50::p",
-      "formula_A3.51::p",
-      "formula_A3.52::p",
-      "formula_A3.53::p",
-      "formula_A3.54::p",
-      "formula_A3.55::p",
       "formula_A3.58::p"
-    ],
-    "x_{i}": [
-      "formula_A3.49::x_{i}",
-      "formula_A3.53::x_{i}"
-    ],
-    "canonical:x_i": [
-      "formula_A3.49::x_{i}",
-      "formula_A3.53::x_{i}"
-    ],
-    "y_{i}": [
-      "formula_A3.50::y_{i}",
-      "formula_A3.54::y_{i}"
-    ],
-    "canonical:y_i": [
-      "formula_A3.50::y_{i}",
-      "formula_A3.54::y_{i}"
-    ],
-    "\\theta^{(1)}": [
-      "formula_A3.51::\\theta^{(1)}"
-    ],
-    "canonical:\\theta^(1)": [
-      "formula_A3.51::\\theta^{(1)}"
-    ],
-    "\\theta^{(k)}": [
-      "formula_A3.51::\\theta^{(k)}"
-    ],
-    "canonical:\\theta^(k)": [
-      "formula_A3.51::\\theta^{(k)}"
-    ],
-    "\\theta_{i}^{(k)}": [
-      "formula_A3.51::\\theta_{i}^{(k)}"
-    ],
-    "canonical:\\theta_i^(k)": [
-      "formula_A3.51::\\theta_{i}^{(k)}"
-    ],
-    "w_{i}": [
-      "formula_A3.52::w_{i}"
-    ],
-    "canonical:w_i": [
-      "formula_A3.52::w_{i}"
-    ],
-    "w": [
-      "formula_A3.53::w",
-      "formula_A3.54::w",
-      "formula_A3.55::w"
-    ],
-    "canonical:w": [
-      "formula_A3.53::w",
-      "formula_A3.54::w",
-      "formula_A3.55::w"
-    ],
-    "z_{i}": [
-      "formula_A3.55::z_{i}"
-    ],
-    "canonical:z_i": [
-      "formula_A3.55::z_{i}"
-    ],
-    "\\theta": [
-      "formula_A3.56::\\theta"
-    ],
-    "canonical:\\theta": [
-      "formula_A3.56::\\theta"
     ],
     "\\widehat{p}_{m}": [
       "formula_A3.59::\\widehat{p}_{m}"
@@ -2469,329 +2062,418 @@
       "formula_A3.59::\\widehat{p}_{m}"
     ]
   },
+  "symbol_sense_clusters": [
+    {
+      "canonical_sense_id": "appendix3::autocorrelation-and-sample-size-inflation::\\hat{\\rho}_k",
+      "canonical_symbol": "\\hat{\\rho}_k",
+      "symbol": "\\widehat{\\rho}_{k}",
+      "chapter_id": "appendix3",
+      "subsection": "Autocorrelation and Sample Size Inflation",
+      "representative_sense_id": "formula_A3.36::\\widehat{\\rho}_{k}",
+      "representative_formula_id": "formula_A3.36",
+      "member_sense_ids": [
+        "formula_A3.36::\\widehat{\\rho}_{k}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.36"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::autocorrelation-and-sample-size-inflation::\\theta_t",
+      "canonical_symbol": "\\theta_t",
+      "symbol": "\\theta_{t}",
+      "chapter_id": "appendix3",
+      "subsection": "Autocorrelation and Sample Size Inflation",
+      "representative_sense_id": "formula_A3.37::\\theta_{t}",
+      "representative_formula_id": "formula_A3.37",
+      "member_sense_ids": [
+        "formula_A3.37::\\theta_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.37"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::choosing-a-jumping-proposal-distribution::y",
+      "canonical_symbol": "y",
+      "symbol": "y",
+      "chapter_id": "appendix3",
+      "subsection": "Choosing a Jumping (Proposal) Distribution",
+      "representative_sense_id": "formula_A3.35::y",
+      "representative_formula_id": "formula_A3.35",
+      "member_sense_ids": [
+        "formula_A3.35::y"
+      ],
+      "member_formula_ids": [
+        "formula_A3.35"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::introduction-to-markov-chains::\\pi",
+      "canonical_symbol": "\\pi",
+      "symbol": "\\boldsymbol{\\pi}",
+      "chapter_id": "appendix3",
+      "subsection": "INTRODUCTION TO MARKOV CHAINS",
+      "representative_sense_id": "formula_A3.16::\\boldsymbol{\\pi}",
+      "representative_formula_id": "formula_A3.16",
+      "member_sense_ids": [
+        "formula_A3.16::\\boldsymbol{\\pi}",
+        "formula_A3.17::\\boldsymbol{\\pi}",
+        "formula_A3.18::\\boldsymbol{\\pi}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.16",
+        "formula_A3.17",
+        "formula_A3.18"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "appendix3::introduction-to-markov-chains::\\pi_j",
+      "canonical_symbol": "\\pi_j",
+      "symbol": "\\pi_{j}",
+      "chapter_id": "appendix3",
+      "subsection": "INTRODUCTION TO MARKOV CHAINS",
+      "representative_sense_id": "formula_A3.14::\\pi_{j}",
+      "representative_formula_id": "formula_A3.14",
+      "member_sense_ids": [
+        "formula_A3.14::\\pi_{j}",
+        "formula_A3.15::\\pi_{j}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.14",
+        "formula_A3.15"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "appendix3::introduction-to-markov-chains::\\pi_t",
+      "canonical_symbol": "\\pi_t",
+      "symbol": "\\pi_{t}",
+      "chapter_id": "appendix3",
+      "subsection": "INTRODUCTION TO MARKOV CHAINS",
+      "representative_sense_id": "formula_A3.24::\\pi_{t}",
+      "representative_formula_id": "formula_A3.24",
+      "member_sense_ids": [
+        "formula_A3.24::\\pi_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.24"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::importance-sampling::C^-1",
+      "canonical_symbol": "C^-1",
+      "symbol": "C^{-1}",
+      "chapter_id": "appendix3",
+      "subsection": "Importance Sampling",
+      "representative_sense_id": "formula_A3.9::C^{-1}",
+      "representative_formula_id": "formula_A3.9",
+      "member_sense_ids": [
+        "formula_A3.9::C^{-1}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.9"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::importance-sampling::J",
+      "canonical_symbol": "J",
+      "symbol": "J",
+      "chapter_id": "appendix3",
+      "subsection": "Importance Sampling",
+      "representative_sense_id": "formula_A3.8::J",
+      "representative_formula_id": "formula_A3.8",
+      "member_sense_ids": [
+        "formula_A3.8::J"
+      ],
+      "member_formula_ids": [
+        "formula_A3.8"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::monte-carlo-integration::E",
+      "canonical_symbol": "E",
+      "symbol": "\\mathrm{E}",
+      "chapter_id": "appendix3",
+      "subsection": "MONTE CARLO INTEGRATION",
+      "representative_sense_id": "formula_A3.5::\\mathrm{E}",
+      "representative_formula_id": "formula_A3.5",
+      "member_sense_ids": [
+        "formula_A3.5::\\mathrm{E}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.5"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::monte-carlo-integration::S",
+      "canonical_symbol": "S",
+      "symbol": "\\mathrm{S}",
+      "chapter_id": "appendix3",
+      "subsection": "MONTE CARLO INTEGRATION",
+      "representative_sense_id": "formula_A3.5::\\mathrm{S}",
+      "representative_formula_id": "formula_A3.5",
+      "member_sense_ids": [
+        "formula_A3.5::\\mathrm{S}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.5"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::monte-carlo-integration::\\hat{I}",
+      "canonical_symbol": "\\hat{I}",
+      "symbol": "\\widehat{I}",
+      "chapter_id": "appendix3",
+      "subsection": "MONTE CARLO INTEGRATION",
+      "representative_sense_id": "formula_A3.4::\\widehat{I}",
+      "representative_formula_id": "formula_A3.4",
+      "member_sense_ids": [
+        "formula_A3.4::\\widehat{I}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.4"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::more-formal-approaches::B",
+      "canonical_symbol": "B",
+      "symbol": "B",
+      "chapter_id": "appendix3",
+      "subsection": "More Formal Approaches",
+      "representative_sense_id": "formula_A3.44::B",
+      "representative_formula_id": "formula_A3.44",
+      "member_sense_ids": [
+        "formula_A3.44::B"
+      ],
+      "member_formula_ids": [
+        "formula_A3.44"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::more-formal-approaches::R",
+      "canonical_symbol": "R",
+      "symbol": "R",
+      "chapter_id": "appendix3",
+      "subsection": "More Formal Approaches",
+      "representative_sense_id": "formula_A3.47::R",
+      "representative_formula_id": "formula_A3.47",
+      "member_sense_ids": [
+        "formula_A3.47::R",
+        "formula_A3.48::R"
+      ],
+      "member_formula_ids": [
+        "formula_A3.47",
+        "formula_A3.48"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "appendix3::more-formal-approaches::W",
+      "canonical_symbol": "W",
+      "symbol": "W",
+      "chapter_id": "appendix3",
+      "subsection": "More Formal Approaches",
+      "representative_sense_id": "formula_A3.45::W",
+      "representative_formula_id": "formula_A3.45",
+      "member_sense_ids": [
+        "formula_A3.45::W"
+      ],
+      "member_formula_ids": [
+        "formula_A3.45"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::simulated-annealing::T",
+      "canonical_symbol": "T",
+      "symbol": "T",
+      "chapter_id": "appendix3",
+      "subsection": "Simulated Annealing",
+      "representative_sense_id": "formula_A3.32::T",
+      "representative_formula_id": "formula_A3.32",
+      "member_sense_ids": [
+        "formula_A3.32::T",
+        "formula_A3.33::T",
+        "formula_A3.34::T"
+      ],
+      "member_formula_ids": [
+        "formula_A3.32",
+        "formula_A3.33",
+        "formula_A3.34"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "appendix3::simulated-annealing::\\alpha_SA",
+      "canonical_symbol": "\\alpha_SA",
+      "symbol": "\\alpha_{SA}",
+      "chapter_id": "appendix3",
+      "subsection": "Simulated Annealing",
+      "representative_sense_id": "formula_A3.31::\\alpha_{SA}",
+      "representative_formula_id": "formula_A3.31",
+      "member_sense_ids": [
+        "formula_A3.31::\\alpha_{SA}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.31"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::the-metropolis-hastings-algorithm::\\alpha",
+      "canonical_symbol": "\\alpha",
+      "symbol": "\\alpha",
+      "chapter_id": "appendix3",
+      "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
+      "representative_sense_id": "formula_A3.26::\\alpha",
+      "representative_formula_id": "formula_A3.26",
+      "member_sense_ids": [
+        "formula_A3.26::\\alpha",
+        "formula_A3.27::\\alpha",
+        "formula_A3.28::\\alpha",
+        "formula_A3.30::\\alpha"
+      ],
+      "member_formula_ids": [
+        "formula_A3.26",
+        "formula_A3.27",
+        "formula_A3.28",
+        "formula_A3.30"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "appendix3::the-metropolis-hastings-algorithm::f",
+      "canonical_symbol": "f",
+      "symbol": "f",
+      "chapter_id": "appendix3",
+      "subsection": "THE METROPOLIS-HASTINGS ALGORITHM",
+      "representative_sense_id": "formula_A3.29::f",
+      "representative_formula_id": "formula_A3.29",
+      "member_sense_ids": [
+        "formula_A3.29::f"
+      ],
+      "member_formula_ids": [
+        "formula_A3.29"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{\\gamma}",
+      "canonical_symbol": "\\hat{\\gamma}",
+      "symbol": "\\widehat{\\gamma}",
+      "chapter_id": "appendix3",
+      "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
+      "representative_sense_id": "formula_A3.41::\\widehat{\\gamma}",
+      "representative_formula_id": "formula_A3.41",
+      "member_sense_ids": [
+        "formula_A3.41::\\widehat{\\gamma}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.41"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{h}",
+      "canonical_symbol": "\\hat{h}",
+      "symbol": "\\widehat{h}",
+      "chapter_id": "appendix3",
+      "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
+      "representative_sense_id": "formula_A3.39::\\widehat{h}",
+      "representative_formula_id": "formula_A3.39",
+      "member_sense_ids": [
+        "formula_A3.39::\\widehat{h}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.39"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::the-monte-carlo-variance-of-a-mcmc-based-estimate::\\hat{n}",
+      "canonical_symbol": "\\hat{n}",
+      "symbol": "\\widehat{n}",
+      "chapter_id": "appendix3",
+      "subsection": "The Monte Carlo Variance of a MCMC-Based Estimate",
+      "representative_sense_id": "formula_A3.43::\\widehat{n}",
+      "representative_formula_id": "formula_A3.43",
+      "member_sense_ids": [
+        "formula_A3.43::\\widehat{n}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.43"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::using-the-gibbs-sampler-to-approximate-marginal-distributions::\\hat{p}_m",
+      "canonical_symbol": "\\hat{p}_m",
+      "symbol": "\\widehat{p}_{m}",
+      "chapter_id": "appendix3",
+      "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
+      "representative_sense_id": "formula_A3.59::\\widehat{p}_{m}",
+      "representative_formula_id": "formula_A3.59",
+      "member_sense_ids": [
+        "formula_A3.59::\\widehat{p}_{m}"
+      ],
+      "member_formula_ids": [
+        "formula_A3.59"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "appendix3::using-the-gibbs-sampler-to-approximate-marginal-distributions::p",
+      "canonical_symbol": "p",
+      "symbol": "p",
+      "chapter_id": "appendix3",
+      "subsection": "Using the Gibbs Sampler to Approximate Marginal Distributions",
+      "representative_sense_id": "formula_A3.58::p",
+      "representative_formula_id": "formula_A3.58",
+      "member_sense_ids": [
+        "formula_A3.58::p"
+      ],
+      "member_formula_ids": [
+        "formula_A3.58"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    }
+  ],
   "ambiguous": [
-    {
-      "dependent_id": "formula_A3.3",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.4",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.5",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.7",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.8",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.9",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.9",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.10",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.11",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
     {
       "dependent_id": "formula_A3.15",
       "symbol": "\\pi_{i}",
@@ -2811,178 +2493,18 @@
       ]
     },
     {
-      "dependent_id": "formula_A3.21",
-      "symbol": "\\pi_{i}^{*}",
-      "family_key": "\\pi^*",
+      "dependent_id": "formula_A3.38",
+      "symbol": "\\overline{\\theta}",
+      "family_key": "\\theta",
       "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_A3.20",
+          "target_id": "formula_A3.37",
           "chapter_id": "appendix3",
-          "via_symbol": "\\pi^{*}",
-          "family_key": "\\pi^*",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.22",
-      "symbol": "\\pi_{i}^{*}",
-      "family_key": "\\pi^*",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.20",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\pi^{*}",
-          "family_key": "\\pi^*",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.21",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\pi_{j}^{*}",
-          "family_key": "\\pi^*",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.24",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.25",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.33",
-      "symbol": "T_{0}",
-      "family_key": "T",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.32",
-          "chapter_id": "appendix3",
-          "via_symbol": "T",
-          "family_key": "T",
+          "via_symbol": "\\theta_{t}",
+          "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
         }
@@ -3021,48 +2543,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\overline{\\theta}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.40",
-      "symbol": "\\widehat{h}_{j}",
-      "family_key": "h",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.39",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
@@ -3081,106 +2561,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\overline{\\theta}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.41",
-      "symbol": "\\widehat{h}",
-      "family_key": "h",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.39",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.40",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.43",
-      "symbol": "\\widehat{h}",
-      "family_key": "h",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "h",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.39",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.40",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.42",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\widehat{h}",
-          "family_key": "h",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
@@ -3196,14 +2576,6 @@
           "target_id": "formula_A3.37",
           "chapter_id": "appendix3",
           "via_symbol": "\\theta_{t}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\overline{\\theta}",
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
@@ -3225,408 +2597,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\overline{\\theta}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.50",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.29",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.49",
-          "chapter_id": "appendix3",
-          "via_symbol": "x_{i}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.54",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.29",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.49",
-          "chapter_id": "appendix3",
-          "via_symbol": "x_{i}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.50",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.52",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.53",
-          "chapter_id": "appendix3",
-          "via_symbol": "x_{i}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.55",
-      "symbol": "w_{i}",
-      "family_key": "w",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.52",
-          "chapter_id": "appendix3",
-          "via_symbol": "w_{i}",
-          "family_key": "w",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.53",
-          "chapter_id": "appendix3",
-          "via_symbol": "w",
-          "family_key": "w",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.54",
-          "chapter_id": "appendix3",
-          "via_symbol": "w",
-          "family_key": "w",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.55",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.29",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.49",
-          "chapter_id": "appendix3",
-          "via_symbol": "x_{i}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.50",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.52",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.53",
-          "chapter_id": "appendix3",
-          "via_symbol": "x_{i}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "x",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.55",
-      "symbol": "y_{i}",
-      "family_key": "y",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.24",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.25",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.35",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.4",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.49",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.5",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.50",
-          "chapter_id": "appendix3",
-          "via_symbol": "y_{i}",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.54",
-          "chapter_id": "appendix3",
-          "via_symbol": "y_{i}",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.8",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
@@ -3645,32 +2615,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\overline{\\theta}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.57",
-      "symbol": "\\theta_{i}^{(1)}",
-      "family_key": "\\theta^1",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.51",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\theta^{(1)}",
-          "family_key": "\\theta^1",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
@@ -3683,166 +2627,10 @@
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_A3.38",
-          "chapter_id": "appendix3",
-          "via_symbol": "\\mathrm{E}",
-          "family_key": "E",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
           "target_id": "formula_A3.5",
           "chapter_id": "appendix3",
           "via_symbol": "\\mathrm{E}",
           "family_key": "E",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.58",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.10",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.2",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.3",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.6",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.7",
-          "chapter_id": "appendix3",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A3.59",
-      "symbol": "y_{i}",
-      "family_key": "y",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A3.23",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.24",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.25",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.35",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.4",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.49",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.5",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.50",
-          "chapter_id": "appendix3",
-          "via_symbol": "y_{i}",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.54",
-          "chapter_id": "appendix3",
-          "via_symbol": "y_{i}",
-          "family_key": "y",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A3.8",
-          "chapter_id": "appendix3",
-          "via_symbol": "y",
-          "family_key": "y",
           "match_type": "family_candidate",
           "confidence": 0.45
         }

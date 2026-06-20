@@ -23,6 +23,7 @@ export interface ChapterLearningEntry {
   description_en: string;
   description_zh: string;
   section_hint?: string;
+  formula_root_ids?: string[];
   backbone_formula_ids: string[];
   full_formula_ids: string[];
   representative_formula_ids: string[];

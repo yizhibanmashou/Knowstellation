@@ -331,7 +331,7 @@ function isUnsafeConceptName(concept) {
   if (SAFE_CONCEPT_NAMES.has(name)) return false;
   if (UNSAFE_GENERIC_CONCEPT_NAMES.has(name)) return true;
   if (/^(?:[a-z]|[a-z]\s+sub\s+|[a-z]\s+power\s+|alpha|beta|gamma|delta|epsilon|sigma|mu|rho|mathrmd|mathrmn)\b/i.test(name)) return true;
-  if (/\b(?:sub|power|mathrm|mathrmd|mathrmn)\b/.test(name)) return true;
+  if (/\b(?:mathrm|mathrmd|mathrmn)\b/.test(name)) return true;
   if (/\b(?:can be|is|are|becomes|given|obtained|evaluated|defined|calculated|using)\b/.test(name)) return true;
   if (name.split(/\s+/).length > 3 && !/(?:variance|covariance|fitness|frequency|selection|response|heritability|correlation|coefficient|probability|trait|population|genetic|environmental)/.test(name)) {
     return true;

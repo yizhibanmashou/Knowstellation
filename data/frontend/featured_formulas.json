@@ -1,58 +1,67 @@
 {
   "featured": [
     {
-      "id": "formula_2.30a",
-      "chapter": "2",
-      "chapter_id": "chapter2",
-      "label": "Formula 2.30a",
-      "display_name": "Formula 2.30a",
-      "importance": 20.3463,
-      "latex_preview": "\\begin{align*}\\Pr(k\\mid\\theta_L,n)=\\frac{S_n^k\\;\\theta_L^k}{S_n(\\theta_L)}\\end{align*}"
-    },
-    {
-      "id": "formula_2.30b",
-      "chapter": "2",
-      "chapter_id": "chapter2",
-      "label": "Formula 2.30b",
-      "display_name": "Formula 2.30b",
-      "importance": 17.6338,
-      "latex_preview": "S_{n}(\\theta_{L})=\\theta_{L}(\\theta_{L}+1)(\\theta_{L}+2)\\cdots(\\theta_{L}+n-1)"
-    },
-    {
-      "id": "formula_2.4c",
-      "chapter": "2",
-      "chapter_id": "chapter2",
-      "label": "Formula 2.4c",
-      "display_name": "Formula 2.4c",
-      "importance": 15.9769,
-      "latex_preview": "\\begin{align*}(1-f_t)=\\left(1-{1\\over2N}\\right)^t\\end{align*}"
-    },
-    {
       "id": "formula_2.5",
       "chapter": "2",
       "chapter_id": "chapter2",
       "label": "Formula 2.5",
       "display_name": "Formula 2.5",
-      "importance": 14.6212,
+      "importance": 11.6738,
       "latex_preview": "H_{t}=H_{0}\\left(1-\\frac{1}{2N}\\right)^{t}"
     },
     {
-      "id": "formula_2.16a",
+      "id": "formula_2.46",
       "chapter": "2",
       "chapter_id": "chapter2",
-      "label": "Formula 2.16a",
-      "display_name": "Formula 2.16a",
-      "importance": 14.2988,
-      "latex_preview": "E(p_{t}^{2})=p_{0}-[p_{0}(1-p_{0})]\\lambda_{1}^{t}"
+      "label": "Formula 2.46",
+      "display_name": "Formula 2.46",
+      "importance": 11.3287,
+      "latex_preview": "F_{ST}=\\frac{1}{1+4N\\frac{md^{2}}{(1-d)^{2}}}\\simeq\\frac{1}{1+4Nm}\\quad for\\quad d\\gg1"
     },
     {
-      "id": "formula_2.11c",
+      "id": "formula_2.3",
       "chapter": "2",
       "chapter_id": "chapter2",
-      "label": "Formula 2.11c",
-      "display_name": "Formula 2.11c",
-      "importance": 14.2756,
-      "latex_preview": "\\bar{t}_{l}(p_{0})\\simeq-\\frac{4N p_{0}\\ln(p_{0})}{1-p_{0}}"
+      "label": "Formula 2.3",
+      "display_name": "Formula 2.3",
+      "importance": 10.2819,
+      "latex_preview": "f_{t}=\\frac{1}{2N}+\\left(1-\\frac{1}{2N}\\right)f_{t-1}"
+    },
+    {
+      "id": "formula_2.7",
+      "chapter": "2",
+      "chapter_id": "chapter2",
+      "label": "Formula 2.7",
+      "display_name": "Formula 2.7",
+      "importance": 9.9281,
+      "latex_preview": "H_{t}=H_{0}\\prod_{i=1}^{t}\\left(1-\\frac{1}{2N_{i}}\\right)\\simeq H_{0}\\exp\\left[-\\sum_{i=1}^{t}1/(2N_{i})\\right]"
+    },
+    {
+      "id": "formula_2.24c",
+      "chapter": "2",
+      "chapter_id": "chapter2",
+      "label": "Formula 2.24c",
+      "display_name": "Formula 2.24c",
+      "importance": 8.6094,
+      "latex_preview": "E(H)=\\frac{\\theta}{1+(4/3)\\theta}"
+    },
+    {
+      "id": "formula_2.26a",
+      "chapter": "2",
+      "chapter_id": "chapter2",
+      "label": "Formula 2.26a",
+      "display_name": "Formula 2.26a",
+      "importance": 8.5856,
+      "latex_preview": "E(p)=\\frac{\\beta}{\\theta+\\beta}=\\frac{1}{k}"
+    },
+    {
+      "id": "formula_3.22",
+      "chapter": "3",
+      "chapter_id": "chapter3",
+      "label": "Formula 3.22",
+      "display_name": "Formula 3.22",
+      "importance": 11.6875,
+      "latex_preview": "H_{t}=H_{0}(1/2)^{t}"
     },
     {
       "id": "formula_3.3",
@@ -60,44 +69,17 @@
       "chapter_id": "chapter3",
       "label": "Formula 3.3",
       "display_name": "Formula 3.3",
-      "importance": 11.6644,
+      "importance": 11.6469,
       "latex_preview": "N_{e}=\\frac{2N_{t}-1}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1}"
     },
     {
-      "id": "formula_3.17",
+      "id": "formula_3.4",
       "chapter": "3",
       "chapter_id": "chapter3",
-      "label": "Formula 3.17",
-      "display_name": "Formula 3.17",
-      "importance": 11.6394,
-      "latex_preview": "H_{t}\\simeq H_{0}\\exp\\left(-\\sum_{i=0}^{t-1}\\frac{1}{2N_{e,i}}\\right)"
-    },
-    {
-      "id": "formula_3.29a",
-      "chapter": "3",
-      "chapter_id": "chapter3",
-      "label": "Formula 3.29a",
-      "display_name": "Wright 3.29a",
-      "importance": 11.3313,
-      "latex_preview": "N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4\\sigma_{w}^{2}}"
-    },
-    {
-      "id": "formula_3.29c",
-      "chapter": "3",
-      "chapter_id": "chapter3",
-      "label": "Formula 3.29c",
-      "display_name": "Robertson 3.29c",
-      "importance": 9.9769,
-      "latex_preview": "N_{e}=\\frac{N}{1+4\\sigma_{w}^{2}}"
-    },
-    {
-      "id": "formula_3.29b",
-      "chapter": "3",
-      "chapter_id": "chapter3",
-      "label": "Formula 3.29b",
-      "display_name": "Formula 3.29b",
-      "importance": 9.9381,
-      "latex_preview": "N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4[2/(1+L)]^{2}\\sigma_{w}^{2}}"
+      "label": "Formula 3.4",
+      "display_name": "Formula 3.4",
+      "importance": 8.6431,
+      "latex_preview": "N_{e}=\\frac{4N-2}{\\sigma_{k}^{2}+2}"
     },
     {
       "id": "formula_3.30a",
@@ -105,8 +87,26 @@
       "chapter_id": "chapter3",
       "label": "Formula 3.30a",
       "display_name": "Formula 3.30a",
-      "importance": 8.5931,
+      "importance": 7.2781,
       "latex_preview": "N_{e}\\simeq\\frac{N}{1+2N\\delta}"
+    },
+    {
+      "id": "formula_3.2",
+      "chapter": "3",
+      "chapter_id": "chapter3",
+      "label": "Formula 3.2",
+      "display_name": "Formula 3.2",
+      "importance": 7.215,
+      "latex_preview": "P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-1}}k_{i}(k_{i}-1)}{N_{t-1}\\mu_{k}(N_{t-1}\\mu_{k}-1)}"
+    },
+    {
+      "id": "formula_3.8",
+      "chapter": "3",
+      "chapter_id": "chapter3",
+      "label": "Formula 3.8",
+      "display_name": "Formula 3.8",
+      "importance": 6.9238,
+      "latex_preview": "N_{e}=\\frac{N_{t-1}}{\\left(4\\sigma_{o,p}/\\mu_{k}^{2}\\right)+1}"
     },
     {
       "id": "formula_4.3b",
@@ -114,26 +114,8 @@
       "chapter_id": "chapter4",
       "label": "Formula 4.3b",
       "display_name": "Formula 4.3b",
-      "importance": 35.6844,
+      "importance": 19.3344,
       "latex_preview": "a_{n}=\\sum_{j=1}^{n-1}1/j"
-    },
-    {
-      "id": "formula_4.22a",
-      "chapter": "4",
-      "chapter_id": "chapter4",
-      "label": "Formula 4.22a",
-      "display_name": "Formula 4.22a",
-      "importance": 18.7094,
-      "latex_preview": "f_{t}=f_{0}+(1-f_{0})(1-e^{-u_{o}rt})"
-    },
-    {
-      "id": "formula_4.22e",
-      "chapter": "4",
-      "chapter_id": "chapter4",
-      "label": "Formula 4.22e",
-      "display_name": "Formula 4.22e",
-      "importance": 18.685,
-      "latex_preview": "\\widehat{u}=\\frac{\\widehat{u}_{o}}{\\widehat{d}n}"
     },
     {
       "id": "formula_4.22b",
@@ -141,8 +123,17 @@
       "chapter_id": "chapter4",
       "label": "Formula 4.22b",
       "display_name": "Formula 4.22b",
-      "importance": 18.665,
+      "importance": 11.65,
       "latex_preview": "\\widehat{u}_{o}=-\\frac{\\ln[(1-f_{0})/(1-f_{t})]}{rt}"
+    },
+    {
+      "id": "formula_4.22a",
+      "chapter": "4",
+      "chapter_id": "chapter4",
+      "label": "Formula 4.22a",
+      "display_name": "Formula 4.22a",
+      "importance": 10.2919,
+      "latex_preview": "f_{t}=f_{0}+(1-f_{0})(1-e^{-u_{o}rt})"
     },
     {
       "id": "formula_4.22c",
@@ -150,44 +141,35 @@
       "chapter_id": "chapter4",
       "label": "Formula 4.22c",
       "display_name": "Formula 4.22c",
-      "importance": 18.6444,
+      "importance": 9.6619,
       "latex_preview": "\\widehat{u}_{o}\\simeq\\frac{f_{t}-f_{0}}{\\ln(N_{t}/N_{0})}"
     },
     {
-      "id": "formula_4.22d",
+      "id": "formula_4.7",
       "chapter": "4",
       "chapter_id": "chapter4",
-      "label": "Formula 4.22d",
-      "display_name": "Formula 4.22d",
-      "importance": 18.615,
-      "latex_preview": "\\widehat{u}_{o}\\simeq\\frac{f_{t}-\\widehat{u}_{o}}{\\ln(\\widehat{u}_{o}N_{t})}"
+      "label": "Formula 4.7",
+      "display_name": "Formula 4.7",
+      "importance": 6.9575,
+      "latex_preview": "\\widehat{\\rho}_{L}=\\widehat{R}/a_{n}"
     },
     {
-      "id": "formula_5.5a",
-      "chapter": "5",
-      "chapter_id": "chapter5",
-      "label": "Formula 5.5a",
-      "display_name": "Wright 5.5a",
-      "importance": 48.9506,
-      "latex_preview": "\\begin{aligned}\\frac{d\\overline{W}}{dp}&=\\frac{d\\left(p^{2}W_{AA}+2p(1-p)W_{Aa}+(1-p)^{2}W_{aa}\\right)}{dp}\\\\&=2pW_{AA}+2(1-2p)W_{Aa}-2(1-p)W_{aa}\\end{aligned}"
+      "id": "formula_4.18a",
+      "chapter": "4",
+      "chapter_id": "chapter4",
+      "label": "Formula 4.18a",
+      "display_name": "Formula 4.18a",
+      "importance": 6.9112,
+      "latex_preview": "\\widehat{N}_{e}=\\frac{t-2}{2\\widehat{F}-\\left(1/n_{0}\\right)-\\left(1/n_{1}\\right)}"
     },
     {
-      "id": "formula_5.3b",
+      "id": "formula_5.4c",
       "chapter": "5",
       "chapter_id": "chapter5",
-      "label": "Formula 5.3b",
-      "display_name": "selection 5.3b",
-      "importance": 26.0562,
-      "latex_preview": "p_{t}=\\frac{p_{0}}{p_{0}+(1-p_{0})e^{-st}}"
-    },
-    {
-      "id": "formula_5.6a",
-      "chapter": "5",
-      "chapter_id": "chapter5",
-      "label": "Formula 5.6a",
-      "display_name": "selection 5.6a",
-      "importance": 25.9394,
-      "latex_preview": "\\begin{array}{r l r l}{\\overline{{W}}\\simeq e^{-[\\sigma^{2}+(\\mu-\\theta)^{2}]/(2\\omega^{2})},}&{{}}&{\\mathrm{i m p l y i n g}}&{{}}&{\\ln\\overline{{W}}\\simeq-s[\\sigma^{2}+(\\mu-\\theta)^{2}]/2}\\end{array}"
+      "label": "Formula 5.4c",
+      "display_name": "Formula 5.4c",
+      "importance": 31.3025,
+      "latex_preview": "\\overline{W}=x y W_{A A}+\\left[x(1-y)+y(1-x)\\right]W_{A a}+(1-x)(1-y)W_{a a}"
     },
     {
       "id": "formula_5.6c",
@@ -195,80 +177,116 @@
       "chapter_id": "chapter5",
       "label": "Formula 5.6c",
       "display_name": "Formula 5.6c",
-      "importance": 25.6713,
+      "importance": 31.2562,
       "latex_preview": "\\mu=m+2\\sum_{i=1}^{n}a_{i}p_{i}\\qquad and\\qquad\\sigma^{2}=2\\sum_{i=1}^{n}a_{i}^{2}p_{i}\\left(1-p_{i}\\right)+\\sigma_{E}^{2}"
     },
     {
-      "id": "formula_5.6d",
+      "id": "formula_5.8a",
       "chapter": "5",
       "chapter_id": "chapter5",
-      "label": "Formula 5.6d",
-      "display_name": "Formula 5.6d",
-      "importance": 25.6425,
-      "latex_preview": "\\frac{\\partial\\mu}{\\partial p_{i}}=2a_{i}\\qquad\\mathrm{a n d}\\qquad\\frac{\\partial\\sigma^{2}}{\\partial p_{i}}=2a_{i}^{2}\\left(1-2p_{i}\\right)"
+      "label": "Formula 5.8a",
+      "display_name": "Formula 5.8a",
+      "importance": 26.3288,
+      "latex_preview": "s_{i}=\\left(W_{i}-\\overline{W}\\right)/\\overline{W}=w_{i}-1"
     },
     {
-      "id": "formula_5.3a",
+      "id": "formula_5.20a",
       "chapter": "5",
       "chapter_id": "chapter5",
-      "label": "Formula 5.3a",
-      "display_name": "selection 5.3a",
-      "importance": 24.3425,
-      "latex_preview": "\\frac{dp}{dt}=sp(1-p)[1+h(1-2p)]"
+      "label": "Formula 5.20a",
+      "display_name": "selection 5.20a",
+      "importance": 23.5925,
+      "latex_preview": "p(z)=\\left(2\\pi\\sigma^{2}\\right)^{-1/2}\\exp\\left(\\frac{-(z-\\mu)^{2}}{2\\sigma^{2}}\\right)"
     },
     {
-      "id": "formula_6.18f",
-      "chapter": "6",
-      "chapter_id": "chapter6",
-      "label": "Formula 6.18f",
-      "display_name": "Wright 6.18f",
-      "importance": 37.7381,
-      "latex_preview": "\\Delta p=\\frac{p(1-p)}{2\\overline{W}}\\frac{d\\overline{W}}{dp}=\\frac{p(1-p)}{2\\overline{W}}(2\\alpha)"
+      "id": "formula_5.3b",
+      "chapter": "5",
+      "chapter_id": "chapter5",
+      "label": "Formula 5.3b",
+      "display_name": "selection 5.3b",
+      "importance": 20.6038,
+      "latex_preview": "p_{t}=\\frac{p_{0}}{p_{0}+(1-p_{0})e^{-st}}"
     },
     {
-      "id": "formula_6.5a",
-      "chapter": "6",
-      "chapter_id": "chapter6",
-      "label": "Formula 6.5a",
-      "display_name": "Formula 6.5a",
-      "importance": 35.5481,
-      "latex_preview": "\\begin{align*}\\sum_{i}\\Delta q_{i}z_{i}&=\\sum_{i}\\left(w_{i}q_{i}-q_{i}\\right)z_{i}=\\sum_{i}w_{i}z_{i}q_{i}-\\sum z_{i}q_{i}=E(w_{i}z_{i})-E(z)\\cdot1\\\\&=E(w_{i}z_{i})-E(z)\\cdot E(w)\\\\&=\\sigma(w_{i},z_{i})\\end{align*}"
+      "id": "formula_5.12b",
+      "chapter": "5",
+      "chapter_id": "chapter5",
+      "label": "Formula 5.12b",
+      "display_name": "Formula 5.12b",
+      "importance": 20.2319,
+      "latex_preview": "\\nabla\\overline{W}=\\begin{pmatrix}\\partial\\overline{W}/\\partial p_{1}\\\\ \\vdots\\\\ \\partial\\overline{W}/\\partial p_{n}\\end{pmatrix}"
     },
     {
-      "id": "formula_6.7a",
-      "chapter": "6",
-      "chapter_id": "chapter6",
-      "label": "Formula 6.7a",
-      "display_name": "Price 6.7a",
-      "importance": 32.2619,
-      "latex_preview": "E(w_{i}\\overline{\\delta}_{i})=\\sigma(w_{i},\\overline{\\delta}_{i})+E(w_{i})\\cdot E(\\overline{\\delta}_{i})=\\sigma(w_{i},\\overline{\\delta}_{i})+E(\\overline{\\delta}_{i})"
+      "id": "formula_5.17a",
+      "chapter": "5",
+      "chapter_id": "chapter5",
+      "label": "Formula 5.17a",
+      "display_name": "Formula 5.17a",
+      "importance": 17.6631,
+      "latex_preview": "w_{i}=\\int w(z)p_{i}(z)d z\\simeq\\int w(z)p(z-\\alpha_{i})d z"
     },
     {
-      "id": "formula_6.18a",
+      "id": "formula_6.2a",
       "chapter": "6",
       "chapter_id": "chapter6",
-      "label": "Formula 6.18a",
-      "display_name": "Formula 6.18a",
-      "importance": 31.4187,
-      "latex_preview": "R_{W}=\\overline{W}(p+\\Delta p)-\\overline{W}(p)"
+      "label": "Formula 6.2a",
+      "display_name": "Formula 6.2a",
+      "importance": 43.3269,
+      "latex_preview": "\\overline{W}=\\sum_{i=1}^{N}q_{i}W_{i}"
     },
     {
-      "id": "formula_6.18b",
+      "id": "formula_6.15a",
       "chapter": "6",
       "chapter_id": "chapter6",
-      "label": "Formula 6.18b",
-      "display_name": "Formula 6.18b",
-      "importance": 30.0306,
-      "latex_preview": "\\overline{W}(p+\\Delta p)\\simeq\\overline{W}(p)+\\frac{d\\overline{W}}{d p}\\Delta p"
+      "label": "Formula 6.15a",
+      "display_name": "Formula 6.15a",
+      "importance": 29.6431,
+      "latex_preview": "\\overline{z}=\\sum_{j}b_{j}\\overline{x}_{.j}=\\sum_{j}2b_{j}p_{j}"
     },
     {
-      "id": "formula_6.18c",
+      "id": "formula_6.16e",
       "chapter": "6",
       "chapter_id": "chapter6",
-      "label": "Formula 6.18c",
-      "display_name": "Formula 6.18c",
-      "importance": 30.0094,
-      "latex_preview": "R_{W}=\\overline{W}(p+\\Delta p)-\\overline{W}(p)\\simeq\\frac{d\\overline{W}}{d p}\\Delta p"
+      "label": "Formula 6.16e",
+      "display_name": "selection 6.16e",
+      "importance": 25.26,
+      "latex_preview": "S=\\mu^{*}-\\mu=\\frac{1-p^{2}}{1+p^{2}}-\\left(1-p^{2}\\right)=-p^{2}\\frac{1-p^{2}}{1+p^{2}}"
+    },
+    {
+      "id": "formula_6.3a",
+      "chapter": "6",
+      "chapter_id": "chapter6",
+      "label": "Formula 6.3a",
+      "display_name": "selection 6.3a",
+      "importance": 20.62,
+      "latex_preview": "\\overline{z}_{i}=z_{i}+\\overline{\\delta}_{i}"
+    },
+    {
+      "id": "formula_6.14",
+      "chapter": "6",
+      "chapter_id": "chapter6",
+      "label": "Formula 6.14",
+      "display_name": "Formula 6.14",
+      "importance": 19.2569,
+      "latex_preview": "z_{i}=\\sum_{j=1}^{k}b_{j}x_{ij}+e_{i}"
+    },
+    {
+      "id": "formula_6.6",
+      "chapter": "6",
+      "chapter_id": "chapter6",
+      "label": "Formula 6.6",
+      "display_name": "Price 6.6",
+      "importance": 18.6062,
+      "latex_preview": "R_{z}=\\overline{z}^{\\prime}-\\overline{z}=\\sigma(w_{i},z_{i})+E(w_{i}\\overline{\\delta}_{i})"
+    },
+    {
+      "id": "formula_7.9",
+      "chapter": "7",
+      "chapter_id": "chapter7",
+      "label": "Formula 7.9",
+      "display_name": "Formula 7.9",
+      "importance": 34.3388,
+      "latex_preview": "u_{f}(p_{0})=p_{0}"
     },
     {
       "id": "formula_7.23",
@@ -276,7 +294,7 @@
       "chapter_id": "chapter7",
       "label": "Formula 7.23",
       "display_name": "selection 7.23",
-      "importance": 25.3163,
+      "importance": 13.2988,
       "latex_preview": "\\mathrm{erf}(x)=(2/\\sqrt{\\pi})\\int_{0}^{x}e^{-y^{2}}dy"
     },
     {
@@ -285,7 +303,7 @@
       "chapter_id": "chapter7",
       "label": "Formula 7.6d",
       "display_name": "Formula 7.6d",
-      "importance": 20.3613,
+      "importance": 11.6437,
       "latex_preview": "\\widetilde{p}=\\sqrt{\\frac{\\mu}{s}}"
     },
     {
@@ -294,62 +312,44 @@
       "chapter_id": "chapter7",
       "label": "Formula 7.18a",
       "display_name": "Formula 7.18a",
-      "importance": 17.5931,
+      "importance": 11.5756,
       "latex_preview": "u_{f}(p_{0}\\mid s,h)\\simeq\\frac{\\displaystyle\\int_{0}^{p_{0}}e^{G(x)}\\; dx}{\\displaystyle\\int_{0}^{1}e^{G(x)}\\; dx}"
     },
     {
-      "id": "formula_7.13b",
+      "id": "formula_7.25",
       "chapter": "7",
       "chapter_id": "chapter7",
-      "label": "Formula 7.13b",
-      "display_name": "Formula 7.13b",
-      "importance": 17.2975,
-      "latex_preview": "\\begin{align*}\\Phi(x)={{2N_e(1-e^{-S(1-x)})\\over Nx(1-x)(1-e^{-S})}}\\end{align*}"
+      "label": "Formula 7.25",
+      "display_name": "Formula 7.25",
+      "importance": 9.8531,
+      "latex_preview": "u_{f}(1/2N)=\\frac{\\mathrm{erf}\\{[1/2N)-(0.5/\\omega)]\\sqrt{4\\theta\\omega}\\}+\\mathrm{erf}\\{\\sqrt{\\theta/\\omega}\\}}{\\mathrm{erf}\\{[1-(0.5/\\omega)]\\sqrt{4\\theta\\omega}\\}+\\mathrm{erf}\\{\\sqrt{\\theta/\\omega}\\}}"
     },
     {
-      "id": "formula_7.6a",
+      "id": "formula_7.1",
       "chapter": "7",
       "chapter_id": "chapter7",
-      "label": "Formula 7.6a",
-      "display_name": "Formula 7.6a",
-      "importance": 15.6312,
-      "latex_preview": "\\widetilde{p}=\\frac{(1+\\mu)h s-\\sqrt{[h s(1+\\mu)]^{2}-4(1-2h)\\mu s}}{2(2h-1)s}"
+      "label": "Formula 7.1",
+      "display_name": "selection 7.1",
+      "importance": 8.5831,
+      "latex_preview": "p^{\\prime}=p\\frac{W_{\\mathrm{a}}}{\\overline{W}}"
     },
     {
-      "id": "formula_7.17b",
-      "chapter": "7",
-      "chapter_id": "chapter7",
-      "label": "Formula 7.17b",
-      "display_name": "Formula 7.17b",
-      "importance": 14.2963,
-      "latex_preview": "\\overline{n}=4N_{e}\\lambda"
-    },
-    {
-      "id": "formula_8.3g",
+      "id": "formula_8.8a",
       "chapter": "8",
       "chapter_id": "chapter8",
-      "label": "Formula 8.3g",
-      "display_name": "Formula 8.3g",
-      "importance": 37.7625,
-      "latex_preview": "f_{s}\\simeq1-\\frac{c}{2h s}\\ln(4N_{e}s)\\quad for p(0)=1/(2N)"
+      "label": "Formula 8.8a",
+      "display_name": "Formula 8.8a",
+      "importance": 28.0269,
+      "latex_preview": "H_{h}=H_{0}\\left(1-p(0)^{2c/s}\\right)"
     },
     {
-      "id": "formula_8.3a",
+      "id": "formula_8.1c",
       "chapter": "8",
       "chapter_id": "chapter8",
-      "label": "Formula 8.3a",
-      "display_name": "selection 8.3a",
-      "importance": 34.7581,
-      "latex_preview": "\\Delta_{q}\\simeq\\delta_{q}(0)p(0)^{c/s}"
-    },
-    {
-      "id": "formula_8.17b",
-      "chapter": "8",
-      "chapter_id": "chapter8",
-      "label": "Formula 8.17b",
-      "display_name": "selection 8.17b",
-      "importance": 32.6031,
-      "latex_preview": "\\Pr_{sv}\\approx1-e^{-\\theta_{b}}\\ln(1+R),\\quad where\\quad R=\\frac{2h\\alpha_{b}}{2h_{d}\\alpha_{d}+1}"
+      "label": "Formula 8.1c",
+      "display_name": "Formula 8.1c",
+      "importance": 26.6669,
+      "latex_preview": "\\Delta_{q}=q(\\infty)-q(0)"
     },
     {
       "id": "formula_8.3b",
@@ -357,80 +357,98 @@
       "chapter_id": "chapter8",
       "label": "Formula 8.3b",
       "display_name": "selection 8.3b",
-      "importance": 31.7169,
+      "importance": 26.3344,
       "latex_preview": "f_{s}=\\frac{\\Delta_{q}}{\\delta_{q}(0)}=p(0)^{c/s}"
     },
     {
-      "id": "formula_8.3d",
+      "id": "formula_8.2b",
       "chapter": "8",
       "chapter_id": "chapter8",
-      "label": "Formula 8.3d",
-      "display_name": "Formula 8.3d",
-      "importance": 30.3525,
-      "latex_preview": "f_{s}\\simeq1+\\frac{c}{s}\\ln\\left[p(0)\\right]"
+      "label": "Formula 8.2b",
+      "display_name": "Formula 8.2b",
+      "importance": 17.5606,
+      "latex_preview": "\\delta_{q}(\\infty)=\\delta_{q}(0)e^{-c\\tau}\\simeq\\delta_{q}(0)\\exp\\left[-(2c/s)\\ln(4N_{e}s)\\right]=\\delta_{q}(0)\\left(4N_{e}s\\right)^{-2c/s}"
     },
     {
-      "id": "formula_8.3c",
+      "id": "formula_8.8b",
       "chapter": "8",
       "chapter_id": "chapter8",
-      "label": "Formula 8.3c",
-      "display_name": "Formula 8.3c",
-      "importance": 28.675,
-      "latex_preview": "x^{a}=e^{a\\ln(x)}\\simeq1+a\\ln(x)\\qquad for\\quad|a\\ln(x)|\\ll1"
+      "label": "Formula 8.8b",
+      "display_name": "Formula 8.8b",
+      "importance": 15.925,
+      "latex_preview": "\\frac{H_{h}}{H_{0}}\\simeq1-p(0)^{2c/s}\\simeq-\\frac{2c}{s}\\ln[p(0)]\\quad for\\quad c/s\\ll1"
     },
     {
-      "id": "formula_9.13c",
-      "chapter": "9",
-      "chapter_id": "chapter9",
-      "label": "Formula 9.13c",
-      "display_name": "Formula 9.13c",
-      "importance": 28.9225,
-      "latex_preview": "\\frac{(\\mathbf{p}-\\widehat{p}_{0}\\mathbf{1})^{T}\\boldsymbol{\\Omega}^{-1}(\\mathbf{p}-\\widehat{p}_{0}\\mathbf{1})}{\\widehat{p}_{0}(1-\\widehat{p}_{0})}\\quad where\\quad\\widehat{p}_{0}=\\frac{\\mathbf{1}^{T}\\boldsymbol{\\Omega}^{-1}\\mathbf{p}}{\\mathbf{1}^{T}\\boldsymbol{\\Omega}^{-1}\\mathbf{1}}"
+      "id": "formula_8.1d",
+      "chapter": "8",
+      "chapter_id": "chapter8",
+      "label": "Formula 8.1d",
+      "display_name": "Formula 8.1d",
+      "importance": 15.8769,
+      "latex_preview": "f_{s}=\\frac{\\Delta_{q}}{\\delta_{q}(0)}=\\frac{q(\\infty)-q(0)}{q_{A}(0)-q_{a}(0)}\\simeq\\frac{q(\\infty)-q(0)}{1-q(0)}\\quad when p(0)\\ll q(0)"
     },
     {
-      "id": "formula_9.16a",
-      "chapter": "9",
-      "chapter_id": "chapter9",
-      "label": "Formula 9.16a",
-      "display_name": "Formula 9.16a",
-      "importance": 24.0469,
-      "latex_preview": "\\Pr(k_{i}\\mid n,\\boldsymbol{\\Theta})=\\binom{n}{k_{i}}\\int_{1/(2N)}^{1-1/(2N)}x^{k_{i}}(1-x)^{n-k_{i}}\\phi_{i}(x\\mid\\boldsymbol{\\Theta})dx"
+      "id": "formula_8.1e",
+      "chapter": "8",
+      "chapter_id": "chapter8",
+      "label": "Formula 8.1e",
+      "display_name": "Formula 8.1e",
+      "importance": 15.695,
+      "latex_preview": "q(\\infty)=q(0)+\\Delta_{q}=q(0)+f_{s}\\delta_{q}(0)=q(0)+f_{s}[1-q(0)]=f_{s}+q(0)(1-f_{s})"
     },
     {
-      "id": "formula_9.23b",
+      "id": "formula_9.30b",
       "chapter": "9",
       "chapter_id": "chapter9",
-      "label": "Formula 9.23b",
-      "display_name": "Formula 9.23b",
-      "importance": 22.9906,
-      "latex_preview": "E(g)=\\sum_{i=1}^{n-1}c_{i}\\frac{\\theta}{i}=\\theta h(n)\\quad\\mathrm{w h e r e}\\quad h(n)=\\sum_{i=1}^{n-1}\\frac{c_{i}}{i}"
+      "label": "Formula 9.30b",
+      "display_name": "selection 9.30b",
+      "importance": 16.3194,
+      "latex_preview": "h=\\sum_{i=1}^{n}n_{i}\\left(\\frac{i}{n}\\right)^{2}"
     },
     {
-      "id": "formula_9.13d",
+      "id": "formula_9.13a",
       "chapter": "9",
       "chapter_id": "chapter9",
-      "label": "Formula 9.13d",
-      "display_name": "Formula 9.13d",
-      "importance": 21.6219,
-      "latex_preview": "\\Theta\\sim\\mathrm{MVN}_{n}\\left[p_{0}\\mathbf{1}_{n}+\\mathbf{X}\\boldsymbol{\\beta},p_{0}(1-p_{0})\\boldsymbol{\\Omega}\\right]"
+      "label": "Formula 9.13a",
+      "display_name": "Formula 9.13a",
+      "importance": 16.2563,
+      "latex_preview": "p=\\left\\{\\begin{aligned}&0&\\text{if}\\theta\\leq0\\\\&\\theta&\\text{for}0<\\theta<1\\\\&1&\\text{if}\\theta\\geq1\\end{aligned}\\right."
     },
     {
-      "id": "formula_9.19b",
+      "id": "formula_9.22a",
       "chapter": "9",
       "chapter_id": "chapter9",
-      "label": "Formula 9.19b",
-      "display_name": "Formula 9.19b",
-      "importance": 20.5706,
-      "latex_preview": "x\\sim\\mathrm{N}\\left(p_{r},\\sigma^{2}\\right)\\quad where\\quad\\sigma^{2}=\\beta p_{r}(1-p_{r})\\ll1"
+      "label": "Formula 9.22a",
+      "display_name": "Formula 9.22a",
+      "importance": 16.1681,
+      "latex_preview": "\\begin{aligned}&E(\\zeta_{i})=\\frac{\\theta}{i}\\qquad for\\qquad1\\leq i\\leq n-1\\\\ &\\\\ &E(\\eta_{i})=E(\\zeta_{i})+E(\\zeta_{n-i})=\\frac{\\theta}{i}+\\frac{\\theta}{n-i}=\\frac{\\theta}{i}\\frac{n}{n-i}\\quad for\\quad1\\leq i\\leq[n/2]\\\\ \\end{aligned}"
     },
     {
-      "id": "formula_9.23c",
+      "id": "formula_9.7b",
       "chapter": "9",
       "chapter_id": "chapter9",
-      "label": "Formula 9.23c",
-      "display_name": "Formula 9.23c",
-      "importance": 20.2906,
-      "latex_preview": "\\widehat{\\theta}_{g}=\\frac{g}{h(n)}"
+      "label": "Formula 9.7b",
+      "display_name": "Formula 9.7b",
+      "importance": 13.8806,
+      "latex_preview": "\\mathbf{X}=\\begin{pmatrix}1&t_{1}\\\\\\vdots&\\vdots\\\\1&t_{k}\\end{pmatrix},\\quad\\boldsymbol{\\beta}=\\begin{pmatrix}\\mu\\\\\\boldsymbol{\\beta}\\end{pmatrix},\\qquad\\widehat{\\boldsymbol{\\beta}}=(\\mathbf{X}^{T}\\mathbf{V}^{-1}\\mathbf{X})^{-1}\\mathbf{X}^{T}\\mathbf{V}^{-1}\\mathbf{y}"
+    },
+    {
+      "id": "formula_9.3",
+      "chapter": "9",
+      "chapter_id": "chapter9",
+      "label": "Formula 9.3",
+      "display_name": "Formula 9.3",
+      "importance": 13.1344,
+      "latex_preview": "\\mathbf{V}=\\left(\\begin{array}{cc}\\sigma^{2}\\left(\\widehat{p}_{0}\\right)&\\sigma\\left(\\widehat{p}_{0},\\widehat{p}_{t}\\right)\\\\ \\sigma\\left(\\widehat{p}_{0},\\widehat{p}_{t}\\right)&\\sigma^{2}\\left(\\widehat{p}_{t}\\right)\\end{array}\\right)"
+    },
+    {
+      "id": "formula_9.5c",
+      "chapter": "9",
+      "chapter_id": "chapter9",
+      "label": "Formula 9.5c",
+      "display_name": "Formula 9.5c",
+      "importance": 11.5312,
+      "latex_preview": "V_{ii}=\\frac{1}{2n_{t_{i}}}+\\frac{t_{i}}{2N_{e}}\\left(1-\\frac{1}{2n_{t_{i}}}\\right)\\simeq\\frac{1}{2n_{t_{i}}}+\\frac{t_{i}}{2N_{e}}"
     },
     {
       "id": "formula_10.16a",
@@ -438,17 +456,44 @@
       "chapter_id": "chapter10",
       "label": "Formula 10.16a",
       "display_name": "Formula 10.16a",
-      "importance": 33.7144,
+      "importance": 10.3144,
       "latex_preview": "\\lambda\\simeq(2N\\mu p_{b})(2s N_{e}/N)=\\mu p_{b}(2\\gamma)"
     },
     {
-      "id": "formula_10.6b",
+      "id": "formula_10.14b",
       "chapter": "10",
       "chapter_id": "chapter10",
-      "label": "Formula 10.6b",
-      "display_name": "selection 10.6b",
-      "importance": 32.3481,
-      "latex_preview": "DoS=\\frac{D_{a}}{D_{a}+D_{s}}-\\frac{P_{a}}{P_{a}+P_{s}}"
+      "label": "Formula 10.14b",
+      "display_name": "Formula 10.14b",
+      "importance": 8.6231,
+      "latex_preview": "\\phi(x\\mid N_{e},\\boldsymbol{\\Delta})=\\int\\phi(x\\mid N_{e}s)\\varphi(s\\mid\\boldsymbol{\\Delta})ds"
+    },
+    {
+      "id": "formula_10.3d",
+      "chapter": "10",
+      "chapter_id": "chapter10",
+      "label": "Formula 10.3d",
+      "display_name": "Formula 10.3d",
+      "importance": 8.5625,
+      "latex_preview": "\\mathrm{Var}(D_{i})=\\widehat{\\theta}_{i}\\left(\\widehat{\\tau}+\\frac{1+\\widehat{\\delta}}{2}\\right)+\\left(\\frac{\\widehat{\\theta}_{i}(1+\\widehat{\\delta})}{2}\\right)^{2}"
+    },
+    {
+      "id": "formula_10.5a",
+      "chapter": "10",
+      "chapter_id": "chapter10",
+      "label": "Formula 10.5a",
+      "display_name": "MK 10.5a",
+      "importance": 8.1913,
+      "latex_preview": "\\frac{D_{a}}{D_{s}}=\\frac{2t\\mu_{a}}{2t\\mu_{s}}=\\frac{2t\\mu f n_{a}}{2t\\mu n_{s}}=f\\frac{n_{a}}{n_{s}},\\quad\\frac{P_{a}}{P_{s}}=\\frac{S_{a}}{S_{s}}=\\frac{a_{n}\\theta_{a}}{a_{n}\\theta_{s}}=\\frac{4N_{e}\\mu f n_{a}}{4N_{e}\\mu n_{s}}=f\\frac{n_{a}}{n_{s}}"
+    },
+    {
+      "id": "formula_10.5b",
+      "chapter": "10",
+      "chapter_id": "chapter10",
+      "label": "Formula 10.5b",
+      "display_name": "Formula 10.5b",
+      "importance": 7.2656,
+      "latex_preview": "D_{a}/D_{s}=P_{a}/P_{s}"
     },
     {
       "id": "formula_10.16b",
@@ -456,35 +501,8 @@
       "chapter_id": "chapter10",
       "label": "Formula 10.16b",
       "display_name": "Formula 10.16b",
-      "importance": 24.69,
+      "importance": 7.2375,
       "latex_preview": "\\alpha=\\frac{\\lambda}{\\lambda+\\mu p_{0}}"
-    },
-    {
-      "id": "formula_10.17b",
-      "chapter": "10",
-      "chapter_id": "chapter10",
-      "label": "Formula 10.17b",
-      "display_name": "Formula 10.17b",
-      "importance": 23.5581,
-      "latex_preview": "\\begin{align*}\\gamma_{i,j}\\sim N(\\mu_{\\gamma,i},\\sigma_w^2),\\quad{\\rm where}\\quad\\mu_{\\gamma,i}\\sim N(\\mu_{\\gamma},\\sigma_\\gamma^2)\\end{align*}"
-    },
-    {
-      "id": "formula_10.9c",
-      "chapter": "10",
-      "chapter_id": "chapter10",
-      "label": "Formula 10.9c",
-      "display_name": "Formula 10.9c",
-      "importance": 21.3013,
-      "latex_preview": "\\widehat{\\overline{\\alpha}}_{TG}=1-NI_{TG}=1-\\frac{\\sum_{i}D_{si}P_{ai}/(P_{si}+D_{si})}{\\sum_{i}P_{si}D_{ai}/(P_{si}+D_{si})}"
-    },
-    {
-      "id": "formula_10.5d",
-      "chapter": "10",
-      "chapter_id": "chapter10",
-      "label": "Formula 10.5d",
-      "display_name": "MK 10.5d",
-      "importance": 20.2981,
-      "latex_preview": "P_{a}/D_{a}=P_{s}/D_{s}"
     },
     {
       "id": "formula_11.3a",
@@ -492,8 +510,17 @@
       "chapter_id": "chapter11",
       "label": "Formula 11.3a",
       "display_name": "Wright 11.3a",
-      "importance": 41.3856,
+      "importance": 28.3356,
       "latex_preview": "f_{t}=1-\\lambda_{1}^{t}"
+    },
+    {
+      "id": "formula_11.9a",
+      "chapter": "11",
+      "chapter_id": "chapter11",
+      "label": "Formula 11.9a",
+      "display_name": "Formula 11.9a",
+      "importance": 20.3094,
+      "latex_preview": "\\sigma_{A}^{2}(t)=(1-f_{t})[\\sigma_{A}^{2}(0)+2(2f_{t})\\sigma_{A A}^{2}(0)+3(2f_{t})^{2}\\sigma_{A A A}^{2}(0)+\\cdots]"
     },
     {
       "id": "formula_11.7a",
@@ -501,17 +528,17 @@
       "chapter_id": "chapter11",
       "label": "Formula 11.7a",
       "display_name": "Formula 11.7a",
-      "importance": 20.33,
+      "importance": 14.6125,
       "latex_preview": "\\sigma_{A}^{2}(t)\\simeq(1-f_{t})\\sigma_{A}^{2}(0)+4f_{t}(1-f_{t})\\sigma_{A A}^{2}(0)"
     },
     {
-      "id": "formula_11.20b",
+      "id": "formula_11.9b",
       "chapter": "11",
       "chapter_id": "chapter11",
-      "label": "Formula 11.20b",
-      "display_name": "Robertson 11.20b",
-      "importance": 18.9563,
-      "latex_preview": "\\sigma_{A}^{2}(t)=2N_{e}\\sigma_{m}^{2}+[\\sigma_{A}^{2}(0)-2N_{e}\\sigma_{m}^{2}]\\exp(-t/2N_{e})"
+      "label": "Formula 11.9b",
+      "display_name": "Formula 11.9b",
+      "importance": 14.29,
+      "latex_preview": "\\sigma_{A A}^{2}(t)=(1-f_{t})^{2}[\\sigma_{A A}^{2}(0)+3(2f_{t})\\sigma_{A A A}^{2}(0)+\\cdots]"
     },
     {
       "id": "formula_11.7b",
@@ -519,62 +546,17 @@
       "chapter_id": "chapter11",
       "label": "Formula 11.7b",
       "display_name": "Formula 11.7b",
-      "importance": 17.3119,
+      "importance": 9.9444,
       "latex_preview": "\\sigma_{A A}^{2}(t)\\simeq(1-f_{t})^{2}\\sigma_{A A}^{2}(0)"
     },
     {
-      "id": "formula_11.3b",
+      "id": "formula_11.20b",
       "chapter": "11",
       "chapter_id": "chapter11",
-      "label": "Formula 11.3b",
-      "display_name": "Wright 11.3b",
-      "importance": 14.2819,
-      "latex_preview": "\\begin{align*}\\gamma_t=1-{3\\lambda_1^t\\over2}+{\\lambda_2^t\\over2}\\end{align*}"
-    },
-    {
-      "id": "formula_11.3c",
-      "chapter": "11",
-      "chapter_id": "chapter11",
-      "label": "Formula 11.3c",
-      "display_name": "Formula 11.3c",
-      "importance": 14.2331,
-      "latex_preview": "\\Delta_{t}=1-\\frac{24\\lambda_{1}^{t}-10\\lambda_{2}^{t}+\\lambda_{3}^{t}}{15}+\\frac{\\lambda_{1}^{t}-\\lambda_{3}^{t}}{5(5N_{e}-3)}"
-    },
-    {
-      "id": "formula_12.15c",
-      "chapter": "12",
-      "chapter_id": "chapter12",
-      "label": "Formula 12.15c",
-      "display_name": "Formula 12.15c",
-      "importance": 34.0056,
-      "latex_preview": "1-e^{-1/2N_{e}}\\simeq1-\\left(1-\\frac{1}{2N_{e}}\\right)=\\frac{1}{2N_{e}}"
-    },
-    {
-      "id": "formula_12.9a",
-      "chapter": "12",
-      "chapter_id": "chapter12",
-      "label": "Formula 12.9a",
-      "display_name": "Formula 12.9a",
-      "importance": 24.7044,
-      "latex_preview": "F_{CV}=\\frac{V_{B}(t)}{t\\cdot V_{A}(0)/N_{e}}"
-    },
-    {
-      "id": "formula_12.20e",
-      "chapter": "12",
-      "chapter_id": "chapter12",
-      "label": "Formula 12.20e",
-      "display_name": "Formula 12.20e",
-      "importance": 24.6669,
-      "latex_preview": "\\mathrm{P r}\\left(0.10\\cdot\\Delta\\leq h_{m}^{2}\\leq509\\cdot\\Delta\\right)=0.95"
-    },
-    {
-      "id": "formula_12.8c",
-      "chapter": "12",
-      "chapter_id": "chapter12",
-      "label": "Formula 12.8c",
-      "display_name": "Formula 12.8c",
-      "importance": 24.5425,
-      "latex_preview": "V_{B}=\\frac{1}{2-1}\\sum_{i=1}^{2}\\left(\\overline{z}_{i}-\\frac{\\overline{z}_{1}+\\overline{z}_{2}}{2}\\right)^{2}=\\frac{\\left(\\overline{z}_{1}-\\overline{z}_{2}\\right)^{2}}{4}+\\frac{\\left(\\overline{z}_{2}-\\overline{z}_{1}\\right)^{2}}{4}=\\frac{d^{2}}{2}"
+      "label": "Formula 11.20b",
+      "display_name": "Robertson 11.20b",
+      "importance": 8.5537,
+      "latex_preview": "\\sigma_{A}^{2}(t)=2N_{e}\\sigma_{m}^{2}+[\\sigma_{A}^{2}(0)-2N_{e}\\sigma_{m}^{2}]\\exp(-t/2N_{e})"
     },
     {
       "id": "formula_12.9b",
@@ -582,8 +564,17 @@
       "chapter_id": "chapter12",
       "label": "Formula 12.9b",
       "display_name": "Formula 12.9b",
-      "importance": 22.6538,
+      "importance": 26.6238,
       "latex_preview": "V_{B}(t)=\\frac{1}{L-1}\\sum_{i=1}^{L}(\\overline{z}_{i}-\\overline{z}_{.})^{2}\\sim\\frac{\\sigma_{B}^{2}(t)}{L-1}\\chi_{L-1}^{2}"
+    },
+    {
+      "id": "formula_12.5a",
+      "chapter": "12",
+      "chapter_id": "chapter12",
+      "label": "Formula 12.5a",
+      "display_name": "Formula 12.5a",
+      "importance": 19.3044,
+      "latex_preview": "(n-1)\\mathrm{Var}\\sim\\sigma^{2}\\chi^{2}_{n-1}"
     },
     {
       "id": "formula_12.20b",
@@ -591,17 +582,35 @@
       "chapter_id": "chapter12",
       "label": "Formula 12.20b",
       "display_name": "Formula 12.20b",
-      "importance": 22.6194,
+      "importance": 15.6219,
       "latex_preview": "\\Pr\\left[\\left(\\frac{L-1}{X_{1-\\alpha/2,L-1}}\\right)V_{B}(t)\\leq2t\\sigma_{m}^{2}\\leq\\left(\\frac{L-1}{X_{\\alpha/2,L-1}}\\right)V_{B}(t)\\right]=1-\\alpha"
     },
     {
-      "id": "formula_13.11c",
-      "chapter": "13",
-      "chapter_id": "chapter13",
-      "label": "Formula 13.11c",
-      "display_name": "Formula 13.11c",
-      "importance": 27.715,
-      "latex_preview": "R_{A_{y}}=\\bar{\\imath}_{z}\\rho(z_{x},A_{y})\\sigma(A_{y})"
+      "id": "formula_12.8b",
+      "chapter": "12",
+      "chapter_id": "chapter12",
+      "label": "Formula 12.8b",
+      "display_name": "Formula 12.8b",
+      "importance": 14.6069,
+      "latex_preview": "d^{2}(t)=\\left[\\overline{z}_{1}(t)-\\overline{z}_{2}(t)\\right]^{2}"
+    },
+    {
+      "id": "formula_12.8c",
+      "chapter": "12",
+      "chapter_id": "chapter12",
+      "label": "Formula 12.8c",
+      "display_name": "Formula 12.8c",
+      "importance": 12.825,
+      "latex_preview": "V_{B}=\\frac{1}{2-1}\\sum_{i=1}^{2}\\left(\\overline{z}_{i}-\\frac{\\overline{z}_{1}+\\overline{z}_{2}}{2}\\right)^{2}=\\frac{\\left(\\overline{z}_{1}-\\overline{z}_{2}\\right)^{2}}{4}+\\frac{\\left(\\overline{z}_{2}-\\overline{z}_{1}\\right)^{2}}{4}=\\frac{d^{2}}{2}"
+    },
+    {
+      "id": "formula_12.9a",
+      "chapter": "12",
+      "chapter_id": "chapter12",
+      "label": "Formula 12.9a",
+      "display_name": "Formula 12.9a",
+      "importance": 11.5844,
+      "latex_preview": "F_{CV}=\\frac{V_{B}(t)}{t\\cdot V_{A}(0)/N_{e}}"
     },
     {
       "id": "formula_13.6a",
@@ -609,80 +618,53 @@
       "chapter_id": "chapter13",
       "label": "Formula 13.6a",
       "display_name": "selection 13.6a",
-      "importance": 26.6669,
+      "importance": 22.3344,
       "latex_preview": "\\bar{\\imath}=S/\\sigma_{z}"
     },
     {
-      "id": "formula_13.11a",
+      "id": "formula_13.16a",
       "chapter": "13",
       "chapter_id": "chapter13",
-      "label": "Formula 13.11a",
-      "display_name": "selection 13.11a",
-      "importance": 24.3063,
-      "latex_preview": "R_{y}=\\frac{\\sigma(z_{x},y_{o})}{\\sigma(z)}\\bar{\\imath}_{z}=\\frac{\\sigma(z_{x},y_{o})}{\\sigma(z)\\sigma(y)}\\bar{\\imath}_{z}\\sigma(y)=\\bar{\\imath}_{z}\\rho(z_{x},y_{o})\\sigma(y)"
+      "label": "Formula 13.16a",
+      "display_name": "Formula 13.16a",
+      "importance": 19.0169,
+      "latex_preview": "z_{ij}=G_{i}+E_{i}+e_{ij}"
     },
     {
-      "id": "formula_13.6b",
+      "id": "formula_13.17b",
       "chapter": "13",
       "chapter_id": "chapter13",
-      "label": "Formula 13.6b",
-      "display_name": "breeder 13.6b",
-      "importance": 23.5906,
-      "latex_preview": "R=h^{2}\\bar{\\imath}\\sigma_{z}=\\bar{\\imath}h\\sigma_{A}=\\sigma_{A}^{2}\\bar{\\imath}/\\sigma_{z}"
+      "label": "Formula 13.17b",
+      "display_name": "Formula 13.17b",
+      "importance": 17.6075,
+      "latex_preview": "\\overline{z}_{i}=\\frac{1}{n}\\sum_{j=1}^{n}z_{ij}=G_{i}+E_{i}+\\frac{1}{n}\\sum_{j=1}^{n}e_{ij}"
     },
     {
-      "id": "formula_13.11d",
+      "id": "formula_13.9",
       "chapter": "13",
       "chapter_id": "chapter13",
-      "label": "Formula 13.11d",
-      "display_name": "breeder 13.11d",
-      "importance": 21.6181,
-      "latex_preview": "Response=(Intensity)\\cdot(Accuracy in predicting breeding value using z_{x})\\cdot(Usable variation)"
+      "label": "Formula 13.9",
+      "display_name": "selection 13.9",
+      "importance": 17.2894,
+      "latex_preview": "S_{e}=\\frac{1}{n_{p}}\\sum_{i=1}^{n_{p}}\\left(\\frac{n_{i}}{\\overline{n}}\\right)(z_{i}-\\mu_{z})"
     },
     {
-      "id": "formula_13.8c",
+      "id": "formula_13.25a",
       "chapter": "13",
       "chapter_id": "chapter13",
-      "label": "Formula 13.8c",
-      "display_name": "Formula 13.8c",
-      "importance": 20.2994,
-      "latex_preview": "R=\\sigma_{A}^{2}\\beta"
+      "label": "Formula 13.25a",
+      "display_name": "Formula 13.25a",
+      "importance": 14.3025,
+      "latex_preview": "\\boldsymbol{\\beta}=\\mathbf{P}^{-1}\\mathbf{S}"
     },
     {
-      "id": "formula_14.3a",
-      "chapter": "14",
-      "chapter_id": "chapter14",
-      "label": "Formula 14.3a",
-      "display_name": "selection 14.3a",
-      "importance": 21.9988,
-      "latex_preview": "\\begin{align*}\\bar\\imath=\\frac{S}{\\sigma}=\\frac{\\varphi(x_{[1-p]})}{p}\\end{align*}"
-    },
-    {
-      "id": "formula_14.4b",
-      "chapter": "14",
-      "chapter_id": "chapter14",
-      "label": "Formula 14.4b",
-      "display_name": "selection 14.4b",
-      "importance": 14.2575,
-      "latex_preview": "E\\left[\\overline{\\imath}_{(N,M)}\\right]\\simeq\\overline{\\imath}-\\left[\\frac{M-N}{2N(M+1)}\\right]\\frac{1}{\\overline{\\imath}}=\\overline{\\imath}-\\left[\\frac{1-p}{2p(M+1)}\\right]\\frac{1}{\\overline{\\imath}}"
-    },
-    {
-      "id": "formula_14.14a",
-      "chapter": "14",
-      "chapter_id": "chapter14",
-      "label": "Formula 14.14a",
-      "display_name": "Formula 14.14a",
-      "importance": 12.9887,
-      "latex_preview": "z_{i}=\\mu+\\sum\\beta_{k}x_{k,i}+A_{i}+E_{i}"
-    },
-    {
-      "id": "formula_14.14c",
-      "chapter": "14",
-      "chapter_id": "chapter14",
-      "label": "Formula 14.14c",
-      "display_name": "Formula 14.14c",
-      "importance": 12.955,
-      "latex_preview": "g^{-1}\\left(E[y\\mid z]\\right)=z=\\mu+\\sum\\beta_{k}x_{k,i}+A_{i}+E_{i}"
+      "id": "formula_13.23c",
+      "chapter": "13",
+      "chapter_id": "chapter13",
+      "label": "Formula 13.23c",
+      "display_name": "selection 13.23c",
+      "importance": 13.2194,
+      "latex_preview": "P_{ij}=\\sigma(z_{i},z_{j})\\qquad and\\qquad G_{ij}=\\sigma(A_{i},A_{j})"
     },
     {
       "id": "formula_14.11c",
@@ -690,62 +672,53 @@
       "chapter_id": "chapter14",
       "label": "Formula 14.11c",
       "display_name": "Formula 14.11c",
-      "importance": 12.9094,
+      "importance": 34.2794,
       "latex_preview": "\\begin{align*}\\mu=m,\\quad\\sigma^2={1\\over3}\\left({\\pi\\over\\alpha}\\right)^2,\\quad{\\rm and}\\quad\\mu_3=0\\end{align*}"
     },
     {
-      "id": "formula_14.17b",
+      "id": "formula_14.10a",
       "chapter": "14",
       "chapter_id": "chapter14",
-      "label": "Formula 14.17b",
-      "display_name": "Formula 14.17b",
-      "importance": 11.5806,
-      "latex_preview": "\\ln(\\lambda)=z=\\mu+\\sum\\beta_{k}x_{k,i}+A_{i}+e_{i}"
+      "label": "Formula 14.10a",
+      "display_name": "Formula 14.10a",
+      "importance": 28.2987,
+      "latex_preview": "\\ell(z)=\\frac{\\exp(z)}{1+\\exp(z)}=\\frac{1}{1+\\exp(-z)}"
     },
     {
-      "id": "formula_15.38a",
-      "chapter": "15",
-      "chapter_id": "chapter15",
-      "label": "Formula 15.38a",
-      "display_name": "selection 15.38a",
-      "importance": 20.0675,
-      "latex_preview": "R_{m}=\\left(G_{md}+\\frac{1}{2}G_{mm}\\right)\\beta_{z}"
+      "id": "formula_14.6",
+      "chapter": "14",
+      "chapter_id": "chapter14",
+      "label": "Formula 14.6",
+      "display_name": "Wright 14.6",
+      "importance": 16.0012,
+      "latex_preview": "\\mu_{t}=-x_{[1-q_{t}]}"
     },
     {
-      "id": "formula_15.38e",
-      "chapter": "15",
-      "chapter_id": "chapter15",
-      "label": "Formula 15.38e",
-      "display_name": "Formula 15.38e",
-      "importance": 18.72,
-      "latex_preview": "R_{z}=h_{T}^{2}S_{z}"
+      "id": "formula_14.3a",
+      "chapter": "14",
+      "chapter_id": "chapter14",
+      "label": "Formula 14.3a",
+      "display_name": "selection 14.3a",
+      "importance": 11.5962,
+      "latex_preview": "\\begin{align*}\\bar\\imath=\\frac{S}{\\sigma}=\\frac{\\varphi(x_{[1-p]})}{p}\\end{align*}"
     },
     {
-      "id": "formula_15.38b",
-      "chapter": "15",
-      "chapter_id": "chapter15",
-      "label": "Formula 15.38b",
-      "display_name": "selection 15.38b",
-      "importance": 18.6694,
-      "latex_preview": "R_{z}=\\left(G_{d d}+\\frac{3}{2}G_{m d}+\\frac{1}{2}G_{m m}\\right)\\beta_{z}"
+      "id": "formula_14.8a",
+      "chapter": "14",
+      "chapter_id": "chapter14",
+      "label": "Formula 14.8a",
+      "display_name": "Formula 14.8a",
+      "importance": 9.9181,
+      "latex_preview": "\\begin{align*}\\mu_t^*=(1-p_t)E\\left[z|z<0,\\mu_t\\right]+p_t E\\left[z|z\\geq0,\\mu_t\\right]\\end{align*}"
     },
     {
-      "id": "formula_15.38c",
-      "chapter": "15",
-      "chapter_id": "chapter15",
-      "label": "Formula 15.38c",
-      "display_name": "selection 15.38c",
-      "importance": 18.6306,
-      "latex_preview": "R_{z}=\\left(h_{d}^{2}+\\frac{3}{2}\\frac{G_{m d}}{\\sigma_{z}^{2}}+\\frac{G_{m m}}{2\\sigma_{z}^{2}}\\right)S_{z}"
-    },
-    {
-      "id": "formula_15.38d",
-      "chapter": "15",
-      "chapter_id": "chapter15",
-      "label": "Formula 15.38d",
-      "display_name": "selection 15.38d",
-      "importance": 18.5894,
-      "latex_preview": "h_{T}^{2}=\\frac{G_{d d}+1.5G_{m d}+0.5G_{m}}{\\sigma_{z}^{2}}=\\frac{\\sigma^{2}(A_{d})+1.5\\sigma(A_{d},A_{m})+0.5\\sigma^{2}(A_{m})}{\\sigma_{z}^{2}}"
+      "id": "formula_14.20a",
+      "chapter": "14",
+      "chapter_id": "chapter14",
+      "label": "Formula 14.20a",
+      "display_name": "Formula 14.20a",
+      "importance": 9.8925,
+      "latex_preview": "E[y]=\\exp(\\mu)\\cdot\\exp\\left(\\frac{\\sigma_{A}^{2}+\\sigma_{e}^{2}}{2}\\right)=\\exp(\\mu)\\cdot\\exp(\\sigma_{z}^{2}/2)"
     },
     {
       "id": "formula_15.5b",
@@ -753,8 +726,62 @@
       "chapter_id": "chapter15",
       "label": "Formula 15.5b",
       "display_name": "Formula 15.5b",
-      "importance": 17.5712,
+      "importance": 13.3087,
       "latex_preview": "\\sum_{i=1}^{n}x^{i}=\\frac{1-x^{n+1}}{1-x}-1=\\frac{x(1-x^{n})}{1-x}"
+    },
+    {
+      "id": "formula_15.30",
+      "chapter": "15",
+      "chapter_id": "chapter15",
+      "label": "Formula 15.30",
+      "display_name": "selection 15.30",
+      "importance": 12.9944,
+      "latex_preview": "\\Delta\\mu_{z}(t+\\tau)=m^{\\tau}\\left[\\Delta\\mu_{z}(t)-S\\right]"
+    },
+    {
+      "id": "formula_15.28a",
+      "chapter": "15",
+      "chapter_id": "chapter15",
+      "label": "Formula 15.28a",
+      "display_name": "selection 15.28a",
+      "importance": 11.615,
+      "latex_preview": "\\Delta\\mu_{z}(t)=S\\bigg[\\frac{2h^{2}}{(1-m)(2-m)}\\bigg(1-m^{t}\\bigg)+m^{t}\\bigg]"
+    },
+    {
+      "id": "formula_15.25",
+      "chapter": "15",
+      "chapter_id": "chapter15",
+      "label": "Formula 15.25",
+      "display_name": "selection 15.25",
+      "importance": 11.5631,
+      "latex_preview": "\\begin{align*}\\Delta\\mu_z(t)={h^2\\over2-m}\\Big(S_{mo}(t)+S_{fa}(t)\\Big)+m S_{mo}(t)+m\\Big(\\Delta\\mu_z(t-1)-S_{mo}(t-1)\\Big)\\end{align*}"
+    },
+    {
+      "id": "formula_15.4b",
+      "chapter": "15",
+      "chapter_id": "chapter15",
+      "label": "Formula 15.4b",
+      "display_name": "selection 15.4b",
+      "importance": 11.5181,
+      "latex_preview": "R_{A A}(t)=S\\frac{\\sigma_{A A}^{2}}{2\\sigma_{z}^{2}}\\left(\\sum_{i=1}^{t}(1-c)^{i-1}\\right)=S\\left(\\frac{1-(1-c)^{t}}{c}\\right)\\left(\\frac{\\sigma_{A A}^{2}}{2\\sigma_{z}^{2}}\\right)"
+    },
+    {
+      "id": "formula_15.23b",
+      "chapter": "15",
+      "chapter_id": "chapter15",
+      "label": "Formula 15.23b",
+      "display_name": "Formula 15.23b",
+      "importance": 9.89,
+      "latex_preview": "\\mu_{A}(t+1)=\\frac{A_{m o}^{*}(t)+A_{f a}^{*}(t)}{2}=\\mu_{A}(t)+\\frac{h^{2}}{2-m}\\Biggl(S_{m o}(t)+S_{f a}(t)\\Biggr)"
+    },
+    {
+      "id": "formula_16.4a",
+      "chapter": "16",
+      "chapter_id": "chapter16",
+      "label": "Formula 16.4a",
+      "display_name": "selection 16.4a",
+      "importance": 50.6469,
+      "latex_preview": "\\sigma_{z}^{2}(t)=\\sigma_{E}^{2}+\\sigma_{D}^{2}+\\sigma_{A}^{2}(t)=\\sigma_{z}^{2}+d(t)"
     },
     {
       "id": "formula_16.4b",
@@ -762,8 +789,26 @@
       "chapter_id": "chapter16",
       "label": "Formula 16.4b",
       "display_name": "selection 16.4b",
-      "importance": 29.3375,
+      "importance": 44.62,
       "latex_preview": "h^{2}(t)=\\frac{\\sigma_{A}^{2}(t)}{\\sigma_{z}^{2}(t)}=\\frac{\\sigma_{a}^{2}+d(t)}{\\sigma_{z}^{2}+d(t)}"
+    },
+    {
+      "id": "formula_16.12b",
+      "chapter": "16",
+      "chapter_id": "chapter16",
+      "label": "Formula 16.12b",
+      "display_name": "Formula 16.12b",
+      "importance": 28.2913,
+      "latex_preview": "\\kappa=\\frac{\\kappa_{f}+\\kappa_{m}}{2}"
+    },
+    {
+      "id": "formula_16.9a",
+      "chapter": "16",
+      "chapter_id": "chapter16",
+      "label": "Formula 16.9a",
+      "display_name": "Formula 16.9a",
+      "importance": 19.2538,
+      "latex_preview": "\\sigma_{a}^{2}(t)=\\sigma_{a}^{2}(0)\\left(1-\\frac{1}{2N_{e}}\\right)^{t}"
     },
     {
       "id": "formula_16.7a",
@@ -771,7 +816,7 @@
       "chapter_id": "chapter16",
       "label": "Formula 16.7a",
       "display_name": "Formula 16.7a",
-      "importance": 27.685,
+      "importance": 18.9325,
       "latex_preview": "d(t+1)=\\frac{d(t)}{2}+\\frac{h^{4}(t)}{2}\\delta\\left(\\sigma_{z(t)}^{2}\\right)"
     },
     {
@@ -780,44 +825,35 @@
       "chapter_id": "chapter16",
       "label": "Formula 16.12d",
       "display_name": "Formula 16.12d",
-      "importance": 24.3156,
+      "importance": 18.2631,
       "latex_preview": "d(t+1)=\\frac{d(t)}{2}-\\frac{\\kappa}{2}h^{2}(t)\\sigma_{A}^{2}(t)=\\frac{d(t)}{2}-\\frac{\\kappa}{2}\\frac{\\left[\\sigma_{a}^{2}+d(t)\\right]^{2}}{\\sigma_{z}^{2}+d(t)}"
     },
     {
-      "id": "formula_16.21d",
+      "id": "formula_16.5b",
       "chapter": "16",
       "chapter_id": "chapter16",
-      "label": "Formula 16.21d",
-      "display_name": "Formula 16.21d",
-      "importance": 22.985,
-      "latex_preview": "\\kappa=\\frac{\\kappa_{f}+\\kappa_{m}}{2}-\\rho\\sqrt{\\left(1-\\kappa_{f}\\right)\\left(1-\\kappa_{m}\\right)}"
+      "label": "Formula 16.5b",
+      "display_name": "Formula 16.5b",
+      "importance": 17.6631,
+      "latex_preview": "\\sigma_{e}^{2}=\\left(1-\\frac{h^{4}}{2}\\right)\\sigma_{z}^{2}"
     },
     {
-      "id": "formula_16.13a",
+      "id": "formula_16.5a",
       "chapter": "16",
       "chapter_id": "chapter16",
-      "label": "Formula 16.13a",
-      "display_name": "Formula 16.13a",
-      "importance": 21.5912,
-      "latex_preview": "\\widetilde{\\sigma}_{A}^{2}=\\sigma_{z}^{2}\\gamma,\\quad\\mathrm{w h e r e}\\quad\\gamma=\\frac{2h^{2}-1+\\sqrt{1+4h^{2}(1-h^{2})\\kappa}}{2(1+\\kappa)}"
+      "label": "Formula 16.5a",
+      "display_name": "Formula 16.5a",
+      "importance": 14.6594,
+      "latex_preview": "z_{o}=\\mu+\\frac{h^{2}}{2}(z_{m}-\\mu)+\\frac{h^{2}}{2}(z_{f}-\\mu)+e"
     },
     {
-      "id": "formula_16.12a",
-      "chapter": "16",
-      "chapter_id": "chapter16",
-      "label": "Formula 16.12a",
-      "display_name": "selection 16.12a",
-      "importance": 21.5675,
-      "latex_preview": "\\sigma_{z^{*}(t)}^{2}=\\frac{\\sigma^{2}\\left[z_{f}^{*}(t)\\right]}{2}+\\frac{\\sigma^{2}\\left[z_{m}^{*}(t)\\right]}{2}=\\left(1-\\kappa\\right)\\sigma_{z}^{2}(t)"
-    },
-    {
-      "id": "formula_17.3d",
+      "id": "formula_17.10c",
       "chapter": "17",
       "chapter_id": "chapter17",
-      "label": "Formula 17.3d",
-      "display_name": "Formula 17.3d",
-      "importance": 17.3513,
-      "latex_preview": "\\sigma_{E}^{2}=\\sigma_{e}^{2}\\exp\\left(\\mu_{A_{v}}+\\sigma_{A_{v}}^{2}/2\\right)"
+      "label": "Formula 17.10c",
+      "display_name": "Formula 17.10c",
+      "importance": 9.7119,
+      "latex_preview": "R_{A_{v}}=h_{v}^{2}\\;\\bar{\\imath}\\; x_{[1-p]}\\;\\sigma_{z}^{2}"
     },
     {
       "id": "formula_17.3b",
@@ -825,44 +861,89 @@
       "chapter_id": "chapter17",
       "label": "Formula 17.3b",
       "display_name": "Formula 17.3b",
-      "importance": 17.2831,
+      "importance": 7.2331,
       "latex_preview": "\\sigma^{2}(E\\mid A_{v})=\\sigma^{2}\\left[\\exp(A_{v}/2)\\cdot e\\mid A_{v}\\right]=\\left[\\exp(A_{v}/2)\\right]^{2}\\sigma_{e}^{2}=\\sigma_{e}^{2}\\exp\\left(A_{v}\\right)"
     },
     {
-      "id": "formula_17.2b",
+      "id": "formula_17.6a",
       "chapter": "17",
       "chapter_id": "chapter17",
-      "label": "Formula 17.2b",
-      "display_name": "Formula 17.2b",
-      "importance": 15.6781,
-      "latex_preview": "\\sigma^{2}[E\\mid G,\\gamma_{i}]=\\gamma_{i}^{2}\\sigma_{e}^{2}"
+      "label": "Formula 17.6a",
+      "display_name": "Formula 17.6a",
+      "importance": 7.155,
+      "latex_preview": "\\begin{aligned}\\Delta\\sigma_{E}^{2}(t)&=\\sigma_{E}^{2}(t+1)-\\sigma_{E}^{2}(t)\\\\&=\\left[\\mu_{A_{v}}(t+1)+\\sigma_{e}^{2}\\right]-\\left[\\mu_{A_{v}}(t)+\\sigma_{e}^{2}\\right]\\\\&=\\left[\\mu_{A_{v}}(t)+R_{A_{v}}(t)\\right]-\\mu_{A_{v}}(t)=R_{A_{v}}(t)\\\\ \\end{aligned}"
     },
     {
-      "id": "formula_17.2a",
+      "id": "formula_17.6c",
       "chapter": "17",
       "chapter_id": "chapter17",
-      "label": "Formula 17.2a",
-      "display_name": "Formula 17.2a",
-      "importance": 14.305,
-      "latex_preview": "E=\\gamma_{i}\\; e\\quad\\mathrm{w h e r e}\\quad e\\sim(0,\\sigma_{e}^{2})"
+      "label": "Formula 17.6c",
+      "display_name": "Formula 17.6c",
+      "importance": 6.735,
+      "latex_preview": "\\begin{aligned}\\Delta\\sigma_{E}^{2}(t)&=\\sigma_{E}^{2}(t+1)-\\sigma_{E}^{2}(t)\\\\&=\\sigma_{e}^{2}\\exp\\left[\\mu_{A_{v}}(t)+R_{A_{v}}(t)+\\sigma_{A_{v}}^{2}/2\\right]-\\sigma_{e}^{2}\\exp\\left[\\mu_{A_{v}}(t)+\\sigma_{A_{v}}^{2}/2\\right]\\\\&=\\sigma_{e}^{2}\\exp\\left[\\mu_{A_{v}}(t)+\\sigma_{A_{v}}^{2}/2\\right]\\left[\\exp\\left(R_{A_{v}}\\{t\\}\\right)-1\\right]\\\\&=\\sigma_{E}^{2}(t)\\cdot\\left[\\exp(R_{A_{v}}\\{t\\})-1\\right]\\\\ \\end{aligned}"
     },
     {
-      "id": "formula_17.3c",
+      "id": "formula_17.5c",
       "chapter": "17",
       "chapter_id": "chapter17",
-      "label": "Formula 17.3c",
-      "display_name": "Formula 17.3c",
-      "importance": 14.2825,
-      "latex_preview": "\\ln\\left[\\sigma^{2}(E\\mid A_{v})\\right]=\\ln\\left(\\sigma_{e}^{2}\\right)+A_{v}"
+      "label": "Formula 17.5c",
+      "display_name": "Formula 17.5c",
+      "importance": 5.5862,
+      "latex_preview": "h_{v}^{2}=\\frac{\\sigma^{2}(A_{v})}{2\\sigma_{z}^{4}+3\\sigma^{2}(A_{v})}"
     },
     {
-      "id": "formula_17.2c",
+      "id": "formula_17.3d",
       "chapter": "17",
       "chapter_id": "chapter17",
-      "label": "Formula 17.2c",
-      "display_name": "Formula 17.2c",
-      "importance": 14.2637,
-      "latex_preview": "\\sigma_{E}^{2}=\\left(\\mu_{\\gamma}^{2}+\\sigma_{\\gamma}^{2}\\right)\\sigma_{e}^{2}"
+      "label": "Formula 17.3d",
+      "display_name": "Formula 17.3d",
+      "importance": 5.5637,
+      "latex_preview": "\\sigma_{E}^{2}=\\sigma_{e}^{2}\\exp\\left(\\mu_{A_{v}}+\\sigma_{A_{v}}^{2}/2\\right)"
+    },
+    {
+      "id": "formula_18.29",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.29",
+      "display_name": "selection 18.29",
+      "importance": 29.3275,
+      "latex_preview": "R_{C}(t)=\\overline{z}_{s u,t}-\\overline{z}_{s d,t}=\\left(g_{s u,t}-g_{s d,t}\\right)+\\left(e_{s u,t}-e_{s d,t}\\right)"
+    },
+    {
+      "id": "formula_18.11",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.11",
+      "display_name": "selection 18.11",
+      "importance": 28.2869,
+      "latex_preview": "S_{C}(t)=\\sum_{i=1}^{t}S_{i}\\qquad and\\qquad R_{C}(t)=\\sum_{i=1}^{t}R_{i}"
+    },
+    {
+      "id": "formula_18.5",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.5",
+      "display_name": "Formula 18.5",
+      "importance": 22.2563,
+      "latex_preview": "2f_{t}=2\\left[1-\\left(1-\\frac{1}{2N_{e}}\\right)^{t}\\right]\\simeq t/N_{e}\\qquad for t/N_{e}\\ll1"
+    },
+    {
+      "id": "formula_18.13",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.13",
+      "display_name": "selection 18.13",
+      "importance": 18.9662,
+      "latex_preview": "R_{C}(t)=b_{C}S_{C}(t)+e_{t}\\quad for t=1,\\cdots,T"
+    },
+    {
+      "id": "formula_18.19",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.19",
+      "display_name": "selection 18.19",
+      "importance": 17.4856,
+      "latex_preview": "\\mathrm{Var}(\\widehat{h}_{r}^{2})\\simeq\\frac{(T/N)\\widehat{h}_{r}^{2}+1/M}{T^{2}\\cdot\\overline{\\imath}^{2}}=\\frac{(1/TN)\\widehat{h}_{r}^{2}+1/(T^{2}M)}{\\overline{\\imath}^{2}}\\simeq\\frac{\\widehat{h}_{r}^{2}}{TN\\overline{\\imath}^{2}}"
     },
     {
       "id": "formula_18.38a",
@@ -870,8 +951,17 @@
       "chapter_id": "chapter18",
       "label": "Formula 18.38a",
       "display_name": "Formula 18.38a",
-      "importance": 30.72,
+      "importance": 16.2325,
       "latex_preview": "C_{k}=m+A\\cdot k+D_{0}+D\\cdot k+D_{q}\\cdot k^{2}"
+    },
+    {
+      "id": "formula_18.15c",
+      "chapter": "18",
+      "chapter_id": "chapter18",
+      "label": "Formula 18.15c",
+      "display_name": "Formula 18.15c",
+      "importance": 15.6275,
+      "latex_preview": "V_{ij}=\\left\\{\\begin{array}{ll}\\left(\\frac{1}{M_{0}}+2f_{i}\\right)h^{2}\\sigma_{z}^{2}+\\sigma_{z}^{2}/M_{i}&for i=j\\\\\\left(\\frac{1}{M_{0}}+2f_{i}\\right)h^{2}\\sigma_{z}^{2}&for i<j\\end{array}\\right."
     },
     {
       "id": "formula_18.38e",
@@ -879,278 +969,80 @@
       "chapter_id": "chapter18",
       "label": "Formula 18.38e",
       "display_name": "Formula 18.38e",
-      "importance": 30.6975,
+      "importance": 14.665,
       "latex_preview": "C_{k\\times j}(rm)=C_{k\\times j}+\\frac{D_{q}}{4}(k-j)^{2}"
     },
     {
-      "id": "formula_18.39e",
-      "chapter": "18",
-      "chapter_id": "chapter18",
-      "label": "Formula 18.39e",
-      "display_name": "Formula 18.39e",
-      "importance": 27.6969,
-      "latex_preview": "H=\\sum(\\delta p_{i})^{2}d_{i}"
-    },
-    {
-      "id": "formula_18.26b",
-      "chapter": "18",
-      "chapter_id": "chapter18",
-      "label": "Formula 18.26b",
-      "display_name": "Formula 18.26b",
-      "importance": 26.6188,
-      "latex_preview": "\\overline{z}_{d,t}=\\mu+g_{d,t}+b_{d,t}+e_{d,t}"
-    },
-    {
-      "id": "formula_18.39a",
-      "chapter": "18",
-      "chapter_id": "chapter18",
-      "label": "Formula 18.39a",
-      "display_name": "Formula 18.39a",
-      "importance": 24.3606,
-      "latex_preview": "D_{0}=2\\sum p_{i}(1-p_{i})d_{i}"
-    },
-    {
-      "id": "formula_18.39d",
-      "chapter": "18",
-      "chapter_id": "chapter18",
-      "label": "Formula 18.39d",
-      "display_name": "Formula 18.39d",
-      "importance": 21.6337,
-      "latex_preview": "D_{q}=-2\\sum\\left(\\Delta p_{i}\\right)^{2}d_{i}"
-    },
-    {
-      "id": "formula_19.5a",
+      "id": "formula_19.1",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.5a",
-      "display_name": "Formula 19.5a",
-      "importance": 36.2919,
-      "latex_preview": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{X}&\\mathbf{X}^{T}\\mathbf{Z}\\\\\\mathbf{Z}^{T}\\mathbf{X}&\\mathbf{Z}^{T}\\mathbf{Z}+\\lambda\\mathbf{A}^{-1}\\end{pmatrix}^{-1}=\\begin{pmatrix}\\mathbf{C}_{11}&\\mathbf{C}_{12}\\\\\\mathbf{C}_{12}^{T}&\\mathbf{C}_{22}\\end{pmatrix}"
+      "label": "Formula 19.1",
+      "display_name": "Formula 19.1",
+      "importance": 32.6556,
+      "latex_preview": "\\mathbf{y}=\\mathbf{X}\\boldsymbol{\\beta}+\\mathbf{Z}\\mathbf{a}+\\mathbf{e}"
     },
     {
-      "id": "formula_19.3b",
+      "id": "formula_19.5e",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.3b",
-      "display_name": "Formula 19.3b",
-      "importance": 33.2663,
-      "latex_preview": "\\hat{\\mathbf{a}}=\\mathbf{V}\\mathbf{a}\\mathbf{r}(\\mathbf{a})\\mathbf{Z}^{T}\\mathbf{V}^{-1}\\left(\\mathbf{y}-\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}\\right)=\\sigma_{A}^{2}\\mathbf{A}\\mathbf{Z}^{T}\\mathbf{V}^{-1}\\left(\\mathbf{y}-\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}\\right)"
+      "label": "Formula 19.5e",
+      "display_name": "Formula 19.5e",
+      "importance": 27.6469,
+      "latex_preview": "\\mathbf{V a r}(\\widehat{\\mathbf{a}}-\\mathbf{a})=\\sigma_{e}^{2}\\left(\\mathbf{Z}^{T}\\mathbf{M}\\mathbf{Z}+\\lambda\\mathbf{A}^{-1}\\right)^{-1}"
     },
     {
-      "id": "formula_19.3c",
+      "id": "formula_19.18c",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.3c",
-      "display_name": "Formula 19.3c",
-      "importance": 30.3363,
-      "latex_preview": "\\hat{\\mathbf{a}}=\\left(\\mathbf{Z}^{T}\\mathbf{M}\\mathbf{Z}+\\lambda\\mathbf{A}^{-1}\\right)^{-1}\\mathbf{Z}^{T}\\mathbf{M}\\mathbf{y}"
+      "label": "Formula 19.18c",
+      "display_name": "Formula 19.18c",
+      "importance": 19.2806,
+      "latex_preview": "\\mathbf{A}=\\mathbf{T}\\boldsymbol{\\Lambda}\\mathbf{T}^{T}"
     },
     {
-      "id": "formula_19.3g",
+      "id": "formula_19.20c",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.3g",
-      "display_name": "Formula 19.3g",
-      "importance": 30.3125,
-      "latex_preview": "\\mathbf{M}\\mathbf{y}=(\\mathbf{I}-\\mathbf{H})\\mathbf{y}=\\mathbf{y}-\\widehat{\\mathbf{y}}=\\mathbf{y}-\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}"
+      "label": "Formula 19.20c",
+      "display_name": "Formula 19.20c",
+      "importance": 18.9037,
+      "latex_preview": "\\mathbf{V a r}(\\mathbf{y})=\\mathbf{V}=\\sigma_{A}^{2}\\mathbf{Z}\\mathbf{A}\\mathbf{Z}^{T}+\\sigma_{u}^{2}\\mathbf{W}\\mathbf{W}^{T}+\\sigma_{e}^{2}\\mathbf{I}"
     },
     {
-      "id": "formula_19.6a",
+      "id": "formula_19.25a",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.6a",
-      "display_name": "Formula 19.6a",
-      "importance": 29.55,
-      "latex_preview": "L(\\boldsymbol{\\sigma})=\\mathbf{b}_{0}+\\boldsymbol{\\sigma}^{T}\\mathbf{b}_{1}+\\boldsymbol{\\sigma}^{T}\\mathbf{Q}\\boldsymbol{\\sigma}"
+      "label": "Formula 19.25a",
+      "display_name": "Formula 19.25a",
+      "importance": 12.9225,
+      "latex_preview": "\\mathbf{y}=\\mathbf{X}\\boldsymbol{\\beta}+\\mathbf{Z}\\mathbf{a}+\\mathbf{Z}\\mathbf{d}+\\mathbf{e}"
     },
     {
-      "id": "formula_19.3e",
+      "id": "formula_19.25d",
       "chapter": "19",
       "chapter_id": "chapter19",
-      "label": "Formula 19.3e",
-      "display_name": "Formula 19.3e",
-      "importance": 28.6644,
-      "latex_preview": "\\mathbf{H}=\\mathbf{X}\\left(\\mathbf{X}^{T}\\mathbf{X}\\right)^{-1}\\mathbf{X}^{T}"
+      "label": "Formula 19.25d",
+      "display_name": "Formula 19.25d",
+      "importance": 11.5525,
+      "latex_preview": "\\mathbf{V a r}(\\mathbf{e}^{*})=\\sigma_{D}^{2}\\mathbf{Z D}\\mathbf{Z}^{T}+\\sigma_{e}^{2}\\mathbf{I}"
     },
     {
-      "id": "formula_20.23d",
+      "id": "formula_20.2",
       "chapter": "20",
       "chapter_id": "chapter20",
-      "label": "Formula 20.23d",
-      "display_name": "Formula 20.23d",
-      "importance": 52.1444,
-      "latex_preview": "\\widehat{\\theta}_{xy}=\\frac{1}{L}\\sum_{\\ell=1}^{L}\\frac{S_{xy,\\ell}-s_{\\ell}}{1-s_{\\ell}}"
+      "label": "Formula 20.2",
+      "display_name": "Price 20.2",
+      "importance": 52.3456,
+      "latex_preview": "z=A-n+e"
     },
     {
-      "id": "formula_20.23k",
+      "id": "formula_20.7a",
       "chapter": "20",
       "chapter_id": "chapter20",
-      "label": "Formula 20.23k",
-      "display_name": "Formula 20.23k",
-      "importance": 52.0444,
-      "latex_preview": "\\mathrm{corr}(T_{x,\\ell},T_{y,\\ell})=\\frac{4\\sigma(b_{x,\\ell},b_{y,\\ell})}{2p_{\\ell}(1-p_{\\ell})}=2\\left[\\frac{\\sigma(b_{x,\\ell},b_{y,\\ell})}{p_{\\ell}(1-p_{\\ell})}\\right]=2\\mathrm{corr}(b_{x,\\ell},b_{y,\\ell})=2\\theta_{xy}"
-    },
-    {
-      "id": "formula_20.23a",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23a",
-      "display_name": "Formula 20.23a",
-      "importance": 50.4844,
-      "latex_preview": "S_{xy,\\ell}=\\frac{I_{ac}+I_{ad}+I_{bc}+I_{bd}}{4}"
-    },
-    {
-      "id": "formula_20.23b",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23b",
-      "display_name": "Formula 20.23b",
-      "importance": 49.1487,
-      "latex_preview": "\\widehat{A}_{x y}=2\\widehat{\\theta}_{x y}=\\frac{2}{L}\\sum_{\\ell=1}^{L}S_{x y,\\ell}"
-    },
-    {
-      "id": "formula_20.23g",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23g",
-      "display_name": "Formula 20.23g",
-      "importance": 49.14,
-      "latex_preview": "\\widehat{\\theta}_{x y,D W}=\\frac{S_{x y}-\\sum_{\\ell=1}^{L}s_{\\ell}}{L-\\sum_{\\ell=1}^{L}s_{\\ell}}"
-    },
-    {
-      "id": "formula_20.23e",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23e",
-      "display_name": "Formula 20.23e",
-      "importance": 49.1256,
-      "latex_preview": "S_{xy}=\\sum_{\\ell=1}^{L}S_{xy,\\ell}"
-    },
-    {
-      "id": "formula_20.23m",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23m",
-      "display_name": "Formula 20.23m",
-      "importance": 49.1188,
-      "latex_preview": "\\widehat{A}_{x x}=1+\\frac{1}{L}\\sum_{\\ell=1}^{L}\\frac{T_{x,\\ell}^{2}-(1+2p_{\\ell})T_{x,\\ell}+2p_{\\ell}^{2}}{2p_{\\ell}(1-p_{\\ell})}"
-    },
-    {
-      "id": "formula_20.23f",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23f",
-      "display_name": "Formula 20.23f",
-      "importance": 49.1088,
-      "latex_preview": "E[S_{xy}]=\\sum_{\\ell=1}^{L}E[S_{xy,\\ell}]=\\sum_{\\ell=1}^{L}[\\theta_{xy}+(1-\\theta_{xy})s_\\ell]=L\\theta_{xy}+(1-\\theta_{xy})\\sum_{\\ell=1}^{L}s_\\ell"
-    },
-    {
-      "id": "formula_20.23c",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23c",
-      "display_name": "Formula 20.23c",
-      "importance": 49.0969,
-      "latex_preview": "E[S_{x y,\\ell}]=\\theta_{x y}+(1-\\theta_{x y})s_{\\ell}"
-    },
-    {
-      "id": "formula_20.23j",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23j",
-      "display_name": "Formula 20.23j",
-      "importance": 49.0738,
-      "latex_preview": "\\mathrm{corr}(T_{x,\\ell},T_{y,\\ell})=\\frac{\\sigma(T_{x,\\ell},T_{y,\\ell})}{\\sigma(T_{x,\\ell})\\cdot\\sigma(T_{y,\\ell})}=\\frac{(T_{x,\\ell}-2p_{\\ell})\\left(T_{y,\\ell}-2p_{\\ell}\\right)}{2p_{\\ell}(1-p_{\\ell})}"
-    },
-    {
-      "id": "formula_20.23h",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23h",
-      "display_name": "Formula 20.23h",
-      "importance": 49.0638,
-      "latex_preview": "\\Pr(b_{x,\\ell}=b_{y,\\ell}=1)=\\theta_{x y}p_{\\ell}+(1-\\theta_{x y})p_{\\ell}^{2}"
-    },
-    {
-      "id": "formula_20.23i",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.23i",
-      "display_name": "Formula 20.23i",
-      "importance": 49.0344,
-      "latex_preview": "\\theta_{xy}=\\frac{\\Pr(b_{x,\\ell}=b_{y,\\ell}=1)-p_{\\ell}^{2}}{p_{\\ell}(1-p_{\\ell})}=\\frac{E[b_{x,\\ell}b_{y,\\ell}]-(E[b_{\\ell}])^{2}}{p_{\\ell}(1-p_{\\ell})}=\\frac{\\sigma(b_{x,\\ell},b_{y,\\ell})}{\\sigma(b_{x,\\ell})\\sigma(b_{y,\\ell})}=\\mathrm{corr}(b_{x,\\ell},b_{y,\\ell})"
-    },
-    {
-      "id": "formula_20.24c",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24c",
-      "display_name": "Formula 20.24c",
-      "importance": 34.7719,
-      "latex_preview": "\\sigma^{2}(\\widehat{a})=\\rho^{2}\\sigma^{2}(A)"
-    },
-    {
-      "id": "formula_20.24b",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24b",
-      "display_name": "Formula 20.24b",
-      "importance": 34.7181,
-      "latex_preview": "\\rho=\\frac{\\sigma(\\widehat{a},A)}{\\sqrt{\\sigma^{2}(\\widehat{a})\\sigma^{2}(A)}}=\\sqrt{\\frac{\\sigma^{2}(\\widehat{a})}{\\sigma^{2}(A)}}"
-    },
-    {
-      "id": "formula_20.24g",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24g",
-      "display_name": "Formula 20.24g",
-      "importance": 31.7763,
-      "latex_preview": "PEV_{ii}=(1-\\rho_{i}^{2})\\sigma^{2}(A)"
-    },
-    {
-      "id": "formula_20.24h",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24h",
-      "display_name": "Formula 20.24h",
-      "importance": 31.7625,
-      "latex_preview": "\\rho_{i}^{2}=1-\\left(\\frac{P E V_{ii}}{\\sigma^{2}(A)}\\right)"
-    },
-    {
-      "id": "formula_20.24f",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24f",
-      "display_name": "Formula 20.24f",
-      "importance": 31.7506,
-      "latex_preview": "\\sigma^{2}(\\epsilon)=\\sigma(\\widehat{a},E)=\\left(1-\\rho^{2}\\right)\\sigma^{2}(A)"
-    },
-    {
-      "id": "formula_20.24e",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24e",
-      "display_name": "Formula 20.24e",
-      "importance": 31.7481,
-      "latex_preview": "\\sigma^{2}(\\epsilon)=\\sigma^{2}(\\widehat{a}-A)=\\left(1-\\rho^{2}\\right)\\sigma^{2}(A)"
-    },
-    {
-      "id": "formula_20.24a",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24a",
-      "display_name": "Formula 20.24a",
-      "importance": 31.7094,
-      "latex_preview": "\\sigma^{2}(\\epsilon)=\\sigma^{2}(\\widehat{a}-A)=\\sigma^{2}(\\widehat{a})-2\\sigma(\\widehat{a},A)+\\sigma^{2}(A)=\\sigma^{2}(A)-\\sigma^{2}(\\widehat{a})"
-    },
-    {
-      "id": "formula_20.24d",
-      "chapter": "20",
-      "chapter_id": "chapter20",
-      "label": "Formula 20.24d",
-      "display_name": "Formula 20.24d",
-      "importance": 31.5463,
-      "latex_preview": "\\begin{aligned}\\left|\\operatorname{corr}(\\widehat{a},z)\\right|&=\\frac{\\left|\\sigma(\\widehat{a},z)\\right|}{\\sqrt{\\sigma^{2}(\\widehat{a})\\sigma^{2}(z)}}=\\frac{\\left|\\sigma(A,z)\\right|}{\\sqrt{\\sigma^{2}(\\widehat{a})\\sigma^{2}(z)}}\\\\&=\\frac{\\left|\\sigma(A,z)\\right|}{\\rho\\sqrt{\\sigma^{2}(A)\\sigma^{2}(z)}}=\\frac{\\left|\\operatorname{corr}(A,z)\\right|}{\\rho}\\geq\\left|\\operatorname{corr}(A,z)\\right|\\end{aligned}"
+      "label": "Formula 20.7a",
+      "display_name": "Formula 20.7a",
+      "importance": 26.6513,
+      "latex_preview": "w=\\alpha+\\beta_{z}z+\\beta_{A}A+\\beta_{E}E+\\epsilon"
     },
     {
       "id": "formula_20.16b",
@@ -1158,8 +1050,44 @@
       "chapter_id": "chapter20",
       "label": "Formula 20.16b",
       "display_name": "Formula 20.16b",
-      "importance": 31.0031,
+      "importance": 24.9681,
       "latex_preview": "\\frac{\\sigma(z,w)}{\\sigma^{2}(z)}=\\frac{\\sigma(A_{z},w)}{\\sigma^{2}(A_{z})}"
+    },
+    {
+      "id": "formula_20.11a",
+      "chapter": "20",
+      "chapter_id": "chapter20",
+      "label": "Formula 20.11a",
+      "display_name": "selection 20.11a",
+      "importance": 23.5669,
+      "latex_preview": "S=\\sigma^{2}(z_{1})\\beta_{1}+\\sigma(z_{1},z_{2})\\beta_{2}=\\sigma_{z}^{2}\\beta_{z}+\\sigma_{A}^{2}\\beta_{A}+\\sigma_{E}^{2}\\beta_{E}"
+    },
+    {
+      "id": "formula_20.23a",
+      "chapter": "20",
+      "chapter_id": "chapter20",
+      "label": "Formula 20.23a",
+      "display_name": "Formula 20.23a",
+      "importance": 20.2994,
+      "latex_preview": "S_{xy,\\ell}=\\frac{I_{ac}+I_{ad}+I_{bc}+I_{bd}}{4}"
+    },
+    {
+      "id": "formula_20.16c",
+      "chapter": "20",
+      "chapter_id": "chapter20",
+      "label": "Formula 20.16c",
+      "display_name": "Formula 20.16c",
+      "importance": 17.2925,
+      "latex_preview": "h^{2}\\sigma(z,w)=\\sigma(A_{z},w)"
+    },
+    {
+      "id": "formula_20.24b",
+      "chapter": "20",
+      "chapter_id": "chapter20",
+      "label": "Formula 20.24b",
+      "display_name": "Formula 20.24b",
+      "importance": 16.2681,
+      "latex_preview": "\\rho=\\frac{\\sigma(\\widehat{a},A)}{\\sqrt{\\sigma^{2}(\\widehat{a})\\sigma^{2}(A)}}=\\sqrt{\\frac{\\sigma^{2}(\\widehat{a})}{\\sigma^{2}(A)}}"
     },
     {
       "id": "formula_21.9c",
@@ -1167,17 +1095,17 @@
       "chapter_id": "chapter21",
       "label": "Formula 21.9c",
       "display_name": "Formula 21.9c",
-      "importance": 53.3862,
+      "importance": 44.6863,
       "latex_preview": "t_{n}=t+\\frac{1-t}{n}."
     },
     {
-      "id": "formula_21.16b",
+      "id": "formula_21.37a",
       "chapter": "21",
       "chapter_id": "chapter21",
-      "label": "Formula 21.16b",
-      "display_name": "selection 21.16b",
-      "importance": 47.2863,
-      "latex_preview": "\\frac{R_{b}(FS)}{R_{b}(HS)}=\\left(\\frac{1+1/n}{1+3/n}\\right)\\left(\\frac{8\\sqrt{t_{n}(HS)}}{4\\sqrt{t_{n}(FS)}}\\right)<2\\sqrt{\\frac{t_{n}(HS)}{t_{n}(FS)}}<2"
+      "label": "Formula 21.37a",
+      "display_name": "selection 21.37a",
+      "importance": 23.6219,
+      "latex_preview": "t_{n}=t+\\frac{1-t}{n}=\\left(r h^{2}+c^{2}\\right)\\left(1-\\frac{1}{n}\\right)+\\frac{1}{n}<\\gamma^{2}"
     },
     {
       "id": "formula_21.6b",
@@ -1185,17 +1113,17 @@
       "chapter_id": "chapter21",
       "label": "Formula 21.6b",
       "display_name": "Wright 21.6b",
-      "importance": 27.9337,
+      "importance": 14.5837,
       "latex_preview": "\\sigma(\\overline{z}_{i},y\\mid\\mathcal{R}_{1}=x_{ij})=r_{n}\\frac{\\sigma_{A}^{2}}{2}\\qquad\\mathrm{where}\\qquad r_{n}=r+\\frac{1-r}{n}"
     },
     {
-      "id": "formula_21.37b",
+      "id": "formula_21.15c",
       "chapter": "21",
       "chapter_id": "chapter21",
-      "label": "Formula 21.37b",
-      "display_name": "selection 21.37b",
-      "importance": 21.8069,
-      "latex_preview": "c^{2}<\\left\\{\\begin{aligned}&\\frac{1}{16}\\left(1-4h^{2}\\right)&\\text{half-sibs(for family and sib selection;\\gamma=1/4)}\\\\&\\frac{1}{4}\\left(1-h^{2}\\right)&\\text{half-sibs(for parental and S_{1} seed selection;\\gamma=1/2)}\\\\&\\frac{1}{4}\\left(1-2h^{2}\\right)&\\text{full-sibs}(\\gamma=1/2)\\end{aligned}\\right."
+      "label": "Formula 21.15c",
+      "display_name": "selection 21.15c",
+      "importance": 14.1469,
+      "latex_preview": "R_{b}=\\left\\{\\begin{aligned}&\\frac{\\left(1+3/n\\right)}{\\sqrt{t_{n}(HS)}}\\frac{\\sigma_{A}}{8}h\\left(\\bar{\\imath}_{x_{m}}+\\bar{\\imath}_{x_{f}}\\right)&\\quad half-sibs\\\\ &\\frac{\\left(1+1/n\\right)}{\\sqrt{t_{n}(FS)}}\\frac{\\sigma_{A}}{4}h\\left(\\bar{\\imath}_{x_{m}}+\\bar{\\imath}_{x_{f}}\\right)&\\quad full-sibs\\end{aligned}\\right."
     },
     {
       "id": "formula_21.1a",
@@ -1203,17 +1131,62 @@
       "chapter_id": "chapter21",
       "label": "Formula 21.1a",
       "display_name": "breeder 21.1a",
-      "importance": 21.6119,
+      "importance": 13.2119,
       "latex_preview": "R_{y}=\\frac{\\sigma(x_{m},y)}{\\sigma_{x_{m}}^{2}}S_{x_{m}}+\\frac{\\sigma(x_{f},y)}{\\sigma_{x_{f}}^{2}}S_{x_{f}}"
     },
     {
-      "id": "formula_21.57b",
+      "id": "formula_21.14b",
       "chapter": "21",
       "chapter_id": "chapter21",
-      "label": "Formula 21.57b",
-      "display_name": "selection 21.57b",
-      "importance": 20.5594,
-      "latex_preview": "\\bar{\\imath}_{(K,M)}(t)=\\bar{\\imath}_{p}-\\frac{1-p}{2\\bar{\\imath}_{p}p[M(1-t)+m t+1]}"
+      "label": "Formula 21.14b",
+      "display_name": "selection 21.14b",
+      "importance": 13.175,
+      "latex_preview": "\\gamma=\\left\\{\\begin{aligned}r_{n}&=r+(1-r)/n&family selection\\\\ r&&sib selection\\\\ 1/2&&parental or S_{1}seed selection\\end{aligned}\\right."
+    },
+    {
+      "id": "formula_22.38b",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.38b",
+      "display_name": "Formula 22.38b",
+      "importance": 50.37,
+      "latex_preview": "z_{i}=\\mu+A_{d_{i}}+\\sum_{j\\neq1}A_{s_{j}}+e_{i}"
+    },
+    {
+      "id": "formula_22.16a",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.16a",
+      "display_name": "Formula 22.16a",
+      "importance": 49.3181,
+      "latex_preview": "z_{i}=P_{d_{i}}+P_{m,j}"
+    },
+    {
+      "id": "formula_22.3",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.3",
+      "display_name": "Formula 22.3",
+      "importance": 34.2937,
+      "latex_preview": "A_{T_{i}}=A_{d_{i}}+(n-1)A_{s_{i}}"
+    },
+    {
+      "id": "formula_22.64b",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.64b",
+      "display_name": "Formula 22.64b",
+      "importance": 32.5444,
+      "latex_preview": "\\beta_{w_{d}|z}=\\frac{\\beta_{w|\\overline{z}}+(n-1)\\beta_{w|\\Delta z}}{n}\\qquad\\mathrm{a n d}\\qquad\\beta_{w_{s}|z}=\\frac{\\beta_{w|\\overline{z}}-\\beta_{w|\\Delta z}}{n}"
+    },
+    {
+      "id": "formula_22.5b",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.5b",
+      "display_name": "Formula 22.5b",
+      "importance": 26.5956,
+      "latex_preview": "\\sigma_{z}^{2}=\\sigma^{2}(P_{d})+(n-1)\\sigma^{2}(P_{s})"
     },
     {
       "id": "formula_22.1c",
@@ -1221,8 +1194,53 @@
       "chapter_id": "chapter22",
       "label": "Formula 22.1c",
       "display_name": "Formula 22.1c",
-      "importance": 36.6625,
+      "importance": 20.525,
       "latex_preview": "\\begin{align*}z_i=\\mu+A_{d_i}+\\sum\\limits_{j\\ne i}^n A_{s_j}+e_i,\\quad{\\rm with}\\quad e_i=E_{d_i}+\\sum\\limits_{j\\ne i}^n E_{s_j}\\end{align*}"
+    },
+    {
+      "id": "formula_22.51c",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.51c",
+      "display_name": "Formula 22.51c",
+      "importance": 19.0231,
+      "latex_preview": "A_{T_{i}}=A_{i n c f,i}+(1-r)(n-1)A_{s_{i}}"
+    },
+    {
+      "id": "formula_22.67a",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.67a",
+      "display_name": "Price 22.67a",
+      "importance": 17.005,
+      "latex_preview": "R=\\Delta\\mu_{A_{T}}=\\sigma(w_{i},A_{T_{i}})=\\beta_{w_{d}|z}\\sigma(I_{i},A_{T_{i}})+\\sigma(\\epsilon_{i},A_{T_{i}})=\\beta_{w_{d}|z}\\sigma(I_{i},A_{T_{i}})"
+    },
+    {
+      "id": "formula_22.60b",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.60b",
+      "display_name": "selection 22.60b",
+      "importance": 15.6813,
+      "latex_preview": "w_{i}=a+\\beta_{w_{d}|z}\\Bigg(z_{i}+g\\sum_{j\\neq i}z_{j}\\Bigg)+\\epsilon_{i}=a+\\beta_{w_{d}|z}I_{i}+\\epsilon_{i}"
+    },
+    {
+      "id": "formula_22.68",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.68",
+      "display_name": "Formula 22.68",
+      "importance": 15.6494,
+      "latex_preview": "w_{d,i}=\\beta_{w_{d}|z}\\big(A_{d_{i}}+g(n-1)A_{s_{i}}\\big)\\quad\\mathrm{a n d}\\quad w_{s,j}=\\beta_{w_{d}|z}\\big(A_{s_{j}}+g\\big[A_{d_{j}}+(n-2)A_{s_{j}}\\big]\\big)"
+    },
+    {
+      "id": "formula_22.41",
+      "chapter": "22",
+      "chapter_id": "chapter22",
+      "label": "Formula 22.41",
+      "display_name": "Formula 22.41",
+      "importance": 15.5944,
+      "latex_preview": "\\sigma(\\mathbf{e})=\\sigma^{2}(e)\\mathbf{R},\\quad\\mathrm{w h e r e}\\quad R_{i j}=\\left\\{\\begin{array}{l l}0&i\\mathrm{a n d}j\\mathrm{i n d i f e r e n t g r o u p s}\\\\ \\rho&i\\mathrm{a n d}j\\mathrm{i n t h e s a m e g r o u p}\\\\ 1&i=k\\end{array}\\right."
     },
     {
       "id": "formula_22.28a",
@@ -1230,53 +1248,35 @@
       "chapter_id": "chapter22",
       "label": "Formula 22.28a",
       "display_name": "selection 22.28a",
-      "importance": 33.4125,
+      "importance": 14.68,
       "latex_preview": "I_{i}=z_{i}+g\\sum_{j\\neq i}z_{j}"
     },
     {
-      "id": "formula_22.28f",
+      "id": "formula_22.5a",
       "chapter": "22",
       "chapter_id": "chapter22",
-      "label": "Formula 22.28f",
-      "display_name": "Formula 22.28f",
-      "importance": 33.3775,
-      "latex_preview": "\\rho(A_{T},I)=\\frac{\\sigma(I,A_{T})}{\\sigma(A_{T})\\sigma(I)}"
+      "label": "Formula 22.5a",
+      "display_name": "Formula 22.5a",
+      "importance": 14.6537,
+      "latex_preview": "\\sigma_{z}^{2}=\\sigma^{2}\\bigg(P_{d_{i}}+\\sum_{j\\neq i}^{n}P_{s_{j}}\\bigg)"
     },
     {
-      "id": "formula_22.28g",
-      "chapter": "22",
-      "chapter_id": "chapter22",
-      "label": "Formula 22.28g",
-      "display_name": "selection 22.28g",
-      "importance": 28.72,
-      "latex_preview": "R=\\rho(A_{T},I)\\sigma(A_{T})\\bar{\\imath}_{I}"
-    },
-    {
-      "id": "formula_22.28b",
-      "chapter": "22",
-      "chapter_id": "chapter22",
-      "label": "Formula 22.28b",
-      "display_name": "selection 22.28b",
-      "importance": 28.6875,
-      "latex_preview": "I_{i}=(1-g)z_{i}+g\\sum_{j=1}^{n}z_{j}=(1-g)z_{i}+g n\\overline{z}_{i}"
-    },
-    {
-      "id": "formula_22.28d",
-      "chapter": "22",
-      "chapter_id": "chapter22",
-      "label": "Formula 22.28d",
-      "display_name": "selection 22.28d",
-      "importance": 27.3306,
-      "latex_preview": "R=\\frac{\\sigma(I,A_{T})}{\\sigma(I)}\\bar{\\imath}_{I}"
-    },
-    {
-      "id": "formula_23.1b",
+      "id": "formula_23.30",
       "chapter": "23",
       "chapter_id": "chapter23",
-      "label": "Formula 23.1b",
-      "display_name": "Formula 23.1b",
-      "importance": 26.3675,
-      "latex_preview": "B=\\sum_{k=1}^{n}\\sum_{i=1}^{n_{k}}\\delta_{kii}p_{ki}"
+      "label": "Formula 23.30",
+      "display_name": "selection 23.30",
+      "importance": 71.58,
+      "latex_preview": "\\sigma_{A}^{2}(t+1)=\\sigma_{A_{o}}^{2}(t+1)-\\sigma_{A_{o}}^{2}(t)+\\left[1-\\bar{\\imath}(\\bar{\\imath}-x_{[1-p]})\\frac{\\sigma_{A}^{2}(t)}{\\sigma_{A}^{2}(t)+\\sigma_{e}^{2}}\\right]\\sigma_{A}^{2}(t)"
+    },
+    {
+      "id": "formula_23.8c",
+      "chapter": "23",
+      "chapter_id": "chapter23",
+      "label": "Formula 23.8c",
+      "display_name": "Formula 23.8c",
+      "importance": 28.2856,
+      "latex_preview": "\\sigma_{e}^{2}=\\sigma_{E_{c}}^{2}+[\\sigma_{G_{w}}^{2}+\\sigma_{E_{s}}^{2}]/n"
     },
     {
       "id": "formula_23.23",
@@ -1284,62 +1284,62 @@
       "chapter_id": "chapter23",
       "label": "Formula 23.23",
       "display_name": "Formula 23.23",
-      "importance": 22.2475,
+      "importance": 26.58,
       "latex_preview": "\\sigma_{G}(T,t)=(1+f_{t})\\sigma_{A}^{2}+(1-f_{T})(\\sigma_{D}^{2}+f_{t}\\iota^{*})+\\frac{f_{T}+3f_{t}}{2}\\sigma_{ADI}+f_{t}\\sigma_{DI}^{2}"
     },
     {
-      "id": "formula_23.65c",
+      "id": "formula_23.44",
       "chapter": "23",
       "chapter_id": "chapter23",
-      "label": "Formula 23.65c",
-      "display_name": "Formula 23.65c",
-      "importance": 21.68,
-      "latex_preview": "\\sigma_{z,i}^{2}(t)=\\sigma_{G}^{2}(i,i)+\\sigma_{e,i}^{2}"
+      "label": "Formula 23.44",
+      "display_name": "Formula 23.44",
+      "importance": 19.2775,
+      "latex_preview": "I_{ij}=b\\overline{z}_{i.}+z_{ij}"
     },
     {
-      "id": "formula_23.67b",
+      "id": "formula_23.45",
       "chapter": "23",
       "chapter_id": "chapter23",
-      "label": "Formula 23.67b",
-      "display_name": "Formula 23.67b",
-      "importance": 21.3087,
-      "latex_preview": "\\sigma_{AB,i+1}(t+1)=\\sigma_{AB,i}(t)-\\kappa_{i}(t)\\frac{\\sigma_{Az^{*},i}(t)\\sigma_{Bz^{*},i}(t)}{\\sigma_{z,i}^{2}(t)}+2^{-(i+2)}\\sigma_{ADI}"
+      "label": "Formula 23.45",
+      "display_name": "breeder 23.45",
+      "importance": 15.94,
+      "latex_preview": "R_{y}(T)=\\bar{\\imath}\\frac{\\sigma(I_{ij},y_{T})}{\\sigma(I_{ij})}"
     },
     {
-      "id": "formula_23.67c",
+      "id": "formula_23.1b",
       "chapter": "23",
       "chapter_id": "chapter23",
-      "label": "Formula 23.67c",
-      "display_name": "Formula 23.67c",
-      "importance": 21.2863,
-      "latex_preview": "\\sigma_{B,i+1}^{2}(t+1)=\\sigma_{B,i}^{2}(t)-\\kappa_{i}(t)\\frac{\\left[\\sigma_{B z^{*},i}(t)\\right]^{2}}{\\sigma_{z,i}^{2}(t)}+2^{-(i+2)}\\sigma_{D I}^{2}"
+      "label": "Formula 23.1b",
+      "display_name": "Formula 23.1b",
+      "importance": 14.58,
+      "latex_preview": "B=\\sum_{k=1}^{n}\\sum_{i=1}^{n_{k}}\\delta_{kii}p_{ki}"
     },
     {
-      "id": "formula_23.11d",
-      "chapter": "23",
-      "chapter_id": "chapter23",
-      "label": "Formula 23.11d",
-      "display_name": "Formula 23.11d",
-      "importance": 20.2725,
-      "latex_preview": "\\sigma_{G}(I,O\\mid SDHS)=(9/32)\\sigma_{A}^{2}+(1/16)\\sigma_{ADI}"
-    },
-    {
-      "id": "formula_24.14c",
+      "id": "formula_24.14b",
       "chapter": "24",
       "chapter_id": "chapter24",
-      "label": "Formula 24.14c",
-      "display_name": "Formula 24.14c",
-      "importance": 32.2981,
-      "latex_preview": "\\delta C_{ij}\\simeq\\frac{\\sigma_{A}^{4}}{4n^{2}\\sigma_{z}^{4}}\\bigg(\\delta(\\sigma_{z}^{2})+S^{2}\\bigg)=\\frac{h^{4}}{4n^{2}}\\bigg(\\delta(\\sigma_{z}^{2})+S^{2}\\bigg)"
+      "label": "Formula 24.14b",
+      "display_name": "Formula 24.14b",
+      "importance": 68.6225,
+      "latex_preview": "\\Delta C_{ij}(t+1)=C_{ij}(t+1)-C_{ij}(t)=\\frac{\\delta(\\sigma_{z}^{2})+S^{2}}{\\sigma_{z}^{4}}C_{i}(t)C_{j}(t)-r_{ij}C_{ij}(t)"
     },
     {
-      "id": "formula_24.30c",
+      "id": "formula_24.5b",
       "chapter": "24",
       "chapter_id": "chapter24",
-      "label": "Formula 24.30c",
-      "display_name": "selection 24.30c",
-      "importance": 22.7281,
-      "latex_preview": "\\Delta\\sigma_{A}^{2}\\simeq\\frac{h^{4}}{2n_{e}}\\left(\\delta(\\sigma_{z}^{2})+S^{2}\\right)"
+      "label": "Formula 24.5b",
+      "display_name": "Formula 24.5b",
+      "importance": 29.2919,
+      "latex_preview": "\\sigma_{A}^{2}(\\mathrm{within-family})=\\frac{\\sigma_{a}^{2}}{2}=\\frac{\\sigma_{A}^{2}}{2}\\left[1+\\left(1-\\frac{1}{n_{e}}\\right)\\kappa h^{2}\\right]"
+    },
+    {
+      "id": "formula_24.16",
+      "chapter": "24",
+      "chapter_id": "chapter24",
+      "label": "Formula 24.16",
+      "display_name": "Formula 24.16",
+      "importance": 25.2863,
+      "latex_preview": "G=\\sum_{i=1}^{n}\\left(X_{fa,i}+X_{mo,i}\\right)"
     },
     {
       "id": "formula_24.3",
@@ -1347,26 +1347,26 @@
       "chapter_id": "chapter24",
       "label": "Formula 24.3",
       "display_name": "Formula 24.3",
-      "importance": 21.9981,
+      "importance": 21.9806,
       "latex_preview": "n_{e}=\\frac{n}{1+c_{v}^{2}}"
     },
     {
-      "id": "formula_24.7a",
+      "id": "formula_24.2c",
       "chapter": "24",
       "chapter_id": "chapter24",
-      "label": "Formula 24.7a",
-      "display_name": "selection 24.7a",
-      "importance": 21.6419,
-      "latex_preview": "\\frac{h^{4}(t)}{2}\\delta(\\sigma_{z(t)}^{2})=4\\sum_{i=1}^{n}\\sum_{i<j}^{n}\\delta C_{ij}(t)"
+      "label": "Formula 24.2c",
+      "display_name": "Formula 24.2c",
+      "importance": 21.9169,
+      "latex_preview": "\\Delta\\sigma_{a}^{2}(t)=0\\qquad and\\qquad\\Delta d(t)=-\\frac{d(t)+\\kappa h^{2}(t)\\sigma_{A}^{2}(t)}{2}"
     },
     {
-      "id": "formula_24.30b",
+      "id": "formula_24.4",
       "chapter": "24",
       "chapter_id": "chapter24",
-      "label": "Formula 24.30b",
-      "display_name": "selection 24.30b",
-      "importance": 21.3663,
-      "latex_preview": "\\Delta\\mu\\simeq h^{2}S"
+      "label": "Formula 24.4",
+      "display_name": "Formula 24.4",
+      "importance": 17.5763,
+      "latex_preview": "d=-\\kappa\\left(1-\\frac{1}{n_{e}}\\right)h^{2}\\sigma_{A}^{2}"
     },
     {
       "id": "formula_24.2a",
@@ -1374,98 +1374,98 @@
       "chapter_id": "chapter24",
       "label": "Formula 24.2a",
       "display_name": "selection 24.2a",
-      "importance": 20.2225,
+      "importance": 16.26,
       "latex_preview": "\\Delta\\sigma_{a}^{2}(t)=-\\left[\\frac{\\sigma_{a}^{2}(t)}{2N_{e}}+\\left(1-\\frac{1}{N_{e}}\\right)\\frac{\\kappa h^{2}(t)\\sigma_{A}^{2}(t)}{2n}\\right]"
     },
     {
-      "id": "formula_25.9d",
-      "chapter": "25",
-      "chapter_id": "chapter25",
-      "label": "Formula 25.9d",
-      "display_name": "selection 25.9d",
-      "importance": 29.2938,
-      "latex_preview": "p_{0}>\\begin{cases}2/b&recessive\\\\e^{-b/4}&additive\\\\e^{-b/2}&dominant\\end{cases}\\qquad where\\quad b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}}"
+      "id": "formula_24.29b",
+      "chapter": "24",
+      "chapter_id": "chapter24",
+      "label": "Formula 24.29b",
+      "display_name": "Formula 24.29b",
+      "importance": 14.6681,
+      "latex_preview": "n_{e}=\\frac{\\sigma_{A}^{4}}{4\\sum_{i}\\mu_{2,i}^{2}}"
     },
     {
-      "id": "formula_25.1a",
+      "id": "formula_25.17d",
       "chapter": "25",
       "chapter_id": "chapter25",
-      "label": "Formula 25.1a",
-      "display_name": "Formula 25.1a",
-      "importance": 24.7144,
-      "latex_preview": "m(p)=2ap\\left[1+(1-p)k\\right]"
+      "label": "Formula 25.17d",
+      "display_name": "selection 25.17d",
+      "importance": 9.9612,
+      "latex_preview": "S=S_{a}+S_{s t}=\\frac{\\overline{\\imath}\\sigma_{z}\\omega}{\\sqrt{\\sigma_{z}^{2}+\\omega^{2}}}-\\mu\\frac{\\sigma_{z}^{2}}{\\sigma_{z}^{2}+\\omega^{2}}"
     },
     {
-      "id": "formula_25.2d",
+      "id": "formula_25.10b",
       "chapter": "25",
       "chapter_id": "chapter25",
-      "label": "Formula 25.2d",
-      "display_name": "Formula 25.2d",
-      "importance": 23.0406,
-      "latex_preview": "\\widehat{p}_{0}=\\frac{1}{R_{H}/R_{L}+1}"
+      "label": "Formula 25.10b",
+      "display_name": "selection 25.10b",
+      "importance": 8.6531,
+      "latex_preview": "R_{c}(t)=a\\left[1-\\exp\\left(-bt/a\\right)\\right]"
     },
     {
-      "id": "formula_25.2e",
+      "id": "formula_25.3",
       "chapter": "25",
       "chapter_id": "chapter25",
-      "label": "Formula 25.2e",
-      "display_name": "Formula 25.2e",
-      "importance": 23.0125,
-      "latex_preview": "\\widehat{n}=\\frac{1}{2}\\frac{R_{H}R_{L}}{\\sigma_{A}^{2}}"
+      "label": "Formula 25.3",
+      "display_name": "Formula 25.3",
+      "importance": 7.2756,
+      "latex_preview": "\\Delta p\\simeq\\frac{a\\bar{\\imath}}{\\sigma_{z}}p(1-p)[1+k(1-2p)]"
     },
     {
-      "id": "formula_25.2f",
+      "id": "formula_25.11b",
       "chapter": "25",
       "chapter_id": "chapter25",
-      "label": "Formula 25.2f",
-      "display_name": "Formula 25.2f",
-      "importance": 22.9863,
-      "latex_preview": "\\widehat{a}=\\sigma_{A}^{2}\\left(\\frac{1}{R_{H}}+\\frac{1}{R_{L}}\\right)"
+      "label": "Formula 25.11b",
+      "display_name": "selection 25.11b",
+      "importance": 5.6294,
+      "latex_preview": "R_{c}(t)=b t^{a}\\quad for a<1"
     },
     {
-      "id": "formula_25.2c",
+      "id": "formula_25.18b",
       "chapter": "25",
       "chapter_id": "chapter25",
-      "label": "Formula 25.2c",
-      "display_name": "Formula 25.2c",
-      "importance": 22.9506,
-      "latex_preview": "\\frac{R_{H}}{R_{L}}=\\frac{\\sqrt{2n(1-p_{0})/p_{0}}}{\\sqrt{2np_{0}/(1-p_{0})}}=\\frac{1-p_{0}}{p_{0}}"
+      "label": "Formula 25.18b",
+      "display_name": "selection 25.18b",
+      "importance": 5.5644,
+      "latex_preview": "R_{1}=h^{2}S=h^{2}\\left(\\frac{\\overline{\\imath}\\sigma_{z}\\omega}{\\sqrt{\\sigma_{z}^{2}+\\omega^{2}}}\\right)"
     },
     {
-      "id": "formula_26.6d",
+      "id": "formula_25.11a",
+      "chapter": "25",
+      "chapter_id": "chapter25",
+      "label": "Formula 25.11a",
+      "display_name": "Formula 25.11a",
+      "importance": 4.2475,
+      "latex_preview": "R_{c}(t)=\\frac{a t}{t+b}"
+    },
+    {
+      "id": "formula_26.22",
       "chapter": "26",
       "chapter_id": "chapter26",
-      "label": "Formula 26.6d",
-      "display_name": "selection 26.6d",
-      "importance": 38.3169,
-      "latex_preview": "\\frac{N_{e,\\tau}}{N}=\\left[\\frac{1-\\gamma}{2}+\\left(\\frac{\\sigma_{k}^{2}}{4}+Q_{*\\tau}^{2}\\sigma_{w}^{2}\\right)(1+\\gamma)\\right]^{-1}"
+      "label": "Formula 26.22",
+      "display_name": "Robertson 26.22",
+      "importance": 53.6525,
+      "latex_preview": "2N_{e}R(1)=N_{e}\\bar{\\tau}\\left(\\frac{2\\sigma_{A}^{2}(0)}{\\sigma_{z}}\\right)"
     },
     {
-      "id": "formula_26.20d",
+      "id": "formula_26.6b",
       "chapter": "26",
       "chapter_id": "chapter26",
-      "label": "Formula 26.20d",
-      "display_name": "selection 26.20d",
-      "importance": 34.9556,
-      "latex_preview": "L_{f}/L_{0}\\simeq\\frac{2N_{e}\\bar{\\imath}h^{*}\\sigma_{A*}}{\\left(x_{2N}\\sqrt{2}\\right)\\sigma_{A*}}=\\left(\\frac{\\sqrt{2}}{x_{2N}}\\right)N_{e}\\bar{\\imath}h^{*}\\qquad\\mathrm{w h e n}N_{e}\\bar{\\imath}h^{*}>5"
+      "label": "Formula 26.6b",
+      "display_name": "selection 26.6b",
+      "importance": 41.6588,
+      "latex_preview": "N_{e}=\\frac{N}{1+\\bar{\\tau}^{2}t_{FS}}"
     },
     {
-      "id": "formula_26.33b",
+      "id": "formula_26.20a",
       "chapter": "26",
       "chapter_id": "chapter26",
-      "label": "Formula 26.33b",
-      "display_name": "Formula 26.33b",
-      "importance": 30.9769,
-      "latex_preview": "E^{+}[\\alpha^{2}]=\\int_{0}^{\\infty}\\alpha^{2}f(\\alpha)d\\alpha"
-    },
-    {
-      "id": "formula_26.15a",
-      "chapter": "26",
-      "chapter_id": "chapter26",
-      "label": "Formula 26.15a",
-      "display_name": "breeder 26.15a",
-      "importance": 26.0175,
-      "latex_preview": "R(t)\\simeq2N_{e}\\left(1-e^{-t/2N_{e}}\\right)R(1)"
+      "label": "Formula 26.20a",
+      "display_name": "Formula 26.20a",
+      "importance": 14.6444,
+      "latex_preview": "L_{0}=(x_{2N}\\sqrt{2})\\sigma_{A*}"
     },
     {
       "id": "formula_26.33a",
@@ -1473,53 +1473,44 @@
       "chapter_id": "chapter26",
       "label": "Formula 26.33a",
       "display_name": "Formula 26.33a",
-      "importance": 24.8756,
+      "importance": 14.5431,
       "latex_preview": "r_{m}(\\infty)\\simeq2N_{e}\\bar{\\imath}\\mu\\frac{E^{+}[\\alpha^{2}]}{\\sigma_{z}}=\\frac{4N_{e}\\bar{\\imath}\\sigma_{m}^{2}}{\\sigma_{z}}\\frac{E^{+}[\\alpha^{2}]}{E[\\alpha^{2}]}"
     },
     {
-      "id": "formula_26.23",
+      "id": "formula_26.15a",
       "chapter": "26",
       "chapter_id": "chapter26",
-      "label": "Formula 26.23",
-      "display_name": "Formula 26.23",
-      "importance": 19.1225,
-      "latex_preview": "\\begin{align*}R(t)&\\simeq M p\\left(1-e^{-t/2N_{e}}\\right)\\frac{\\varphi(x_{[1-p]})\\sigma_{A}^{2}(0)}{p\\sigma_{z}}\\\\&=\\varphi(x_{[1-p]})\\left[\\frac{M\\sigma_{A}^{2}(0)}{\\sigma_{z}}\\left(1-e^{-t/2N_{e}}\\right)\\right]\\end{align*}"
+      "label": "Formula 26.15a",
+      "display_name": "breeder 26.15a",
+      "importance": 12.95,
+      "latex_preview": "R(t)\\simeq2N_{e}\\left(1-e^{-t/2N_{e}}\\right)R(1)"
     },
     {
-      "id": "formula_27.9a",
-      "chapter": "27",
-      "chapter_id": "chapter27",
-      "label": "Formula 27.9a",
-      "display_name": "selection 27.9a",
-      "importance": 15.6937,
-      "latex_preview": "\\begin{align*}s_j=\\frac{\\Delta_j}{W_i}=\\frac{E[\\Delta_1]/j}{W_i}=\\frac{C_i}{j}\\end{align*}"
+      "id": "formula_26.29",
+      "chapter": "26",
+      "chapter_id": "chapter26",
+      "label": "Formula 26.29",
+      "display_name": "Formula 26.29",
+      "importance": 8.5719,
+      "latex_preview": "r_{m}(\\infty)=2N_{e}\\bar{\\imath}\\frac{\\sigma_{m}^{2}}{\\sigma_{z}}"
     },
     {
-      "id": "formula_27.9d",
+      "id": "formula_27.2a",
       "chapter": "27",
       "chapter_id": "chapter27",
-      "label": "Formula 27.9d",
-      "display_name": "Formula 27.9d",
-      "importance": 14.3681,
-      "latex_preview": "\\frac{(i+2)(7i+6)}{144}"
+      "label": "Formula 27.2a",
+      "display_name": "Formula 27.2a",
+      "importance": 10.2844,
+      "latex_preview": "E[x_{1}]=\\frac{E[r_{1}]\\sqrt{n}}{2d_{0}}\\simeq1.06,\\quad or\\quad E[r_{1}]\\simeq\\frac{2.12d_{0}}{\\sqrt{n}}"
     },
     {
-      "id": "formula_27.9b",
+      "id": "formula_27.3",
       "chapter": "27",
       "chapter_id": "chapter27",
-      "label": "Formula 27.9b",
-      "display_name": "Formula 27.9b",
-      "importance": 14.2988,
-      "latex_preview": "\\begin{align*}\\pi_{j,i}=\\frac{1}{i-1}\\sum\\limits_{k=j}^{i-1}\\frac{1}{k}\\quad{\\rm for}\\quad j<i\\end{align*}"
-    },
-    {
-      "id": "formula_27.9c",
-      "chapter": "27",
-      "chapter_id": "chapter27",
-      "label": "Formula 27.9c",
-      "display_name": "Formula 27.9c",
-      "importance": 14.2588,
-      "latex_preview": "\\begin{align*}\\sum_{j=1}^{i-1}j\\cdot\\pi_{j,i}=\\sum_{j=1}^{i-1}j\\left(\\frac{1}{i-1}\\sum_{k=j}^{i-1}\\frac{1}{k}\\right)=\\frac{i+2}{4}\\end{align*}"
+      "label": "Formula 27.3",
+      "display_name": "Fisher 27.3",
+      "importance": 7.9987,
+      "latex_preview": "\\begin{align*}\\psi(x,k)=C c_k^2 x\\left[1-\\Phi(c_kx)\\right]\\quad{\\rm where}\\quad c_k=\\left(1-\\frac{2E[x_1]}{n}\\right)^{1-k}\\end{align*}"
     },
     {
       "id": "formula_27.1a",
@@ -1527,17 +1518,35 @@
       "chapter_id": "chapter27",
       "label": "Formula 27.1a",
       "display_name": "Fisher 27.1a",
-      "importance": 11.6162,
+      "importance": 7.3013,
       "latex_preview": "x=\\frac{r\\sqrt{n}}{2d}"
     },
     {
-      "id": "formula_27.4b",
+      "id": "formula_27.8a",
       "chapter": "27",
       "chapter_id": "chapter27",
-      "label": "Formula 27.4b",
-      "display_name": "Formula 27.4b",
-      "importance": 11.24,
-      "latex_preview": "E[x_{[k]}]\\simeq\\frac{1}{\\lambda}\\left[\\ln\\left(\\frac{\\lambda n}{2}\\right)-\\sum_{i=1}^{k-1}\\frac{1}{i}+0.5772\\right]"
+      "label": "Formula 27.8a",
+      "display_name": "selection 27.8a",
+      "importance": 4.2681,
+      "latex_preview": "\\pi_{j}=\\frac{s_{j}}{\\sum_{\\ell=1}^{k}s_{\\ell}}"
+    },
+    {
+      "id": "formula_27.9b",
+      "chapter": "27",
+      "chapter_id": "chapter27",
+      "label": "Formula 27.9b",
+      "display_name": "Formula 27.9b",
+      "importance": 4.2138,
+      "latex_preview": "\\begin{align*}\\pi_{j,i}=\\frac{1}{i-1}\\sum\\limits_{k=j}^{i-1}\\frac{1}{k}\\quad{\\rm for}\\quad j<i\\end{align*}"
+    },
+    {
+      "id": "formula_27.9d",
+      "chapter": "27",
+      "chapter_id": "chapter27",
+      "label": "Formula 27.9d",
+      "display_name": "Formula 27.9d",
+      "importance": 2.5981,
+      "latex_preview": "\\frac{(i+2)(7i+6)}{144}"
     },
     {
       "id": "formula_28.3f",
@@ -1545,161 +1554,53 @@
       "chapter_id": "chapter28",
       "label": "Formula 28.3f",
       "display_name": "selection 28.3f",
-      "importance": 48.1306,
+      "importance": 250.3306,
       "latex_preview": "V_{s}=\\omega^{2}+\\sigma_{E}^{2}"
     },
     {
-      "id": "formula_28.3b",
+      "id": "formula_28.32a",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.3b",
-      "display_name": "Wright 28.3b",
-      "importance": 45.0969,
-      "latex_preview": "W(z)=\\exp\\left[\\frac{-(z-\\theta)^{2}}{2\\omega^{2}}\\right]"
+      "label": "Formula 28.32a",
+      "display_name": "Formula 28.32a",
+      "importance": 68.2444,
+      "latex_preview": "\\sigma_{m}^{2}=\\frac{\\widetilde{\\sigma}_{A}^{2}}{2N_{e}}+\\left(1-\\frac{1}{N_{e}}\\right)\\frac{\\widetilde{\\sigma}_{A}^{4}}{2n V_{s}}\\simeq\\frac{\\widetilde{\\sigma}_{A}^{2}}{2N_{e}}+\\frac{\\widetilde{\\sigma}_{A}^{4}}{2n V_{s}}"
     },
     {
-      "id": "formula_28.3e",
+      "id": "formula_28.4b",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.3e",
-      "display_name": "selection 28.3e",
-      "importance": 41.88,
-      "latex_preview": "\\begin{aligned}\\overline{W}&=\\frac{1}{\\sqrt{2\\pi\\sigma_{z}^{2}}}\\int\\exp\\left[\\frac{-\\left(z-\\overline{z}\\right)^{2}}{2\\sigma_{z}^{2}}\\right]\\exp\\left[\\frac{-\\left(z-\\theta\\right)^{2}}{2\\omega^{2}}\\right]dz\\\\&=\\sqrt{\\frac{\\omega^{2}}{\\omega^{2}+\\sigma_{z}^{2}}}\\exp\\left[\\frac{-\\left(\\overline{z}-\\theta\\right)^{2}}{2\\left(\\omega^{2}+\\sigma_{z}^{2}\\right)}\\right]\\end{aligned}"
+      "label": "Formula 28.4b",
+      "display_name": "selection 28.4b",
+      "importance": 26.6175,
+      "latex_preview": "s_{i}=\\frac{a_{i}}{2V_{s}}\\bigg[a_{i}(2p_{i}-1)+2(\\theta-\\overline{z})\\bigg]"
     },
     {
-      "id": "formula_28.3i",
+      "id": "formula_28.46b",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.3i",
-      "display_name": "selection 28.3i",
-      "importance": 41.7437,
-      "latex_preview": "w(z)=1+\\beta(z-\\mu_{z})+\\frac{\\gamma}{2}\\Biggl[(z-\\mu_{z})^{2}-\\sigma_{z}^{2}\\Biggr]+e"
+      "label": "Formula 28.46b",
+      "display_name": "selection 28.46b",
+      "importance": 26.2069,
+      "latex_preview": "\\widehat{V}_{s}=\\frac{\\sigma_{\\alpha}^{2}(3\\kappa_{4}+2\\overline{k})}{2s}=3\\frac{\\sigma_{\\alpha}^{2}\\kappa_{4}}{2s}+2\\frac{\\sigma_{\\alpha}^{2}n\\mu}{s^{2}}=3\\frac{\\sigma_{\\alpha}^{2}\\kappa_{4}}{2s}+\\frac{\\sigma_{m}^{2}}{s^{2}}"
     },
     {
-      "id": "formula_28.3g",
+      "id": "formula_28.45b",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.3g",
-      "display_name": "selection 28.3g",
-      "importance": 40.3787,
-      "latex_preview": "\\sigma_{z^{*}}^{2}=\\sigma_{z}^{2}-\\frac{\\sigma_{z}^{4}}{\\sigma_{z}^{2}+\\omega^{2}}"
+      "label": "Formula 28.45b",
+      "display_name": "selection 28.45b",
+      "importance": 24.9481,
+      "latex_preview": "\\widetilde{\\sigma}_{A}^{2}=\\frac{\\sigma_{m}^{2}}{s}"
     },
     {
-      "id": "formula_28.26h",
+      "id": "formula_28.30d",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.26h",
-      "display_name": "Formula 28.26h",
-      "importance": 37.4825,
-      "latex_preview": "\\left(\\begin{array}{c c}{\\mathbf{C}_{s}(t)}&{\\mathbf{B}(t)}\\\\ {\\mathbf{B}(t)}&{\\mathbf{C}_{s}(t)}\\end{array}\\right)\\left(\\begin{array}{c c}{\\mathbf{C}^{-1}(t)+\\mathbf{1}/V_{s}}&{\\mathbf{1}/V_{s}}\\\\ {\\mathbf{1}/V_{s}}&{\\mathbf{C}^{-1}(t)+\\mathbf{1}/V_{s}}\\end{array}\\right)=\\left(\\begin{array}{c c}{\\mathbf{I}}&{\\mathbf{0}}\\\\ {\\mathbf{0}}&{\\mathbf{I}}\\end{array}\\right)"
-    },
-    {
-      "id": "formula_28.3a",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.3a",
-      "display_name": "Wright 28.3a",
-      "importance": 36.1362,
-      "latex_preview": "W(z)=1-s(z-\\theta)^{2}"
-    },
-    {
-      "id": "formula_28.3c",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.3c",
-      "display_name": "selection 28.3c",
-      "importance": 36.1212,
-      "latex_preview": "W(z)\\simeq1-\\frac{(z-\\theta)^{2}}{2\\omega^{2}}"
-    },
-    {
-      "id": "formula_28.3h",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.3h",
-      "display_name": "selection 28.3h",
-      "importance": 36.1019,
-      "latex_preview": "\\widehat{V}_{s}\\simeq\\frac{\\sigma_{z}^{4}}{\\sigma_{z}^{2}-\\sigma_{z^{*}}^{2}}"
-    },
-    {
-      "id": "formula_28.3d",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.3d",
-      "display_name": "selection 28.3d",
-      "importance": 36.0694,
-      "latex_preview": "\\overline{W}(z)=E[w(z)]=1-s\\left(E[z^{2}]-2\\theta E[z]+\\theta^{2}\\right)=1-s\\left[(\\overline{z}-\\theta)^{2}+\\sigma_{z}^{2}\\right]"
-    },
-    {
-      "id": "formula_28.22b",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.22b",
-      "display_name": "Formula 28.22b",
-      "importance": 34.5188,
-      "latex_preview": "\\begin{aligned}&\\mu\\int\\left(p(x)-\\alpha\\frac{\\partial p(x)}{\\partial x}+\\frac{\\alpha^{2}}{2}\\frac{\\partial^{2}p(x)}{\\partial^{2}x}\\right)f(\\alpha)d\\alpha\\\\&=\\mu\\left(p(x)\\int f(\\alpha)d\\alpha-\\frac{\\partial p(x)}{\\partial x}\\int\\alpha f(\\alpha)d\\alpha+\\frac{1}{2}\\frac{\\partial^{2}p(x)}{\\partial^{2}x}\\int\\alpha^{2}f(\\alpha)d\\alpha\\right)\\\\&=\\mu\\left(p(x)+0+\\frac{1}{2}\\frac{\\partial^{2}p(x)}{\\partial^{2}x}\\sigma_{\\alpha}^{2}\\right)\\\\ \\end{aligned}"
-    },
-    {
-      "id": "formula_28.26d",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26d",
-      "display_name": "Formula 28.26d",
-      "importance": 31.7531,
-      "latex_preview": "p(\\mathbf{x})p(\\mathbf{x}^{\\prime})W\\left[\\sum(x_{i}+x_{i}^{\\prime})\\right]"
-    },
-    {
-      "id": "formula_28.26a",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26a",
-      "display_name": "Formula 28.26a",
-      "importance": 31.7419,
-      "latex_preview": "\\mathbf{V}(t)=\\begin{pmatrix}\\mathbf{C}(t)&\\mathbf{0}\\\\ \\mathbf{0}&\\mathbf{C}(t)\\end{pmatrix}"
-    },
-    {
-      "id": "formula_28.26b",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26b",
-      "display_name": "selection 28.26b",
-      "importance": 31.7331,
-      "latex_preview": "\\mathbf{K}(t)=\\begin{pmatrix}\\mathbf{C}_{s}(t)&\\mathbf{B}(t)\\\\ \\mathbf{B}(t)&\\mathbf{C}_{s}(t)\\end{pmatrix}"
-    },
-    {
-      "id": "formula_28.26g",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26g",
-      "display_name": "Formula 28.26g",
-      "importance": 31.7044,
-      "latex_preview": "\\mathbf{K}^{-1}(t)=\\begin{pmatrix}\\mathbf{C}^{-1}(t)+\\mathbf{1}/V_{s}&\\mathbf{1}/V_{s}\\\\\\mathbf{1}/V_{s}&\\mathbf{C}^{-1}(t)+\\mathbf{1}/V_{s}\\end{pmatrix}"
-    },
-    {
-      "id": "formula_28.26f",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26f",
-      "display_name": "selection 28.26f",
-      "importance": 31.6644,
-      "latex_preview": "\\begin{pmatrix}\\mathbf{x}-\\boldsymbol{\\mu}(t)\\\\\\mathbf{x}^{\\prime}-\\boldsymbol{\\mu}(t)\\end{pmatrix}\\mathbf{K}^{-1}\\begin{pmatrix}\\mathbf{x}-\\boldsymbol{\\mu}(t)\\\\\\mathbf{x}^{\\prime}-\\boldsymbol{\\mu}(t)\\end{pmatrix}^{T}"
-    },
-    {
-      "id": "formula_28.26c",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26c",
-      "display_name": "selection 28.26c",
-      "importance": 31.6388,
-      "latex_preview": "W(g)=\\exp\\left(-\\left[\\sum_{i=1}^{n}(x_{i}+x_{i}^{\\prime})\\right]^{2}\\bigg/(2V_{s})\\right)=\\exp\\left(-\\frac{\\mathbf{x}\\mathbf{1}\\mathbf{x}^{T}+2\\mathbf{x}^{\\prime}\\mathbf{1}\\mathbf{x}^{T}+\\mathbf{x}^{\\prime}\\mathbf{1}(\\mathbf{x}^{\\prime})^{T}}{2V_{s}}\\right)"
-    },
-    {
-      "id": "formula_28.26e",
-      "chapter": "28",
-      "chapter_id": "chapter28",
-      "label": "Formula 28.26e",
-      "display_name": "selection 28.26e",
-      "importance": 31.5875,
-      "latex_preview": "[\\mathbf{x}-\\boldsymbol{\\mu}(t)]\\mathbf{C}^{-1}(t)[\\mathbf{x}-\\boldsymbol{\\mu}(t)]^{T}+[\\mathbf{x}^{\\prime}-\\boldsymbol{\\mu}(t)]\\mathbf{C}^{-1}(t)[\\mathbf{x}^{\\prime}-\\boldsymbol{\\mu}(t)]^{T}+\\frac{\\mathbf{x}\\mathbf{1}\\mathbf{x}^{T}+2\\mathbf{x}^{\\prime}\\mathbf{1}\\mathbf{x}^{T}+\\mathbf{x}^{\\prime}\\mathbf{1}(\\mathbf{x}^{\\prime})^{T}}{V_{s}}"
+      "label": "Formula 28.30d",
+      "display_name": "selection 28.30d",
+      "importance": 21.9125,
+      "latex_preview": "E(s_{i})=\\frac{E(\\alpha_{i}^{2})}{2V_{s}}=\\frac{\\sigma_{\\alpha_{i}}^{2}}{2V_{s}}"
     },
     {
       "id": "formula_28.14a",
@@ -1707,71 +1608,80 @@
       "chapter_id": "chapter28",
       "label": "Formula 28.14a",
       "display_name": "Formula 28.14a",
-      "importance": 30.715,
+      "importance": 20.665,
       "latex_preview": "\\widetilde{\\sigma}_{A}^{2}=\\sqrt{2n V_{s}\\sigma_{m}^{2}}"
     },
     {
-      "id": "formula_28.22d",
+      "id": "formula_28.3i",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.22d",
-      "display_name": "Formula 28.22d",
-      "importance": 30.4131,
-      "latex_preview": "p(x)\\sim N\\left(0,\\sqrt{\\mu\\sigma_{\\alpha}^{2}V_{s}}\\right)"
+      "label": "Formula 28.3i",
+      "display_name": "selection 28.3i",
+      "importance": 20.6463,
+      "latex_preview": "w(z)=1+\\beta(z-\\mu_{z})+\\frac{\\gamma}{2}\\Biggl[(z-\\mu_{z})^{2}-\\sigma_{z}^{2}\\Biggr]+e"
     },
     {
-      "id": "formula_28.18c",
+      "id": "formula_28.4c",
       "chapter": "28",
       "chapter_id": "chapter28",
-      "label": "Formula 28.18c",
-      "display_name": "Formula 28.18c",
-      "importance": 30.3419,
-      "latex_preview": "k_{4,i}=\\frac{E[\\alpha_{i}^{4}]}{3E[\\alpha_{i}^{2}]^{2}}\\simeq\\frac{2V_{s}\\mu_{i}\\sigma_{\\alpha_{i}}^{2}}{3(2V_{s}\\mu_{i})^{2}}=\\frac{\\sigma_{\\alpha_{i}}^{2}}{6V_{s}\\mu_{i}}"
+      "label": "Formula 28.4c",
+      "display_name": "selection 28.4c",
+      "importance": 19.0275,
+      "latex_preview": "s_{i}\\simeq-\\frac{a_{i}^{2}}{2V_{s}}"
     },
     {
-      "id": "formula_29.29a",
-      "chapter": "29",
-      "chapter_id": "chapter29",
-      "label": "Formula 29.29a",
-      "display_name": "Formula 29.29a",
-      "importance": 28.7506,
-      "latex_preview": "w=1+\\beta(z-\\mu_{z})+\\frac{\\gamma}{2}\\Big([z-\\mu_{z}]^{2}-\\sigma_{z}^{2}\\Big)+e"
+      "id": "formula_28.21c",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.21c",
+      "display_name": "Formula 28.21c",
+      "importance": 18.595,
+      "latex_preview": "\\begin{aligned}\\frac{\\partial p(x)}{\\partial t}&=\\frac{\\partial p(x)}{\\partial t}(\\mathrm{sel})+\\frac{\\partial p(x)}{\\partial t}(\\mathrm{mut})=0\\\\\\frac{-p(x)[x^{2}-\\sigma^{2}(x)]}{2V_{s}}&-\\mu p(x)+\\mu\\int p(x-\\alpha)f(\\alpha)d\\alpha=0\\end{aligned}"
     },
     {
-      "id": "formula_29.30c",
-      "chapter": "29",
-      "chapter_id": "chapter29",
-      "label": "Formula 29.30c",
-      "display_name": "selection 29.30c",
-      "importance": 27.3463,
-      "latex_preview": "E_{z}\\left[\\frac{\\partial w(z)}{\\partial z}\\right]=E_{z}\\left[b_{1}+2b_{2}(z-\\mu_{z})\\right]=b_{1}+2b_{2}E_{z}\\left[z-\\mu_{z}\\right]=b_{1}"
+      "id": "formula_28.28a",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.28a",
+      "display_name": "Formula 28.28a",
+      "importance": 18.3713,
+      "latex_preview": "\\Delta C_{ij}(t+1)=-\\frac{C_{i}(t)C_{j}(t)}{V_{s}+\\sigma_{A}^{2}(t)}-r_{ij}C_{ij}(t)+\\delta_{ij}\\mu_{i}\\sigma_{\\alpha_{i}}^{2}"
     },
     {
-      "id": "formula_29.30e",
-      "chapter": "29",
-      "chapter_id": "chapter29",
-      "label": "Formula 29.30e",
-      "display_name": "Formula 29.30e",
-      "importance": 25.3988,
-      "latex_preview": "\\begin{aligned}&\\int\\frac{\\partial w(z)}{\\partial z}p(z)dz=\\left.\\frac{\\partial w(z)}{\\partial z}\\right|_{z=\\mu_{z}}+\\left(\\frac{\\sigma_{z}^{2}}{2}\\frac{\\partial^{3}w(z)}{\\partial z^{3}}+\\frac{\\sigma_{z}^{4}}{8}\\frac{\\partial^{5}w(z)}{\\partial z^{5}}+\\cdots\\right)\\bigg|_{z=\\mu_{z}}\\\\ &\\\\ &\\int\\frac{\\partial^{2}w(z)}{\\partial z^{2}}p(z)dz=\\left.\\frac{\\partial^{2}w(z)}{\\partial z^{2}}\\right|_{z=\\mu_{z}}+\\left(\\frac{\\sigma_{z}^{2}}{2}\\frac{\\partial^{4}w(z)}{\\partial z^{4}}+\\frac{\\sigma_{z}^{4}}{8}\\frac{\\partial^{6}w(z)}{\\partial z^{6}}+\\cdots\\right)\\bigg|_{z=\\mu_{z}}\\\\ \\end{aligned}"
+      "id": "formula_28.25d",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.25d",
+      "display_name": "Formula 28.25d",
+      "importance": 17.6788,
+      "latex_preview": "2C_{i}(t)=2\\sum_{j=1}^{n}C_{ij}(t)"
     },
     {
-      "id": "formula_29.30a",
-      "chapter": "29",
-      "chapter_id": "chapter29",
-      "label": "Formula 29.30a",
-      "display_name": "Formula 29.30a",
-      "importance": 24.325,
-      "latex_preview": "\\frac{\\partial w(z)}{\\partial z}=b_{1}+2b_{2}(z-\\mu_{z})\\quad and\\quad\\frac{\\partial^{2}w(z)}{\\partial z^{2}}=2b_{2}"
+      "id": "formula_28.14c",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.14c",
+      "display_name": "Formula 28.14c",
+      "importance": 17.3431,
+      "latex_preview": "\\widetilde{\\sigma}_{A}^{2}=\\sqrt{2n\\sigma_{m}^{2}(V_{s}+n\\sigma_{m}^{2}/2)}+n\\sigma_{m}^{2}"
     },
     {
-      "id": "formula_29.33e",
-      "chapter": "29",
-      "chapter_id": "chapter29",
-      "label": "Formula 29.33e",
-      "display_name": "Formula 29.33e",
-      "importance": 24.2306,
-      "latex_preview": "\\beta_{u}=\\mu\\beta=\\mu\\left(\\frac{1}{\\overline{W}}\\frac{\\partial\\overline{W}}{\\partial\\mu}\\right)=\\left(\\frac{\\mu}{\\partial\\mu}\\right)\\left(\\frac{\\partial\\overline{W}}{\\overline{W}}\\right)=\\frac{\\partial\\ln(\\overline{W})}{\\partial\\ln(\\mu)}"
+      "id": "formula_28.23d",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.23d",
+      "display_name": "Formula 28.23d",
+      "importance": 15.9844,
+      "latex_preview": "\\begin{align*}E[x^k]=\\int x^kp(x)dx=\\int x^k{2V_s\\mu f(x)\\over x^2}dx=2V_s\\mu E[\\alpha^{k-2}]\\end{align*}"
+    },
+    {
+      "id": "formula_28.12a",
+      "chapter": "28",
+      "chapter_id": "chapter28",
+      "label": "Formula 28.12a",
+      "display_name": "Formula 28.12a",
+      "importance": 15.7156,
+      "latex_preview": "\\widetilde{\\sigma}_{A}^{2}\\simeq4n\\overline{{\\mu}}V_{s}"
     },
     {
       "id": "formula_29.29c",
@@ -1779,107 +1689,134 @@
       "chapter_id": "chapter29",
       "label": "Formula 29.29c",
       "display_name": "Formula 29.29c",
-      "importance": 23.0044,
+      "importance": 35.6919,
       "latex_preview": "w=a+b z^{2}+e"
     },
     {
-      "id": "formula_30.4a",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.4a",
-      "display_name": "Formula 30.4a",
-      "importance": 28.0119,
-      "latex_preview": "\\begin{align*}z_{sd,i}=\\frac{z_i-\\mu_i}{\\sigma_i}\\end{align*}"
+      "id": "formula_29.15c",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.15c",
+      "display_name": "selection 29.15c",
+      "importance": 34.0156,
+      "latex_preview": "d=\\left|\\bar{\\imath}\\right|"
     },
     {
-      "id": "formula_30.8c",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.8c",
-      "display_name": "selection 30.8c",
-      "importance": 26.09,
-      "latex_preview": "\\begin{aligned}(\\mathbf{z}-\\boldsymbol{\\mu}^{*})(\\mathbf{z}-\\boldsymbol{\\mu}^{*})^{T}&=(\\mathbf{z}-\\boldsymbol{\\mu}-\\mathbf{S})(\\mathbf{z}-\\boldsymbol{\\mu}-\\mathbf{S})^{T}\\\\&=(\\mathbf{z}-\\boldsymbol{\\mu}-\\mathbf{S})([\\mathbf{z}-\\boldsymbol{\\mu}]^{T}-\\mathbf{S}^{T})\\\\&=(\\mathbf{z}-\\boldsymbol{\\mu})(\\mathbf{z}-\\boldsymbol{\\mu})^{T}-(\\mathbf{z}-\\boldsymbol{\\mu})\\mathbf{S}^{T}-\\mathbf{S}\\left(\\mathbf{z}-\\boldsymbol{\\mu}\\right)^{T}+\\mathbf{S}\\mathbf{S}^{T}\\end{aligned}"
+      "id": "formula_29.28a",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.28a",
+      "display_name": "Formula 29.28a",
+      "importance": 26.3075,
+      "latex_preview": "\\begin{aligned}&b_{1}=\\frac{\\sigma^{2}(x_{2})\\cdot\\sigma(x_{1},w)-\\sigma(x_{1},x_{2})\\cdot\\sigma(x_{2},w)}{\\sigma^{2}(x_{1})\\cdot\\sigma^{2}(x_{2})-\\sigma^{2}(x_{1},x_{2})}=\\frac{(\\mu_{4,z}-\\sigma_{z}^{4})\\cdot S-\\mu_{3,z}\\cdot C}{\\sigma_{z}^{2}\\cdot(\\mu_{4,z}-\\sigma_{z}^{4})-\\mu_{3,z}^{2}}\\\\ &b_{2}=\\frac{\\sigma^{2}(x_{1})\\cdot\\sigma(x_{2},w)-\\sigma(x_{1},x_{2})\\cdot\\sigma(x_{1},w)}{\\sigma^{2}(x_{1})\\cdot\\sigma^{2}(x_{2})-\\sigma^{2}(x_{1},x_{2})}=\\frac{\\sigma_{z}^{2}\\cdot C-\\mu_{3,z}\\cdot S}{\\sigma_{z}^{2}\\cdot(\\mu_{4,z}-\\sigma_{z}^{4})-\\mu_{3,z}^{2}}\\\\ \\end{aligned}"
     },
     {
-      "id": "formula_30.2a",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.2a",
-      "display_name": "Formula 30.2a",
-      "importance": 23.6069,
-      "latex_preview": "\\mathbf{P}^{-1}\\boldsymbol{\\sigma}(\\mathbf{z},w)=\\mathbf{P}^{-1}\\mathbf{S}=\\boldsymbol{\\beta}"
+      "id": "formula_29.3d",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.3d",
+      "display_name": "Formula 29.3d",
+      "importance": 25.2731,
+      "latex_preview": "w(j)=\\sum_{i=1}^{k}f_{i}(j)\\lambda^{-i}"
     },
     {
-      "id": "formula_30.40d",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.40d",
-      "display_name": "Formula 30.40d",
-      "importance": 21.5444,
-      "latex_preview": "\\begin{align*}S_{m}(\\mathrm{off})&=b_{m}\\sigma(z_{m(t-1)},z_{m(t)})+\\frac{b_{d}}{2}\\sigma(z_{m(t)},z_{m(t)})+b_{o}\\sigma(z_{o(t)},z_{m(t)})\\\\&=\\frac{b_{m}}{2}\\sigma^{2}(A_{m})+\\frac{b_{d}}{2}\\sigma^{2}(z_{m})+b_{o}\\sigma(A_{m},A_{o})\\end{align*}"
+      "id": "formula_29.6c",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.6c",
+      "display_name": "Formula 29.6c",
+      "importance": 17.3088,
+      "latex_preview": "|\\bar{\\imath}|=|\\rho(z,w)|\\sqrt{I}"
     },
     {
-      "id": "formula_30.8a",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.8a",
-      "display_name": "Formula 30.8a",
-      "importance": 18.2356,
-      "latex_preview": "\\mathbf{P}=E\\left[\\left(\\mathbf{z}-\\boldsymbol{\\mu}\\right)\\left(\\mathbf{z}-\\boldsymbol{\\mu}\\right)^{T}\\right]=\\int\\left(\\mathbf{z}-\\boldsymbol{\\mu}\\right)\\left(\\mathbf{z}-\\boldsymbol{\\mu}\\right)^{T}p(\\mathbf{z})\\mathrm{d}\\mathbf{z}"
+      "id": "formula_29.22c",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.22c",
+      "display_name": "selection 29.22c",
+      "importance": 17.2288,
+      "latex_preview": "\\begin{array}{r l r}{S_{j}=\\sigma(w_{j},z)}&{{}\\quad\\mathrm{a n d}\\quad}&{C_{j}=\\sigma\\left[w_{j},(z-\\mu_{j-1})^{2}\\right]}\\end{array}"
     },
     {
-      "id": "formula_30.8b",
-      "chapter": "30",
-      "chapter_id": "chapter30",
-      "label": "Formula 30.8b",
-      "display_name": "selection 30.8b",
-      "importance": 18.1831,
-      "latex_preview": "\\mathbf{P}^{*}=E\\left[\\left(\\mathbf{z}^{*}-\\boldsymbol{\\mu}^{*}\\right)\\left(\\mathbf{z}^{*}-\\boldsymbol{\\mu}^{*}\\right)^{T}\\right]=\\int\\left(\\mathbf{z}-\\boldsymbol{\\mu}^{*}\\right)\\left(\\mathbf{z}-\\boldsymbol{\\mu}^{*}\\right)^{T}\\boldsymbol{p}^{*}\\left(\\mathbf{z}\\right)\\mathrm{d}\\mathbf{z}"
+      "id": "formula_29.10",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.10",
+      "display_name": "Formula 29.10",
+      "importance": 16.3169,
+      "latex_preview": "I=\\frac{p(1-p)}{p^{2}}\\simeq\\frac{1}{p}\\quad if p\\ll1"
     },
     {
-      "id": "formula_A1.20",
+      "id": "formula_29.20b",
+      "chapter": "29",
+      "chapter_id": "chapter29",
+      "label": "Formula 29.20b",
+      "display_name": "selection 29.20b",
+      "importance": 15.9794,
+      "latex_preview": "\\begin{align*}\\int{\\partial w(z)\\over\\partial z}p(z)dz=E_z\\left[{\\partial w(z)\\over\\partial z}\\right]\\end{align*}"
+    },
+    {
+      "id": "formula_30.4b",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.4b",
+      "display_name": "Formula 30.4b",
+      "importance": 49.3125,
+      "latex_preview": "\\mathbf{z}_{sd}=\\mathbf{D}^{-1}(\\mathbf{z}-\\boldsymbol{\\mu})"
+    },
+    {
+      "id": "formula_30.3",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.3",
+      "display_name": "selection 30.3",
+      "importance": 22.2569,
+      "latex_preview": "\\begin{align*}S_i=\\sum\\limits_{j=1}^n\\beta_j\\; P_{ij}=\\beta_i\\; P_{ii}+\\sum\\limits_{j\\ne i}^n\\beta_j\\; P_{ij}\\end{align*}"
+    },
+    {
+      "id": "formula_30.21a",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.21a",
+      "display_name": "Formula 30.21a",
+      "importance": 18.9838,
+      "latex_preview": "\\mathbf{z}_{0}=-\\boldsymbol{\\gamma}^{-1}\\mathbf{b}"
+    },
+    {
+      "id": "formula_30.7b",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.7b",
+      "display_name": "selection 30.7b",
+      "importance": 18.6056,
+      "latex_preview": "\\mathbf{C}=\\boldsymbol{\\sigma}[w,(\\mathbf{z}-\\boldsymbol{\\mu})(\\mathbf{z}-\\boldsymbol{\\mu})^{T}]=\\mathbf{P}^{*}-\\mathbf{P}+\\mathbf{S}\\mathbf{S}^{T}"
+    },
+    {
+      "id": "formula_30.2b",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.2b",
+      "display_name": "Formula 30.2b",
+      "importance": 16.2037,
+      "latex_preview": "\\begin{align*}w(\\mathbf{z})=1+\\sum\\limits_{j=1}^n\\beta_j(z_j-\\mu_j)+e=1+\\beta^T(\\mathbf{z}-\\boldsymbol{\\mu})+e\\end{align*}"
+    },
+    {
+      "id": "formula_30.19",
+      "chapter": "30",
+      "chapter_id": "chapter30",
+      "label": "Formula 30.19",
+      "display_name": "Formula 30.19",
+      "importance": 14.5062,
+      "latex_preview": "w(\\mathbf{z})=a+\\sum_{i=1}^{n}b_{1}z_{i}+\\frac{1}{2}\\sum_{i=1}^{n}\\sum_{j=1}^{n}\\gamma_{ij}z_{i}z_{j}=a+\\mathbf{b}^{T}\\mathbf{z}+\\frac{1}{2}\\mathbf{z}^{T}\\gamma\\mathbf{z}"
+    },
+    {
+      "id": "formula_A1.17",
       "chapter": "31",
       "chapter_id": "appendix1",
-      "label": "Formula A1.20",
-      "display_name": "Formula A1.20",
-      "importance": 10.2181,
-      "latex_preview": "\\lim_{\\delta_{t}\\to0}\\frac{1}{\\delta_{t}}\\left(\\frac{\\partial^{2}\\left\\{\\left[v(x)\\delta_{t}+o(\\delta_{t})\\right]\\varphi(x,t)\\right\\}}{\\partial x^{2}}\\right)=\\frac{\\partial^{2}[v(x)\\varphi(x,t)]}{\\partial x^{2}}"
-    },
-    {
-      "id": "formula_A1.2",
-      "chapter": "31",
-      "chapter_id": "appendix1",
-      "label": "Formula A1.2",
-      "display_name": "Formula A1.2",
-      "importance": 7.2931,
-      "latex_preview": "\\sigma^{2}(\\delta_{x}\\mid x_{t}=x)=v(x)\\delta_{t}+o(\\delta_{t})"
-    },
-    {
-      "id": "formula_A1.3",
-      "chapter": "31",
-      "chapter_id": "appendix1",
-      "label": "Formula A1.3",
-      "display_name": "Formula A1.3",
-      "importance": 4.245,
-      "latex_preview": "\\begin{array}{r l}{E\\left(\\left|\\delta_{x}\\right|^{k}\\right)=o(\\delta_{t})}&{{}\\mathrm{f o r~}k\\geq3}\\end{array}"
-    },
-    {
-      "id": "formula_A1.11",
-      "chapter": "31",
-      "chapter_id": "appendix1",
-      "label": "Formula A1.11",
-      "display_name": "Formula A1.11",
-      "importance": 4.1463,
-      "latex_preview": "\\int\\varphi(x-\\delta_{x},t)\\phi(\\delta_{x},x-\\delta_{x},\\delta_{t})d\\delta_{x}=\\varphi(x,t)\\int\\phi(\\delta_{x},x,\\delta_{t})d\\delta_{x}-\\frac{\\partial}{\\partial x}\\left(\\varphi(x,t)\\int\\delta_{x}\\phi(\\delta_{x},x,\\delta_{t})d\\delta_{x}\\right)"
-    },
-    {
-      "id": "formula_A1.9",
-      "chapter": "31",
-      "chapter_id": "appendix1",
-      "label": "Formula A1.9",
-      "display_name": "Formula A1.9",
-      "importance": 3.99,
-      "latex_preview": "\\begin{align*}\\varphi(x-\\delta_{x},t)\\phi(\\delta_{x},x-\\delta_{x},\\delta_{t})&=\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})-\\delta_{x}\\frac{\\partial\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x}\\\\&+\\frac{\\delta_{x}^{2}}{2}\\frac{\\partial^{2}\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x^{2}}-\\frac{\\delta_{x}^{3}}{6}\\frac{\\partial^{3}\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x^{3}}+o(\\delta_{x}^{3})\\end{align*}"
+      "label": "Formula A1.17",
+      "display_name": "Formula A1.17",
+      "importance": 22.1956,
+      "latex_preview": "\\varphi(x,t+\\delta_{t})=\\varphi(x,t)-\\frac{\\partial\\left\\{\\left[m(x)\\delta_{t}+o(\\delta_{t})\\right]\\varphi(x,t)\\right\\}}{\\partial x}+\\frac{1}{2}\\frac{\\partial^{2}\\left\\{\\left[v(x)\\delta_{t}+o(\\delta_{t})\\right]\\varphi(x,t)\\right\\}}{\\partial x^{2}}"
     },
     {
       "id": "formula_A1.25",
@@ -1887,17 +1824,44 @@
       "chapter_id": "appendix1",
       "label": "Formula A1.25",
       "display_name": "Formula A1.25",
-      "importance": 2.5944,
+      "importance": 13.3144,
       "latex_preview": "\\varphi(x)=\\frac{C}{v(x)G(x)}"
     },
     {
-      "id": "formula_A2.17",
-      "chapter": "32",
-      "chapter_id": "appendix2",
-      "label": "Formula A2.17",
-      "display_name": "Formula A2.17",
-      "importance": 61.3044,
-      "latex_preview": "\\int_{L_{\\alpha/2}}^{H_{\\alpha/2}}p(\\theta\\mid\\mathbf{x})d\\theta=1-\\alpha"
+      "id": "formula_A1.9",
+      "chapter": "31",
+      "chapter_id": "appendix1",
+      "label": "Formula A1.9",
+      "display_name": "Formula A1.9",
+      "importance": 10.025,
+      "latex_preview": "\\begin{align*}\\varphi(x-\\delta_{x},t)\\phi(\\delta_{x},x-\\delta_{x},\\delta_{t})&=\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})-\\delta_{x}\\frac{\\partial\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x}\\\\&+\\frac{\\delta_{x}^{2}}{2}\\frac{\\partial^{2}\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x^{2}}-\\frac{\\delta_{x}^{3}}{6}\\frac{\\partial^{3}\\big[\\varphi(x,t)\\phi(\\delta_{x},x,\\delta_{t})\\big]}{\\partial x^{3}}+o(\\delta_{x}^{3})\\end{align*}"
+    },
+    {
+      "id": "formula_A1.47",
+      "chapter": "31",
+      "chapter_id": "appendix1",
+      "label": "Formula A1.47",
+      "display_name": "Formula A1.47",
+      "importance": 7.275,
+      "latex_preview": "I_{f}(p)=\\int_{0}^{\\infty}f(x_{t})dt"
+    },
+    {
+      "id": "formula_A1.31",
+      "chapter": "31",
+      "chapter_id": "appendix1",
+      "label": "Formula A1.31",
+      "display_name": "Formula A1.31",
+      "importance": 5.605,
+      "latex_preview": "h(x,p)=\\int_{0}^{\\infty}\\varphi(x,t,p)dt"
+    },
+    {
+      "id": "formula_A1.39",
+      "chapter": "31",
+      "chapter_id": "appendix1",
+      "label": "Formula A1.39",
+      "display_name": "Formula A1.39",
+      "importance": 5.5006,
+      "latex_preview": "\\begin{aligned}\\bar{t}_{L}(p)&=\\int_{0}^{1}h_{0}(x,p)dx=4N_{e}\\int_{0}^{p}dx+4N_{e}\\frac{p}{1-p}\\int_{p}^{1}\\frac{1-x}{x}dx\\\\&=-4N_{e}\\left(\\frac{p}{1-p}\\right)\\ln(p)\\end{aligned}"
     },
     {
       "id": "formula_A2.59",
@@ -1905,8 +1869,26 @@
       "chapter_id": "appendix2",
       "label": "Formula A2.59",
       "display_name": "Formula A2.59",
-      "importance": 26.6256,
+      "importance": 25.2931,
       "latex_preview": "\\Gamma(\\alpha+1)=\\alpha\\Gamma(\\alpha),\\quad\\Gamma(1)=1,\\quad and\\quad\\Gamma(1/2)=\\sqrt{\\pi}"
+    },
+    {
+      "id": "formula_A2.13",
+      "chapter": "32",
+      "chapter_id": "appendix2",
+      "label": "Formula A2.13",
+      "display_name": "Formula A2.13",
+      "importance": 16.2294,
+      "latex_preview": "p(\\boldsymbol{\\Theta}_{1}\\mid\\mathbf{y})=\\int_{\\boldsymbol{\\Theta}_{n u}}p(\\boldsymbol{\\Theta}_{1},\\boldsymbol{\\Theta}_{n u}\\mid\\mathbf{y})d\\boldsymbol{\\Theta}_{n u}"
+    },
+    {
+      "id": "formula_A2.39",
+      "chapter": "32",
+      "chapter_id": "appendix2",
+      "label": "Formula A2.39",
+      "display_name": "Formula A2.39",
+      "importance": 16.2094,
+      "latex_preview": "p(\\boldsymbol{\\Theta}_{2}\\mid\\mathbf{x},\\boldsymbol{\\Theta}_{1})=f(\\mathbf{x},\\boldsymbol{\\Theta}_{1})\\cdot g(\\mathbf{x},\\boldsymbol{\\Theta}_{1},\\boldsymbol{\\Theta}_{2})"
     },
     {
       "id": "formula_A2.20",
@@ -1914,8 +1896,17 @@
       "chapter_id": "appendix2",
       "label": "Formula A2.20",
       "display_name": "Formula A2.20",
-      "importance": 14.615,
+      "importance": 13.2475,
       "latex_preview": "\\pi_{0}=\\Pr(\\theta\\in\\Theta_{0})\\qquad and\\qquad\\pi_{1}=\\Pr(\\theta\\in\\Theta_{1})"
+    },
+    {
+      "id": "formula_A2.19",
+      "chapter": "32",
+      "chapter_id": "appendix2",
+      "label": "Formula A2.19",
+      "display_name": "Formula A2.19",
+      "importance": 13.2144,
+      "latex_preview": "p_{0}=\\Pr(\\theta\\in\\Theta_{0}\\mid\\mathbf{x})\\qquad and\\qquad p_{1}=\\Pr(\\theta\\in\\Theta_{1}\\mid\\mathbf{x})"
     },
     {
       "id": "formula_A2.44",
@@ -1923,44 +1914,26 @@
       "chapter_id": "appendix2",
       "label": "Formula A2.44",
       "display_name": "Formula A2.44",
-      "importance": 14.5287,
+      "importance": 13.1437,
       "latex_preview": "\\sigma_{*}^{2}=\\left(\\frac{1}{\\sigma_{0}^{2}}+\\frac{n}{\\sigma^{2}}\\right)^{-1}\\quad and\\quad\\mu_{*}=\\sigma_{*}^{2}\\left(\\frac{\\mu_{0}}{\\sigma_{0}^{2}}+\\frac{n\\overline{x}}{\\sigma^{2}}\\right)"
     },
     {
-      "id": "formula_A2.35",
-      "chapter": "32",
-      "chapter_id": "appendix2",
-      "label": "Formula A2.35",
-      "display_name": "Formula A2.35",
-      "importance": 13.2081,
-      "latex_preview": "\\ell(\\mu,\\sigma^{2}\\mid x_{i})=\\frac{1}{\\sqrt{2\\pi\\sigma^{2}}}\\exp\\left(-\\frac{(x_{i}-\\mu)^{2}}{2\\sigma^{2}}\\right)"
-    },
-    {
-      "id": "formula_A2.6",
-      "chapter": "32",
-      "chapter_id": "appendix2",
-      "label": "Formula A2.6",
-      "display_name": "Formula A2.6",
-      "importance": 10.1812,
-      "latex_preview": "p(\\boldsymbol{\\Theta}\\mid\\mathbf{x})=\\frac{1}{p(\\mathbf{x})}\\cdot p(\\mathbf{x}\\mid\\boldsymbol{\\Theta})\\cdot p(\\boldsymbol{\\Theta})"
-    },
-    {
-      "id": "formula_A3.52",
+      "id": "formula_A3.39",
       "chapter": "33",
       "chapter_id": "appendix3",
-      "label": "Formula A3.52",
-      "display_name": "Formula A3.52",
-      "importance": 7.32,
-      "latex_preview": "w_{i}\\sim p(w\\mid x=x_{i-1},y=y_{i-1},z=z_{i-1})"
+      "label": "Formula A3.39",
+      "display_name": "Formula A3.39",
+      "importance": 10.3187,
+      "latex_preview": "\\widehat{h}=\\frac{1}{n}\\sum_{i=1}^{n}h(\\theta_{i})"
     },
     {
-      "id": "formula_A3.44",
+      "id": "formula_A3.4",
       "chapter": "33",
       "chapter_id": "appendix3",
-      "label": "Formula A3.44",
-      "display_name": "Formula A3.44",
-      "importance": 7.2825,
-      "latex_preview": "B=\\frac{n}{m-1}\\sum_{i=1}^{m}(\\overline{\\theta}_{i}.-\\overline{\\theta}_{..})^{2}"
+      "label": "Formula A3.4",
+      "display_name": "Formula A3.4",
+      "importance": 10.2988,
+      "latex_preview": "\\widehat{I}(y)=\\frac{1}{n}\\sum_{i=1}^{n}f(y\\mid x_{i})"
     },
     {
       "id": "formula_A3.41",
@@ -1968,116 +1941,143 @@
       "chapter_id": "appendix3",
       "label": "Formula A3.41",
       "display_name": "Formula A3.41",
-      "importance": 7.2275,
+      "importance": 8.5775,
       "latex_preview": "\\widehat{\\gamma}(k)=\\frac{1}{n-1}\\sum_{i=1}^{n-k}\\left[\\left(h(\\theta_{i})-\\widehat{h}\\right)\\left(h(\\theta_{i+k})-\\widehat{h}\\right)\\right]"
     },
     {
-      "id": "formula_A3.46",
+      "id": "formula_A3.44",
       "chapter": "33",
       "chapter_id": "appendix3",
-      "label": "Formula A3.46",
-      "display_name": "Formula A3.46",
-      "importance": 5.6175,
-      "latex_preview": "\\widehat{\\sigma^{2}}=\\frac{n-1}{n}W+\\frac{1}{n}B"
+      "label": "Formula A3.44",
+      "display_name": "Formula A3.44",
+      "importance": 7.2475,
+      "latex_preview": "B=\\frac{n}{m-1}\\sum_{i=1}^{m}(\\overline{\\theta}_{i}.-\\overline{\\theta}_{..})^{2}"
     },
     {
-      "id": "formula_A3.21",
+      "id": "formula_A3.5",
       "chapter": "33",
       "chapter_id": "appendix3",
-      "label": "Formula A3.21",
-      "display_name": "Formula A3.21",
-      "importance": 4.2444,
-      "latex_preview": "P(j\\rightarrow i)\\pi_{j}^{*}=P(i\\rightarrow j)\\pi_{i}^{*}"
+      "label": "Formula A3.5",
+      "display_name": "Formula A3.5",
+      "importance": 5.5494,
+      "latex_preview": "\\mathrm{SE}^{2}[\\widehat{I}(y)]=\\frac{1}{n}\\left[\\frac{1}{n-1}\\sum_{i=1}^{n}\\left(f(y\\mid x_{i})-\\widehat{I}(y)\\right)^{2}\\right]"
     },
     {
-      "id": "formula_A3.51",
+      "id": "formula_A3.58",
       "chapter": "33",
       "chapter_id": "appendix3",
-      "label": "Formula A3.51",
-      "display_name": "Formula A3.51",
-      "importance": 4.1469,
-      "latex_preview": "\\theta_{i}^{(k)}\\sim p(\\theta^{(k)}\\mid\\theta^{(1)}=\\theta_{i}^{(1)},\\cdots,\\theta^{(k-1)}=\\theta_{i}^{(k-1)},\\theta^{(k+1)}=\\theta_{i-1}^{(k+1)},\\cdots,\\theta^{(n)}=\\theta_{i-1}^{(n)})"
+      "label": "Formula A3.58",
+      "display_name": "Formula A3.58",
+      "importance": 4.2281,
+      "latex_preview": "p(x)=\\int p(x\\mid y)p(y)dy=E_{y}\\left[p(x\\mid y)\\right]"
     },
     {
-      "id": "formula_A4.11",
+      "id": "formula_A4.21",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.11",
-      "display_name": "Formula A4.11",
-      "importance": 60.9869,
-      "latex_preview": "n_{e,Li-Ji}=\\sum_{i=1}^{N}I(\\lambda_{i}\\geq1)+\\sum_{i=1}^{N}(\\lambda_{i}-\\mathrm{floor}[\\lambda_{i}])"
+      "label": "Formula A4.21",
+      "display_name": "Formula A4.21",
+      "importance": 42.9719,
+      "latex_preview": "\\ell(p)=(1-\\pi_{0})\\phi_{A}(p)+\\pi_{0}\\phi_{u}(p)=(1-\\pi_{0})\\frac{\\Gamma(a+b)}{\\Gamma(a)\\Gamma(b)}p^{a-1}(1-p)^{b-1}+\\pi_{0}"
     },
     {
-      "id": "formula_A4.15",
+      "id": "formula_A4.3",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.15",
-      "display_name": "Formula A4.15",
-      "importance": 16.2838,
-      "latex_preview": "\\begin{align*}n_0\\int_a^b\\phi_u(p)dp=n_0\\int_a^b1\\cdot dp=n_0(b-a)\\end{align*}"
+      "label": "Formula A4.3",
+      "display_name": "Fisher A4.3",
+      "importance": 26.6738,
+      "latex_preview": "p=\\Pr(U>Z_{s})"
     },
     {
-      "id": "formula_A4.24",
+      "id": "formula_A4.53",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.24",
-      "display_name": "Formula A4.24",
-      "importance": 9.9675,
-      "latex_preview": "\\mathrm{FPR}=\\mathrm{Pr}(i is deemed significant\\mid i is truly null)=\\alpha"
+      "label": "Formula A4.53",
+      "display_name": "Formula A4.53",
+      "importance": 14.59,
+      "latex_preview": "\\overline{T}=\\frac{\\sum_{i=1}^{k}w_{i}T_{i}}{\\sum_{i=1}^{k}w_{i}},\\quad\\mathrm{w h e r e}\\quad w_{i}=\\frac{1}{s_{i}^{2}}"
     },
     {
-      "id": "formula_A4.9",
+      "id": "formula_A4.14",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.9",
-      "display_name": "Formula A4.9",
-      "importance": 7.2719,
-      "latex_preview": "n^{-1}\\sum_{i=1}^{n}\\lambda_{i}=n^{-1}n=1"
+      "label": "Formula A4.14",
+      "display_name": "Formula A4.14",
+      "importance": 11.6231,
+      "latex_preview": "\\phi_{u}(p)=1\\quad for\\quad0\\leq p\\leq1"
     },
     {
-      "id": "formula_A4.39",
+      "id": "formula_A4.20",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.39",
-      "display_name": "Formula A4.39",
-      "importance": 5.5294,
-      "latex_preview": "\\widehat{F D R}(\\tau)=n_{0}\\cdot\\frac{\\tau}{S(\\tau)}=\\left(\\frac{N[p(i)\\ values>\\lambda]}{1-\\lambda}\\right)\\cdot\\left(\\frac{\\tau}{N[p(i)\\ values\\leq\\tau]}\\right)"
+      "label": "Formula A4.20",
+      "display_name": "Formula A4.20",
+      "importance": 8.5875,
+      "latex_preview": "\\phi_{A}(p)=\\frac{\\Gamma(a+b)}{\\Gamma(a)\\Gamma(b)}p^{a-1}(1-p)^{b-1}"
     },
     {
-      "id": "formula_A4.2",
+      "id": "formula_A4.52",
       "chapter": "34",
       "chapter_id": "appendix4",
-      "label": "Formula A4.2",
-      "display_name": "Fisher A4.2",
-      "importance": 4.2363,
-      "latex_preview": "Z_{s}=\\frac{\\sum_{i=1}^{k}Z_{i}}{\\sqrt{k}}"
+      "label": "Formula A4.52",
+      "display_name": "Formula A4.52",
+      "importance": 7.2512,
+      "latex_preview": "T_{i}=\\theta+e_{i}"
     },
     {
-      "id": "formula_A5.23",
+      "id": "formula_A5.24",
       "chapter": "35",
       "chapter_id": "appendix5",
-      "label": "Formula A5.23",
-      "display_name": "Formula A5.23",
-      "importance": 32.5237,
-      "latex_preview": "\\boldsymbol{A}=diag(\\lambda_{1},\\lambda_{2},\\cdots,\\lambda_{n})=\\begin{pmatrix}{{{\\lambda_{1}}}}&{{{0}}}&{{{\\cdots}}}&{{{0}}} \\\\{{{0}}}&{{{\\lambda_{2}}}}&{{{\\cdots}}}&{{{0}}} \\\\{{{\\vdots}}}&{{{\\ddots}}}&{{{\\vdots}}} \\\\{{{0}}}&{{{\\cdots}}}&{{{\\cdots}}}&{{{\\lambda_{n}}}}\\end{pmatrix}"
+      "label": "Formula A5.24",
+      "display_name": "Formula A5.24",
+      "importance": 56.3531,
+      "latex_preview": "\\mathbf{U}=\\left(\\mathbf{e}_{1},\\mathbf{e}_{2},\\cdots,\\mathbf{e}_{n}\\right)"
     },
     {
-      "id": "formula_A5.49",
+      "id": "formula_A5.8",
       "chapter": "35",
       "chapter_id": "appendix5",
-      "label": "Formula A5.49",
-      "display_name": "Formula A5.49",
-      "importance": 19.2587,
-      "latex_preview": "\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)^{T}\\mathbf{V}_{\\mathbf{X}}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)=c^{2}"
+      "label": "Formula A5.8",
+      "display_name": "Formula A5.8",
+      "importance": 53.6469,
+      "latex_preview": "\\mathbf{x}=\\sum_{i=1}^{n}Proj(\\mathbf{x}on\\mathbf{y}_{i})"
     },
     {
-      "id": "formula_A5.21",
+      "id": "formula_A5.25",
       "chapter": "35",
       "chapter_id": "appendix5",
-      "label": "Formula A5.21",
-      "display_name": "Formula A5.21",
-      "importance": 16.2431,
-      "latex_preview": "\\begin{align*}\\mathbf{e}_i^T\\mathbf{e}_j=\\begin{cases}1&\\textrm{if}i=j\\\\0&\\textrm{if}i\\neq j\\end{cases}\\end{align*}"
+      "label": "Formula A5.25",
+      "display_name": "Formula A5.25",
+      "importance": 39.8856,
+      "latex_preview": "\\mathbf{A}=\\mathbf{U}\\left(\\sum_{i=1}^{n}\\boldsymbol{\\Lambda}_{i}\\right)\\mathbf{U}^{T}=\\sum_{i=1}^{n}\\mathbf{U}\\boldsymbol{\\Lambda}_{i}\\mathbf{U}^{T}=\\sum_{i=1}^{n}\\lambda_{i}\\mathbf{e}_{i}\\mathbf{e}_{i}^{T}"
+    },
+    {
+      "id": "formula_A5.36",
+      "chapter": "35",
+      "chapter_id": "appendix5",
+      "label": "Formula A5.36",
+      "display_name": "Formula A5.36",
+      "importance": 20.6013,
+      "latex_preview": "\\mathbf{V_{y}}=\\mathbf{U}^{T}\\mathbf{V_{x}}\\mathbf{U}=\\boldsymbol{\\Lambda}"
+    },
+    {
+      "id": "formula_A5.6",
+      "chapter": "35",
+      "chapter_id": "appendix5",
+      "label": "Formula A5.6",
+      "display_name": "Formula A5.6",
+      "importance": 18.8875,
+      "latex_preview": "\\mathbf{P r o j}(\\mathbf{x}\\mathbf{o n}\\mathbf{y})=(\\mathbf{x}^{T}\\mathbf{y})\\mathbf{y}=(\\cos(\\theta)\\left|\\left|\\mathbf{x}\\right|\\right|)\\mathbf{y}"
+    },
+    {
+      "id": "formula_A5.1",
+      "chapter": "35",
+      "chapter_id": "appendix5",
+      "label": "Formula A5.1",
+      "display_name": "Formula A5.1",
+      "importance": 16.2862,
+      "latex_preview": "\\begin{align*}||\\mathbf{x}||=\\sqrt{x_1^2+x_2^2+\\cdots+x_n^2}=\\sqrt{\\mathbf{x}^T\\mathbf{x}}\\end{align*}"
     },
     {
       "id": "formula_A5.4",
@@ -2085,80 +2085,80 @@
       "chapter_id": "appendix5",
       "label": "Formula A5.4",
       "display_name": "Formula A5.4",
-      "importance": 10.2369,
+      "importance": 16.2019,
       "latex_preview": "\\begin{align*}\\theta=\\cos^{-1}\\left({\\bf{y}^T\\bf{x}\\over||\\bf{x}||~||\\bf{y}||}\\right)\\end{align*}"
     },
     {
-      "id": "formula_A5.15",
+      "id": "formula_A5.35",
       "chapter": "35",
       "chapter_id": "appendix5",
-      "label": "Formula A5.15",
-      "display_name": "Formula A5.15",
-      "importance": 10.2081,
-      "latex_preview": "\\left|\\mathbf{A}-\\lambda\\mathbf{I}\\right|=(-\\lambda)^{n}+S_{1}(-\\lambda)^{n-1}+\\cdots+S_{n-1}(-\\lambda)^{1}+S_{n}=0"
+      "label": "Formula A5.35",
+      "display_name": "Formula A5.35",
+      "importance": 16.0281,
+      "latex_preview": "\\mathbf{y}=\\mathbf{U}^{T}\\mathbf{x}"
     },
     {
-      "id": "formula_A5.11",
+      "id": "formula_A5.54",
       "chapter": "35",
       "chapter_id": "appendix5",
-      "label": "Formula A5.11",
-      "display_name": "Formula A5.11",
-      "importance": 7.2438,
-      "latex_preview": "\\mathbf{U}^{T}=\\mathbf{U}^{-1}"
+      "label": "Formula A5.54",
+      "display_name": "Formula A5.54",
+      "importance": 16.0113,
+      "latex_preview": "\\mathbf{z}=A^{-1/2}\\mathbf{U}^{T}(\\mathbf{x}-\\boldsymbol{\\mu})"
     },
     {
-      "id": "formula_A6.3",
+      "id": "formula_A6.1",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.3",
-      "display_name": "Formula A6.3",
-      "importance": 7.2294,
-      "latex_preview": "\\nabla_{\\boldsymbol{\\mu}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)"
+      "label": "Formula A6.1",
+      "display_name": "Formula A6.1",
+      "importance": 22.2475,
+      "latex_preview": "\\nabla\\mathbf{x}[f]=\\frac{\\partial f}{\\partial\\mathbf{x}}=\\begin{pmatrix}\\frac{\\partial f}{\\partial x_{1}}\\\\ \\vdots\\\\ \\frac{\\partial f}{\\partial x_{n}}\\end{pmatrix}"
     },
     {
-      "id": "formula_A6.10",
+      "id": "formula_A6.16",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.10",
-      "display_name": "Formula A6.10",
-      "importance": 5.56,
-      "latex_preview": "\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\widehat{\\boldsymbol{\\beta}}+\\left(\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\right)\\widehat{\\mathbf{u}}=\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}"
+      "label": "Formula A6.16",
+      "display_name": "Formula A6.16",
+      "importance": 2.6463,
+      "latex_preview": "\\frac{d g(\\mathbf{x},\\lambda)}{d\\lambda}=h(\\mathbf{x})-c=0"
     },
     {
-      "id": "formula_A6.9",
+      "id": "formula_A6.14",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.9",
-      "display_name": "Formula A6.9",
-      "importance": 4.0706,
-      "latex_preview": "\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{y}\\end{pmatrix}=\\begin{pmatrix}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\\\\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{X}&\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\end{pmatrix}\\begin{pmatrix}\\widehat{\\boldsymbol{\\beta}}\\\\\\widehat{\\mathbf{u}}\\end{pmatrix}"
+      "label": "Formula A6.14",
+      "display_name": "Formula A6.14",
+      "importance": 2.6275,
+      "latex_preview": "g(\\mathbf{x},\\lambda)=f(\\mathbf{x})-\\lambda[h(\\mathbf{x})-c]"
     },
     {
-      "id": "formula_A6.11",
+      "id": "formula_A6.15",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.11",
-      "display_name": "Formula A6.11",
-      "importance": 3.8869,
-      "latex_preview": "\\hat{\\mathbf{u}}=\\left(\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}+\\mathbf{G}^{-1}\\right)^{-1}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\left(\\mathbf{y}-\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\right)"
+      "label": "Formula A6.15",
+      "display_name": "Formula A6.15",
+      "importance": 2.5631,
+      "latex_preview": "\\nabla_{\\mathbf{x}}[g(\\mathbf{x},\\lambda)]=\\nabla_{\\mathbf{x}}[f(\\mathbf{x})]-\\lambda\\cdot\\nabla_{\\mathbf{x}}[h(\\mathbf{x})]=\\mathbf{0}"
     },
     {
-      "id": "formula_A6.5",
+      "id": "formula_A6.13",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.5",
-      "display_name": "Formula A6.5",
-      "importance": 2.4694,
-      "latex_preview": "\\left(-\\frac{1}{2}\\right)\\left[\\ln(|\\mathbf{R}|)+\\ln(|\\mathbf{G}|)+(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})^{T}\\mathbf{R}^{-1}(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta}-\\mathbf{Z}\\mathbf{u})+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\right]"
+      "label": "Formula A6.13",
+      "display_name": "Formula A6.13",
+      "importance": 2.5356,
+      "latex_preview": "\\mathbf{H}_{ij}=\\frac{\\partial\\left(f(\\mathbf{x})/\\partial x_{i}\\right)}{\\partial x_{j}}=\\frac{\\partial^{2}f(\\mathbf{x})}{\\partial x_{i}\\partial x_{j}}"
     },
     {
-      "id": "formula_A6.6",
+      "id": "formula_A6.2",
       "chapter": "36",
       "chapter_id": "appendix6",
-      "label": "Formula A6.6",
-      "display_name": "Formula A6.6",
-      "importance": 2.3544,
-      "latex_preview": "\\begin{array}{r}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}-2\\mathbf{y}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{X}\\boldsymbol{\\beta}+2\\boldsymbol{\\beta}^{T}\\mathbf{X}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{Z}^{T}\\mathbf{R}^{-1}\\mathbf{Z}\\mathbf{u}+\\mathbf{u}^{T}\\mathbf{G}^{-1}\\mathbf{u}\\\\ (\\mathrm{A6.4d})\\end{array}"
+      "label": "Formula A6.2",
+      "display_name": "Formula A6.2",
+      "importance": 2.495,
+      "latex_preview": "\\nabla_{\\mathbf{X}}\\left[\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\right]=-\\varphi(\\mathbf{x},\\boldsymbol{\\mu},\\mathbf{V})\\cdot\\mathbf{V}^{-1}\\left(\\mathbf{x}-\\boldsymbol{\\mu}\\right)"
     }
   ]
 }

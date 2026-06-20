@@ -39,6 +39,12 @@ AMBIGUOUS_CANDIDATE_THRESHOLD = 3
 NON_TEACHING_SYMBOLS = {"\\pi", "\\infty"}
 OPERATORS = {"E", "P", "Pr", "Var", "Cov", "\\Pr", "\\Var", "\\Cov", "\\E"}
 FUNCTION_STYLE_MACROS = {"bar", "overline", "hat", "widehat", "tilde", "widetilde", "dot", "vec"}
+NON_SEMANTIC_STYLE_MACROS = {"mathbf", "boldsymbol", "bm", "mathbb", "mathrm", "mathit", "mathsf"}
+SCRIPT_STYLE_MACRO_ALIASES = {
+    "bar": "overline",
+    "widehat": "hat",
+    "widetilde": "tilde",
+}
 EDGE_EXACT = "exact_match"
 EDGE_CANONICAL = "canonical_match"
 EDGE_EXPLICIT = "explicit_reference"
@@ -50,6 +56,7 @@ EDGE_ACCEPTED = "accepted"
 EDGE_CANDIDATE = "candidate"
 EDGE_AMBIGUOUS = "ambiguous"
 EDGE_REJECTED = "rejected"
+EDGE_CONTEXT = "context"
 STRICT_GRAPH_EDGE_STATUSES = {EDGE_ACCEPTED}
 STOPLIST = {
     "A",
@@ -101,6 +108,64 @@ STOPLIST = {
     "j",
     "l",
 }
+CORE_POPGEN_SYMBOLS = {
+    "N",
+    "p",
+    "q",
+    "R",
+    "S",
+    "w",
+    "z",
+    "h",
+    "\\mu",
+    "\\sigma",
+}
+LOW_PRECISION_FAMILY_KEYS = {
+    "A",
+    "D",
+    "I",
+    "P",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "k",
+    "m",
+    "n",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    "\\alpha",
+    "\\beta",
+    "\\gamma",
+    "\\delta",
+    "\\Delta",
+    "\\epsilon",
+    "\\lambda",
+    "\\mu",
+    "\\omega",
+    "\\sigma_var",
+}
 
 
 def utc_now() -> str:
@@ -129,10 +194,61 @@ def raw_formula_id(public_id: str) -> str:
 
 
 def canonical_symbol_key(symbol: str) -> str:
-    value = str(symbol).strip().replace(" ", "")
+    value = normalize_unbraced_function_style_macros(strip_nonsemantic_style_macros(str(symbol).strip()))
+    value = value.replace(" ", "")
     value = value.replace("\\widehat", "\\hat").replace("\\widetilde", "\\tilde")
     value = value.replace("\\bar", "\\overline")
+    value = normalize_function_style_script_braces(value)
     return value
+
+
+def normalize_function_style_script_braces(symbol: str) -> str:
+    macro_group = "|".join(sorted(FUNCTION_STYLE_MACROS, key=len, reverse=True))
+    value = symbol
+    value = re.sub(rf"^(\\(?:{macro_group})\{{[^{{}}]+\}})_\{{([^{{}}]+)\}}", r"\1_\2", value)
+    value = re.sub(rf"^(\\(?:{macro_group})\{{[^{{}}]+\}})\^\{{([^{{}}]+)\}}", r"\1^\2", value)
+    return value
+
+
+def normalize_unbraced_function_style_macros(symbol: str) -> str:
+    macro_group = "|".join(sorted(FUNCTION_STYLE_MACROS, key=len, reverse=True))
+    pattern = re.compile(
+        rf"\\({macro_group})\s*(\\[A-Za-z]+|[A-Za-z])"
+        r"((?:_\{[^{}]*\}|_[A-Za-z0-9]+|\^\{[^{}]*\}|\^[A-Za-z0-9]+)*)"
+    )
+    previous = None
+    value = symbol
+    while previous != value:
+        previous = value
+        value = pattern.sub(r"\\\1{\2}\3", value)
+    return value
+
+
+def strip_nonsemantic_style_macros(symbol: str) -> str:
+    value = symbol
+    previous = None
+    macro_group = "|".join(sorted(NON_SEMANTIC_STYLE_MACROS))
+    while previous != value:
+        previous = value
+        value = re.sub(rf"\\(?:{macro_group})\{{([^{{}}]+)\}}", r"\1", value)
+        value = re.sub(rf"\\(?:{macro_group})\s+(\\?[A-Za-z])", r"\1", value)
+    return value
+
+
+def is_nonsemantic_style_symbol(symbol: str) -> bool:
+    macro_group = "|".join(sorted(NON_SEMANTIC_STYLE_MACROS))
+    return bool(re.match(rf"^\\(?:{macro_group})(?:\{{|\\s+)", str(symbol or "").strip()))
+
+
+def compatible_nonsemantic_style_family_match(symbol: dict[str, str], sense: dict[str, Any]) -> bool:
+    name = symbol["symbol"]
+    if not is_nonsemantic_style_symbol(name):
+        return False
+    query_key = canonical_symbol_key(symbol.get("canonical_latex") or name)
+    sense_key = canonical_symbol_key(sense.get("canonical_latex") or str(sense.get("symbol") or ""))
+    if not query_key or not sense_key or sense_key == query_key:
+        return False
+    return sense_key.startswith(f"{query_key}_") or sense_key.startswith(f"{query_key}^")
 
 
 def symbol_exact_key(symbol: str) -> str:
@@ -332,6 +448,13 @@ def build_chapter_formula_list(
     formulas_by_id: dict[str, dict[str, Any]],
     chapter_docs: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
+    def normalize_formula_order(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        ordered = sorted(items, key=lambda f: formula_sort_key(f["id"]))
+        for order, formula in enumerate(ordered):
+            formula["source_position"] = int(formula.get("position", order))
+            formula["position"] = order
+        return ordered
+
     if APPENDIX_RE.fullmatch(chapter_id):
         formulas = extract_appendix_formulas_from_docs(chapter_id, chapter_docs)
         for formula in formulas:
@@ -347,7 +470,7 @@ def build_chapter_formula_list(
                 formula["symbols_defined_detailed"] = []
                 formula["symbols_used"] = []
                 formula["symbols_defined"] = []
-        return sorted(formulas, key=lambda f: (int(f["position"]), formula_sort_key(f["id"])))
+        return normalize_formula_order(formulas)
 
     positions = extract_formula_positions(chapter_docs)
     formulas = [dict(item) for item in formulas_by_id.values() if item["chapter_id"] == chapter_id]
@@ -371,7 +494,7 @@ def build_chapter_formula_list(
             formula["symbols_defined_detailed"] = []
             formula["symbols_used"] = []
             formula["symbols_defined"] = []
-    return sorted(formulas, key=lambda f: (int(f["position"]), formula_sort_key(f["id"])))
+    return normalize_formula_order(formulas)
 
 
 def register_formula_senses(formulas: list[dict[str, Any]]) -> tuple[dict[str, list[str]], dict[str, dict[str, Any]]]:
@@ -383,9 +506,14 @@ def register_formula_senses(formulas: list[dict[str, Any]]) -> tuple[dict[str, l
             sense = {
                 "sense_id": sense_id,
                 "symbol": symbol["symbol"],
-                "canonical_latex": symbol.get("canonical_latex") or canonical_symbol_key(symbol["symbol"]),
-                "exact_key": symbol.get("exact_key") or canonical_symbol_key(symbol["symbol"]),
+                "canonical_latex": canonical_symbol_key(symbol.get("canonical_latex") or symbol["symbol"]),
+                "exact_key": canonical_symbol_key(symbol.get("exact_key") or symbol["symbol"]),
                 "family_key": symbol.get("family_key") or family_key(symbol["symbol"]),
+                "base": symbol.get("base") or "",
+                "subscript": symbol.get("subscript") or "",
+                "superscript": symbol.get("superscript") or "",
+                "accent": symbol.get("accent") or "",
+                "role": symbol.get("role") or "",
                 "formula_id": formula["id"],
                 "raw_formula_id": formula["raw_id"],
                 "chapter_id": formula["chapter_id"],
@@ -414,7 +542,7 @@ def build_global_symbol_index(chapter_senses: dict[str, dict[str, dict[str, Any]
         for sense_id, sense in senses.items():
             global_senses[sense_id] = sense
             add_index(global_index, sense["symbol"], sense_id)
-            add_index(global_index, f"canonical:{sense.get('canonical_latex') or canonical_symbol_key(sense['symbol'])}", sense_id)
+            add_index(global_index, f"canonical:{canonical_symbol_key(sense.get('canonical_latex') or sense['symbol'])}", sense_id)
             add_index(global_index, f"family:{sense['family_key']}", sense_id)
     return global_index, global_senses
 
@@ -450,8 +578,77 @@ def split_symbol_family(symbol: str) -> tuple[str, str, str]:
     return base, subscript, superscript
 
 
+def compact_symbol_part(value: Any) -> str:
+    return re.sub(r"[\s{}]", "", str(value or ""))
+
+
+def record_canonical_symbol(record: dict[str, Any]) -> str:
+    return canonical_symbol_key(record.get("canonical_latex") or str(record.get("symbol") or ""))
+
+
+def variance_subject_key(record: dict[str, Any]) -> str:
+    """Return the semantic target of a sigma-squared quantity, if one is explicit."""
+
+    canonical = compact_symbol_part(record_canonical_symbol(record))
+    match = re.match(r"^\\sigma(?:_([^()^]+))?\^2(?:\(([^()]*)\))?$", canonical)
+    if not match:
+        return ""
+    subscript, argument = match.groups()
+    if subscript:
+        return compact_symbol_part(subscript)
+    return compact_symbol_part(argument)
+
+
+def script_signature(record: dict[str, Any]) -> tuple[str, str, str, str]:
+    canonical = record_canonical_symbol(record)
+    base = compact_symbol_part(record.get("base"))
+    subscript = compact_symbol_part(record.get("subscript"))
+    superscript = compact_symbol_part(record.get("superscript"))
+    accent = compact_symbol_part(record.get("accent"))
+    if not base or (not subscript and not superscript):
+        parsed_base, parsed_subscript, parsed_superscript = split_symbol_family(canonical)
+        base = base or compact_symbol_part(parsed_base)
+        subscript = subscript or compact_symbol_part(parsed_subscript)
+        superscript = superscript or compact_symbol_part(parsed_superscript)
+    return base, subscript, superscript, accent
+
+
+def has_matching_script_signature(symbol: dict[str, Any], sense: dict[str, Any]) -> bool:
+    symbol_base, symbol_subscript, symbol_superscript, symbol_accent = script_signature(symbol)
+    sense_base, sense_subscript, sense_superscript, sense_accent = script_signature(sense)
+    if not symbol_base or symbol_base != sense_base:
+        return False
+    if not (symbol_subscript or symbol_superscript or symbol_accent):
+        return False
+    return (
+        symbol_subscript == sense_subscript
+        and symbol_superscript == sense_superscript
+        and symbol_accent == sense_accent
+    )
+
+
+def allow_family_review_candidate(symbol: dict[str, Any], sense: dict[str, Any]) -> bool:
+    symbol_canonical = record_canonical_symbol(symbol)
+    sense_canonical = record_canonical_symbol(sense)
+    if not symbol_canonical or not sense_canonical or symbol_canonical == sense_canonical:
+        return False
+    if compatible_nonsemantic_style_family_match(symbol, sense):
+        return True
+
+    fk = symbol.get("family_key") or family_key(str(symbol.get("symbol") or ""))
+    if fk == r"\sigma_var":
+        symbol_subject = variance_subject_key(symbol)
+        sense_subject = variance_subject_key(sense)
+        return bool(symbol_subject and sense_subject and symbol_subject == sense_subject)
+    if fk in LOW_PRECISION_FAMILY_KEYS:
+        return has_matching_script_signature(symbol, sense)
+    return True
+
+
 def edge_status(evidence: str) -> str:
-    if evidence in {EDGE_EXACT, EDGE_CANONICAL, EDGE_EXPLICIT, EDGE_COMPOUND, EDGE_TEXT}:
+    if evidence == EDGE_COMPOUND:
+        return EDGE_CONTEXT
+    if evidence in {EDGE_EXACT, EDGE_CANONICAL, EDGE_EXPLICIT, EDGE_TEXT}:
         return EDGE_ACCEPTED
     if evidence == EDGE_LLM:
         return EDGE_CANDIDATE
@@ -477,7 +674,11 @@ def is_stoplisted_symbol(symbol: str, fk: str | None = None) -> bool:
         return True
     if "_" in canonical or "^" in canonical:
         return False
+    if str(symbol).strip().startswith(tuple(f"\\{macro}" for macro in NON_SEMANTIC_STYLE_MACROS)):
+        return False
     if canonical.startswith(tuple(f"\\{macro}" for macro in FUNCTION_STYLE_MACROS)):
+        return False
+    if canonical in CORE_POPGEN_SYMBOLS or (fk or family_key(symbol)) in CORE_POPGEN_SYMBOLS:
         return False
     return bool(stoplist_variants(symbol, fk) & STOPLIST)
 
@@ -494,7 +695,7 @@ def cross_chapter_confidence(match_type: str, source_chapter: int, target_chapte
 
 
 def allow_cross_chapter_lookup(chapter_id: str) -> bool:
-    return bool(CHAPTER_RE.fullmatch(chapter_id))
+    return False
 
 
 def candidate_key(sense: dict[str, Any], match_type: str) -> tuple[str, str]:
@@ -595,6 +796,7 @@ def build_edge_prerequisite(
     source_chunk_id: str | None = None,
     definition: str | None = None,
     meaning: str | None = None,
+    canonical_sense_id: str | None = None,
 ) -> dict[str, Any]:
     prereq_type = "formula" if target_id else "variable_definition"
     payload: dict[str, Any] = {
@@ -610,7 +812,8 @@ def build_edge_prerequisite(
         "canonical_symbol": canonical_symbol or canonical_symbol_key(via_symbol),
         "symbol_role": symbol_role_value or symbol_role(via_symbol),
         "sense_id": sense_id,
-        "edge_weight": 1.0 if evidence in {EDGE_EXACT, EDGE_EXPLICIT, EDGE_COMPOUND} else 0.82 if evidence == EDGE_CANONICAL else 0.65 if evidence == EDGE_TEXT else 0.45,
+        "canonical_sense_id": canonical_sense_id,
+        "edge_weight": 0.28 if evidence == EDGE_COMPOUND else 1.0 if evidence in {EDGE_EXACT, EDGE_EXPLICIT} else 0.82 if evidence == EDGE_CANONICAL else 0.65 if evidence == EDGE_TEXT else 0.45,
         "review_note": review_note,
     }
     if definition is not None:
@@ -624,15 +827,110 @@ def build_edge_prerequisite(
     return payload
 
 
+def symbol_edge_evidence(symbol_name: str, sense: dict[str, Any], family_sense: dict[str, Any] | None) -> str:
+    if family_sense or sense.get("symbol") != symbol_name:
+        return EDGE_CANONICAL
+    return EDGE_EXACT
+
+
+def merge_symbol_evidence_into_existing_prereq(
+    prereq: dict[str, Any],
+    *,
+    symbol_name: str,
+    formula: dict[str, Any],
+    sense: dict[str, Any],
+    family_sense: dict[str, Any] | None,
+    symbol: dict[str, str],
+    sense_to_cluster: dict[str, str] | None,
+) -> bool:
+    """Upgrade an existing explicit edge when the same target is also symbol-supported."""
+
+    if prereq.get("type") != "formula" or prereq.get("cross_chapter"):
+        return False
+    evidence = symbol_edge_evidence(symbol_name, sense, family_sense)
+    if prereq.get("edge_evidence") not in {EDGE_EXPLICIT, EDGE_COMPOUND}:
+        return False
+
+    prereq.update(
+        {
+            "via_symbol": symbol_name,
+            "relation": "defines_symbol",
+            "reason": f"{symbol_name} defined by nearest upstream formula in {formula['chapter_id']}; nearby text also cites the formula.",
+            "confidence": max(float(prereq.get("confidence", 0) or 0), 0.78 if family_sense else 0.84),
+            "edge_status": edge_status(evidence),
+            "edge_evidence": evidence,
+            "canonical_symbol": canonical_symbol_key(symbol.get("canonical_latex") or symbol_name),
+            "symbol_role": symbol.get("role") or symbol_role(symbol_name),
+            "sense_id": str(sense.get("sense_id") or ""),
+            "canonical_sense_id": (sense_to_cluster or {}).get(str(sense.get("sense_id") or "")),
+            "edge_weight": 1.0 if evidence == EDGE_EXACT else 0.82,
+            "review_note": (
+                "Explicit source citation upgraded by nearest upstream family match."
+                if family_sense
+                else "Explicit source citation upgraded by nearest upstream formula match."
+            ),
+        }
+    )
+    return True
+
+
+def sense_cluster_key(sense: dict[str, Any], formulas_by_public: dict[str, dict[str, Any]]) -> tuple[str, str, str]:
+    formula = formulas_by_public.get(str(sense.get("formula_id") or "")) or {}
+    subsection = str(formula.get("subsection") or formula.get("section") or "")
+    canonical = canonical_symbol_key(str(sense.get("canonical_latex") or sense.get("symbol") or ""))
+    return str(sense.get("chapter_id") or ""), subsection, canonical
+
+
+def build_symbol_sense_clusters(
+    senses: dict[str, dict[str, Any]],
+    formulas: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    formulas_by_public = {formula["id"]: formula for formula in formulas}
+    grouped: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    for sense in senses.values():
+        grouped[sense_cluster_key(sense, formulas_by_public)].append(sense)
+
+    clusters: list[dict[str, Any]] = []
+    sense_to_cluster: dict[str, str] = {}
+    for (_chapter_id, subsection, canonical), members in sorted(grouped.items(), key=lambda item: item[0]):
+        members = sorted(members, key=lambda sense: (int(sense.get("position", 0)), str(sense.get("sense_id") or "")))
+        representative = members[0]
+        cluster_id = f"{representative['chapter_id']}::{slugify(subsection or 'chapter')}::{canonical}"
+        for sense in members:
+            sense_to_cluster[str(sense.get("sense_id") or "")] = cluster_id
+        clusters.append(
+            {
+                "canonical_sense_id": cluster_id,
+                "canonical_symbol": canonical,
+                "symbol": representative.get("symbol"),
+                "chapter_id": representative.get("chapter_id"),
+                "subsection": subsection,
+                "representative_sense_id": representative.get("sense_id"),
+                "representative_formula_id": representative.get("formula_id"),
+                "member_sense_ids": [sense.get("sense_id") for sense in members],
+                "member_formula_ids": [sense.get("formula_id") for sense in members],
+                "merge_basis": "same_chapter_subsection_canonical_symbol",
+                "confidence": 0.9 if len(members) > 1 else 0.82,
+            }
+        )
+    return clusters, sense_to_cluster
+
+
+def slugify(value: str) -> str:
+    text = re.sub(r"[^A-Za-z0-9]+", "-", value.strip().lower()).strip("-")
+    return text[:80] or "section"
+
+
 def find_cross_chapter_definitions(
     symbol: dict[str, str],
     dependent: dict[str, Any],
     global_index: dict[str, list[str]],
     global_senses: dict[str, dict[str, Any]],
+    sense_to_cluster: dict[str, str] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
     current_chapter = int(dependent["chapter"])
     fk = symbol.get("family_key") or family_key(symbol["symbol"])
-    canonical = symbol.get("canonical_latex") or canonical_symbol_key(symbol["symbol"])
+    canonical = canonical_symbol_key(symbol.get("canonical_latex") or symbol["symbol"])
     if is_stoplisted_symbol(symbol["symbol"], fk):
         return [], None
 
@@ -654,17 +952,6 @@ def find_cross_chapter_definitions(
         chapter = int(sense.get("chapter", 0))
         if chapter and chapter < current_chapter and sense["symbol"] != symbol["symbol"]:
             family_matches.append((chapter, sense, "family"))
-
-    ambiguous = build_ambiguous_entry(
-        symbol,
-        dependent,
-        matches + family_matches,
-        min_candidates=1,
-        reason="Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-        edge_evidence=EDGE_EXACT if matches else EDGE_FAMILY,
-    )
-    if ambiguous:
-        return [], ambiguous
 
     seen: set[str] = set()
     results: list[dict[str, Any]] = []
@@ -691,11 +978,56 @@ def find_cross_chapter_definitions(
                 canonical_symbol=canonical,
                 symbol_role_value=symbol.get("role") or symbol_role(symbol["symbol"]),
                 sense_id=str(sense.get("sense_id") or ""),
+                canonical_sense_id=(sense_to_cluster or {}).get(str(sense.get("sense_id") or "")),
                 review_note="Earlier chapter exact/canonical symbol match.",
                 source_chunk_id=sense.get("source_chunk_id"),
             )
         )
-    return results, None
+    ambiguous = build_ambiguous_entry(
+        symbol,
+        dependent,
+        family_matches,
+        min_candidates=1,
+        reason="Cross-chapter family-only symbol matches require semantic review before entering the main graph.",
+        edge_evidence=EDGE_FAMILY,
+    )
+    return results, ambiguous
+
+
+def find_recent_family_definition(
+    symbol: dict[str, str],
+    position: int,
+    symbol_index: dict[str, list[str]],
+    senses: dict[str, dict[str, Any]],
+    chapter_id: str,
+) -> dict[str, Any] | None:
+    """Return only style-normalization family matches that are safe enough for the main graph."""
+
+    name = symbol["symbol"]
+    fk = symbol.get("family_key") or family_key(name)
+    if is_stoplisted_symbol(name, fk):
+        return None
+    candidates: list[dict[str, Any]] = []
+    for sense_id in symbol_index.get(f"family:{fk}", []):
+        sense = senses.get(sense_id)
+        if not sense or sense.get("chapter_id") != chapter_id:
+            continue
+        sense_position = int(sense.get("position", -1))
+        if sense_position >= position:
+            continue
+        if sense.get("symbol") == name:
+            continue
+        if canonical_symbol_key(sense.get("canonical_latex") or str(sense.get("symbol") or "")) == (
+            canonical_symbol_key(symbol.get("canonical_latex") or name)
+        ):
+            continue
+        if not compatible_nonsemantic_style_family_match(symbol, sense):
+            continue
+        candidates.append(sense)
+    unique_targets = {str(candidate.get("formula_id") or "") for candidate in candidates if candidate.get("formula_id")}
+    if not unique_targets or len(unique_targets) >= AMBIGUOUS_CANDIDATE_THRESHOLD:
+        return None
+    return max(candidates, key=lambda candidate: int(candidate.get("position", -1)))
 
 
 def collect_same_chapter_ambiguous(
@@ -719,6 +1051,8 @@ def collect_same_chapter_ambiguous(
             continue
         target_id = str(sense.get("formula_id") or "")
         if not target_id or target_id == dependent["id"] or target_id in candidates_by_target:
+            continue
+        if not allow_family_review_candidate(symbol, sense):
             continue
         candidates_by_target[target_id] = {
             "target_id": target_id,
@@ -760,7 +1094,9 @@ def collect_family_candidates(
             continue
         if int(sense.get("position", -1)) >= int(dependent.get("position", 0)):
             continue
-        if sense.get("symbol") == name or (sense.get("canonical_latex") or canonical_symbol_key(str(sense.get("symbol") or ""))) == (symbol.get("canonical_latex") or canonical_symbol_key(name)):
+        if sense.get("symbol") == name or canonical_symbol_key(sense.get("canonical_latex") or str(sense.get("symbol") or "")) == canonical_symbol_key(symbol.get("canonical_latex") or name):
+            continue
+        if not allow_family_review_candidate(symbol, sense):
             continue
         target_id = str(sense.get("formula_id") or "")
         if not target_id or target_id == dependent["id"] or target_id in candidates_by_target:
@@ -800,24 +1136,116 @@ def text_definition_key(symbol: str) -> str:
     return family_key(symbol).lstrip("\\").lower()
 
 
+TEXT_DEFINITION_SYMBOL_CORE_RE = (
+    r"\\(?:bar|overline|hat|widehat|tilde|widetilde|mathbf|boldsymbol|mathrm|mathit|mathsf|mathbb)\{?\\?[A-Za-z]\}?"
+    r"|\\[A-Za-z]+"
+    r"|[A-Za-z]"
+)
+TEXT_DEFINITION_SYMBOL_RE = (
+    rf"(?<![A-Za-z\\])\$?\s*(?P<symbol>(?:{TEXT_DEFINITION_SYMBOL_CORE_RE})"
+    r"(?:_\{[^{}]{1,24}\}|_[A-Za-z0-9]{1,16}|\^\{[^{}]{1,24}\}|\^[A-Za-z0-9])?)\s*\$?(?![A-Za-z])"
+)
+TEXT_DEFINITION_PATTERNS = [
+    (
+        "where_definition",
+        re.compile(
+            rf"\bwhere\s+(?:the\s+)?{TEXT_DEFINITION_SYMBOL_RE}\s+"
+            r"(?:is|are|denotes?|represents?)\s+(?P<definition>[^.;\n]{1,260})",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "let_definition",
+        re.compile(
+            rf"\b(?:let|letting)\s+(?:the\s+)?{TEXT_DEFINITION_SYMBOL_RE}\s+"
+            r"(?:be|denote|represent|=)\s+(?P<definition>[^.;\n]{1,260})",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "direct_definition",
+        re.compile(
+            rf"{TEXT_DEFINITION_SYMBOL_RE}\s+"
+            r"(?:is\s+defined\s+as|are\s+defined\s+as|denotes?|represents?|is\s+the|are\s+the|is\s+an?|are\s+an?)\s+"
+            r"(?P<definition>[^.;\n]{1,260})",
+            re.IGNORECASE,
+        ),
+    ),
+]
+BAD_TEXT_DEFINITION_FRAGMENTS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "be",
+    "defined",
+    "denote",
+    "denotes",
+    "for",
+    "if",
+    "is",
+    "let",
+    "the",
+    "then",
+    "where",
+    "with",
+}
+
+
+def definition_scan_text(text: str) -> str:
+    value = DISPLAY_EQUATION_RE.sub(" ", str(text or ""))
+    value = FORMULA_REF_RE.sub(" ", value)
+    value = re.sub(r"\s+", " ", value)
+    return value.strip()
+
+
+def clean_text_definition_candidate(value: str) -> str | None:
+    definition = re.sub(r"\s+", " ", str(value or "")).strip(" ,:()[]")
+    definition = re.split(r"\s+\b(?:where|whereas|and\s+where|with|for)\b\s+", definition, maxsplit=1, flags=re.IGNORECASE)[0]
+    definition = definition.strip(" ,:()[]")
+    if not definition:
+        return None
+    lower = definition.lower()
+    if lower in BAD_TEXT_DEFINITION_FRAGMENTS:
+        return None
+    if re.match(r"^(?:where|if|for|when|while|then|and|or|with|because|as)\b", lower):
+        return None
+    if "$$" in definition or r"\begin" in definition or r"\end" in definition or "[[" in definition:
+        return None
+    if re.fullmatch(r"[A-Za-z]", definition):
+        return None
+    formula_markers = len(re.findall(r"\\[A-Za-z]+|[_^=<>]", definition))
+    if formula_markers >= 4:
+        return None
+    words = re.findall(r"[A-Za-z][A-Za-z-]*", definition)
+    if not words:
+        return None
+    if len(words) == 1 and len(re.sub(r"[^A-Za-z]+", "", definition)) < 4:
+        return None
+    return definition
+
+
+def iter_text_definition_matches(text: str) -> list[tuple[str, str, str]]:
+    matches: list[tuple[str, str, str]] = []
+    scan_text = definition_scan_text(text)
+    if not scan_text:
+        return matches
+    for source, pattern in TEXT_DEFINITION_PATTERNS:
+        for match in pattern.finditer(scan_text):
+            symbol = match.group("symbol")
+            definition = clean_text_definition_candidate(match.group("definition"))
+            if not symbol or not definition:
+                continue
+            matches.append((text_definition_key(symbol), definition, source))
+    return matches
+
+
 def extract_chapter_text_defined_symbols(formulas: list[dict[str, Any]]) -> set[str]:
     defined: set[str] = set()
-    symbol_re = re.compile(r"\\[A-Za-z]+|(?<![A-Za-z])[A-Za-z](?![A-Za-z])")
-    where_re = re.compile(r"\bwhere\s+(.{0,80}?)\s+(?:is|are|denotes?|represents?)\b", re.IGNORECASE)
-    let_re = re.compile(r"\blet\s+(.{0,80}?)\s+(?:be|denote|represent|=)\b", re.IGNORECASE)
-    direct_re = re.compile(
-        r"(\\[A-Za-z]+|(?<![A-Za-z])[A-Za-z](?![A-Za-z]))\s+"
-        r"(?:is defined as|denotes?|represents?|is the|are the)\b",
-        re.IGNORECASE,
-    )
     for formula in formulas:
         text = formula.get("context_text") or ""
-        segments = list(where_re.findall(text)) + list(let_re.findall(text))
-        for segment in segments:
-            for token in symbol_re.findall(segment):
-                defined.add(text_definition_key(token))
-        for token in direct_re.findall(text):
-            defined.add(text_definition_key(token))
+        for key, _definition, _source in iter_text_definition_matches(text):
+            defined.add(key)
     return defined
 
 
@@ -837,17 +1265,10 @@ def should_keep_variable_definition(symbol: str, chapter_text_defined_symbols: s
 
 def variable_definition_text(symbol: str, formula: dict[str, Any]) -> tuple[str, str] | None:
     context = str(formula.get("context_text") or "")
-    escaped = re.escape(symbol)
-    patterns = [
-        rf"(?:where|letting|let)\s+[^.]*?{escaped}[^.]*?(?:is|are|denotes?|represents?)\s+([^.;]+)",
-        rf"{escaped}\s+(?:is|are|denotes?|represents?|is the|are the)\s+([^.;]+)",
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, context, re.IGNORECASE)
-        if match:
-            definition = re.sub(r"\s+", " ", match.group(1)).strip(" ,")
-            if definition:
-                return definition[:220], "nearby_text"
+    target_key = text_definition_key(symbol)
+    for key, definition, source in iter_text_definition_matches(context):
+        if key == target_key:
+            return definition[:220], f"nearby_text:{source}"
 
     return None
 
@@ -900,6 +1321,7 @@ def build_dependencies_for_chapter(
     global_index: dict[str, list[str]],
     global_senses: dict[str, dict[str, Any]],
     formulas_by_raw_id: dict[str, dict[str, Any]],
+    sense_to_cluster: dict[str, str] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     dependencies: list[dict[str, Any]] = []
     ambiguous: list[dict[str, Any]] = []
@@ -921,6 +1343,8 @@ def build_dependencies_for_chapter(
             if not target:
                 continue
             target_id = target["id"]
+            if target["chapter_id"] != chapter_id:
+                continue
             if target_id == formula["id"]:
                 continue
             if formula_sort_key(target_id) >= formula_sort_key(formula["id"]) and target["chapter_id"] == chapter_id:
@@ -967,6 +1391,39 @@ def build_dependencies_for_chapter(
                     )
                 )
 
+        for symbol in formula.get("symbols_defined_detailed", []):
+            symbol_name = symbol["symbol"]
+            if symbol.get("role") == "operator" or is_stoplisted_symbol(symbol_name, symbol.get("family_key")):
+                continue
+            sense = find_recent_definition(symbol, formula["position"], symbol_index, senses, chapter_id)
+            family_sense = None
+            if not sense:
+                family_sense = find_recent_family_definition(symbol, formula["position"], symbol_index, senses, chapter_id)
+                sense = family_sense
+            if not sense or sense.get("formula_id") not in formulas_by_public:
+                continue
+            target_id = sense["formula_id"]
+            if target_id == formula["id"] or ("formula", target_id) not in seen_targets:
+                continue
+            existing = next(
+                (
+                    prereq
+                    for prereq in prereqs
+                    if prereq.get("type") == "formula" and prereq.get("target_id") == target_id
+                ),
+                None,
+            )
+            if existing:
+                merge_symbol_evidence_into_existing_prereq(
+                    existing,
+                    symbol_name=symbol_name,
+                    formula=formula,
+                    sense=sense,
+                    family_sense=family_sense,
+                    symbol=symbol,
+                    sense_to_cluster=sense_to_cluster,
+                )
+
         for symbol in formula.get("symbols_used_detailed", []):
             symbol_name = symbol["symbol"]
             if symbol_name in set(formula.get("symbols_defined", [])):
@@ -977,6 +1434,10 @@ def build_dependencies_for_chapter(
             if symbol.get("role") == "operator" or is_stoplisted_symbol(symbol_name, symbol.get("family_key")):
                 continue
             sense = find_recent_definition(symbol, formula["position"], symbol_index, senses, chapter_id)
+            family_sense = None
+            if not sense:
+                family_sense = find_recent_family_definition(symbol, formula["position"], symbol_index, senses, chapter_id)
+                sense = family_sense
             if sense and sense.get("formula_id") in formulas_by_public:
                 ambiguous_entry = collect_same_chapter_ambiguous(symbol, formula, symbol_index, senses, chapter_id)
                 if ambiguous_entry:
@@ -985,7 +1446,26 @@ def build_dependencies_for_chapter(
                 target_id = sense["formula_id"]
                 if target_id != formula["id"]:
                     key = ("formula", target_id)
-                    if key not in seen_targets:
+                    if key in seen_targets:
+                        existing = next(
+                            (
+                                prereq
+                                for prereq in prereqs
+                                if prereq.get("type") == "formula" and prereq.get("target_id") == target_id
+                            ),
+                            None,
+                        )
+                        if existing:
+                            merge_symbol_evidence_into_existing_prereq(
+                                existing,
+                                symbol_name=symbol_name,
+                                formula=formula,
+                                sense=sense,
+                                family_sense=family_sense,
+                                symbol=symbol,
+                                sense_to_cluster=sense_to_cluster,
+                            )
+                    else:
                         seen_targets.add(key)
                         prereqs.append(
                             build_edge_prerequisite(
@@ -993,13 +1473,14 @@ def build_dependencies_for_chapter(
                                 symbol_name,
                                 "defines_symbol",
                                 f"{symbol_name} defined by nearest upstream formula in {chapter_id}",
-                                0.84,
+                                0.78 if family_sense else 0.84,
                                 False,
-                                EDGE_EXACT if sense.get("symbol") == symbol_name else EDGE_CANONICAL,
-                                canonical_symbol=symbol.get("canonical_latex") or canonical_symbol_key(symbol_name),
+                                EDGE_CANONICAL if family_sense or sense.get("symbol") != symbol_name else EDGE_EXACT,
+                                canonical_symbol=canonical_symbol_key(symbol.get("canonical_latex") or symbol_name),
                                 symbol_role_value=symbol.get("role") or symbol_role(symbol_name),
                                 sense_id=str(sense.get("sense_id") or ""),
-                                review_note="Nearest upstream formula match.",
+                                canonical_sense_id=(sense_to_cluster or {}).get(str(sense.get("sense_id") or "")),
+                                review_note="Nearest upstream family match." if family_sense else "Nearest upstream formula match.",
                             )
                         )
                 continue
@@ -1007,7 +1488,7 @@ def build_dependencies_for_chapter(
             add_ambiguous_once(ambiguous, seen_ambiguous, collect_family_candidates(symbol, formula, symbol_index, senses, chapter_id))
 
             if allow_cross_chapter_lookup(chapter_id):
-                cross_matches, ambiguous_entry = find_cross_chapter_definitions(symbol, formula, global_index, global_senses)
+                cross_matches, ambiguous_entry = find_cross_chapter_definitions(symbol, formula, global_index, global_senses, sense_to_cluster)
                 add_ambiguous_once(ambiguous, seen_ambiguous, ambiguous_entry)
                 for cross in cross_matches:
                     key = ("formula", cross["target_id"])
@@ -1033,7 +1514,7 @@ def build_dependencies_for_chapter(
                             0.55,
                             False,
                             EDGE_TEXT,
-                            canonical_symbol=symbol.get("canonical_latex") or canonical_symbol_key(symbol_name),
+                            canonical_symbol=canonical_symbol_key(symbol.get("canonical_latex") or symbol_name),
                             symbol_role_value=symbol.get("role") or symbol_role(symbol_name),
                             source_chunk_id=formula.get("source_chunk_id"),
                             definition=definition,
@@ -1055,6 +1536,7 @@ def serializable_formula(formula: dict[str, Any]) -> dict[str, Any]:
         "section": formula.get("section", ""),
         "subsection": formula.get("subsection", ""),
         "position": formula.get("position", 0),
+        "source_position": formula.get("source_position", formula.get("position", 0)),
         "depth": formula.get("depth", 0),
         "context_text": formula.get("context_text", ""),
         "symbols_used": formula.get("symbols_used", []),
@@ -1069,6 +1551,7 @@ def build_chapter_dependency(
     symbol_index: dict[str, list[str]],
     generated_at: str,
     ambiguous: list[dict[str, Any]] | None = None,
+    symbol_sense_clusters: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     public_symbol_index = {key: value for key, value in symbol_index.items() if not key.startswith("family:")}
     return {
@@ -1078,6 +1561,7 @@ def build_chapter_dependency(
         "formulas": [serializable_formula(formula) for formula in formulas],
         "dependencies": dependencies,
         "symbol_index": public_symbol_index,
+        "symbol_sense_clusters": symbol_sense_clusters or [],
         "ambiguous": ambiguous or [],
     }
 
@@ -1293,9 +1777,35 @@ def formula_centrality_scores(formulas: list[dict[str, Any]], dependencies: list
     return scores
 
 
+def select_formula_root_ids(formulas: list[dict[str, Any]], dependencies: list[dict[str, Any]]) -> list[str]:
+    formula_ids = {formula["id"] for formula in formulas}
+    dependent_with_formula_prereqs: set[str] = set()
+    for dep in dependencies:
+        dependent_id = dep.get("dependent_id")
+        if dependent_id not in formula_ids:
+            continue
+        for prereq in dep.get("prerequisites") or []:
+            if (
+                prereq.get("type") == "formula"
+                and prereq.get("target_id") in formula_ids
+                and not prereq.get("cross_chapter")
+                and prereq.get("edge_status", "accepted") == "accepted"
+            ):
+                dependent_with_formula_prereqs.add(dependent_id)
+                break
+    roots = [formula for formula in formulas if formula["id"] not in dependent_with_formula_prereqs]
+    if not roots:
+        roots = sorted(formulas, key=lambda item: (int(item.get("position", 0)), formula_sort_key(item["id"])))[:1]
+    return [
+        formula["id"]
+        for formula in sorted(roots, key=lambda item: (int(item.get("position", 0)), formula_sort_key(item["id"])))
+    ]
+
+
 def select_backbone_ids(formulas: list[dict[str, Any]], dependencies: list[dict[str, Any]], limit: int = 14) -> list[str]:
     scores = formula_centrality_scores(formulas, dependencies)
-    roots = [formula for formula in formulas if int(formula.get("depth", 0)) == 0]
+    formula_roots = set(select_formula_root_ids(formulas, dependencies))
+    roots = [formula for formula in formulas if formula["id"] in formula_roots]
     if not roots:
         roots = sorted(formulas, key=lambda item: (int(item.get("position", 0)), formula_sort_key(item["id"])))[: max(1, limit // 3)]
     ranked = sorted(formulas, key=lambda formula: (-scores[formula["id"]], int(formula.get("depth", 0)), formula_sort_key(formula["id"])))
@@ -1320,6 +1830,7 @@ def build_chapter_navigator(chapter_payloads: dict[str, dict[str, Any]]) -> dict
         rank = chapter_entry_number(chapter_id)
         label = chapter_label(chapter_id)
         first_section = next((formula.get("section") for formula in formulas if formula.get("section")), "")
+        formula_root_ids = select_formula_root_ids(formulas, dependencies)
         backbone_ids = select_backbone_ids(formulas, dependencies)
         full_ids = [formula["id"] for formula in sorted(formulas, key=lambda item: (int(item.get("position", 0)), formula_sort_key(item["id"])))]
         representative_ids = backbone_ids[:5] or full_ids[:5]
@@ -1338,6 +1849,7 @@ def build_chapter_navigator(chapter_payloads: dict[str, dict[str, Any]]) -> dict
             "description_en": f"{label} contains {len(formulas)} formulas. Start from the highlighted roots, then expand the local dependency map one step at a time.",
             "description_zh": f"本章包含 {len(formulas)} 个公式。建议先从概念起点建立术语地图，再进入公式起点展开依赖图谱。",
             "section_hint": first_section,
+            "formula_root_ids": formula_root_ids,
             "backbone_formula_ids": backbone_ids,
             "full_formula_ids": full_ids,
             "representative_formula_ids": representative_ids,
@@ -1360,497 +1872,6 @@ def build_chapter_navigator(chapter_payloads: dict[str, dict[str, Any]]) -> dict
             )
     return {"groups": groups}
 
-
-STORYLINE_TEMPLATE_PHRASES = (
-    "visual identity",
-    "new job",
-    "symbol keeps",
-    "template",
-    "符号的外形",
-    "承担了新的任务",
-    "模板",
-)
-
-STORYLINE_BLUEPRINTS: list[dict[str, Any]] = [
-    {
-        "id": "allele-frequency",
-        "symbol": "p",
-        "title_en": "Evolutionary trajectory of allele frequency p",
-        "title_zh": "等位基因频率 p 的演化轨迹",
-        "intro_en": "Sampling, drift, selection, mutation, and diffusion all rewrite how p moves through time.",
-        "intro_zh": "从采样计数到随机漂变，再到选择、突变与扩散近似，追踪 p 的动力学身份。",
-        "allowed_family_keys": {"p"},
-        "allowed_canonical_symbols": {"p", "p_0", "p_t", "p_f", "p_l", "p_i", "p_j", "p_{0}", "p_{t}", "p_{f}", "p_{l}", "p_{i}", "p_{j}"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (2, 12),
-        "seed_formula_ids": ["formula_2.8", "formula_2.12", "formula_2.14a", "formula_2.15", "formula_5.6e", "formula_6.15b", "formula_7.2"],
-        "backbone_en": "sampling counts -> neutral drift -> deterministic forces -> continuous approximations",
-        "backbone_zh": "采样计数 -> 随机漂变 -> 确定性力量 -> 连续近似",
-        "bridges_zh": [
-            "先把 p 写成频率分布的状态变量，随机采样成为可追踪的概率过程。",
-            "漂变不再只问下一代，而是追问 p 到达固定或丢失的时间尺度。",
-            "方差递推把 p 的随机游走量化为有限群体中的扩散宽度。",
-            "期望公式给出中性漂变下 p 的守恒基线，方便识别偏离。",
-            "加入选择梯度后，p 的变化由随机漂变转向适合度驱动。",
-            "Price 框架把 p 的更新写成显式增量，允许效应值同步变化。",
-        ],
-        "bridges_en": [
-            "p first becomes a state variable in a frequency distribution, so sampling is a trackable probability process.",
-            "Drift now asks not only about the next generation, but about fixation and loss times.",
-            "The variance recursion turns p's random walk into a finite-population diffusion scale.",
-            "The expectation formula gives the neutral baseline against which directional forces are read.",
-            "Selection gradients make p respond to fitness rather than drift alone.",
-            "The Price framework writes p as an explicit increment that can coevolve with allelic effects.",
-        ],
-    },
-    {
-        "id": "inbreeding-coalescence",
-        "symbol": "f, F",
-        "title_en": "Inbreeding coefficient and heterozygosity loss",
-        "title_zh": "近交系数与杂合度流失理论",
-        "intro_en": "Follow identity by descent from finite-population recursion into effective size and population structure.",
-        "intro_zh": "从近交递推出发，连接有限群体、有效大小与群体分化统计量。",
-        "allowed_family_keys": {"f", "F", "H"},
-        "allowed_canonical_symbols": {"f", "f_t", "f_0", "f_s", "H_t", "H_0", "F_ST", "F_DG", "F_GT", "\\widehat{F}", "\\widehat{F}_1", "\\widehat{F}_2"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (2, 12),
-        "seed_formula_ids": ["formula_2.3", "formula_2.4a", "formula_2.5", "formula_3.1", "formula_4.17a", "formula_9.9"],
-        "backbone_en": "inbreeding recursion -> heterozygosity decay -> effective-size correction -> F-statistics",
-        "backbone_zh": "近交递推 -> 杂合度衰减 -> 有效大小修正 -> F 统计量",
-        "bridges_zh": [
-            "近交递推把同源同祖概率写成有限群体每代累积的过程。",
-            "改写为 1-f 后，近交增长直接转化为杂合度的指数式流失。",
-            "用 N_e 替代 N，模型承认真实群体的繁殖方差会改变漂变强度。",
-            "样本中的 F 估计量把理论近交转成可观测的有效大小信号。",
-            "F_ST 把同源同祖思想推广到群体分化，衡量结构化漂变。",
-        ],
-        "bridges_en": [
-            "The recursion expresses identity by descent as a finite-population accumulation process.",
-            "Rewriting with 1-f turns inbreeding growth into heterozygosity loss.",
-            "Replacing N by Ne admits that real reproductive variance changes drift strength.",
-            "F estimators convert theoretical inbreeding into an observable effective-size signal.",
-            "FST extends identity logic to population structure and divergence.",
-        ],
-    },
-    {
-        "id": "coalescent-time",
-        "symbol": "t, T",
-        "title_en": "Coalescent theory and retrospective time",
-        "title_zh": "溯祖理论与时间回溯",
-        "intro_en": "Track how elapsed time becomes fixation time, generation time, and tree depth.",
-        "intro_zh": "把 t/T 从世代计数推进到固定时间、世代间隔与溯祖树深度。",
-        "allowed_family_keys": {"t", "T"},
-        "allowed_canonical_symbols": {"t", "T", "\\overline{t}_a", "\\overline{t}_f", "\\overline{t}_l", "T_ff", "T_fm", "T_mf", "T_mm"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (2, 12),
-        "seed_formula_ids": ["formula_2.11a", "formula_2.11b", "formula_2.11d", "formula_3.13", "formula_3.14", "formula_8.18c"],
-        "backbone_en": "fixation time -> conditional loss/fixation -> generation interval -> sweep time",
-        "backbone_zh": "固定时间 -> 条件等待时间 -> 世代间隔 -> 扫荡时间",
-        "bridges_zh": [
-            "先把漂变轨迹压缩成平均吸收时间，时间成为可估计对象。",
-            "区分固定与丢失后，t 开始描述不同终点的条件等待。",
-            "总平均时间把两类终点重新合并，形成完整吸收尺度。",
-            "世代间隔 T 把时间从等长世代推广到年龄结构群体。",
-            "选择扫荡把 T 变成回看等位基因来源的时间窗口。",
-        ],
-        "bridges_en": [
-            "Drift trajectories are compressed into mean absorption time.",
-            "Separating fixation and loss makes t conditional on the endpoint.",
-            "The total mean time recombines endpoint-specific waiting times.",
-            "Generation time T extends time accounting to age-structured populations.",
-            "Selective sweeps turn T into a retrospective window on allele origin.",
-        ],
-    },
-    {
-        "id": "fitness-landscape",
-        "symbol": "w",
-        "title_en": "Fitness surfaces and adaptive landscapes",
-        "title_zh": "适合度表面与适应性景观",
-        "intro_en": "Follow fitness from genotype weights into phenotype gradients and selection response.",
-        "intro_zh": "追踪适合度如何从基因型权重扩展为表型景观与选择响应。",
-        "allowed_family_keys": {"w", "W"},
-        "allowed_canonical_symbols": {"w", "w_i", "w_AA", "w_Aa", "W_i", "\\overline{W}", "W_ij"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (5, 16),
-        "seed_formula_ids": ["formula_5.8a", "formula_5.17a", "formula_5.18b", "formula_5.20c", "formula_6.2b", "formula_6.5a"],
-        "backbone_en": "relative fitness -> phenotype integration -> local gradient -> Price covariance",
-        "backbone_zh": "相对适合度 -> 表型积分 -> 局部梯度 -> Price 协方差",
-        "bridges_zh": [
-            "相对适合度把基因型差异归一化为可比较的选择强度。",
-            "把 w 写成表型函数后，选择开始依赖性状分布而非单点权重。",
-            "泰勒展开提供弱选择近似，把景观局部斜率接入等位基因效应。",
-            "正态表型假设让适合度梯度转化为均值与方差的代数项。",
-            "Price 方程把 w 放进协方差，直接衡量选择造成的平均变化。",
-        ],
-        "bridges_en": [
-            "Relative fitness normalizes genotype differences into comparable selection strength.",
-            "As a phenotype function, w depends on trait distributions rather than isolated weights.",
-            "A Taylor expansion supplies the weak-selection bridge to allelic effects.",
-            "Normal trait assumptions translate fitness gradients into mean and variance terms.",
-            "Price's equation places w inside covariance to measure selection response.",
-        ],
-    },
-    {
-        "id": "linkage-disequilibrium",
-        "symbol": "D",
-        "title_en": "Linkage disequilibrium and two-locus networks",
-        "title_zh": "连锁不平衡与双基因座网络",
-        "intro_en": "Follow D from gamete-frequency excess into decay, recombination, and selection at linked sites.",
-        "intro_zh": "从配子频率偏离出发，追踪 D 在重组、选择与连锁位点中的变化。",
-        "allowed_family_keys": {"D"},
-        "allowed_canonical_symbols": {"D", "D_AB", "D_t", "D_0", "D^2", "\\widehat{D}"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (2, 12),
-        "seed_formula_ids": ["formula_2.18", "formula_2.19", "formula_2.21", "formula_2.22", "formula_5.13a", "formula_7.43"],
-        "backbone_en": "gamete excess -> recombination decay -> standardized LD -> linked selection",
-        "backbone_zh": "配子偏离 -> 重组衰减 -> 标准化 LD -> 连锁选择",
-        "bridges_zh": [
-            "D 首先把双位点配子频率的非独立性写成一个代数量。",
-            "加入重组率后，D 的期望按世代衰减，连锁开始具有时间尺度。",
-            "方差形式把 D 的随机波动与长期连锁信号区分开。",
-            "r² 标准化 D，使不同等位基因频率下的连锁强度可比较。",
-            "选择递推让 D 参与配子更新，显示重组与适合度的博弈。",
-        ],
-        "bridges_en": [
-            "D first records non-independence in two-locus gamete frequencies.",
-            "Adding recombination gives LD a generational decay scale.",
-            "Variance separates random fluctuation from persistent linkage signal.",
-            "r2 standardizes D across allele-frequency backgrounds.",
-            "Selection recursions make D part of gamete updating under fitness differences.",
-        ],
-    },
-    {
-        "id": "mutation-balance",
-        "symbol": "\\mu, u",
-        "title_en": "Mutation pressure and mutation-drift balance",
-        "title_zh": "突变压力与突变-漂变平衡",
-        "intro_en": "Follow mutation parameters from deterministic pressure into finite-population equilibrium models.",
-        "intro_zh": "追踪 μ/u 如何从突变压力进入有限群体的平衡与采样模型。",
-        "allowed_family_keys": {"\\mu", "u", "v"},
-        "allowed_canonical_symbols": {"\\mu", "u", "v", "\\mu_i", "\\mu_k", "u_f", "\\widehat{u}", "\\widehat{u}_o"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (2, 12),
-        "seed_formula_ids": ["formula_2.23", "formula_2.26b", "formula_7.2", "formula_7.9", "formula_8.32", "formula_10.1a"],
-        "backbone_en": "mutation pressure -> equilibrium variance -> fixation probability -> sampling spectrum",
-        "backbone_zh": "突变压力 -> 平衡方差 -> 固定概率 -> 采样谱",
-        "bridges_zh": [
-            "突变率先进入杂合度递推，抵消纯漂变造成的变异流失。",
-            "平衡方差把突变输入与有限群体采样噪声合并。",
-            "正反突变模型让 p 的更新同时受两个突变方向牵引。",
-            "固定概率公式把突变产生的新等位基因接入漂变与选择结局。",
-            "采样分布把 μ 与 N_e 合并为可由多态数据估计的参数。",
-        ],
-        "bridges_en": [
-            "Mutation rate enters heterozygosity recursion and counters drift loss.",
-            "Equilibrium variance combines mutational input with sampling noise.",
-            "Forward and reverse mutation pull allele frequency in opposing directions.",
-            "Fixation probabilities connect new mutants to drift and selection outcomes.",
-            "Sampling spectra combine mutation and Ne into estimable diversity parameters.",
-        ],
-    },
-    {
-        "id": "phenotypic-trait",
-        "symbol": "z",
-        "title_en": "Phenotypic trait evolution and transmission",
-        "title_zh": "表型性状的演化与传导",
-        "intro_en": "Follow z from phenotype distributions into transmission, response, and macro-evolutionary comparison.",
-        "intro_zh": "把表型 z 从分布、传递和响应推进到宏观演化比较。",
-        "allowed_family_keys": {"z"},
-        "allowed_canonical_symbols": {"z", "z_i", "z_j", "z_ij", "\\overline{z}", "\\overline{z}_i", "\\overline{z}_t", "\\sigma_z^2"},
-        "required_roles": {"variable", "parameter", "symbol", "statistic_variance"},
-        "chapter_range": (5, 20),
-        "seed_formula_ids": ["formula_5.20a", "formula_6.20a", "formula_6.24a", "formula_13.12a", "formula_15.11b", "formula_18.2"],
-        "backbone_en": "trait density -> transmission value -> response decomposition -> comparative divergence",
-        "backbone_zh": "性状密度 -> 传递值 -> 响应分解 -> 比较分化",
-        "bridges_zh": [
-            "表型密度把 z 放入连续分布，为选择梯度提供积分对象。",
-            "平均表型被拆成可传递成分与偏差，连接亲代表现和后代响应。",
-            "协方差形式把 z 的响应归因到适合度相关的遗传成分。",
-            "个体层模型把 z 写成基因型、环境与误差的可估计和。",
-            "时间序列响应把 z 的变化推向跨世代比较与趋势检验。",
-        ],
-        "bridges_en": [
-            "The trait density places z in a continuous distribution for selection gradients.",
-            "Mean phenotype is split into transmissible value and deviation.",
-            "Covariance attributes response in z to fitness-related genetic components.",
-            "Individual models express z as genotype, environment, and residual terms.",
-            "Time-series response turns z into a cross-generation comparison target.",
-        ],
-    },
-    {
-        "id": "additive-genetics",
-        "symbol": "G, A",
-        "title_en": "Additive genetic components and breeding value",
-        "title_zh": "加性遗传成分与育种值",
-        "intro_en": "Follow G and A from genotypic effects into additive variance, breeding value, and prediction.",
-        "intro_zh": "追踪 G/A 如何从基因型效应走向加性方差、育种值与预测方程。",
-        "allowed_family_keys": {"G", "A"},
-        "allowed_canonical_symbols": {"G", "G_ij", "G_i", "\\mathbf{G}", "A", "A_i", "A_z", "A_w", "\\overline{A}_z", "\\mathbf{A}", "\\sigma_A^2"},
-        "required_roles": {"variable", "parameter", "symbol", "matrix_symbol", "statistic_variance"},
-        "chapter_range": (5, 26),
-        "seed_formula_ids": ["formula_6.20a", "formula_6.24a", "formula_11.5", "formula_11.6a", "formula_11.8", "formula_13.12a", "formula_26.1a"],
-        "backbone_en": "breeding value -> additive response -> variance decomposition -> prediction",
-        "backbone_zh": "育种值 -> 加性响应 -> 方差分解 -> 预测",
-        "bridges_zh": [
-            "A_i 把表型均值拆出可传递的加性贡献。",
-            "响应方程把 A_z 与适合度相关联，形成选择可改变的遗传均值。",
-            "基因型值 G 把单个座位效应扩展为全基因型贡献。",
-            "平方期望把 G 推入方差分解，定位加性与非加性来源。",
-            "矩阵形式把亲缘关系写入 A，使育种值预测可规模化。",
-        ],
-        "bridges_en": [
-            "Ai extracts the transmissible additive contribution from phenotype.",
-            "Response equations link Az to fitness-associated change.",
-            "Genotypic value G expands locus effects into whole-genotype contribution.",
-            "Squared expectations move G into variance decomposition.",
-            "Matrix A brings relatedness into scalable breeding-value prediction.",
-        ],
-    },
-    {
-        "id": "effective-size",
-        "symbol": "N_e",
-        "title_en": "Effective population size as a scale calibrator",
-        "title_zh": "有效群体大小的尺度调校",
-        "intro_en": "Follow Ne as it calibrates drift, inbreeding, sampling variance, and detectable divergence.",
-        "intro_zh": "追踪 N_e 如何校准漂变、近交、采样方差与可检测的分化尺度。",
-        "allowed_family_keys": {"N"},
-        "allowed_canonical_symbols": {"N_e", "N_{e}", "N_e,u", "N_{e,u}", "\\widehat{N}_e", "\\widehat{N}_{e}", "N_em", "N_{em}", "N_es", "N_{es}"},
-        "required_roles": {"variable", "parameter", "symbol"},
-        "chapter_range": (3, 20),
-        "seed_formula_ids": ["formula_3.1", "formula_3.3", "formula_3.5", "formula_4.17a", "formula_7.8", "formula_12.18b"],
-        "backbone_en": "inbreeding size -> variance size -> estimator correction -> divergence bounds",
-        "backbone_zh": "近交有效大小 -> 方差有效大小 -> 估计修正 -> 分化界限",
-        "bridges_zh": [
-            "N_e 首先替代 N，说明漂变强度由有效繁殖贡献决定。",
-            "繁殖方差公式把有效大小从概念变成可由后代数估计的量。",
-            "多代递推让 N_e 控制谱系抽样概率的长期尺度。",
-            "样本 F 估计量把有效大小连接到观测到的频率变化。",
-            "漂变方差公式把 N_e 变成等位基因频率波动的标尺。",
-        ],
-        "bridges_en": [
-            "Ne replaces census size to express drift through effective reproductive contribution.",
-            "Offspring variance makes effective size estimable from reproductive output.",
-            "Multi-generation recursion lets Ne scale long-term lineage sampling.",
-            "F estimators connect effective size to observed frequency change.",
-            "Drift variance turns Ne into the scale of allele-frequency fluctuation.",
-        ],
-    },
-    {
-        "id": "covariance-correlation",
-        "symbol": "Cov, r",
-        "title_en": "Multi-trait association and phenotypic correlation",
-        "title_zh": "多性状关联与表型相关性",
-        "intro_en": "Follow covariance and r as association becomes resemblance, response, and structured uncertainty.",
-        "intro_zh": "从协方差和相关系数出发，追踪性状关联、亲缘相似与联动响应。",
-        "allowed_family_keys": {"r", "\\sigma_cov"},
-        "allowed_canonical_symbols": {"r", "r^2", "r_L^2", "\\widehat{r_L^2}", "\\sigma_cov"},
-        "required_roles": {"variable", "parameter", "symbol", "covariance_operator"},
-        "chapter_range": (2, 20),
-        "seed_formula_ids": ["formula_2.22", "formula_2.29a", "formula_4.14", "formula_6.24c", "formula_11.19a", "formula_15.11b"],
-        "backbone_en": "standardized LD -> correlation estimator -> genetic covariance -> response coupling",
-        "backbone_zh": "标准化连锁 -> 相关估计 -> 遗传协方差 -> 响应联动",
-        "bridges_zh": [
-            "r² 将 D 标准化，把连锁强度变成可比较的相关尺度。",
-            "期望公式说明相关强度如何受重组与突变共同压低。",
-            "估计式把观测相关反推为重组尺度，连接统计量与生物过程。",
-            "遗传协方差把两个育种值的联动写成选择响应的斜率。",
-            "方差矩阵把相关性推广到多性状不确定性的整体结构。",
-        ],
-        "bridges_en": [
-            "r2 standardizes D into a comparable correlation scale.",
-            "Expectation formulas show how recombination and mutation reduce association.",
-            "Estimators turn observed correlation back into recombination scale.",
-            "Genetic covariance writes coupled breeding values as a response slope.",
-            "Variance matrices generalize association to structured multi-trait uncertainty.",
-        ],
-    },
-]
-
-
-def formula_chapter_number(formula: dict[str, Any]) -> int:
-    chapter = formula.get("chapter")
-    if isinstance(chapter, int):
-        return chapter
-    return formula_sort_key(formula.get("id", ""))[0]
-
-
-def story_symbol_entries(formula: dict[str, Any]) -> list[dict[str, str]]:
-    detailed = list(formula.get("symbols_defined_detailed") or []) + list(formula.get("symbols_used_detailed") or [])
-    if detailed:
-        return detailed
-    entries: list[dict[str, str]] = []
-    for symbol in list(formula.get("symbols_defined") or []) + list(formula.get("symbols_used") or []):
-        entries.append(
-            {
-                "symbol": str(symbol),
-                "canonical_latex": canonical_symbol_key(str(symbol)),
-                "family_key": family_key(str(symbol)),
-                "role": symbol_role(str(symbol)),
-            }
-        )
-    return entries
-
-
-def story_entry_matches(entry: dict[str, str], blueprint: dict[str, Any]) -> bool:
-    required_roles = set(blueprint.get("required_roles") or [])
-    if required_roles and entry.get("role") not in required_roles:
-        return False
-    allowed_family_keys = set(blueprint.get("allowed_family_keys") or [])
-    allowed_canonical_symbols = set(blueprint.get("allowed_canonical_symbols") or [])
-    allowed_symbols = set(blueprint.get("allowed_symbols") or [])
-    keys = {
-        str(entry.get("symbol") or ""),
-        str(entry.get("canonical_latex") or ""),
-        str(entry.get("exact_key") or ""),
-        str(entry.get("family_key") or ""),
-    }
-    return bool(keys & allowed_symbols or keys & allowed_canonical_symbols or keys & allowed_family_keys)
-
-
-def story_formula_match_score(formula: dict[str, Any], blueprint: dict[str, Any], seed_rank: dict[str, int]) -> int:
-    chapter = formula_chapter_number(formula)
-    min_chapter, max_chapter = blueprint.get("chapter_range", (0, 10_000))
-    if chapter < min_chapter or chapter > max_chapter:
-        return -1
-
-    entries = story_symbol_entries(formula)
-    matching_entries = [entry for entry in entries if story_entry_matches(entry, blueprint)]
-    if not matching_entries:
-        return -1
-
-    score = 10 * len(matching_entries)
-    score += sum(8 for entry in formula.get("symbols_defined_detailed") or [] if story_entry_matches(entry, blueprint))
-    if formula["id"] in seed_rank:
-        score += 1000 - seed_rank[formula["id"]]
-
-    latex = formula.get("latex", "")
-    for token in blueprint.get("preferred_latex_tokens") or []:
-        if token in latex:
-            score += 12
-    return score
-
-
-def select_story_formula_ids(
-    all_formulas: list[dict[str, Any]],
-    blueprint: dict[str, Any],
-    limit: int = 6,
-) -> tuple[list[str], list[str]]:
-    seed_rank = {formula_id: index for index, formula_id in enumerate(blueprint.get("seed_formula_ids") or [])}
-    scored: list[tuple[int, dict[str, Any]]] = []
-    for formula in all_formulas:
-        score = story_formula_match_score(formula, blueprint, seed_rank)
-        if score >= 0:
-            scored.append((score, formula))
-
-    selected: list[dict[str, Any]] = []
-    used_ids: set[str] = set()
-    used_chapters: set[int] = set()
-
-    for formula_id in blueprint.get("seed_formula_ids") or []:
-        seeded = next((formula for score, formula in scored if formula["id"] == formula_id), None)
-        if seeded and formula_id not in used_ids:
-            selected.append(seeded)
-            used_ids.add(formula_id)
-            used_chapters.add(formula_chapter_number(seeded))
-
-    for _score, formula in sorted(scored, key=lambda item: (-item[0], formula_sort_key(item[1]["id"]))):
-        formula_id = formula["id"]
-        chapter = formula_chapter_number(formula)
-        if formula_id in used_ids:
-            continue
-        if len(selected) >= 3 and chapter in used_chapters:
-            continue
-        selected.append(formula)
-        used_ids.add(formula_id)
-        used_chapters.add(chapter)
-        if len(selected) >= limit:
-            break
-
-    if len(selected) < 2:
-        for _score, formula in sorted(scored, key=lambda item: (-item[0], formula_sort_key(item[1]["id"]))):
-            if formula["id"] not in used_ids:
-                selected.append(formula)
-                used_ids.add(formula["id"])
-            if len(selected) >= 2:
-                break
-
-    sorted_selected = sorted(selected[:limit], key=lambda formula: formula_sort_key(formula["id"]))
-    selected_ids = [formula["id"] for formula in sorted_selected]
-
-    reverse_candidates: list[str] = []
-    previous_chapter = -1
-    for formula_id in blueprint.get("seed_formula_ids") or []:
-        seeded = next((formula for _score, formula in scored if formula["id"] == formula_id), None)
-        if not seeded:
-            continue
-        chapter = formula_chapter_number(seeded)
-        if chapter < previous_chapter and formula_id not in selected_ids:
-            reverse_candidates.append(formula_id)
-        previous_chapter = max(previous_chapter, chapter)
-
-    return selected_ids, reverse_candidates
-
-
-def bridge_for_story_step(blueprint: dict[str, Any], index: int) -> tuple[str, str]:
-    bridges_zh = blueprint.get("bridges_zh") or []
-    bridges_en = blueprint.get("bridges_en") or []
-    if index < len(bridges_zh) and index < len(bridges_en):
-        return bridges_en[index], bridges_zh[index]
-    if index == 0:
-        return (
-            f"This opening formula establishes the measurable object for {blueprint['symbol']}.",
-            f"起点公式先建立 {blueprint['symbol']} 的可测量对象，后续模型在此基础上加限制。",
-        )
-    return (
-        f"The next step adds a new model constraint to the {blueprint['symbol']} storyline.",
-        f"下一步为 {blueprint['symbol']} 加入新的模型限制，使主线进入更具体的问题。",
-    )
-
-
-def build_storylines(all_formulas: list[dict[str, Any]]) -> dict[str, Any]:
-    by_id = {formula["id"]: formula for formula in all_formulas}
-    entries: list[dict[str, Any]] = []
-
-    for blueprint in STORYLINE_BLUEPRINTS:
-        formula_ids, reverse_candidates = select_story_formula_ids(all_formulas, blueprint)
-        if len(formula_ids) < 2:
-            LOGGER.warning("Storyline %s has fewer than two formula steps.", blueprint["id"])
-            continue
-
-        steps: list[dict[str, Any]] = []
-        for index, formula_id in enumerate(formula_ids):
-            formula = by_id[formula_id]
-            transition_en, transition_zh = bridge_for_story_step(blueprint, index)
-            steps.append(
-                {
-                    "formula_id": formula_id,
-                    "title": formula.get("label", raw_formula_id(formula_id)),
-                    "transition_en": transition_en,
-                    "transition_zh": transition_zh,
-                    "support_formula_ids": formula_ids[max(0, index - 1) : index],
-                }
-            )
-
-        entries.append(
-            {
-                "id": blueprint["id"],
-                "title_en": blueprint["title_en"],
-                "title_zh": blueprint["title_zh"],
-                "symbol": blueprint["symbol"],
-                "intro_en": blueprint["intro_en"],
-                "intro_zh": blueprint["intro_zh"],
-                "backbone_en": blueprint["backbone_en"],
-                "backbone_zh": blueprint["backbone_zh"],
-                "entity_keys": sorted(set(blueprint.get("allowed_canonical_symbols") or []) | set(blueprint.get("allowed_family_keys") or [])),
-                "steps": steps,
-                "audit": {
-                    "selection": "blueprint_symbol_entity_filter",
-                    "excluded_reverse_formula_ids": reverse_candidates,
-                },
-            }
-        )
-
-    return {"version": 2, "items": entries}
 
 
 def run_pipeline(structured_dir: Path, output_dir: Path, chapter_filter: str | None = None) -> dict[str, Any]:
@@ -1880,6 +1901,10 @@ def run_pipeline(structured_dir: Path, output_dir: Path, chapter_filter: str | N
     dependency_dir = output_dir / "dependency"
     for chapter_id in sorted(chapter_formulas, key=chapter_sort_key):
         try:
+            symbol_sense_clusters, sense_to_cluster = build_symbol_sense_clusters(
+                chapter_senses[chapter_id],
+                chapter_formulas[chapter_id],
+            )
             dependencies, ambiguous = build_dependencies_for_chapter(
                 chapter_id,
                 chapter_formulas[chapter_id],
@@ -1888,6 +1913,7 @@ def run_pipeline(structured_dir: Path, output_dir: Path, chapter_filter: str | N
                 global_index,
                 global_senses,
                 formulas_by_raw_id,
+                sense_to_cluster,
             )
             apply_formula_depths(chapter_formulas[chapter_id], dependencies)
             payload = build_chapter_dependency(
@@ -1897,6 +1923,7 @@ def run_pipeline(structured_dir: Path, output_dir: Path, chapter_filter: str | N
                 chapter_symbol_indexes[chapter_id],
                 generated_at,
                 ambiguous,
+                symbol_sense_clusters,
             )
             write_json(dependency_dir / f"{chapter_id}_dependencies.json", payload)
             chapter_payloads[chapter_id] = payload
@@ -1917,7 +1944,9 @@ def run_pipeline(structured_dir: Path, output_dir: Path, chapter_filter: str | N
     write_json(output_dir / "formula_search_index.json", build_search_index(all_formulas))
     write_json(output_dir / "learning_paths.json", build_learning_paths(all_formulas))
     write_json(output_dir / "chapter_navigator.json", build_chapter_navigator(chapter_payloads))
-    write_json(output_dir / "storylines.json", build_storylines(all_formulas))
+    # Storylines are curated manually in data/frontend/storylines.json.
+    # Pipeline must NOT overwrite this file.
+    # write_json(output_dir / "storylines.json", ...)  # DISABLED
 
     return {
         "chapters": len(chapter_formulas),

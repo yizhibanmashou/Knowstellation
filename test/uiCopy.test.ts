@@ -17,7 +17,7 @@ test('ui copy defaults to Chinese learner-facing labels', () => {
   assert.equal(copy.app.searchPlaceholder, '搜索公式、章节或主题');
   assert.equal(copy.graph.home, 'Home');
   assert.equal(copy.graph.modes.guided.label, 'Guided');
-  assert.equal(copy.graph.node.start, '起点');
+  assert.equal(copy.chapter.entryPoints, '章节入口');
   assert.equal(copy.storyline.localNarrative, '正在使用本地叙事');
 });
 
@@ -28,8 +28,8 @@ test('formatChapterLabel localizes chapter and appendix ids', () => {
 });
 
 test('formatChapterTitle replaces generated navigator placeholders with localized labels', () => {
-  assert.equal(formatChapterTitle({ chapterId: 'chapter10', chapter: 10, titleZh: 'Chapter 10 公式导航' }), '第 10 章公式导航');
-  assert.equal(formatChapterTitle({ chapterId: 'appendix3', titleEn: 'Appendix 3 Formula Navigator' }), '附录 3 公式导航');
+  assert.equal(formatChapterTitle({ chapterId: 'chapter10', chapter: 10, titleZh: 'Chapter 10 公式导航' }), '第 10 章');
+  assert.equal(formatChapterTitle({ chapterId: 'appendix3', titleEn: 'Appendix 3 Formula Navigator' }), '附录 3');
   assert.equal(formatChapterTitle({ chapterId: 'chapter8', titleZh: '分子进化中的连锁位点' }), '分子进化中的连锁位点');
 });
 
@@ -54,7 +54,7 @@ test('formatChapterDescription rewrites generated chapter guidance around concep
       formulaCount: 67,
       sectionHint: 'BRIEF OVERVIEW OF DIVERGENCE-BASED TESTS',
     }),
-    '本章主要围绕「基于分化检验概览」展开，包含 67 个公式。建议先从概念起点建立术语地图，再进入公式起点展开依赖图谱。',
+    '本章主要围绕「基于分化检验概览」展开，包含 67 个公式。建议先浏览概念路径，再进入公式入口展开依赖图谱。',
   );
   assert.equal(
     formatChapterDescription({
@@ -64,7 +64,7 @@ test('formatChapterDescription rewrites generated chapter guidance around concep
       formulaCount: 76,
       sectionHint: 'Short-term Changes in the Mean',
     }),
-    '本章主要围绕「性状均值的短期变化」展开，包含 76 个公式。建议先从概念起点建立术语地图，再进入公式起点展开依赖图谱。',
+    '本章主要围绕「性状均值的短期变化」展开，包含 76 个公式。建议先浏览概念路径，再进入公式入口展开依赖图谱。',
   );
 });
 

@@ -6,17 +6,12 @@ __pycache__/
 *.log
 *.tsbuildinfo
 test-results/
-test/
 playwright-report/
 vite.config.js
 vite.config.d.ts
 data/frontend_smoke/
 data/knowstellation_pipeline/
 data/structured/
-docs/
-!docs/
-docs/*
-!docs/readme-cover-background.png
 .env
 .env.local
 .env.*.local
@@ -28,5 +23,7 @@ docs/*
 .understand-anything/
 .cursor/
 tmp/
+tmp-serve-dist.mjs
 data/book/
 data/book_ocr/
+data/storyline-image-sources/

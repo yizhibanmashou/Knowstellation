@@ -366,6 +366,7 @@ def build_chapter_navigator(by_chapter: dict[str, list[FormulaRecord]]) -> dict[
                 "description_en": f"{chapter_id} contains {len(sorted_formulas)} formulas generated from PaddleOCR-VL.",
                 "description_zh": f"本章包含 {len(sorted_formulas)} 个公式。建议先从概念起点建立术语地图，再进入公式起点展开依赖图谱。",
                 "section_hint": section_hint,
+                "formula_root_ids": roots,
                 "backbone_formula_ids": roots[:14],
                 "full_formula_ids": [formula.id for formula in sorted_formulas],
                 "representative_formula_ids": representative,

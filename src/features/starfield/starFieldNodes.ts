@@ -4,10 +4,11 @@ import { NODE_HIT_RADIUS, NODE_VISUAL_RADIUS } from './starFieldConstants';
 import { makeLabelSprite } from './starFieldScene';
 import type { HitTargetMesh, NodeMesh } from './starFieldTypes';
 
-interface StarNodeObjects {
+export interface StarNodeObjects {
   hitTargets: HitTargetMesh[];
   nodeMeshes: NodeMesh[];
   dispose: () => void;
+  setOpacity: (opacity: number) => void;
 }
 
 export function createStarNodeObjects(constellation: THREE.Group, starNodes: StarNode[], nodePoints: THREE.Vector3[]): StarNodeObjects {
@@ -33,6 +34,8 @@ export function createStarNodeObjects(constellation: THREE.Group, starNodes: Sta
       emissiveIntensity: node.isBackbone ? 0.48 : node.kind === 'concept' ? 0.36 : 0.4,
       roughness: 0.34,
       metalness: 0,
+      transparent: true,
+      opacity: 0,
       toneMapped: false,
     });
     const mesh = new THREE.Mesh(nodeGeometry, material) as unknown as NodeMesh;
@@ -45,7 +48,7 @@ export function createStarNodeObjects(constellation: THREE.Group, starNodes: Sta
       new THREE.MeshBasicMaterial({
         color,
         transparent: true,
-        opacity: node.isBackbone ? 0.16 : node.kind === 'concept' ? 0.14 : 0.12,
+        opacity: 0,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         toneMapped: false,
@@ -59,6 +62,7 @@ export function createStarNodeObjects(constellation: THREE.Group, starNodes: Sta
     labelAnchor.position.copy(mesh.position);
     label.position.set(0, 0, NODE_VISUAL_RADIUS * baseScale + 0.004);
     label.scale.setScalar(node.kind === 'chapter' ? 0.16 : node.kind === 'concept' ? 0.115 : 0.13);
+    (label.material as THREE.SpriteMaterial).opacity = 0;
     labelAnchor.add(label);
 
     const hitTarget = new THREE.Mesh(hitGeometry, hitMaterial) as unknown as HitTargetMesh;
@@ -69,6 +73,9 @@ export function createStarNodeObjects(constellation: THREE.Group, starNodes: Sta
       node,
       baseScale,
       targetScale: baseScale,
+      nodeOpacity: 1,
+      ringOpacity: node.isBackbone ? 0.16 : node.kind === 'concept' ? 0.14 : 0.12,
+      labelOpacity: 1,
       pulse: 0.75 + Math.random() * 1.4,
       ring,
       label,
@@ -83,12 +90,25 @@ export function createStarNodeObjects(constellation: THREE.Group, starNodes: Sta
   return {
     hitTargets,
     nodeMeshes,
+    setOpacity: (opacity) => {
+      const easedOpacity = THREE.MathUtils.clamp(opacity, 0, 1);
+      nodeMeshes.forEach((mesh) => {
+        const material = mesh.material as THREE.MeshStandardMaterial;
+        const ringMaterial = mesh.userData.ring.material as THREE.MeshBasicMaterial;
+        const labelMaterial = mesh.userData.label.material as THREE.SpriteMaterial;
+        material.opacity = mesh.userData.nodeOpacity * easedOpacity;
+        ringMaterial.opacity = mesh.userData.ringOpacity * easedOpacity;
+        labelMaterial.opacity = mesh.userData.labelOpacity * easedOpacity;
+        mesh.userData.hitTarget.visible = easedOpacity > 0.55;
+      });
+    },
     dispose: () => {
       nodeGeometry.dispose();
       haloGeometry.dispose();
       hitGeometry.dispose();
       hitMaterial.dispose();
       nodeMeshes.forEach((mesh) => {
+        constellation.remove(mesh.userData.ring, mesh, mesh.userData.labelAnchor, mesh.userData.hitTarget);
         (mesh.material as THREE.Material).dispose();
         (mesh.userData.ring.material as THREE.Material).dispose();
         const labelMaterial = mesh.userData.label.material as THREE.SpriteMaterial;

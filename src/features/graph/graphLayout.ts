@@ -1,14 +1,19 @@
 import type { Node, XYPosition } from '@xyflow/react';
 import type { ChapterFormula, FormulaDependency, FormulaPrerequisite } from '../../shared/types/formula';
 
-const FORMULA_X_GAP = 460;
-const VARIABLE_X_GAP = 260;
+const FORMULA_X_GAP = 540;
+const VARIABLE_X_GAP = 340;
 const FORMULA_CARD_WIDTH = 276;
 const FOCUSED_FORMULA_CARD_WIDTH = 620;
 const FORMULA_SIDE_GUTTER = FORMULA_X_GAP - FORMULA_CARD_WIDTH;
 const FORMULA_Y_GAP = 320;
+const FORMULA_Y_GAP_COMPACT = 240;
+const FORMULA_Y_GAP_DENSE = 214;
 const VARIABLE_Y_GAP = 118;
 const FORMULA_SAFE_HEIGHT = 310;
+const FORMULA_SAFE_HEIGHT_COMPACT = 232;
+const FORMULA_SAFE_HEIGHT_DENSE = 206;
+const FORMULA_SUCCESSOR_COLUMN_GAP = 360;
 const VARIABLE_SAFE_HEIGHT = 108;
 const CHAPTER_CARD_WIDTH = 268;
 const CHAPTER_CARD_HEIGHT = 260;
@@ -49,14 +54,21 @@ function formulaNodeWidth(node: Node): number {
   return data?.focused ? FOCUSED_FORMULA_CARD_WIDTH : FORMULA_CARD_WIDTH;
 }
 
+function formulaRailMetrics(count: number): { gap: number; safeHeight: number } {
+  if (count >= 6) return { gap: FORMULA_Y_GAP_DENSE, safeHeight: FORMULA_SAFE_HEIGHT_DENSE };
+  if (count >= 4) return { gap: FORMULA_Y_GAP_COMPACT, safeHeight: FORMULA_SAFE_HEIGHT_COMPACT };
+  return { gap: FORMULA_Y_GAP, safeHeight: FORMULA_SAFE_HEIGHT };
+}
+
 export function layoutPrerequisites(parent: Node, prerequisites: FormulaPrerequisite[], existingNodes: Node[]): XYPosition[] {
   const formulaX = parent.position.x - FORMULA_X_GAP;
   const variableX = parent.position.x - VARIABLE_X_GAP;
-  const formulaSlots = usedSlotsForLane(existingNodes, formulaX, FORMULA_SAFE_HEIGHT);
   const variableSlots = usedSlotsForLane(existingNodes, variableX, VARIABLE_SAFE_HEIGHT);
   const formulaCount = prerequisites.filter((prereq) => prereq.type === 'formula').length;
   const variableCount = prerequisites.length - formulaCount;
-  const formulaStartY = parent.position.y - ((formulaCount - 1) * FORMULA_Y_GAP) / 2;
+  const formulaMetrics = formulaRailMetrics(formulaCount);
+  const formulaSlots = usedSlotsForLane(existingNodes, formulaX, formulaMetrics.safeHeight);
+  const formulaStartY = parent.position.y - ((formulaCount - 1) * formulaMetrics.gap) / 2;
   const variableStartY = parent.position.y + 122 - ((variableCount - 1) * VARIABLE_Y_GAP) / 2;
   let formulaIndex = 0;
   let variableIndex = 0;
@@ -68,19 +80,39 @@ export function layoutPrerequisites(parent: Node, prerequisites: FormulaPrerequi
       return { x: variableX, y: findFreeSlot(idealY, variableSlots, VARIABLE_SAFE_HEIGHT) };
     }
 
-    const idealY = formulaStartY + formulaIndex * FORMULA_Y_GAP;
+    const idealY = formulaStartY + formulaIndex * formulaMetrics.gap;
     formulaIndex += 1;
-    return { x: formulaX, y: findFreeSlot(idealY, formulaSlots, FORMULA_SAFE_HEIGHT) };
+    return { x: formulaX, y: findFreeSlot(idealY, formulaSlots, formulaMetrics.safeHeight) };
   });
 }
 
 export function layoutSuccessors(parent: Node, count: number, existingNodes: Node[]): XYPosition[] {
   const formulaX = parent.position.x + formulaNodeWidth(parent) + FORMULA_SIDE_GUTTER;
-  const slots = usedSlotsForLane(existingNodes, formulaX, FORMULA_SAFE_HEIGHT);
-  const startY = parent.position.y - ((count - 1) * FORMULA_Y_GAP) / 2;
+  const metrics = formulaRailMetrics(count);
+  if (count >= 5) {
+    const firstColumnCount = Math.ceil(count / 2);
+    const columnCounts = [firstColumnCount, count - firstColumnCount];
+    const columnSlots = columnCounts.map((_, columnIndex) =>
+      usedSlotsForLane(existingNodes, formulaX + columnIndex * FORMULA_SUCCESSOR_COLUMN_GAP, metrics.safeHeight)
+    );
+    return Array.from({ length: count }, (_, index) => {
+      const columnIndex = index < firstColumnCount ? 0 : 1;
+      const indexInColumn = columnIndex === 0 ? index : index - firstColumnCount;
+      const columnCount = columnCounts[columnIndex];
+      const x = formulaX + columnIndex * FORMULA_SUCCESSOR_COLUMN_GAP;
+      const startY = parent.position.y - ((columnCount - 1) * metrics.gap) / 2;
+      return {
+        x,
+        y: findFreeSlot(startY + indexInColumn * metrics.gap, columnSlots[columnIndex], metrics.safeHeight),
+      };
+    });
+  }
+
+  const slots = usedSlotsForLane(existingNodes, formulaX, metrics.safeHeight);
+  const startY = parent.position.y - ((count - 1) * metrics.gap) / 2;
   return Array.from({ length: count }, (_, index) => ({
     x: formulaX,
-    y: findFreeSlot(startY + index * FORMULA_Y_GAP, slots, FORMULA_SAFE_HEIGHT),
+    y: findFreeSlot(startY + index * metrics.gap, slots, metrics.safeHeight),
   }));
 }
 

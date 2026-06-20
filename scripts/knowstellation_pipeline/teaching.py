@@ -23,8 +23,8 @@ def write_teaching_payloads(formulas: list[FormulaRecord], dependency_dir: Path,
         write_json(concept_dir / f"{chapter_id}_concept_graph.json", payload)
     write_json(concept_dir / "concept_graph_index.json", build_concept_index(by_chapter))
     write_json(output_dir / "formula_learning_copy.json", build_learning_copy(formulas))
-    write_json(output_dir / "storylines.json", build_storylines(formulas))
-    write_json(output_dir / "llm_cache.json", {"version": 1, "generated_at": utc_now(), "items": {}, "source": "knowstellation_pipeline_placeholder"})
+    # Storylines are curated manually. Pipeline must NOT overwrite.
+    # write_json(output_dir / "storylines.json", ...)  # DISABLED
     return {"concept_view_count": total_views}
 
 
@@ -194,50 +194,6 @@ def build_learning_copy(formulas: list[FormulaRecord]) -> dict[str, Any]:
         "items": items,
     }
 
-
-def build_storylines(formulas: list[FormulaRecord]) -> dict[str, Any]:
-    by_symbol: dict[str, list[FormulaRecord]] = defaultdict(list)
-    for formula in formulas:
-        if formula.is_low_confidence:
-            continue
-        for symbol in formula.symbols_used[:6]:
-            by_symbol[symbol].append(formula)
-    items = []
-    for symbol, symbol_formulas in sorted(by_symbol.items(), key=lambda item: len(item[1]), reverse=True):
-        unique = sorted({formula.id: formula for formula in symbol_formulas}.values(), key=formula_sort_key)
-        if len(unique) < 2:
-            continue
-        steps = []
-        previous = None
-        for formula in unique[:8]:
-            steps.append(
-                {
-                    "formula_id": formula.id,
-                    "title": formula.label,
-                    "transition_en": f"{symbol} continues through {formula.label} as the chapter develops the idea.",
-                    "transition_zh": f"{symbol} 在 {formula.label} 中继续出现，连接这一主题的后续推导。",
-                    "support_formula_ids": [previous.id] if previous else [],
-                }
-            )
-            previous = formula
-        safe_id = "".join(ch.lower() if ch.isalnum() else "-" for ch in symbol).strip("-") or f"storyline-{len(items)+1}"
-        items.append(
-            {
-                "id": f"generated-{safe_id}",
-                "title_en": f"Trajectory of {symbol}",
-                "title_zh": f"{symbol} 的公式轨迹",
-                "symbol": symbol,
-                "intro_en": f"Follow how {symbol} appears across related formulas.",
-                "intro_zh": f"追踪 {symbol} 如何贯穿相关公式。",
-                "backbone_en": "formula context -> reused symbol -> later relation",
-                "backbone_zh": "公式语境 -> 符号复用 -> 后续关系",
-                "entity_keys": [symbol],
-                "steps": steps,
-            }
-        )
-        if len(items) >= 8:
-            break
-    return {"version": 1, "items": items}
 
 
 def build_concept_index(by_chapter: dict[str, list[FormulaRecord]]) -> dict[str, Any]:

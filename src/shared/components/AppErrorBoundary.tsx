@@ -2,6 +2,7 @@ import { Component, type ErrorInfo, type ReactNode } from 'react';
 
 interface AppErrorBoundaryProps {
   children: ReactNode;
+  resetKey?: string;
 }
 
 interface AppErrorBoundaryState {
@@ -19,6 +20,25 @@ export class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorB
     console.error('Knowstellation render error', error, info);
   }
 
+  componentDidUpdate(prevProps: AppErrorBoundaryProps) {
+    if (this.state.error && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ error: null });
+    }
+  }
+
+  private isModuleLoadError(error: Error) {
+    return /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module|ChunkLoadError/i.test(error.message);
+  }
+
+  private handleRetry = () => {
+    if (this.state.error && this.isModuleLoadError(this.state.error)) {
+      window.location.reload();
+      return;
+    }
+
+    this.setState({ error: null });
+  };
+
   render() {
     if (!this.state.error) return this.props.children;
 
@@ -28,7 +48,7 @@ export class AppErrorBoundary extends Component<AppErrorBoundaryProps, AppErrorB
           <p className="text-xs font-black uppercase tracking-[0.22em] text-red-200">Render error</p>
           <h1 className="mt-3 text-2xl font-semibold">The graph view crashed while rendering.</h1>
           <pre className="mt-4 max-h-[45vh] overflow-auto rounded-xl bg-black/35 p-4 text-xs leading-5 text-red-50">{this.state.error.message}</pre>
-          <button type="button" className="mt-4 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white" onClick={() => this.setState({ error: null })}>
+          <button type="button" className="mt-4 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white" onClick={this.handleRetry}>
             Try again
           </button>
         </div>

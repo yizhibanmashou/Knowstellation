@@ -114,6 +114,7 @@ export function StorylinePage({ data }: StorylinePageProps) {
             formulaId: selectedStep.formula_id,
             language: 'zh',
             cache: data.formulaLearningCopy,
+            takeawayCache: data.takeawayCache,
             context: selectedSearch?.context,
             latex: selectedLatex,
             chapterTitle: selectedChapterId ? formatChapterLabel(selectedChapterId, selectedSearch?.chapter) : selectedSearch?.section,
@@ -122,7 +123,7 @@ export function StorylinePage({ data }: StorylinePageProps) {
             section: formatSectionLabel(selectedSearch?.section),
           })
         : null,
-    [data.formulaLearningCopy, selectedChapterId, selectedLatex, selectedSearch?.chapter, selectedSearch?.context, selectedSearch?.label, selectedSearch?.section, selectedStep],
+    [data.formulaLearningCopy, data.takeawayCache, selectedChapterId, selectedLatex, selectedSearch?.chapter, selectedSearch?.context, selectedSearch?.label, selectedSearch?.section, selectedStep],
   );
 
   const fallbackNarrative = useMemo(() => {
@@ -219,7 +220,16 @@ export function StorylinePage({ data }: StorylinePageProps) {
   const openGraph = (formulaId = selectedStep?.formula_id) => {
     if (!formulaId || !storyline) return;
     const chapterId = searchLookup.get(formulaId)?.chapter_id || formulaChapter(formulaId);
-    navigate(`/graph/${formulaId}?from=storyline&storyline=${storyline.id}&chapterId=${chapterId}`);
+    const next = new URLSearchParams({
+      from: 'storyline',
+      storyline: storyline.id,
+      chapterId,
+      mode: 'formula',
+      study: 'chapter',
+      layer: 'full',
+      selected: formulaId,
+    });
+    navigate(`/graph/${formulaId}?${next.toString()}`);
   };
 
   const identityTitle = storyline?.id === 'allele-frequency' ? '等位基因频率' : storyline?.title_zh || storyline?.title_en || '';
@@ -375,4 +385,3 @@ export function StorylinePage({ data }: StorylinePageProps) {
     </section>
   );
 }
-

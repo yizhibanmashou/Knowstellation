@@ -7,7 +7,7 @@ import type { ActiveNode, StarFieldProps } from './starFieldTypes';
 import { useStarFieldScene } from './useStarFieldScene';
 import './StarField.css';
 
-export function StarField({ nodes: starNodes, visible, onEnterNode, rightReserve = 0, rightReserveClassName }: StarFieldProps) {
+export function StarField({ nodes: starNodes, visible, onEnterNode, rightReserve = 0, rightReserveClassName, transitionKey }: StarFieldProps) {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const asleep = useStarFieldStore((state) => state.asleep);
   const asleepRef = useRef(asleep);
@@ -43,6 +43,7 @@ export function StarField({ nodes: starNodes, visible, onEnterNode, rightReserve
     setHoverNode,
     setRenderError,
     starNodes,
+    transitionKey,
     visibleRef,
   });
 

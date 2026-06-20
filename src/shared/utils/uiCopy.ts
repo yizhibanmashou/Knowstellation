@@ -27,11 +27,11 @@ const UI_COPY = {
       fallbackTitle: '章节暂不可用',
       fallbackDescription: '请回到首页重新选择章节。',
       description:
-        '先从推荐起点进入，再逐步展开这个章节中的公式、变量和前置关系。',
+        '先浏览本章概念路径，再从无前置公式入口展开公式依赖关系。',
       nodesDiscovered: '个公式节点',
-      backboneRoots: '个公式起点',
-      entryPoints: '推荐学习起点',
-      roots: '个起点',
+      backboneRoots: '个公式入口',
+      entryPoints: '章节入口',
+      roots: '个入口',
       backToHome: '返回章节星图',
     },
     search: {
@@ -49,7 +49,7 @@ const UI_COPY = {
       themeRoute: '主题路线',
       startRoute: '开始路线',
       enterChapter: '进入章节星图',
-      roots: '个起点',
+      roots: '个入口',
     },
     formulaCard: {
       eyebrow: '公式',
@@ -81,31 +81,40 @@ const UI_COPY = {
       standalone: '这个公式目前在本地图谱中没有已确认的前置或后续关系。',
       chapterGraphSuffix: '全章图谱',
       hints: {
-        concept: '概念视图：从当前概念出发，先看一跳前置，再看本式符号；公式作为证据保留。',
-        guided: '引导学习：先点公式卡片理解符号，再选择看前置概念或后续公式。',
-        explore: '自由探索：点击公式，在当前章节里展开它的前置和后续关系。',
+        concept: '概念视图：从当前概念出发，只展开真实前置概念。',
+        formula: 'Formula：在公式内悬停查看符号解释，再展开前置公式或后续公式。',
+        explore: 'Formula Map：点击公式，在当前章节里展开它的前置和后续关系。',
+        conceptMap: 'Concept Map：查看整章概念网络，点击概念进入局部视图。',
       },
         modes: {
           concept: {
           label: 'Concept',
           description: '以概念为入口查看一跳前置关系',
         },
-        guided: {
-          label: 'Guided',
+        formula: {
+          label: 'Formula',
           description: '先看符号，再看后续公式',
         },
+        guided: {
+          label: 'Guided',
+          description: '按当前公式的学习路径逐步展开',
+        },
         explore: {
-          label: 'Explore',
+          label: 'Formula Map',
           description: '打开章节尺度的关系图',
         },
-        locked: '整章图谱固定使用自由探索模式。',
+        conceptMap: {
+          label: 'Concept Map',
+          description: '打开整章概念关系图',
+        },
+        locked: '当前入口固定使用对应整章图谱模式。',
       },
       node: {
         actions: '公式展开动作',
-        prerequisiteTrigger: '看前置概念',
+        prerequisiteTrigger: '看前置公式',
         successorTrigger: '看后续公式',
         locked: '未解锁',
-        start: '起点',
+        start: '根节点',
         layer: (depth: number) => `第 ${depth} 层`,
         symbolNotes: '符号精读',
         symbolLoading: '正在生成解释...',
@@ -126,11 +135,11 @@ const UI_COPY = {
       info: {
         eyebrow: '公式旁注',
         chapterGraph: '整章图谱',
-        conceptEyebrow: '概念局部视图',
+        conceptEyebrow: '概念简介',
         conceptSymbol: '概念符号',
         conceptDefinition: '概念解读',
         prerequisiteConcepts: '前置概念',
-        introducedConcepts: '本式符号',
+        introducedConcepts: '符号说明',
         evidence: '证据',
         supportingFormula: '支撑公式',
         plain: '通俗解释',
@@ -166,10 +175,10 @@ const UI_COPY = {
       openCurrentGraph: '打开当前图谱',
       generating: '正在生成教材导读...',
       localNarrative: '正在使用本地叙事',
-      role: '在故事线中的角色',
+      role: 'Backstory',
       transition: '演化轨迹',
       next: '叙事衔接',
-      storyBridge: '故事串联',
+      storyBridge: 'But Wait…',
     },
   },
   en: {
@@ -196,11 +205,11 @@ const UI_COPY = {
       fallbackTitle: 'Chapter unavailable',
       fallbackDescription: 'Return to the home map and choose another chapter.',
       description:
-        'Start from a recommended entry point, then expand formulas, variables, and prerequisites in this chapter.',
+        'Start from concept entries to build the terminology map, then use formula roots to expand dependencies.',
       nodesDiscovered: 'nodes',
-      backboneRoots: 'formula roots',
-      entryPoints: 'Backbone Entry Points',
-      roots: 'roots',
+      backboneRoots: 'formula entries',
+      entryPoints: 'Chapter entries',
+      roots: 'entries',
       backToHome: 'Back to chapter star map',
     },
     search: {
@@ -245,27 +254,29 @@ const UI_COPY = {
       fromStoryline: 'From storyline: ',
       emptyChapter: 'No formulas were found for this chapter.',
       missingFormula: 'This formula was not found in the current chapter.',
-      missingConcept: 'Switched to the formula evidence view.',
+      missingConcept: 'Concept data is unavailable.',
       dataError: 'Graph data could not be loaded.',
       standalone: 'This formula currently stands alone in the local graph.',
       chapterGraphSuffix: 'full graph',
       hints: {
-        concept: 'Concept: start from the current concept, show one-hop prerequisites and formula symbols; formulas stay as evidence.',
-        guided: 'Guided: click the formula card first, then choose prerequisites or successors.',
-        explore: 'Explore: click formulas to expand relationships inside this chapter.',
+        concept: 'Concept: start from the current concept and show only real concept prerequisites.',
+        formula: 'Formula: hover inside the formula for symbol notes, then expand prerequisite or successor formulas.',
+        explore: 'Formula Map: click formulas to expand relationships inside this chapter.',
+        conceptMap: 'Concept Map: scan the chapter concept network, then click a concept to open its local view.',
       },
       modes: {
         concept: { label: 'Concept', description: 'Use concepts as the graph entry point' },
-        guided: { label: 'Guided', description: 'Symbols first, successors second' },
-        explore: { label: 'Explore', description: 'Open the chapter-scale relationship map' },
-        locked: 'Chapter graphs use Explore mode.',
+        formula: { label: 'Formula', description: 'Symbols first, successors second' },
+        explore: { label: 'Formula Map', description: 'Open the chapter-scale formula map' },
+        conceptMap: { label: 'Concept Map', description: 'Open the chapter-scale concept map' },
+        locked: 'This route uses the matching chapter map mode.',
       },
       node: {
         actions: 'Formula expansion actions',
-        prerequisiteTrigger: 'Show prerequisite concepts',
+        prerequisiteTrigger: 'Show prerequisite formulas',
         successorTrigger: 'Show successor formulas',
         locked: 'Locked',
-        start: 'Start',
+        start: 'Root',
         layer: (depth: number) => `Layer ${depth}`,
         symbolNotes: 'Symbol notes',
         symbolLoading: 'Generating explanation...',
@@ -286,11 +297,11 @@ const UI_COPY = {
       info: {
         eyebrow: 'Formula margin note',
         chapterGraph: 'Chapter graph',
-        conceptEyebrow: 'Concept view',
+        conceptEyebrow: 'Concept brief',
         conceptSymbol: 'Concept symbol',
         conceptDefinition: 'Concept reading',
         prerequisiteConcepts: 'Prerequisites',
-        introducedConcepts: 'Introduced',
+        introducedConcepts: 'Symbol notes',
         evidence: 'Evidence',
         supportingFormula: 'Supporting formula',
         plain: 'Plain meaning',
@@ -321,10 +332,10 @@ const UI_COPY = {
       openCurrentGraph: 'Open current graph',
       generating: 'Generating academic insight...',
       localNarrative: 'Using local narrative',
-      role: 'Role in this storyline',
+      role: 'Backstory',
       transition: 'Transition',
       next: 'Next step',
-      storyBridge: 'Story bridge',
+      storyBridge: 'But Wait…',
     },
   },
 } satisfies Record<LanguageCode, any>;
@@ -357,8 +368,7 @@ export function formatChapterTitle(input: {
   const placeholder = /\b(?:Chapter|Appendix)\s+\d+\s+Formula Navigator\b/i.test(title) || /公式导航$/.test(title);
   if (!placeholder) return title || formatChapterLabel(input.chapterId, input.chapter, language);
   const label = formatChapterLabel(input.chapterId, input.chapter, language);
-  if (language !== 'zh') return `${label} Formula Navigator`;
-  return /章$/.test(label) ? `${label}公式导航` : `${label} 公式导航`;
+  return label;
 }
 
 export function formatSectionLabel(section?: string, language: LanguageCode = DEFAULT_LANGUAGE): string {
@@ -372,6 +382,7 @@ export function formatSectionLabel(section?: string, language: LanguageCode = DE
     [/short[- ]term changes in the mean.*truncation.*threshold/, '截断选择与阈值选择'],
     [/short[- ]term changes in the mean.*permanent.*transient/, '永久响应与暂态响应'],
     [/short[- ]term changes in the mean/, '性状均值的短期变化'],
+    [/mutation[- ]drift equilibrium/, '突变-漂变平衡'],
     [/relative power of mutation and genetic drift/, '突变与遗传漂变的相对作用'],
     [/single[- ]locus selection.*two alleles/, '单基因座选择：双等位基因'],
     [/price['’]s general theorem of selection/, 'Price 选择基本定理'],
@@ -455,7 +466,7 @@ export function formatChapterDescription(input: {
   if (!generatedPlaceholder && normalizedDescription && !/^[A-Za-z0-9\s:,'().-]+$/.test(normalizedDescription)) {
     return normalizedDescription;
   }
-  return `本章主要围绕「${topic}」展开，包含 ${count} 个公式。建议先从概念起点建立术语地图，再进入公式起点展开依赖图谱。`;
+  return `本章主要围绕「${topic}」展开，包含 ${count} 个公式。建议先浏览概念路径，再进入公式入口展开依赖图谱。`;
 }
 
 export function joinMeta(parts: Array<string | number | undefined | null>): string {
@@ -469,8 +480,13 @@ export function formatFormulaReferenceLabel(label?: string, language: LanguageCo
   return value.replace(/^Formula\s+/i, '公式 ');
 }
 
+function hasMojibake(value: string): boolean {
+  return /[\uFFFD]|\u951F\u65A4\u62F7|[\u93C4\u934F\u7ED4\u6769\u95BA\u95C1\u940E\u7943]|[\u9225\u922B\u9241\u9242\u9983]/.test(value);
+}
+
 export function formatConceptTitle(title?: string, symbol?: string, language: LanguageCode = DEFAULT_LANGUAGE): string {
   const value = (title || symbol || '').replace(/\s+/g, ' ').trim();
+  if (hasMojibake(value)) return (symbol || title || '').replace(/\s+/g, ' ').trim();
   if (!value || language !== 'zh') return value;
   const compactSymbol = (symbol || '').replace(/\s+/g, '');
   const normalized = value.toLowerCase();
@@ -497,7 +513,6 @@ export function formatConceptTitle(title?: string, symbol?: string, language: La
     [/^silent[- ]site divergence$/, '沉默位点分化'],
     [/^adaptive substitution/, '适应性替换'],
     [/^neutrality index$/, '中性指数'],
-    [/^formula\s+\S+\s+relationship$/, '公式关系'],
     [/^formula\s+\S+\s+mean$/, '均值参数'],
   ];
   const mapped = mappings.find(([pattern]) => pattern.test(normalized))?.[1];

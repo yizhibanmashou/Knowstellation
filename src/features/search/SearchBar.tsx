@@ -30,6 +30,8 @@ interface SearchBarProps {
 const SEARCH_SUGGESTIONS = ['2.1', '杂合度', '有效群体大小', 'selection', 'kappa'];
 
 function conceptResultGroupKey(result: ConceptSearchResult): string {
+  const canonicalName = result.canonical_concept_name?.replace(/\s+/g, ' ').trim().toLowerCase();
+  if (canonicalName) return `canonical-name:${canonicalName}`;
   return [result.title, result.symbol]
     .map((value) => value.replace(/\s+/g, ' ').trim().toLowerCase())
     .join('::');
@@ -43,15 +45,18 @@ function aggregateConceptResults(results: ConceptSearchResult[]): ConceptSearchR
     if (!current) {
       groups.set(key, {
         ...result,
-        occurrenceCount: 1,
-        relatedFormulaLabels: result.formula_label ? [result.formula_label] : [],
+        occurrenceCount: result.occurrenceCount || 1,
+        relatedFormulaLabels: result.relatedFormulaLabels?.length
+          ? [...result.relatedFormulaLabels]
+          : result.formula_label ? [result.formula_label] : [],
         primaryFormulaId: result.formula_id,
       });
       return;
     }
-    current.occurrenceCount += 1;
-    if (result.formula_label && !current.relatedFormulaLabels.includes(result.formula_label)) {
-      current.relatedFormulaLabels.push(result.formula_label);
+    current.occurrenceCount += result.occurrenceCount || 1;
+    const labels = result.relatedFormulaLabels?.length ? result.relatedFormulaLabels : [result.formula_label];
+    for (const label of labels) {
+      if (label && !current.relatedFormulaLabels.includes(label)) current.relatedFormulaLabels.push(label);
     }
   });
   return rankSearchResults([...groups.values()]);

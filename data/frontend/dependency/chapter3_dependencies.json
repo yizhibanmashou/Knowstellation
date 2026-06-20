@@ -1,7 +1,7 @@
 {
   "chapter_id": "chapter3",
   "version": 1,
-  "generated_at": "2026-05-25T07:34:53Z",
+  "generated_at": "2026-06-19T10:05:23Z",
   "formulas": [
     {
       "id": "formula_3.1",
@@ -11,6 +11,7 @@
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "GENERAL CONSIDERATIONS",
       "position": 0,
+      "source_position": 0,
       "depth": 0,
       "context_text": "spatial structure, so that the mean degree of inbreeding does not depend on the parental source of alleles.) Summing up the three ways by which identity-by-descent can arise between uniting gametes, $$ \\begin{aligned}f_{t}&=\\left(\\frac{1}{N_{e}}\\right)\\left(\\frac{1}{2}\\right)+\\left(\\frac{1}{2}\\right)\\left(\\frac{1}{N_{e}}\\right)f_{t-1}+\\left(1-\\frac{1}{N_{e}}\\right)f_{t-1}\\\\&=\\frac{1}{2N_{e}}+\\left(1-\\frac{1}{2N_{e}}\\right)f_{t-1}\\end{aligned} $$ (3.1)",
       "symbols_used": [
@@ -29,7 +30,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 3,
+      "position": 1,
+      "source_position": 3,
       "depth": 0,
       "context_text": "1) $ total ways by which gametes can unite by self-fertilization. Because a total of $ N_{t-1}\\mu_k $ successful gametes are produced, the expected fraction of zygotes derived from the same parent is $$ P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-1}}k_{i}(k_{i}-1)}{N_{t-1}\\mu_{k}(N_{t-1}\\mu_{k}-1)} $$ (3.2) where the denominator is the total number of pairs of uniting gametes necessary to produce the next generation. This expression can be simplified greatly by noting that $ \\sum_{i=1}^{N_{t-1}} k_i(k_i",
       "symbols_used": [
@@ -50,7 +52,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 4,
+      "position": 2,
+      "source_position": 4,
       "depth": 1,
       "context_text": "(k_i - 1)/N_{t-1} = E(k^2) - \\mu_k = \\sigma_k^2 + \\mu_k(\\mu_k - 1) $, and that because all zygotes are derived from two gametes, $ N_{t-1}\\mu_k = 2N_t $. Substituting into Equation 3.2 and inverting, $$ N_{e}=\\frac{2N_{t}-1}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.3)",
       "symbols_used": [
@@ -70,7 +73,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 5,
+      "position": 3,
+      "source_position": 5,
       "depth": 1,
       "context_text": "Equation 3.2 simplifies greatly under a number of conditions. For example, populations that are stable in size have, on average, two successful gametes per parent ( $ \\mu_k = 2 $), leading to $$ N_{e}=\\frac{4N-2}{\\sigma_{k}^{2}+2} $$ (3.4)",
       "symbols_used": [
@@ -88,7 +92,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 6,
+      "position": 4,
+      "source_position": 6,
       "depth": 2,
       "context_text": "$ ways of drawing gene pairs (the 4 because each parent carries two genes). Therefore, the probability that a generation- $ t $ individual carries a pair of genes derived from the same grandparent is $$ P_{t}=\\frac{1}{N_{e}}=\\frac{\\sum\\limits_{i=1}^{N_{t-2}}k_{i}(k_{i}-1)}{N_{t-2}\\mu_{k}(N_{t-2}\\mu_{k}-2)} $$ (3.5)",
       "symbols_used": [
@@ -109,7 +114,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 7,
+      "position": 5,
+      "source_position": 7,
       "depth": 2,
       "context_text": "Employing the same kinds of substitutions used for Equation 3.3, $$ N_{e}=\\frac{2(N_{t-1}-1)}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.6) and for constant N (which implies $ \\mu_{k}=2 $), $$ N_{e}=\\frac{4(N-1)}{\\sigma_{k}^{2}+2} $$ (3.7)",
       "symbols_used": [
@@ -130,7 +136,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 8,
+      "position": 6,
+      "source_position": 8,
       "depth": 2,
       "context_text": "Employing the same kinds of substitutions used for Equation 3.3, $$ N_{e}=\\frac{2(N_{t-1}-1)}{(\\sigma_{k}^{2}/\\mu_{k})+\\mu_{k}-1} $$ (3.6) and for constant N (which implies $ \\mu_{k}=2 $), $$ N_{e}=\\frac{4(N-1)}{\\sigma_{k}^{2}+2} $$ (3.7)",
       "symbols_used": [
@@ -148,7 +155,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "MONOECY",
-      "position": 9,
+      "position": 7,
+      "source_position": 9,
       "depth": 3,
       "context_text": "is random but selfing is prohibited, the effective population size is the same under isogamy and anisogamy, and Equation 3.6 still applies (Crow and Denniston 1988). However, with selfing permitted, $$ N_{e}=\\frac{N_{t-1}}{\\left(4\\sigma_{o,p}/\\mu_{k}^{2}\\right)+1} $$ (3.8) where $ \\sigma_{o,p} $ is the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988). If $ \\sigma_{o,p} $",
       "symbols_used": [
@@ -171,8 +179,9 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "DIOECY",
-      "position": 10,
-      "depth": 0,
+      "position": 8,
+      "source_position": 10,
+      "depth": 4,
       "context_text": "shared ancestor with probability 0.5, the probability that O inherits both genes from the shared grandparent is 1/4. Thus, the total probability that O inherits two genes from the same grandparent is $$ P=\\frac{1}{N_{e}}=\\frac{1}{4N_{em}}+\\frac{1}{4N_{ef}} $$ (3.9)",
       "symbols_used": [
         "N_{ef}",
@@ -188,7 +197,8 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "DIOECY",
-      "position": 11,
+      "position": 9,
+      "source_position": 11,
       "depth": 2,
       "context_text": "(including no prohibition of mating between sibs), the effective number of each sex can be derived by the same method used to obtain Equation 3.3. Skipping the intermediate steps, we simply note that $$ N_{es}=\\frac{\\mu_{sk}N_{s,t-2}-1}{\\left(\\sigma_{sk}^{2}/\\mu_{sk}\\right)+\\mu_{sk}-1} $$ (3.10) where $s$ denotes the sex $(m$ or $f)$, and $\\mu_{sk}$ and $\\sigma_{sk}^{2}$ are the mean and variance of gamete production by sex $s$ (Crow and Denniston 1988). Latter (1959) provided a more elabora",
       "symbols_used": [
@@ -209,8 +219,9 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "DIOECY",
-      "position": 12,
-      "depth": 2,
+      "position": 10,
+      "source_position": 12,
+      "depth": 0,
       "context_text": "vided a more elaborate expression for $N_{es}$ that explicitly accounts for the variance and covariance of male and female progeny production. Letting $\\phi$ be the sex ratio (proportion of females), $$ N_{em}=\\frac{4N_{m,t-2}}{2+\\sigma_{mm}^{2}+\\frac{2(1-\\phi)}{\\phi}\\sigma_{mm,mf}+\\left(\\frac{1-\\phi}{\\phi}\\right)^{2}\\sigma_{mf}^{2}} $$ (3.11a) $$ N_{ef}=\\frac{4N_{f,t-2}}{2+\\sigma_{ff}^{2}+\\frac{2\\phi}{1-\\phi}\\sigma_{fm,ff}+\\left(\\frac{\\phi}{1-\\phi}\\right)^{2}\\sigma_{fm}^{2}} $$ (3.11b) where for male parents, $ \\sigma_{mm}^{2} $ is the var",
       "symbols_used": [
         "N_{em}",
@@ -232,8 +243,9 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "DIOECY",
-      "position": 13,
-      "depth": 1,
+      "position": 11,
+      "source_position": 13,
+      "depth": 0,
       "context_text": "ing $\\phi$ be the sex ratio (proportion of females), $$ N_{em}=\\frac{4N_{m,t-2}}{2+\\sigma_{mm}^{2}+\\frac{2(1-\\phi)}{\\phi}\\sigma_{mm,mf}+\\left(\\frac{1-\\phi}{\\phi}\\right)^{2}\\sigma_{mf}^{2}} $$ (3.11a) $$ N_{ef}=\\frac{4N_{f,t-2}}{2+\\sigma_{ff}^{2}+\\frac{2\\phi}{1-\\phi}\\sigma_{fm,ff}+\\left(\\frac{\\phi}{1-\\phi}\\right)^{2}\\sigma_{fm}^{2}} $$ (3.11b) where for male parents, $ \\sigma_{mm}^{2} $ is the variance of male progeny number, $ \\sigma_{mf}^{2} $ is the variance of female progeny number, and $ \\sigma_{mm,mf} $ is the covariance of male and",
       "symbols_used": [
         "N_{ef}",
@@ -255,8 +267,9 @@
       "chapter_id": "chapter3",
       "section": "GENERAL CONSIDERATIONS",
       "subsection": "DIOECY",
-      "position": 14,
-      "depth": 1,
+      "position": 12,
+      "source_position": 14,
+      "depth": 5,
       "context_text": "{m,t-1} $ and $ N_{ef} = N_{f,t-1} $. Rearranging Equation 3.9, assuming constant population features and dropping the designation of time, and noting that $ N_m = (1 - \\phi)N $ and $ N_f = \\phi N $, $$ N_{e}=\\frac{4N_{m}N_{f}}{N_{m}+N_{f}}=4\\phi(1-\\phi)N $$ (3.12)",
       "symbols_used": [
         "N_{e}",
@@ -275,11 +288,13 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "AGE STRUCTURE",
-      "position": 15,
+      "position": 13,
+      "source_position": 15,
       "depth": 0,
       "context_text": "nown as the generation time (T), is the average age of parents giving birth, which in turn is a function of the age-specific schedules of survival and reproduction. For an ideal monocious population, $$ T=\\frac{\\sum\\limits_{i=1}^{\\tau}i\\ell_{i}b_{i}}{\\sum\\limits_{i=1}^{\\tau}\\ell_{i}b_{i}} $$ (3.13) where $ \\ell_i $ is the probability of surviving to age $ i $, $ b_i $ is the expected number of offspring produced by parents of age $ i $, and $ \\tau $ is the maximum reproductive age. The quantity",
       "symbols_used": [
         "T",
+        "\\ell_{i}",
         "\\tau",
         "b_{i}",
         "i"
@@ -295,7 +310,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "AGE STRUCTURE",
-      "position": 16,
+      "position": 14,
+      "source_position": 16,
       "depth": 0,
       "context_text": "umber of births by an individual of age $ i $, discounting for prior mortality. For a dioecious population, $ T $ is further complicated by the need to average over males $ (m) $ and females $ (f) $, $$ T=\\frac{T_{mm}+T_{mf}+T_{fm}+T_{ff}}{4} $$ (3.14) where $ T_{mf} $, for example, is the average age of male parents of daughters. The average generation length is the natural time scale for the evolutionary analysis of age-structured populations. Le",
       "symbols_used": [
@@ -315,17 +331,21 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "AGE STRUCTURE",
-      "position": 17,
+      "position": 15,
+      "source_position": 17,
       "depth": 1,
       "context_text": "$ and $ b_{i} $. Again making the assumption that the population is stable in terms of size, sex ratio, and age composition, the effective size of an age-structured population with separate sexes is $$ N_{e}=\\frac{N_{eb}T}{1+\\left(1-\\phi_{b}\\right)\\sum_{i=1}^{\\tau_{f}}\\left(\\frac{1}{\\ell_{i+1}^{f}}-\\frac{1}{\\ell_{i}^{f}}\\right)\\left(\\sum_{f}\\right)^{2}+\\phi_{b}\\sum_{i=1}^{\\tau_{m}}\\left(\\frac{1}{\\ell_{i+1}^{m}}-\\frac{1}{\\ell_{i}^{m}}\\right)\\left(\\sum_{m}\\right)^{2}} $$ (3.15) where $ (\\sum_s)^2 = \\left( \\sum_{j \\geq i+1} \\ell_j^s b_j^s \\right)^2 $, $ \\tau_s $ is the maximum age of reproduction for sex $ s $, and $ s = m $ or $ f $ (Emigh and Pollak 1979). An analogous exp",
       "symbols_used": [
         "N_{eb}",
         "N_{e}",
         "T",
+        "\\ell_{i+1}^{f}",
+        "\\ell_{i+1}^{m}",
+        "\\ell_{i}^{f}",
+        "\\ell_{i}^{m}",
         "\\phi_{b}",
         "\\tau_{f}",
-        "\\tau_{m}",
-        "i"
+        "\\tau_{m}"
       ],
       "symbols_defined": [
         "N_{e}"
@@ -338,7 +358,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "VARIABLE POPULATION SIZE",
-      "position": 18,
+      "position": 16,
+      "source_position": 18,
       "depth": 0,
       "context_text": "terozygosity over $ t $ generations is no longer $ [1 - (1/2N_e)]^t $ but rather is now a product of $ t $ terms, each incorporating the effective population size of a particular generation such that $$ H_{t}=H_{0}\\prod_{i=0}^{t-1}\\left(1-\\frac{1}{2N_{e,i}}\\right) $$ (3.16)",
       "symbols_used": [
@@ -359,7 +380,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "VARIABLE POPULATION SIZE",
-      "position": 19,
+      "position": 17,
+      "source_position": 19,
       "depth": 1,
       "context_text": "sity after t generations as a population with variable size over the same period. An approximate answer can be obtained by noting that with a moderately large $ N_{e,i} $, Equation 3.16 simplifies to $$ H_{t}\\simeq H_{0}\\exp\\left(-\\sum_{i=0}^{t-1}\\frac{1}{2N_{e,i}}\\right) $$ (3.17) which may be compared to $$ H_{t}\\simeq H_{0}e^{-t/2N_{e}} $$ for the ideal case of constant effective size. Equating the exponents of these two expressions, $$ N_{e}^{*}\\simeq\\frac{t}{1/N_{e,0}+1/N_",
       "symbols_used": [
@@ -369,11 +391,7 @@
         "e",
         "i"
       ],
-      "symbols_defined": [
-        "H_{0}",
-        "H_{t}",
-        "i"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.18",
@@ -382,7 +400,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "VARIABLE POPULATION SIZE",
-      "position": 20,
+      "position": 18,
+      "source_position": 20,
       "depth": 0,
       "context_text": "^{t-1}\\frac{1}{2N_{e,i}}\\right) $$ (3.17) which may be compared to $$ H_{t}\\simeq H_{0}e^{-t/2N_{e}} $$ for the ideal case of constant effective size. Equating the exponents of these two expressions, $$ N_{e}^{*}\\simeq\\frac{t}{1/N_{e,0}+1/N_{e,1}+\\cdots+1/N_{e,t-1}} $$ (3.18)",
       "symbols_used": [
@@ -392,9 +411,7 @@
         "N_{e}^{*}",
         "t"
       ],
-      "symbols_defined": [
-        "N_{e}^{*}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.19",
@@ -403,7 +420,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "PARTIAL INBREEDING",
-      "position": 22,
+      "position": 19,
+      "source_position": 22,
       "depth": 0,
       "context_text": "Assuming a constant number of adults, for a population in which a proportion $ \\beta $ of progeny from each family is a product of self-fertilization, $$ N_{e}=\\frac{2(2-\\beta)N}{\\sigma_{k}^{2}+2(1-\\beta)} $$ (3.19)",
       "symbols_used": [
@@ -422,7 +440,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "PARTIAL INBREEDING",
-      "position": 23,
+      "position": 20,
+      "source_position": 23,
       "depth": 1,
       "context_text": "gametes, the variance per draw is $ \\simeq 4/N $, yielding a total variance contribution $ \\simeq 4\\beta $; the total variance is then $ \\sigma_k^2 \\simeq 2(1 + \\beta) $, and Equation 3.19 reduces to $$ N_{e}=\\frac{(2-\\beta)N}{2} $$ (3.20)",
       "symbols_used": [
@@ -440,16 +459,15 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "PARTIAL INBREEDING",
-      "position": 24,
+      "position": 21,
+      "source_position": 24,
       "depth": 0,
       "context_text": "e case of species with separate sexes, with $ \\beta $ being the fraction of offspring derived by full-sib mating, and assuming equal numbers of males and females and Poisson-distributed family sizes, $$ N_{e}\\simeq\\frac{(4-3\\beta)N}{4-2\\beta}+1 $$ (3.21)",
       "symbols_used": [
         "N_{e}",
         "\\beta"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.22",
@@ -458,8 +476,9 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "SPECIAL SYSTEMS OF MATING",
-      "position": 25,
-      "depth": 2,
+      "position": 22,
+      "source_position": 25,
+      "depth": 0,
       "context_text": "n of such lines is equivalent to a series of populations, each consisting of a single individual, and after t generations of selfing, the expected fraction of heterozygotes at any locus is reduced to $$ H_{t}=H_{0}(1/2)^{t} $$ (3.22) where $ H_{0} $ denotes the initial level of variation. After t = 3 generations, only 12.5% of the initial heterozygosity remains (Figure 3.1).",
       "symbols_used": [
         "H_{0}",
@@ -477,8 +496,9 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "SPECIAL SYSTEMS OF MATING",
-      "position": 26,
-      "depth": 2,
+      "position": 23,
+      "source_position": 26,
+      "depth": 0,
       "context_text": "alleles identical by descent can appear in the same individual. Written in terms of the inbreeding coefficient, such that $ H_t = (1 - f_t)H_0 $, the exact recursion equation under full-sib mating is $$ f_{t}=\\frac{1}{4}(1+2f_{t-1}+f_{t-2}) $$ (3.23a) and in one of the first applications of matrices in population genetics, Haldane (1937a) provided the approximation $$ H_{t}\\simeq H_{0}(0.81)^{t} $$ (3.23b)",
       "symbols_used": [
         "f_{t-1}",
@@ -496,7 +516,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "SPECIAL SYSTEMS OF MATING",
-      "position": 27,
+      "position": 24,
+      "source_position": 27,
       "depth": 1,
       "context_text": "uation under full-sib mating is $$ f_{t}=\\frac{1}{4}(1+2f_{t-1}+f_{t-2}) $$ (3.23a) and in one of the first applications of matrices in population genetics, Haldane (1937a) provided the approximation $$ H_{t}\\simeq H_{0}(0.81)^{t} $$ (3.23b)",
       "symbols_used": [
@@ -504,9 +525,7 @@
         "H_{t}",
         "t"
       ],
-      "symbols_defined": [
-        "H_{t}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.24",
@@ -515,17 +534,16 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "SPECIAL SYSTEMS OF MATING",
-      "position": 28,
-      "depth": 0,
+      "position": 25,
+      "source_position": 28,
+      "depth": 1,
       "context_text": "-cousins (Figure 3.2, left). Starting with four unrelated individuals, it then takes three generations for alleles that are identical by descent (IBD) to appear in the same individual, and thereafter $$ H_{t}\\simeq H_{0}(0.92)^{t} $$ (3.24)",
       "symbols_used": [
         "H_{0}",
         "H_{t}",
         "t"
       ],
-      "symbols_defined": [
-        "H_{t}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.25",
@@ -534,8 +552,9 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "SPECIAL SYSTEMS OF MATING",
-      "position": 29,
-      "depth": 0,
+      "position": 26,
+      "source_position": 29,
+      "depth": 1,
       "context_text": "s the outcome of all families producing equal numbers of offspring. In fact, even under a random-mating scheme, if family sizes are equilibrated, provided $N \\geq 4$, the erosion of heterozygosity is $$ \\begin{align*}H_t\\simeq H_0\\left(1-{1\\over4N}\\right)^t\\end{align*} $$ (3.25) where $t$ is the number of generations after the onset of inbreeding (Wright 1951). This can be seen by returning to many of the formulae in the earlier sections of this chapter and setting $\\sigma_k",
       "symbols_used": [
         "H_0",
@@ -543,9 +562,7 @@
         "N",
         "t"
       ],
-      "symbols_defined": [
-        "H_t"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.26",
@@ -554,7 +571,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "POPULATION SUBDIVISION",
-      "position": 31,
+      "position": 27,
+      "source_position": 31,
       "depth": 0,
       "context_text": "for an ideal, random-mating population is 2N generations, Equation 2.45b (giving the mean coalescence time under this population structure) implies an effective size for the overall metapopulation of $$ N_{e}=Nd+\\frac{(d-1)^{2}}{4dm} $$ (3.26)",
       "symbols_used": [
@@ -573,8 +591,9 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "POPULATION SUBDIVISION",
-      "position": 32,
-      "depth": 2,
+      "position": 28,
+      "source_position": 32,
+      "depth": 0,
       "context_text": "e two examples for the propagule-pool model. If the extinction rate is smaller than the migration rate ( $ e \\leq m $) and much smaller than the relative size of the colonizing pool ( $ e \\ll k/N $), $$ N_{e}\\simeq N d\\frac{\\left[4m+(1/N)\\right]}{4(e+m)} $$ (3.27a) a result also obtained by Maruyama and Kimura (1980) and Whitlock and Barton (1997). Under these conditions, local extinctions are sufficiently rare that within-deme variation is able to recover subs",
       "symbols_used": [
         "N_{e}",
@@ -582,9 +601,7 @@
         "e",
         "m"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.27b",
@@ -593,17 +610,16 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "POPULATION SUBDIVISION",
-      "position": 33,
-      "depth": 1,
+      "position": 29,
+      "source_position": 33,
+      "depth": 0,
       "context_text": "and although $ N_e < N_d $, it approaches the latter value as $ e \\to 0 $ unless $ N $ is tiny. On the other hand, if the extinction rate is relatively high, such that $ e \\gg m $ and $ e \\gg k/N $, $$ N_{e}\\simeq\\frac{d}{4e} $$ (3.27b)",
       "symbols_used": [
         "N_{e}",
         "d",
         "e"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.28",
@@ -612,7 +628,8 @@
       "chapter_id": "chapter3",
       "section": "The Genetic Effective Size of a Population: Introduction",
       "subsection": "POPULATION SUBDIVISION",
-      "position": 34,
+      "position": 30,
+      "source_position": 34,
       "depth": 0,
       "context_text": "al expression for the effective size of a metapopulation under the island model was derived by Whitlock and Barton (1997). Assuming large $d$, so that $d \\simeq d - 1$ as a first-order approximation, $$ N_{e}\\simeq\\frac{d(1+4N m)}{4m+2\\sigma_{K}^{2}(1+2m)} $$ (3.28) where $ \\sigma_K^2 $ denotes the among-deme variance in the number of gametes contributing to the next generation (the analogue for the variance $ \\sigma_k^2 $ in individual contributions). Comparing",
       "symbols_used": [
@@ -621,9 +638,7 @@
         "d",
         "m"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.29a",
@@ -632,17 +647,16 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Effects From Selection at Unlinked Loci",
-      "position": 37,
-      "depth": 3,
+      "position": 31,
+      "source_position": 37,
+      "depth": 2,
       "context_text": "d sex ratio and $ N/2 $ families. For populations with features in accordance with the standard Wright-Fisher model, a single generation of selection will then reduce the effective population size to $$ N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4\\sigma_{w}^{2}} $$ (3.29a) which is identical in form to Equation 3.4 except for the additional variance associated with selection in the denominator. Note that because $ \\sigma_w^2 $ is the variance in relative fitness among",
       "symbols_used": [
         "N_{e}",
         "\\sigma_{k}^{2}",
         "\\sigma_{w}^{2}"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.29b",
@@ -651,8 +665,9 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Effects From Selection at Unlinked Loci",
-      "position": 38,
-      "depth": 2,
+      "position": 32,
+      "source_position": 38,
+      "depth": 0,
       "context_text": "series simply has terms in powers of $ (1-L)/2 $ instead of $ 1/2 $, and again after converting the variance in relative fitness to the absolute scale, the long-term effective population size becomes $$ N_{e}\\simeq\\frac{4N}{\\sigma_{k}^{2}+2+4[2/(1+L)]^{2}\\sigma_{w}^{2}} $$ (3.29b)",
       "symbols_used": [
         "L",
@@ -660,9 +675,7 @@
         "\\sigma_{k}^{2}",
         "\\sigma_{w}^{2}"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.29c",
@@ -671,8 +684,9 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Effects From Selection at Unlinked Loci",
-      "position": 39,
-      "depth": 1,
+      "position": 33,
+      "source_position": 39,
+      "depth": 0,
       "context_text": "reflects random gamete sampling, then from above $ \\sigma_k^2 \\simeq 2 $, and under Robertson’s assumption of no reduction in variance by selection ( $ L = 0 $), the long-term effective size becomes $$ N_{e}=\\frac{N}{1+4\\sigma_{w}^{2}} $$ (3.29c)",
       "symbols_used": [
         "N_{e}",
@@ -689,16 +703,15 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Selective Sweeps and Genetic Draft",
-      "position": 40,
-      "depth": 2,
+      "position": 34,
+      "source_position": 40,
+      "depth": 0,
       "context_text": "ghted sum of both contributions $ \\sim p(1 - p)\\{[1 - \\delta)/(2N)] + \\delta\\} $. Because this expression applies to all initial allele frequencies, equating the term in braces to $ 1/(2N_e) $ yields $$ N_{e}\\simeq\\frac{N}{1+2N\\delta} $$ (3.30a) a result also obtained by Maruyama and Birky (1991) by a different method. Here and below, it is appropriate to view N as the effective size of a population based solely on the demographic considerat",
       "symbols_used": [
         "N_{e}",
         "\\delta"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.30b",
@@ -707,7 +720,8 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Selective Sweeps and Genetic Draft",
-      "position": 41,
+      "position": 35,
+      "source_position": 41,
       "depth": 1,
       "context_text": ") led to an expression identical in form to Equation 3.30a, with $ 2N\\delta $ being replaced by a term that is smaller in absolute value. Gillespie (2000) expressed this influence of recombination as $$ N_{e}\\simeq\\frac{N}{1+2N f_{s}\\delta} $$ (3.30b) where $ f_s $ is the probability that no recombination occurs between the selected site and the marker locus under consideration during the sweep. Following the completion of the sweep, $ f_s $ is eq",
       "symbols_used": [
@@ -715,9 +729,7 @@
         "\\delta",
         "f_{s}"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.31",
@@ -726,8 +738,9 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Selective Sweeps and Genetic Draft",
-      "position": 42,
-      "depth": 3,
+      "position": 36,
+      "source_position": 42,
+      "depth": 1,
       "context_text": "the gamete in which the new favorable mutation arose. With free recombination $ f_s \\simeq 0 $, but with complete linkage, $ f_s = 1 $, returning us to Equation 3.30a. The general form for $ f_s $ is $$ f_{s}\\simeq(4N s)^{-c/s} $$ (3.31) which will be further discussed in Chapter 8.",
       "symbols_used": [
         "N",
@@ -735,9 +748,7 @@
         "f_{s}",
         "s"
       ],
-      "symbols_defined": [
-        "f_{s}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.32",
@@ -746,7 +757,8 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Background Selection",
-      "position": 43,
+      "position": 37,
+      "source_position": 43,
       "depth": 0,
       "context_text": "fitness is $Us/2$ after discounting by averaging over both parents. This shows that in the absence of any linkage, deleterious mutations are expected to cause a relatively small reduction in $N_{e}$, $$ N_{e}\\simeq\\frac{N}{1+2U s}\\simeq N e^{-2U s} $$ (3.32) with the exponential approximation applying under the assumption that $ U s \\ll 1 $. This assumption is justified by numerous observations suggesting that U is on the order of 0.1 to 1.0 and s is on",
       "symbols_used": [
@@ -755,9 +767,7 @@
         "e^{-2Us}",
         "s"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.33",
@@ -766,19 +776,15 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Background Selection",
-      "position": 44,
+      "position": 38,
+      "source_position": 44,
       "depth": 0,
       "context_text": "$ 1/c^{2} $ to the variance. Thus, a single selected locus is expected to reduce the variation at a linked neutral locus, which in effect causes a local depression in the effective population size to $$ N_{e}\\simeq N e^{-u s/c^{2}} $$ (3.33)",
       "symbols_used": [
         "N_{e}",
-        "c^{2}",
-        "e",
-        "s",
-        "u"
+        "e^{-us/c^{2}}"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.34",
@@ -787,7 +793,8 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Background Selection",
-      "position": 45,
+      "position": 39,
+      "source_position": 45,
       "depth": 0,
       "context_text": "ruyama 1966), the frequency of such mutation-free gametes is simply $ e^{-U/(2s)} $, leading to the conclusion that with complete linkage, selection against segregating deleterious mutations leads to $$ N_{e}=N e^{-U/(2s)} $$ (3.34)",
       "symbols_used": [
@@ -807,8 +814,9 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Background Selection",
-      "position": 46,
-      "depth": 2,
+      "position": 40,
+      "source_position": 46,
+      "depth": 0,
       "context_text": "Hudson and Kaplan (1994) extended this result to allow for recombination, assuming that the latter operates at uniform rates per physical distance over chromosomal regions. Their results show that $$ N_{e}\\simeq N e^{-U/(2s+C)} $$ (3.35a) where $C$ denotes the rate of recombination between the ends of the region. Because $1/(2s + C) \\gg s$, Equation 3.35a predicts a much smaller $N_e$ than that obtained for freely recombining loci (Eq",
       "symbols_used": [
         "C",
@@ -817,9 +825,7 @@
         "e^{-U/(2s+C)}",
         "s"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_3.35b",
@@ -828,7 +834,8 @@
       "chapter_id": "chapter3",
       "section": "SELECTION, RECOMBINATION, AND HITCHHIKING EFFECTS",
       "subsection": "Background Selection",
-      "position": 47,
+      "position": 41,
+      "source_position": 47,
       "depth": 1,
       "context_text": "loci in the immediate vicinity of the neutral locus. Moreover, because $s$ is expected to be $\\ll 1$, and for an entire chromosome, $C$ is of order 1.0, Equation 3.35a can be roughly approximated as $$ N_{e}\\simeq N e^{-U/C} $$ (3.35b) where U/C is equivalent to the diploid deleterious mutation rate per unit of recombination (Hudson and Kaplan 1994, 1995). This result, which has been obtained by several different methods (Barton 19",
       "symbols_used": [
@@ -837,9 +844,7 @@
         "U",
         "e^{-U/C}"
       ],
-      "symbols_defined": [
-        "N_{e}"
-      ]
+      "symbols_defined": []
     }
   ],
   "dependencies": [
@@ -867,6 +872,7 @@
           "canonical_symbol": "3.2",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -888,6 +894,7 @@
           "canonical_symbol": "3.2",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -909,6 +916,7 @@
           "canonical_symbol": "N_e",
           "symbol_role": "parameter",
           "sense_id": "formula_3.4::N_{e}",
+          "canonical_sense_id": "chapter3::monoecy::N_e",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -930,6 +938,7 @@
           "canonical_symbol": "3.3",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -951,6 +960,7 @@
           "canonical_symbol": "3.3",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -972,6 +982,7 @@
           "canonical_symbol": "3.6",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         },
@@ -988,38 +999,37 @@
           "canonical_symbol": "\\sigma_o,p",
           "symbol_role": "symbol",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
-          "meaning": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
-          "source_excerpt": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
-          "source_chunk_id": "chapter3_003"
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "o",
-          "relation": "text_definition",
-          "reason": "o is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "o",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
-          "meaning": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
-          "source_excerpt": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988)",
+          "review_note": "nearby_text:where_definition",
+          "definition": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988",
+          "meaning": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988",
+          "source_excerpt": "the covariance of the numbers of successful male $ (p,\\mathrm{pollen}) $ and female $ (o,\\mathrm{ovule}) $ gametes per parent (Crow and Denniston 1988",
           "source_chunk_id": "chapter3_003"
         }
       ]
     },
     {
       "dependent_id": "formula_3.9",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.8",
+          "via_symbol": "N_{e}",
+          "relation": "defines_symbol",
+          "reason": "N_{e} defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "N_e",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.8::N_{e}",
+          "canonical_sense_id": "chapter3::monoecy::N_e",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_3.10",
@@ -1037,28 +1047,9 @@
           "canonical_symbol": "3.3",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "\\sigma_{sk}^{2}",
-          "relation": "text_definition",
-          "reason": "\\sigma_{sk}^{2} is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "\\sigma_sk^2",
-          "symbol_role": "statistic_variance",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the mean and variance of gamete production by sex $s$ (Crow and Denniston 1988)",
-          "meaning": "the mean and variance of gamete production by sex $s$ (Crow and Denniston 1988)",
-          "source_excerpt": "the mean and variance of gamete production by sex $s$ (Crow and Denniston 1988)",
-          "source_chunk_id": "chapter3_004"
         }
       ]
     },
@@ -1066,63 +1057,31 @@
       "dependent_id": "formula_3.11a",
       "prerequisites": [
         {
-          "type": "formula",
-          "target_id": "formula_3.11b",
-          "via_symbol": "Equation 3.11b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.11a belongs to the same numbered group as formula_3.11b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.11",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
           "type": "variable_definition",
           "target_id": null,
-          "via_symbol": "\\sigma_{mm}^{2}",
+          "via_symbol": "\\phi",
           "relation": "text_definition",
-          "reason": "\\sigma_{mm}^{2} is explained in nearby text",
+          "reason": "\\phi is explained in nearby text",
           "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
           "edge_evidence": "text_definition",
-          "canonical_symbol": "\\sigma_mm^2",
-          "symbol_role": "statistic_variance",
+          "canonical_symbol": "\\phi",
+          "symbol_role": "variable",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the var",
-          "meaning": "the var",
-          "source_excerpt": "the var",
+          "review_note": "nearby_text:let_definition",
+          "definition": "the sex ratio (proportion of females), (3",
+          "meaning": "the sex ratio (proportion of females), (3",
+          "source_excerpt": "the sex ratio (proportion of females), (3",
           "source_chunk_id": "chapter3_004"
         }
       ]
     },
     {
       "dependent_id": "formula_3.11b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.11a",
-          "via_symbol": "Equation 3.11a",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.11b belongs to the same numbered group as formula_3.11a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.11",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.12",
@@ -1140,6 +1099,7 @@
           "canonical_symbol": "3.9",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -1147,32 +1107,33 @@
     },
     {
       "dependent_id": "formula_3.13",
-      "prerequisites": []
-    },
-    {
-      "dependent_id": "formula_3.14",
       "prerequisites": [
         {
           "type": "variable_definition",
           "target_id": null,
-          "via_symbol": "T_{mf}",
+          "via_symbol": "\\ell_{i}",
           "relation": "text_definition",
-          "reason": "T_{mf} is explained in nearby text",
+          "reason": "\\ell_{i} is explained in nearby text",
           "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
           "edge_evidence": "text_definition",
-          "canonical_symbol": "T_mf",
-          "symbol_role": "parameter",
+          "canonical_symbol": "\\ell_i",
+          "symbol_role": "symbol",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the average age of male parents of daughters",
-          "meaning": "the average age of male parents of daughters",
-          "source_excerpt": "the average age of male parents of daughters",
+          "review_note": "nearby_text:where_definition",
+          "definition": "the probability of surviving to age $ i $, $ b_i $ is the expected number of offspring produced by parents of age $ i $, and $ \\tau $ is the maximum reproductive age",
+          "meaning": "the probability of surviving to age $ i $, $ b_i $ is the expected number of offspring produced by parents of age $ i $, and $ \\tau $ is the maximum reproductive age",
+          "source_excerpt": "the probability of surviving to age $ i $, $ b_i $ is the expected number of offspring produced by parents of age $ i $, and $ \\tau $ is the maximum reproductive age",
           "source_chunk_id": "chapter3_005"
         }
       ]
+    },
+    {
+      "dependent_id": "formula_3.14",
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.15",
@@ -1190,8 +1151,51 @@
           "canonical_symbol": "T",
           "symbol_role": "variable",
           "sense_id": "formula_3.14::T",
+          "canonical_sense_id": "chapter3::age-structure::T",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "\\tau_{f}",
+          "relation": "text_definition",
+          "reason": "\\tau_{f} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "\\tau_f",
+          "symbol_role": "symbol",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "maximum age of reproduction",
+          "meaning": "maximum age of reproduction",
+          "source_excerpt": "maximum age of reproduction",
+          "source_chunk_id": "chapter3_005"
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "\\tau_{m}",
+          "relation": "text_definition",
+          "reason": "\\tau_{m} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "\\tau_m",
+          "symbol_role": "symbol",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "maximum age of reproduction",
+          "meaning": "maximum age of reproduction",
+          "source_excerpt": "maximum age of reproduction",
+          "source_chunk_id": "chapter3_005"
         }
       ]
     },
@@ -1205,18 +1209,19 @@
         {
           "type": "formula",
           "target_id": "formula_3.16",
-          "via_symbol": "Equation 3.16",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 3.16",
+          "via_symbol": "H_{t}",
+          "relation": "defines_symbol",
+          "reason": "H_{t} defined by nearest upstream formula in chapter3; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "3.16",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "H_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.16::H_{t}",
+          "canonical_sense_id": "chapter3::variable-population-size::H_t",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -1234,18 +1239,19 @@
         {
           "type": "formula",
           "target_id": "formula_3.19",
-          "via_symbol": "Equation 3.19",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 3.19",
+          "via_symbol": "N_{e}",
+          "relation": "defines_symbol",
+          "reason": "N_{e} defined by nearest upstream formula in chapter3; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "3.19",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "N_e",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.19::N_{e}",
+          "canonical_sense_id": "chapter3::partial-inbreeding::N_e",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -1257,135 +1263,109 @@
       "dependent_id": "formula_3.22",
       "prerequisites": [
         {
-          "type": "formula",
-          "target_id": "formula_3.17",
+          "type": "variable_definition",
+          "target_id": null,
           "via_symbol": "H_{0}",
-          "relation": "defines_symbol",
-          "reason": "H_{0} defined by nearest upstream formula in chapter3",
-          "confidence": 0.84,
+          "relation": "text_definition",
+          "reason": "H_{0} is explained in nearby text",
+          "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "exact_match",
+          "edge_evidence": "text_definition",
           "canonical_symbol": "H_0",
           "symbol_role": "parameter",
-          "sense_id": "formula_3.17::H_{0}",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:where_definition",
+          "definition": "the initial level of variation",
+          "meaning": "the initial level of variation",
+          "source_excerpt": "the initial level of variation",
+          "source_chunk_id": "chapter3_008"
         }
       ]
     },
     {
       "dependent_id": "formula_3.23a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.23b",
-          "via_symbol": "Equation 3.23b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.23a belongs to the same numbered group as formula_3.23b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.23b",
       "prerequisites": [
         {
           "type": "formula",
-          "target_id": "formula_3.23a",
-          "via_symbol": "Equation 3.23a",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.23b belongs to the same numbered group as formula_3.23a",
-          "confidence": 0.86,
+          "target_id": "formula_3.22",
+          "via_symbol": "H_{t}",
+          "relation": "defines_symbol",
+          "reason": "H_{t} defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.23",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "H_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.22::H_{t}",
+          "canonical_sense_id": "chapter3::special-systems-of-mating::H_t",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Nearest upstream formula match."
         }
       ]
     },
     {
       "dependent_id": "formula_3.24",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.22",
+          "via_symbol": "H_{t}",
+          "relation": "defines_symbol",
+          "reason": "H_{t} defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "H_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.22::H_{t}",
+          "canonical_sense_id": "chapter3::special-systems-of-mating::H_t",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_3.25",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_3.22",
+          "via_symbol": "H_t",
+          "relation": "defines_symbol",
+          "reason": "H_t defined by nearest upstream formula in chapter3",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "canonical_match",
+          "canonical_symbol": "H_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_3.22::H_{t}",
+          "canonical_sense_id": "chapter3::special-systems-of-mating::H_t",
+          "edge_weight": 0.82,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_3.26",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_2.45b",
-          "via_symbol": "Equation 2.45b",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 2.45b",
-          "confidence": 0.98,
-          "cross_chapter": true,
-          "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "2.45b",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.27a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.27b",
-          "via_symbol": "Equation 3.27b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.27a belongs to the same numbered group as formula_3.27b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.27",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.27b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.27a",
-          "via_symbol": "Equation 3.27a",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.27b belongs to the same numbered group as formula_3.27a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.27",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.28",
@@ -1407,137 +1387,23 @@
           "canonical_symbol": "3.4",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_3.29b",
-          "via_symbol": "Equation 3.29b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29a belongs to the same numbered group as formula_3.29b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_3.29c",
-          "via_symbol": "Equation 3.29c",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29a belongs to the same numbered group as formula_3.29c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
         }
       ]
     },
     {
       "dependent_id": "formula_3.29b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.29a",
-          "via_symbol": "Equation 3.29a",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29b belongs to the same numbered group as formula_3.29a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_3.29c",
-          "via_symbol": "Equation 3.29c",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29b belongs to the same numbered group as formula_3.29c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.29c",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.29a",
-          "via_symbol": "Equation 3.29a",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29c belongs to the same numbered group as formula_3.29a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_3.29b",
-          "via_symbol": "Equation 3.29b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.29c belongs to the same numbered group as formula_3.29b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.29",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.30a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.30b",
-          "via_symbol": "Equation 3.30b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.30a belongs to the same numbered group as formula_3.30b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.30",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.30b",
@@ -1555,8 +1421,30 @@
           "canonical_symbol": "3.30a",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "f_{s}",
+          "relation": "text_definition",
+          "reason": "f_{s} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "f_s",
+          "symbol_role": "parameter",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:where_definition",
+          "definition": "the probability that no recombination occurs between the selected site and the marker locus under consideration during the sweep",
+          "meaning": "the probability that no recombination occurs between the selected site and the marker locus under consideration during the sweep",
+          "source_excerpt": "the probability that no recombination occurs between the selected site and the marker locus under consideration during the sweep",
+          "source_chunk_id": "chapter3_012"
         }
       ]
     },
@@ -1576,6 +1464,7 @@
           "canonical_symbol": "3.30a",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -1583,28 +1472,7 @@
     },
     {
       "dependent_id": "formula_3.32",
-      "prerequisites": [
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "U",
-          "relation": "text_definition",
-          "reason": "U is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "U",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "on the order of 0",
-          "meaning": "on the order of 0",
-          "source_excerpt": "on the order of 0",
-          "source_chunk_id": "chapter3_013"
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.33",
@@ -1616,24 +1484,7 @@
     },
     {
       "dependent_id": "formula_3.35a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_3.35b",
-          "via_symbol": "Equation 3.35b",
-          "relation": "compound_group",
-          "reason": "Formula formula_3.35a belongs to the same numbered group as formula_3.35b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "3.35",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_3.35b",
@@ -1651,28 +1502,9 @@
           "canonical_symbol": "3.35a",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "U",
-          "relation": "text_definition",
-          "reason": "U is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "U",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "equivalent to the diploid deleterious mutation rate per unit of recombination (Hudson and Kaplan 1994, 1995)",
-          "meaning": "equivalent to the diploid deleterious mutation rate per unit of recombination (Hudson and Kaplan 1994, 1995)",
-          "source_excerpt": "equivalent to the diploid deleterious mutation rate per unit of recombination (Hudson and Kaplan 1994, 1995)",
-          "source_chunk_id": "chapter3_013"
         }
       ]
     }
@@ -1704,21 +1536,9 @@
       "formula_3.15::N_{e}",
       "formula_3.19::N_{e}",
       "formula_3.20::N_{e}",
-      "formula_3.21::N_{e}",
       "formula_3.26::N_{e}",
-      "formula_3.27a::N_{e}",
-      "formula_3.27b::N_{e}",
-      "formula_3.28::N_{e}",
-      "formula_3.29a::N_{e}",
-      "formula_3.29b::N_{e}",
       "formula_3.29c::N_{e}",
-      "formula_3.30a::N_{e}",
-      "formula_3.30b::N_{e}",
-      "formula_3.32::N_{e}",
-      "formula_3.33::N_{e}",
-      "formula_3.34::N_{e}",
-      "formula_3.35a::N_{e}",
-      "formula_3.35b::N_{e}"
+      "formula_3.34::N_{e}"
     ],
     "canonical:N_e": [
       "formula_3.3::N_{e}",
@@ -1730,21 +1550,9 @@
       "formula_3.15::N_{e}",
       "formula_3.19::N_{e}",
       "formula_3.20::N_{e}",
-      "formula_3.21::N_{e}",
       "formula_3.26::N_{e}",
-      "formula_3.27a::N_{e}",
-      "formula_3.27b::N_{e}",
-      "formula_3.28::N_{e}",
-      "formula_3.29a::N_{e}",
-      "formula_3.29b::N_{e}",
       "formula_3.29c::N_{e}",
-      "formula_3.30a::N_{e}",
-      "formula_3.30b::N_{e}",
-      "formula_3.32::N_{e}",
-      "formula_3.33::N_{e}",
-      "formula_3.34::N_{e}",
-      "formula_3.35a::N_{e}",
-      "formula_3.35b::N_{e}"
+      "formula_3.34::N_{e}"
     ],
     "N_{es}": [
       "formula_3.10::N_{es}"
@@ -1774,332 +1582,302 @@
     ],
     "H_{t}": [
       "formula_3.16::H_{t}",
-      "formula_3.17::H_{t}",
-      "formula_3.22::H_{t}",
-      "formula_3.23b::H_{t}",
-      "formula_3.24::H_{t}"
+      "formula_3.22::H_{t}"
     ],
     "canonical:H_t": [
       "formula_3.16::H_{t}",
-      "formula_3.17::H_{t}",
-      "formula_3.22::H_{t}",
-      "formula_3.23b::H_{t}",
-      "formula_3.24::H_{t}",
-      "formula_3.25::H_t"
-    ],
-    "H_{0}": [
-      "formula_3.17::H_{0}"
-    ],
-    "canonical:H_0": [
-      "formula_3.17::H_{0}"
-    ],
-    "i": [
-      "formula_3.17::i"
-    ],
-    "canonical:i": [
-      "formula_3.17::i"
-    ],
-    "N_{e}^{*}": [
-      "formula_3.18::N_{e}^{*}"
-    ],
-    "canonical:N_e^*": [
-      "formula_3.18::N_{e}^{*}"
-    ],
-    "H_t": [
-      "formula_3.25::H_t"
-    ],
-    "f_{s}": [
-      "formula_3.31::f_{s}"
-    ],
-    "canonical:f_s": [
-      "formula_3.31::f_{s}"
+      "formula_3.22::H_{t}"
     ]
   },
+  "symbol_sense_clusters": [
+    {
+      "canonical_sense_id": "chapter3::age-structure::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "AGE STRUCTURE",
+      "representative_sense_id": "formula_3.15::N_{e}",
+      "representative_formula_id": "formula_3.15",
+      "member_sense_ids": [
+        "formula_3.15::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.15"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::age-structure::T",
+      "canonical_symbol": "T",
+      "symbol": "T",
+      "chapter_id": "chapter3",
+      "subsection": "AGE STRUCTURE",
+      "representative_sense_id": "formula_3.13::T",
+      "representative_formula_id": "formula_3.13",
+      "member_sense_ids": [
+        "formula_3.13::T",
+        "formula_3.14::T"
+      ],
+      "member_formula_ids": [
+        "formula_3.13",
+        "formula_3.14"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "chapter3::background-selection::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "Background Selection",
+      "representative_sense_id": "formula_3.34::N_{e}",
+      "representative_formula_id": "formula_3.34",
+      "member_sense_ids": [
+        "formula_3.34::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.34"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::dioecy::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "DIOECY",
+      "representative_sense_id": "formula_3.12::N_{e}",
+      "representative_formula_id": "formula_3.12",
+      "member_sense_ids": [
+        "formula_3.12::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.12"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::dioecy::N_ef",
+      "canonical_symbol": "N_ef",
+      "symbol": "N_{ef}",
+      "chapter_id": "chapter3",
+      "subsection": "DIOECY",
+      "representative_sense_id": "formula_3.11b::N_{ef}",
+      "representative_formula_id": "formula_3.11b",
+      "member_sense_ids": [
+        "formula_3.11b::N_{ef}"
+      ],
+      "member_formula_ids": [
+        "formula_3.11b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::dioecy::N_em",
+      "canonical_symbol": "N_em",
+      "symbol": "N_{em}",
+      "chapter_id": "chapter3",
+      "subsection": "DIOECY",
+      "representative_sense_id": "formula_3.11a::N_{em}",
+      "representative_formula_id": "formula_3.11a",
+      "member_sense_ids": [
+        "formula_3.11a::N_{em}"
+      ],
+      "member_formula_ids": [
+        "formula_3.11a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::dioecy::N_es",
+      "canonical_symbol": "N_es",
+      "symbol": "N_{es}",
+      "chapter_id": "chapter3",
+      "subsection": "DIOECY",
+      "representative_sense_id": "formula_3.10::N_{es}",
+      "representative_formula_id": "formula_3.10",
+      "member_sense_ids": [
+        "formula_3.10::N_{es}"
+      ],
+      "member_formula_ids": [
+        "formula_3.10"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::effects-from-selection-at-unlinked-loci::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "Effects From Selection at Unlinked Loci",
+      "representative_sense_id": "formula_3.29c::N_{e}",
+      "representative_formula_id": "formula_3.29c",
+      "member_sense_ids": [
+        "formula_3.29c::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.29c"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::general-considerations::f_t",
+      "canonical_symbol": "f_t",
+      "symbol": "f_{t}",
+      "chapter_id": "chapter3",
+      "subsection": "GENERAL CONSIDERATIONS",
+      "representative_sense_id": "formula_3.1::f_{t}",
+      "representative_formula_id": "formula_3.1",
+      "member_sense_ids": [
+        "formula_3.1::f_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_3.1"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::monoecy::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "MONOECY",
+      "representative_sense_id": "formula_3.3::N_{e}",
+      "representative_formula_id": "formula_3.3",
+      "member_sense_ids": [
+        "formula_3.3::N_{e}",
+        "formula_3.4::N_{e}",
+        "formula_3.6::N_{e}",
+        "formula_3.7::N_{e}",
+        "formula_3.8::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.3",
+        "formula_3.4",
+        "formula_3.6",
+        "formula_3.7",
+        "formula_3.8"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "chapter3::monoecy::P_t",
+      "canonical_symbol": "P_t",
+      "symbol": "P_{t}",
+      "chapter_id": "chapter3",
+      "subsection": "MONOECY",
+      "representative_sense_id": "formula_3.2::P_{t}",
+      "representative_formula_id": "formula_3.2",
+      "member_sense_ids": [
+        "formula_3.2::P_{t}",
+        "formula_3.5::P_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_3.2",
+        "formula_3.5"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "chapter3::partial-inbreeding::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "PARTIAL INBREEDING",
+      "representative_sense_id": "formula_3.19::N_{e}",
+      "representative_formula_id": "formula_3.19",
+      "member_sense_ids": [
+        "formula_3.19::N_{e}",
+        "formula_3.20::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.19",
+        "formula_3.20"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "chapter3::population-subdivision::N_e",
+      "canonical_symbol": "N_e",
+      "symbol": "N_{e}",
+      "chapter_id": "chapter3",
+      "subsection": "POPULATION SUBDIVISION",
+      "representative_sense_id": "formula_3.26::N_{e}",
+      "representative_formula_id": "formula_3.26",
+      "member_sense_ids": [
+        "formula_3.26::N_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_3.26"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::special-systems-of-mating::H_t",
+      "canonical_symbol": "H_t",
+      "symbol": "H_{t}",
+      "chapter_id": "chapter3",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "representative_sense_id": "formula_3.22::H_{t}",
+      "representative_formula_id": "formula_3.22",
+      "member_sense_ids": [
+        "formula_3.22::H_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_3.22"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::special-systems-of-mating::f_t",
+      "canonical_symbol": "f_t",
+      "symbol": "f_{t}",
+      "chapter_id": "chapter3",
+      "subsection": "SPECIAL SYSTEMS OF MATING",
+      "representative_sense_id": "formula_3.23a::f_{t}",
+      "representative_formula_id": "formula_3.23a",
+      "member_sense_ids": [
+        "formula_3.23a::f_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_3.23a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter3::variable-population-size::H_t",
+      "canonical_symbol": "H_t",
+      "symbol": "H_{t}",
+      "chapter_id": "chapter3",
+      "subsection": "VARIABLE POPULATION SIZE",
+      "representative_sense_id": "formula_3.16::H_{t}",
+      "representative_formula_id": "formula_3.16",
+      "member_sense_ids": [
+        "formula_3.16::H_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_3.16"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    }
+  ],
   "ambiguous": [
-    {
-      "dependent_id": "formula_3.2",
-      "symbol": "k_{i}",
-      "family_key": "k",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.31b",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.3",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.4",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.5",
-      "symbol": "k_{i}",
-      "family_key": "k",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.31b",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.6",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.7",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
     {
       "dependent_id": "formula_3.9",
       "symbol": "N_{ef}",
@@ -2147,248 +1925,6 @@
           "family_key": "N",
           "match_type": "family_candidate",
           "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.10",
-      "symbol": "\\sigma_{sk}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.11a",
-      "symbol": "\\phi",
-      "family_key": "\\phi",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.11a",
-      "symbol": "\\sigma_{mf}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.11b",
-      "symbol": "\\phi",
-      "family_key": "\\phi",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.11b",
-      "symbol": "\\sigma_{ff}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
         }
       ]
     },
@@ -2461,58 +1997,6 @@
           "chapter_id": "chapter3",
           "via_symbol": "N_{e}",
           "family_key": "N",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.12",
-      "symbol": "\\phi",
-      "family_key": "\\phi",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_2.34b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.14",
-      "symbol": "T_{ff}",
-      "family_key": "T",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_3.13",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
           "match_type": "family_candidate",
           "confidence": 0.45
         }
@@ -2601,176 +2085,10 @@
       ]
     },
     {
-      "dependent_id": "formula_3.15",
-      "symbol": "\\phi_{b}",
-      "family_key": "\\phi",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.34a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.34b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.16",
+      "dependent_id": "formula_3.17",
       "symbol": "H_{0}",
       "family_key": "H",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.24a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.24b",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.24c",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.5",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.6a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.7",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.19",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.23b",
-      "symbol": "H_{0}",
-      "family_key": "H",
-      "reason": "3+ same-chapter candidates for the same symbol family",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
@@ -2781,11 +2099,73 @@
           "family_key": "H",
           "match_type": "family_candidate",
           "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.21",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
         },
         {
-          "target_id": "formula_3.17",
+          "target_id": "formula_3.11a",
           "chapter_id": "chapter3",
-          "via_symbol": "H_{0}",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.22",
+      "symbol": "H_{0}",
+      "family_key": "H",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.16",
+          "chapter_id": "chapter3",
+          "via_symbol": "H_{t}",
+          "family_key": "H",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.23b",
+      "symbol": "H_{0}",
+      "family_key": "H",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.16",
+          "chapter_id": "chapter3",
+          "via_symbol": "H_{t}",
           "family_key": "H",
           "match_type": "family_candidate",
           "confidence": 0.45
@@ -2804,7 +2184,7 @@
       "dependent_id": "formula_3.24",
       "symbol": "H_{0}",
       "family_key": "H",
-      "reason": "3+ same-chapter candidates for the same symbol family",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
@@ -2817,23 +2197,7 @@
           "confidence": 0.45
         },
         {
-          "target_id": "formula_3.17",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{0}",
-          "family_key": "H",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
           "target_id": "formula_3.22",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_3.23b",
           "chapter_id": "chapter3",
           "via_symbol": "H_{t}",
           "family_key": "H",
@@ -2846,7 +2210,7 @@
       "dependent_id": "formula_3.25",
       "symbol": "H_0",
       "family_key": "H",
-      "reason": "3+ same-chapter candidates for the same symbol family",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
@@ -2859,364 +2223,510 @@
           "confidence": 0.45
         },
         {
-          "target_id": "formula_3.17",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{0}",
-          "family_key": "H",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
           "target_id": "formula_3.22",
           "chapter_id": "chapter3",
           "via_symbol": "H_{t}",
           "family_key": "H",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_3.23b",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_3.24",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
     {
-      "dependent_id": "formula_3.26",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.47b",
-          "chapter_id": "chapter2",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.27a",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.47b",
-          "chapter_id": "chapter2",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.27b",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.47b",
-          "chapter_id": "chapter2",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.28",
-      "symbol": "\\sigma_{K}^{2}(1+2m)",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.28",
-      "symbol": "d",
-      "family_key": "d",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.47b",
-          "chapter_id": "chapter2",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.29a",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.29b",
-      "symbol": "\\sigma_{k}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.29c",
-      "symbol": "\\sigma_{w}^{2}",
-      "family_key": "\\sigma_var",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma_{p}^{2}(t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.17",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^2(H_t)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.21",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(D)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(p)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\sigma^{2}(H)",
-          "family_key": "\\sigma_var",
-          "match_type": "family",
-          "confidence": 0.58
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_3.30b",
-      "symbol": "f_{s}",
-      "family_key": "f",
+      "dependent_id": "formula_3.25",
+      "symbol": "N",
+      "family_key": "N",
       "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_3.1",
+          "target_id": "formula_3.10",
           "chapter_id": "chapter3",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
           "match_type": "family_candidate",
           "confidence": 0.45
         },
         {
-          "target_id": "formula_3.23a",
+          "target_id": "formula_3.11a",
           "chapter_id": "chapter3",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.12",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.15",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.19",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.20",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.3",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.4",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.6",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.7",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.8",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.27a",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.27b",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.28",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.29a",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.29b",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.30a",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.30b",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.31",
+      "symbol": "N",
+      "family_key": "N",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.12",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.15",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.19",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.20",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.26",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.29c",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.3",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.4",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.6",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.7",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.8",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{e}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.32",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
           "match_type": "family_candidate",
           "confidence": 0.45
         }
@@ -3224,19 +2734,103 @@
     },
     {
       "dependent_id": "formula_3.33",
-      "symbol": "c^{2}",
-      "family_key": "c",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "c",
-          "family_key": "c",
-          "match_type": "family",
-          "confidence": 0.58
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.35a",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        }
+      ]
+    },
+    {
+      "dependent_id": "formula_3.35b",
+      "symbol": "N_{e}",
+      "family_key": "N",
+      "reason": "3+ same-chapter candidates for the same symbol family",
+      "edge_status": "ambiguous",
+      "edge_evidence": "family_candidate",
+      "candidates": [
+        {
+          "target_id": "formula_3.10",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{es}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11a",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{em}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
+        },
+        {
+          "target_id": "formula_3.11b",
+          "chapter_id": "chapter3",
+          "via_symbol": "N_{ef}",
+          "family_key": "N",
+          "match_type": "family_candidate",
+          "confidence": 0.45
         }
       ]
     }

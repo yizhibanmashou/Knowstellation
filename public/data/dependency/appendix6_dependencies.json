@@ -1,7 +1,7 @@
 {
   "chapter_id": "appendix6",
   "version": 1,
-  "generated_at": "2026-05-25T07:34:53Z",
+  "generated_at": "2026-06-19T10:05:23Z",
   "formulas": [
     {
       "id": "formula_A6.1",
@@ -11,6 +11,7 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 0,
+      "source_position": 0,
       "depth": 0,
       "context_text": "Suppose we let $f(\\mathbf{x})$ be a scalar (single-dimension) function of a column vector, $\\mathbf{x} = (x_1, \\cdots, x_n)^T$, of $n$ variables. The gradient (or gradient vector) of $f$ with respect to $\\mathbf{x}$ is obtained by taking partial derivatives of the function with respect to each variable. In matrix notation, the gradient operator is denoted by",
       "symbols_used": [
@@ -20,8 +21,7 @@
         "x_{n}"
       ],
       "symbols_defined": [
-        "\\mathbf{x}",
-        "f"
+        "\\mathbf{x}"
       ]
     },
     {
@@ -32,27 +32,18 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 1,
-      "depth": 0,
+      "source_position": 1,
+      "depth": 1,
       "context_text": "Using this result along with Equation A6.1d returns",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\mu}",
         "\\mathbf{V}",
         "\\mathbf{V}^{-1}",
-        "\\mathbf{X}",
         "\\mathbf{x}",
-        "\\mu",
+        "\\nabla_{\\mathbf{X}}",
         "\\varphi"
       ],
-      "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\mu}",
-        "\\mathbf{V}",
-        "\\mathbf{X}",
-        "\\mathbf{x}",
-        "\\mu",
-        "\\varphi"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.3",
@@ -62,25 +53,18 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 2,
-      "depth": 0,
+      "source_position": 2,
+      "depth": 1,
       "context_text": "Similarly, Equation A6.1e implies that the gradient of the MVN with respect to the vector of means $ \\mu $ is",
       "symbols_used": [
-        "\\boldsymbol",
         "\\boldsymbol{\\mu}",
         "\\mathbf{V}",
         "\\mathbf{V}^{-1}",
         "\\mathbf{x}",
-        "\\mu",
+        "\\nabla_{\\boldsymbol{\\mu}}",
         "\\varphi"
       ],
-      "symbols_defined": [
-        "\\boldsymbol",
-        "\\boldsymbol{\\mu}",
-        "\\mathbf{V}",
-        "\\mathbf{x}",
-        "\\mu",
-        "\\varphi"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.4",
@@ -90,6 +74,7 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 3,
+      "source_position": 3,
       "depth": 0,
       "context_text": "Now consider the log of the density,",
       "symbols_used": [
@@ -107,12 +92,10 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 4,
-      "depth": 1,
+      "source_position": 4,
+      "depth": 0,
       "context_text": "Now consider the log of the density,",
       "symbols_used": [
-        "T",
-        "\\beta",
-        "\\boldsymbol",
         "\\boldsymbol{\\beta}",
         "\\mathbf{G}",
         "\\mathbf{G}^{-1}",
@@ -134,12 +117,10 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 5,
-      "depth": 1,
+      "source_position": 5,
+      "depth": 0,
       "context_text": "We can expand the larger quadratic product to yield the last two terms of A6.4c as",
       "symbols_used": [
-        "A",
-        "\\beta",
-        "\\boldsymbol",
         "\\boldsymbol{\\beta}",
         "\\boldsymbol{\\beta}^{T}",
         "\\mathbf{G}",
@@ -155,13 +136,9 @@
         "\\mathbf{y}",
         "\\mathbf{y}^{T}",
         "\\mathrm{A}",
-        "\\mathrm{d}",
-        "d",
-        "r"
+        "\\mathrm{d}"
       ],
-      "symbols_defined": [
-        "r"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.7",
@@ -171,11 +148,10 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 6,
+      "source_position": 6,
       "depth": 0,
       "context_text": "Using Equations A6.1c through A6.1e to take the derivatives of $ \\ell $ with respect to $ \\beta $ and u yields",
       "symbols_used": [
-        "\\beta",
-        "\\boldsymbol",
         "\\boldsymbol{\\beta}",
         "\\mathbf{G}",
         "\\mathbf{G}^{-1}",
@@ -186,16 +162,9 @@
         "\\mathbf{Z}",
         "\\mathbf{Z}^{T}",
         "\\mathbf{u}",
-        "\\mathbf{y}",
-        "c"
+        "\\mathbf{y}"
       ],
-      "symbols_defined": [
-        "\\beta",
-        "\\boldsymbol",
-        "\\boldsymbol{\\beta}",
-        "\\mathbf{u}",
-        "c"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.8",
@@ -205,11 +174,10 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 7,
+      "source_position": 7,
       "depth": 0,
       "context_text": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,",
       "symbols_used": [
-        "T",
-        "Z",
         "\\boldsymbol{\\beta}",
         "\\mathbf{G}",
         "\\mathbf{G}^{-1}",
@@ -221,9 +189,7 @@
         "\\mathbf{Z}^{T}",
         "\\mathbf{u}",
         "\\mathbf{y}",
-        "\\widehat{\\beta}",
         "\\widehat{\\boldsymbol{\\beta}}",
-        "\\widehat{\\boldsymbol}",
         "\\widehat{\\mathbf{u}}",
         "a",
         "b",
@@ -232,21 +198,7 @@
         "m",
         "t"
       ],
-      "symbols_defined": [
-        "T",
-        "Z",
-        "\\mathbf{R}",
-        "\\mathbf{R}^{-1}",
-        "\\mathbf{X}",
-        "\\mathbf{X}^{T}",
-        "\\mathbf{y}",
-        "a",
-        "b",
-        "f",
-        "h",
-        "m",
-        "t"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.9",
@@ -256,11 +208,10 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 8,
+      "source_position": 8,
       "depth": 0,
       "context_text": "Denoting the value for $ \\beta $ and u that return a zero vector for Equation A6.4e as $ \\widehat{\\beta} $ and $ \\widehat{u} $ yields the following set of matrix equations which immediately yields Henderson’s mixed-model equations,",
       "symbols_used": [
-        "T",
-        "Z",
         "\\boldsymbol{\\beta}",
         "\\mathbf{G}",
         "\\mathbf{G}^{-1}",
@@ -272,9 +223,7 @@
         "\\mathbf{Z}^{T}",
         "\\mathbf{u}",
         "\\mathbf{y}",
-        "\\widehat{\\beta}",
         "\\widehat{\\boldsymbol{\\beta}}",
-        "\\widehat{\\boldsymbol}",
         "a",
         "b",
         "d",
@@ -286,21 +235,7 @@
         "t",
         "w"
       ],
-      "symbols_defined": [
-        "T",
-        "Z",
-        "\\mathbf{R}",
-        "\\mathbf{R}^{-1}",
-        "\\mathbf{X}",
-        "\\mathbf{X}^{T}",
-        "\\mathbf{y}",
-        "a",
-        "b",
-        "f",
-        "h",
-        "m",
-        "t"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.10",
@@ -310,6 +245,7 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 9,
+      "source_position": 9,
       "depth": 0,
       "context_text": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
       "symbols_used": [
@@ -323,26 +259,10 @@
         "\\mathbf{Z}^{T}",
         "\\mathbf{u}",
         "\\mathbf{y}",
-        "\\widehat{\\beta}",
         "\\widehat{\\boldsymbol{\\beta}}",
-        "\\widehat{\\boldsymbol}",
         "\\widehat{\\mathbf{u}}"
       ],
-      "symbols_defined": [
-        "\\boldsymbol{\\beta}",
-        "\\mathbf{G}",
-        "\\mathbf{G}^{-1}",
-        "\\mathbf{R}",
-        "\\mathbf{R}^{-1}",
-        "\\mathbf{X}",
-        "\\mathbf{Z}",
-        "\\mathbf{Z}^{T}",
-        "\\mathbf{u}",
-        "\\widehat{\\beta}",
-        "\\widehat{\\boldsymbol{\\beta}}",
-        "\\widehat{\\boldsymbol}",
-        "\\widehat{\\mathbf{u}}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.11",
@@ -352,13 +272,12 @@
       "section": "Appendix: Introduction",
       "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
       "position": 10,
-      "depth": 1,
+      "source_position": 10,
+      "depth": 0,
       "context_text": "Using the second equation (row two) of Equation A6.4g returns which can be rearranged to yields as an alternative expression to Equation 19.3b for the BLUP of u.",
       "symbols_used": [
         "\\boldsymbol{\\beta}",
-        "\\hat{\\beta}",
         "\\hat{\\boldsymbol{\\beta}}",
-        "\\hat{\\boldsymbol}",
         "\\hat{\\mathbf{u}}",
         "\\mathbf{G}",
         "\\mathbf{G}^{-1}",
@@ -370,10 +289,7 @@
         "\\mathbf{u}",
         "\\mathbf{y}"
       ],
-      "symbols_defined": [
-        "\\hat{\\mathbf{u}}",
-        "\\mathbf{u}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_A6.12",
@@ -383,15 +299,16 @@
       "section": "Appendix: Introduction",
       "subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
       "position": 11,
+      "source_position": 11,
       "depth": 1,
       "context_text": "In univariate calculus, the local extrema of a function occur when its slope (first derivative) is zero. The multivariate extension is that the gradient vector is zero, so the slope of the function with respect to all variables is zero. A point $ x_{e} $ where this occurs is called a stationary or equilibrium point, and corresponds to either a local maximum, minimum, saddle point, or inflection point. As with the calculus of single variables, determining which of these cases is correct depends on the second derivative. With n variables, the appropriate generalization is the Hessian matrix",
       "symbols_used": [
-        "T",
         "\\mathbf{H}",
         "\\mathbf{X}",
         "\\mathbf{x}",
         "\\mathbf{x}^{T}",
-        "c",
+        "\\nabla_{\\mathbf{X}}",
+        "\\partial^{2}",
         "f",
         "x_{1}",
         "x_{1}^{2}",
@@ -400,8 +317,7 @@
       ],
       "symbols_defined": [
         "\\mathbf{H}",
-        "\\mathbf{X}",
-        "f"
+        "\\mathbf{X}"
       ]
     },
     {
@@ -412,11 +328,13 @@
       "section": "Appendix: Introduction",
       "subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
       "position": 12,
-      "depth": 0,
+      "source_position": 12,
+      "depth": 1,
       "context_text": "Note that this is the outer product of $ \\nabla_{\\mathbf{x}} [f] $ with itself. Recall for an $ n $-dimensional column vector $ \\mathbf{a}_{n\\times1} $ that while the inner product, $ \\mathbf{a}_{1\\times n}^T \\mathbf{a}_{n\\times1} = \\sum a_i $, returns a $ 1 \\times 1 $ matrix (a scalar), the outer product, $ \\mathbf{a}_{n\\times1} \\mathbf{a}_{1\\times n}^T $, returns an $ n \\times n $ matrix whose $ ij $th element is $ a_i a_j $, or (in our case)",
       "symbols_used": [
         "\\mathbf{H}_{ij}",
         "\\mathbf{x}",
+        "\\partial^{2}",
         "f",
         "x_{i}",
         "x_{j}"
@@ -433,7 +351,8 @@
       "section": "Appendix: Introduction",
       "subsection": "OPTIMIZATION UNDER CONSTRAINTS",
       "position": 13,
-      "depth": 0,
+      "source_position": 13,
+      "depth": 1,
       "context_text": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint. The solution is to use Lagrange multipliers. Suppose we wish to find the extrema of a function, $ f(\\mathbf{x}) $, subject to the constraint that $ h(\\mathbf{x}) = c $. We first construct a new function by considering Because $ h(\\mathbf{x}) - c = 0 $, the extrema of $ g(\\mathbf{x}, \\lambda) $ correspond to the extrema of $ f(\\mathbf{x}) $ under the constraint. Local maxima and minima are obtained by solving the following set of equations:",
       "symbols_used": [
         "\\lambda",
@@ -444,8 +363,6 @@
         "h"
       ],
       "symbols_defined": [
-        "\\lambda",
-        "\\mathbf{x}",
         "g"
       ]
     },
@@ -457,20 +374,20 @@
       "section": "Appendix: Introduction",
       "subsection": "OPTIMIZATION UNDER CONSTRAINTS",
       "position": 14,
-      "depth": 0,
+      "source_position": 14,
+      "depth": 1,
       "context_text": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint. The solution is to use Lagrange multipliers. Suppose we wish to find the extrema of a function, $ f(\\mathbf{x}) $, subject to the constraint that $ h(\\mathbf{x}) = c $. We first construct a new function by considering Because $ h(\\mathbf{x}) - c = 0 $, the extrema of $ g(\\mathbf{x}, \\lambda) $ correspond to the extrema of $ f(\\mathbf{x}) $ under the constraint. Local maxima and minima are obtained by solving the following set of equations:",
       "symbols_used": [
         "\\lambda",
         "\\mathbf{0}",
         "\\mathbf{x}",
+        "\\nabla_{\\mathbf{x}}",
         "f",
         "g",
         "h"
       ],
       "symbols_defined": [
-        "\\lambda",
-        "\\mathbf{x}",
-        "g"
+        "\\nabla_{\\mathbf{x}}"
       ]
     },
     {
@@ -481,7 +398,8 @@
       "section": "Appendix: Introduction",
       "subsection": "OPTIMIZATION UNDER CONSTRAINTS",
       "position": 15,
-      "depth": 0,
+      "source_position": 15,
+      "depth": 1,
       "context_text": "Occasionally, we wish to find the maximum or minimum of a function subject to a constraint. The solution is to use Lagrange multipliers. Suppose we wish to find the extrema of a function, $ f(\\mathbf{x}) $, subject to the constraint that $ h(\\mathbf{x}) = c $. We first construct a new function by considering Because $ h(\\mathbf{x}) - c = 0 $, the extrema of $ g(\\mathbf{x}, \\lambda) $ correspond to the extrema of $ f(\\mathbf{x}) $ under the constraint. Local maxima and minima are obtained by solving the following set of equations:",
       "symbols_used": [
         "\\lambda",
@@ -491,12 +409,7 @@
         "g",
         "h"
       ],
-      "symbols_defined": [
-        "\\lambda",
-        "\\mathbf{x}",
-        "d",
-        "g"
-      ]
+      "symbols_defined": []
     }
   ],
   "dependencies": [
@@ -506,11 +419,47 @@
     },
     {
       "dependent_id": "formula_A6.2",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A6.3",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A6.4",
@@ -518,45 +467,11 @@
     },
     {
       "dependent_id": "formula_A6.5",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A6.3",
-          "via_symbol": "\\boldsymbol",
-          "relation": "defines_symbol",
-          "reason": "\\boldsymbol defined by nearest upstream formula in appendix6",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "\\boldsymbol",
-          "symbol_role": "symbol",
-          "sense_id": "formula_A6.3::\\boldsymbol",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A6.6",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_A6.3",
-          "via_symbol": "\\boldsymbol",
-          "relation": "defines_symbol",
-          "reason": "\\boldsymbol defined by nearest upstream formula in appendix6",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "\\boldsymbol",
-          "symbol_role": "symbol",
-          "sense_id": "formula_A6.3::\\boldsymbol",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A6.7",
@@ -572,78 +487,29 @@
     },
     {
       "dependent_id": "formula_A6.10",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_19.3b",
-          "via_symbol": "Equation 19.3b",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 19.3b",
-          "confidence": 0.98,
-          "cross_chapter": true,
-          "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "19.3b",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A6.11",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_19.3b",
-          "via_symbol": "Equation 19.3b",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 19.3b",
-          "confidence": 0.98,
-          "cross_chapter": true,
-          "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "19.3b",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_A6.10",
-          "via_symbol": "\\hat{\\beta}",
-          "relation": "defines_symbol",
-          "reason": "\\hat{\\beta} defined by nearest upstream formula in appendix6",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "canonical_match",
-          "canonical_symbol": "\\hat{\\beta}",
-          "symbol_role": "symbol",
-          "sense_id": "formula_A6.10::\\widehat{\\beta}",
-          "edge_weight": 0.82,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_A6.12",
       "prerequisites": [
         {
           "type": "formula",
-          "target_id": "formula_A6.9",
-          "via_symbol": "T",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
           "relation": "defines_symbol",
-          "reason": "T defined by nearest upstream formula in appendix6",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
           "confidence": 0.84,
           "cross_chapter": false,
           "edge_status": "accepted",
           "edge_evidence": "exact_match",
-          "canonical_symbol": "T",
-          "symbol_role": "variable",
-          "sense_id": "formula_A6.9::T",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -651,569 +517,234 @@
     },
     {
       "dependent_id": "formula_A6.13",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A6.14",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A6.15",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     },
     {
       "dependent_id": "formula_A6.16",
-      "prerequisites": []
+      "prerequisites": [
+        {
+          "type": "formula",
+          "target_id": "formula_A6.1",
+          "via_symbol": "\\mathbf{x}",
+          "relation": "defines_symbol",
+          "reason": "\\mathbf{x} defined by nearest upstream formula in appendix6",
+          "confidence": 0.84,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "x",
+          "symbol_role": "symbol",
+          "sense_id": "formula_A6.1::\\mathbf{x}",
+          "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+          "edge_weight": 1.0,
+          "review_note": "Nearest upstream formula match."
+        }
+      ]
     }
   ],
   "symbol_index": {
     "\\mathbf{x}": [
-      "formula_A6.1::\\mathbf{x}",
-      "formula_A6.2::\\mathbf{x}",
-      "formula_A6.3::\\mathbf{x}",
-      "formula_A6.14::\\mathbf{x}",
-      "formula_A6.15::\\mathbf{x}",
-      "formula_A6.16::\\mathbf{x}"
+      "formula_A6.1::\\mathbf{x}"
     ],
-    "canonical:\\mathbf{x}": [
-      "formula_A6.1::\\mathbf{x}",
-      "formula_A6.2::\\mathbf{x}",
-      "formula_A6.3::\\mathbf{x}",
-      "formula_A6.14::\\mathbf{x}",
-      "formula_A6.15::\\mathbf{x}",
-      "formula_A6.16::\\mathbf{x}"
-    ],
-    "f": [
-      "formula_A6.1::f",
-      "formula_A6.8::f",
-      "formula_A6.9::f",
-      "formula_A6.12::f"
-    ],
-    "canonical:f": [
-      "formula_A6.1::f",
-      "formula_A6.8::f",
-      "formula_A6.9::f",
-      "formula_A6.12::f"
-    ],
-    "\\boldsymbol": [
-      "formula_A6.2::\\boldsymbol",
-      "formula_A6.3::\\boldsymbol",
-      "formula_A6.7::\\boldsymbol"
-    ],
-    "canonical:\\boldsymbol": [
-      "formula_A6.2::\\boldsymbol",
-      "formula_A6.3::\\boldsymbol",
-      "formula_A6.7::\\boldsymbol"
-    ],
-    "\\boldsymbol{\\mu}": [
-      "formula_A6.2::\\boldsymbol{\\mu}",
-      "formula_A6.3::\\boldsymbol{\\mu}"
-    ],
-    "canonical:\\boldsymbol{\\mu}": [
-      "formula_A6.2::\\boldsymbol{\\mu}",
-      "formula_A6.3::\\boldsymbol{\\mu}"
-    ],
-    "\\mathbf{V}": [
-      "formula_A6.2::\\mathbf{V}",
-      "formula_A6.3::\\mathbf{V}"
-    ],
-    "canonical:\\mathbf{V}": [
-      "formula_A6.2::\\mathbf{V}",
-      "formula_A6.3::\\mathbf{V}"
-    ],
-    "\\mathbf{X}": [
-      "formula_A6.2::\\mathbf{X}",
-      "formula_A6.8::\\mathbf{X}",
-      "formula_A6.9::\\mathbf{X}",
-      "formula_A6.10::\\mathbf{X}",
-      "formula_A6.12::\\mathbf{X}"
-    ],
-    "canonical:\\mathbf{X}": [
-      "formula_A6.2::\\mathbf{X}",
-      "formula_A6.8::\\mathbf{X}",
-      "formula_A6.9::\\mathbf{X}",
-      "formula_A6.10::\\mathbf{X}",
-      "formula_A6.12::\\mathbf{X}"
-    ],
-    "\\mu": [
-      "formula_A6.2::\\mu",
-      "formula_A6.3::\\mu"
-    ],
-    "canonical:\\mu": [
-      "formula_A6.2::\\mu",
-      "formula_A6.3::\\mu"
-    ],
-    "\\varphi": [
-      "formula_A6.2::\\varphi",
-      "formula_A6.3::\\varphi"
-    ],
-    "canonical:\\varphi": [
-      "formula_A6.2::\\varphi",
-      "formula_A6.3::\\varphi"
-    ],
-    "r": [
-      "formula_A6.6::r"
-    ],
-    "canonical:r": [
-      "formula_A6.6::r"
-    ],
-    "\\beta": [
-      "formula_A6.7::\\beta"
-    ],
-    "canonical:\\beta": [
-      "formula_A6.7::\\beta"
-    ],
-    "\\boldsymbol{\\beta}": [
-      "formula_A6.7::\\boldsymbol{\\beta}",
-      "formula_A6.10::\\boldsymbol{\\beta}"
-    ],
-    "canonical:\\boldsymbol{\\beta}": [
-      "formula_A6.7::\\boldsymbol{\\beta}",
-      "formula_A6.10::\\boldsymbol{\\beta}"
-    ],
-    "\\mathbf{u}": [
-      "formula_A6.7::\\mathbf{u}",
-      "formula_A6.10::\\mathbf{u}",
-      "formula_A6.11::\\mathbf{u}"
-    ],
-    "canonical:\\mathbf{u}": [
-      "formula_A6.7::\\mathbf{u}",
-      "formula_A6.10::\\mathbf{u}",
-      "formula_A6.11::\\mathbf{u}"
-    ],
-    "c": [
-      "formula_A6.7::c"
-    ],
-    "canonical:c": [
-      "formula_A6.7::c"
-    ],
-    "T": [
-      "formula_A6.8::T",
-      "formula_A6.9::T"
-    ],
-    "canonical:T": [
-      "formula_A6.8::T",
-      "formula_A6.9::T"
-    ],
-    "Z": [
-      "formula_A6.8::Z",
-      "formula_A6.9::Z"
-    ],
-    "canonical:Z": [
-      "formula_A6.8::Z",
-      "formula_A6.9::Z"
-    ],
-    "\\mathbf{R}": [
-      "formula_A6.8::\\mathbf{R}",
-      "formula_A6.9::\\mathbf{R}",
-      "formula_A6.10::\\mathbf{R}"
-    ],
-    "canonical:\\mathbf{R}": [
-      "formula_A6.8::\\mathbf{R}",
-      "formula_A6.9::\\mathbf{R}",
-      "formula_A6.10::\\mathbf{R}"
-    ],
-    "\\mathbf{R}^{-1}": [
-      "formula_A6.8::\\mathbf{R}^{-1}",
-      "formula_A6.9::\\mathbf{R}^{-1}",
-      "formula_A6.10::\\mathbf{R}^{-1}"
-    ],
-    "canonical:\\mathbf{R}^-1": [
-      "formula_A6.8::\\mathbf{R}^{-1}",
-      "formula_A6.9::\\mathbf{R}^{-1}",
-      "formula_A6.10::\\mathbf{R}^{-1}"
-    ],
-    "\\mathbf{X}^{T}": [
-      "formula_A6.8::\\mathbf{X}^{T}",
-      "formula_A6.9::\\mathbf{X}^{T}"
-    ],
-    "canonical:\\mathbf{X}^T": [
-      "formula_A6.8::\\mathbf{X}^{T}",
-      "formula_A6.9::\\mathbf{X}^{T}"
-    ],
-    "\\mathbf{y}": [
-      "formula_A6.8::\\mathbf{y}",
-      "formula_A6.9::\\mathbf{y}"
-    ],
-    "canonical:\\mathbf{y}": [
-      "formula_A6.8::\\mathbf{y}",
-      "formula_A6.9::\\mathbf{y}"
-    ],
-    "a": [
-      "formula_A6.8::a",
-      "formula_A6.9::a"
-    ],
-    "canonical:a": [
-      "formula_A6.8::a",
-      "formula_A6.9::a"
-    ],
-    "b": [
-      "formula_A6.8::b",
-      "formula_A6.9::b"
-    ],
-    "canonical:b": [
-      "formula_A6.8::b",
-      "formula_A6.9::b"
-    ],
-    "h": [
-      "formula_A6.8::h",
-      "formula_A6.9::h"
-    ],
-    "canonical:h": [
-      "formula_A6.8::h",
-      "formula_A6.9::h"
-    ],
-    "m": [
-      "formula_A6.8::m",
-      "formula_A6.9::m"
-    ],
-    "canonical:m": [
-      "formula_A6.8::m",
-      "formula_A6.9::m"
-    ],
-    "t": [
-      "formula_A6.8::t",
-      "formula_A6.9::t"
-    ],
-    "canonical:t": [
-      "formula_A6.8::t",
-      "formula_A6.9::t"
-    ],
-    "\\mathbf{G}": [
-      "formula_A6.10::\\mathbf{G}"
-    ],
-    "canonical:\\mathbf{G}": [
-      "formula_A6.10::\\mathbf{G}"
-    ],
-    "\\mathbf{G}^{-1}": [
-      "formula_A6.10::\\mathbf{G}^{-1}"
-    ],
-    "canonical:\\mathbf{G}^-1": [
-      "formula_A6.10::\\mathbf{G}^{-1}"
-    ],
-    "\\mathbf{Z}": [
-      "formula_A6.10::\\mathbf{Z}"
-    ],
-    "canonical:\\mathbf{Z}": [
-      "formula_A6.10::\\mathbf{Z}"
-    ],
-    "\\mathbf{Z}^{T}": [
-      "formula_A6.10::\\mathbf{Z}^{T}"
-    ],
-    "canonical:\\mathbf{Z}^T": [
-      "formula_A6.10::\\mathbf{Z}^{T}"
-    ],
-    "\\widehat{\\beta}": [
-      "formula_A6.10::\\widehat{\\beta}"
-    ],
-    "canonical:\\hat{\\beta}": [
-      "formula_A6.10::\\widehat{\\beta}"
-    ],
-    "\\widehat{\\boldsymbol{\\beta}}": [
-      "formula_A6.10::\\widehat{\\boldsymbol{\\beta}}"
-    ],
-    "canonical:\\hat{\\boldsymbol{\\beta}}": [
-      "formula_A6.10::\\widehat{\\boldsymbol{\\beta}}"
-    ],
-    "\\widehat{\\boldsymbol}": [
-      "formula_A6.10::\\widehat{\\boldsymbol}"
-    ],
-    "canonical:\\hat{\\boldsymbol}": [
-      "formula_A6.10::\\widehat{\\boldsymbol}"
-    ],
-    "\\widehat{\\mathbf{u}}": [
-      "formula_A6.10::\\widehat{\\mathbf{u}}"
-    ],
-    "canonical:\\hat{\\mathbf{u}}": [
-      "formula_A6.10::\\widehat{\\mathbf{u}}",
-      "formula_A6.11::\\hat{\\mathbf{u}}"
-    ],
-    "\\hat{\\mathbf{u}}": [
-      "formula_A6.11::\\hat{\\mathbf{u}}"
+    "canonical:x": [
+      "formula_A6.1::\\mathbf{x}"
     ],
     "\\mathbf{H}": [
       "formula_A6.12::\\mathbf{H}"
     ],
-    "canonical:\\mathbf{H}": [
+    "canonical:H": [
       "formula_A6.12::\\mathbf{H}"
+    ],
+    "\\mathbf{X}": [
+      "formula_A6.12::\\mathbf{X}"
+    ],
+    "canonical:X": [
+      "formula_A6.12::\\mathbf{X}"
     ],
     "\\mathbf{H}_{ij}": [
       "formula_A6.13::\\mathbf{H}_{ij}"
     ],
-    "canonical:\\mathbf{H}_ij": [
+    "canonical:H_ij": [
       "formula_A6.13::\\mathbf{H}_{ij}"
     ],
-    "\\lambda": [
-      "formula_A6.14::\\lambda",
-      "formula_A6.15::\\lambda",
-      "formula_A6.16::\\lambda"
-    ],
-    "canonical:\\lambda": [
-      "formula_A6.14::\\lambda",
-      "formula_A6.15::\\lambda",
-      "formula_A6.16::\\lambda"
-    ],
     "g": [
-      "formula_A6.14::g",
-      "formula_A6.15::g",
-      "formula_A6.16::g"
+      "formula_A6.14::g"
     ],
     "canonical:g": [
-      "formula_A6.14::g",
-      "formula_A6.15::g",
-      "formula_A6.16::g"
+      "formula_A6.14::g"
     ],
-    "d": [
-      "formula_A6.16::d"
+    "\\nabla_{\\mathbf{x}}": [
+      "formula_A6.15::\\nabla_{\\mathbf{x}}"
     ],
-    "canonical:d": [
-      "formula_A6.16::d"
+    "canonical:\\nabla_{x}": [
+      "formula_A6.15::\\nabla_{\\mathbf{x}}"
     ]
   },
-  "ambiguous": [
+  "symbol_sense_clusters": [
     {
-      "dependent_id": "formula_A6.6",
-      "symbol": "\\mathbf{X}^{T}",
-      "family_key": "X",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.2",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{X}",
-          "family_key": "X",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::derivatives-of-vectors-and-vector-valued-functions::x",
+      "canonical_symbol": "x",
+      "symbol": "\\mathbf{x}",
+      "chapter_id": "appendix6",
+      "subsection": "DERIVATIVES OF VECTORS AND VECTOR-VALUED FUNCTIONS",
+      "representative_sense_id": "formula_A6.1::\\mathbf{x}",
+      "representative_formula_id": "formula_A6.1",
+      "member_sense_ids": [
+        "formula_A6.1::\\mathbf{x}"
+      ],
+      "member_formula_ids": [
+        "formula_A6.1"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     },
     {
-      "dependent_id": "formula_A6.7",
-      "symbol": "\\mathbf{X}^{T}",
-      "family_key": "X",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.2",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{X}",
-          "family_key": "X",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::optimization-under-constraints::\\nabla_{x}",
+      "canonical_symbol": "\\nabla_{x}",
+      "symbol": "\\nabla_{\\mathbf{x}}",
+      "chapter_id": "appendix6",
+      "subsection": "OPTIMIZATION UNDER CONSTRAINTS",
+      "representative_sense_id": "formula_A6.15::\\nabla_{\\mathbf{x}}",
+      "representative_formula_id": "formula_A6.15",
+      "member_sense_ids": [
+        "formula_A6.15::\\nabla_{\\mathbf{x}}"
+      ],
+      "member_formula_ids": [
+        "formula_A6.15"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     },
     {
-      "dependent_id": "formula_A6.8",
-      "symbol": "\\widehat{\\beta}",
-      "family_key": "\\beta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.7",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\beta",
-          "family_key": "\\beta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::optimization-under-constraints::g",
+      "canonical_symbol": "g",
+      "symbol": "g",
+      "chapter_id": "appendix6",
+      "subsection": "OPTIMIZATION UNDER CONSTRAINTS",
+      "representative_sense_id": "formula_A6.14::g",
+      "representative_formula_id": "formula_A6.14",
+      "member_sense_ids": [
+        "formula_A6.14::g"
+      ],
+      "member_formula_ids": [
+        "formula_A6.14"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     },
     {
-      "dependent_id": "formula_A6.8",
-      "symbol": "\\widehat{\\mathbf{u}}",
-      "family_key": "u",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.7",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{u}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::the-hessian-matrix-local-maxima-minima-and-multidimensional-taylor-series::H",
+      "canonical_symbol": "H",
+      "symbol": "\\mathbf{H}",
+      "chapter_id": "appendix6",
+      "subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
+      "representative_sense_id": "formula_A6.12::\\mathbf{H}",
+      "representative_formula_id": "formula_A6.12",
+      "member_sense_ids": [
+        "formula_A6.12::\\mathbf{H}"
+      ],
+      "member_formula_ids": [
+        "formula_A6.12"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     },
     {
-      "dependent_id": "formula_A6.9",
-      "symbol": "\\mathbf{Z}^{T}",
-      "family_key": "Z",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.8",
-          "chapter_id": "appendix6",
-          "via_symbol": "Z",
-          "family_key": "Z",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::the-hessian-matrix-local-maxima-minima-and-multidimensional-taylor-series::H_ij",
+      "canonical_symbol": "H_ij",
+      "symbol": "\\mathbf{H}_{ij}",
+      "chapter_id": "appendix6",
+      "subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
+      "representative_sense_id": "formula_A6.13::\\mathbf{H}_{ij}",
+      "representative_formula_id": "formula_A6.13",
+      "member_sense_ids": [
+        "formula_A6.13::\\mathbf{H}_{ij}"
+      ],
+      "member_formula_ids": [
+        "formula_A6.13"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     },
     {
-      "dependent_id": "formula_A6.9",
-      "symbol": "\\widehat{\\beta}",
-      "family_key": "\\beta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.7",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\beta",
-          "family_key": "\\beta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A6.11",
-      "symbol": "\\mathbf{R}^{-1}",
-      "family_key": "R^-1",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.10",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{R}^{-1}",
-          "family_key": "R^-1",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.8",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{R}^{-1}",
-          "family_key": "R^-1",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.9",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{R}^{-1}",
-          "family_key": "R^-1",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A6.11",
-      "symbol": "\\mathbf{Z}^{T}",
-      "family_key": "Z",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.10",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{Z}",
-          "family_key": "Z",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.8",
-          "chapter_id": "appendix6",
-          "via_symbol": "Z",
-          "family_key": "Z",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.9",
-          "chapter_id": "appendix6",
-          "via_symbol": "Z",
-          "family_key": "Z",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A6.12",
-      "symbol": "\\mathbf{x}^{T}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.1",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.2",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.3",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_A6.13",
-      "symbol": "x_{i}",
-      "family_key": "x",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_A6.1",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.2",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_A6.3",
-          "chapter_id": "appendix6",
-          "via_symbol": "\\mathbf{x}",
-          "family_key": "x",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
+      "canonical_sense_id": "appendix6::the-hessian-matrix-local-maxima-minima-and-multidimensional-taylor-series::X",
+      "canonical_symbol": "X",
+      "symbol": "\\mathbf{X}",
+      "chapter_id": "appendix6",
+      "subsection": "THE HESSIAN MATRIX, LOCAL MAXIMA/MINIMA, AND MULTIDIMENSIONAL TAYLOR SERIES",
+      "representative_sense_id": "formula_A6.12::\\mathbf{X}",
+      "representative_formula_id": "formula_A6.12",
+      "member_sense_ids": [
+        "formula_A6.12::\\mathbf{X}"
+      ],
+      "member_formula_ids": [
+        "formula_A6.12"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
     }
-  ]
+  ],
+  "ambiguous": []
 }

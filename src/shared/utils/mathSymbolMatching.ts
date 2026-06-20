@@ -1,10 +1,13 @@
 const GREEK_COMMANDS: Array<[RegExp, string]> = [
   [/\\sigma(?=[\s_^{(\[,;|]|$)/g, 'σ'],
   [/\\Delta(?=[\s_^{(\[,;|]|$)/g, 'Δ'],
+  [/\\delta(?=[\s_^{(\[,;|]|$)/g, 'δ'],
   [/\\mu(?=[\s_^{(\[,;|]|$)/g, 'μ'],
   [/\\pi(?=[\s_^{(\[,;|]|$)/g, 'π'],
   [/\\beta(?=[\s_^{(\[,;|]|$)/g, 'β'],
   [/\\alpha(?=[\s_^{(\[,;|]|$)/g, 'α'],
+  [/\\varepsilon(?=[\s_^{(\[,;|]|$)/g, 'ε'],
+  [/\\epsilon(?=[\s_^{(\[,;|]|$)/g, 'ε'],
   [/\\theta(?=[\s_^{(\[,;|]|$)/g, 'θ'],
   [/\\rho(?=[\s_^{(\[,;|]|$)/g, 'ρ'],
   [/\\varphi(?=[\s_^{(\[,;|]|$)/g, 'ϕ'],
@@ -16,7 +19,9 @@ export function compactMathText(value: string): string {
   return value
     .normalize('NFKC')
     .replace(/[′’]/g, "'")
+    .replace(/∗/g, '*')
     .replace(/[−–—]/g, '-')
+    .replace(/∣/g, '|')
     .replace(/φ/g, 'ϕ')
     .replace(/[\u02c9\u0304]/g, '')
     .replace(/[\s\u200b]/g, '')
@@ -42,7 +47,7 @@ function replaceLatexCommands(value: string): string {
     .replace(/\\(?:lvert|rvert)/g, '|')
     .replace(/\\(?:langle|rangle)/g, '')
     .replace(/\\(?:mathrm|mathbf|mathit|operatorname)\{([^{}]+)\}/g, '$1')
-    .replace(/\\(?:overline|bar|hat|tilde)\{([^{}]+)\}/g, '$1')
+    .replace(/\\(?:overline|bar|widehat|hat|widetilde|tilde|vec)\{([^{}]+)\}/g, '$1')
     .replace(/\\prime(?=[\s_^{]|$)/g, "'");
 
   GREEK_COMMANDS.forEach(([pattern, replacement]) => {
@@ -53,6 +58,7 @@ function replaceLatexCommands(value: string): string {
     .replace(/\\Pr(?=[\s_^{]|$)/g, 'Pr')
     .replace(/\\E(?=[\s_^{]|$)/g, 'E')
     .replace(/\\partial(?=[\s_^{]|$)/g, '∂')
+    .replace(/\\circ(?=[\s_^{(\[,;|]|$)/g, '∘')
     .replace(/\\imath(?=[\s_^{]|$)/g, 'ı')
     .replace(/\\simeq(?=[\s_^{]|$)/g, '≃')
     .replace(/\\approx(?=[\s_^{]|$)/g, '≈')
@@ -74,6 +80,8 @@ function addCandidate(candidates: Set<string>, value: string) {
 function addScriptedWrapperCandidates(candidates: Set<string>, raw: string) {
   const match = raw.match(/\\(?:widehat|hat|overline|bar|tilde|widetilde)\{(.+)\}(?:_(?:\{([^{}]+)\}|([^{}^]+)))?/);
   if (!match?.[1]) return;
+  const tail = raw.slice((match.index || 0) + match[0].length);
+  if (/^\s*\^/.test(tail)) return;
   const inner = replaceLatexCommands(match[1]);
   const subscript = match[2] || match[3] || '';
   if (!subscript) return;
@@ -108,7 +116,7 @@ export function latexToReadableCandidates(symbol: string): string[] {
     addCandidate(candidates, '\ue131');
   }
 
-  const overlineMatch = raw.match(/\\(?:overline|bar)\{([^{}]+)\}/);
+  const overlineMatch = raw.match(/^\\(?:overline|bar)\{([^{}]+)\}(?:[_^]|$)/);
   if (overlineMatch?.[1]) {
     const hasOutsideScript = /\\(?:overline|bar)\{[^{}]+\}[_^]/.test(raw);
     const inner = replaceLatexCommands(overlineMatch[1]);
@@ -129,9 +137,10 @@ export function latexToReadableCandidates(symbol: string): string[] {
 function latexForTokenScan(value: string): string {
   let next = unwrapSimpleScripts(value)
     .replace(/\\partial(?=[\s_^{]|$)/g, '∂')
+    .replace(/\\circ(?=[\s_^{(\[,;|]|$)/g, '∘')
     .replace(/\\(?:dfrac|tfrac|frac)\b/g, ' ')
     .replace(/\\(?:left|right)(?=[()[\]{}|.]|\\[{}])/g, ' ')
-    .replace(/\\(?:mathrm|mathbf|mathit|operatorname|boldsymbol|overline|bar|hat|tilde)\b/g, ' ')
+    .replace(/\\(?:mathrm|mathbf|mathit|operatorname|boldsymbol|overline|bar|widehat|hat|widetilde|tilde|vec)\b/g, ' ')
     .replace(/\\bf\b/g, ' ');
 
   GREEK_COMMANDS.forEach(([pattern, replacement]) => {

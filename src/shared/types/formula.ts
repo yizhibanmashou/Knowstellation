@@ -82,6 +82,7 @@ export interface FormulaPrerequisite {
   source?: string;
   source_chunk_id?: string;
   sense_id?: string;
+  canonical_sense_id?: string;
   relationship?: string;
   source_excerpt?: string;
   candidates?: SymbolSenseCandidate[];
@@ -92,6 +93,20 @@ export interface FormulaDependency {
   prerequisites: FormulaPrerequisite[];
 }
 
+export interface SymbolSenseCluster {
+  canonical_sense_id: string;
+  canonical_symbol: string;
+  symbol: string;
+  chapter_id: string;
+  subsection: string;
+  representative_sense_id: string;
+  representative_formula_id: string;
+  member_sense_ids: string[];
+  member_formula_ids: string[];
+  merge_basis: string;
+  confidence: number;
+}
+
 export interface ChapterDependencies {
   chapter_id: string;
   version: number;
@@ -99,6 +114,7 @@ export interface ChapterDependencies {
   formulas: ChapterFormula[];
   dependencies: FormulaDependency[];
   symbol_index: Record<string, string[]>;
+  symbol_sense_clusters?: SymbolSenseCluster[];
   ambiguous: unknown[];
 }
 
@@ -201,6 +217,14 @@ export interface StorylineStep {
   transition_en: string;
   transition_zh: string;
   support_formula_ids: string[];
+  display_name_zh?: string;
+  display_name_en?: string;
+  story_zh?: string;
+  story_en?: string;
+  bridge_zh?: string;
+  bridge_en?: string;
+  image?: string;
+  image_caption?: string;
 }
 
 export interface StorylineEntry {

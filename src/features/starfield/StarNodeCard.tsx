@@ -31,7 +31,7 @@ export function StarNodeCard({ node, x, y, onClose, onEnter }: StarNodeCardProps
   const gap = 24;
   const left = x + gap + width < window.innerWidth ? x + gap : Math.max(16, x - width - gap);
   const top = y + gap + height < window.innerHeight ? y + gap : Math.max(80, window.innerHeight - height - 18);
-  const eyebrow = node.kind === 'chapter' ? '章节节点' : node.kind === 'concept' ? '概念起点' : node.isBackbone ? '推荐起点' : '公式节点';
+  const eyebrow = node.kind === 'chapter' ? '章节节点' : node.kind === 'concept' ? '概念节点' : node.isBackbone ? '主线公式' : '公式节点';
   const meta = node.kind === 'chapter'
     ? `${node.formulaCount || 0} 个公式`
     : node.kind === 'concept'

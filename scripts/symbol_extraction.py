@@ -96,6 +96,9 @@ STYLE_MACROS = {
     "mathsf",
     "operatorname",
 }
+STYLE_MACRO_RE = re.compile("|".join(sorted(STYLE_MACROS, key=len, reverse=True)))
+UNBRACED_STYLE_MACROS = STYLE_MACROS - {"operatorname"}
+UNBRACED_STYLE_MACRO_RE = re.compile("|".join(sorted(UNBRACED_STYLE_MACROS, key=len, reverse=True)))
 
 NON_SYMBOL_MACROS = {
     "frac",
@@ -154,6 +157,11 @@ SYMBOL_TOKEN_RE = re.compile(
     r"\\[A-Za-z]+(?:_\{[^{}]*\}|_[A-Za-z0-9]+|\^\{[^{}]*\}|\^[A-Za-z0-9]+)*"
     r"|[A-Za-z](?:_\{[^{}]*\}|_[A-Za-z0-9]+|\^\{[^{}]*\}|\^[A-Za-z0-9]+)*"
 )
+NESTED_SCRIPT_SYMBOL_TOKEN_RE = re.compile(
+    r"(?:\\[A-Za-z]+|[A-Za-z])"
+    r"(?:(?:_\{(?:[^{}]|\{[^{}]*\})+\}|_[A-Za-z0-9]+)"
+    r"|(?:\^\{(?:[^{}]|\{[^{}]*\})+\}|\^[A-Za-z0-9]+))+"
+)
 GLUED_SYMBOL_BOUNDARY_RE = re.compile(
     r"((?:\\[A-Za-z]+|[A-Za-z])"
     r"(?:_\{[^{}]*\}|_[A-Za-z0-9]+)?"
@@ -164,6 +172,29 @@ STYLE_SYMBOL_TOKEN_RE = re.compile(
     r"\\(?:bar|overline|hat|widehat|tilde|widetilde|dot|vec|mathbf|boldsymbol)"
     r"\{[^{}]+\}(?:_\{[^{}]*\}|_[A-Za-z0-9]+|\^\{[^{}]*\}|\^[A-Za-z0-9]+)*"
 )
+BARE_STYLE_SYMBOLS = {f"\\{macro}" for macro in STYLE_MACROS}
+NON_SEMANTIC_STYLE_MACROS = {
+    "mathbf",
+    "boldsymbol",
+    "bm",
+    "mathbb",
+    "mathcal",
+    "mathscr",
+    "mathrm",
+    "mathit",
+    "mathsf",
+}
+TYPESET_TEXT_WORDS = {
+    "where",
+    "then",
+    "with",
+    "and",
+    "for",
+    "if",
+    "the",
+    "when",
+    "otherwise",
+}
 SCRIPT_MACROS = {"bar", "overline", "hat", "widehat", "tilde", "widetilde", "dot", "vec"}
 FUNCTION_LIKE_NAMES = {"E", "P", "Pr", "Var", "Cov", "F"}
 ROLE_OPERATOR = "operator"
@@ -198,6 +229,7 @@ def normalize_symbol(symbol: str) -> str:
     """Normalize a symbol string for stable matching."""
 
     normalized = symbol.strip()
+    normalized = normalized.replace("&", "")
     normalized = normalized.replace(" ", "")
     normalized = normalized.replace(r"\left", "").replace(r"\right", "")
     normalized = normalized.replace("'", r"^{\prime}")
@@ -207,13 +239,43 @@ def normalize_symbol(symbol: str) -> str:
 def normalize_latex_for_symbol_scan(latex: str) -> str:
     """Repair OCR-glued adjacent symbols before tokenization."""
 
-    value = latex
+    value = strip_typeset_text_words(latex)
+    value = normalize_unbraced_style_macros(value)
+    value = re.sub(r"\{\{(\\?[A-Za-z])\}\}", r"{\1}", value)
+    value = value.replace("&", " ")
+    value = re.sub(r"\\begin\s*\{(?:array|tabular)\}\s*\{[^{}]*\}", " ", value)
     value = re.sub(r"\\(?:begin|end)\s*\{[^{}]*\}", " ", value)
     value = re.sub(r"\\\\+", " ", value)
     previous = None
     while previous != value:
         previous = value
         value = GLUED_SYMBOL_BOUNDARY_RE.sub(r"\1 ", value)
+    return value
+
+
+def strip_typeset_text_words(latex: str) -> str:
+    r"""Remove prose words encoded as ``\mathrm{...}``/``\text{...}``."""
+
+    def replace(match: re.Match[str]) -> str:
+        compact = re.sub(r"[^A-Za-z]+", "", match.group(1)).lower()
+        return " " if compact in TYPESET_TEXT_WORDS else match.group(0)
+
+    return re.sub(r"\\(?:mathrm|text)\{([^{}]+)\}", replace, str(latex or ""))
+
+
+def normalize_unbraced_style_macros(latex: str) -> str:
+    r"""Normalize ``\mathbf V``/``\hat p`` style input to braced LaTeX."""
+
+    macro_names = UNBRACED_STYLE_MACRO_RE.pattern
+    pattern = re.compile(
+        rf"\\({macro_names})\s*(\\[A-Za-z]+|[A-Za-z])"
+        r"((?:_\{[^{}]*\}|_[A-Za-z0-9]+|\^\{[^{}]*\}|\^[A-Za-z0-9]+)*)"
+    )
+    previous = None
+    value = latex
+    while previous != value:
+        previous = value
+        value = pattern.sub(r"\\\1{\2}\3", value)
     return value
 
 
@@ -226,7 +288,7 @@ def _normalize_script_braces(value: str) -> str:
 def canonical_symbol(symbol: str) -> str:
     """Return a conservative canonical form preserving meaningful scripts."""
 
-    value = normalize_symbol(symbol)
+    value = normalize_symbol(normalize_unbraced_style_macros(symbol))
     for macro in ("bar", "overline"):
         value = value.replace(f"\\{macro}", "\\overline")
     if value.startswith("\\widehat"):
@@ -405,13 +467,30 @@ def _append_scripts(base: str, tail: str) -> str:
 
 def _symbols_from_chars(text: str) -> set[str]:
     symbols: set[str] = set()
+    nested_spans: list[tuple[int, int]] = []
+    for match in NESTED_SCRIPT_SYMBOL_TOKEN_RE.finditer(text):
+        token = match.group(0)
+        if token.startswith("\\"):
+            macro_match = re.match(r"\\([A-Za-z]+)", token)
+            name = macro_match.group(1) if macro_match else token[1:]
+            if name in NON_SYMBOL_MACROS:
+                continue
+            if name in OPERATOR_MACROS and not re.search(r"[_^]", token):
+                continue
+        symbols.add(token)
+        nested_spans.append(match.span())
+
     style_spans: list[tuple[int, int]] = []
     for match in STYLE_SYMBOL_TOKEN_RE.finditer(text):
+        if any(start <= match.start() and match.end() <= end for start, end in nested_spans):
+            continue
         symbols.add(match.group(0))
         style_spans.append(match.span())
 
+    protected_spans = [*nested_spans, *style_spans]
+
     for match in SYMBOL_TOKEN_RE.finditer(text):
-        if any(start <= match.start() and match.end() <= end for start, end in style_spans):
+        if any(start <= match.start() and match.end() <= end for start, end in protected_spans):
             continue
         token = match.group(0)
         next_text = text[match.end() :].lstrip()
@@ -505,15 +584,90 @@ def _is_operator_call_expression(latex: str) -> bool:
     )
 
 
+def _clean_lhs_for_definition(latex: str) -> str:
+    value = normalize_latex_for_symbol_scan(latex).strip()
+    return re.sub(r"^\{[lcr|@{}\s*]+\}\s*", "", value).strip()
+
+
+def _has_lhs_expression_syntax(latex: str) -> bool:
+    value = _clean_lhs_for_definition(latex)
+    value = re.sub(r"[_^]\{(?:[^{}]|\{[^{}]*\})*\}", "", value)
+    value = re.sub(r"[_^](?:\\?[A-Za-z0-9]+)", "", value)
+    if re.search(r"\\(?:sum|prod|int|iint|iiint|frac|dfrac|tfrac|sqrt|left|right)(?=[^A-Za-z]|$)", value):
+        return True
+    if re.search(r"\\(?:cdot|times|pm|mp)(?=[^A-Za-z]|$)", value):
+        return True
+    return bool(re.search(r"[+\-*/=,<>]", value))
+
+
 def _definition_symbols_from_operator_lhs(latex: str) -> set[str]:
-    value = latex.strip()
+    value = _clean_lhs_for_definition(latex)
     match = re.match(r"^E\s*(?:\\left)?\s*([\(\[])", value)
     if not match:
         return set()
     args = _call_argument_text(value, match.start(1))
     if args is None or "," in args or r"\mid" in args or "|" in args:
         return set()
-    return _extract_symbols_from_latex(args)
+    if _has_lhs_expression_syntax(args):
+        return set()
+    symbols = _extract_symbols_from_latex(args)
+    return symbols if len(symbols) == 1 else set()
+
+
+def _looks_like_function_head(text: str) -> bool:
+    value = text.strip()
+    if not value:
+        return False
+    if re.search(r"[+\-*/=<>]", value):
+        return False
+    if re.search(r"\\(?:frac|sum|prod|int|sqrt|left|right)(?=[^A-Za-z]|$)", value):
+        return False
+    return bool(re.search(r"\\[A-Za-z]+|[A-Za-z]", value))
+
+
+def _lhs_top_level_function_call(latex: str) -> tuple[str, str] | None:
+    value = normalize_latex_for_symbol_scan(latex).strip()
+    brace_depth = 0
+    for idx, ch in enumerate(value):
+        if ch == "{":
+            brace_depth += 1
+            continue
+        if ch == "}":
+            brace_depth = max(0, brace_depth - 1)
+            continue
+        if ch not in "([" or brace_depth != 0:
+            continue
+        head = value[:idx].strip()
+        if not _looks_like_function_head(head):
+            return None
+        args = _call_argument_text(value, idx)
+        if args is None:
+            return None
+        return head, args
+    return None
+
+
+def _definition_symbols_from_function_lhs(latex: str) -> set[str]:
+    if _is_operator_call_expression(latex):
+        return set()
+    call = _lhs_top_level_function_call(latex)
+    if not call:
+        return set()
+    head, _args = call
+    return _extract_symbols_from_latex(head)
+
+
+def _definition_symbols_from_simple_lhs(latex: str) -> set[str]:
+    value = _clean_lhs_for_definition(latex)
+    if _is_operator_call_expression(value):
+        return _definition_symbols_from_operator_lhs(value)
+    function_symbols = _definition_symbols_from_function_lhs(value)
+    if function_symbols:
+        return function_symbols
+    if _has_lhs_expression_syntax(value):
+        return set()
+    symbols = _extract_symbols_from_latex(value)
+    return symbols if len(symbols) == 1 else set()
 
 
 def _sigma_variance_call_symbols(latex: str) -> set[str]:
@@ -556,6 +710,41 @@ def _discard_by_canonical(symbols: set[str], fragments: Iterable[str]) -> None:
             symbols.discard(symbol)
 
 
+def _styled_inner_fragments(symbols: Iterable[str]) -> set[str]:
+    fragments: set[str] = set()
+    macro_names = "|".join(sorted(NON_SEMANTIC_STYLE_MACROS, key=len, reverse=True))
+    pattern = re.compile(rf"^\\(?:{macro_names})\{{(.+)\}}(?:[_^].*)?$")
+    for symbol in symbols:
+        match = pattern.match(symbol)
+        if not match:
+            continue
+        fragments.update(_extract_symbols_from_latex(match.group(1)))
+    return fragments
+
+
+def _alphabetic_script_letter_fragments(latex: str) -> set[str]:
+    fragments: set[str] = set()
+    for match in re.finditer(r"[_^]\{([^{}]+)\}|[_^]([A-Za-z]{2,})", latex):
+        script = match.group(1) or match.group(2) or ""
+        for word in re.findall(r"[A-Za-z]{2,}", script):
+            fragments.update(word)
+    return fragments
+
+
+def _top_level_single_letter_appears(latex: str, symbol: str) -> bool:
+    clean = strip_typeset_text_words(latex)
+    clean = re.sub(r"[_^]\{[^{}]*\}", " ", clean)
+    clean = re.sub(r"[_^][A-Za-z0-9]+", " ", clean)
+    clean = re.sub(r"\\[A-Za-z]+", " ", clean)
+    return bool(re.search(rf"(?<![A-Za-z]){re.escape(symbol)}(?![A-Za-z])", clean))
+
+
+def _discard_script_word_fragments(symbols: set[str], latex: str) -> None:
+    for fragment in _alphabetic_script_letter_fragments(latex):
+        if not _top_level_single_letter_appears(latex, fragment):
+            symbols.discard(fragment)
+
+
 def _compound_fragments(symbol: str) -> set[str]:
     fragments: set[str] = set()
     value = normalize_symbol(symbol)
@@ -570,6 +759,11 @@ def _compound_fragments(symbol: str) -> set[str]:
             fragments.update(cleaned)
         elif re.fullmatch(r"\\?[A-Za-z]", cleaned):
             fragments.add(cleaned)
+        elif "_" in cleaned or "^" in cleaned or "\\" in cleaned:
+            inner_symbols = _extract_symbols_from_latex(cleaned)
+            fragments.update(inner_symbols)
+            for inner_symbol in inner_symbols:
+                fragments.update(_compound_fragments(inner_symbol))
     clean_subscript = subscript.strip("{}")
     clean_superscript = superscript.strip("{}")
     if clean_subscript and clean_superscript:
@@ -665,7 +859,10 @@ def _extract_symbols_from_latex(latex: str) -> set[str]:
         variance_fragments = _sigma_variance_fragments(variance_calls)
         _discard_by_canonical(symbols, variance_fragments)
         normalized = {normalize_symbol(s) for s in symbols if normalize_symbol(s)}
+        normalized.difference_update(BARE_STYLE_SYMBOLS)
+        _discard_by_canonical(normalized, _styled_inner_fragments(normalized))
         _discard_by_canonical(normalized, variance_fragments)
+        _discard_script_word_fragments(normalized, scan_latex)
         if _has_sigma_covariance_call(scan_latex):
             normalized.discard(r"\sigma")
         return _remove_compound_fragments(normalized, protected_atomic)
@@ -674,7 +871,9 @@ def _extract_symbols_from_latex(latex: str) -> set[str]:
         variance_calls = _sigma_variance_call_symbols(scan_latex)
         protected_atomic = {normalize_symbol(s) for s in regex_symbols if not _compound_fragments(s)}
         normalized = {normalize_symbol(s) for s in (regex_symbols | variance_calls) if normalize_symbol(s)}
+        normalized.difference_update(BARE_STYLE_SYMBOLS)
         _discard_by_canonical(normalized, _sigma_variance_fragments(variance_calls))
+        _discard_script_word_fragments(normalized, scan_latex)
         if _has_sigma_covariance_call(scan_latex):
             normalized.discard(r"\sigma")
         return _remove_compound_fragments(normalized, protected_atomic)
@@ -694,12 +893,7 @@ def extract_symbols(latex: str) -> dict[str, list[dict[str, str]]]:
     lhs_is_operator_call = False
     if lhs:
         lhs_is_operator_call = _is_operator_call_expression(lhs)
-        defined_symbols = _definition_symbols_from_operator_lhs(lhs) if lhs_is_operator_call else _extract_symbols_from_latex(lhs)
-
-    if not defined_symbols and all_symbols and not lhs_is_operator_call:
-        first = sorted(all_symbols, key=lambda s: latex.find(s.replace("\\", "\\")) if s in latex else 9999)
-        if first:
-            defined_symbols.add(first[0])
+        defined_symbols = _definition_symbols_from_simple_lhs(lhs)
 
     used = sorted(symbol for symbol in all_symbols if not is_operator_symbol(symbol))
     defined = sorted(symbol for symbol in defined_symbols if not is_operator_symbol(symbol))

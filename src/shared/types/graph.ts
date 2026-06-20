@@ -3,20 +3,25 @@ import type { ConceptNodeRole, ConceptReference, ConceptView } from './conceptGr
 import type { FocusAnnotationKind } from '../../features/graph/focusAnnotations';
 
 export type FormulaExpansionIntent = 'auto' | 'prerequisites' | 'successors';
-export type ConceptRevealGroup = 'prerequisites' | 'introduced';
+export type ConceptRevealGroup = 'prerequisites' | 'successors' | 'introduced';
 
 export interface FormulaNodeData {
   formula: ChapterFormula;
   focused: boolean;
   loading?: boolean;
   role?: 'focus' | 'prerequisite' | 'expanded' | 'successor';
-  mode?: 'concept' | 'guided' | 'explore';
+  mode?: 'concept' | 'formula' | 'explore' | 'conceptMap';
   locked?: boolean;
   lockedReason?: string;
   lockedTargetFormulaId?: string;
   lockedTargetLabel?: string;
   learned?: boolean;
   chapterGraph?: boolean;
+  hasGraphPrerequisites?: boolean;
+  hasGraphSuccessors?: boolean;
+  studyNextFormulaId?: string;
+  studyNextFormulaLabel?: string;
+  studyNextFormulaLocked?: boolean;
   symbolExplanations?: Array<
     FormulaPrerequisite & {
       shortLabel?: string;
@@ -27,6 +32,7 @@ export interface FormulaNodeData {
   >;
   onExpand: (formulaId: string, intent?: FormulaExpansionIntent) => void;
   onLockedTarget?: (formulaId: string) => void;
+  onOpenStudyFormula?: (formulaId: string) => void;
 }
 
 export interface VariableNodeData {
@@ -54,6 +60,16 @@ export interface ConceptNodeData {
   onOpenFormula: (formulaId: string) => void;
 }
 
+export interface ConceptMapNodeData {
+  view: ConceptView;
+  active?: boolean;
+  prerequisiteCount: number;
+  successorCount: number;
+  formulaLabel?: string;
+  onOpenConcept: (conceptId: string) => void;
+  onOpenFormula: (formulaId: string) => void;
+}
+
 export interface DependencyEdgeData {
   via: string;
   crossChapter: boolean;
@@ -64,4 +80,6 @@ export interface DependencyEdgeData {
   active?: boolean;
   dimmed?: boolean;
   labelVisible?: boolean;
+  labelOffsetX?: number;
+  labelOffsetY?: number;
 }

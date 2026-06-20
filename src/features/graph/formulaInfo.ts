@@ -41,6 +41,7 @@ interface BuildFormulaLearningCopyInput {
   formulaId?: string;
   language?: 'en' | 'zh';
   cache?: Record<string, FormulaLearningCopyEntry>;
+  takeawayCache?: Record<string, string>;
   context?: string;
   latex?: string;
   chapterTitle?: string;
@@ -63,6 +64,8 @@ function normalizeLatex(value = ''): string {
 
 function symbolKey(value: string): string {
   return normalizeLatex(value)
+    .replace(/\\(?:mathbf|boldsymbol|bm|mathbb|mathcal|mathit|mathsf|mathrm)\{([^{}]+)\}/g, '$1')
+    .replace(/\\(?:mathbf|boldsymbol|bm|mathbb|mathcal|mathit|mathsf|mathrm)(\\?[A-Za-z])/g, '$1')
     .replace(/_\{([^{}])\}/g, '_$1')
     .replace(/\^\{([^{}])\}/g, '^$1');
 }
@@ -691,9 +694,10 @@ export function polishFormulaLearningCopy(copy: FormulaLearningCopy, input: Buil
       `在${chapterText}中，它概括${formulaTopicPhrase(input)}里需要计算的核心关系。`,
     170,
   );
+  const cachedTakeaway = input.takeawayCache?.[input.formulaId || ''];
   const takeaway = formulaTakeawayText(input, plainMeaning);
   return {
-    plainMeaning,
+    plainMeaning: cachedTakeaway || plainMeaning,
     inThisChapter,
     takeaway,
     nextAction: formulaActionText(input),
@@ -1002,9 +1006,13 @@ function humanizeSubscriptLabel(value = ''): string {
     z: 'z 性状',
     y: 'y 性状',
     x: 'x 性状',
+    w: '适合度',
+    W: '适合度',
     A: '育种值',
     Az: 'z 性状育种值',
     A_z: 'z 性状育种值',
+    Aw: '适合度育种值',
+    A_w: '适合度育种值',
     Ay: 'y 性状育种值',
     A_y: 'y 性状育种值',
   };
@@ -1083,11 +1091,33 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
   const hasOptimumContext = hasAnyContext(context, OPTIMUM_CONTEXT_TERMS);
   const hasMkContext = hasMkFormulaStructure(context) || hasAnyContext(context, ['McDonald', 'Kreitman', 'MK test', 'neutrality index', 'neutral', 'Yule-Simpson', 'silent-site', 'silent site', 'replacement', 'adaptive substitutions', 'substitutions that are adaptive', 'polymorphism', 'divergence']);
   const compactContext = context.replace(/\s+/g, '');
+  const lowerContext = context.toLowerCase();
   const hasSelectionGradientStructure =
     /\\sigma_\{?z\}?\^\{?2\}?/.test(compactContext) ||
     /\\sigma\(?\{?z\}?\)?\^\{?2\}?/.test(compactContext) ||
     /R=.*\\beta/.test(compactContext) ||
     /\\sigma_\{?A\}?\^\{?2\}?\\beta/.test(compactContext);
+
+  if ((normalized === '\\mu^*' || normalized === '\\mu^{*}') && (hasTraitContext || hasFitnessContext || hasQuantGenContext)) {
+    return '选择后加权均值';
+  }
+  if (/^p(?:_\{?([^{}]+)\}?)?\^\{?2\}?$/.test(normalized)) {
+    const subscript = normalized.match(/^p_\{?([^{}]+)\}?/)?.[1] || '';
+    return subscript ? formatIndexedLabel(subscript, '等位基因频率平方项') : '等位基因频率平方项';
+  }
+  if (/^p(?:_\{?([^{}]+)\}?)?\^\{?3\}?$/.test(normalized)) {
+    const subscript = normalized.match(/^p_\{?([^{}]+)\}?/)?.[1] || '';
+    return subscript ? formatIndexedLabel(subscript, '等位基因频率三次项') : '等位基因频率三次项';
+  }
+  if (/^z(?:_\{?([^{}]+)\}?)?\^\{?2\}?$/.test(normalized) && hasTraitContext) {
+    const subscript = normalized.match(/^z_\{?([^{}]+)\}?/)?.[1] || '';
+    return subscript ? formatIndexedLabel(subscript, '性状平方项') : '性状平方项';
+  }
+  if (/^s\^\{?2\}?$/.test(normalized) && (hasFitnessContext || hasTraitContext)) return '选择强度平方项';
+  if (/^s\^\{?3\}?$/.test(normalized) && (hasFitnessContext || hasTraitContext)) return '选择强度三次项';
+  if (normalized === 'O' && /O\s*\(/.test(context)) return '高阶误差项';
+  if (/^E\^\{?\\prime\}?$/.test(normalized) && /environment|环境/.test(lowerContext)) return '后代环境条件';
+  if (/^\\(?:overline|bar)\{W\}\^\{?\\prime\}?$/.test(normalized) && hasFitnessContext) return '选择后平均适合度';
 
   if (/\\widehat\{\\overline\{\\alpha\}\}(?:_\{?[A-Za-z]+\}?)?$/.test(normalized) && hasMkContext) {
     return '适应性替换比例估计量';
@@ -1104,13 +1134,24 @@ function conciseKnownSymbolLabel(symbol: string, context = ''): string {
   const traitMeanSubscript = overlineSubscript(normalized, 'z');
   if (traitMeanSubscript !== null && hasTraitContext) return formatIndexedLabel(traitMeanSubscript, '平均性状值');
 
+  const meanBreedingValueSubscript = overlineSubscript(normalized, 'A');
+  if (meanBreedingValueSubscript !== null) {
+    const label = meanBreedingValueSubscript ? formatIndexedLabel(meanBreedingValueSubscript, '育种值') : '育种值';
+    return `平均${label}`;
+  }
+
+  const breedingValueSubscript = extractSubscript(normalized, 'A');
+  if (breedingValueSubscript) {
+    return formatIndexedLabel(breedingValueSubscript, '育种值');
+  }
+
   const selectionIntensitySubscript = overlineSubscript(normalized, '\\\\imath');
   if (selectionIntensitySubscript !== null) {
     return selectionIntensitySubscript ? `${selectionIntensitySubscript} 的选择强度` : '平均选择强度';
   }
 
   const sigmaSubscript = extractSubscript(normalized, '\\sigma');
-  if (sigmaSubscript && (hasQuantGenContext || hasSelectionGradientStructure)) {
+  if (sigmaSubscript) {
     const label = sigmaComponentLabel(sigmaSubscript, /\^\{?2\}?/.test(normalized));
     if (label) return label;
   }
@@ -1235,6 +1276,7 @@ function cleanSymbolForText(symbol: string): string {
   return symbol
     .replace(/\\(?:widehat|hat|overline|bar|tilde|widetilde|vec)\{([^{}]+)\}/g, '$1')
     .replace(/\\(?:mathbf|boldsymbol|mathrm|mathbb|mathcal|mathit|mathsf)\{([^{}]+)\}/g, '$1')
+    .replace(/\\(?:mathbf|boldsymbol|mathrm|mathbb|mathcal|mathit|mathsf)\s+(\\?[A-Za-z])/g, '$1')
     .replace(/\\operatorname\{([^{}]+)\}/g, '$1')
     .replace(/\\Delta/g, 'Δ')
     .replace(/\\mu/g, 'μ')
@@ -1490,7 +1532,7 @@ function lhsPrimarySymbol(latex = ''): string {
 function isSplitFromWholeSymbol(symbol: string, whole: string): boolean {
   const symbolValue = symbolKey(symbol);
   const wholeValue = symbolKey(whole);
-  return Boolean(/^[A-Z]$/.test(symbolValue) && wholeValue && wholeValue.includes(symbolValue));
+  return Boolean(/^[A-Z]$/.test(symbolValue) && wholeValue && wholeValue !== symbolValue && wholeValue.includes(symbolValue));
 }
 
 function isLikelySymbolCore(value: string): boolean {

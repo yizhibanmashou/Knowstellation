@@ -1,6 +1,6 @@
 export type ConceptRole = 'defined' | 'used';
 
-export type ConceptNodeRole = 'focus' | 'prerequisite' | 'introduced';
+export type ConceptNodeRole = 'focus' | 'prerequisite' | 'successor' | 'introduced';
 
 export interface ConceptEvidence {
   chunk_id: string;
@@ -26,10 +26,18 @@ export interface SymbolConcept {
   evidence: ConceptEvidence[];
   confidence: number;
   extraction_model: string;
+  semantic_concept_id?: string;
+  canonical_concept_id?: string;
+  canonical_concept_name?: string;
+  canonical_sense_id?: string;
+  canonical_merge_basis?: string;
+  review_status?: 'unreviewed' | 'approved' | 'edited' | 'flagged' | 'rejected' | 'ambiguous' | 'needs_revision' | 'reviewed';
+  review_flags?: string[];
 }
 
 export interface ConceptReference {
   concept_id: string;
+  view_id?: string;
   name: string;
   symbol?: string;
   defined_by_formula_id: string | null;
@@ -45,6 +53,10 @@ export interface ConceptReference {
   teaching_move?: string;
   teaching_move_zh?: string;
   source_sentence?: string;
+  canonical_concept_id?: string;
+  canonical_concept_name?: string;
+  review_status?: 'unreviewed' | 'approved' | 'edited' | 'flagged' | 'rejected' | 'ambiguous' | 'needs_revision' | 'reviewed';
+  review_flags?: string[];
   prerequisite_concepts?: ConceptReference[];
   introduced_concepts?: ConceptReference[];
 }
@@ -63,9 +75,24 @@ export interface ConceptViewEdge {
   };
 }
 
+export interface ConceptFormulaReference {
+  formula_id: string;
+  formula_label: string;
+  formula_latex?: string;
+  formula_position?: number;
+  formula_section?: string;
+  formula_subsection?: string;
+  symbol?: string;
+  concept_id?: string;
+  view_id?: string;
+  source_sentence?: string;
+  review_status?: string;
+}
+
 export interface ConceptView {
   chapter_id: string;
   concept_id: string;
+  view_id?: string;
   name: string;
   definition: string;
   definition_zh?: string;
@@ -82,7 +109,13 @@ export interface ConceptView {
   formula_subsection?: string;
   evidence: ConceptEvidence[];
   confidence: number;
+  canonical_concept_id?: string;
+  canonical_concept_name?: string;
+  review_status?: 'unreviewed' | 'approved' | 'edited' | 'flagged' | 'rejected' | 'ambiguous' | 'needs_revision' | 'reviewed';
+  review_flags?: string[];
+  formula_references?: ConceptFormulaReference[];
   prerequisite_concepts: ConceptReference[];
+  successor_concepts?: ConceptReference[];
   introduced_concepts: ConceptReference[];
   edges: ConceptViewEdge[];
 }

@@ -164,7 +164,22 @@ function addFormulaNumberVariants(variants: Set<string>, query: string) {
   addVariant(variants, `公式${raw}`);
 }
 
+function hasExplicitChapterIntentText(query: string): boolean {
+  return (
+    /\b(?:chapter|chap|ch)\s*[a-z]?\d+\b/i.test(query) ||
+    /(?:第\s*[a-z]?\d+\s*章|^[a-z]?\d+\s*章$)/i.test(query)
+  );
+}
+
+function hasExplicitAppendixIntentText(query: string): boolean {
+  return (
+    /\b(?:appendix|app)\s*[a-z]?\d+\b/i.test(query) ||
+    /(?:附录\s*[a-z]?\d+|^[a-z]?\d+\s*附录$)/i.test(query)
+  );
+}
+
 function formulaNumberFromQuery(query: string): string | undefined {
+  if (hasExplicitChapterIntentText(query) || hasExplicitAppendixIntentText(query)) return undefined;
   return query.match(/(?:^|[\s(（]|公式\s*|formula\s*|式\s*)([a-z]?\d+(?:\.(?:\d+[a-z]?)?)?)/i)?.[1]?.toLowerCase();
 }
 
@@ -176,7 +191,9 @@ export function buildSearchQueryPlan(query: string): SearchQueryPlan {
   let hasCjkAlias = false;
 
   addVariant(variants, raw);
-  addFormulaNumberVariants(variants, normalized);
+  if (!hasExplicitChapterIntentText(normalized) && !hasExplicitAppendixIntentText(normalized)) {
+    addFormulaNumberVariants(variants, normalized);
+  }
   addChapterNumberVariants(variants, normalized);
 
   CJK_QUERY_ALIASES.forEach(({ pattern, aliases, skipIf }) => {
@@ -221,17 +238,11 @@ function formulaNumberStartsWith(itemNumber: string, queryNumber: string): boole
 }
 
 function hasExplicitChapterIntent(plan: SearchQueryPlan): boolean {
-  return (
-    /\b(?:chapter|chap|ch)\s*[a-z]?\d+\b/i.test(plan.normalized) ||
-    /(?:第\s*[a-z]?\d+\s*章|^[a-z]?\d+\s*章$)/i.test(plan.normalized)
-  );
+  return hasExplicitChapterIntentText(plan.normalized);
 }
 
 function hasExplicitAppendixIntent(plan: SearchQueryPlan): boolean {
-  return (
-    /\b(?:appendix|app)\s*[a-z]?\d+\b/i.test(plan.normalized) ||
-    /(?:附录\s*[a-z]?\d+|^[a-z]?\d+\s*附录$)/i.test(plan.normalized)
-  );
+  return hasExplicitAppendixIntentText(plan.normalized);
 }
 
 function chapterIntentNumber(plan: SearchQueryPlan): string | null {
@@ -436,6 +447,7 @@ function latexWords(value: string): string {
 
 export function scoreFormulaSearch(item: SearchFormula, plan: SearchQueryPlan): SearchScore | null {
   if (!plan.normalized) return null;
+  if (isChapterSearchQuery(plan)) return null;
   let score: SearchScore | null = null;
 
   const itemNumber = compactSearchText(item.number);
@@ -480,7 +492,7 @@ export function toFormulaSearchResult(item: SearchFormula, match: SearchScore): 
 }
 
 export function scoreConceptSearch(item: ConceptSearchResult, plan: SearchQueryPlan): SearchScore | null {
-  if (!plan.normalized || plan.formulaNumber) return null;
+  if (!plan.normalized || plan.formulaNumber || isChapterSearchQuery(plan)) return null;
   let score: SearchScore | null = null;
 
   const primaryAliases = primaryConceptAliases(item);
@@ -536,7 +548,6 @@ export function toConceptSearchResult(item: ConceptSearchResult, match: SearchSc
 
 export function scoreChapterSearch(chapter: ChapterSearchResult, plan: SearchQueryPlan): SearchScore | null {
   if (!plan.normalized) return null;
-  if (plan.formulaNumber) return null;
   const chapterNumber = String(chapter.chapter_id.match(/\d+$/)?.[0] || chapter.chapter);
   const isAppendix = /^appendix/i.test(chapter.chapter_id);
   const explicitChapterNumber = chapterIntentNumber(plan);

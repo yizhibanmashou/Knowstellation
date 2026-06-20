@@ -2,7 +2,8 @@
  * 故事线配图生成器 — 使用 Gemini 2.0 Flash Image Generation
  *
  * 对每条故事线的每个 step，从 story_zh 提取视觉场景，
- * 调用 Gemini 生成科学插画，存入 public/images/storylines/，
+ * 调用 Gemini 生成科学插画，原图存入 data/storyline-image-sources/，
+ * 随后生成 public/images/storylines/ 的 WebP 发布图，
  * 更新 storylines.json 的 step.image / step.image_caption。
  *
  * 用法：
@@ -15,11 +16,12 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import { optimizeStorylineImages, STORYLINE_IMAGE_SOURCE_DIR } from './optimize-storyline-images.mjs';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const STORYLINES_PATH = resolve(ROOT, 'data/frontend/storylines.json');
 const PUBLIC_STORYLINES_PATH = resolve(ROOT, 'public/data/storylines.json');
-const IMAGE_DIR = resolve(ROOT, 'public/images/storylines');
+const IMAGE_DIR = STORYLINE_IMAGE_SOURCE_DIR;
 
 // Read config from .env.local
 async function getConfig() {
@@ -175,6 +177,10 @@ async function main() {
   const json = JSON.stringify(data, null, 2) + '\n';
   await writeFile(STORYLINES_PATH, json, 'utf8');
   await writeFile(PUBLIC_STORYLINES_PATH, json, 'utf8');
+  if (generated > 0) {
+    const optimized = await optimizeStorylineImages();
+    console.log(`Optimized storyline images: ${(optimized.sourceBytes / 1024 / 1024).toFixed(2)} MB -> ${(optimized.outputBytes / 1024 / 1024).toFixed(2)} MB.`);
+  }
   console.log(`\nDone. ${generated} images generated.`);
   if (generated === 0 && !values.step) {
     console.log('All steps already have images. Use --step N to regenerate a specific one.');

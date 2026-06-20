@@ -1,7 +1,7 @@
 {
   "chapter_id": "chapter4",
   "version": 1,
-  "generated_at": "2026-05-25T07:34:53Z",
+  "generated_at": "2026-06-19T10:05:23Z",
   "formulas": [
     {
       "id": "formula_4.1",
@@ -11,17 +11,16 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Nucleotide Diversity",
       "position": 0,
+      "source_position": 0,
       "depth": 0,
       "context_text": "ij} $ be the number of site-specific differences between observed sequences i and j, and L be the number of sites per sequence, the average fraction of pairwise differences between the sampled sites, $$ \\widehat{\\theta}_{\\pi}=\\frac{2}{n(n-1)}\\sum_{i=1}^{n}\\sum_{j>i}^{n}k_{ij}/L $$ (4.1) yields a heterozygosity-based estimate of $ \\theta = 4N_{e}u $ (Tajima 1983). This formulation, frequently called the Tajima estimator, is often denoted by $ \\pi $ in the literature.",
       "symbols_used": [
         "L",
-        "\\pi",
         "\\widehat{\\theta}_{\\pi}",
         "k_{ij}",
         "n"
       ],
       "symbols_defined": [
-        "\\pi",
         "\\widehat{\\theta}_{\\pi}"
       ]
     },
@@ -33,20 +32,18 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Nucleotide Diversity",
       "position": 1,
+      "source_position": 1,
       "depth": 1,
       "context_text": "Summing over these two sources of variance, for sites in stochastic drift-mutation equilibrium, the expected total variance of heterozygosity-based estimates of $ \\theta $ is $$ \\sigma^{2}(\\widehat{\\theta}_{\\pi})\\simeq\\frac{\\theta}{3(n-1)}\\left(\\frac{2(n^{2}+n+3)\\theta}{3n}+\\frac{n+1}{L}\\right) $$ (4.2)",
       "symbols_used": [
         "L",
-        "\\pi",
         "\\sigma^{2}(\\widehat{\\theta}_{\\pi})",
         "\\theta",
         "\\widehat{\\theta}_{\\pi}",
         "n",
         "n^{2}"
       ],
-      "symbols_defined": [
-        "\\sigma^{2}(\\widehat{\\theta}_{\\pi})"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.3a",
@@ -56,7 +53,8 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Number of Segregating Sites",
       "position": 2,
-      "depth": 2,
+      "source_position": 2,
+      "depth": 0,
       "context_text": "number of individuals assayed. Watterson (1975) showed that under the assumptions of neutrality and drift-mutation equilibrium, an unbiased estimator of the per-site parameter $ \\theta = 4N_{e}u $ is $$ \\widehat{\\theta}_{S}=S/(L a_{n}) $$ (4.3a) where $$ a_{n}=\\sum_{j=1}^{n-1}1/j $$ (4.3b)",
       "symbols_used": [
         "L",
@@ -76,7 +74,8 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Number of Segregating Sites",
       "position": 3,
-      "depth": 1,
+      "source_position": 3,
+      "depth": 0,
       "context_text": "ed that under the assumptions of neutrality and drift-mutation equilibrium, an unbiased estimator of the per-site parameter $ \\theta = 4N_{e}u $ is $$ \\widehat{\\theta}_{S}=S/(L a_{n}) $$ (4.3a) where $$ a_{n}=\\sum_{j=1}^{n-1}1/j $$ (4.3b)",
       "symbols_used": [
         "a_{n}",
@@ -94,7 +93,8 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Number of Segregating Sites",
       "position": 4,
-      "depth": 3,
+      "source_position": 4,
+      "depth": 2,
       "context_text": "The sampling variance for the Watterson estimator, analogous to Equation 4.2 and again under the assumptions of neutrality and equilibrium, is $$ \\sigma^{2}(\\widehat{\\theta}_{S})\\simeq\\frac{\\theta}{a_{n}}\\left(\\frac{\\theta b_{n}}{a_{n}}+\\frac{1}{L}\\right) $$ (4.4a) where $$ b_{n}=\\sum_{j=1}^{n-1}1/j^{2} $$ (4.4b)",
       "symbols_used": [
         "L",
@@ -104,9 +104,7 @@
         "a_{n}",
         "b_{n}"
       ],
-      "symbols_defined": [
-        "\\sigma^{2}(\\widehat{\\theta}_{S})"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.4b",
@@ -116,7 +114,8 @@
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Number of Segregating Sites",
       "position": 5,
-      "depth": 1,
+      "source_position": 5,
+      "depth": 0,
       "context_text": "4.2 and again under the assumptions of neutrality and equilibrium, is $$ \\sigma^{2}(\\widehat{\\theta}_{S})\\simeq\\frac{\\theta}{a_{n}}\\left(\\frac{\\theta b_{n}}{a_{n}}+\\frac{1}{L}\\right) $$ (4.4a) where $$ b_{n}=\\sum_{j=1}^{n-1}1/j^{2} $$ (4.4b)",
       "symbols_used": [
         "b_{n}",
@@ -133,8 +132,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Alternative Approaches",
-      "position": 9,
-      "depth": 2,
+      "position": 6,
+      "source_position": 9,
+      "depth": 1,
       "context_text": "knows with certainty the genealogical relationships of the sequences and the numbers of mutations and generations on each branch of the genealogy. The expected sampling variance of this estimator is $$ \\sigma^{2}(\\widehat{\\theta}_{ML})=\\frac{\\theta}{a_{n}}\\left(\\frac{\\theta a_{n}}{n-1}+\\frac{1}{L}\\right) $$ (4.5)",
       "symbols_used": [
         "L",
@@ -145,8 +145,7 @@
         "n"
       ],
       "symbols_defined": [
-        "\\sigma^{2}(\\widehat{\\theta}_{ML})",
-        "\\widehat{\\theta}_{ML}"
+        "\\sigma^{2}"
       ]
     },
     {
@@ -156,8 +155,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Alternative Approaches",
-      "position": 10,
-      "depth": 3,
+      "position": 7,
+      "source_position": 10,
+      "depth": 0,
       "context_text": "The simplest estimate of $ \\theta $, based only on singletons $ (j = 1) $, is then $$ \\widehat{\\theta_{1}}=S_{1}/L $$ (4.6a) which is also equivalent to the number of mutations (per site) on the external branches of a gene genealogy (Fu and Li 1993b). Such an estimator is attractive for two reasons. First, the singletons i",
       "symbols_used": [
         "L",
@@ -165,10 +165,7 @@
         "\\theta_{1}",
         "\\widehat{\\theta_{1}}"
       ],
-      "symbols_defined": [
-        "\\theta_{1}",
-        "\\widehat{\\theta_{1}}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.6b",
@@ -177,8 +174,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF MUTATION AND GENETIC DRIFT",
       "subsection": "Alternative Approaches",
-      "position": 11,
-      "depth": 2,
+      "position": 8,
+      "source_position": 11,
+      "depth": 1,
       "context_text": "frequencies are expected to most closely reflect the pattern expected under neutrality even when such mutations are nonneutral (Messer 2009). The sampling variance of the singleton-based estimator is $$ \\sigma^{2}(\\widehat{\\theta_{1}})=\\frac{\\theta}{n}\\left(\\frac{n-1}{L}+\\frac{\\theta[2a_{n}(n-1)-1]}{n}\\right) $$ (4.6b)",
       "symbols_used": [
         "L",
@@ -189,9 +187,7 @@
         "n"
       ],
       "symbols_defined": [
-        "\\sigma^{2}(\\widehat{\\theta_{1}})",
-        "\\theta_{1}",
-        "\\widehat{\\theta_{1}}"
+        "\\sigma^{2}"
       ]
     },
     {
@@ -201,8 +197,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Number of Recombinational Events in a Sample of Alleles",
-      "position": 15,
-      "depth": 2,
+      "position": 9,
+      "source_position": 15,
+      "depth": 1,
       "context_text": "combination events, $ R $, in a sample of $ n $ sequences is equal to $ \\rho_L a_n $, where $ a_n $ is given by Equation 4.3b (Hudson and Kaplan 1985). Thus, a potential estimator for $ \\rho_{L} $ is $$ \\widehat{\\rho}_{L}=\\widehat{R}/a_{n} $$ (4.7) where $ \\widehat{R} $ is the estimated number of recombinational events that have occurred between the maximum span of polymorphic sites in the history of the sequences within the sample. Note the si",
       "symbols_used": [
         "\\widehat{R}",
@@ -220,17 +217,16 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Number of Recombinational Events in a Sample of Alleles",
-      "position": 16,
-      "depth": 2,
+      "position": 10,
+      "source_position": 16,
+      "depth": 0,
       "context_text": "mate of the actual value R. Assuming conditions of drift-mutation equilibrium, Stephens (1986) found approximate lower and upper bounds to $ d_{r} $ giving rise to observable, nonparental haplotypes, $$ d_{r,\\min}=1-[2\\ln(1+\\Theta)]/\\Theta+[1/(1+\\Theta)] $$ (4.8a) $$ d_{r,\\mathrm{max}}=1-\\left[2(1-e^{-\\Theta})\\right]/\\Theta+e^{-\\Theta} $$ (4.8b) where $ \\Theta = 4N_{e}uL $ is the population mutation rate for the stretch of DNA being surveyed. These two limits",
       "symbols_used": [
         "\\Theta",
-        "d_{r,\\min}",
-        "r"
+        "d_{r,\\min}"
       ],
       "symbols_defined": [
-        "d_{r,\\min}",
-        "r"
+        "d_{r,\\min}"
       ]
     },
     {
@@ -240,30 +236,17 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Number of Recombinational Events in a Sample of Alleles",
-      "position": 17,
-      "depth": 1,
+      "position": 11,
+      "source_position": 17,
+      "depth": 0,
       "context_text": "equilibrium, Stephens (1986) found approximate lower and upper bounds to $ d_{r} $ giving rise to observable, nonparental haplotypes, $$ d_{r,\\min}=1-[2\\ln(1+\\Theta)]/\\Theta+[1/(1+\\Theta)] $$ (4.8a) $$ d_{r,\\mathrm{max}}=1-\\left[2(1-e^{-\\Theta})\\right]/\\Theta+e^{-\\Theta} $$ (4.8b) where $ \\Theta = 4N_{e}uL $ is the population mutation rate for the stretch of DNA being surveyed. These two limits are respectively approached as $ c \\to 0.0 $ (complete linkage) and $ c \\to 0.5 $ (",
       "symbols_used": [
         "\\Theta",
-        "\\mathrm{a}",
-        "\\mathrm{m}",
-        "\\mathrm{x}",
-        "a",
-        "d",
-        "e^{-\\Theta}",
-        "m",
-        "r",
-        "x"
+        "d_{r,\\mathrm{max}}",
+        "e^{-\\Theta}"
       ],
       "symbols_defined": [
-        "\\mathrm{a}",
-        "\\mathrm{m}",
-        "\\mathrm{x}",
-        "a",
-        "d",
-        "m",
-        "r",
-        "x"
+        "d_{r,\\mathrm{max}}"
       ]
     },
     {
@@ -273,7 +256,8 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Number of Recombinational Events in a Sample of Alleles",
-      "position": 18,
+      "position": 12,
+      "source_position": 18,
       "depth": 0,
       "context_text": "o Lefebvre and Labuda 2008). Letting $ p_i $ denote the frequency of the $ i $th haplotype in a sample, an estimator for the fraction of detectable (but not necessarily unique) recombinant alleles is $$ \\widehat{d}_{r}=\\sum_{i=1}^{L}\\sum_{j>i}^{L}2p_{i}p_{j}L_{\\max,ij}/L $$ (4.9) where $ L_{\\max,ij} $ is the distance between the maximally separated heterozygous sites in the ijth comparison. Through simulations, one can establish the fraction of potentially informative recombi",
       "symbols_used": [
@@ -293,8 +277,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Number of Recombinational Events in a Sample of Alleles",
-      "position": 19,
-      "depth": 3,
+      "position": 13,
+      "source_position": 19,
+      "depth": 2,
       "context_text": "idehat{d}_r' $, the fraction of recombination events that lead to uniquely observable recombinants. Recalling Equation 4.7, a method-of-moments estimator for the population recombination rate is then $$ \\widehat{\\rho}_{L}=\\widehat{R}_{\\min}/(\\widehat{d}_{r}^{\\prime}a_{n}) $$ (4.10)",
       "symbols_used": [
         "\\widehat{R}_{\\min}",
@@ -313,7 +298,8 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Other Approaches for Narrow Genomic Intervals",
-      "position": 20,
+      "position": 14,
+      "source_position": 20,
       "depth": 0,
       "context_text": "requires an estimate of the average number of nucleotide differences between random sequences of length $ L $, $ \\Theta_\\pi = \\theta_\\pi L $, as well as the observed variance of pairwise divergence, $$ \\begin{align*}\\widehat{\\sigma}_k^2={2\\over n(n-1)}\\sum_{i=1}^n\\sum_{j>i}^n(k_{ij}-\\Theta_\\pi)^2\\end{align*} $$ (4.11) where $ k_{ij} $ is the number of sites at which sequences i and j differ, and n is the number of chromosomes scored in the sample. Wakeley's (1997) Equation 15 allows one to estimate $ \\rho_L $ as a",
       "symbols_used": [
@@ -334,8 +320,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 22,
-      "depth": 2,
+      "position": 15,
+      "source_position": 22,
+      "depth": 0,
       "context_text": "ence times. For any distance L (in nucleotides) between sites, $ \\Delta L $ is defined as the deviation of the frequency of pairs of nucleotide sites with mixed zygosities from the random expectation $$ \\Delta_{L}=1-\\frac{H_{1d}}{2\\pi(1-\\pi)} $$ (4.12) with $ H_{1d} $ denoting the fraction of pairs of sites at distance L containing one heterozygote and one homozygote, and $ 2\\pi(1-\\pi) $ being the expected fraction of such mixed pairs under a rando",
       "symbols_used": [
         "H_{1d}",
@@ -354,8 +341,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 23,
-      "depth": 2,
+      "position": 16,
+      "source_position": 23,
+      "depth": 1,
       "context_text": "re largely driven by mutation, recombination, and genetic drift, and the population is in equilibrium, by using expressions from Ohta and Kimura (1969b) for the two-allele model, it can be shown that $$ E(\\Delta_{L})\\simeq\\frac{\\theta(1+2\\theta)(18+\\rho_{L})}{2(1+\\theta)A} $$ (4.13a) where $$ A=9+6.5\\rho_{L}+0.5\\rho_{L}^{2}+19\\theta\\rho_{L}+12\\theta^{2}\\rho_{L}+\\theta\\rho_{L}^{2}+54\\theta+80\\theta^{2}+32\\theta^{3} $$ (4.13b)",
       "symbols_used": [
         "A",
@@ -363,9 +351,7 @@
         "\\rho_{L}",
         "\\theta"
       ],
-      "symbols_defined": [
-        "\\Delta_{L}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.13b",
@@ -374,8 +360,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 24,
-      "depth": 1,
+      "position": 17,
+      "source_position": 24,
+      "depth": 0,
       "context_text": "quilibrium, by using expressions from Ohta and Kimura (1969b) for the two-allele model, it can be shown that $$ E(\\Delta_{L})\\simeq\\frac{\\theta(1+2\\theta)(18+\\rho_{L})}{2(1+\\theta)A} $$ (4.13a) where $$ A=9+6.5\\rho_{L}+0.5\\rho_{L}^{2}+19\\theta\\rho_{L}+12\\theta^{2}\\rho_{L}+\\theta\\rho_{L}^{2}+54\\theta+80\\theta^{2}+32\\theta^{3} $$ (4.13b)",
       "symbols_used": [
         "A",
@@ -396,16 +383,15 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 25,
+      "position": 18,
+      "source_position": 25,
       "depth": 0,
       "context_text": "_L $. However, provided $ \\theta \\ll 1 $ (which is always the case) and $ \\rho_L \\gg \\theta $ (which, as shown below, is generally the case for physically distant sites), Equation 2.29a simplifies to $$ r_{L}^{2}\\simeq\\frac{10+\\rho_{L}}{(11+\\rho_{L})(2+\\rho_{L})}\\simeq\\frac{1}{2+\\rho_{L}} $$ (4.14)",
       "symbols_used": [
         "\\rho_{L}",
         "r_{L}^{2}"
       ],
-      "symbols_defined": [
-        "r_{L}^{2}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.15",
@@ -414,7 +400,8 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 26,
+      "position": 19,
+      "source_position": 26,
       "depth": 1,
       "context_text": "ting an expected contribution $ 1/n $ to $ r_{L}^{2} $ resulting from finite sample size (Weir and Hill 1980), and rearranging Equation 4.14, leads to the estimator for sites separated by distance L, $$ \\widehat{\\rho}_{L}=\\frac{1}{\\widehat{r_{L}^{2}}-\\left(1/n\\right)}-2 $$ (4.15)",
       "symbols_used": [
@@ -434,8 +421,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 27,
-      "depth": 3,
+      "position": 20,
+      "source_position": 27,
+      "depth": 0,
       "context_text": "otal conversion rate per site is $ (1 - x)c_0T(1 - e^{-L/T}) $ (Langley et al. 2000; Frisse et al. 2001; Lynch et al. 2014). The total recombination rate between sites separated by distance L is then $$ c_{L}\\simeq c_{0}[x L+(1-x)T(1-e^{-L/T})] $$ (4.16a)",
       "symbols_used": [
         "L",
@@ -445,9 +433,7 @@
         "e^{-L/T}",
         "x"
       ],
-      "symbols_defined": [
-        "c_{L}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.16b",
@@ -456,17 +442,16 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 28,
-      "depth": 2,
+      "position": 21,
+      "source_position": 28,
+      "depth": 0,
       "context_text": "For $ L \\ll T $, $$ c_{L}\\simeq c_{0}L $$ (4.16b) whereas for $ L \\gg T $, $$ c_{L}\\simeq c_{0}L x $$ (4.16c)",
       "symbols_used": [
         "L",
         "c_{0}",
         "c_{L}"
       ],
-      "symbols_defined": [
-        "c_{L}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.16c",
@@ -475,8 +460,9 @@
       "chapter_id": "chapter4",
       "section": "RELATIVE POWER OF RECOMBINATION AND GENETIC DRIFT",
       "subsection": "Large-scale Analysis",
-      "position": 29,
-      "depth": 1,
+      "position": 22,
+      "source_position": 29,
+      "depth": 0,
       "context_text": "For $ L \\ll T $, $$ c_{L}\\simeq c_{0}L $$ (4.16b) whereas for $ L \\gg T $, $$ c_{L}\\simeq c_{0}L x $$ (4.16c)",
       "symbols_used": [
         "L",
@@ -484,9 +470,7 @@
         "c_{L}",
         "x"
       ],
-      "symbols_defined": [
-        "c_{L}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.17a",
@@ -495,8 +479,9 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 32,
-      "depth": 2,
+      "position": 23,
+      "source_position": 32,
+      "depth": 0,
       "context_text": "at by equating the observed and expected variance of allele-frequency change and rearranging, the effective population size can be estimated from observations over two consecutive generations (t = 1) $$ \\widehat{N}_{e}=\\frac{1}{2\\widehat{F}_{1}-\\left(1/n_{0}\\right)-\\left(1/n_{1}\\right)} $$ (4.17a) where $$ \\widehat{F_{1}}=\\frac{(\\widehat{p_{0}}-\\widehat{p_{1}})^{2}}{\\widehat{p_{0}}(1-\\widehat{p_{0}})} $$ (4.17b) is a measure of the standardized variance of allele-frequency change. Provided $ t",
       "symbols_used": [
         "\\widehat{F}_{1}",
@@ -515,8 +500,9 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 33,
-      "depth": 1,
+      "position": 24,
+      "source_position": 33,
+      "depth": 0,
       "context_text": "ve population size can be estimated from observations over two consecutive generations (t = 1) $$ \\widehat{N}_{e}=\\frac{1}{2\\widehat{F}_{1}-\\left(1/n_{0}\\right)-\\left(1/n_{1}\\right)} $$ (4.17a) where $$ \\widehat{F_{1}}=\\frac{(\\widehat{p_{0}}-\\widehat{p_{1}})^{2}}{\\widehat{p_{0}}(1-\\widehat{p_{0}})} $$ (4.17b) is a measure of the standardized variance of allele-frequency change. Provided $ t/(2N_e) \\ll 1 $, the same expression applies when samples are made $ t $ generations apart, if $ t $ is substituted f",
       "symbols_used": [
         "F_{1}",
@@ -526,10 +512,7 @@
         "p_{0}",
         "p_{1}"
       ],
-      "symbols_defined": [
-        "F_{1}",
-        "\\widehat{F_{1}}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.18a",
@@ -538,8 +521,9 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 34,
-      "depth": 3,
+      "position": 25,
+      "source_position": 34,
+      "depth": 1,
       "context_text": "s undefined if $ \\widehat{p}_0 = 0 $, and that Equations 4.17a and 4.17b do not immediately allow for the incorporation of multiple alleles. An alternative estimator that deals with these problems is $$ \\widehat{N}_{e}=\\frac{t-2}{2\\widehat{F}-\\left(1/n_{0}\\right)-\\left(1/n_{1}\\right)} $$ (4.18a) where $ \\widehat{F} $ is calculated by either $$ \\widehat{F}_{2}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{(\\widehat{p}_{0i}-\\widehat{p}_{1i})^{2}}{\\left[(\\widehat{p}_{0i}+\\widehat{p}_{1i})/2\\right]-\\widehat{p}",
       "symbols_used": [
         "\\widehat{F}",
@@ -559,8 +543,9 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 35,
-      "depth": 2,
+      "position": 26,
+      "source_position": 35,
+      "depth": 0,
       "context_text": "alternative estimator that deals with these problems is $$ \\widehat{N}_{e}=\\frac{t-2}{2\\widehat{F}-\\left(1/n_{0}\\right)-\\left(1/n_{1}\\right)} $$ (4.18a) where $ \\widehat{F} $ is calculated by either $$ \\widehat{F}_{2}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{(\\widehat{p}_{0i}-\\widehat{p}_{1i})^{2}}{\\left[(\\widehat{p}_{0i}+\\widehat{p}_{1i})/2\\right]-\\widehat{p}_{0i}\\widehat{p}_{1i}} $$ (4.18b)",
       "symbols_used": [
         "\\widehat{F}_{2}",
@@ -580,8 +565,9 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 36,
-      "depth": 1,
+      "position": 27,
+      "source_position": 36,
+      "depth": 0,
       "context_text": "(Nei and Tajima 1981b), or $$ \\widehat{F}_{3}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{\\left(\\widehat{p}_{0i}-\\widehat{p}_{1i}\\right)^{2}}{\\left(\\widehat{p}_{0i}+\\widehat{p}_{1i}\\right)/2} $$ (4.18c)",
       "symbols_used": [
         "\\widehat{F}_{3}",
@@ -601,29 +587,25 @@
       "chapter_id": "chapter4",
       "section": "EFFECTIVE POPULATION SIZE",
       "subsection": "Temporal Change in Allele Frequencies",
-      "position": 37,
-      "depth": 4,
+      "position": 28,
+      "source_position": 37,
+      "depth": 2,
       "context_text": "so the utility of the overall approach becomes diminishingly small in populations with large effective sizes. Assuming equal sample sizes for each locus, the sampling variance of $ \\widehat{N}_e $ is $$ \\mathrm{Var}(\\widehat{N}_{e})\\simeq\\left(\\frac{8N_{e}^{4}}{t^{2}M}\\right)\\left(\\frac{1}{4N_{e}^{2}}+\\frac{1}{N_{e}t\\tilde{n}}+\\frac{1}{t^{2}\\tilde{n}^{2}}\\right) $$ (4.19) where M denotes the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983). In general, M, t, and $ \\tilde",
       "symbols_used": [
         "M",
         "N_{e}",
         "N_{e}^{2}",
         "N_{e}^{4}",
-        "V",
         "\\mathrm{V}",
         "\\mathrm{a}",
         "\\mathrm{r}",
         "\\tilde{n}",
         "\\tilde{n}^{2}",
         "\\widehat{N}_{e}",
-        "a",
-        "r",
         "t",
         "t^{2}"
       ],
-      "symbols_defined": [
-        "a"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.20a",
@@ -632,8 +614,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Divergence Analysis",
-      "position": 39,
-      "depth": 2,
+      "position": 29,
+      "source_position": 39,
+      "depth": 0,
       "context_text": "of sites surveyed, L the number of lines, T the average number of generations per line, and m the number of observed mutations summed over lines and sites, the mutation rate per site is estimated as $$ \\widehat{u}=m/(n L T) $$ (4.20a) with sampling variance of $$ \\sigma^{2}(\\widehat{u})\\simeq\\widehat{u}/(n L T) $$ (4.20b)",
       "symbols_used": [
         "L",
@@ -653,7 +636,8 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Divergence Analysis",
-      "position": 40,
+      "position": 30,
+      "source_position": 40,
       "depth": 1,
       "context_text": "r of generations per line, and m the number of observed mutations summed over lines and sites, the mutation rate per site is estimated as $$ \\widehat{u}=m/(n L T) $$ (4.20a) with sampling variance of $$ \\sigma^{2}(\\widehat{u})\\simeq\\widehat{u}/(n L T) $$ (4.20b)",
       "symbols_used": [
@@ -663,9 +647,7 @@
         "\\widehat{u}",
         "n"
       ],
-      "symbols_defined": [
-        "\\sigma^{2}(\\widehat{u})"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.21",
@@ -674,7 +656,8 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Short-term Enrichment",
-      "position": 41,
+      "position": 31,
+      "source_position": 41,
       "depth": 0,
       "context_text": "ely free of mutations $ (p_{0}) $. Assuming that the number of mutational events per culture is Poisson distributed with expectation m, the expected frequency of mutation-free cultures is then simply $$ E(p_{0})=e^{-m} $$ (4.21)",
       "symbols_used": [
@@ -693,16 +676,16 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Short-term Enrichment",
-      "position": 42,
-      "depth": 5,
+      "position": 32,
+      "source_position": 42,
+      "depth": 0,
       "context_text": "ntical for cells that are mutant and nonmutant). at the marker locus), and $ u_{o} $ be the rate of mutation to an observable phenotype per cell division, the expected frequency after t time units is $$ f_{t}=f_{0}+(1-f_{0})(1-e^{-u_{o}rt}) $$ (4.22a)",
       "symbols_used": [
         "e",
+        "e^{-u_{o}rt}",
         "f_{0}",
         "f_{t}",
-        "r",
-        "t",
-        "u_{o}"
+        "u"
       ],
       "symbols_defined": [
         "f_{t}"
@@ -715,8 +698,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Short-term Enrichment",
-      "position": 43,
-      "depth": 4,
+      "position": 33,
+      "source_position": 43,
+      "depth": 1,
       "context_text": "and then survey the frequency of mutants at the end point of each culture. Rearrangement of the preceding expression yields the relevant point estimator of the mutation rate to observable phenotypes, $$ \\widehat{u}_{o}=-\\frac{\\ln[(1-f_{0})/(1-f_{t})]}{rt} $$ (4.22b) Because $ N_t = N_0 e^{rt} $ under exponential growth, where $ N_0 $ and $ N_t $ are the total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0.1,",
       "symbols_used": [
         "\\widehat{u}_{o}",
@@ -736,8 +720,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Short-term Enrichment",
-      "position": 44,
-      "depth": 3,
+      "position": 34,
+      "source_position": 44,
+      "depth": 2,
       "context_text": "nd $ N_t $ are the total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0.1, so that $ \\ln(1 - f) \\simeq -f $, Equation 4.22b further simplifies to $$ \\widehat{u}_{o}\\simeq\\frac{f_{t}-f_{0}}{\\ln(N_{t}/N_{0})} $$ (4.22c) which is simply the rate of accumulation of observable mutations per cell division.",
       "symbols_used": [
         "N_{0}",
@@ -746,9 +731,7 @@
         "f_{0}",
         "f_{t}"
       ],
-      "symbols_defined": [
-        "\\widehat{u}_{o}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.22d",
@@ -757,17 +740,16 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Short-term Enrichment",
-      "position": 45,
-      "depth": 2,
+      "position": 35,
+      "source_position": 45,
+      "depth": 3,
       "context_text": "expected to contain a single mutant, which implies $ u_o N = 1 $, $ f_0 = u_o $ and $ N_0 = 1/u_o $ can be used as an arbitrary starting point, which, after substitution into Equation 4.22c, leads to $$ \\widehat{u}_{o}\\simeq\\frac{f_{t}-\\widehat{u}_{o}}{\\ln(\\widehat{u}_{o}N_{t})} $$ (4.22d)",
       "symbols_used": [
         "N_{t}",
         "\\widehat{u}_{o}",
         "f_{t}"
       ],
-      "symbols_defined": [
-        "\\widehat{u}_{o}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.22e",
@@ -776,8 +758,9 @@
       "chapter_id": "chapter4",
       "section": "The Nonadaptive Forces of Evolution: Introduction",
       "subsection": "Short-term Enrichment",
-      "position": 46,
-      "depth": 1,
+      "position": 36,
+      "source_position": 46,
+      "depth": 2,
       "context_text": "ch mutations are detectable (generally assumed to be the length of the coding region, which could be an overestimate), an estimator for the base-substitution mutation rate per nucleotide site is then $$ \\widehat{u}=\\frac{\\widehat{u}_{o}}{\\widehat{d}n} $$ (4.22e)",
       "symbols_used": [
         "\\widehat{d}",
@@ -795,8 +778,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Evolution of the Mutation Rate",
-      "position": 47,
-      "depth": 3,
+      "position": 37,
+      "source_position": 47,
+      "depth": 0,
       "context_text": "$ per gene with a reduction in fitness equal to $ h_s $ per induced mutation, the selective disadvantage of the mutator allele induced by linkage disequilibrium with this particular fitness locus is $$ s_{d}\\simeq\\frac{h s\\cdot\\Delta u}{1-(1-h s)(1-c)} $$ (4.23a) assuming $ \\Delta u \\ll h s $ (Kimura 1967; Dawson 1999). An intuitive feeling for the structure of this equation can be obtained by noting that $ h s $ is the rate of removal of a deleterious mutati",
       "symbols_used": [
         "\\Delta",
@@ -805,9 +789,7 @@
         "s_{d}",
         "u"
       ],
-      "symbols_defined": [
-        "s_{d}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.23b",
@@ -816,8 +798,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Evolution of the Mutation Rate",
-      "position": 48,
-      "depth": 2,
+      "position": 38,
+      "source_position": 48,
+      "depth": 0,
       "context_text": "so the selective disadvantage at equilibrium is simply the ratio of the rates of gain and loss of associated fitness load per generation. For unlinked loci ( $ c = 0.5 $), this expression reduces to $$ s_{d}\\simeq\\frac{2h s\\cdot\\Delta u}{1+h s} $$ (4.23b) whereas in the absence of recombination $ (c = 0.0) $, $$ s_{d}=\\Delta u $$ (4.23c)",
       "symbols_used": [
         "\\Delta",
@@ -825,9 +808,7 @@
         "s_{d}",
         "u"
       ],
-      "symbols_defined": [
-        "s_{d}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.23c",
@@ -836,8 +817,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Evolution of the Mutation Rate",
-      "position": 49,
-      "depth": 1,
+      "position": 39,
+      "source_position": 49,
+      "depth": 0,
       "context_text": "tness load per generation. For unlinked loci ( $ c = 0.5 $), this expression reduces to $$ s_{d}\\simeq\\frac{2h s\\cdot\\Delta u}{1+h s} $$ (4.23b) whereas in the absence of recombination $ (c = 0.0) $, $$ s_{d}=\\Delta u $$ (4.23c)",
       "symbols_used": [
         "\\Delta",
@@ -855,8 +837,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Evolution of the Mutation Rate",
-      "position": 50,
-      "depth": 2,
+      "position": 40,
+      "source_position": 50,
+      "depth": 0,
       "context_text": "in the deleterious mutation rate of $ \\Delta U $, after accounting for the spatial distribution of random mutations, the total induced selection coefficient against the mutator allele is found to be $$ s_{d,T}\\simeq\\frac{2h s\\cdot\\Delta U(L-1+\\phi)}{L(1+h s)} $$ (4.24a) where $$ \\phi=1+\\ln\\left(\\frac{1+hs-(1-hs)e^{-1}}{2hs}\\right) $$ (4.24b) is the approximate elevation in the average induced fitness effect of mutations on the mutator-bearing chromosome relative to",
       "symbols_used": [
         "L",
@@ -868,9 +851,7 @@
         "h",
         "s_{d,T}"
       ],
-      "symbols_defined": [
-        "s_{d,T}"
-      ]
+      "symbols_defined": []
     },
     {
       "id": "formula_4.24b",
@@ -879,8 +860,9 @@
       "chapter_id": "chapter4",
       "section": "MUTATION RATE",
       "subsection": "Evolution of the Mutation Rate",
-      "position": 51,
-      "depth": 1,
+      "position": 41,
+      "source_position": 51,
+      "depth": 0,
       "context_text": "atial distribution of random mutations, the total induced selection coefficient against the mutator allele is found to be $$ s_{d,T}\\simeq\\frac{2h s\\cdot\\Delta U(L-1+\\phi)}{L(1+h s)} $$ (4.24a) where $$ \\phi=1+\\ln\\left(\\frac{1+hs-(1-hs)e^{-1}}{2hs}\\right) $$ (4.24b) is the approximate elevation in the average induced fitness effect of mutations on the mutator-bearing chromosome relative to that on the other L − 1 unlinked chromosomes (Lynch 2008b). For 0.001 < h",
       "symbols_used": [
         "\\phi",
@@ -914,6 +896,7 @@
           "canonical_symbol": "\\hat{\\theta}_\\pi",
           "symbol_role": "symbol",
           "sense_id": "formula_4.1::\\widehat{\\theta}_{\\pi}",
+          "canonical_sense_id": "chapter4::nucleotide-diversity::\\hat{\\theta}_\\pi",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -921,45 +904,11 @@
     },
     {
       "dependent_id": "formula_4.3a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.3b",
-          "via_symbol": "Equation 4.3b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.3a belongs to the same numbered group as formula_4.3b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.3",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.3b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.3a",
-          "via_symbol": "Equation 4.3a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.3b belongs to the same numbered group as formula_4.3a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.3",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.4a",
@@ -977,24 +926,9 @@
           "canonical_symbol": "4.2",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.4b",
-          "via_symbol": "Equation 4.4b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.4a belongs to the same numbered group as formula_4.4b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.4",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
         },
         {
           "type": "formula",
@@ -1009,6 +943,7 @@
           "canonical_symbol": "\\hat{\\theta}_S",
           "symbol_role": "symbol",
           "sense_id": "formula_4.3a::\\widehat{\\theta}_{S}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::\\hat{\\theta}_S",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         },
@@ -1025,6 +960,7 @@
           "canonical_symbol": "a_n",
           "symbol_role": "parameter",
           "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1032,24 +968,7 @@
     },
     {
       "dependent_id": "formula_4.4b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.4a",
-          "via_symbol": "Equation 4.4a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.4b belongs to the same numbered group as formula_4.4a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.4",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.5",
@@ -1067,6 +986,7 @@
           "canonical_symbol": "a_n",
           "symbol_role": "parameter",
           "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1074,44 +994,11 @@
     },
     {
       "dependent_id": "formula_4.6a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.6b",
-          "via_symbol": "Equation 4.6b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.6a belongs to the same numbered group as formula_4.6b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.6",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.6b",
       "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.6a",
-          "via_symbol": "Equation 4.6a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.6b belongs to the same numbered group as formula_4.6a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.6",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
         {
           "type": "formula",
           "target_id": "formula_4.3b",
@@ -1125,6 +1012,7 @@
           "canonical_symbol": "a_n",
           "symbol_role": "parameter",
           "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1136,18 +1024,19 @@
         {
           "type": "formula",
           "target_id": "formula_4.3b",
-          "via_symbol": "Equation 4.3b",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 4.3b",
+          "via_symbol": "a_{n}",
+          "relation": "defines_symbol",
+          "reason": "a_{n} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "4.3b",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "a_n",
+          "symbol_role": "parameter",
+          "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
           "type": "variable_definition",
@@ -1162,8 +1051,9 @@
           "canonical_symbol": "\\hat{R}",
           "symbol_role": "symbol",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
+          "review_note": "nearby_text:where_definition",
           "definition": "the estimated number of recombinational events that have occurred between the maximum span of polymorphic sites in the history of the sequences within the sample",
           "meaning": "the estimated number of recombinational events that have occurred between the maximum span of polymorphic sites in the history of the sequences within the sample",
           "source_excerpt": "the estimated number of recombinational events that have occurred between the maximum span of polymorphic sites in the history of the sequences within the sample",
@@ -1173,85 +1063,11 @@
     },
     {
       "dependent_id": "formula_4.8a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.8b",
-          "via_symbol": "Equation 4.8b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.8a belongs to the same numbered group as formula_4.8b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.8",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "\\Theta",
-          "relation": "text_definition",
-          "reason": "\\Theta is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "\\Theta",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the population mutation rate for the stretch of DNA being surveyed",
-          "meaning": "the population mutation rate for the stretch of DNA being surveyed",
-          "source_excerpt": "the population mutation rate for the stretch of DNA being surveyed",
-          "source_chunk_id": "chapter4_008"
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.8b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.8a",
-          "via_symbol": "Equation 4.8a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.8b belongs to the same numbered group as formula_4.8a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.8",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "\\Theta",
-          "relation": "text_definition",
-          "reason": "\\Theta is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "\\Theta",
-          "symbol_role": "variable",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the population mutation rate for the stretch of DNA being surveyed",
-          "meaning": "the population mutation rate for the stretch of DNA being surveyed",
-          "source_excerpt": "the population mutation rate for the stretch of DNA being surveyed",
-          "source_chunk_id": "chapter4_008"
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.9",
@@ -1269,11 +1085,54 @@
           "canonical_symbol": "L_\\max,ij",
           "symbol_role": "symbol",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
+          "review_note": "nearby_text:where_definition",
           "definition": "the distance between the maximally separated heterozygous sites in the ijth comparison",
           "meaning": "the distance between the maximally separated heterozygous sites in the ijth comparison",
           "source_excerpt": "the distance between the maximally separated heterozygous sites in the ijth comparison",
+          "source_chunk_id": "chapter4_008"
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "p_{i}",
+          "relation": "text_definition",
+          "reason": "p_{i} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "p_i",
+          "symbol_role": "parameter",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:let_definition",
+          "definition": "the frequency of the $ i $th haplotype in a sample, an estimator",
+          "meaning": "the frequency of the $ i $th haplotype in a sample, an estimator",
+          "source_excerpt": "the frequency of the $ i $th haplotype in a sample, an estimator",
+          "source_chunk_id": "chapter4_008"
+        },
+        {
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "p_{j}",
+          "relation": "text_definition",
+          "reason": "p_{j} is explained in nearby text",
+          "confidence": 0.55,
+          "cross_chapter": false,
+          "edge_status": "accepted",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "p_j",
+          "symbol_role": "parameter",
+          "sense_id": null,
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:let_definition",
+          "definition": "the frequency of the $ i $th haplotype in a sample, an estimator",
+          "meaning": "the frequency of the $ i $th haplotype in a sample, an estimator",
+          "source_excerpt": "the frequency of the $ i $th haplotype in a sample, an estimator",
           "source_chunk_id": "chapter4_008"
         }
       ]
@@ -1284,18 +1143,19 @@
         {
           "type": "formula",
           "target_id": "formula_4.7",
-          "via_symbol": "Equation 4.7",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 4.7",
+          "via_symbol": "\\widehat{\\rho}_{L}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{\\rho}_{L} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "4.7",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{\\rho}_L",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.7::\\widehat{\\rho}_{L}",
+          "canonical_sense_id": "chapter4::number-of-recombinational-events-in-a-sample-of-alleles::\\hat{\\rho}_L",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
           "type": "formula",
@@ -1310,6 +1170,7 @@
           "canonical_symbol": "a_n",
           "symbol_role": "parameter",
           "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1331,8 +1192,9 @@
           "canonical_symbol": "k_ij",
           "symbol_role": "parameter",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
+          "review_note": "nearby_text:where_definition",
           "definition": "the number of sites at which sequences i and j differ, and n is the number of chromosomes scored in the sample",
           "meaning": "the number of sites at which sequences i and j differ, and n is the number of chromosomes scored in the sample",
           "source_excerpt": "the number of sites at which sequences i and j differ, and n is the number of chromosomes scored in the sample",
@@ -1342,87 +1204,37 @@
     },
     {
       "dependent_id": "formula_4.12",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.8b",
-          "via_symbol": "d",
-          "relation": "defines_symbol",
-          "reason": "d defined by nearest upstream formula in chapter4",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "d",
-          "symbol_role": "variable",
-          "sense_id": "formula_4.8b::d",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.13a",
       "prerequisites": [
         {
           "type": "formula",
-          "target_id": "formula_4.13b",
-          "via_symbol": "Equation 4.13b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.13a belongs to the same numbered group as formula_4.13b",
-          "confidence": 0.86,
+          "target_id": "formula_4.12",
+          "via_symbol": "\\Delta_{L}",
+          "relation": "defines_symbol",
+          "reason": "\\Delta_{L} defined by nearest upstream formula in chapter4",
+          "confidence": 0.84,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.13",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\Delta_L",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.12::\\Delta_{L}",
+          "canonical_sense_id": "chapter4::large-scale-analysis::\\Delta_L",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Nearest upstream formula match."
         }
       ]
     },
     {
       "dependent_id": "formula_4.13b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.13a",
-          "via_symbol": "Equation 4.13a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.13b belongs to the same numbered group as formula_4.13a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.13",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.14",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_2.29a",
-          "via_symbol": "Equation 2.29a",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 2.29a",
-          "confidence": 0.98,
-          "cross_chapter": true,
-          "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "2.29a",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.15",
@@ -1440,6 +1252,7 @@
           "canonical_symbol": "4.14",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         }
@@ -1447,156 +1260,23 @@
     },
     {
       "dependent_id": "formula_4.16a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.16b",
-          "via_symbol": "Equation 4.16b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16a belongs to the same numbered group as formula_4.16b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.16c",
-          "via_symbol": "Equation 4.16c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16a belongs to the same numbered group as formula_4.16c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.16b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.16a",
-          "via_symbol": "Equation 4.16a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16b belongs to the same numbered group as formula_4.16a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.16c",
-          "via_symbol": "Equation 4.16c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16b belongs to the same numbered group as formula_4.16c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.16c",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.16a",
-          "via_symbol": "Equation 4.16a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16c belongs to the same numbered group as formula_4.16a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.16b",
-          "via_symbol": "Equation 4.16b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.16c belongs to the same numbered group as formula_4.16b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.16",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.17a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.17b",
-          "via_symbol": "Equation 4.17b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.17a belongs to the same numbered group as formula_4.17b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.17",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.17b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.17a",
-          "via_symbol": "Equation 4.17a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.17b belongs to the same numbered group as formula_4.17a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.17",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.18a",
@@ -1604,18 +1284,19 @@
         {
           "type": "formula",
           "target_id": "formula_4.17a",
-          "via_symbol": "Equation 4.17a",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 4.17a",
+          "via_symbol": "\\widehat{N}_{e}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{N}_{e} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "4.17a",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{N}_e",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.17a::\\widehat{N}_{e}",
+          "canonical_sense_id": "chapter4::temporal-change-in-allele-frequencies::\\hat{N}_e",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
           "type": "formula",
@@ -1630,136 +1311,19 @@
           "canonical_symbol": "4.17b",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.18b",
-          "via_symbol": "Equation 4.18b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18a belongs to the same numbered group as formula_4.18b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.18c",
-          "via_symbol": "Equation 4.18c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18a belongs to the same numbered group as formula_4.18c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "\\widehat{F}",
-          "relation": "text_definition",
-          "reason": "\\widehat{F} is explained in nearby text",
-          "confidence": 0.55,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "\\hat{F}",
-          "symbol_role": "symbol",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "calculated by either $$ \\widehat{F}_{2}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{(\\widehat{p}_{0i}-\\widehat{p}_{1i})^{2}}{\\left[(\\widehat{p}_{0i}+\\widehat{p}_{1i})/2\\right]-\\widehat{p}",
-          "meaning": "calculated by either $$ \\widehat{F}_{2}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{(\\widehat{p}_{0i}-\\widehat{p}_{1i})^{2}}{\\left[(\\widehat{p}_{0i}+\\widehat{p}_{1i})/2\\right]-\\widehat{p}",
-          "source_excerpt": "calculated by either $$ \\widehat{F}_{2}=\\frac{1}{k}\\sum_{i=1}^{k}\\frac{(\\widehat{p}_{0i}-\\widehat{p}_{1i})^{2}}{\\left[(\\widehat{p}_{0i}+\\widehat{p}_{1i})/2\\right]-\\widehat{p}",
-          "source_chunk_id": "chapter4_013"
         }
       ]
     },
     {
       "dependent_id": "formula_4.18b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.18a",
-          "via_symbol": "Equation 4.18a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18b belongs to the same numbered group as formula_4.18a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.18c",
-          "via_symbol": "Equation 4.18c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18b belongs to the same numbered group as formula_4.18c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.18c",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.18a",
-          "via_symbol": "Equation 4.18a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18c belongs to the same numbered group as formula_4.18a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.18b",
-          "via_symbol": "Equation 4.18b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.18c belongs to the same numbered group as formula_4.18b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.18",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.19",
@@ -1777,32 +1341,30 @@
           "canonical_symbol": "M",
           "symbol_role": "variable",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
-          "meaning": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
-          "source_excerpt": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
+          "review_note": "nearby_text:where_definition",
+          "definition": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983",
+          "meaning": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983",
+          "source_excerpt": "the number of independent allelic comparisons and $ \\tilde{n} $ is the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983",
           "source_chunk_id": "chapter4_013"
         },
         {
-          "type": "variable_definition",
-          "target_id": null,
-          "via_symbol": "\\tilde{n}",
-          "relation": "text_definition",
-          "reason": "\\tilde{n} is explained in nearby text",
-          "confidence": 0.55,
+          "type": "formula",
+          "target_id": "formula_4.3b",
+          "via_symbol": "\\mathrm{a}",
+          "relation": "defines_symbol",
+          "reason": "\\mathrm{a} defined by nearest upstream formula in chapter4",
+          "confidence": 0.78,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "text_definition",
-          "canonical_symbol": "\\tilde{n}",
+          "edge_evidence": "canonical_match",
+          "canonical_symbol": "a",
           "symbol_role": "symbol",
-          "sense_id": null,
-          "edge_weight": 0.65,
-          "review_note": "nearby_text",
-          "definition": "the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
-          "meaning": "the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
-          "source_excerpt": "the harmonic mean of the per-locus sample sizes in the two generations (Pollak 1983)",
-          "source_chunk_id": "chapter4_013"
+          "sense_id": "formula_4.3b::a_{n}",
+          "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
+          "edge_weight": 0.82,
+          "review_note": "Nearest upstream family match."
         },
         {
           "type": "formula",
@@ -1817,6 +1379,7 @@
           "canonical_symbol": "\\hat{N}_e",
           "symbol_role": "symbol",
           "sense_id": "formula_4.18a::\\widehat{N}_{e}",
+          "canonical_sense_id": "chapter4::temporal-change-in-allele-frequencies::\\hat{N}_e",
           "edge_weight": 1.0,
           "review_note": "Nearest upstream formula match."
         }
@@ -1824,24 +1387,7 @@
     },
     {
       "dependent_id": "formula_4.20a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.20b",
-          "via_symbol": "Equation 4.20b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.20a belongs to the same numbered group as formula_4.20b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.20",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.20b",
@@ -1849,18 +1395,19 @@
         {
           "type": "formula",
           "target_id": "formula_4.20a",
-          "via_symbol": "Equation 4.20a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.20b belongs to the same numbered group as formula_4.20a",
+          "via_symbol": "\\widehat{u}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{u} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.20",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{u}",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.20a::\\widehat{u}",
+          "canonical_sense_id": "chapter4::divergence-analysis::\\hat{u}",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -1870,72 +1417,7 @@
     },
     {
       "dependent_id": "formula_4.22a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.22b",
-          "via_symbol": "Equation 4.22b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22a belongs to the same numbered group as formula_4.22b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22c",
-          "via_symbol": "Equation 4.22c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22a belongs to the same numbered group as formula_4.22c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22d",
-          "via_symbol": "Equation 4.22d",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22a belongs to the same numbered group as formula_4.22d",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22e",
-          "via_symbol": "Equation 4.22e",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22a belongs to the same numbered group as formula_4.22e",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.22b",
@@ -1943,66 +1425,19 @@
         {
           "type": "formula",
           "target_id": "formula_4.22a",
-          "via_symbol": "Equation 4.22a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22b belongs to the same numbered group as formula_4.22a",
+          "via_symbol": "f_{t}",
+          "relation": "defines_symbol",
+          "reason": "f_{t} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "f_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_4.22a::f_{t}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::f_t",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22c",
-          "via_symbol": "Equation 4.22c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22b belongs to the same numbered group as formula_4.22c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22d",
-          "via_symbol": "Equation 4.22d",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22b belongs to the same numbered group as formula_4.22d",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22e",
-          "via_symbol": "Equation 4.22e",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22b belongs to the same numbered group as formula_4.22e",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -2012,66 +1447,78 @@
         {
           "type": "formula",
           "target_id": "formula_4.22b",
-          "via_symbol": "Equation 4.22b",
-          "relation": "explicit_reference",
-          "reason": "Context explicitly references Equation 4.22b",
+          "via_symbol": "\\widehat{u}_{o}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{u}_{o} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.98,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "explicit_reference",
-          "canonical_symbol": "4.22b",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{u}_o",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.22b::\\widehat{u}_{o}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::\\hat{u}_o",
           "edge_weight": 1.0,
-          "review_note": "Explicit source citation from nearby text."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
           "type": "formula",
           "target_id": "formula_4.22a",
-          "via_symbol": "Equation 4.22a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22c belongs to the same numbered group as formula_4.22a",
+          "via_symbol": "f_{t}",
+          "relation": "defines_symbol",
+          "reason": "f_{t} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "f_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_4.22a::f_{t}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::f_t",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
-          "type": "formula",
-          "target_id": "formula_4.22d",
-          "via_symbol": "Equation 4.22d",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22c belongs to the same numbered group as formula_4.22d",
-          "confidence": 0.86,
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "N_{0}",
+          "relation": "text_definition",
+          "reason": "N_{0} is explained in nearby text",
+          "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "N_0",
+          "symbol_role": "parameter",
           "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "meaning": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "source_excerpt": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "source_chunk_id": "chapter4_018"
         },
         {
-          "type": "formula",
-          "target_id": "formula_4.22e",
-          "via_symbol": "Equation 4.22e",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22c belongs to the same numbered group as formula_4.22e",
-          "confidence": 0.86,
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "N_{t}",
+          "relation": "text_definition",
+          "reason": "N_{t} is explained in nearby text",
+          "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "N_t",
+          "symbol_role": "parameter",
           "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "meaning": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "source_excerpt": "total numbers of cells in the culture at times 0 and t, so long as the observed mutant frequencies are < 0",
+          "source_chunk_id": "chapter4_018"
         }
       ]
     },
@@ -2091,56 +1538,43 @@
           "canonical_symbol": "4.22c",
           "symbol_role": "reference",
           "sense_id": null,
+          "canonical_sense_id": null,
           "edge_weight": 1.0,
           "review_note": "Explicit source citation from nearby text."
         },
         {
           "type": "formula",
           "target_id": "formula_4.22a",
-          "via_symbol": "Equation 4.22a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22d belongs to the same numbered group as formula_4.22a",
+          "via_symbol": "f_{t}",
+          "relation": "defines_symbol",
+          "reason": "f_{t} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "f_t",
+          "symbol_role": "parameter",
+          "sense_id": "formula_4.22a::f_{t}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::f_t",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         },
         {
           "type": "formula",
           "target_id": "formula_4.22b",
-          "via_symbol": "Equation 4.22b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22d belongs to the same numbered group as formula_4.22b",
+          "via_symbol": "\\widehat{u}_{o}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{u}_{o} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{u}_o",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.22b::\\widehat{u}_{o}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::\\hat{u}_o",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22e",
-          "via_symbol": "Equation 4.22e",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22d belongs to the same numbered group as formula_4.22e",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -2149,67 +1583,20 @@
       "prerequisites": [
         {
           "type": "formula",
-          "target_id": "formula_4.22a",
-          "via_symbol": "Equation 4.22a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22e belongs to the same numbered group as formula_4.22a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
           "target_id": "formula_4.22b",
-          "via_symbol": "Equation 4.22b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22e belongs to the same numbered group as formula_4.22b",
+          "via_symbol": "\\widehat{u}_{o}",
+          "relation": "defines_symbol",
+          "reason": "\\widehat{u}_{o} defined by nearest upstream formula in chapter4; nearby text also cites the formula.",
           "confidence": 0.86,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
+          "edge_evidence": "exact_match",
+          "canonical_symbol": "\\hat{u}_o",
+          "symbol_role": "symbol",
+          "sense_id": "formula_4.22b::\\widehat{u}_{o}",
+          "canonical_sense_id": "chapter4::short-term-enrichment::\\hat{u}_o",
           "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22c",
-          "via_symbol": "Equation 4.22c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22e belongs to the same numbered group as formula_4.22c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.22d",
-          "via_symbol": "Equation 4.22d",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.22e belongs to the same numbered group as formula_4.22d",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.22",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "review_note": "Explicit source citation upgraded by nearest upstream formula match."
         }
       ]
     },
@@ -2217,190 +1604,51 @@
       "dependent_id": "formula_4.23a",
       "prerequisites": [
         {
-          "type": "formula",
-          "target_id": "formula_4.23b",
-          "via_symbol": "Equation 4.23b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23a belongs to the same numbered group as formula_4.23b",
-          "confidence": 0.86,
+          "type": "variable_definition",
+          "target_id": null,
+          "via_symbol": "s_{d}",
+          "relation": "text_definition",
+          "reason": "s_{d} is explained in nearby text",
+          "confidence": 0.55,
           "cross_chapter": false,
           "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
+          "edge_evidence": "text_definition",
+          "canonical_symbol": "s_d",
+          "symbol_role": "parameter",
           "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.23c",
-          "via_symbol": "Equation 4.23c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23a belongs to the same numbered group as formula_4.23c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
+          "canonical_sense_id": null,
+          "edge_weight": 0.65,
+          "review_note": "nearby_text:direct_definition",
+          "definition": "rate of removal of a deleterious mutati",
+          "meaning": "rate of removal of a deleterious mutati",
+          "source_excerpt": "rate of removal of a deleterious mutati",
+          "source_chunk_id": "chapter4_020"
         }
       ]
     },
     {
       "dependent_id": "formula_4.23b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.23a",
-          "via_symbol": "Equation 4.23a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23b belongs to the same numbered group as formula_4.23a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.23c",
-          "via_symbol": "Equation 4.23c",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23b belongs to the same numbered group as formula_4.23c",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.23c",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.23a",
-          "via_symbol": "Equation 4.23a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23c belongs to the same numbered group as formula_4.23a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.23b",
-          "via_symbol": "Equation 4.23b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.23c belongs to the same numbered group as formula_4.23b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.23",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.24a",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.24b",
-          "via_symbol": "Equation 4.24b",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.24a belongs to the same numbered group as formula_4.24b",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.24",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        },
-        {
-          "type": "formula",
-          "target_id": "formula_4.8b",
-          "via_symbol": "d",
-          "relation": "defines_symbol",
-          "reason": "d defined by nearest upstream formula in chapter4",
-          "confidence": 0.84,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "exact_match",
-          "canonical_symbol": "d",
-          "symbol_role": "variable",
-          "sense_id": "formula_4.8b::d",
-          "edge_weight": 1.0,
-          "review_note": "Nearest upstream formula match."
-        }
-      ]
+      "prerequisites": []
     },
     {
       "dependent_id": "formula_4.24b",
-      "prerequisites": [
-        {
-          "type": "formula",
-          "target_id": "formula_4.24a",
-          "via_symbol": "Equation 4.24a",
-          "relation": "compound_group",
-          "reason": "Formula formula_4.24b belongs to the same numbered group as formula_4.24a",
-          "confidence": 0.86,
-          "cross_chapter": false,
-          "edge_status": "accepted",
-          "edge_evidence": "compound_group",
-          "canonical_symbol": "4.24",
-          "symbol_role": "reference",
-          "sense_id": null,
-          "edge_weight": 1.0,
-          "review_note": "Same numbered formula group; keep as a grouped context edge."
-        }
-      ]
+      "prerequisites": []
     }
   ],
   "symbol_index": {
-    "\\pi": [
-      "formula_4.1::\\pi"
-    ],
-    "canonical:\\pi": [
-      "formula_4.1::\\pi"
-    ],
     "\\widehat{\\theta}_{\\pi}": [
       "formula_4.1::\\widehat{\\theta}_{\\pi}"
     ],
     "canonical:\\hat{\\theta}_\\pi": [
       "formula_4.1::\\widehat{\\theta}_{\\pi}"
-    ],
-    "\\sigma^{2}(\\widehat{\\theta}_{\\pi})": [
-      "formula_4.2::\\sigma^{2}(\\widehat{\\theta}_{\\pi})"
-    ],
-    "canonical:\\sigma^2(\\widehat{\\theta}_\\pi)": [
-      "formula_4.2::\\sigma^{2}(\\widehat{\\theta}_{\\pi})"
     ],
     "\\widehat{\\theta}_{S}": [
       "formula_4.3a::\\widehat{\\theta}_{S}"
@@ -2414,51 +1662,19 @@
     "canonical:a_n": [
       "formula_4.3b::a_{n}"
     ],
-    "\\sigma^{2}(\\widehat{\\theta}_{S})": [
-      "formula_4.4a::\\sigma^{2}(\\widehat{\\theta}_{S})"
-    ],
-    "canonical:\\sigma^2(\\widehat{\\theta}_S)": [
-      "formula_4.4a::\\sigma^{2}(\\widehat{\\theta}_{S})"
-    ],
     "b_{n}": [
       "formula_4.4b::b_{n}"
     ],
     "canonical:b_n": [
       "formula_4.4b::b_{n}"
     ],
-    "\\sigma^{2}(\\widehat{\\theta}_{ML})": [
-      "formula_4.5::\\sigma^{2}(\\widehat{\\theta}_{ML})"
+    "\\sigma^{2}": [
+      "formula_4.5::\\sigma^{2}",
+      "formula_4.6b::\\sigma^{2}"
     ],
-    "canonical:\\sigma^2(\\widehat{\\theta}_ML)": [
-      "formula_4.5::\\sigma^{2}(\\widehat{\\theta}_{ML})"
-    ],
-    "\\widehat{\\theta}_{ML}": [
-      "formula_4.5::\\widehat{\\theta}_{ML}"
-    ],
-    "canonical:\\hat{\\theta}_ML": [
-      "formula_4.5::\\widehat{\\theta}_{ML}"
-    ],
-    "\\theta_{1}": [
-      "formula_4.6a::\\theta_{1}",
-      "formula_4.6b::\\theta_{1}"
-    ],
-    "canonical:\\theta_1": [
-      "formula_4.6a::\\theta_{1}",
-      "formula_4.6b::\\theta_{1}"
-    ],
-    "\\widehat{\\theta_{1}}": [
-      "formula_4.6a::\\widehat{\\theta_{1}}",
-      "formula_4.6b::\\widehat{\\theta_{1}}"
-    ],
-    "canonical:\\hat{\\theta_1}": [
-      "formula_4.6a::\\widehat{\\theta_{1}}",
-      "formula_4.6b::\\widehat{\\theta_{1}}"
-    ],
-    "\\sigma^{2}(\\widehat{\\theta_{1}})": [
-      "formula_4.6b::\\sigma^{2}(\\widehat{\\theta_{1}})"
-    ],
-    "canonical:\\sigma^2(\\widehat{\\theta_1})": [
-      "formula_4.6b::\\sigma^{2}(\\widehat{\\theta_{1}})"
+    "canonical:\\sigma^2": [
+      "formula_4.5::\\sigma^{2}",
+      "formula_4.6b::\\sigma^{2}"
     ],
     "\\widehat{\\rho}_{L}": [
       "formula_4.7::\\widehat{\\rho}_{L}",
@@ -2476,57 +1692,11 @@
     "canonical:d_r,\\min": [
       "formula_4.8a::d_{r,\\min}"
     ],
-    "r": [
-      "formula_4.8a::r",
-      "formula_4.8b::r"
+    "d_{r,\\mathrm{max}}": [
+      "formula_4.8b::d_{r,\\mathrm{max}}"
     ],
-    "canonical:r": [
-      "formula_4.8a::r",
-      "formula_4.8b::r"
-    ],
-    "\\mathrm{a}": [
-      "formula_4.8b::\\mathrm{a}"
-    ],
-    "canonical:\\mathrm{a}": [
-      "formula_4.8b::\\mathrm{a}"
-    ],
-    "\\mathrm{m}": [
-      "formula_4.8b::\\mathrm{m}"
-    ],
-    "canonical:\\mathrm{m}": [
-      "formula_4.8b::\\mathrm{m}"
-    ],
-    "\\mathrm{x}": [
-      "formula_4.8b::\\mathrm{x}"
-    ],
-    "canonical:\\mathrm{x}": [
-      "formula_4.8b::\\mathrm{x}"
-    ],
-    "a": [
-      "formula_4.8b::a",
-      "formula_4.19::a"
-    ],
-    "canonical:a": [
-      "formula_4.8b::a",
-      "formula_4.19::a"
-    ],
-    "d": [
-      "formula_4.8b::d"
-    ],
-    "canonical:d": [
-      "formula_4.8b::d"
-    ],
-    "m": [
-      "formula_4.8b::m"
-    ],
-    "canonical:m": [
-      "formula_4.8b::m"
-    ],
-    "x": [
-      "formula_4.8b::x"
-    ],
-    "canonical:x": [
-      "formula_4.8b::x"
+    "canonical:d_{r,max}": [
+      "formula_4.8b::d_{r,\\mathrm{max}}"
     ],
     "\\widehat{d}_{r}": [
       "formula_4.9::\\widehat{d}_{r}"
@@ -2541,34 +1711,16 @@
       "formula_4.11::\\widehat{\\sigma}_k^2"
     ],
     "\\Delta_{L}": [
-      "formula_4.12::\\Delta_{L}",
-      "formula_4.13a::\\Delta_{L}"
+      "formula_4.12::\\Delta_{L}"
     ],
     "canonical:\\Delta_L": [
-      "formula_4.12::\\Delta_{L}",
-      "formula_4.13a::\\Delta_{L}"
+      "formula_4.12::\\Delta_{L}"
     ],
     "A": [
       "formula_4.13b::A"
     ],
     "canonical:A": [
       "formula_4.13b::A"
-    ],
-    "r_{L}^{2}": [
-      "formula_4.14::r_{L}^{2}"
-    ],
-    "canonical:r_L^2": [
-      "formula_4.14::r_{L}^{2}"
-    ],
-    "c_{L}": [
-      "formula_4.16a::c_{L}",
-      "formula_4.16b::c_{L}",
-      "formula_4.16c::c_{L}"
-    ],
-    "canonical:c_L": [
-      "formula_4.16a::c_{L}",
-      "formula_4.16b::c_{L}",
-      "formula_4.16c::c_{L}"
     ],
     "\\widehat{N}_{e}": [
       "formula_4.17a::\\widehat{N}_{e}",
@@ -2577,18 +1729,6 @@
     "canonical:\\hat{N}_e": [
       "formula_4.17a::\\widehat{N}_{e}",
       "formula_4.18a::\\widehat{N}_{e}"
-    ],
-    "F_{1}": [
-      "formula_4.17b::F_{1}"
-    ],
-    "canonical:F_1": [
-      "formula_4.17b::F_{1}"
-    ],
-    "\\widehat{F_{1}}": [
-      "formula_4.17b::\\widehat{F_{1}}"
-    ],
-    "canonical:\\hat{F_1}": [
-      "formula_4.17b::\\widehat{F_{1}}"
     ],
     "\\widehat{F}_{2}": [
       "formula_4.18b::\\widehat{F}_{2}"
@@ -2610,12 +1750,6 @@
       "formula_4.20a::\\widehat{u}",
       "formula_4.22e::\\widehat{u}"
     ],
-    "\\sigma^{2}(\\widehat{u})": [
-      "formula_4.20b::\\sigma^{2}(\\widehat{u})"
-    ],
-    "canonical:\\sigma^2(\\widehat{u})": [
-      "formula_4.20b::\\sigma^{2}(\\widehat{u})"
-    ],
     "p_{0}": [
       "formula_4.21::p_{0}"
     ],
@@ -2629,30 +1763,16 @@
       "formula_4.22a::f_{t}"
     ],
     "\\widehat{u}_{o}": [
-      "formula_4.22b::\\widehat{u}_{o}",
-      "formula_4.22c::\\widehat{u}_{o}",
-      "formula_4.22d::\\widehat{u}_{o}"
+      "formula_4.22b::\\widehat{u}_{o}"
     ],
     "canonical:\\hat{u}_o": [
-      "formula_4.22b::\\widehat{u}_{o}",
-      "formula_4.22c::\\widehat{u}_{o}",
-      "formula_4.22d::\\widehat{u}_{o}"
+      "formula_4.22b::\\widehat{u}_{o}"
     ],
     "s_{d}": [
-      "formula_4.23a::s_{d}",
-      "formula_4.23b::s_{d}",
       "formula_4.23c::s_{d}"
     ],
     "canonical:s_d": [
-      "formula_4.23a::s_{d}",
-      "formula_4.23b::s_{d}",
       "formula_4.23c::s_{d}"
-    ],
-    "s_{d,T}": [
-      "formula_4.24a::s_{d,T}"
-    ],
-    "canonical:s_d,T": [
-      "formula_4.24a::s_{d,T}"
     ],
     "\\phi": [
       "formula_4.24b::\\phi"
@@ -2661,33 +1781,406 @@
       "formula_4.24b::\\phi"
     ]
   },
-  "ambiguous": [
+  "symbol_sense_clusters": [
     {
-      "dependent_id": "formula_4.1",
-      "symbol": "k_{ij}",
-      "family_key": "k",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.31b",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
+      "canonical_sense_id": "chapter4::alternative-approaches::\\sigma^2",
+      "canonical_symbol": "\\sigma^2",
+      "symbol": "\\sigma^{2}",
+      "chapter_id": "chapter4",
+      "subsection": "Alternative Approaches",
+      "representative_sense_id": "formula_4.5::\\sigma^{2}",
+      "representative_formula_id": "formula_4.5",
+      "member_sense_ids": [
+        "formula_4.5::\\sigma^{2}",
+        "formula_4.6b::\\sigma^{2}"
+      ],
+      "member_formula_ids": [
+        "formula_4.5",
+        "formula_4.6b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
     },
+    {
+      "canonical_sense_id": "chapter4::divergence-analysis::\\hat{u}",
+      "canonical_symbol": "\\hat{u}",
+      "symbol": "\\widehat{u}",
+      "chapter_id": "chapter4",
+      "subsection": "Divergence Analysis",
+      "representative_sense_id": "formula_4.20a::\\widehat{u}",
+      "representative_formula_id": "formula_4.20a",
+      "member_sense_ids": [
+        "formula_4.20a::\\widehat{u}"
+      ],
+      "member_formula_ids": [
+        "formula_4.20a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::evolution-of-the-mutation-rate::\\phi",
+      "canonical_symbol": "\\phi",
+      "symbol": "\\phi",
+      "chapter_id": "chapter4",
+      "subsection": "Evolution of the Mutation Rate",
+      "representative_sense_id": "formula_4.24b::\\phi",
+      "representative_formula_id": "formula_4.24b",
+      "member_sense_ids": [
+        "formula_4.24b::\\phi"
+      ],
+      "member_formula_ids": [
+        "formula_4.24b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::evolution-of-the-mutation-rate::s_d",
+      "canonical_symbol": "s_d",
+      "symbol": "s_{d}",
+      "chapter_id": "chapter4",
+      "subsection": "Evolution of the Mutation Rate",
+      "representative_sense_id": "formula_4.23c::s_{d}",
+      "representative_formula_id": "formula_4.23c",
+      "member_sense_ids": [
+        "formula_4.23c::s_{d}"
+      ],
+      "member_formula_ids": [
+        "formula_4.23c"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::large-scale-analysis::A",
+      "canonical_symbol": "A",
+      "symbol": "A",
+      "chapter_id": "chapter4",
+      "subsection": "Large-scale Analysis",
+      "representative_sense_id": "formula_4.13b::A",
+      "representative_formula_id": "formula_4.13b",
+      "member_sense_ids": [
+        "formula_4.13b::A"
+      ],
+      "member_formula_ids": [
+        "formula_4.13b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::large-scale-analysis::\\Delta_L",
+      "canonical_symbol": "\\Delta_L",
+      "symbol": "\\Delta_{L}",
+      "chapter_id": "chapter4",
+      "subsection": "Large-scale Analysis",
+      "representative_sense_id": "formula_4.12::\\Delta_{L}",
+      "representative_formula_id": "formula_4.12",
+      "member_sense_ids": [
+        "formula_4.12::\\Delta_{L}"
+      ],
+      "member_formula_ids": [
+        "formula_4.12"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::large-scale-analysis::\\hat{\\rho}_L",
+      "canonical_symbol": "\\hat{\\rho}_L",
+      "symbol": "\\widehat{\\rho}_{L}",
+      "chapter_id": "chapter4",
+      "subsection": "Large-scale Analysis",
+      "representative_sense_id": "formula_4.15::\\widehat{\\rho}_{L}",
+      "representative_formula_id": "formula_4.15",
+      "member_sense_ids": [
+        "formula_4.15::\\widehat{\\rho}_{L}"
+      ],
+      "member_formula_ids": [
+        "formula_4.15"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::nucleotide-diversity::\\hat{\\theta}_\\pi",
+      "canonical_symbol": "\\hat{\\theta}_\\pi",
+      "symbol": "\\widehat{\\theta}_{\\pi}",
+      "chapter_id": "chapter4",
+      "subsection": "Nucleotide Diversity",
+      "representative_sense_id": "formula_4.1::\\widehat{\\theta}_{\\pi}",
+      "representative_formula_id": "formula_4.1",
+      "member_sense_ids": [
+        "formula_4.1::\\widehat{\\theta}_{\\pi}"
+      ],
+      "member_formula_ids": [
+        "formula_4.1"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-recombinational-events-in-a-sample-of-alleles::\\hat{\\rho}_L",
+      "canonical_symbol": "\\hat{\\rho}_L",
+      "symbol": "\\widehat{\\rho}_{L}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Recombinational Events in a Sample of Alleles",
+      "representative_sense_id": "formula_4.7::\\widehat{\\rho}_{L}",
+      "representative_formula_id": "formula_4.7",
+      "member_sense_ids": [
+        "formula_4.7::\\widehat{\\rho}_{L}",
+        "formula_4.10::\\widehat{\\rho}_{L}"
+      ],
+      "member_formula_ids": [
+        "formula_4.7",
+        "formula_4.10"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-recombinational-events-in-a-sample-of-alleles::\\hat{d}_r",
+      "canonical_symbol": "\\hat{d}_r",
+      "symbol": "\\widehat{d}_{r}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Recombinational Events in a Sample of Alleles",
+      "representative_sense_id": "formula_4.9::\\widehat{d}_{r}",
+      "representative_formula_id": "formula_4.9",
+      "member_sense_ids": [
+        "formula_4.9::\\widehat{d}_{r}"
+      ],
+      "member_formula_ids": [
+        "formula_4.9"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-recombinational-events-in-a-sample-of-alleles::d_r,\\min",
+      "canonical_symbol": "d_r,\\min",
+      "symbol": "d_{r,\\min}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Recombinational Events in a Sample of Alleles",
+      "representative_sense_id": "formula_4.8a::d_{r,\\min}",
+      "representative_formula_id": "formula_4.8a",
+      "member_sense_ids": [
+        "formula_4.8a::d_{r,\\min}"
+      ],
+      "member_formula_ids": [
+        "formula_4.8a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-recombinational-events-in-a-sample-of-alleles::d_{r,max}",
+      "canonical_symbol": "d_{r,max}",
+      "symbol": "d_{r,\\mathrm{max}}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Recombinational Events in a Sample of Alleles",
+      "representative_sense_id": "formula_4.8b::d_{r,\\mathrm{max}}",
+      "representative_formula_id": "formula_4.8b",
+      "member_sense_ids": [
+        "formula_4.8b::d_{r,\\mathrm{max}}"
+      ],
+      "member_formula_ids": [
+        "formula_4.8b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-segregating-sites::\\hat{\\theta}_S",
+      "canonical_symbol": "\\hat{\\theta}_S",
+      "symbol": "\\widehat{\\theta}_{S}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Segregating Sites",
+      "representative_sense_id": "formula_4.3a::\\widehat{\\theta}_{S}",
+      "representative_formula_id": "formula_4.3a",
+      "member_sense_ids": [
+        "formula_4.3a::\\widehat{\\theta}_{S}"
+      ],
+      "member_formula_ids": [
+        "formula_4.3a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-segregating-sites::a_n",
+      "canonical_symbol": "a_n",
+      "symbol": "a_{n}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Segregating Sites",
+      "representative_sense_id": "formula_4.3b::a_{n}",
+      "representative_formula_id": "formula_4.3b",
+      "member_sense_ids": [
+        "formula_4.3b::a_{n}"
+      ],
+      "member_formula_ids": [
+        "formula_4.3b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::number-of-segregating-sites::b_n",
+      "canonical_symbol": "b_n",
+      "symbol": "b_{n}",
+      "chapter_id": "chapter4",
+      "subsection": "Number of Segregating Sites",
+      "representative_sense_id": "formula_4.4b::b_{n}",
+      "representative_formula_id": "formula_4.4b",
+      "member_sense_ids": [
+        "formula_4.4b::b_{n}"
+      ],
+      "member_formula_ids": [
+        "formula_4.4b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::other-approaches-for-narrow-genomic-intervals::\\hat{\\sigma}_k^2",
+      "canonical_symbol": "\\hat{\\sigma}_k^2",
+      "symbol": "\\widehat{\\sigma}_k^2",
+      "chapter_id": "chapter4",
+      "subsection": "Other Approaches for Narrow Genomic Intervals",
+      "representative_sense_id": "formula_4.11::\\widehat{\\sigma}_k^2",
+      "representative_formula_id": "formula_4.11",
+      "member_sense_ids": [
+        "formula_4.11::\\widehat{\\sigma}_k^2"
+      ],
+      "member_formula_ids": [
+        "formula_4.11"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::short-term-enrichment::\\hat{u}",
+      "canonical_symbol": "\\hat{u}",
+      "symbol": "\\widehat{u}",
+      "chapter_id": "chapter4",
+      "subsection": "Short-term Enrichment",
+      "representative_sense_id": "formula_4.22e::\\widehat{u}",
+      "representative_formula_id": "formula_4.22e",
+      "member_sense_ids": [
+        "formula_4.22e::\\widehat{u}"
+      ],
+      "member_formula_ids": [
+        "formula_4.22e"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::short-term-enrichment::\\hat{u}_o",
+      "canonical_symbol": "\\hat{u}_o",
+      "symbol": "\\widehat{u}_{o}",
+      "chapter_id": "chapter4",
+      "subsection": "Short-term Enrichment",
+      "representative_sense_id": "formula_4.22b::\\widehat{u}_{o}",
+      "representative_formula_id": "formula_4.22b",
+      "member_sense_ids": [
+        "formula_4.22b::\\widehat{u}_{o}"
+      ],
+      "member_formula_ids": [
+        "formula_4.22b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::short-term-enrichment::f_t",
+      "canonical_symbol": "f_t",
+      "symbol": "f_{t}",
+      "chapter_id": "chapter4",
+      "subsection": "Short-term Enrichment",
+      "representative_sense_id": "formula_4.22a::f_{t}",
+      "representative_formula_id": "formula_4.22a",
+      "member_sense_ids": [
+        "formula_4.22a::f_{t}"
+      ],
+      "member_formula_ids": [
+        "formula_4.22a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::short-term-enrichment::p_0",
+      "canonical_symbol": "p_0",
+      "symbol": "p_{0}",
+      "chapter_id": "chapter4",
+      "subsection": "Short-term Enrichment",
+      "representative_sense_id": "formula_4.21::p_{0}",
+      "representative_formula_id": "formula_4.21",
+      "member_sense_ids": [
+        "formula_4.21::p_{0}"
+      ],
+      "member_formula_ids": [
+        "formula_4.21"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::temporal-change-in-allele-frequencies::\\hat{F}_2",
+      "canonical_symbol": "\\hat{F}_2",
+      "symbol": "\\widehat{F}_{2}",
+      "chapter_id": "chapter4",
+      "subsection": "Temporal Change in Allele Frequencies",
+      "representative_sense_id": "formula_4.18b::\\widehat{F}_{2}",
+      "representative_formula_id": "formula_4.18b",
+      "member_sense_ids": [
+        "formula_4.18b::\\widehat{F}_{2}"
+      ],
+      "member_formula_ids": [
+        "formula_4.18b"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::temporal-change-in-allele-frequencies::\\hat{F}_3",
+      "canonical_symbol": "\\hat{F}_3",
+      "symbol": "\\widehat{F}_{3}",
+      "chapter_id": "chapter4",
+      "subsection": "Temporal Change in Allele Frequencies",
+      "representative_sense_id": "formula_4.18c::\\widehat{F}_{3}",
+      "representative_formula_id": "formula_4.18c",
+      "member_sense_ids": [
+        "formula_4.18c::\\widehat{F}_{3}"
+      ],
+      "member_formula_ids": [
+        "formula_4.18c"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.82
+    },
+    {
+      "canonical_sense_id": "chapter4::temporal-change-in-allele-frequencies::\\hat{N}_e",
+      "canonical_symbol": "\\hat{N}_e",
+      "symbol": "\\widehat{N}_{e}",
+      "chapter_id": "chapter4",
+      "subsection": "Temporal Change in Allele Frequencies",
+      "representative_sense_id": "formula_4.17a::\\widehat{N}_{e}",
+      "representative_formula_id": "formula_4.17a",
+      "member_sense_ids": [
+        "formula_4.17a::\\widehat{N}_{e}",
+        "formula_4.18a::\\widehat{N}_{e}"
+      ],
+      "member_formula_ids": [
+        "formula_4.17a",
+        "formula_4.18a"
+      ],
+      "merge_basis": "same_chapter_subsection_canonical_symbol",
+      "confidence": 0.9
+    }
+  ],
+  "ambiguous": [
     {
       "dependent_id": "formula_4.2",
       "symbol": "\\theta",
@@ -2703,40 +2196,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.2",
-      "symbol": "n^{2}",
-      "family_key": "n",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.32",
-          "chapter_id": "chapter2",
-          "via_symbol": "n_{i}",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.41",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
         }
       ]
     },
@@ -2794,331 +2253,53 @@
     },
     {
       "dependent_id": "formula_4.6a",
-      "symbol": "S_{1}",
-      "family_key": "S",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30b",
-          "chapter_id": "chapter2",
-          "via_symbol": "S_{n}",
-          "family_key": "S",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.9",
-      "symbol": "p_{i}",
-      "family_key": "p",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.10",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.15",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{2}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16c",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{3}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{4}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.28a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.39",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{n}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.8",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.10",
-      "symbol": "\\widehat{d}_{r}^{\\prime}",
-      "family_key": "d",
+      "symbol": "\\theta_{1}",
+      "family_key": "\\theta",
       "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_4.8b",
+          "target_id": "formula_4.1",
           "chapter_id": "chapter4",
-          "via_symbol": "d",
-          "family_key": "d",
+          "via_symbol": "\\widehat{\\theta}_{\\pi}",
+          "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
         },
         {
-          "target_id": "formula_4.9",
+          "target_id": "formula_4.3a",
           "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{d}_{r}",
-          "family_key": "d",
+          "via_symbol": "\\widehat{\\theta}_{S}",
+          "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
         }
       ]
     },
     {
-      "dependent_id": "formula_4.11",
-      "symbol": "k_{ij}",
-      "family_key": "k",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
+      "dependent_id": "formula_4.6b",
+      "symbol": "\\theta_{1}",
+      "family_key": "\\theta",
+      "reason": "family-only symbol match; requires semantic review before entering the main graph",
       "edge_status": "ambiguous",
       "edge_evidence": "family_candidate",
       "candidates": [
         {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.54
+          "target_id": "formula_4.1",
+          "chapter_id": "chapter4",
+          "via_symbol": "\\widehat{\\theta}_{\\pi}",
+          "family_key": "\\theta",
+          "match_type": "family_candidate",
+          "confidence": 0.45
         },
         {
-          "target_id": "formula_2.31b",
-          "chapter_id": "chapter2",
-          "via_symbol": "k",
-          "family_key": "k",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.12",
-      "symbol": "H_{1d}",
-      "family_key": "H",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_3.16",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.17",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{0}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.22",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.23b",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.24",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.25",
-          "chapter_id": "chapter3",
-          "via_symbol": "H_t",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.24a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.24b",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.24c",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.27a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.27b",
-          "chapter_id": "chapter2",
-          "via_symbol": "H",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.5",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.6a",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.7",
-          "chapter_id": "chapter2",
-          "via_symbol": "H_{t}",
-          "family_key": "H",
-          "match_type": "family",
-          "confidence": 0.54
+          "target_id": "formula_4.3a",
+          "chapter_id": "chapter4",
+          "via_symbol": "\\widehat{\\theta}_{S}",
+          "family_key": "\\theta",
+          "match_type": "family_candidate",
+          "confidence": 0.45
         }
       ]
     },
@@ -3171,30 +2352,6 @@
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.5",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{\\theta}_{ML}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.6a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\theta_{1}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.6b",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\theta_{1}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
         }
       ]
     },
@@ -3244,30 +2401,6 @@
           "target_id": "formula_4.3a",
           "chapter_id": "chapter4",
           "via_symbol": "\\widehat{\\theta}_{S}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.5",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{\\theta}_{ML}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.6a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\theta_{1}",
-          "family_key": "\\theta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.6b",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\theta_{1}",
           "family_key": "\\theta",
           "match_type": "family_candidate",
           "confidence": 0.45
@@ -3297,696 +2430,6 @@
           "family_key": "\\rho",
           "match_type": "family_candidate",
           "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.15",
-      "symbol": "\\widehat{r_{L}^{2}}",
-      "family_key": "r",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.14",
-          "chapter_id": "chapter4",
-          "via_symbol": "r_{L}^{2}",
-          "family_key": "r",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.8a",
-          "chapter_id": "chapter4",
-          "via_symbol": "r",
-          "family_key": "r",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.8b",
-          "chapter_id": "chapter4",
-          "via_symbol": "r",
-          "family_key": "r",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.16a",
-      "symbol": "T",
-      "family_key": "T",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_3.13",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_3.14",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.16a",
-      "symbol": "c_{0}",
-      "family_key": "c",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "c",
-          "family_key": "c",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.16b",
-      "symbol": "c_{0}",
-      "family_key": "c",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.16a",
-          "chapter_id": "chapter4",
-          "via_symbol": "c_{L}",
-          "family_key": "c",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.16c",
-      "symbol": "c_{0}",
-      "family_key": "c",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.16a",
-          "chapter_id": "chapter4",
-          "via_symbol": "c_{L}",
-          "family_key": "c",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.16b",
-          "chapter_id": "chapter4",
-          "via_symbol": "c_{L}",
-          "family_key": "c",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.17a",
-      "symbol": "\\widehat{F}_{1}",
-      "family_key": "F",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.42",
-          "chapter_id": "chapter2",
-          "via_symbol": "F_{ST}",
-          "family_key": "F",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.43",
-          "chapter_id": "chapter2",
-          "via_symbol": "F_{ST}",
-          "family_key": "F",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.44",
-          "chapter_id": "chapter2",
-          "via_symbol": "F_{ST}",
-          "family_key": "F",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.46",
-          "chapter_id": "chapter2",
-          "via_symbol": "F_{ST}",
-          "family_key": "F",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.47a",
-          "chapter_id": "chapter2",
-          "via_symbol": "F_{DG}",
-          "family_key": "F",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.17a",
-      "symbol": "n_{0}",
-      "family_key": "n",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.32",
-          "chapter_id": "chapter2",
-          "via_symbol": "n_{i}",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.41",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.17b",
-      "symbol": "\\widehat{p_{0}}",
-      "family_key": "p",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.10",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.15",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{2}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16c",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{3}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{4}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.28a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.39",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{n}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.8",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.18a",
-      "symbol": "\\widehat{F}",
-      "family_key": "F",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.17b",
-          "chapter_id": "chapter4",
-          "via_symbol": "F_{1}",
-          "family_key": "F",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.18a",
-      "symbol": "n_{0}",
-      "family_key": "n",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.32",
-          "chapter_id": "chapter2",
-          "via_symbol": "n_{i}",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.41",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.18b",
-      "symbol": "\\widehat{p}_{0i}",
-      "family_key": "p",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.10",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.15",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{2}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16c",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{3}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{4}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.28a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.39",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{n}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.8",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.18c",
-      "symbol": "\\widehat{p}_{0i}",
-      "family_key": "p",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.10",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.15",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{2}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16c",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{3}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.16d",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{t}^{4}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.26b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.28a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.39",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{n}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.8",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9a",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9b",
-          "chapter_id": "chapter2",
-          "via_symbol": "p_{0}",
-          "family_key": "p",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.19",
-      "symbol": "M",
-      "family_key": "M",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.28b",
-          "chapter_id": "chapter2",
-          "via_symbol": "M",
-          "family_key": "M",
-          "match_type": "exact",
-          "confidence": 0.72
         }
       ]
     },
@@ -4011,372 +2454,6 @@
           "chapter_id": "chapter4",
           "via_symbol": "\\widehat{N}_{e}",
           "family_key": "N",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.19",
-      "symbol": "\\tilde{n}",
-      "family_key": "n",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.30a",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.32",
-          "chapter_id": "chapter2",
-          "via_symbol": "n_{i}",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.41",
-          "chapter_id": "chapter2",
-          "via_symbol": "n",
-          "family_key": "n",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.19",
-      "symbol": "t^{2}",
-      "family_key": "t",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_2.10",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}_{a}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\overline{t}_{f}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11c",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}_{l}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.11d",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\overline{t}_{a}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.12",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.14a",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.20",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.23",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.2a",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.2b",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.37",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.38",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}_{c}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.39",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.40",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}_{n}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.41",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.45a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\bar{t}_{0}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.45b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\overline{t}",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.6b",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9a",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.9b",
-          "chapter_id": "chapter2",
-          "via_symbol": "t",
-          "family_key": "t",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.20a",
-      "symbol": "T",
-      "family_key": "T",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_3.13",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_3.14",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.20b",
-      "symbol": "T",
-      "family_key": "T",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_3.13",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_3.14",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.22a",
-      "symbol": "f_{0}",
-      "family_key": "f",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_3.1",
-          "chapter_id": "chapter3",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.23a",
-          "chapter_id": "chapter3",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_3.31",
-          "chapter_id": "chapter3",
-          "via_symbol": "f_{s}",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.58
-        },
-        {
-          "target_id": "formula_2.3",
-          "chapter_id": "chapter2",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.4a",
-          "chapter_id": "chapter2",
-          "via_symbol": "f_t",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.4b",
-          "chapter_id": "chapter2",
-          "via_symbol": "f_t",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.54
-        },
-        {
-          "target_id": "formula_2.4c",
-          "chapter_id": "chapter2",
-          "via_symbol": "f_t",
-          "family_key": "f",
-          "match_type": "family",
-          "confidence": 0.54
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.22a",
-      "symbol": "u_{o}",
-      "family_key": "u",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.20a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{u}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.22b",
-      "symbol": "f_{0}",
-      "family_key": "f",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.22a",
-          "chapter_id": "chapter4",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
           "match_type": "family_candidate",
           "confidence": 0.45
         }
@@ -4409,24 +2486,6 @@
       ]
     },
     {
-      "dependent_id": "formula_4.22c",
-      "symbol": "f_{0}",
-      "family_key": "f",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.22a",
-          "chapter_id": "chapter4",
-          "via_symbol": "f_{t}",
-          "family_key": "f",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
       "dependent_id": "formula_4.22d",
       "symbol": "N_{t}",
       "family_key": "N",
@@ -4449,238 +2508,6 @@
           "family_key": "N",
           "match_type": "family_candidate",
           "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.22e",
-      "symbol": "\\widehat{d}",
-      "family_key": "d",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.8b",
-          "chapter_id": "chapter4",
-          "via_symbol": "d",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.9",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{d}_{r}",
-          "family_key": "d",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.22e",
-      "symbol": "\\widehat{u}_{o}",
-      "family_key": "u",
-      "reason": "3+ same-chapter candidates for the same symbol family",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.20a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{u}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.22b",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{u}_{o}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.22c",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{u}_{o}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.22d",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\widehat{u}_{o}",
-          "family_key": "u",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.23a",
-      "symbol": "\\Delta",
-      "family_key": "\\Delta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.12",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.13a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.23b",
-      "symbol": "\\Delta",
-      "family_key": "\\Delta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.12",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.13a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.23c",
-      "symbol": "\\Delta",
-      "family_key": "\\Delta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.12",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.13a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.24a",
-      "symbol": "T",
-      "family_key": "T",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_3.13",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        },
-        {
-          "target_id": "formula_3.14",
-          "chapter_id": "chapter3",
-          "via_symbol": "T",
-          "family_key": "T",
-          "match_type": "exact",
-          "confidence": 0.75
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.24a",
-      "symbol": "\\Delta",
-      "family_key": "\\Delta",
-      "reason": "family-only symbol match; requires semantic review before entering the main graph",
-      "edge_status": "ambiguous",
-      "edge_evidence": "family_candidate",
-      "candidates": [
-        {
-          "target_id": "formula_4.12",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        },
-        {
-          "target_id": "formula_4.13a",
-          "chapter_id": "chapter4",
-          "via_symbol": "\\Delta_{L}",
-          "family_key": "\\Delta",
-          "match_type": "family_candidate",
-          "confidence": 0.45
-        }
-      ]
-    },
-    {
-      "dependent_id": "formula_4.24a",
-      "symbol": "\\phi",
-      "family_key": "\\phi",
-      "reason": "Cross-chapter symbol matches are review candidates unless nearby text explicitly cites the source equation.",
-      "edge_status": "ambiguous",
-      "edge_evidence": "exact_match",
-      "candidates": [
-        {
-          "target_id": "formula_2.25a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.72
-        },
-        {
-          "target_id": "formula_2.34a",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.72
-        },
-        {
-          "target_id": "formula_2.34b",
-          "chapter_id": "chapter2",
-          "via_symbol": "\\phi",
-          "family_key": "\\phi",
-          "match_type": "exact",
-          "confidence": 0.72
         }
       ]
     }

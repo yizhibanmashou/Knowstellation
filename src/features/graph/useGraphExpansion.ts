@@ -1,10 +1,11 @@
 import { useCallback, type Dispatch, type MutableRefObject, type SetStateAction } from 'react';
 import { MarkerType, type Edge, type Node, type XYPosition } from '@xyflow/react';
 import type { ChapterDependencies, ChapterFormula } from '../../shared/types/formula';
-import type { DependencyEdgeData, FormulaExpansionIntent, FormulaNodeData, VariableNodeData } from '../../shared/types/graph';
+import type { ConceptGraphPayload } from '../../shared/types/conceptGraph';
+import type { DependencyEdgeData, FormulaExpansionIntent, FormulaNodeData } from '../../shared/types/graph';
 import { explainPrerequisite } from './formulaInfo';
 import { layoutPrerequisites, layoutSuccessors } from './graphLayout';
-import { shouldRenderFormulaPrerequisite, shouldRenderVariablePrerequisite } from './graphCanvasModel';
+import { shouldRenderFormulaPrerequisite } from './graphCanvasModel';
 import type { GraphStudyMode } from './GraphModeControls';
 
 const MAX_VISIBLE_SUCCESSORS = 5;
@@ -18,12 +19,14 @@ interface UseGraphExpansionParams {
   guidedUnlock: boolean;
   guidedStages: Record<string, GuidedExpansionStage>;
   loadChapter: (chapterId: string) => Promise<ChapterDependencies | null | undefined>;
+  loadConceptChapter: (chapterId: string) => Promise<ConceptGraphPayload | null>;
   makeFormulaNode: (
     formula: ChapterFormula,
     position: XYPosition,
     focused?: boolean,
     role?: FormulaNodeData['role'],
     chapter?: ChapterDependencies | null,
+    conceptGraph?: ConceptGraphPayload | null,
   ) => Node;
   markExpanded: (formulaId: string) => void;
   markLearned: (chapterId: string, formulaId: string) => void;
@@ -46,6 +49,7 @@ export function useGraphExpansion({
   guidedUnlock,
   guidedStages,
   loadChapter,
+  loadConceptChapter,
   makeFormulaNode,
   markExpanded,
   markLearned,
@@ -68,18 +72,24 @@ export function useGraphExpansion({
 
       setNodeLoading(formulaId, true);
       try {
-        const chapter = await loadChapter(focusChapterId);
+        const [chapter, conceptGraph] = await Promise.all([
+          loadChapter(focusChapterId),
+          mode === 'formula' ? loadConceptChapter(focusChapterId) : Promise.resolve(null),
+        ]);
         const dependency = chapter?.dependencies.find((dep) => dep.dependent_id === formulaId) || null;
         const currentFormula = chapter?.formulas.find((item) => item.id === formulaId);
 
         const dependents = (chapter?.dependencies || []).filter((dep) =>
           dep.prerequisites.some((prereq) => shouldRenderFormulaPrerequisite(prereq) && prereq.target_id === formulaId && !prereq.cross_chapter),
         );
-        if (formulaId === focusFormulaId) setStandaloneFocusId(dependents.length === 0 ? formulaId : null);
+        const allPrereqs = (dependency?.prerequisites || []).filter((item) =>
+          shouldRenderFormulaPrerequisite(item) && !item.cross_chapter && item.target_id
+        );
+        if (formulaId === focusFormulaId) setStandaloneFocusId(dependents.length === 0 && allPrereqs.length === 0 ? formulaId : null);
 
         const currentStage = guidedStages[formulaId] || 'none';
-        const shouldShowConcepts = intent === 'prerequisites' || (intent === 'auto' && (mode !== 'guided' || currentStage === 'none'));
-        const shouldShowSuccessors = intent === 'successors' || (intent === 'auto' && (mode !== 'guided' || currentStage !== 'none'));
+        const shouldShowConcepts = intent === 'prerequisites' || (intent === 'auto' && (mode !== 'formula' || currentStage === 'none'));
+        const shouldShowSuccessors = intent === 'successors' || (intent === 'auto' && (mode !== 'formula' || currentStage !== 'none'));
         const shownDependents = shouldShowSuccessors ? dependents.slice(0, MAX_VISIBLE_SUCCESSORS) : [];
         const successorFormulas = new Map<string, ChapterFormula>();
         shownDependents.forEach((dep) => {
@@ -93,27 +103,12 @@ export function useGraphExpansion({
           const nextNodes = [...currentNodes];
 
           if (shouldShowConcepts) {
-            const allPrereqs = (dependency?.prerequisites || []).filter((item) =>
-              shouldRenderVariablePrerequisite(item) || shouldRenderFormulaPrerequisite(item)
-            );
             const positions = layoutPrerequisites(parent, allPrereqs, nextNodes);
             allPrereqs.forEach((prereq, index) => {
-              if (prereq.type === 'variable_definition') {
-                const conceptId = `${formulaId}::var::${prereq.symbol}`;
-                if (!nextNodes.some((item) => item.id === conceptId)) {
-                  nextNodes.push({
-                    id: conceptId,
-                    type: 'variableDefinition',
-                    position: positions[index],
-                    data: { prerequisite: prereq, formulaId, formulaLatex: currentFormula?.latex || '' } satisfies VariableNodeData,
-                    draggable: false,
-                    selectable: false,
-                  });
-                }
-              } else if (prereq.type === 'formula' && prereq.target_id) {
+              if (prereq.type === 'formula' && prereq.target_id) {
                 const prereqFormula = chapter?.formulas.find((item) => item.id === prereq.target_id);
                 if (prereqFormula && !nextNodes.some((item) => item.id === prereqFormula.id)) {
-                  nextNodes.push(makeFormulaNode(prereqFormula, positions[index], false, 'prerequisite', chapter));
+                  nextNodes.push(makeFormulaNode(prereqFormula, positions[index], false, 'prerequisite', chapter, conceptGraph));
                 }
               }
             });
@@ -122,7 +117,7 @@ export function useGraphExpansion({
           const positions = layoutSuccessors(parent, successorFormulas.size, nextNodes);
           [...successorFormulas.values()].forEach((formula, index) => {
             if (nextNodes.some((node) => node.id === formula.id)) return;
-            nextNodes.push(makeFormulaNode(formula, positions[index], false, 'successor', chapter));
+            nextNodes.push(makeFormulaNode(formula, positions[index], false, 'successor', chapter, conceptGraph));
           });
           return refreshNodeData(nextNodes, chapter);
         });
@@ -131,23 +126,7 @@ export function useGraphExpansion({
           const nextEdges = [...currentEdges];
           if (shouldShowConcepts) {
             (dependency?.prerequisites || []).forEach((prereq) => {
-              if (shouldRenderVariablePrerequisite(prereq)) {
-                const sourceId = `${formulaId}::var::${prereq.symbol}`;
-                const edgeId = `${sourceId}->${formulaId}`;
-                if (nextEdges.some((edge) => edge.id === edgeId)) return;
-                nextEdges.push({
-                  id: edgeId,
-                  source: sourceId,
-                  target: formulaId,
-                  type: 'dependency',
-                  data: {
-                    via: prereq.symbol || 'concept',
-                    crossChapter: false,
-                    confidence: prereq.confidence,
-                    explanation: explainPrerequisite(prereq),
-                  } satisfies DependencyEdgeData,
-                });
-              } else if (shouldRenderFormulaPrerequisite(prereq) && prereq.target_id) {
+              if (shouldRenderFormulaPrerequisite(prereq) && prereq.target_id && !prereq.cross_chapter) {
                 const edgeId = `${prereq.target_id}->${formulaId}`;
                 if (nextEdges.some((edge) => edge.id === edgeId)) return;
                 nextEdges.push({
@@ -161,6 +140,7 @@ export function useGraphExpansion({
                     crossChapter: Boolean(prereq.cross_chapter),
                     confidence: prereq.confidence || 0.8,
                     explanation: explainPrerequisite(prereq),
+                    labelVisible: true,
                   } satisfies DependencyEdgeData,
                 });
               }
@@ -180,7 +160,8 @@ export function useGraphExpansion({
                 via: prereq?.via_symbol || 'next',
                 crossChapter: false,
                 confidence: prereq?.confidence || 0.8,
-                explanation: prereq ? explainPrerequisite(prereq) : '这条公式接在当前公式之后，用来继续推进同一段推导。',
+                explanation: prereq ? explainPrerequisite(prereq) : 'This formula follows the current formula in the same derivation.',
+                labelVisible: true,
               } satisfies DependencyEdgeData,
             });
           });
@@ -188,7 +169,7 @@ export function useGraphExpansion({
         });
 
         if (guidedUnlock) markLearned(focusChapterId, formulaId);
-        if (mode === 'guided') {
+        if (mode === 'formula') {
           setGuidedStages((current) => ({
             ...current,
             [formulaId]: shouldShowSuccessors ? 'successors' : 'concepts',
@@ -209,6 +190,7 @@ export function useGraphExpansion({
       guidedStages,
       guidedUnlock,
       loadChapter,
+      loadConceptChapter,
       makeFormulaNode,
       markExpanded,
       markLearned,

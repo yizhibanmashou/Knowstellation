@@ -5,9 +5,8 @@ import type { FormulaNodeData } from '../../shared/types/graph';
 import type { FormulaPrerequisite } from '../../shared/types/formula';
 import { chapterColor, chapterRank, rawFormulaNumber } from '../../shared/utils/constants';
 import { buildFormulaSymbolPrerequisites } from './formulaInfo';
-import { selectKeyConcepts } from './keyConceptAnnotations';
 import { isFocusAnnotationLabel, resolveSymbolMeaning, resolveSymbolShortLabel } from '../../shared/utils/symbolAnnotation';
-import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../../shared/utils/uiCopy';
+import { DEFAULT_LANGUAGE, getUiCopy } from '../../shared/utils/uiCopy';
 import { MathFormula, renderMathToHtml, type MathAnnotation } from '../../shared/components/MathFormula';
 import { RichMathText } from '../../shared/components/RichMathText';
 
@@ -141,6 +140,22 @@ function heuristicSymbolLabel(symbol = ''): string {
     return '方差项';
   }
   if (/^[A-Za-z]_\{?[0-9A-Za-z]+\}?\^\{\([^)]+\)\}$/.test(compact)) return '索引效应项';
+  if (/^\\(?:overline|bar)\{\\delta\}/.test(compact)) return '平均变化量';
+  if (/^\\delta/.test(compact)) return '变化量';
+  if (/^\\mu(?:_|$|\^)/.test(compact)) return '均值参数';
+  if (/^\\alpha/.test(compact)) return '平均效应';
+  if (/^\\beta/.test(compact)) return '回归系数';
+  if (/^b(?:_|$)/.test(compact)) return '效应系数';
+  if (compact === 'c') return '二次项系数';
+  if (/^e(?:_|$)/.test(compact)) return '残差项';
+  if (/^x(?:_|$)/.test(compact)) return '预测变量';
+  if (compact === 'a') return '加性项';
+  if (compact === 'd') return '变化量';
+  if (compact === 'g') return '遗传值';
+  if (compact === 'k') return '项数';
+  if (compact === 's') return '选择系数';
+  if (compact === 'w') return '相对适合度';
+  if (compact === 'W') return '适合度';
   if (compact === 'B') return '尺度参数';
   if (compact === 'n') return '数量参数';
   return '';
@@ -236,11 +251,10 @@ export const FormulaNode = React.memo(
       [formula, nodeData.symbolExplanations],
     );
     const chapter = chapterRank(formula.chapter_id, Number(rawFormulaNumber(formula.id).split('.')[0]));
-    const active = nodeData.focused || selected;
     const role = nodeData.role || (nodeData.focused ? 'focus' : 'prerequisite');
-    const canAnnotateFormula = nodeData.mode === 'guided' && !nodeData.chapterGraph;
+    const canAnnotateFormula = nodeData.mode === 'formula' && !nodeData.chapterGraph;
     const [activeCallout, setActiveCallout] = useState<ActiveCallout | null>(null);
-    const [activeKeySymbol, setActiveKeySymbol] = useState<string | null>(null);
+    const [formulaContentWidth, setFormulaContentWidth] = useState<number | null>(null);
     const annotations = useMemo(
       () =>
         canAnnotateFormula
@@ -270,11 +284,50 @@ export const FormulaNode = React.memo(
           : [],
       [canAnnotateFormula, symbolNotes],
     );
-    const keyConcepts = useMemo(
-      () => selectKeyConcepts(annotations),
-      [annotations],
-    );
+    React.useLayoutEffect(() => {
+      if (nodeData.chapterGraph) return undefined;
+      const root = nodeRef.current;
+      const content = root?.querySelector<HTMLElement>('.formula-node__math .math-formula__content');
+      if (!root || !content) return undefined;
 
+      let frame = 0;
+      const measure = () => {
+        const renderedFormula = content.querySelector<HTMLElement>('.katex');
+        const nextWidth = Math.ceil(
+          renderedFormula?.scrollWidth
+            || renderedFormula?.getBoundingClientRect().width
+            || content.scrollWidth
+            || content.getBoundingClientRect().width,
+        );
+        setFormulaContentWidth((current) => {
+          if (current !== null && Math.abs(current - nextWidth) <= 1) return current;
+          return nextWidth;
+        });
+      };
+
+      measure();
+      if (typeof ResizeObserver === 'undefined') return undefined;
+
+      const observer = new ResizeObserver(() => {
+        window.cancelAnimationFrame(frame);
+        frame = window.requestAnimationFrame(measure);
+      });
+      observer.observe(content);
+      const renderedFormula = content.querySelector<HTMLElement>('.katex');
+      if (renderedFormula) observer.observe(renderedFormula);
+      return () => {
+        window.cancelAnimationFrame(frame);
+        observer.disconnect();
+      };
+    }, [annotations.length, formula.latex, nodeData.chapterGraph]);
+
+    const measuredWidth = formulaContentWidth
+      ? clamp(formulaContentWidth + (nodeData.focused ? 72 : 64), nodeData.focused ? 360 : 292, nodeData.focused ? 560 : 492)
+      : undefined;
+    const nodeStyle = {
+      '--chapter-color': chapterColor(chapter),
+      ...(measuredWidth ? { '--formula-node-width': `${measuredWidth}px` } : {}),
+    } as React.CSSProperties;
     const handleDoubleClick = (event: MouseEvent<HTMLDivElement>) => {
       event.stopPropagation();
       if (nodeData.locked) return;
@@ -292,6 +345,12 @@ export const FormulaNode = React.memo(
       if (!nodeData.lockedTargetFormulaId) return;
       nodeData.onLockedTarget?.(nodeData.lockedTargetFormulaId);
     };
+
+    const relationInfoReady = typeof nodeData.hasGraphPrerequisites === 'boolean' && typeof nodeData.hasGraphSuccessors === 'boolean';
+    const prerequisiteDisabled = relationInfoReady && !nodeData.hasGraphPrerequisites;
+    const successorDisabled = relationInfoReady && !nodeData.hasGraphSuccessors;
+    const prerequisiteLabel = prerequisiteDisabled ? '暂无前置公式' : copy.prerequisiteTrigger;
+    const successorLabel = successorDisabled ? '暂无后续公式' : copy.successorTrigger;
 
     const handleAnnotationChange = useCallback((annotation: MathAnnotation | null, anchorRect?: DOMRect) => {
       if (!annotation || !anchorRect || !nodeRef.current) {
@@ -344,34 +403,14 @@ export const FormulaNode = React.memo(
         className={`formula-node formula-node--${role} ${annotations.length ? 'formula-node--annotated' : ''} ${activeCallout ? 'formula-node--has-callout' : ''} ${nodeData.chapterGraph ? 'formula-node--chapter-graph' : ''} ${nodeData.focused ? 'formula-node--focused' : ''} ${selected ? 'formula-node--selected' : ''} ${nodeData.locked ? 'formula-node--locked' : ''} ${nodeData.learned ? 'formula-node--learned' : ''}`}
         data-testid="formula-node"
         data-formula-id={id}
-        style={{ '--chapter-color': chapterColor(chapter) } as React.CSSProperties}
+        style={nodeStyle}
       >
         <Handle type="target" position={Position.Left} />
-        {!nodeData.locked ? (
-          <div className="formula-node__actions" aria-label={copy.actions}>
-            <button type="button" className="formula-node__side-trigger formula-node__side-trigger--left" onClick={(e) => handleTriggerClick(e, 'prerequisites')} aria-label={copy.prerequisiteTrigger} title={copy.prerequisiteTrigger}>
-              <span>{copy.prerequisiteTrigger}</span>
-            </button>
-            <button type="button" className="formula-node__side-trigger formula-node__side-trigger--right" onClick={(e) => handleTriggerClick(e, 'successors')} aria-label={copy.successorTrigger} title={copy.successorTrigger}>
-              <span>{copy.successorTrigger}</span>
-            </button>
-          </div>
-        ) : null}
-        <div className="formula-node__chapter-bar" aria-hidden="true" />
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="formula-node__label truncate">{formula.label}</div>
-            <div className="formula-node__chapter-label mt-1">{formatChapterLabel(formula.chapter_id, chapter)}</div>
-          </div>
+        <div className="formula-node__header">
+          <h3 className="formula-node__label">{formula.label}</h3>
           {nodeData.loading ? (
-          <span className="loading-dot mt-0.5 shrink-0" aria-label="正在加载依赖关系" />
-          ) : (
-            <span
-              className={`formula-node__status ${active ? 'formula-node__status--active' : ''}`}
-            >
-              {nodeData.locked ? copy.locked : (formula.depth ?? 0) <= 0 ? copy.start : copy.layer(formula.depth ?? 0)}
-            </span>
-          )}
+            <span className="loading-dot mt-0.5 shrink-0" aria-label="正在加载依赖关系" />
+          ) : null}
         </div>
         <MathFormula
           latex={formula.latex}
@@ -379,51 +418,14 @@ export const FormulaNode = React.memo(
           annotations={annotations}
           onAnnotationChange={canAnnotateFormula ? handleAnnotationChange : undefined}
         />
-        {canAnnotateFormula && keyConcepts.length ? (
-          <div className="formula-node__key-symbols" aria-label="重点符号">
-            {keyConcepts.map((item) => {
-              const detailText = item.text?.trim() || '';
-              const showDetail = detailText.replace(/\s+/g, ' ') !== item.note.replace(/\s+/g, ' ');
-              const key = `${item.kind || 'symbol'}:${item.symbol}:${item.note}`;
-              return (
-                <span
-                  className={`formula-node__key-symbol nodrag nopan ${activeKeySymbol === key ? 'formula-node__key-symbol--active' : ''}`}
-                  key={key}
-                  role="note"
-                  tabIndex={0}
-                  aria-label={`${item.symbol}: ${item.note}`}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setActiveKeySymbol(key);
-                  }}
-                  onDoubleClick={(event) => event.stopPropagation()}
-                  onFocus={() => setActiveKeySymbol(key)}
-                  onBlur={() => setActiveKeySymbol((current) => (current === key ? null : current))}
-                  onMouseEnter={() => setActiveKeySymbol(key)}
-                  onMouseLeave={(event) => {
-                    if (document.activeElement === event.currentTarget) return;
-                    setActiveKeySymbol((current) => (current === key ? null : current));
-                  }}
-                  onKeyDown={(event) => {
-                    event.stopPropagation();
-                    if (event.key === 'Escape') {
-                      setActiveKeySymbol(null);
-                      event.currentTarget.blur();
-                    }
-                  }}
-                >
-                  <span
-                    className="formula-node__key-symbol-math"
-                    dangerouslySetInnerHTML={{ __html: renderMathToHtml(item.symbol, true).html }}
-                  />
-                  <span className="formula-node__key-symbol-badge">重点</span>
-                  <span className="formula-node__key-symbol-popover" role="tooltip">
-                    <strong><RichMathText text={item.note} /></strong>
-                    {showDetail ? <small><RichMathText text={detailText} /></small> : null}
-                  </span>
-                </span>
-              );
-            })}
+        {!nodeData.locked ? (
+          <div className="formula-node__actions" aria-label={copy.actions}>
+            <button type="button" className="formula-node__side-trigger formula-node__side-trigger--left nodrag nopan" onClick={(e) => handleTriggerClick(e, 'prerequisites')} aria-label={prerequisiteLabel} title={prerequisiteLabel} disabled={prerequisiteDisabled}>
+              <span>{copy.prerequisiteTrigger}</span>
+            </button>
+            <button type="button" className="formula-node__side-trigger formula-node__side-trigger--right nodrag nopan" onClick={(e) => handleTriggerClick(e, 'successors')} aria-label={successorLabel} title={successorLabel} disabled={successorDisabled}>
+              <span>{copy.successorTrigger}</span>
+            </button>
           </div>
         ) : null}
         {canAnnotateFormula && activeCallout ? (
@@ -456,23 +458,19 @@ export const FormulaNode = React.memo(
             </div>
           </>
         ) : null}
-        <div className="formula-node__footer mt-3 flex items-center justify-between gap-3 pt-2.5">
-          <div className="min-w-0 text-left">
-            <div className="formula-node__section line-clamp-2">{formatSectionLabel(formula.section || formula.subsection)}</div>
-            {nodeData.locked && nodeData.lockedReason ? (
-              <div className="formula-node__locked-reason">
-                {nodeData.lockedTargetFormulaId ? (
-                  <button type="button" onClick={handleLockedTargetClick} title={nodeData.lockedTargetLabel || nodeData.lockedTargetFormulaId}>
-                    {nodeData.lockedReason}
-                  </button>
-                ) : (
-                  nodeData.lockedReason
-                )}
-              </div>
-            ) : null}
+        {nodeData.locked && nodeData.lockedReason ? (
+          <div className="formula-node__footer">
+            <div className="formula-node__locked-reason">
+              {nodeData.lockedTargetFormulaId ? (
+                <button type="button" onClick={handleLockedTargetClick} title={nodeData.lockedTargetLabel || nodeData.lockedTargetFormulaId}>
+                  {nodeData.lockedReason}
+                </button>
+              ) : (
+                nodeData.lockedReason
+              )}
+            </div>
           </div>
-          <span className="formula-node__dot" />
-        </div>
+        ) : null}
         <Handle type="source" position={Position.Right} />
       </div>
     );
@@ -492,6 +490,11 @@ export const FormulaNode = React.memo(
       prevData.lockedTargetFormulaId === nextData.lockedTargetFormulaId &&
       prevData.lockedTargetLabel === nextData.lockedTargetLabel &&
       prevData.learned === nextData.learned &&
+      prevData.hasGraphPrerequisites === nextData.hasGraphPrerequisites &&
+      prevData.hasGraphSuccessors === nextData.hasGraphSuccessors &&
+      prevData.studyNextFormulaId === nextData.studyNextFormulaId &&
+      prevData.studyNextFormulaLabel === nextData.studyNextFormulaLabel &&
+      prevData.studyNextFormulaLocked === nextData.studyNextFormulaLocked &&
       compareSymbolExplanations(prevData.symbolExplanations, nextData.symbolExplanations)
     );
   },

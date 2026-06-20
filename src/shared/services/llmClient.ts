@@ -111,6 +111,38 @@ export interface ChapterOverviewResponse {
   overview: string;
 }
 
+export interface ConceptDetailReference {
+  name: string;
+  symbol?: string;
+  definition?: string;
+  relation?: string;
+  formulaLabel?: string;
+}
+
+export interface ConceptDetailRequest {
+  chapterId: string;
+  conceptId: string;
+  viewId?: string;
+  name: string;
+  symbol?: string;
+  conceptType?: string;
+  definition?: string;
+  sourceSentence?: string;
+  formula?: {
+    id?: string;
+    label?: string;
+    latex?: string;
+    section?: string;
+  };
+  prerequisiteConcepts?: ConceptDetailReference[];
+  successorConcepts?: ConceptDetailReference[];
+  language: LanguageCode;
+}
+
+export interface ConceptDetailResponse {
+  explanation: string;
+}
+
 interface ChatMessage {
   role: 'system' | 'user';
   content: string;
@@ -386,6 +418,62 @@ export function buildChapterOverviewChatRequest(input: ChapterOverviewRequest): 
   };
 }
 
+function conceptReferenceSummary(references: ConceptDetailReference[] = []): ConceptDetailReference[] {
+  return references.slice(0, 6).map((reference) => ({
+    name: reference.name,
+    symbol: reference.symbol || '',
+    definition: reference.definition || '',
+    relation: reference.relation || '',
+    formulaLabel: reference.formulaLabel || '',
+  }));
+}
+
+export function buildConceptDetailsChatRequest(input: ConceptDetailRequest): ChatCompletionRequest {
+  const zh = input.language === 'zh';
+  return {
+    model: DEFAULT_MODEL,
+    temperature: 0.25,
+    response_format: { type: 'json_object' },
+    messages: [
+      {
+        role: 'system',
+        content: zh
+          ? '你是一名严谨、具体、会带本科生读教材的科学助教。只返回 JSON，不要 Markdown。你要为图谱左栏写概念解读，必须比节点卡片更深入，紧扣给定定义、公式证据、原文证据和前后置概念；不要编造教材外事实，不要只复述定义。'
+          : 'You are a rigorous science teaching assistant. Return JSON only, no Markdown. Write a concept detail panel that is deeper than a graph card, grounded in the supplied definition, formula evidence, source sentence, and neighboring concepts; do not invent facts or merely restate the definition.',
+      },
+      {
+        role: 'user',
+        content: JSON.stringify(
+          {
+            task: 'concept_detail',
+            language: input.language,
+            output_schema: {
+              explanation: zh
+                ? '一段中文概念解读，约 90-150 字。要比节点卡片更具体，但不要展开成多段；说明这个概念是什么、在 supporting formula 中怎么用，并自然提到关键符号或公式编号。'
+                : 'One 70-120 word concept explanation. Make it more specific than the node card, but keep it as a single paragraph; explain what the concept is, how it is used in the supporting formula, and naturally mention key symbols or formula labels.',
+            },
+            concept: {
+              chapter_id: input.chapterId,
+              concept_id: input.conceptId,
+              view_id: input.viewId || '',
+              name: input.name,
+              symbol: input.symbol || '',
+              concept_type: input.conceptType || '',
+              definition: input.definition || '',
+              source_sentence: input.sourceSentence || '',
+            },
+            supporting_formula: input.formula || null,
+            prerequisite_concepts: conceptReferenceSummary(input.prerequisiteConcepts),
+            successor_concepts: conceptReferenceSummary(input.successorConcepts),
+          },
+          null,
+          2,
+        ),
+      },
+    ],
+  };
+}
+
 function parseJsonObject(content: string): unknown {
   try {
     return JSON.parse(content);
@@ -507,6 +595,23 @@ function validateChapterOverview(value: unknown, language: LanguageCode = 'zh'):
   return { overview };
 }
 
+function validateConceptDetails(value: unknown, language: LanguageCode = 'zh'): ConceptDetailResponse {
+  if (!value || typeof value !== 'object') throw new Error('LLM JSON response was not an object.');
+  const record = value as Record<string, unknown>;
+  const rawExplanation = typeof record.explanation === 'string'
+    ? record.explanation
+    : Array.isArray(record.reading) && typeof record.reading[0] === 'string'
+      ? record.reading[0]
+      : typeof record.reading === 'string'
+        ? record.reading
+        : '';
+  const explanation = rawExplanation.replace(/\s+/g, ' ').trim();
+  if (!explanation) throw new Error('LLM JSON response missing explanation.');
+  if (explanation.length < (language === 'zh' ? 45 : 70)) throw new Error('LLM concept detail is too short.');
+  assertLearnerFacingText(explanation, 'explanation', language);
+  return { explanation };
+}
+
 function persistedCacheKey(key: string): string {
   return `${PERSISTED_CACHE_PREFIX}${encodeURIComponent(key)}`;
 }
@@ -596,6 +701,10 @@ export function chapterOverviewCacheKey(chapterId: string, language: LanguageCod
   return `chapter-overview:${chapterId}:${language}`;
 }
 
+export function conceptDetailsCacheKey(chapterId: string, conceptId: string, language: LanguageCode): string {
+  return `concept-detail:${chapterId}:${conceptId}:${language}`;
+}
+
 export async function generateFormulaNotes(request: FormulaNoteRequest): Promise<FormulaNoteResponse> {
   return cachedStaticFirstRequest(
     formulaNotesCacheKey(request.formulaId, request.language),
@@ -633,6 +742,14 @@ export async function generateChapterOverview(request: ChapterOverviewRequest): 
     chapterOverviewCacheKey(request.chapterId, request.language),
     () => postChatCompletion(buildChapterOverviewChatRequest(request), (value) => validateChapterOverview(value, request.language)),
     (value) => validateChapterOverview(value, request.language),
+  );
+}
+
+export async function generateConceptDetails(request: ConceptDetailRequest): Promise<ConceptDetailResponse> {
+  return cachedStaticFirstRequest(
+    conceptDetailsCacheKey(request.chapterId, request.viewId || request.conceptId, request.language),
+    () => postChatCompletion(buildConceptDetailsChatRequest(request), (value) => validateConceptDetails(value, request.language)),
+    (value) => validateConceptDetails(value, request.language),
   );
 }
 
@@ -675,6 +792,7 @@ export const __llmClientTestUtils = {
   validateVariableDetailsBatch,
   validateStorylineNarrative,
   validateChapterOverview,
+  validateConceptDetails,
   loadStaticCache,
   validateStaticCacheEntry,
   requestCache,

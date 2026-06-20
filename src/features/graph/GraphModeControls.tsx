@@ -1,6 +1,6 @@
 import { DEFAULT_LANGUAGE, getUiCopy } from '../../shared/utils/uiCopy';
 
-export type GraphStudyMode = 'concept' | 'guided' | 'explore';
+export type GraphStudyMode = 'concept' | 'formula' | 'explore' | 'conceptMap';
 
 interface GraphModeControlsProps {
   mode: GraphStudyMode;
@@ -8,7 +8,7 @@ interface GraphModeControlsProps {
   lockedMode?: GraphStudyMode;
 }
 
-const MODES: GraphStudyMode[] = ['concept', 'guided', 'explore'];
+const MODES: GraphStudyMode[] = ['concept', 'formula', 'explore', 'conceptMap'];
 
 export function GraphModeControls({ mode, onModeChange, lockedMode }: GraphModeControlsProps) {
   const copy = getUiCopy(DEFAULT_LANGUAGE).graph;

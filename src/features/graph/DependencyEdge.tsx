@@ -11,11 +11,13 @@ export function DependencyEdge(props: EdgeProps) {
   const dimmed = Boolean(data?.dimmed);
   const conceptKind = data?.kind === 'concept';
   const introducedKind = data?.kind === 'introduced';
-  const labelVisible = !introducedKind && (conceptKind ? Boolean(data?.labelVisible) : Boolean(data?.labelVisible || active));
+  const labelVisible = Boolean((data?.labelVisible || (!introducedKind && !conceptKind && active)) && data?.via);
   const animated = cross || Boolean(props.animated);
-  const label = data?.via || 'via';
+  const label = data?.via || '';
   const mathLabel = /\\|[_^{}]/.test(label) || /^[A-Za-z]$/.test(label);
   const copy = getUiCopy(DEFAULT_LANGUAGE).graph.edge;
+  const labelOffsetX = data?.labelOffsetX ?? 0;
+  const labelOffsetY = data?.labelOffsetY ?? (conceptKind || introducedKind ? -24 : -32);
 
   return (
     <>
@@ -29,7 +31,7 @@ export function DependencyEdge(props: EdgeProps) {
       />
       {labelVisible ? (
         <EdgeLabelRenderer>
-          <div className={`edge-label nodrag nopan ${active ? 'edge-label--active' : ''}`} title={data?.explanation} style={{ transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)` }}>
+          <div className={`edge-label nodrag nopan ${active ? 'edge-label--active' : ''}`} title={data?.explanation} style={{ transform: `translate(-50%, -50%) translate(${labelX + labelOffsetX}px, ${labelY + labelOffsetY}px)` }}>
             <span className="edge-label__verb">{copy.uses}</span>
             {mathLabel ? <MathFormula latex={label} inline className="edge-label__math" /> : <span>{label}</span>}
           </div>

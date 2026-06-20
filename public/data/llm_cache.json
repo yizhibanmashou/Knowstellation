@@ -9577,7 +9577,7 @@
       "inThisChapter": "此式出现在探讨“焦点性状是否为选择的直接目标”的章节，用于推导一致性条件，为后续判断选择是否直接作用于性状z提供数学依据。它通过比较表型回归系数与遗传回归系数，引出式20.21b和20.21c，从而建立选择响应与遗传协方差的关系。"
     },
     "formula-notes:formula_20.23b:zh": {
-      "plainMeaning": "该公式通过平均L个标记位点的分子共祖系数S_{xy,ℓ}来估计个体x和y之间的加性遗传关系矩阵元素Â_{xy}，其中Â_{xy}=2θ̂_{xy}，θ̂_{xy}是共祖系数θ_{xy}的估计值。",
+      "plainMeaning": "该公式通过平均L个标记位点的分子共祖系数S_{xy,ℓ}来估计个体x和y之间的加性遗传关系矩阵元素Â_{xy}，其中Â_{xy}=2θ̂_{xy}，θ̂_{xy}是共祖系数θ_{xy}的估计值。",
       "inThisChapter": "在自然群体选择响应章节中，该公式将分子标记数据与理论关系矩阵联系起来，为后续利用标记估计遗传参数和预测选择响应提供基础。"
     },
     "formula-notes:formula_20.23b:en": {
@@ -9661,7 +9661,7 @@
       "inThisChapter": "It appears in the section on applying mixed models to natural populations to derive the PEV, which is then used in subsequent equations (20.24b–h) to quantify prediction accuracy and heritability in natural population settings."
     },
     "formula-notes:formula_20.23m:en": {
-      "plainMeaning": "This formula computes the self-coancestry coefficient (including inbreeding) for individual x, where Â_xx = 1 + f̂_x, with f̂_x being the estimated inbreeding coefficient. T_{x,ℓ} is the genotype indicator (0,1,2) at locus ℓ, p_ℓ is the allele frequency, and L is the number of loci.",
+      "plainMeaning": "This formula computes the self-coancestry coefficient (including inbreeding) for individual x, where Â_xx = 1 + f̂_x, with f̂_x being the estimated inbreeding coefficient. T_{x,ℓ} is the genotype indicator (0,1,2) at locus ℓ, p_ℓ is the allele frequency, and L is the number of loci.",
       "inThisChapter": "It appears in the introduction to selection response in natural populations to provide a method for estimating individual inbreeding from marker data, which is later used to quantify relatedness and inbreeding depression in selection response analyses."
     },
     "formula-notes:formula_20.24b:en": {
@@ -9669,7 +9669,7 @@
       "inThisChapter": "It appears in the section on applying mixed models to natural populations to quantify the reliability of estimated breeding values, supporting later arguments about selection response and prediction accuracy."
     },
     "formula-notes:formula_20.23m:zh": {
-      "plainMeaning": "该公式计算个体x与自身的亲缘系数估计值Â_xx，其中1代表基线，求和项为近交系数估计，T_{x,ℓ}是x在位点ℓ的基因型编码（0,1,2），p_ℓ是等位基因频率。",
+      "plainMeaning": "该公式计算个体x与自身的亲缘系数估计值Â_xx，其中1代表基线，求和项为近交系数估计，T_{x,ℓ}是x在位点ℓ的基因型编码（0,1,2），p_ℓ是等位基因频率。",
       "inThisChapter": "本章介绍自然群体中的选择响应，公式20.23m修正了之前公式中个体与自身共祖系数的估计，为后续讨论近交和遗传多样性提供基础。"
     },
     "formula-notes:formula_20.23k:zh": {

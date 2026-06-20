@@ -122,11 +122,76 @@ function textMatchesCandidate(text: string, candidate: string): boolean {
   if (!candidate) return false;
   if (text === candidate) return true;
   const remainder = text.startsWith(candidate) ? text.slice(candidate.length) : '';
-  if (remainder && !/[A-Za-zΑ-Ωα-ω0-9]/u.test(remainder)) return true;
+  if (remainder && !/[A-Za-zΑ-Ωα-ω0-9]/u.test(remainder)) {
+    if (/^[=+\-×÷/]/u.test(remainder)) return false;
+    if (/^['*∘]/u.test(remainder)) return false;
+    return true;
+  }
+  if (/^[A-Za-z]$/u.test(candidate) && new RegExp(`^${candidate}[Α-Ωα-ω]`, 'u').test(text)) return true;
   if (/[=+\-∂/∑×∗()[\]]/.test(text)) return false;
   if (!(candidate.length >= 2 && text.includes(candidate) && text.length <= candidate.length + 3)) return false;
   const extraText = text.replace(candidate, '');
   return !/[A-Za-zΑ-Ωα-ω0-9]/u.test(extraText);
+}
+
+function timedCallBase(candidate: string): string | null {
+  const match = candidate.match(/^(.+)\([A-Za-zΑ-Ωα-ω0-9]+\)$/u);
+  return match?.[1] || null;
+}
+
+function symbolTargetBeforeTrailingOperator(
+  element: HTMLElement,
+  annotation: MathAnnotation & { candidates: string[] },
+): HTMLElement | null {
+  const ownText = compactMathText(element.textContent || '');
+  const operatorCandidate = annotation.candidates.find((candidate) => {
+    const remainder = ownText.startsWith(candidate) ? ownText.slice(candidate.length) : '';
+    return Boolean(remainder && /^[=+\-×÷/]/u.test(remainder));
+  });
+  if (!operatorCandidate) return null;
+
+  const base = timedCallBase(operatorCandidate) || operatorCandidate;
+  return Array.from(element.children).find((child): child is HTMLElement => (
+    textMatchesCandidate(compactMathText(child.textContent || ''), base)
+  )) || null;
+}
+
+function regexEscape(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function normalizedHotspotSymbol(value = ''): string {
+  return value
+    .replace(/\s+/g, '')
+    .replace(/_\{([^{}])\}/g, '_$1')
+    .replace(/\^\{([^{}])\}/g, '^$1')
+    .replace(/\\bar\{/g, '\\overline{');
+}
+
+function isScriptExtension(existing: string, current: string): boolean {
+  return existing.startsWith(`${current}^`) || existing.startsWith(`${current}_`);
+}
+
+function isParameterizedWrapperFor(existing: string, current: string): boolean {
+  return existing.startsWith(`${current}(`);
+}
+
+function isAccentWrapperFor(existing: string, current: string): boolean {
+  if (!current || !/^[A-Za-zΑ-Ωα-ω]$/u.test(current)) return false;
+  return new RegExp(`\\\\(?:overline|bar|hat|widehat|tilde|widetilde|vec)\\{${regexEscape(current)}\\}`).test(existing);
+}
+
+function canNestSymbolWithinHotspot(existingHotspot: HTMLElement | null, annotation: MathAnnotation): boolean {
+  if (!existingHotspot || annotation.kind !== 'symbol') return false;
+  const existingKind = existingHotspot.dataset.kind as MathAnnotation['kind'] | undefined;
+  if (existingKind === 'formula') return false;
+  const existing = normalizedHotspotSymbol(existingHotspot.dataset.symbol || '');
+  const current = normalizedHotspotSymbol(annotation.target || annotation.symbol || '');
+  if (!existing || !current || existing === current || !existing.includes(current)) return false;
+  if (isScriptExtension(existing, current)) return false;
+  if (isParameterizedWrapperFor(existing, current)) return false;
+  if (isAccentWrapperFor(existing, current)) return false;
+  return true;
 }
 
 function compoundTextMatchesCandidate(text: string, candidate: string): boolean {
@@ -360,7 +425,8 @@ function annotationMatchesElement(
   if (
     requiresOverline &&
     !/(overline|accent)/.test(String(element.className || '')) &&
-    !element.querySelector('.accent, .overline')
+    !element.querySelector('.accent, .overline') &&
+    !element.closest?.('.accent, .overline')
   ) {
     return false;
   }
@@ -380,6 +446,8 @@ function annotationMatchesElement(
       );
     }
     if (textMatchesCandidate(ownText, candidate)) return true;
+    const timedBase = timedCallBase(candidate);
+    if (timedBase && textMatchesCandidate(ownText, timedBase) && neighborhoodText.includes(candidate)) return true;
     const base = candidateBase(candidate);
     return Boolean(base && ownText.includes(base) && textMatchesCandidate(neighborhoodText, candidate));
   });
@@ -387,9 +455,11 @@ function annotationMatchesElement(
 
 export const __testing = {
   annotationMatchesElement,
+  canNestSymbolWithinHotspot,
   compactNeighborhoodText,
   compactSiblingWindowText,
   compactAncestorWindowText,
+  symbolTargetBeforeTrailingOperator,
 };
 
 function annotationTargetScore(
@@ -418,6 +488,11 @@ function maxTargetsForAnnotation(annotation: MathAnnotation): number {
   return 1;
 }
 
+function annotationSpecificity(annotation: MathAnnotation): number {
+  const symbol = annotation.target || annotation.symbol || '';
+  return (/\([^()]+\)$/.test(symbol) ? 80 : 0) + symbol.length;
+}
+
 function shouldSkipCandidateElement(
   element: HTMLElement,
   annotation: MathAnnotation & { fractionProfile: FractionProfile | null },
@@ -432,8 +507,9 @@ function shouldSkipCandidateElement(
   }
 
   if (annotation.kind === 'symbol') {
-    if (ownHotspot || descendantHotspot) return true;
-    return Boolean(ancestorHotspot && ancestorHotspot.dataset.kind !== 'compound');
+    if (ownHotspot) return !canNestSymbolWithinHotspot(ownHotspot, annotation);
+    if (descendantHotspot) return true;
+    return Boolean(ancestorHotspot && ancestorHotspot.dataset.kind !== 'compound' && !canNestSymbolWithinHotspot(ancestorHotspot, annotation));
   }
 
   return Boolean(ownHotspot || ancestorHotspot || descendantHotspot);
@@ -466,7 +542,7 @@ export function annotateRenderedMath(root: HTMLElement, annotations: MathAnnotat
     }))
     .sort((a, b) => {
       const kindRank = (value?: MathAnnotation['kind']) => (value === 'compound' ? 3 : value === 'symbol' ? 2 : 1);
-      return kindRank(b.kind) - kindRank(a.kind) || b.symbol.length - a.symbol.length;
+      return kindRank(b.kind) - kindRank(a.kind) || annotationSpecificity(b) - annotationSpecificity(a);
     });
 
   if (!available.length) return;
@@ -506,6 +582,10 @@ export function annotateRenderedMath(root: HTMLElement, annotations: MathAnnotat
     } else {
       matches = elements.flatMap<HTMLElement>((element) => {
         if (shouldSkipCandidateElement(element, annotation)) return [];
+        const redirectedTarget = annotation.kind === 'symbol'
+          ? symbolTargetBeforeTrailingOperator(element, annotation)
+          : null;
+        if (redirectedTarget && !shouldSkipCandidateElement(redirectedTarget, annotation)) return [redirectedTarget];
         if (annotation.kind === 'compound' && element.dataset.kind === 'compound') return [];
         if (annotation.kind === 'symbol' && element.dataset.kind === 'compound') return [];
         if (!annotationMatchesElement(element, annotation)) return [];

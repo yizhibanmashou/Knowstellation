@@ -38,7 +38,7 @@
           "story_en": "In 1908, Cambridge mathematician G. H. Hardy was asked a deceptively simple question at his cricket club: if brown eyes are dominant, will they eventually take over the population? He went home, did the algebra, and realized he was wrong. Under random mating, allele frequencies don't drift toward dominance at all — equilibrium is reached in a single generation. At almost the same moment, German physician Wilhelm Weinberg independently arrived at the same conclusion.\n\nThis was the first time p transformed from a simple count into a trajectory unfolding in probability space. Hardy-Weinberg gave population genetics its null model — every subsequent theory adds constraints on top of it. The Wright-Fisher model turned this process into explicit binomial sampling.\n\nFormula 2.8 — Kimura's 1955 diffusion approximation — writes the evolution of p as a continuous probability density φ(p_t|p_0). p is no longer a single number. It's a probability map unfolding through time.",
           "bridge_zh": "地图画出来了。但有一个问题这张地图回答不了：频率 p 本身有没有携带时间信息？一个高频等位基因是最近才涨起来的，还是已经在群体里游荡了几千代？下一站：p 的预期年龄。",
           "bridge_en": "The map is drawn. But there's a question the map can't answer: does the frequency p itself carry any information about time? Is a high-frequency allele a recent arrival, or has it been wandering for thousands of generations? Next: the expected age of p.",
-          "image": "/images/storylines/allele-frequency_step1.jpg",
+          "image": "/images/storylines/allele-frequency_step1.webp",
           "image_caption": "p 的概率地图"
         },
         {
@@ -55,7 +55,7 @@
           "story_en": "If Kimura's φ(p_t|p_0) is the spatial map of p, then formulas 2.11a-2.12 are its timeline. Kimura and Ohta (1969-1973) solved the Kolmogorov backward equation to produce a result as elegant as it is unsettling: a neutral allele with initial frequency p₀ persists for an average of about -4N[p₀·ln(p₀)+(1-p₀)·ln(1-p₀)] generations.\n\nThis formula depends on nothing but N and p₀ — no free parameters. A rare allele (p₀=0.01) lasts only about 0.08N generations; a mid-frequency allele (p₀=0.5) persists for about 2.8N generations. Frequency itself carries a clock.\n\nFormula 2.12 goes further, separating two destinies: fixation and loss. Conditioned on eventual fixation, the waiting time changes — alleles destined to fix actually rise faster through the low-frequency phase.",
           "bridge_zh": "算出了单个等位基因的时钟——但自然界从来不会只跑一份实验。如果几百个独立群体同时从 p₀=0.5 开始漂变，它们的频率会散开多远？Sewall Wright 在 1931 年给出了答案。",
           "bridge_en": "We now have a clock for a single allele. But nature never runs just one experiment. If hundreds of independent populations all start drifting from p₀=0.5, how far apart do their frequencies spread? Sewall Wright answered this in 1931.",
-          "image": "/images/storylines/allele-frequency_step2.jpg",
+          "image": "/images/storylines/allele-frequency_step2.webp",
           "image_caption": "p 的预期年龄"
         },
         {
@@ -72,7 +72,7 @@
           "story_en": "In 1931, Sewall Wright published his famous 62-page paper \"Evolution in Mendelian Populations.\" In it, he not only introduced the concept of effective population size N_e, but also derived the binomial sampling variance σ²_p(t)=p₀(1-p₀)[1-(1-1/(2N))^t].\n\nWhat this says: from initial frequency p₀, after t generations of random drift, the variance in allele frequency approaches p₀(1-p₀) — the maximum possible variance at fixation or loss. Smaller populations spread faster; more time means wider distributions.\n\nThis directly connects three core quantities: population size N, time t, and uncertainty in p. The entire framework of F_ST (population differentiation index) is built on this formula. Wright's F-statistics essentially ask: how much larger is the observed variance among populations, compared to what random drift alone would produce?",
           "bridge_zh": "散开归散开——但平均而言，p 哪儿也不去。这条 E(p_t)=p₀ 的基线看起来简单到不值一提。但正是它让 Kimura 在 1968 年做出了改变分子生物学的论断：大部分分子进化是中性的。",
           "bridge_en": "It spreads, sure. But on average, p goes nowhere. The baseline E(p_t)=p₀ looks almost too trivial to mention — yet it's exactly what allowed Kimura to make a claim in 1968 that would transform molecular biology: most molecular evolution is neutral.",
-          "image": "/images/storylines/allele-frequency_step3.jpg",
+          "image": "/images/storylines/allele-frequency_step3.webp",
           "image_caption": "群体间的漂变宽度"
         },
         {
@@ -89,7 +89,7 @@
           "story_en": "E(p_t)=p₀. Three symbols. It might be the shortest and most underestimated formula in all of population genetics.\n\nIts meaning is almost absurdly simple: in the absence of selection and mutation, the expected value of an allele frequency does not change over time. However wildly it drifts, on average, it goes nowhere.\n\nBut it was precisely this invariance that allowed Kimura to propose the neutral theory of molecular evolution in 1968. His reasoning: if the observed rate of molecular evolution is roughly constant and independent of population size N, then most molecular substitutions cannot be driven by selection (since selection efficiency depends on N). The only remaining possibility is that most substitutions are neutral, fixed by random drift.\n\nThe directionlessness of E(p_t)=p₀ became the starting line for every test of positive selection. The McDonald-Kreitman test, dN/dS ratios, Tajima's D — all these methods fundamentally test the same hypothesis: how far do the observed data deviate from this neutral baseline?",
           "bridge_zh": "如果平均漂变没有方向——那每一个系统性的上升或下降都是一个信号。有东西在推 p。Fisher 在 1930 年用一个极其简洁的偏导数来描述这个「推」。",
           "bridge_en": "If the average drift has no direction — then every systematic rise or fall is a signal. Something is pushing p. In 1930, Fisher described this push with an extraordinarily elegant partial derivative.",
-          "image": "/images/storylines/allele-frequency_step4.jpg",
+          "image": "/images/storylines/allele-frequency_step4.webp",
           "image_caption": "中性漂变的基线"
         },
         {
@@ -106,7 +106,7 @@
           "story_en": "In 1930, R. A. Fisher published \"The Genetical Theory of Natural Selection\" — arguably the most important book in evolutionary biology. In it, he captured how natural selection drives allele frequency change with a single partial derivative: ∂W̄/∂p.\n\nThe meaning of the selection gradient is remarkably intuitive: if increasing p also increases mean fitness W̄, then selection pushes p upward. The rate of change equals genetic variance times selection pressure. Darwin's vague notion of survival of the fittest was, for the first time, written as a computable equation.\n\nBut Formula 5.6e hides a deeper insight: the need to separate direct and associative fitness effects. An allele might contribute nothing to fitness itself, but if it sits on the same chromosomal segment as another allele under selection, it gets dragged along. Selection doesn't just push the genes it directly sees — it pushes the whole genome. This insight directly led to the entire theory of Linkage Disequilibrium and Genetic Hitchhiking.",
           "bridge_zh": "Fisher 的偏导数说清楚了 p 的变化方向——但它假设适合度是固定的。自然界里，适合度本身也在变化。如果 p 改变了，每个等位基因的「价值」也随之改变——怎么把这两层变化写进一个统一的框架？这个难题被一个记者兼独立学者解决了。",
           "bridge_en": "Fisher's partial derivative nailed down the direction of p's change — but it assumes fitness is fixed. In nature, fitness itself evolves. If p changes, the value of each allele changes with it. How do you capture this two-layer change in a single framework? The problem was solved by a journalist turned independent scholar.",
-          "image": "/images/storylines/allele-frequency_step5.jpg",
+          "image": "/images/storylines/allele-frequency_step5.webp",
           "image_caption": "选择驱动的方向"
         },
         {
@@ -123,7 +123,7 @@
           "story_en": "George R. Price's life might be one of the most improbable stories in 20th-century science. He started as a chemical engineer on the Manhattan Project, later became a science journalist. In 1970, at age 46, with zero formal training in biology, Price taught himself population genetics from a London public library — and then derived an evolutionary equation that is both more general and more elegant than Fisher's.\n\nThe Price equation Δz̄=Cov(w_i,z_i)+E(w_i·Δz_i) is elegant in its minimalism: the first term is covariance between fitness and trait (selection effect), the second is expected change in the trait during transmission (transmission bias). This equation depends on no specific genetic mechanism — it proceeds entirely from statistical association.\n\nWhen applied to allele frequency p, Δp decomposes into three sources: (1) direct selection from fitness differences, (2) changes in the average effect of an allele across genetic backgrounds, and (3) transmission bias. p's change depends not only on how hard selection pushes, but also on whether this allele means the same thing in different individuals.\n\nThe Price equation matters not because it gives a specific numerical prediction, but because it provides the most general language for understanding evolution.\n\nPrice fell into deep depression after publishing this equation and died by suicide in 1975. His equation was almost completely ignored during his lifetime. It was rediscovered in the 1990s and has since become one of the most cited theoretical frameworks in evolutionary biology.",
           "bridge_zh": "六站走完，p 从一个简单的计数变成了时间线上的概率密度，再从漂变方差进入选择梯度，最终在 Price 方程中与适合度效应共同演化。这就是群体遗传学一个世纪以来对「等位基因频率」的全部追问：它从哪里来，它往哪里去，推它的力是谁？旅程结束了——但 p 自身的故事还没有。每一个基因组数据集都在重新问这些公式。",
           "bridge_en": "Six steps later, p has transformed from a simple count into a probability density on a timeline, then through drift variance into the gradient of selection, and finally into the Price equation where frequency and fitness effect coevolve. This is everything a century of population genetics has asked of allele frequency: where does it come from, where is it going, and what forces push it? The journey ends — but p's own story hasn't. Every genomic dataset is asking these formulas again.",
-          "image": "/images/storylines/allele-frequency_step6.jpg",
+          "image": "/images/storylines/allele-frequency_step6.webp",
           "image_caption": "频率与效应的联合演化"
         }
       ],
@@ -167,7 +167,7 @@
           "display_name_zh": "近交系数的诞生",
           "story_zh": "1917 年，Sewall Wright 还在美国农业部做畜牧育种。他每天的工作是分析豚鼠的谱系记录——哪只母豚鼠和哪只公豚鼠配，后代性状怎么变。在这个看似平凡的工作中，Wright 发现了一个普遍规律：在任何有限群体里，只要追溯得足够远，任意两个个体都拥有共同祖先。他把这个概念形式化为「近交系数」f——两个等位基因同源同祖的概率。\n\n1921 年，Wright 在一篇题为「Systems of Mating」的论文中发表了近交系数的完整理论框架，包括路径系数法（path coefficients），让任何人都能用一张谱系图算出 f。这个工具后来成为整个动植物育种的理论基石。\n\n公式 2.3 是近交系数最基础的递推形式：每一代都有 1/(2N) 的概率两个配子来自同一个亲本（自交），有 1-1/(2N) 的概率延续上一代的近交状态。这个极其简洁的递推里藏着有限群体遗传学的核心动力学。",
           "bridge_zh": "Wright 定义了一个美妙的量——但「近交」听起来像是育种者关心的事。怎么把它翻译成遗传多样性的语言？",
-          "image": "/images/storylines/inbreeding-coalescence_step1.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step1.webp",
           "image_caption": "近交系数的诞生"
         },
         {
@@ -181,7 +181,7 @@
           "display_name_zh": "从近交到杂合度流失",
           "story_zh": "如果说公式 2.3 说的是「血缘关系如何累积」，那公式 2.4a-2.5 就是把这句话翻译成了「遗传多样性如何流失」。Wright 用一个简单的移项 (1-f_t) 把近交的语言变成了杂合度的语言。\n\n(1-f_t) = (1-1/(2N))^t——这个指数衰减形式揭示了有限群体遗传学的一个核心规律：在没有突变和迁移的情况下，杂合度每代以 1/(2N) 的比例流失。群体越小，流失越快。\n\nH_t = H_0·(1-1/(2N))^t 这个简单表达式是后续全部有效群体大小估计的起点。每一个偏离这个衰减曲线的观测都是一个信号——说明有什么东西在抵消漂变（突变？迁移？选择？）。",
           "bridge_zh": "杂合度按指数衰减——那群体还能撑多久？或者说，要多大的群体才能让变异不消失？答案需要重新定义「大小」。",
-          "image": "/images/storylines/inbreeding-coalescence_step2.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step2.webp",
           "image_caption": "从近交到杂合度流失"
         },
         {
@@ -195,7 +195,7 @@
           "display_name_zh": "用 1-f 改写时间轴",
           "story_zh": "Wright 的公式假设世代不重叠、群体大小恒定——都是理想化条件。1931 年，他自己打破了这些假设。在他那篇著名的 62 页论文里，Wright 引入了「有效群体大小」N_e 的概念：不是普查群体里有多少个个体，而是繁殖过程中「实际上」有多少个个体在贡献基因。\n\n公式 3.1 给出了 N_e 的一个核心表达：如果雄性和雌性的数量不同，或者繁殖成功率的方差很大，N_e 就可能远小于普查大小 N。一个表面上有 10,000 只个体的群体，有效大小可能只有几百。\n\n这个认识从根本上改变了人们对「小群体容易灭绝」的理解——一个群体不需要真的小，只要有效大小小就够了。",
           "bridge_zh": "普查大小 N 是一回事——但繁殖场上的有效玩家是多少？一个表面上庞大的群体，可能遗传上只有几十个个体在起作用。",
-          "image": "/images/storylines/inbreeding-coalescence_step3.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step3.webp",
           "image_caption": "用 1-f 改写时间轴"
         },
         {
@@ -209,7 +209,7 @@
           "display_name_zh": "有效大小替代普查大小",
           "story_zh": "1960-70 年代，Crow、Kimura 和 Robertson 等人在 N_e 的概念上继续深挖。公式 3.3 精确量化了后代数方差对有效大小的影响：如果某些个体比另一些留下多得多的后代，N_e 就被显著压缩。\n\n同时，公式 4.17a 开启了另一个方向：如何从遗传数据中「估计」N_e？如果观察到了等位基因频率的世代间变化，就可以反推有效大小。这个想法简单却强大——它让有效大小从一个理论概念变成了可估计的统计量。\n\n后来的 LD-N_e 估计、单样本 N_e 估计（NeEstimator 等软件的核心），全部建立在这条线上。",
           "bridge_zh": "理论有效大小是一个数字——但你能从一堆基因型数据里把它找出来吗？从「定义」到「估计」，是理论走向应用的关键一步。",
-          "image": "/images/storylines/inbreeding-coalescence_step4.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step4.webp",
           "image_caption": "有效大小替代普查大小"
         },
         {
@@ -223,7 +223,7 @@
           "display_name_zh": "F-统计量的出现",
           "story_zh": "1965 年，Wright 在一篇总结性论文中将 F-统计量系统化为 F_IS、F_IT 和 F_ST 三个层次：个体相对于亚群体的近交（F_IS）、个体相对于总群体的近交（F_IT）、亚群体之间的分化（F_ST）。\n\nF_ST 是最广为人知的——它衡量群体间的遗传分化程度。本质上，F_ST 就是在问：「把总群体按地理/生态划分后，等位基因频率的方差有多大一部分来自群体之间、多大来自群体之内？」\n\n公式 4.17a 给出了 F_ST 的一个经典估计形式。这个看起来不起眼的公式，后来成了保护遗传学（识别管理单元）、法医学（推断样本来源）和人类演化（追踪人口迁移）的核心工具。",
           "bridge_zh": "F-统计量把近交从个体层面推到了群体层面。一个等位基因可能在自己群体里是近交的——但整体来看呢？",
-          "image": "/images/storylines/inbreeding-coalescence_step5.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step5.webp",
           "image_caption": "F-统计量的出现"
         },
         {
@@ -237,7 +237,7 @@
           "display_name_zh": "从谱系到群体分化",
           "story_zh": "F_ST 的思想还可以继续往外推。群体不仅是空间上分化的——它们也在时间上分化。Cockerham、Weir、Nei 等人在 1970-80 年代把 F-统计量推广到了更一般的形式，包括考虑了不等样本大小、多位点、多等位基因的情况。\n\n公式 9.9 代表了这一方向的成熟形态。此时的 f 和 F 已经不再只是 Wright 当初定义的那个「两个等位基因同源同祖」的概率——它们变成了一套通用的方差分量分解工具，适用于任何你想分解的遗传变异来源。\n\n从豚鼠谱系到人类基因组，f 和 F 走过了一个世纪。",
           "bridge_zh": "F 的度量框架可以被推广到任何你想分解的遗传变异来源：时间上的、空间上的、种间的。这就是 f 和 F 百年旅程的终点——或者说，当下每个群体基因组学项目的新起点。",
-          "image": "/images/storylines/inbreeding-coalescence_step6.jpg",
+          "image": "/images/storylines/inbreeding-coalescence_step6.webp",
           "image_caption": "从谱系到群体分化"
         }
       ],
@@ -276,7 +276,7 @@
           "display_name_zh": "吸收时间的期望",
           "story_zh": "1955 年，Kimura 推导了等位基因频率的扩散方程。但他的推导里藏着一个副产品：从任何一个频率 p₀ 出发，等位基因平均需要多长时间才会被固定或丢失？这个「吸收时间」后来由 Kimura 和 Ohta 在 1969 年完整求解出来。\n\n公式 2.11a：t̄_a(p₀) ≈ -4N[p₀·ln(p₀) + (1-p₀)·ln(1-p₀)]——这是群体遗传学最优美的结果之一。没有自由参数，只用 N 和 p₀ 就说清楚了漂变的时间尺度。它告诉你：一个低频等位基因的平均生命非常短，一个中频等位基因则可能存活很久。频率不只是一个比例——它还带有时钟。",
           "bridge_zh": "平均吸收时间把两种命运合在一起了——但固定和丢失是截然不同的终点。如果知道一个等位基因最后会固定，它一路上花了多少时间？",
-          "image": "/images/storylines/coalescent-time_step1.jpg",
+          "image": "/images/storylines/coalescent-time_step1.webp",
           "image_caption": "吸收时间的期望"
         },
         {
@@ -290,7 +290,7 @@
           "display_name_zh": "两种命运，两种时间",
           "story_zh": "但 t̄_a 把两种完全不同的命运混在了一起：固定和丢失。Kimura 和 Ohta 接着求解了条件时间——条件于最终固定的等待时间 t̄_f，和条件于最终丢失的等待时间 t̄_l。\n\n公式 2.11b 和 2.11d 揭示了一个反直觉的结果：对于那些最终会固定的低频等位基因，它们在低频阶段「上升得更快」——好像有某种选择力在推它们，虽然其实完全是中性漂变的效果。这纯粹是因为我们条件于了一个罕见的终点：在完全中性的随机游走中，那些恰巧走到了远方的轨迹，必然在早期就偏向了那个方向。",
           "bridge_zh": "条件时间的差异本身就是一种统计信号。当 Kimura 把固定时间和丢失时间重新加起来，得到了什么？",
-          "image": "/images/storylines/coalescent-time_step2.jpg",
+          "image": "/images/storylines/coalescent-time_step2.webp",
           "image_caption": "两种命运，两种时间"
         },
         {
@@ -304,7 +304,7 @@
           "display_name_zh": "总时间与世代间隔",
           "story_zh": "公式 2.11b 和 2.11d 之后，Kimura 将等待时间总合为吸收时间的完整期望。这个数学步骤看似平常，但它为后续全部关于「世代间隔」的讨论奠定了基础。\n\n世代是群体遗传学的时间单位——但什么是「一代」？对于有年龄结构的群体，每一代的时间跨度取决于繁殖年龄、存活曲线和寿命。公式 3.13-3.14 将 t 从抽象世代推广到了具体的时间计量——年、月、世代间隔——使时间成为连接生活史特征和遗传过程的桥梁。",
           "bridge_zh": "时间被从世代计数推广到了实际年数。一旦有了世代间隔，突变率就有了时间标尺——分子钟的齿轮开始转动。",
-          "image": "/images/storylines/coalescent-time_step3.jpg",
+          "image": "/images/storylines/coalescent-time_step3.webp",
           "image_caption": "总时间与世代间隔"
         },
         {
@@ -318,7 +318,7 @@
           "display_name_zh": "突变、时间与多样性",
           "story_zh": "有了时间框架，突变率就可以被校准。Kimura 的中性理论有一个核心预测：在突变-漂变平衡下，群体的平均杂合度（多样性）与 N_e 和突变率 μ 的乘积成正比。\n\n公式 3.13-3.14 的连接意味着：如果能从序列数据中估计多样性 θ = 4N_eμ，并且能从世代间隔中估计实际时间，就可以把 μ 校准为「每个位点每年的突变率」。时间因此变成了分子钟的标尺。这个逻辑链是今天所有分子测年分析的起点。",
           "bridge_zh": "分子钟在运转——但我们一直在往前看。有没有一种方法，从现在的基因序列倒推回过去的族谱？",
-          "image": "/images/storylines/coalescent-time_step4.jpg",
+          "image": "/images/storylines/coalescent-time_step4.webp",
           "image_caption": "突变、时间与多样性"
         },
         {
@@ -332,7 +332,7 @@
           "display_name_zh": "溯祖：从后向看时间",
           "story_zh": "1982 年，英国数学家 Kingman 提出了一个革命性的想法：不要顺着时间往前看（漂变、选择在推频率），而是从现在的样本倒回去看历史。这就是溯祖理论（coalescent theory）。\n\n在溯祖框架里，t 不再是一个等位基因在群体中漂了多久——而是从当前的 n 个样本倒推到它们汇聚（coalesce）到最近共同祖先的时间。Kingman 证明了：在标准 Wright-Fisher 模型下，任意两条谱系的汇合时间服从指数分布，期望为 2N 代。整个族谱的统计结构完全由 N 和样本量 n 决定。\n\n溯祖理论是 20 世纪后期群体遗传学最重大的理论革命——它把「随机漂变」从频率空间搬到了族谱空间。",
           "bridge_zh": "Kingman 打开了回溯的大门。族谱里 t 的期望结构是 2N——但如果有选择呢？选择的指纹在族谱里长什么样？",
-          "image": "/images/storylines/coalescent-time_step5.jpg",
+          "image": "/images/storylines/coalescent-time_step5.webp",
           "image_caption": "溯祖：从后向看时间"
         },
         {
@@ -346,7 +346,7 @@
           "display_name_zh": "选择扫荡的时间窗",
           "story_zh": "溯祖不仅是中性的。当正选择发生（selective sweep），被选择的等位基因附近的染色体片段会加速汇聚——因为携带这个等位基因的个体迅速扩散，把附近的遗传变异也带走了。\n\n公式 8.18c 给出了选择扫荡的时间尺度。通过比较中性位点（缓慢汇聚）和受选择位点（加速汇聚）的族谱深度差异，可以推断选择事件发生的时间和强度。\n\n从 Kimura 的吸收时间到 Kingman 的汇合时间，再到选择扫荡的族谱时间——t 在群体遗传学中的身份，从一个简单的世代计数器，变成了一台能回看群体历史的精密时光机。",
           "bridge_zh": "t 的百年旅程走完了：从漂变等待到分子钟，从溯祖树到选择扫荡。时间不再是背景——它是被精确度量的演化对象。",
-          "image": "/images/storylines/coalescent-time_step6.jpg",
+          "image": "/images/storylines/coalescent-time_step6.webp",
           "image_caption": "选择扫荡的时间窗"
         }
       ],
@@ -384,7 +384,7 @@
           "display_name_zh": "相对适合度",
           "story_zh": "适合度 w——可能是演化生物学里最核心也最被误解的量。Spencer 的「适者生存」在达尔文之后流行了几十年，但没有一个人能说清楚「适者」到底是什么意思、怎么度量。\n\nFisher 和 Haldane 在 1920-30 年代各自独立地给出了答案：适合度不是绝对量，而是相对的。公式 5.8a 定义了相对适合度——一个基因型的适合度被归一化到群体平均，使得不同群体、不同环境下的选择强度可以比较。这个「相对化」看起来只是技术处理，但它的哲学含义深远：没有什么基因本身就是「好的」——好坏取决于它周围的群体。\n\nHaldane 的一句话至今被反复引用：「适合度是一张入场券，不是一块奖牌。」",
           "bridge_zh": "基因型间的相对适合度——在 Fisher 的时代，这只是一个比值。但当 w 和表型挂了钩，一切都不再是离散的了。",
-          "image": "/images/storylines/fitness-landscape_step1.jpg",
+          "image": "/images/storylines/fitness-landscape_step1.webp",
           "image_caption": "相对适合度"
         },
         {
@@ -398,7 +398,7 @@
           "display_name_zh": "表型函数里的 w",
           "story_zh": "如果适合度依赖于表型，而表型又依赖于基因，那选择到底在推什么？Lande 和 Arnold 在 1983 年的一篇经典论文中给出了答案：把 w 写成表型 z 的函数。\n\n公式 5.17a 是这个思路的起点。w 不再是一个离散的「这个基因型好、那个基因型坏」的标签，而是一条随表型变化的连续曲面。等位基因不再被选择直接评判——选择评判的是表型的值，等位基因因为和表型值关联而受到间接选择。\n\n这个「间接性」是数量遗传学和群体遗传学的分叉点：群体遗传学追踪基因频率，数量遗传学追踪表型均值——而适合度景观是这两条路径的交汇处。",
           "bridge_zh": "从离散到连续，从单点到曲面——适合度景观把数量遗传学和群体遗传学焊在了一起。但所有曲面都弯的——怎么在小尺度上近似它？",
-          "image": "/images/storylines/fitness-landscape_step2.jpg",
+          "image": "/images/storylines/fitness-landscape_step2.webp",
           "image_caption": "表型函数里的 w"
         },
         {
@@ -412,7 +412,7 @@
           "display_name_zh": "弱选择近似",
           "story_zh": "如果适合度曲面很复杂怎么办？Fisher 在 1918 年就给出了一个在遗传学中极其先锋的想法：在弱选择条件下，可以用泰勒展开把 w 近似线性化。\n\n公式 5.18b：局部选择梯度 ≈ ∂w/∂z|_μ × (z-μ)。这个近似意味着：在表型均值附近，适合度曲面可以被局部当成一个斜面。等位基因效应乘上这个斜率，就是它对适合度的贡献。\n\n这个「弱选择近似」帮助解决了 Fisher 和 Wright 之间长达数十年的争论：当适合度差异相对于漂变来说很小时，进化主要由有效中性过程主导；当差异大时，确定性选择主导。两者之间有一个渐变——不是非此即彼。",
           "bridge_zh": "局部线性能走多远？Fisher 和 Wright 争论了几十年。弱选择的边界在哪里——以及什么时候它不再「弱」？",
-          "image": "/images/storylines/fitness-landscape_step3.jpg",
+          "image": "/images/storylines/fitness-landscape_step3.webp",
           "image_caption": "弱选择近似"
         },
         {
@@ -426,7 +426,7 @@
           "display_name_zh": "正态景观",
           "story_zh": "1980 年代，Lande 进一步发展了他的多变量选择理论。如果把表型分布近似为正态，适合度曲面的梯度可以被精确地分解为均值和方差的函数。\n\n公式 5.20c：正态表型下的选择响应。均值向适合度最大的方向移动，方差的衰减取决于曲面的曲率。这个公式的美妙之处在于它连接了三个层次：个体层面的表型分布、群体层面的适合度梯度、演化时间层面的均值变化。\n\n这正是 Fisher 在 1930 年那个著名几何图（适合度景观+群体散点）的数学实现：Fisher 用画来说的，Lande 用方程写了。",
           "bridge_zh": "Lande 的方程把 Fisher 的几何直觉数学化了。Fisher 画的那张图，Lande 把它写成了方程。但是——如果不去假设，而是直接计算协方差呢？",
-          "image": "/images/storylines/fitness-landscape_step4.jpg",
+          "image": "/images/storylines/fitness-landscape_step4.webp",
           "image_caption": "正态景观"
         },
         {
@@ -440,7 +440,7 @@
           "display_name_zh": "Price 协方差",
           "story_zh": "1970 年，George Price 用两行方程把适合度驱动的演化总结成了一个统计学恒等式。Δz̄ = Cov(w_i, z_i)/W̄ + E(w_i·Δz_i)/W̄。\n\n选择是适合度与性状的协方差。就这么简单。如果和适合度相关的那些个体恰好也拥有更大的性状值，那性状均值就被选择推着上升——不需要任何遗传机制的细节。\n\n公式 6.2b 把 Price 方程应用到育种值上：Δμ_A = Cov(w_i, A_i)/W̄。育种值的代际变化等于适合度与育种值的协方差除以平均适合度。这个形式使得任何能测量适合度和育种值的地方，都可以直接计算选择在推什么。\n\nPrice 方程的普遍性是它的力量所在。同一个方程可以描述自然选择、人工选择、文化演化甚至经济学中的竞争——任何时候，只要你能定义「成功」和「特征」，选择就在协方差里。",
           "bridge_zh": "Price 方程的美妙在于它的极简。但极简也有代价——w 和 z 的协方差是一个数字，景观在复杂选择下可是会变形的。",
-          "image": "/images/storylines/fitness-landscape_step5.jpg",
+          "image": "/images/storylines/fitness-landscape_step5.webp",
           "image_caption": "Price 协方差"
         },
         {
@@ -454,7 +454,7 @@
           "display_name_zh": "多变量梯度",
           "story_zh": "Lande 的多变量响应方程、Robertson 的二次选择理论、Barton 和 Turelli 的多位点模型——这些后续发展都在尝试回答同一个问题：如果不满足 Fisher 和 Price 的简化假设，w 的演化会怎样？\n\n当选择压过强、基因频率改变太快、连锁不平衡积累时，适合度景观本身就在变形。w 不再是一个固定的曲面，而是一个随演化进程不断重塑的动态景观。这正是当今演化生物学最前沿的领域之一：动态适合度景观、Fisher 几何模型的复兴、以及实验演化中对 w 的直接观测。",
           "bridge_zh": "w 从 Haldane 的 '入场券' 出发，穿过了表型景观、弱选择近似、多元正态和 Price 恒等式。一个世纪的演化理论，归根到底都在问：成功者和失败者的差距，怎么翻译成下一代的特征分布？",
-          "image": "/images/storylines/fitness-landscape_step6.jpg",
+          "image": "/images/storylines/fitness-landscape_step6.webp",
           "image_caption": "多变量梯度"
         }
       ],
@@ -490,7 +490,7 @@
           "display_name_zh": "配子频率偏离",
           "story_zh": "1900 年代初，孟德尔定律被重新发现后，遗传学家们迅速发现了一个问题：基因不是独立行动的。如果你观察两个基因座上的等位基因频率，你会发现配子型（gamete）的频率往往不等于两个单独频率的乘积。\n\n这个偏离——D = P_AB - p_A·p_B——后来被称为「连锁不平衡」。但它其实和连锁无关：即使在不同染色体上的基因，只要群体不是无限大、或者受到选择/迁移/混合的影响，D 就可能存在。\n\n公式 2.18 给了 D 的第一个精确定义。值得注意的是，Johannsen 在 1909 年提出「基因型」概念之前，人们甚至没有一个清晰的词汇来讨论这种偏离。D 的发现推动了群体遗传学从单点向多位点的扩展。",
           "bridge_zh": "D 定义了两个位点之间的非独立性——但如果不只是统计噪音呢？如果 D 以可预测的方式随时间衰减呢？",
-          "image": "/images/storylines/linkage-disequilibrium_step1.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step1.webp",
           "image_caption": "配子频率偏离"
         },
         {
@@ -504,7 +504,7 @@
           "display_name_zh": "重组的衰减时钟",
           "story_zh": "如果两个基因座确实在物理上连锁（位于同一条染色体上、距离近），重组事件会逐渐打破它们之间的统计关联。公式 2.19 说明了这一点：每一代，D 按 (1-c) 的比例衰减——c 是重组率。\n\n这意味着 D 携带了历史信息：如果你观测到今天 D 的值，并且知道 c（可以通过物理图谱获得），你就可以推断产生这个 D 的事件（混合、选择）发生在多久以前。D 是一个持续衰减的时间信号——类似于放射性同位素的半衰期。",
           "bridge_zh": "D 的衰减是重组率的直接度量。但在漂变下，D 不仅仅是衰减——它还会随机产生。怎么知道一个 D 是信号还是噪声？",
-          "image": "/images/storylines/linkage-disequilibrium_step2.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step2.webp",
           "image_caption": "重组的衰减时钟"
         },
         {
@@ -518,7 +518,7 @@
           "display_name_zh": "D 的方差",
           "story_zh": "D 本身是一个点估计，但在有限群体里，漂变也会产生 D。Hill 和 Robertson 在 1968 年证明了：在有限群体中，即使没有选择和混合，连锁不平衡的方差 E(D²) 也会达到一个平衡值。\n\n公式 2.21 给出了 D 的二阶矩——这是区分「漂变产生的 D」和「选择/混合产生的 D」的关键。如果一个群体中观测到的 D 显著大于纯漂变的期望，那就说明有定向力在起作用。这个逻辑链后来成为全基因组扫描检测正选择的核心思路。",
           "bridge_zh": "方差分离了随机 D 和系统 D——但 D 的绝对大小依赖于等位基因频率。需要一个标准化的版本。",
-          "image": "/images/storylines/linkage-disequilibrium_step3.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step3.webp",
           "image_caption": "D 的方差"
         },
         {
@@ -532,7 +532,7 @@
           "display_name_zh": "标准化连锁 r²",
           "story_zh": "D 的绝对值难以比较，因为它依赖于等位基因频率本身。一个低频等位基因的 D 会天然地小。1964 年，Hill 和 Robertson 引入了标准化度量 r² = D²/[p_A(1-p_A)p_B(1-p_B)]。\n\nr² 的取值范围是 [0,1]，它衡量了两个基因座之间等位基因频率的统计关联强度。公式 2.22 显示：在漂变-重组平衡下，r² ≈ 1/(1+4Nc)。这意味着：如果群体大、重组率高，r² 低；如果群体小、重组率低，r² 高。\n\nr² 后来成为 GWAS（全基因组关联研究）的核心概念：标记位点和致病位点之间的 r² 决定了关联检测的统计效力。",
           "bridge_zh": "r² 是 GWAS 的核心。但 r² 背后的 D 怎么会产生？线索回到选择——如果，两个基因座之间的关系本身就是自然选择操弄的。",
-          "image": "/images/storylines/linkage-disequilibrium_step4.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step4.webp",
           "image_caption": "标准化连锁 r²"
         },
         {
@@ -546,7 +546,7 @@
           "display_name_zh": "选择下的 LD",
           "story_zh": "当选择出现在画面里，连锁不平衡的动力学会变得复杂得多。公式 5.13a-5.13b 描述了选择如何产生和维持 D：如果两个基因座之间存在适合度交互作用（上位效应），D 就会在选择下积累。\n\n这就是「搭车效应」的数学基础。一个位点受到正选择时，它周围的染色体片段（长达几十到几百 kb）也会被带着一起频率上升——因为重组还没来得及把它们分开。这意味着，即使一个 SNP 本身对表型没有影响，只要它靠近一个受选择的位点，它就可能成为关联分析中的虚假信号。\n\n区分「因果位点」和「搭车 SNP」，至今是统计遗传学最核心的挑战之一。",
           "bridge_zh": "搭车效应让选择可以在基因组上留下它的脚印。但我们现在有整个基因组了——LD 从一个位点对变成了一张全基因组的地图。",
-          "image": "/images/storylines/linkage-disequilibrium_step5.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step5.webp",
           "image_caption": "选择下的 LD"
         },
         {
@@ -560,7 +560,7 @@
           "display_name_zh": "LD 的全基因组景观",
           "story_zh": "2000 年代以后，随着 HapMap、1000 Genomes 等大规模基因组项目的完成，全基因组 LD 模式成了群体遗传学的基础数据层。LD 衰减距离（LD decay）告诉我们重组发生的历史尺度；不同群体间的 LD 模式差异揭示了不同的人口统计历史（瓶颈、扩张、混合）；选择性扫荡在 LD 中留下独特的长片段纯合信号（extended haplotype homozygosity, EHH）。\n\n公式 7.43 以及其他多个 LD 相关公式代表了近期的发展方向：LD 不再只是「噪声」或被当作检测工具的副产品——它本身就是群体历史的直接记录。",
           "bridge_zh": "D 从一个两个位点的简单偏离起步，变成了一张全基因组的 LD 景观图。a century of linkage disequilibrium: 从孟德尔的比例偏离到千人基因组的 LD decay 曲线。",
-          "image": "/images/storylines/linkage-disequilibrium_step6.jpg",
+          "image": "/images/storylines/linkage-disequilibrium_step6.webp",
           "image_caption": "LD 的全基因组景观"
         }
       ],
@@ -598,7 +598,7 @@
           "display_name_zh": "突变进入递推",
           "story_zh": "Wright-Fisher 模型告诉我们漂变会持续消灭遗传变异——杂合度每代下降 1/(2N)。如果这是全部故事，所有群体最终都会变得完全纯合。但自然界不是这样的——遗传变异无处不在。\n\nWright 在 1931 年给出了解释：突变源源不断地产生新的变异，抵消漂变的损失。公式 2.23：在突变压力下，杂合度的衰减被减慢了——衰减率从 (1-1/(2N)) 变成了 (1-1/(2N))(1-μ)²。\n\n当漂变和突变达到平衡时，群体的期望杂合度稳定在 H ≈ 4Nμ/(1+4Nμ)。这是群体遗传学最基本也最美丽的公式之一：θ = 4Nμ——一个参数决定了所有。",
           "bridge_zh": "漂变是个消灭者，突变是个创造者。当两个力碰在一起——谁会赢？",
-          "image": "/images/storylines/mutation-balance_step1.jpg",
+          "image": "/images/storylines/mutation-balance_step1.webp",
           "image_caption": "突变进入递推"
         },
         {
@@ -612,7 +612,7 @@
           "display_name_zh": "平衡方差",
           "story_zh": "公式 2.26b 把 θ = 4Nμ 这个简洁参数的含义展开了。在突变-漂变平衡下，两个随机抽取的等位基因有 1/(1+θ) 的概率是同源的——剩下的 θ/(1+θ) 是不同的。θ 衡量了「变异产生」和「变异消灭」的相对强度。\n\n更重要的是，在平衡状态下，等位基因频率的方差、杂合度、等位基因频谱——所有这些都可以用 θ 这一个参数写出来。这就是为什么「有效大小 N_e」和「突变率 μ」几乎总是以乘积 θ = 4N_eμ 的形式出现——它们不可分割。",
           "bridge_zh": "θ = 4Nμ 是群体遗传学最优雅的参数。但 μ 本身在公式里隐藏了一个方向——突变真的是单向的吗？",
-          "image": "/images/storylines/mutation-balance_step2.jpg",
+          "image": "/images/storylines/mutation-balance_step2.webp",
           "image_caption": "平衡方差"
         },
         {
@@ -626,7 +626,7 @@
           "display_name_zh": "正反突变模型",
           "story_zh": "至今为止的模型都假设突变是单向的——从 A 变成 a，回不来了。但现实中的突变通常是可逆的。Kimura 和 Ohta 在 1971 年处理了正反突变模型：从 A 到 a 的速率是 μ，从 a 回到 A 的速率是 ν。\n\n公式 7.2 给出了正反突变下的等位基因频率平衡：p̂ = ν/(μ+ν)。这是自然的第一条「平衡定理」——如果突变在两个方向上都发生，等位基因频率最终会停在一个与突变率比值有关的位置，而与初始频率和群体大小完全无关。\n\n但请注意——这个平衡只是期望。在有限群体中，p 仍然会漂变，只是它的中心被钉在了 ν/(μ+ν)。",
           "bridge_zh": "平衡频率是 ν/(μ+ν)。如果你让突变双向走，p 就会钉在一个固定点——不管群体多大。但如果有新的突变只出现了一次呢？",
-          "image": "/images/storylines/mutation-balance_step3.jpg",
+          "image": "/images/storylines/mutation-balance_step3.webp",
           "image_caption": "正反突变模型"
         },
         {
@@ -640,7 +640,7 @@
           "display_name_zh": "固定概率中的 μ",
           "story_zh": "如果一个新的突变在群体中只出现了一份拷贝（频率 = 1/(2N)），它有多大概率不会被漂变消灭、而是最终在整个群体中固定下来？\n\nKimura 在 1962 年给出了答案：对于中性突变，固定概率 = 1/(2N)——就是它的初始频率。对于有利突变，固定概率 ≈ 2s(N_e/N)。对于有害突变，固定概率几乎为零。\n\n公式 7.9 把这个结果推广到了突变率的语境：群体中观察到的替换率（substitution rate）等于突变率乘以固定概率。这个简洁的结果——替换率对于中性突变等于突变率，对于有利突变更高，对于有害突变更低——是分子演化中性理论最核心的数学基础。",
           "bridge_zh": "固定概率是 Kimura 最著名的结果之一。一个中性突变的命运 = 它的初始频率。但如果突变无限多花样呢？",
-          "image": "/images/storylines/mutation-balance_step4.jpg",
+          "image": "/images/storylines/mutation-balance_step4.webp",
           "image_caption": "固定概率中的 μ"
         },
         {
@@ -654,7 +654,7 @@
           "display_name_zh": "无限等位基因模型",
           "story_zh": "Kimura 和 Crow 在 1964 年引入了「无限等位基因模型」：假设每一次突变都产生一个世界上从未存在过的全新等位基因。在这个模型下，等位基因的数量（allelic richness）和它们的频率分布（allele frequency spectrum）完全由 θ = 4N_eμ 决定。\n\nEwens 在 1972 年推导出了等位基因频率谱的精确抽样分布（Ewens sampling formula）——这是现代群体遗传学最精美的数学结果之一。它告诉你：给定样本大小 n 和 θ，你期望看到多少个等位基因，每个频率是多少。\n\nEwens 公式后来成为所有基于频谱的群体遗传学检验（Tajima's D、Fu & Li's D 等）的零模型。",
           "bridge_zh": "所有的突变都是独一无二的——Ewens 用一行公式写下了这个假设的全部结果：等位基因频谱。但如果样本来自一个不平衡的群体呢？",
-          "image": "/images/storylines/mutation-balance_step5.jpg",
+          "image": "/images/storylines/mutation-balance_step5.webp",
           "image_caption": "无限等位基因模型"
         },
         {
@@ -668,7 +668,7 @@
           "display_name_zh": "采样谱与多样性",
           "story_zh": "公式 10.1a 将之前的平衡模型推进到了更现实的方向：没有一个群体真的是平衡的。Wright-Fisher 扩散、突变压力、选择梯度和采样效应同时作用——现实的群体永远在路上。\n\n近期的群体遗传学越来越关注「从频谱中读历史」：过去的群体大小变化（瓶颈、扩张）在频谱中留下特征信号；选择事件在特定频率区间产生偏差；混合事件则带来罕见变异的富集。μ 不再是孤立的参数——它是和 N_e 的历史、选择的强度、重组的速率共同编织的演化故事。",
           "bridge_zh": "μ 的百年：从 Wright 的突变注入杂合度方程，到 Ewens 的抽样公式，再到今天的群体历史推断。突变率不再只是一个参数——它是读演化史的标尺。",
-          "image": "/images/storylines/mutation-balance_step6.jpg",
+          "image": "/images/storylines/mutation-balance_step6.webp",
           "image_caption": "采样谱与多样性"
         }
       ],
@@ -706,7 +706,7 @@
           "display_name_zh": "表型密度的引入",
           "story_zh": "为什么有些性状（如身高）连续变化，而另一些（如眼色）离散？这是 19 世纪末生物统计学派（Galton, Pearson）和孟德尔学派之间最激烈的争议。\n\nFisher 在 1918 年一篇里程碑式的论文中解决了这个争端：如果表型是大量微小效应基因的加和，那么即使每个基因的效应是离散的（孟德尔式的），整体的表型分布也会趋向连续的正态分布——中心极限定理在起作用。\n\n公式 5.20a 给出了表型密度 p(z) 的第一个形式描述：表型值 z 的分布由多个基因座效应的总和决定，方差分解为加性、显性和环境方差。Fisher 这篇论文奠定的「无穷小模型」至今仍是数量遗传学的理论基石。",
           "bridge_zh": "把表型 z 写成一个连续分布的密度——Fisher 在 1918 年开创了这个视角。但你知道了分布，能预测亲代到子代的传递吗？",
-          "image": "/images/storylines/phenotypic-trait_step1.jpg",
+          "image": "/images/storylines/phenotypic-trait_step1.webp",
           "image_caption": "表型密度的引入"
         },
         {
@@ -720,7 +720,7 @@
           "display_name_zh": "均值的可传递成分",
           "story_zh": "如果你知道一个亲代的表型 z_p，你能预测后代 z_o 吗？Galton 在 1880 年代用豌豆实验发现：后代表型会向群体均值「回归」——极端亲代的后代不那么极端。他把这个现象叫做「回归于均值」。\n\nFisher 和 Wright 后来用遗传学语言重新解释了回归：表型方差中只有可传递的加性部分 σ²_A 能被后代继承；剩下的是不可传递的（显性、环境）。回归系数 h² = σ²_A/σ²_p（遗传力）衡量了可传递的比例。公式 6.20a 把均值拆成可传递和偏差——这是从观测表型推断遗传组成的起点。",
           "bridge_zh": "遗传力 h² 是表型遗传学最核心的概念——可传递的比例。但如果把观测和适合度连起来，你不需要知道基因在哪。",
-          "image": "/images/storylines/phenotypic-trait_step2.jpg",
+          "image": "/images/storylines/phenotypic-trait_step2.webp",
           "image_caption": "均值的可传递成分"
         },
         {
@@ -734,7 +734,7 @@
           "display_name_zh": "协方差与响应",
           "story_zh": "知其然，还要知其所以然。一旦知道了遗传力、知道了哪些个体被选择留下来（选择微分 S），就可以预测下一代表型的响应：R = h²·S。这个「育种者方程」是数量遗传学最核心的预测公式。\n\n公式 6.24a 将这个方程推广到了协方差形式：Δz̄ = Cov(w_i, z_i)/W̄——和 Price 方程完全对齐。表型均值的变化等于适合度与表型的协方差。你不需要知道基因在哪——只要你知道哪些表型值的个体活下来了。",
           "bridge_zh": "育种者方程给出了选择的预测力——但它说的是群体平均。每一个个体呢？",
-          "image": "/images/storylines/phenotypic-trait_step3.jpg",
+          "image": "/images/storylines/phenotypic-trait_step3.webp",
           "image_caption": "协方差与响应"
         },
         {
@@ -748,7 +748,7 @@
           "display_name_zh": "个体层面模型",
           "story_zh": "Fisher 的无穷小模型极其强大——但个体不是一群无穷小基因的总和。Lynch 和 Walsh 等人在 1990 年代发展出了个体层面的线性混合模型。\n\n公式 13.12a 将表型写成：z = μ + a + e，其中 a 是个体育种值（加性遗传效应），e 是环境偏差。这个看似简单的分解是整个动植物育种（BLUP 预测）和人类遗传学（GREML、GCTA）的基础。\n\n当你有亲缘关系矩阵（通过谱系或基因组数据构建），你就可以估计 σ²_A——「有多少表型方差是基因造成的」，而不需要知道具体哪些基因。",
           "bridge_zh": "z = μ + a + e——一个看似简单的线性模型，是全部基因组预测的起点。但选择不止推一代。",
-          "image": "/images/storylines/phenotypic-trait_step4.jpg",
+          "image": "/images/storylines/phenotypic-trait_step4.webp",
           "image_caption": "个体层面模型"
         },
         {
@@ -762,7 +762,7 @@
           "display_name_zh": "跨世代表型响应",
           "story_zh": "如果一代选择有响应——那多代会怎样？公式 15.11b 描述了跨世代的表型演化：多代累积响应不仅取决于单代的 h² 和 S，还取决于每一代选择压的变化、交配系统对遗传方差的重新分配、以及连锁不平衡在代间的积累与衰减。\n\n在长期人工选择实验中（如伊利诺伊长穗选择实验——从 1896 年至今！），可以看到响应曲线的「阶梯-平台」模式：初始快速响应、出现平台期、偶尔突变产生新的方差后继续响应。z 的跨世代轨迹不只是 b = h²·S 的简单乘法——它是群体遗传学和数量遗传学的全面交汇。",
           "bridge_zh": "长期选择的轨迹不是一条直线。连锁、上位、方差耗竭、新突变——跨世代响应把这些全部卷入其中。",
-          "image": "/images/storylines/phenotypic-trait_step5.jpg",
+          "image": "/images/storylines/phenotypic-trait_step5.webp",
           "image_caption": "跨世代表型响应"
         },
         {
@@ -776,7 +776,7 @@
           "display_name_zh": "宏观演化的表型比较",
           "story_zh": "公式 18.2 代表了表型演化从微观到宏观的跳跃。如果要比较不同物种之间的表型差异——为什么大象比老鼠大那么多？为什么有的鸟有夸张的尾羽？——你需要的是一个能同时处理「物种内部变异」和「物种之间差异」的框架。\n\nLande 的多变量 Breeder's equation、Hansen 的适应性进化模型（OU process）、Butler & King 的比较方法——这些宏观演化框架都在问同一个问题：物种之间的表型分布，和物种内部的选择梯度，有没有一个统一的数学语言？z 的故事从 Galton 的豌豆开始，现在走到了生命树的尺度。",
           "bridge_zh": "从 Galton 的豌豆到生命树——z 的旅程在显微镜下开始，在宏观演化的尺度上结束。表型，是演化最直接的对话者。",
-          "image": "/images/storylines/phenotypic-trait_step6.jpg",
+          "image": "/images/storylines/phenotypic-trait_step6.webp",
           "image_caption": "宏观演化的表型比较"
         }
       ],
@@ -817,7 +817,7 @@
           "display_name_zh": "育种值的诞生",
           "story_zh": "Fisher 在 1918 年做了一个影响深远的区分：总体基因型值 G 和育种值 A。基因型值是个体全部的遗传贡献——但只有育种值是可传递的部分。其余的（显性偏差、上位）在配子形成时就被重组打散了。\n\n公式 6.20a 将这个区分离散化：把表型均值拆出可传递的加性贡献 A_i。这听起来像一个理论上的微妙区分——但在实践中极其重要：育种者选种时选的是育种值高的个体，而不是表型值高的个体。表型可能是「显性杂合优势」带来的，没法传给下一代。\n\nFisher 的天才之处在于：他意识到做一个统计学家就够了——你不需要知道具体哪些基因，只要能估计育种值的方差 σ²_A 就够了。",
           "bridge_zh": "Fisher 把表型拆成了可传递和不可传递。育种值 A——这个看不见的抽象量——成了全部后续育种理论的锚点。选择在推 A 吗？",
-          "image": "/images/storylines/additive-genetics_step1.jpg",
+          "image": "/images/storylines/additive-genetics_step1.webp",
           "image_caption": "育种值的诞生"
         },
         {
@@ -831,7 +831,7 @@
           "display_name_zh": "加性响应方程",
           "story_zh": "如果育种值 A 决定了可传递的成分，那选择在推什么？公式 6.24a 给出答案：选择响应 ΔĀ_z 等于适合度与育种值的协方差。\n\n这个公式将两个看似不同的世界连接起来了：一个是 Fisher 的「自然选择基本定理」（适合度的变化率等于适合度的加性遗传方差），另一个是 Price 的协方差恒等式。加性响应不要求你对基因有任何了解——你只需要观测谁活下来了（w_i）和这些个体的育种值（A_i）。\n\nA 的全部力量就在这里：它把演化的「可遗传部分」精确地分离了出来。",
           "bridge_zh": "A 和适合度的协方差——这个公式告诉你选择的方向。但 A 是从哪来的？G（基因型值）怎么分解成 A 加别的东西？",
-          "image": "/images/storylines/additive-genetics_step2.jpg",
+          "image": "/images/storylines/additive-genetics_step2.webp",
           "image_caption": "加性响应方程"
         },
         {
@@ -845,7 +845,7 @@
           "display_name_zh": "基因型值的展开",
           "story_zh": "但在 A 的背后，有一个更基本的量：个体基因型值 G。G_ij 是第 i 个等位基因和第 j 个等位基因组合产生的全部遗传效应——包括加性、显性和上位。\n\n公式 11.5-11.6a 把基因型值 G 展开为多个座位效应的总和。每个基因座贡献一个加性部分、一个显性偏差，以及座位间的上位交互。这个展开让你能精确地说出：「这个群体的表型方差有多大比例是加性的、多大是显性的、多大是上位造成的」。\n\n对于育种者来说，这些比例决定了不同的育种策略：如果加性方差占比高，简单选择就有效；如果显性和上位方差高，就需要更复杂的交配设计（如杂交育种）来利用非加性效应。",
           "bridge_zh": "G 分解成加性、显性、上位——比例不同，育种策略不同。那总方差里，到底多少是可遗传的？",
-          "image": "/images/storylines/additive-genetics_step3.jpg",
+          "image": "/images/storylines/additive-genetics_step3.webp",
           "image_caption": "基因型值的展开"
         },
         {
@@ -859,7 +859,7 @@
           "display_name_zh": "方差分解",
           "story_zh": "方差怎么分解？总遗传方差 σ²_G = σ²_A + σ²_D + σ²_I——加性 + 显性 + 上位。公式 11.8 给出了这个分解的核心关系。\n\n这在实践中意味着什么？如果你有一群个体的表型数据，并且知道他们的亲缘关系，你就可以用方差组分分析（方差分解）来估计 σ²_A。这个 σ²_A 直接决定了遗传力 h²，而 h² 又决定了选择响应 R = h²·S 的大小。\n\n一整个世纪的数量遗传学，实际上就是围绕这条分解链建立的：表型方差 → 遗传方差 → 加性方差 → 遗传力 → 选择响应 → 育种值预测。",
           "bridge_zh": "遗传力就是 σ²_A/σ²_p。但如果在分子时代——你有没有办法不靠谱系、只靠 DNA 来估计 A？",
-          "image": "/images/storylines/additive-genetics_step4.jpg",
+          "image": "/images/storylines/additive-genetics_step4.webp",
           "image_caption": "方差分解"
         },
         {
@@ -873,7 +873,7 @@
           "display_name_zh": "亲缘关系矩阵",
           "story_zh": "1990 年代以后，分子标记（SNP）让我们可以不再依赖谱系记录来推断亲缘关系——直接从 DNA 构建亲缘关系矩阵 A。\n\n公式 13.12a 和后续的混合模型将 A 矩阵（通过 SNP 估计的亲缘关系）纳入育种值预测方程：y = Xβ + Za + e，其中 a ~ N(0, A·σ²_A)。这个方法叫做 GBLUP（基因组最佳线性无偏预测），是当代动植物育种和人类复杂性状遗传学（GREML、GCTA）的核心算法。\n\n矩阵 A 的意义深远：它让你能从几十万个 SNP 中一起估计所有个体的育种值——即使那些个体没有任何表型记录——只要你知道了它们的基因组。",
           "bridge_zh": "亲缘关系矩阵 A 让育种值预测跳出了谱系的限制——只要有基因组数据。但几千个 SNP——能一起用吗？",
-          "image": "/images/storylines/additive-genetics_step5.jpg",
+          "image": "/images/storylines/additive-genetics_step5.webp",
           "image_caption": "亲缘关系矩阵"
         },
         {
@@ -887,7 +887,7 @@
           "display_name_zh": "基因组预测",
           "story_zh": "加性遗传的顶点是基因组选择（genomic selection）。Meuwissen 等人在 2001 年提出了一个激进的想法：不要去找哪些具体的基因影响性状——直接用一个包含全部标记的统计模型来预测个体的育种值。如果标记密度足够高，每一个影响性状的染色体片段都会被至少一个标记所标记。\n\n公式 26.1a 代表了这一代的方法：基因组预测模型。一个 SNP 芯片上的几十万个标记同时估计效应，然后对新的个体预测育种值。这种方法的精确度已经让奶牛育种界放弃了传统的后裔测定——在牛还小的时候，从一滴血就能预测它后代的产奶量。\n\n从 Fisher 1918 年区分 A 和 G，到 21 世纪的基因组预测——加性遗传走过了一百年的理论和应用。Fisher 会为此感到欣慰：他说的那一半可传递的东西，现在可以被直接读出了。",
           "bridge_zh": "Fisher 的 A 从一个理论抽象变成了一个可以大规模预测的数值。一百年前在 Rothamsted 实验站的笔算，今天在云端服务器上的基因组选择。",
-          "image": "/images/storylines/additive-genetics_step6.jpg",
+          "image": "/images/storylines/additive-genetics_step6.webp",
           "image_caption": "基因组预测"
         }
       ],
@@ -928,7 +928,7 @@
           "display_name_zh": "概念诞生",
           "story_zh": "1931 年，Wright 在 62 页的论文里问了一个看似简单的问题：「一个表面上有 10,000 只个体的群体，在遗传上等价于多大的理想群体？」\n\n答案是令人震惊的：在真实群体中，由于性别比不均衡、繁殖成功率方差、世代重叠和群体大小波动，有效大小 N_e 通常只有普查大小 N 的 10-30%。公式 3.1 给出了最早的形式——通过近交系数的递推来定义 N_e。\n\nWright 的这个概念解决了一个真正的危机：如果理论预测漂变强度依赖于 N，但现实中 N 是一个模糊的、难以量化的数字，理论就落不了地。N_e 让群体遗传学从黑板走向了田野。",
           "bridge_zh": "Wright 问了一个天才的问题：10,000 只的群体 ≈ 多大的理想群体？有效大小 N_e 由此诞生——但怎么算？",
-          "image": "/images/storylines/effective-size_step1.jpg",
+          "image": "/images/storylines/effective-size_step1.webp",
           "image_caption": "概念诞生"
         },
         {
@@ -942,7 +942,7 @@
           "display_name_zh": "方差有效大小",
           "story_zh": "仅仅定义 N_e 是不够的——需要能用数据来估计它。公式 3.3 给出了后代数方差对 N_e 的影响：如果某些个体留下的后代数远多于另一些，N_e 就被显著压缩。\n\n这个公式的实用含义巨大：在一个繁殖场里，即使你有 100 条鱼，如果只有 3 条参与了繁殖（且留下的后代数不均匀），有效大小可能只有个位数。在保护生物学中，这个公式用来判断一个残存群体是否已经遭受了近交衰退的不可逆损害。",
           "bridge_zh": "繁殖成功的方差——如果有的个体留下很多后代，有的一个也没，N_e 就被压缩了。但一个季节的数据够吗？",
-          "image": "/images/storylines/effective-size_step2.jpg",
+          "image": "/images/storylines/effective-size_step2.webp",
           "image_caption": "方差有效大小"
         },
         {
@@ -956,7 +956,7 @@
           "display_name_zh": "多代递推",
           "story_zh": "公式 3.5 把 N_e 从单代推广到了多代。当一个群体的普查大小随时间波动（比如逐年变小的残存群体、经历过瓶颈的入侵物种），多代的「调和平均」有效大小才是正确的尺度——少数世代的极小 N_e 会不成比例地压缩整个历史的调和平均。\n\n这个原则是保护遗传学的一条金科玉律：「瓶颈最重要」。一个群体如果在历史上经历过一次严重的瓶颈（即使现在数量恢复了），它的遗传多样性已经被严重削弱了——这些损失在多代调和平均中不可挽回。",
           "bridge_zh": "多代调和平均——瓶颈的阴影。十年前的一次种群崩溃，到现在还在拖累着整个基因库。怎么从数据里看见这个历史？",
-          "image": "/images/storylines/effective-size_step3.jpg",
+          "image": "/images/storylines/effective-size_step3.webp",
           "image_caption": "多代递推"
         },
         {
@@ -970,7 +970,7 @@
           "display_name_zh": "F-估计量",
           "story_zh": "公式 4.17a 开启了 N_e 的统计估计时代。Wright 的 F-统计量给出了一个绝妙的思路：如果你观察到了等位基因频率在时间（代际）上的变化，你就可以反推出产生这个变化需要的 N_e。\n\nF ≈ 1/(2N_e) 当漂变是主要力时。这意味着：从样本中估计 F——通过频率的方差——你就可以估计 N_e。这个「时间法」（temporal method）在 1980-90 年代被广泛用于自然群体的有效大小估计，特别是那些你不能直接操控繁殖的物种（如鱼类、鸟类）。",
           "bridge_zh": "F-统计量搭起了 N_e 和数据之间的桥。观测到了频率变化→反推 N_e。如果有几千个独立位点呢？",
-          "image": "/images/storylines/effective-size_step4.jpg",
+          "image": "/images/storylines/effective-size_step4.webp",
           "image_caption": "F-估计量"
         },
         {
@@ -984,7 +984,7 @@
           "display_name_zh": "漂变方差",
           "story_zh": "公式 7.8 给出了漂变方差的经典形式：σ²(Δp) = p(1-p)/(2N_e)。等位基因频率的代际变化方差与有效大小成反比。\n\n这个关系的美妙在于：你不需要等很多代。如果基因组上有足够多的独立位点，即使只有两个时间点的样本，每个位点的频率变化都会独立地反映 1/(2N_e)。对于基因组时代的海量 SNP 数据，这是极其高效的设计——单样本、两个时间点，就可以估计 N_e。",
           "bridge_zh": "漂变方差的公式告诉你：N_e 和频率波动的幅度直接有关。成千上万 SNP 的频率变化——每个都是一个 N_e 的独立估计量。",
-          "image": "/images/storylines/effective-size_step5.jpg",
+          "image": "/images/storylines/effective-size_step5.webp",
           "image_caption": "漂变方差"
         },
         {
@@ -998,7 +998,7 @@
           "display_name_zh": "现代估计",
           "story_zh": "2000 年代以后，LD 方法成为单样本估计 N_e 的主流。LD 在有限群体中的期望水平是 1/(1+4N_e·c)——重组率 c 已知的情况下，从观测到的 LD 水平就可以反推 N_e。\n\n公式 12.18b 以及更近期的软件（NeEstimator, GONE, SNeP）实现了从单个时间点的全基因组数据中估计历史 N_e 轨迹。现在的技术已经可以重建群体在过去几千年间有效大小的逐年变化——从冰川期的瓶颈到农业革命后的扩张。N_e 从一个 Wright 在 1931 年定义的抽象概念，变成了一条可以被读取的、百万年尺度的时间序列。",
           "bridge_zh": "LD 方法让 N_e 可以从单样本单时间点估计——而且可以倒推历史。Wright 的概念真正变成了一台能读演化史时间序列的仪表。",
-          "image": "/images/storylines/effective-size_step6.jpg",
+          "image": "/images/storylines/effective-size_step6.webp",
           "image_caption": "现代估计"
         }
       ],
@@ -1033,7 +1033,7 @@
           "display_name_zh": "从 D 到 r²",
           "story_zh": "统计学家 Karl Pearson 在 1896 年提出了相关系数 r——两个变量之间线性关联的标准化度量。遗传学家 Sewall Wright 在 1920 年将相关分析引入遗传学，并天才地发明了路径分析——一种画图分解相关来源的方法。\n\n公式 2.22 把相关概念引入了连锁不平衡的语境：r² = D²/[p_A(1-p_A)p_B(1-p_B)]。两个位点之间的 LD 不再依赖于等位基因频率的绝对值，而是可以被标准化到一个统一的尺度上。这个 r² 后来成为 GWAS 的核心——它衡量了一个标记能多好地标记一个致病位点。",
           "bridge_zh": "Pearson 的 r 和 Wright 的 D 在 r² 里相遇——连锁被标准化为相关性。但相关性会在每一代重组中被稀释。",
-          "image": "/images/storylines/covariance-correlation_step1.jpg",
+          "image": "/images/storylines/covariance-correlation_step1.webp",
           "image_caption": "从 D 到 r²"
         },
         {
@@ -1047,7 +1047,7 @@
           "display_name_zh": "重组与相关衰减",
           "story_zh": "如果两个位点是连锁的，重组会在每一代中衰减它们的统计关联。公式 2.29a 给出了在漂变-重组平衡下 r² 的期望值：≈ 1/(1+4Nc)。\n\n这个公式把两个看似不相关的量——相关系数 r 和重组率 c——连接在了一起。相关性本身携带了重组率的信息，而重组率又是物理距离的代理。由此倒推：从观测到的 r² 衰减模式，可以推断基因组的平均重组率和历史群体大小。\n\n这正是「LD decay」分析的基础——它告诉你：「两个位点之间的相关，要多远才会衰减到噪声水平？」",
           "bridge_zh": "r² 告诉了我们重组率——如果反过来用，观测 r² 能倒推群体历史。但观测的相关统计量靠谱吗？",
-          "image": "/images/storylines/covariance-correlation_step2.jpg",
+          "image": "/images/storylines/covariance-correlation_step2.webp",
           "image_caption": "重组与相关衰减"
         },
         {
@@ -1061,7 +1061,7 @@
           "display_name_zh": "观测相关的估计",
           "story_zh": "从观测数据估计 r² 并不是无偏的。样本容量、等位基因频谱、分群结构——这些都会使 r² 的估计产生偏差。\n\n公式 4.14 给出了一个校正后的相关估计量——特别是考虑了连锁和漂变对低频率 SNP 的较强影响。在高密度的 SNP 芯片数据中，精确校正相关估计对于 GWAS 的显著性检验至关重要——一个未经校正的 r² 可能会让你把一个漂变产生的虚假 LD 误判为致病变异的位置。",
           "bridge_zh": "校正后的 r² 和相关的相关——遗传学需要的不是数据相关，而是育种值之间的相关。两个性状共享多少遗传基础？",
-          "image": "/images/storylines/covariance-correlation_step3.jpg",
+          "image": "/images/storylines/covariance-correlation_step3.webp",
           "image_caption": "观测相关的估计"
         },
         {
@@ -1075,7 +1075,7 @@
           "display_name_zh": "遗传协方差",
           "story_zh": "相关系数量的是变量间的线性关联——但遗传上我们关心的不是数据本身的相关，而是育种值之间的相关：两个性状的遗传协方差。\n\n公式 6.30b 和公式 11.19a 将相关分析从表型推进到了遗传层面：两个性状的育种值的协方差 σ_A(ij) 衡量了它们共享的加性遗传基础。如果这个协方差是正的，对性状 1 的选择会顺便推高性状 2——即使你根本不在意性状 2。\n\n这种「相关响应」在育种中是双刃剑：你选高产奶量的奶牛，可能无意中增加了乳腺炎的风险。遗传相关使得「独立优化每一个性状」变成了「在多个性状之间找平衡」。",
           "bridge_zh": "遗传协方差意味着：你选一个性状，另一个会自动跟着走。这在一维选择里没什么——但性状是多维的。",
-          "image": "/images/storylines/covariance-correlation_step4.jpg",
+          "image": "/images/storylines/covariance-correlation_step4.webp",
           "image_caption": "遗传协方差"
         },
         {
@@ -1089,7 +1089,7 @@
           "display_name_zh": "多变量响应",
           "story_zh": "一旦有了多个性状，选择就不再是一维的梯度了——而是一个多维空间中的方向向量。Lande 在 1979 年将 Fisher 的 Breeder's equation 推广到了多变量形式：Δz̄ = G·β，其中 G 是遗传方差-协方差矩阵，β 是选择梯度向量。\n\n公式 15.11b 代表了这个多变量框架。β 告诉你选择在推哪个方向；G 告诉你遗传系统能往那个方向走多快。如果 β 指向一个方向，但 G 在那个方向上没有方差（性状间高度相关、绑在一起），选择就会推不动。\n\n这是演化约束的数学基础：不是选择不想要，而是遗传结构不提供那个方向的自由度。",
           "bridge_zh": "多变量 Breeder's equation：Δz̄ = G·β。G 是一张方差-协方差矩阵。β 指向选择方向——但 G 在那儿有路吗？",
-          "image": "/images/storylines/covariance-correlation_step5.jpg",
+          "image": "/images/storylines/covariance-correlation_step5.webp",
           "image_caption": "多变量响应"
         },
         {
@@ -1103,7 +1103,7 @@
           "display_name_zh": "相关矩阵的应用",
           "story_zh": "21 世纪的基因组数据使得多变量分析进入了高维时代。从几千个代谢物、几万个转录本、几十万个 SNP——相关矩阵的维度爆炸了。\n\n公式 8.3e 代表了矩阵分析方法在基因组时代的应用。但真正的问题不再是如何估计一个相关矩阵——而是如何在几百万个相关中分辨哪些是因果的、哪些是由潜在混合因素（如群体分层）造成的。\n\n结构方程模型、网络推断、稀疏逆协方差估计（graphical lasso）——这些从 Pearson 和 Wright 时代继承下来的相关分析，正在 21 世纪的遗传数据中焕发新的生命。Pearson 在 1896 年画的那条回归线，现在已经变成了一张高维遗传网络。",
           "bridge_zh": "从 Pearson 1896 年的相关系数，到 21 世纪的遗传网络——Cov 和 r 从两个数字变成了一张高维的结构图。演化，最终是在这张图上走。",
-          "image": "/images/storylines/covariance-correlation_step6.jpg",
+          "image": "/images/storylines/covariance-correlation_step6.webp",
           "image_caption": "相关矩阵的应用"
         }
       ],

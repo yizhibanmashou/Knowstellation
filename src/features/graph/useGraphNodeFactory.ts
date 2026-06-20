@@ -1,32 +1,75 @@
 import { useCallback, type MutableRefObject } from 'react';
 import type { Node, XYPosition } from '@xyflow/react';
 import type { ChapterDependencies, ChapterFormula } from '../../shared/types/formula';
+import type { ConceptGraphPayload } from '../../shared/types/conceptGraph';
 import type { FormulaExpansionIntent, FormulaNodeData } from '../../shared/types/graph';
+import { rawFormulaNumber } from '../../shared/utils/constants';
+import { resolveNextStudyFormulaId } from '../learning/learningNavigator';
 import type { FocusAnnotationNote } from './focusAnnotations';
-import { buildFocusSymbolPrerequisites } from './graphCanvasModel';
+import { buildConceptBackedFocusSymbolPrerequisites, shouldRenderFormulaPrerequisite } from './graphCanvasModel';
 import type { GraphStudyMode } from './GraphModeControls';
 
 interface UseGraphNodeFactoryParams {
   expandFormulaRef: MutableRefObject<(formulaId: string, intent?: FormulaExpansionIntent) => void>;
   focusChapterId: string;
-  focusFormula: (formulaId: string, intent?: FormulaExpansionIntent) => void;
   focusFormulaId: string;
   isChapterGraph: boolean;
   learnedByChapter: Record<string, Set<string>>;
   loadingIds: Set<string>;
   mode: GraphStudyMode;
+  onOpenStudyFormula: (formulaId: string) => void;
+  studyFormulaIds: string[];
 }
 
 export function useGraphNodeFactory({
   expandFormulaRef,
   focusChapterId,
-  focusFormula,
   focusFormulaId,
   isChapterGraph,
   learnedByChapter,
   loadingIds,
   mode,
+  onOpenStudyFormula,
+  studyFormulaIds,
 }: UseGraphNodeFactoryParams) {
+  const studyTargetFor = useCallback(
+    (formulaId: string): Pick<FormulaNodeData, 'studyNextFormulaId' | 'studyNextFormulaLabel' | 'studyNextFormulaLocked' | 'onOpenStudyFormula'> => {
+      const nextFormulaId = resolveNextStudyFormulaId(studyFormulaIds, formulaId);
+      if (!nextFormulaId) return { onOpenStudyFormula };
+      return {
+        studyNextFormulaId: nextFormulaId,
+        studyNextFormulaLabel: rawFormulaNumber(nextFormulaId),
+        studyNextFormulaLocked: false,
+        onOpenStudyFormula,
+      };
+    },
+    [onOpenStudyFormula, studyFormulaIds],
+  );
+
+  const relationStateFor = useCallback(
+    (
+      formulaId: string,
+      chapter?: ChapterDependencies | null,
+      fallback?: Pick<FormulaNodeData, 'hasGraphPrerequisites' | 'hasGraphSuccessors'>,
+    ): Pick<FormulaNodeData, 'hasGraphPrerequisites' | 'hasGraphSuccessors'> => {
+      if (!chapter) {
+        return {
+          hasGraphPrerequisites: fallback?.hasGraphPrerequisites,
+          hasGraphSuccessors: fallback?.hasGraphSuccessors,
+        };
+      }
+      const dependency = chapter.dependencies.find((dep) => dep.dependent_id === formulaId) || null;
+      const hasGraphPrerequisites = Boolean(
+        dependency?.prerequisites.some((prereq) => shouldRenderFormulaPrerequisite(prereq) && !prereq.cross_chapter && prereq.target_id),
+      );
+      const hasGraphSuccessors = chapter.dependencies.some((dep) =>
+        dep.prerequisites.some((prereq) => shouldRenderFormulaPrerequisite(prereq) && prereq.target_id === formulaId && !prereq.cross_chapter),
+      );
+      return { hasGraphPrerequisites, hasGraphSuccessors };
+    },
+    [],
+  );
+
   const makeStaticFormulaNode = useCallback(
     (
       formula: ChapterFormula,
@@ -35,6 +78,7 @@ export function useGraphNodeFactory({
       role: FormulaNodeData['role'] = 'successor',
       symbolExplanations: FocusAnnotationNote[] = [],
       chapterGraph = false,
+      chapter?: ChapterDependencies | null,
     ): Node => ({
       id: formula.id,
       type: 'formula',
@@ -48,11 +92,13 @@ export function useGraphNodeFactory({
         locked: false,
         learned: false,
         chapterGraph,
+        ...relationStateFor(formula.id, chapter),
         symbolExplanations,
+        ...studyTargetFor(formula.id),
         onExpand: (formulaId: string, intent?: FormulaExpansionIntent) => expandFormulaRef.current(formulaId, intent),
       } satisfies FormulaNodeData,
     }),
-    [expandFormulaRef, mode],
+    [expandFormulaRef, mode, relationStateFor, studyTargetFor],
   );
 
   const makeFormulaNode = useCallback(
@@ -62,10 +108,14 @@ export function useGraphNodeFactory({
       focused = false,
       role: FormulaNodeData['role'] = 'successor',
       chapter?: ChapterDependencies | null,
+      conceptGraph?: ConceptGraphPayload | null,
     ): Node => {
       const locked = false;
       const learned = Boolean(learnedByChapter[focusChapterId]?.has(formula.id));
-      const focusSymbolExplanations = mode === 'guided' && !isChapterGraph ? buildFocusSymbolPrerequisites(formula, null) : [];
+      const dependency = chapter?.dependencies.find((dep) => dep.dependent_id === formula.id) || null;
+      const focusSymbolExplanations = mode === 'formula' && !isChapterGraph
+        ? buildConceptBackedFocusSymbolPrerequisites(formula, dependency, conceptGraph)
+        : [];
       return {
         id: formula.id,
         type: 'formula',
@@ -81,17 +131,21 @@ export function useGraphNodeFactory({
           lockedTargetFormulaId: undefined,
           lockedTargetLabel: undefined,
           learned,
+          ...relationStateFor(formula.id, chapter),
+          ...studyTargetFor(formula.id),
           symbolExplanations: focusSymbolExplanations,
-          onExpand: focusFormula,
+          onExpand: (formulaId: string, intent?: FormulaExpansionIntent) => expandFormulaRef.current(formulaId, intent),
         } satisfies FormulaNodeData,
       };
     },
     [
+      expandFormulaRef,
       focusChapterId,
-      focusFormula,
       isChapterGraph,
       learnedByChapter,
       mode,
+      relationStateFor,
+      studyTargetFor,
     ],
   );
 
@@ -114,19 +168,23 @@ export function useGraphNodeFactory({
             lockedTargetFormulaId: undefined,
             lockedTargetLabel: undefined,
             learned: Boolean(learnedByChapter[focusChapterId]?.has(node.id)),
+            ...relationStateFor(node.id, chapter, data),
+            ...studyTargetFor(node.id),
             chapterGraph: isChapterGraph || data.chapterGraph,
-            onExpand: focusFormula,
+            onExpand: (formulaId: string, intent?: FormulaExpansionIntent) => expandFormulaRef.current(formulaId, intent),
           } satisfies FormulaNodeData,
         };
       }),
     [
+      expandFormulaRef,
       focusChapterId,
-      focusFormula,
       focusFormulaId,
       isChapterGraph,
       learnedByChapter,
       loadingIds,
       mode,
+      relationStateFor,
+      studyTargetFor,
     ],
   );
 

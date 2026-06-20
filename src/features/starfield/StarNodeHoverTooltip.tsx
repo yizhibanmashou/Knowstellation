@@ -9,7 +9,7 @@ export function StarNodeHoverTooltip({ node, x, y }: ActiveNode) {
   const meta = node.kind === 'chapter'
     ? `${node.formulaCount || 0} 个公式`
     : node.kind === 'concept'
-      ? [node.symbol, node.formulaLabel].filter(Boolean).join(' · ') || '概念起点'
+      ? [node.symbol, node.formulaLabel].filter(Boolean).join(' · ') || '概念节点'
       : formatSectionLabel(node.section) || node.subtitle;
 
   return (

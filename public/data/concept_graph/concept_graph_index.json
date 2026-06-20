@@ -1,363 +1,363 @@
 {
   "version": 1,
-  "generated_at": "2026-06-11T11:39:24.292Z",
+  "generated_at": "2026-06-20T05:36:11.249Z",
   "chapters": [
     {
       "chapter_id": "appendix1",
       "file": "appendix1_concept_graph.json",
       "formulas_processed": 54,
-      "unique_concepts": 371,
-      "concept_views": 54,
-      "prerequisite_edges": 8,
-      "introduced_edges": 276,
-      "formula_edges_used": 8
+      "unique_concepts": 367,
+      "concept_views": 23,
+      "prerequisite_edges": 30,
+      "introduced_edges": 33,
+      "formula_edges_used": 30
     },
     {
       "chapter_id": "appendix2",
       "file": "appendix2_concept_graph.json",
       "formulas_processed": 92,
-      "unique_concepts": 632,
-      "concept_views": 92,
-      "prerequisite_edges": 50,
-      "introduced_edges": 446,
-      "formula_edges_used": 50
+      "unique_concepts": 649,
+      "concept_views": 35,
+      "prerequisite_edges": 66,
+      "introduced_edges": 120,
+      "formula_edges_used": 66
     },
     {
       "chapter_id": "appendix3",
       "file": "appendix3_concept_graph.json",
       "formulas_processed": 59,
-      "unique_concepts": 361,
-      "concept_views": 59,
-      "prerequisite_edges": 9,
-      "introduced_edges": 259,
-      "formula_edges_used": 9
+      "unique_concepts": 335,
+      "concept_views": 34,
+      "prerequisite_edges": 44,
+      "introduced_edges": 57,
+      "formula_edges_used": 44
     },
     {
       "chapter_id": "appendix4",
       "file": "appendix4_concept_graph.json",
       "formulas_processed": 66,
-      "unique_concepts": 543,
-      "concept_views": 66,
-      "prerequisite_edges": 33,
-      "introduced_edges": 356,
-      "formula_edges_used": 33
+      "unique_concepts": 484,
+      "concept_views": 40,
+      "prerequisite_edges": 69,
+      "introduced_edges": 86,
+      "formula_edges_used": 69
     },
     {
       "chapter_id": "appendix5",
       "file": "appendix5_concept_graph.json",
       "formulas_processed": 66,
-      "unique_concepts": 288,
-      "concept_views": 66,
-      "prerequisite_edges": 30,
-      "introduced_edges": 198,
-      "formula_edges_used": 30
+      "unique_concepts": 426,
+      "concept_views": 28,
+      "prerequisite_edges": 69,
+      "introduced_edges": 87,
+      "formula_edges_used": 69
     },
     {
       "chapter_id": "appendix6",
       "file": "appendix6_concept_graph.json",
       "formulas_processed": 16,
-      "unique_concepts": 86,
-      "concept_views": 16,
-      "prerequisite_edges": 4,
-      "introduced_edges": 61,
-      "formula_edges_used": 4
+      "unique_concepts": 161,
+      "concept_views": 9,
+      "prerequisite_edges": 9,
+      "introduced_edges": 16,
+      "formula_edges_used": 9
     },
     {
       "chapter_id": "chapter10",
       "file": "chapter10_concept_graph.json",
       "formulas_processed": 67,
-      "unique_concepts": 539,
-      "concept_views": 68,
-      "prerequisite_edges": 45,
-      "introduced_edges": 381,
-      "formula_edges_used": 45
+      "unique_concepts": 480,
+      "concept_views": 42,
+      "prerequisite_edges": 53,
+      "introduced_edges": 120,
+      "formula_edges_used": 53
     },
     {
       "chapter_id": "chapter11",
       "file": "chapter11_concept_graph.json",
       "formulas_processed": 42,
-      "unique_concepts": 322,
-      "concept_views": 43,
-      "prerequisite_edges": 21,
-      "introduced_edges": 225,
-      "formula_edges_used": 21
+      "unique_concepts": 315,
+      "concept_views": 23,
+      "prerequisite_edges": 27,
+      "introduced_edges": 66,
+      "formula_edges_used": 27
     },
     {
       "chapter_id": "chapter12",
       "file": "chapter12_concept_graph.json",
       "formulas_processed": 80,
-      "unique_concepts": 527,
-      "concept_views": 80,
-      "prerequisite_edges": 56,
-      "introduced_edges": 403,
-      "formula_edges_used": 56
+      "unique_concepts": 462,
+      "concept_views": 50,
+      "prerequisite_edges": 80,
+      "introduced_edges": 103,
+      "formula_edges_used": 80
     },
     {
       "chapter_id": "chapter13",
       "file": "chapter13_concept_graph.json",
       "formulas_processed": 63,
-      "unique_concepts": 403,
-      "concept_views": 67,
-      "prerequisite_edges": 37,
-      "introduced_edges": 307,
-      "formula_edges_used": 37
+      "unique_concepts": 417,
+      "concept_views": 33,
+      "prerequisite_edges": 82,
+      "introduced_edges": 117,
+      "formula_edges_used": 82
     },
     {
       "chapter_id": "chapter14",
       "file": "chapter14_concept_graph.json",
       "formulas_processed": 37,
-      "unique_concepts": 210,
-      "concept_views": 37,
-      "prerequisite_edges": 18,
-      "introduced_edges": 163,
-      "formula_edges_used": 18
+      "unique_concepts": 179,
+      "concept_views": 26,
+      "prerequisite_edges": 45,
+      "introduced_edges": 46,
+      "formula_edges_used": 45
     },
     {
       "chapter_id": "chapter15",
       "file": "chapter15_concept_graph.json",
       "formulas_processed": 76,
-      "unique_concepts": 490,
-      "concept_views": 76,
-      "prerequisite_edges": 40,
-      "introduced_edges": 350,
-      "formula_edges_used": 40
+      "unique_concepts": 469,
+      "concept_views": 36,
+      "prerequisite_edges": 53,
+      "introduced_edges": 103,
+      "formula_edges_used": 53
     },
     {
       "chapter_id": "chapter16",
       "file": "chapter16_concept_graph.json",
       "formulas_processed": 54,
-      "unique_concepts": 365,
-      "concept_views": 56,
-      "prerequisite_edges": 32,
-      "introduced_edges": 274,
-      "formula_edges_used": 32
+      "unique_concepts": 357,
+      "concept_views": 31,
+      "prerequisite_edges": 65,
+      "introduced_edges": 87,
+      "formula_edges_used": 65
     },
     {
       "chapter_id": "chapter17",
       "file": "chapter17_concept_graph.json",
       "formulas_processed": 30,
-      "unique_concepts": 177,
-      "concept_views": 30,
-      "prerequisite_edges": 10,
-      "introduced_edges": 136,
-      "formula_edges_used": 10
+      "unique_concepts": 172,
+      "concept_views": 15,
+      "prerequisite_edges": 23,
+      "introduced_edges": 43,
+      "formula_edges_used": 23
     },
     {
       "chapter_id": "chapter18",
       "file": "chapter18_concept_graph.json",
       "formulas_processed": 76,
-      "unique_concepts": 567,
-      "concept_views": 77,
-      "prerequisite_edges": 76,
-      "introduced_edges": 435,
-      "formula_edges_used": 76
+      "unique_concepts": 534,
+      "concept_views": 43,
+      "prerequisite_edges": 75,
+      "introduced_edges": 115,
+      "formula_edges_used": 75
     },
     {
       "chapter_id": "chapter19",
       "file": "chapter19_concept_graph.json",
       "formulas_processed": 68,
-      "unique_concepts": 369,
-      "concept_views": 70,
-      "prerequisite_edges": 42,
-      "introduced_edges": 261,
-      "formula_edges_used": 42
+      "unique_concepts": 595,
+      "concept_views": 25,
+      "prerequisite_edges": 60,
+      "introduced_edges": 108,
+      "formula_edges_used": 60
     },
     {
       "chapter_id": "chapter20",
       "file": "chapter20_concept_graph.json",
       "formulas_processed": 77,
-      "unique_concepts": 516,
-      "concept_views": 77,
-      "prerequisite_edges": 53,
-      "introduced_edges": 363,
-      "formula_edges_used": 53
+      "unique_concepts": 556,
+      "concept_views": 39,
+      "prerequisite_edges": 87,
+      "introduced_edges": 134,
+      "formula_edges_used": 87
     },
     {
       "chapter_id": "chapter21",
       "file": "chapter21_concept_graph.json",
       "formulas_processed": 115,
-      "unique_concepts": 1092,
-      "concept_views": 117,
-      "prerequisite_edges": 109,
-      "introduced_edges": 770,
-      "formula_edges_used": 109
+      "unique_concepts": 992,
+      "concept_views": 50,
+      "prerequisite_edges": 126,
+      "introduced_edges": 202,
+      "formula_edges_used": 126
     },
     {
       "chapter_id": "chapter22",
       "file": "chapter22_concept_graph.json",
       "formulas_processed": 184,
-      "unique_concepts": 1497,
-      "concept_views": 184,
-      "prerequisite_edges": 141,
-      "introduced_edges": 1118,
-      "formula_edges_used": 141
+      "unique_concepts": 1403,
+      "concept_views": 59,
+      "prerequisite_edges": 209,
+      "introduced_edges": 281,
+      "formula_edges_used": 209
     },
     {
       "chapter_id": "chapter23",
       "file": "chapter23_concept_graph.json",
       "formulas_processed": 129,
-      "unique_concepts": 986,
-      "concept_views": 129,
-      "prerequisite_edges": 54,
-      "introduced_edges": 745,
-      "formula_edges_used": 54
+      "unique_concepts": 933,
+      "concept_views": 50,
+      "prerequisite_edges": 114,
+      "introduced_edges": 175,
+      "formula_edges_used": 114
     },
     {
       "chapter_id": "chapter24",
       "file": "chapter24_concept_graph.json",
       "formulas_processed": 79,
-      "unique_concepts": 644,
-      "concept_views": 82,
-      "prerequisite_edges": 54,
-      "introduced_edges": 458,
-      "formula_edges_used": 54
+      "unique_concepts": 599,
+      "concept_views": 48,
+      "prerequisite_edges": 83,
+      "introduced_edges": 101,
+      "formula_edges_used": 83
     },
     {
       "chapter_id": "chapter25",
       "file": "chapter25_concept_graph.json",
       "formulas_processed": 47,
-      "unique_concepts": 317,
-      "concept_views": 54,
-      "prerequisite_edges": 24,
-      "introduced_edges": 232,
-      "formula_edges_used": 24
+      "unique_concepts": 298,
+      "concept_views": 28,
+      "prerequisite_edges": 42,
+      "introduced_edges": 78,
+      "formula_edges_used": 42
     },
     {
       "chapter_id": "chapter26",
       "file": "chapter26_concept_graph.json",
       "formulas_processed": 75,
-      "unique_concepts": 491,
-      "concept_views": 75,
-      "prerequisite_edges": 54,
-      "introduced_edges": 366,
-      "formula_edges_used": 54
+      "unique_concepts": 437,
+      "concept_views": 33,
+      "prerequisite_edges": 64,
+      "introduced_edges": 104,
+      "formula_edges_used": 64
     },
     {
       "chapter_id": "chapter27",
       "file": "chapter27_concept_graph.json",
       "formulas_processed": 23,
-      "unique_concepts": 156,
-      "concept_views": 23,
-      "prerequisite_edges": 5,
-      "introduced_edges": 114,
-      "formula_edges_used": 5
+      "unique_concepts": 143,
+      "concept_views": 18,
+      "prerequisite_edges": 19,
+      "introduced_edges": 25,
+      "formula_edges_used": 19
     },
     {
       "chapter_id": "chapter28",
       "file": "chapter28_concept_graph.json",
       "formulas_processed": 163,
-      "unique_concepts": 1170,
-      "concept_views": 168,
-      "prerequisite_edges": 144,
-      "introduced_edges": 871,
-      "formula_edges_used": 144
+      "unique_concepts": 1106,
+      "concept_views": 60,
+      "prerequisite_edges": 174,
+      "introduced_edges": 213,
+      "formula_edges_used": 174
     },
     {
       "chapter_id": "chapter29",
       "file": "chapter29_concept_graph.json",
       "formulas_processed": 124,
-      "unique_concepts": 829,
-      "concept_views": 126,
-      "prerequisite_edges": 43,
-      "introduced_edges": 609,
-      "formula_edges_used": 43
+      "unique_concepts": 802,
+      "concept_views": 59,
+      "prerequisite_edges": 111,
+      "introduced_edges": 173,
+      "formula_edges_used": 111
     },
     {
       "chapter_id": "chapter2",
       "file": "chapter2_concept_graph.json",
       "formulas_processed": 74,
-      "unique_concepts": 399,
-      "concept_views": 74,
-      "prerequisite_edges": 25,
-      "introduced_edges": 281,
-      "formula_edges_used": 25
+      "unique_concepts": 386,
+      "concept_views": 37,
+      "prerequisite_edges": 54,
+      "introduced_edges": 77,
+      "formula_edges_used": 54
     },
     {
       "chapter_id": "chapter30",
       "file": "chapter30_concept_graph.json",
       "formulas_processed": 75,
-      "unique_concepts": 476,
-      "concept_views": 76,
-      "prerequisite_edges": 52,
-      "introduced_edges": 326,
-      "formula_edges_used": 52
+      "unique_concepts": 513,
+      "concept_views": 34,
+      "prerequisite_edges": 73,
+      "introduced_edges": 114,
+      "formula_edges_used": 73
     },
     {
       "chapter_id": "chapter3",
       "file": "chapter3_concept_graph.json",
       "formulas_processed": 42,
-      "unique_concepts": 190,
-      "concept_views": 42,
-      "prerequisite_edges": 16,
-      "introduced_edges": 130,
-      "formula_edges_used": 16
+      "unique_concepts": 168,
+      "concept_views": 7,
+      "prerequisite_edges": 7,
+      "introduced_edges": 24,
+      "formula_edges_used": 7
     },
     {
       "chapter_id": "chapter4",
       "file": "chapter4_concept_graph.json",
       "formulas_processed": 42,
-      "unique_concepts": 214,
-      "concept_views": 42,
-      "prerequisite_edges": 17,
-      "introduced_edges": 150,
-      "formula_edges_used": 17
+      "unique_concepts": 191,
+      "concept_views": 22,
+      "prerequisite_edges": 32,
+      "introduced_edges": 37,
+      "formula_edges_used": 32
     },
     {
       "chapter_id": "chapter5",
       "file": "chapter5_concept_graph.json",
       "formulas_processed": 74,
-      "unique_concepts": 514,
-      "concept_views": 78,
-      "prerequisite_edges": 66,
-      "introduced_edges": 373,
-      "formula_edges_used": 66
+      "unique_concepts": 466,
+      "concept_views": 30,
+      "prerequisite_edges": 61,
+      "introduced_edges": 102,
+      "formula_edges_used": 61
     },
     {
       "chapter_id": "chapter6",
       "file": "chapter6_concept_graph.json",
       "formulas_processed": 82,
-      "unique_concepts": 476,
-      "concept_views": 87,
-      "prerequisite_edges": 77,
-      "introduced_edges": 363,
-      "formula_edges_used": 77
+      "unique_concepts": 460,
+      "concept_views": 33,
+      "prerequisite_edges": 94,
+      "introduced_edges": 115,
+      "formula_edges_used": 94
     },
     {
       "chapter_id": "chapter7",
       "file": "chapter7_concept_graph.json",
       "formulas_processed": 75,
-      "unique_concepts": 441,
-      "concept_views": 75,
-      "prerequisite_edges": 28,
-      "introduced_edges": 341,
-      "formula_edges_used": 28
+      "unique_concepts": 404,
+      "concept_views": 30,
+      "prerequisite_edges": 54,
+      "introduced_edges": 87,
+      "formula_edges_used": 54
     },
     {
       "chapter_id": "chapter8",
       "file": "chapter8_concept_graph.json",
       "formulas_processed": 73,
-      "unique_concepts": 490,
-      "concept_views": 73,
-      "prerequisite_edges": 59,
-      "introduced_edges": 367,
-      "formula_edges_used": 59
+      "unique_concepts": 456,
+      "concept_views": 41,
+      "prerequisite_edges": 80,
+      "introduced_edges": 133,
+      "formula_edges_used": 80
     },
     {
       "chapter_id": "chapter9",
       "file": "chapter9_concept_graph.json",
       "formulas_processed": 102,
-      "unique_concepts": 642,
-      "concept_views": 102,
-      "prerequisite_edges": 47,
-      "introduced_edges": 460,
-      "formula_edges_used": 47
+      "unique_concepts": 622,
+      "concept_views": 61,
+      "prerequisite_edges": 109,
+      "introduced_edges": 134,
+      "formula_edges_used": 109
     }
   ],
   "summary": {
     "chapters": 35,
     "formulas_processed": 2601,
-    "concept_views": 2641,
-    "prerequisite_edges": 1579,
-    "introduced_edges": 12968
+    "concept_views": 1232,
+    "prerequisite_edges": 2443,
+    "introduced_edges": 3616
   }
 }

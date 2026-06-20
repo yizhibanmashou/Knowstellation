@@ -6,6 +6,8 @@ import {
   getText,
   getThemeRouteById,
   inferChapterTitleFromSearchIndex,
+  isChapterStudyFormulaLocked,
+  resolveNextStudyFormulaId,
   resolveRecommendedChapterFormulaId,
 } from '../src/features/learning/learningNavigator.ts';
 import { buildChapterConceptLearningNodes, buildConceptStarNodes } from '../src/features/starfield/starNavigation.ts';
@@ -17,7 +19,7 @@ import {
 import type { ConceptReference, ConceptView } from '../src/shared/types/conceptGraph.ts';
 import type { SearchFormula } from '../src/shared/types/formula.ts';
 import type { ChapterNavigatorPayload, ThemeRoutesPayload } from '../src/shared/types/learning.ts';
-import type { ConceptSearchResult } from '../src/shared/types/search.ts';
+import type { ConceptNavigationEntry, ConceptSearchResult } from '../src/shared/types/search.ts';
 
 const chapterPayload: ChapterNavigatorPayload = {
   groups: [
@@ -75,6 +77,20 @@ test('getStudyFormulaIds returns backbone or full sequence for a chapter', () =>
   const chapter = getChapterByNumber(chapterPayload, 2)!;
   assert.deepEqual(getStudyFormulaIds({ type: 'chapter', chapter, layer: 'backbone' }), ['formula_2.1', 'formula_2.2a']);
   assert.deepEqual(getStudyFormulaIds({ type: 'chapter', chapter, layer: 'full' }), ['formula_2.1', 'formula_2.2a', 'formula_2.2b']);
+});
+
+test('resolveNextStudyFormulaId returns the next formula in the active study sequence', () => {
+  assert.equal(resolveNextStudyFormulaId(['formula_2.1', 'formula_2.2a', 'formula_2.2b'], 'formula_2.1'), 'formula_2.2a');
+  assert.equal(resolveNextStudyFormulaId(['formula_2.1', 'formula_2.2a'], 'formula_2.2a'), null);
+  assert.equal(resolveNextStudyFormulaId(['formula_2.1'], 'formula_missing'), null);
+});
+
+test('isChapterStudyFormulaLocked unlocks current, learned, next learned-adjacent, and full sequence formulas', () => {
+  const formulaIds = ['formula_2.1', 'formula_2.2a', 'formula_2.2b'];
+  assert.equal(isChapterStudyFormulaLocked({ formulaIds, formulaId: 'formula_2.1', currentFormulaId: 'formula_2.1', layer: 'backbone' }), false);
+  assert.equal(isChapterStudyFormulaLocked({ formulaIds, formulaId: 'formula_2.2a', currentFormulaId: 'formula_2.1', learnedFormulaIds: new Set(['formula_2.1']), layer: 'backbone' }), false);
+  assert.equal(isChapterStudyFormulaLocked({ formulaIds, formulaId: 'formula_2.2b', currentFormulaId: 'formula_2.1', learnedFormulaIds: new Set(['formula_2.1']), layer: 'backbone' }), true);
+  assert.equal(isChapterStudyFormulaLocked({ formulaIds, formulaId: 'formula_2.2b', currentFormulaId: 'formula_2.1', layer: 'full' }), false);
 });
 
 test('getThemeRouteById returns richer theme route data', () => {
@@ -179,6 +195,7 @@ function concept(overrides: Partial<ConceptSearchResult>): ConceptSearchResult {
 function conceptReference(overrides: Partial<ConceptReference>): ConceptReference {
   return {
     concept_id: overrides.concept_id || 'concept_neighbor',
+    view_id: overrides.view_id,
     name: overrides.name || 'Neighbor concept',
     symbol: overrides.symbol,
     defined_by_formula_id: overrides.defined_by_formula_id ?? 'formula_2.2a',
@@ -202,6 +219,7 @@ function conceptView(overrides: Partial<ConceptView>): ConceptView {
   return {
     chapter_id: overrides.chapter_id || 'chapter2',
     concept_id: overrides.concept_id || 'concept_current',
+    view_id: overrides.view_id,
     name: overrides.name || 'Current concept',
     definition: overrides.definition || 'Definition.',
     definition_zh: overrides.definition_zh,
@@ -245,7 +263,63 @@ test('buildConceptStarNodes groups duplicate concepts and exposes concept naviga
   assert.equal(nodes[0].chapterId, 'chapter2');
 });
 
-test('buildConceptStarNodes falls back to generic concepts when no better concept exists', () => {
+test('buildConceptStarNodes merges repeated concept navigation entries into one semantic card', () => {
+  const chapter = getChapterByNumber(chapterPayload, 2)!;
+  const navigation: ConceptNavigationEntry[] = [
+    {
+      concept_id: 'concept_ratio_a',
+      formula_id: 'formula_2.1',
+      title: 'polymorphism-divergence ratio',
+      symbol: 'P_{a}/D_{a}',
+      formula_label: 'Formula 2.1',
+      formula_section: 'Neutral Evolution',
+      prerequisite_concept_ids: [],
+      depth: 0,
+      order: 0,
+    },
+    {
+      concept_id: 'concept_ratio_b',
+      formula_id: 'formula_2.2a',
+      title: 'polymorphism-divergence ratio',
+      symbol: 'P_{a}/D_{a}',
+      formula_label: 'Formula 2.2a',
+      formula_section: 'Neutral Evolution',
+      prerequisite_concept_ids: ['concept_ratio_a'],
+      depth: 1,
+      order: 1,
+    },
+  ];
+  const nodes = buildConceptStarNodes({
+    chapter,
+    conceptNavigation: navigation,
+    conceptIndex: [
+      concept({ concept_id: 'concept_ratio_a', formula_id: 'formula_2.1', title: 'polymorphism-divergence ratio' }),
+    ],
+  });
+
+  assert.deepEqual(nodes.map((node) => node.conceptId), ['concept_ratio_a']);
+  assert.equal(nodes[0].formulaId, 'formula_2.1');
+  assert.equal(nodes[0].title, 'polymorphism-divergence ratio');
+  assert.equal(nodes[0].occurrenceCount, 2);
+  assert.deepEqual(nodes[0].relatedFormulaLabels, ['Formula 2.1', 'Formula 2.2a']);
+});
+
+test('buildConceptStarNodes does not merge related but different probability concepts', () => {
+  const chapter = getChapterByNumber(chapterPayload, 2)!;
+  const nodes = buildConceptStarNodes({
+    chapter,
+    maxConcepts: 4,
+    conceptIndex: [
+      concept({ concept_id: 'concept_probability', formula_id: 'formula_2.1', title: 'Probability', symbol: 'P', context: '衡量某个事件或状态转移发生可能性的数量。' }),
+      concept({ concept_id: 'concept_likelihood', formula_id: 'formula_2.2a', title: 'Likelihood', symbol: 'L', context: '衡量模型解释观测数据程度的量。' }),
+    ],
+  });
+
+  assert.equal(nodes.length, 2);
+  assert.deepEqual(new Set(nodes.map((node) => node.conceptId)), new Set(['concept_probability', 'concept_likelihood']));
+});
+
+test('buildConceptStarNodes excludes generic formula-statement concepts', () => {
   const chapter = getChapterByNumber(chapterPayload, 2)!;
   const nodes = buildConceptStarNodes({
     chapter,
@@ -255,8 +329,7 @@ test('buildConceptStarNodes falls back to generic concepts when no better concep
     ],
   });
 
-  assert.equal(nodes.length, 1);
-  assert.equal(nodes[0].conceptId, 'concept_statement_only');
+  assert.equal(nodes.length, 0);
 });
 
 test('buildChapterConceptLearningNodes uses the same filtered order for next concept learning', () => {
@@ -279,7 +352,38 @@ test('buildChapterConceptLearningNodes uses the same filtered order for next con
   assert.equal(next?.formulaId, 'formula_2.2a');
 });
 
-test('resolveNextConceptFromCurrent prefers clickable prerequisite concepts', () => {
+test('buildChapterConceptLearningNodes falls back to indexed symbols when navigation symbols are blank', () => {
+  const chapter = getChapterByNumber(chapterPayload, 2)!;
+  const conceptNavigation: ConceptNavigationEntry[] = [
+    {
+      concept_id: 'concept_tau_hat',
+      formula_id: 'formula_2.1',
+      formula_label: 'Formula 2.1',
+      title: 'Tau-hat',
+      symbol: '   ',
+      prerequisite_concept_ids: [],
+      depth: 0,
+      order: 0,
+    },
+  ];
+  const nodes = buildChapterConceptLearningNodes({
+    chapter,
+    maxConcepts: 3,
+    conceptNavigation,
+    conceptIndex: [
+      concept({
+        concept_id: 'concept_tau_hat',
+        formula_id: 'formula_2.1',
+        title: 'Tau-hat',
+        symbol: '\\widehat{\\tau}',
+      }),
+    ],
+  });
+
+  assert.equal(nodes[0]?.symbol, '\\widehat{\\tau}');
+});
+
+test('resolveNextConceptFromCurrent prefers the chapter sequence over local prerequisite concepts', () => {
   const chapter = getChapterByNumber(chapterPayload, 2)!;
   const nodes = buildChapterConceptLearningNodes({
     chapter,
@@ -305,12 +409,37 @@ test('resolveNextConceptFromCurrent prefers clickable prerequisite concepts', ()
     chapterSteps: steps,
   });
 
-  assert.equal(target?.conceptId, 'concept_prereq');
+  assert.equal(target?.conceptId, 'concept_sequence');
+  assert.equal(target?.formulaId, 'formula_2.2a');
+  assert.equal(target?.source, 'chapter_sequence');
+});
+
+test('resolveNextConceptFromCurrent opens the referenced concept view when available', () => {
+  const target = resolveNextConceptFromCurrent({
+    currentView: conceptView({
+      concept_id: 'canonical_response',
+      view_id: 'view_current_response',
+      prerequisite_concepts: [
+        conceptReference({
+          concept_id: 'canonical_response',
+          view_id: 'view_upstream_response',
+          name: 'Trait response',
+          defined_by_formula_id: 'formula_2.2b',
+          formula_label: 'Formula 2.2b',
+        }),
+      ],
+    }),
+    current: null,
+    next: null,
+    chapterSteps: [],
+  });
+
+  assert.equal(target?.conceptId, 'view_upstream_response');
   assert.equal(target?.formulaId, 'formula_2.2b');
   assert.equal(target?.source, 'adjacent');
 });
 
-test('resolveNextConceptFromCurrent uses introduced concepts when prerequisites are unavailable', () => {
+test('resolveNextConceptFromCurrent ignores introduced concepts when prerequisites are unavailable', () => {
   const target = resolveNextConceptFromCurrent({
     currentView: conceptView({
       prerequisite_concepts: [
@@ -325,12 +454,10 @@ test('resolveNextConceptFromCurrent uses introduced concepts when prerequisites 
     chapterSteps: [],
   });
 
-  assert.equal(target?.conceptId, 'concept_intro');
-  assert.equal(target?.formulaId, 'formula_2.2a');
-  assert.equal(target?.source, 'adjacent');
+  assert.equal(target, null);
 });
 
-test('buildConceptLearningNav falls back to chapter sequence when current concept has no adjacent target', () => {
+test('buildConceptLearningNav falls back to the chapter sequence without a concept edge', () => {
   const chapter = getChapterByNumber(chapterPayload, 2)!;
   const nodes = buildChapterConceptLearningNodes({
     chapter,
@@ -346,13 +473,126 @@ test('buildConceptLearningNav falls back to chapter sequence when current concep
     routeConceptId: 'concept_current',
     selectedFormulaId: 'formula_2.1',
     currentView: conceptView({ concept_id: 'concept_current', prerequisite_concepts: [], introduced_concepts: [] }),
+    learnedConceptIds: new Set(['concept_current']),
+    layer: 'backbone',
   });
 
   assert.equal(nav?.nextFromCurrent?.conceptId, 'concept_sequence');
   assert.equal(nav?.nextFromCurrent?.source, 'chapter_sequence');
 });
 
-test('resolveNextConceptFromCurrent loops to the first different chapter concept at the sequence end', () => {
+test('buildConceptLearningNav skips locked sequence fallback in the recommended concept path', () => {
+  const chapter = getChapterByNumber(chapterPayload, 2)!;
+  const nodes = buildChapterConceptLearningNodes({
+    chapter,
+    maxConcepts: 3,
+    conceptIndex: [
+      concept({ concept_id: 'concept_current', formula_id: 'formula_2.1', title: 'Current', symbol: 'C' }),
+      concept({ concept_id: 'concept_sequence', formula_id: 'formula_2.2a', title: 'Sequence', symbol: 'S' }),
+    ],
+  });
+  const conceptNavigation: ConceptNavigationEntry[] = [
+    {
+      concept_id: 'concept_current',
+      formula_id: 'formula_2.1',
+      title: 'Current',
+      symbol: 'C',
+      prerequisite_concept_ids: [],
+      depth: 0,
+      order: 0,
+    },
+    {
+      concept_id: 'concept_sequence',
+      formula_id: 'formula_2.2a',
+      title: 'Sequence',
+      symbol: 'S',
+      prerequisite_concept_ids: ['concept_current'],
+      depth: 1,
+      order: 1,
+    },
+  ];
+  const nav = buildConceptLearningNav({
+    chapterId: 'chapter2',
+    nodes,
+    routeConceptId: 'concept_current',
+    currentView: conceptView({ concept_id: 'concept_current', prerequisite_concepts: [], introduced_concepts: [] }),
+    conceptNavigation,
+    learnedConceptIds: new Set(),
+    layer: 'backbone',
+  });
+
+  assert.equal(nav?.steps.find((step) => step.conceptId === 'concept_sequence')?.locked, true);
+  assert.equal(nav?.nextFromCurrent, null);
+});
+
+test('buildConceptLearningNav locks only the recommended concept path', () => {
+  const chapter = getChapterByNumber(chapterPayload, 2)!;
+  const nodes = buildChapterConceptLearningNodes({
+    chapter,
+    maxConcepts: 3,
+    conceptIndex: [
+      concept({ concept_id: 'concept_current', formula_id: 'formula_2.1', title: 'Current', symbol: 'C' }),
+      concept({ concept_id: 'concept_sequence', formula_id: 'formula_2.2a', title: 'Sequence', symbol: 'S' }),
+    ],
+  });
+  const conceptNavigation: ConceptNavigationEntry[] = [
+    {
+      concept_id: 'concept_current',
+      formula_id: 'formula_2.1',
+      title: 'Current',
+      symbol: 'C',
+      prerequisite_concept_ids: [],
+      depth: 0,
+      order: 0,
+    },
+    {
+      concept_id: 'concept_sequence',
+      formula_id: 'formula_2.2a',
+      title: 'Sequence',
+      symbol: 'S',
+      prerequisite_concept_ids: ['concept_current'],
+      depth: 1,
+      order: 1,
+    },
+  ];
+  const currentView = conceptView({
+    concept_id: 'concept_current',
+    prerequisite_concepts: [
+      conceptReference({
+        concept_id: 'concept_sequence',
+        name: 'Sequence',
+        defined_by_formula_id: 'formula_2.2a',
+        formula_label: 'Formula 2.2a',
+      }),
+    ],
+  });
+
+  const backbone = buildConceptLearningNav({
+    chapterId: 'chapter2',
+    nodes,
+    routeConceptId: 'concept_current',
+    currentView,
+    conceptNavigation,
+    learnedConceptIds: new Set(),
+    layer: 'backbone',
+  });
+  const full = buildConceptLearningNav({
+    chapterId: 'chapter2',
+    nodes,
+    routeConceptId: 'concept_current',
+    currentView,
+    conceptNavigation,
+    learnedConceptIds: new Set(),
+    layer: 'full',
+  });
+
+  assert.equal(backbone?.steps.find((step) => step.conceptId === 'concept_sequence')?.locked, true);
+  assert.equal(backbone?.nextFromCurrent, null);
+  assert.equal(full?.steps.find((step) => step.conceptId === 'concept_sequence')?.locked, false);
+  assert.equal(full?.nextFromCurrent?.conceptId, 'concept_sequence');
+});
+
+test('resolveNextConceptFromCurrent loops to the first unlocked chapter concept after the last step', () => {
   const chapter = getChapterByNumber(chapterPayload, 2)!;
   const nodes = buildChapterConceptLearningNodes({
     chapter,

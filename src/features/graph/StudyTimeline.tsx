@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
+import { Lock } from 'lucide-react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import type { SearchFormula } from '../../shared/types/formula';
 import type { ChapterLayer, StudyContext } from '../../shared/types/learning';
 import { rawFormulaNumber } from '../../shared/utils/constants';
-import { getStudyFormulaIds } from '../learning/learningNavigator';
+import { getStudyFormulaIds, isChapterStudyFormulaLocked } from '../learning/learningNavigator';
 import { DEFAULT_LANGUAGE, formatChapterTitle, getUiCopy } from '../../shared/utils/uiCopy';
+import { useGraphStore } from './graphStore';
 
 interface StudyTimelineProps {
   studyContext: StudyContext;
@@ -18,6 +20,7 @@ export function StudyTimeline({ studyContext, searchIndex }: StudyTimelineProps)
   const { focusFormulaId = '', chapterId: routeChapterId = '' } = useParams();
   const [params] = useSearchParams();
   const lookup = useMemo(() => new Map(searchIndex.map((item) => [item.id, item])), [searchIndex]);
+  const learnedByChapter = useGraphStore((state: ReturnType<typeof useGraphStore.getState>) => state.learnedByChapter);
   const formulaIds = getStudyFormulaIds(studyContext);
   const title = studyContext.type === 'chapter'
     ? formatChapterTitle({
@@ -47,7 +50,7 @@ export function StudyTimeline({ studyContext, searchIndex }: StudyTimelineProps)
           <span className="study-timeline__eyebrow">{studyContext.type === 'chapter' ? copy.chapter : copy.theme}</span>
           <strong>{title}</strong>
         </div>
-        {studyContext.type === 'chapter' ? (
+        {expanded && studyContext.type === 'chapter' ? (
           <div className="study-timeline__layers">
             <button type="button" className={studyContext.layer === 'backbone' ? 'active' : ''} onClick={() => setLayer('backbone')}>
               {copy.backbone}
@@ -65,6 +68,15 @@ export function StudyTimeline({ studyContext, searchIndex }: StudyTimelineProps)
         {formulaIds.map((formulaId, index) => {
           const active = formulaId === focusFormulaId;
           const label = lookup.get(formulaId)?.label || rawFormulaNumber(formulaId);
+          const chapterId = studyContext.type === 'chapter' ? studyContext.chapter.chapter_id : '';
+          const learned = chapterId ? learnedByChapter[chapterId] || new Set<string>() : new Set<string>();
+          const locked = studyContext.type === 'chapter' && isChapterStudyFormulaLocked({
+            formulaIds,
+            formulaId,
+            currentFormulaId: focusFormulaId,
+            learnedFormulaIds: learned,
+            layer: studyContext.layer,
+          });
           const nextParams = new URLSearchParams(params);
           if (!routeChapterId) {
             nextParams.set('selected', formulaId);
@@ -75,13 +87,17 @@ export function StudyTimeline({ studyContext, searchIndex }: StudyTimelineProps)
             <button
               key={formulaId}
               type="button"
-              className={`study-timeline__step ${active ? 'study-timeline__step--active' : ''}`}
-              onClick={() => navigate(href)}
-              aria-label={`第 ${index + 1} 步：${label}`}
-              title={label}
+              className={`study-timeline__step ${active ? 'study-timeline__step--active' : ''} ${locked ? 'study-timeline__step--locked' : ''}`}
+              onClick={() => {
+                if (!locked) navigate(href);
+              }}
+              disabled={locked}
+              aria-label={`第 ${index + 1} 步：${label}${locked ? '，前置未完成' : ''}`}
+              title={locked ? '先完成前一个推荐步骤' : label}
             >
               <span className="study-timeline__step-index" aria-hidden="true">{index + 1}</span>
               <strong className="study-timeline__step-formula">{rawFormulaNumber(formulaId)}</strong>
+              {locked ? <Lock className="study-timeline__lock" size={12} aria-hidden="true" /> : null}
             </button>
           );
         })}

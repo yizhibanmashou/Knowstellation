@@ -47,7 +47,7 @@ function AppShell() {
         {isHome ? null : <SearchBar searchIndex={data.searchIndex} conceptIndex={data.conceptIndex} chapterNavigator={data.chapterNavigator} size="compact" tone="nav" />}
       </header>
       <main className={`relative z-10 min-h-screen ${isGraph ? 'app-main--graph' : ''}`}>
-        <AppErrorBoundary>
+        <AppErrorBoundary resetKey={`${location.pathname}${location.search}`}>
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<HomePage data={data} />} />
@@ -55,11 +55,11 @@ function AppShell() {
               <Route path="/storyline/:storylineId" element={<StorylinePage data={data} />} />
               <Route
                 path="/graph/chapter/:chapterId"
-                element={<GraphPage chapterNavigator={data.chapterNavigator} themeRoutes={data.themeRoutes} searchIndex={data.searchIndex} conceptIndex={data.conceptIndex} formulaLearningCopy={data.formulaLearningCopy} storylines={data.storylines} />}
+                element={<GraphPage chapterNavigator={data.chapterNavigator} themeRoutes={data.themeRoutes} searchIndex={data.searchIndex} conceptIndex={data.conceptIndex} conceptChapters={data.conceptChapters} formulaLearningCopy={data.formulaLearningCopy} takeawayCache={data.takeawayCache} storylines={data.storylines} />}
               />
               <Route
                 path="/graph/:focusFormulaId"
-                element={<GraphPage chapterNavigator={data.chapterNavigator} themeRoutes={data.themeRoutes} searchIndex={data.searchIndex} conceptIndex={data.conceptIndex} formulaLearningCopy={data.formulaLearningCopy} storylines={data.storylines} />}
+                element={<GraphPage chapterNavigator={data.chapterNavigator} themeRoutes={data.themeRoutes} searchIndex={data.searchIndex} conceptIndex={data.conceptIndex} conceptChapters={data.conceptChapters} formulaLearningCopy={data.formulaLearningCopy} takeawayCache={data.takeawayCache} storylines={data.storylines} />}
               />
             </Routes>
           </Suspense>

@@ -13,7 +13,7 @@ test('audit-product-release passes clean product data and fails review leakage',
   const publicDir = path.join(tempDir, 'public');
   const internalDir = path.join(tempDir, 'internal');
   const outputPath = path.join(tempDir, 'product_release_audit.json');
-    await seedPublicData(publicDir, { leakReviewStatus: false, conceptName: 'Fitness' });
+    await seedPublicData(publicDir, { leakReviewNotes: false, conceptName: 'Fitness' });
   await mkdir(internalDir, { recursive: true });
 
   try {
@@ -30,6 +30,7 @@ test('audit-product-release passes clean product data and fails review leakage',
     assert.equal(passedReport.release_gate.passed, true);
     assert.deepEqual(passedReport.release_gate.blockers, []);
     assert.equal(passedReport.concept_graph.concept_views, 1);
+    assert.equal(passedReport.concept_graph.concept_search_occurrences, 1);
     const mirroredReport = JSON.parse(await readFile(path.join(publicDir, 'product_release_audit.json'), 'utf8'));
     assert.equal(mirroredReport.release_gate.passed, true);
     assert.equal(mirroredReport.concept_graph.concept_views, 1);
@@ -72,7 +73,7 @@ test('audit-product-release passes clean product data and fails review leakage',
     await rm(path.join(publicDir, 'symbol_sense'), { recursive: true, force: true });
 
     await seedPublicData(publicDir, {
-      leakReviewStatus: true,
+      leakReviewNotes: true,
       conceptName: 'Count',
       definitionZh: 'Count 是由当前支撑公式引入的局部数学量。',
     });
@@ -100,7 +101,7 @@ test('audit-product-release passes clean product data and fails review leakage',
 
 async function seedPublicData(
   publicDir: string,
-  options: { leakReviewStatus: boolean; conceptName: string; definitionZh?: string },
+  options: { leakReviewNotes: boolean; conceptName: string; definitionZh?: string },
 ) {
   const conceptDir = path.join(publicDir, 'concept_graph');
   await mkdir(conceptDir, { recursive: true });
@@ -128,11 +129,14 @@ async function seedPublicData(
     supporting_formula_label: 'Formula 1',
     supporting_formula_latex: 'w',
     confidence: 0.92,
+    review_status: 'unreviewed',
+    review_flags: [],
+    source_sentence: `${options.conceptName} source sentence.`,
     evidence: [],
     prerequisite_concepts: [],
     introduced_concepts: [],
     edges: [],
-    ...(options.leakReviewStatus ? { review_status: 'approved' } : {}),
+    ...(options.leakReviewNotes ? { review_notes: 'internal reviewer note' } : {}),
   };
   await writeJson(path.join(conceptDir, 'chapter_test_concept_graph.json'), {
     chapter_id: 'chapter_test',
@@ -186,6 +190,53 @@ async function seedPublicData(
     }],
   });
 }
+
+test('audit-product-release allows canonical concept search entries to cover multiple views', async () => {
+  const tempDir = await mkdtemp(path.join(tmpdir(), 'product-release-canonical-search-'));
+  const publicDir = path.join(tempDir, 'public');
+  const internalDir = path.join(tempDir, 'internal');
+  const outputPath = path.join(tempDir, 'product_release_audit.json');
+  await seedPublicData(publicDir, { leakReviewStatus: false, conceptName: 'Fitness' });
+  await mkdir(internalDir, { recursive: true });
+
+  const conceptDir = path.join(publicDir, 'concept_graph');
+  const graph = JSON.parse(await readFile(path.join(conceptDir, 'chapter_test_concept_graph.json'), 'utf8'));
+  graph.views.push({
+    ...graph.views[0],
+    concept_id: 'concept_chapter_test_formula_2_defined_w',
+    defined_by_formula_id: 'formula_2',
+    supporting_formula_label: 'Formula 2',
+  });
+  graph.summary.concept_views = 2;
+  await writeJson(path.join(conceptDir, 'chapter_test_concept_graph.json'), graph);
+  const graphIndex = JSON.parse(await readFile(path.join(conceptDir, 'concept_graph_index.json'), 'utf8'));
+  graphIndex.chapters[0].concept_views = 2;
+  graphIndex.summary.concept_views = 2;
+  await writeJson(path.join(conceptDir, 'concept_graph_index.json'), graphIndex);
+  const searchIndex = JSON.parse(await readFile(path.join(conceptDir, 'concept_search_index.json'), 'utf8'));
+  searchIndex.items[0].occurrenceCount = 2;
+  searchIndex.items[0].relatedFormulaLabels = ['Formula 1', 'Formula 2'];
+  await writeJson(path.join(conceptDir, 'concept_search_index.json'), searchIndex);
+
+  try {
+    await execFileAsync(process.execPath, [
+      path.resolve('scripts/audit-product-release.mjs'),
+      '--public-dir',
+      publicDir,
+      '--internal-dir',
+      internalDir,
+      '--output',
+      outputPath,
+    ]);
+    const report = JSON.parse(await readFile(outputPath, 'utf8'));
+    assert.equal(report.release_gate.passed, true);
+    assert.equal(report.concept_graph.concept_views, 2);
+    assert.equal(report.concept_graph.concept_search_entries, 1);
+    assert.equal(report.concept_graph.concept_search_occurrences, 2);
+  } finally {
+    await rm(tempDir, { recursive: true, force: true });
+  }
+});
 
 async function writeJson(filePath: string, payload: unknown) {
   await writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');

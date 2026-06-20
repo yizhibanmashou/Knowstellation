@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-06-12T04:23:20.038Z",
+  "generated_at": "2026-06-20T09:49:29.450Z",
   "release_gate": {
     "passed": true,
     "blockers": [],
@@ -8,98 +8,99 @@
   },
   "public_data": {
     "dir": "public/data",
-    "json_files": 80,
+    "json_files": 81,
     "required_files": 9
   },
   "concept_graph": {
     "chapters": 35,
     "formulas_processed": 2601,
-    "concept_views": 2641,
-    "concept_search_entries": 2641,
-    "prerequisite_edges": 1579,
-    "introduced_edges": 12968,
-    "unique_public_concept_names": 1566,
+    "concept_views": 1232,
+    "concept_search_entries": 1232,
+    "concept_search_occurrences": 1232,
+    "prerequisite_edges": 2443,
+    "introduced_edges": 3616,
+    "unique_public_concept_names": 576,
     "zero_view_chapters": [],
     "top_concepts": [
       {
-        "name": "Response",
-        "count": 118
-      },
-      {
-        "name": "Probability",
-        "count": 117
-      },
-      {
-        "name": "Variance",
-        "count": 87
-      },
-      {
-        "name": "Standard Deviation",
-        "count": 81
-      },
-      {
-        "name": "Time",
-        "count": 30
-      },
-      {
-        "name": "Change",
-        "count": 29
-      },
-      {
-        "name": "Class Selection Coefficient",
-        "count": 28
-      },
-      {
-        "name": "Fitness",
-        "count": 27
-      },
-      {
-        "name": "Absolute Fitness",
+        "name": "Variance Quantity",
         "count": 26
       },
       {
-        "name": "Expectation",
-        "count": 24
-      },
-      {
-        "name": "Beta",
-        "count": 23
-      },
-      {
-        "name": "Class Fitness",
+        "name": "Distribution Relation",
         "count": 22
       },
       {
-        "name": "Alpha",
+        "name": "Ratio Relation",
         "count": 21
       },
       {
-        "name": "Population Size",
-        "count": 21
+        "name": "Additive Genetic Value",
+        "count": 20
       },
       {
-        "name": "Vector or Matrix Quantity",
-        "count": 21
-      },
-      {
-        "name": "Additive Genetic Variance",
+        "name": "Class Selection Coefficient",
         "count": 19
       },
       {
-        "name": "Correlation",
-        "count": 18
+        "name": "Probability Operator",
+        "count": 16
       },
       {
-        "name": "Information",
-        "count": 18
+        "name": "Allele Frequency",
+        "count": 15
+      },
+      {
+        "name": "Expected Value Relation",
+        "count": 15
+      },
+      {
+        "name": "Matrix or Vector Quantity",
+        "count": 15
       },
       {
         "name": "Probability Density",
-        "count": 17
+        "count": 15
       },
       {
-        "name": "Cost",
-        "count": 16
+        "name": "Additive Genetic Component",
+        "count": 14
+      },
+      {
+        "name": "Mathematical Relation",
+        "count": 14
+      },
+      {
+        "name": "Standard Deviation",
+        "count": 14
+      },
+      {
+        "name": "Summation Identity",
+        "count": 14
+      },
+      {
+        "name": "Additive Matrix Exponentiation",
+        "count": 12
+      },
+      {
+        "name": "Selection Differential",
+        "count": 12
+      },
+      {
+        "name": "Selection Response",
+        "count": 12
+      },
+      {
+        "name": "Variance Relation",
+        "count": 12
+      },
+      {
+        "name": "Expectation Operator",
+        "count": 11
+      },
+      {
+        "name": "Population Size",
+        "count": 11
       }
     ]
   },

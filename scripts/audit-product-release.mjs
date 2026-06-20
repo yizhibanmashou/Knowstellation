@@ -51,6 +51,7 @@ const REQUIRED_PUBLIC_FILES = [
   'concept_graph/concept_graph_index.json',
   'concept_graph/concept_search_index.json',
 ];
+const MIN_CONCEPT_SEARCH_ENTRIES = 2000;
 
 const REVIEW_ONLY_FILE_PATTERNS = [
   /[/\\]concept_graph[/\\][^/\\]+_symbol_concept_map\.json$/,
@@ -62,14 +63,11 @@ const REVIEW_ONLY_FILE_PATTERNS = [
 ];
 
 const INTERNAL_REVIEW_KEYS = new Set([
-  'review_status',
-  'review_flags',
   'reviewed_by',
   'reviewed_at',
   'review_notes',
   'symbol_concepts',
   'symbol_concept_map',
-  'source_sentence',
   'teaching_move',
   'teaching_move_zh',
   'extraction_model',
@@ -86,6 +84,7 @@ const UNSAFE_PUBLIC_CONCEPT_NAMES = new Set([
   'time index',
   'rate',
   'mean',
+  'model quantity',
   'coefficient',
   'distance',
   'values',
@@ -110,6 +109,14 @@ const UNSAFE_CONCEPT_COPY_PATTERNS = [
   /由邻近段落支撑/,
   /待审阅/,
   /supporting formula/i,
+  /is a supporting quantity in this equation/i,
+  /is the main quantity to read from this equation/i,
+  /right-hand side shows/i,
+  /names the biological object/i,
+  /operation or transformation rule used by the equation/i,
+  /model parameter conventionally denoted/i,
+  /is a coefficient or parameter attached/i,
+  /local context/i,
   /local mathematical quantity/i,
   /local formula context/i,
   /帮你把符号/,
@@ -295,8 +302,15 @@ async function auditPublicConceptGraphs(publicDir, blockers, warnings) {
   }
 
   const searchItems = search.items || [];
-  if (searchItems.length !== conceptViews) {
-    blockers.push(`Concept search index count mismatch: search=${searchItems.length}, concept_views=${conceptViews}`);
+  const searchOccurrenceCoverage = searchItems.reduce(
+    (sum, item) => sum + Math.max(1, Number(item.viewOccurrenceCount ?? item.occurrenceCount ?? 1)),
+    0,
+  );
+  if (searchOccurrenceCoverage !== conceptViews) {
+    blockers.push(`Concept search index coverage mismatch: search_occurrences=${searchOccurrenceCoverage}, concept_views=${conceptViews}`);
+  }
+  if (conceptViews >= MIN_CONCEPT_SEARCH_ENTRIES && searchItems.length < MIN_CONCEPT_SEARCH_ENTRIES) {
+    blockers.push(`Concept search index has too few entries: entries=${searchItems.length}, minimum=${MIN_CONCEPT_SEARCH_ENTRIES}`);
   }
   for (const item of searchItems) {
     if (!conceptIds.has(item.concept_id)) {
@@ -314,6 +328,7 @@ async function auditPublicConceptGraphs(publicDir, blockers, warnings) {
     formulas_processed: formulasProcessed,
     concept_views: conceptViews,
     concept_search_entries: searchItems.length,
+    concept_search_occurrences: searchOccurrenceCoverage,
     prerequisite_edges: prerequisiteEdges,
     introduced_edges: introducedEdges,
     unique_public_concept_names: conceptNames.size,
@@ -331,9 +346,7 @@ function auditConceptViews(file, views, conceptIds, conceptNames, blockers) {
     for (const key of ['chapter_id', 'concept_id', 'name', 'definition', 'defined_by_formula_id', 'defined_symbol', 'supporting_formula_label']) {
       if (!view[key]) blockers.push(`Public concept view is missing ${key}: ${label}`);
     }
-    if (view.review_status !== undefined || view.review_flags !== undefined) {
-      blockers.push(`Public concept view contains review fields: ${label}`);
-    }
+    if (!view.review_status) blockers.push(`Public concept view is missing review_status: ${label}`);
     const normalizedName = normalizeName(view.name);
     if (!normalizedName || UNSAFE_PUBLIC_CONCEPT_NAMES.has(normalizedName)) {
       blockers.push(`Unsafe or generic public concept name: "${view.name}" in ${label}`);
@@ -345,9 +358,6 @@ function auditConceptViews(file, views, conceptIds, conceptNames, blockers) {
     conceptIds.add(view.concept_id);
     conceptNames.set(view.name, (conceptNames.get(view.name) || 0) + 1);
     for (const reference of [...(view.prerequisite_concepts || []), ...(view.introduced_concepts || [])]) {
-      if (reference.review_flags !== undefined || reference.review_status !== undefined) {
-        blockers.push(`Public concept reference contains review fields: ${label}`);
-      }
       auditConceptCopy(`${label}:${reference.concept_id || reference.name || '<reference>'}`, reference, blockers);
     }
   }
