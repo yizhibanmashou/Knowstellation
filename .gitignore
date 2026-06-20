@@ -28,3 +28,9 @@ data/book/
 data/book_ocr/
 data/storyline-image-sources/
 docs/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
