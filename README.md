@@ -48,6 +48,7 @@ The project is intentionally strict about graph quality. Exact references, exact
 - **Formula-first graph reading**: Guided mode combines step-by-step expansion with symbol callouts; Explore opens the chapter-scale graph.
 - **Chapter star map**: each chapter opens as a navigable constellation of formulas and recommended entry points.
 - **Inline symbol annotations**: hover, focus, or tap symbols and compound groups inside a rendered formula to see compact semantic labels. Runtime LaTeX scanning fills gaps when the offline symbol index misses local variables.
+- **Concept and formula maps**: chapter-scale Concept Map and Formula Map views put vocabulary structure and formula prerequisites side by side.
 - **Layered concept graph**: Concept mode starts from the concept defined by the current formula, opens prerequisite context in controlled layers, keeps formula evidence folded by default, and lets learners drag concept cards apart when arranging a dense local view.
 - **Storyline learning paths**: curated narrative routes connect formulas that share a mathematical idea.
 - **Conservative dependency builder**: keeps operator pollution, family-only matches, and fallback definitions out of the accepted graph.
@@ -71,29 +72,32 @@ Each chapter opens as its own star map. Formula nodes keep the dependency struct
   <img src="public/assets/readme/chapter.png" alt="Chapter star map with concept and formula learning entry points" width="100%">
 </p>
 
-### Concept graph reading
-
-Concept mode answers the question "what is this source passage defining?" before asking the learner to chase every dependency. It starts from the current concept, reveals one prerequisite layer by default, keeps formula evidence folded until it is requested, and keeps the local concept view focused on learning relationships instead of symbol inventory. Learners can move to the next concept, step back to the previous concept, or jump across all concepts in the current chapter from the bottom concept navigator.
-
-<p align="center">
-  <img src="public/assets/readme/concept.png" alt="Knowstellation concept graph with chapter concept navigation" width="100%">
-</p>
-
 ### Guided formula reading
 
-Guided mode keeps the learner inside a single formula card first. Hover or tap highlighted terms to see compact semantic notes, then unfold prerequisites or successors when the formula is ready to connect. The left panel keeps the full-formula reading concise: one quick takeaway plus the formula's role in the chapter.
+Guided mode keeps the learner inside a single formula card first. Hover or tap highlighted terms to see compact semantic notes, then unfold prerequisites or successors when the formula is ready to connect. The left panel keeps the full-formula reading concise: one quick takeaway plus the formula's role in the chapter, while the canvas shows the immediate dependency neighborhood.
 
 <p align="center">
   <img src="public/assets/readme/guided.png" alt="Guided formula reading" width="100%">
 </p>
 
-### Formula dependency map
-
-Explore mode opens the chapter-scale dependency map. It is designed for orientation rather than close reading: drag across the chapter, zoom through formula clusters, and use the minimap to keep the current focus visible while scanning the larger structure.
-
 <p align="center">
-  <img src="public/assets/readme/minimap.png" alt="Knowstellation chapter dependency map with minimap and highlighted formula cluster" width="100%">
+  <img src="public/assets/readme/formula-focus.png" alt="Formula dependency focus view" width="100%">
 </p>
+
+### Concept Map and Formula Map
+
+Concept Map and Formula Map are the chapter-scale navigation pair. Concept Map organizes the vocabulary of a chapter into prerequisite and follow-up relationships, so learners can scan the conceptual terrain before entering a specific formula. Formula Map exposes the formula dependency structure directly, making it easier to see which results prepare, branch into, or depend on a target equation.
+
+<table>
+  <tr>
+    <th>Concept Map</th>
+    <th>Formula Map</th>
+  </tr>
+  <tr>
+    <td><img src="public/assets/readme/concept.png" alt="Chapter concept map" width="100%"></td>
+    <td><img src="public/assets/readme/minimap.png" alt="Chapter formula map" width="100%"></td>
+  </tr>
+</table>
 
 ### Storyline paths
 
@@ -286,10 +290,9 @@ For frontend checks, manually verify:
 
 ## Documentation
 
-- [Concept graph advisor progress report](docs/advisor-progress-report-concept-graph.md)
-- [Formula prerequisite graph design](docs/formula_prerequisite_graph_design.md)
-- [Product release acceptance checklist](docs/product-release-acceptance.md)
-- [V1 design architecture](docs/v1设计架构.md)
+- [Concept graph advisor progress report](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/advisor-progress-report-concept-graph.md)
+- [Formula prerequisite graph design](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/formula_prerequisite_graph_design.md)
+- [Product release acceptance checklist](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/product-release-acceptance.md)
 
 ## Roadmap
 
