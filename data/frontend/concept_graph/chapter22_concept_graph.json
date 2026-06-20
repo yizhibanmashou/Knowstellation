@@ -9692,7 +9692,7 @@
         {
           "formula_id": "formula_22.23a",
           "formula_label": "Formula 22.23a",
-          "formula_latex": "\\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,i and j in the same group\\\\ 0&i\\neq j,i and j in different groups\\end{array}\\right.",
+          "formula_latex": "\\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,\\text{ i and j in the same group}\\\\ 0&i\\neq j,\\text{ i and j in different groups}\\end{array}\\right.",
           "formula_position": 55,
           "formula_section": "Associative Effects: Competition, Social Interactions, Group and Kin Selection: Introduction",
           "formula_subsection": "Group Selection: Theory",

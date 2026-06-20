@@ -116,6 +116,18 @@ test('buildCompoundFocusAnnotations keeps simple numeric fractions when they sca
   assert.ok(notes.some((item) => item.symbol === '\\frac{\\partial^{2}u(p)}{\\partial p^{2}}'));
 });
 
+test('buildCompoundFocusAnnotations uses semantic text for Waples adjusted statistic', () => {
+  const notes = buildCompoundFocusAnnotations({
+    latex: '\\frac{\\widehat{\\delta}_{t}^{2}}{\\sigma^{2}\\left(\\widehat{\\delta}_{t}\\right)}',
+    context_text: 'giving the test statistic as Formula 9.2d, which is approximately chi_1^2-distributed. This is the Waples adjusted test.',
+  });
+
+  const whole = notes.find((item) => item.symbol.startsWith('\\frac{\\widehat{\\delta}_{t}^{2}'));
+  assert.ok(whole);
+  assert.match(whole.meaning || '', /Waples 调整检验统计量|标准化平方偏离量/);
+  assert.doesNotMatch(whole.meaning || '', /分式比值|分子这一项|归一化结果/);
+});
+
 test('buildCompoundFocusAnnotations extracts matrix transpose groups', () => {
   const notes = buildCompoundFocusAnnotations({
     latex: 'd_i^2=({\\bf z}_i-{\\bf\\bar z})^T{\\bf S^{-1}_Z}({\\bf z}_i-{\\bf\\bar z})',

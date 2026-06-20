@@ -1241,7 +1241,7 @@
     },
     {
       "id": "formula_10.18",
-      "latex": "Q_{ij}=\\left\\{\\begin{aligned}&0&if i and j differ at more than one position\\\\&\\pi_{j}&for a silent transversion\\\\&\\kappa\\pi_{j}&for a silent transition\\\\&\\omega\\pi_{j}&for a replacement transversion\\\\&\\omega\\kappa\\pi_{j}&for a replacement transition\\end{aligned}\\right.\\quad for1\\leq i,j\\leq61",
+      "latex": "Q_{ij}=\\left\\{\\begin{aligned}&0&\\text{if i and j differ at more than one position}\\\\&\\pi_{j}&\\text{for a silent transversion}\\\\&\\kappa\\pi_{j}&\\text{for a silent transition}\\\\&\\omega\\pi_{j}&\\text{for a replacement transversion}\\\\&\\omega\\kappa\\pi_{j}&\\text{for a replacement transition}\\end{aligned}\\right.\\quad \\text{for }1\\leq i,j\\leq61",
       "label": "Formula 10.18",
       "chapter_id": "chapter10",
       "section": "PHYLOGENY-BASED DIVERGENCE TESTS",
@@ -1249,7 +1249,7 @@
       "position": 54,
       "source_position": 67,
       "depth": 0,
-      "context_text": "n mutate to one of nine other codons following a single base change (Figure 10.4). The model given by Goldman and Yang (1994) defines the following relative rates for movement between codons i and j, $$ Q_{ij}=\\left\\{\\begin{aligned}&0&if i and j differ at more than one position\\\\&\\pi_{j}&for a silent transversion\\\\&\\kappa\\pi_{j}&for a silent transition\\\\&\\omega\\pi_{j}&for a replacement transversion\\\\&\\omega\\kappa\\pi_{j}&for a replacement transition\\end{aligned}\\right.\\quad for1\\leq i,j\\leq61 $$ (10.18)",
+      "context_text": "n mutate to one of nine other codons following a single base change (Figure 10.4). The model given by Goldman and Yang (1994) defines the following relative rates for movement between codons i and j, $$ Q_{ij}=\\left\\{\\begin{aligned}&0&\\text{if i and j differ at more than one position}\\\\&\\pi_{j}&\\text{for a silent transversion}\\\\&\\kappa\\pi_{j}&\\text{for a silent transition}\\\\&\\omega\\pi_{j}&\\text{for a replacement transversion}\\\\&\\omega\\kappa\\pi_{j}&\\text{for a replacement transition}\\end{aligned}\\right.\\quad \\text{for }1\\leq i,j\\leq61 $$ (10.18)",
       "symbols_used": [
         "Q_{ij}",
         "\\kappa",
@@ -1353,7 +1353,7 @@
     },
     {
       "id": "formula_10.22a",
-      "latex": "Q_{ij}^{(k)}=\\begin{cases}0&if i and j differ at more than one position\\\\\\pi_{j}&for a silent transversion\\\\\\kappa\\pi_{j}&for a silent transition\\\\\\omega^{(k)}\\pi_{j}&for a replacement transversion\\\\\\omega^{(k)}\\kappa\\pi_{j}&for a replacement transition\\end{cases}",
+      "latex": "Q_{ij}^{(k)}=\\begin{cases}0&\\text{if i and j differ at more than one position}\\\\\\pi_{j}&\\text{for a silent transversion}\\\\\\kappa\\pi_{j}&\\text{for a silent transition}\\\\\\omega^{(k)}\\pi_{j}&\\text{for a replacement transversion}\\\\\\omega^{(k)}\\kappa\\pi_{j}&\\text{for a replacement transition}\\end{cases}",
       "label": "Formula 10.22a",
       "chapter_id": "chapter10",
       "section": "PHYLOGENY-BASED DIVERGENCE TESTS",
@@ -1361,7 +1361,7 @@
       "position": 58,
       "source_position": 71,
       "depth": 1,
-      "context_text": "e-model (LW Chapter 13), with the codons in a sequence being drawn from one of several selection categories, each with different ω values. For codons from selection category k, Equation 10.18 becomes $$ Q_{ij}^{(k)}=\\begin{cases}0&if i and j differ at more than one position\\\\\\pi_{j}&for a silent transversion\\\\\\kappa\\pi_{j}&for a silent transition\\\\\\omega^{(k)}\\pi_{j}&for a replacement transversion\\\\\\omega^{(k)}\\kappa\\pi_{j}&for a replacement transition\\end{cases} $$ (10.22a)",
+      "context_text": "e-model (LW Chapter 13), with the codons in a sequence being drawn from one of several selection categories, each with different ω values. For codons from selection category k, Equation 10.18 becomes $$ Q_{ij}^{(k)}=\\begin{cases}0&\\text{if i and j differ at more than one position}\\\\\\pi_{j}&\\text{for a silent transversion}\\\\\\kappa\\pi_{j}&\\text{for a silent transition}\\\\\\omega^{(k)}\\pi_{j}&\\text{for a replacement transversion}\\\\\\omega^{(k)}\\kappa\\pi_{j}&\\text{for a replacement transition}\\end{cases} $$ (10.22a)",
       "symbols_used": [
         "Q_{ij}^{(k)}",
         "\\kappa",

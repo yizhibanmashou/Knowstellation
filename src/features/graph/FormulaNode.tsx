@@ -73,6 +73,15 @@ interface ActiveCallout {
   lineStart: { x: number; y: number };
 }
 
+interface LocalRect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
+
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
@@ -83,6 +92,136 @@ function estimateCalloutBox(note: string, symbol = '', containerWidth = 320): { 
   const width = clamp(Math.max(Math.round(length * 9 + 112), symbol.length * 8 + 96), 190, maxWidth);
   const height = length > 34 ? 126 : length > 18 ? 106 : 90;
   return { width, height };
+}
+
+function rectToLocal(rect: DOMRect, origin: DOMRect, scale: number): LocalRect {
+  const left = (rect.left - origin.left) / scale;
+  const top = (rect.top - origin.top) / scale;
+  const width = rect.width / scale;
+  const height = rect.height / scale;
+  return {
+    left,
+    top,
+    right: left + width,
+    bottom: top + height,
+    width,
+    height,
+  };
+}
+
+function expandRect(rect: LocalRect, amount: number): LocalRect {
+  return {
+    left: rect.left - amount,
+    top: rect.top - amount,
+    right: rect.right + amount,
+    bottom: rect.bottom + amount,
+    width: rect.width + amount * 2,
+    height: rect.height + amount * 2,
+  };
+}
+
+function rectFromBox(box: ActiveCallout['box']): LocalRect {
+  return {
+    left: box.x,
+    top: box.y,
+    right: box.x + box.width,
+    bottom: box.y + box.height,
+    width: box.width,
+    height: box.height,
+  };
+}
+
+function rectsOverlap(a: LocalRect, b: LocalRect): boolean {
+  return a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+}
+
+function viewportBoundsForNode(nodeRect: DOMRect, scale: number): LocalRect {
+  const margin = 14;
+  const left = (margin - nodeRect.left) / scale;
+  const top = (margin - nodeRect.top) / scale;
+  const right = (window.innerWidth - margin - nodeRect.left) / scale;
+  const bottom = (window.innerHeight - margin - nodeRect.top) / scale;
+  return {
+    left,
+    top,
+    right,
+    bottom,
+    width: right - left,
+    height: bottom - top,
+  };
+}
+
+function clampWithin(value: number, min: number, max: number): number {
+  if (max < min) return min;
+  return clamp(value, min, max);
+}
+
+function viewportOverflowScore(box: ActiveCallout['box'], bounds: LocalRect): number {
+  const rect = rectFromBox(box);
+  return Math.max(0, bounds.left - rect.left)
+    + Math.max(0, rect.right - bounds.right)
+    + Math.max(0, bounds.top - rect.top)
+    + Math.max(0, rect.bottom - bounds.bottom);
+}
+
+function lineStartForBox(box: ActiveCallout['box'], anchor: ActiveCallout['anchor']): ActiveCallout['lineStart'] {
+  const rect = rectFromBox(box);
+  return {
+    x: clampWithin(anchor.x, rect.left, rect.right),
+    y: clampWithin(anchor.y, rect.top, rect.bottom),
+  };
+}
+
+function placeCalloutAwayFromFormula(input: {
+  anchor: ActiveCallout['anchor'];
+  formulaRect: LocalRect;
+  nodeRect: DOMRect;
+  scale: number;
+  width: number;
+  height: number;
+}): ActiveCallout['box'] {
+  const { anchor, nodeRect, scale, width, height } = input;
+  const avoid = expandRect(input.formulaRect, 18);
+  const viewport = viewportBoundsForNode(nodeRect, scale);
+  const gap = 18;
+  const sideGap = 24;
+  const centeredX = anchor.x - width / 2;
+  const centeredY = anchor.y - height / 2;
+  const xMin = viewport.left;
+  const xMax = viewport.right - width;
+  const yMin = viewport.top;
+  const yMax = viewport.bottom - height;
+  const candidates: ActiveCallout['box'][] = [
+    {
+      x: clampWithin(centeredX, xMin, xMax),
+      y: avoid.top - height - gap,
+      width,
+      height,
+    },
+    {
+      x: clampWithin(centeredX, xMin, xMax),
+      y: avoid.bottom + gap,
+      width,
+      height,
+    },
+    {
+      x: avoid.right + sideGap,
+      y: clampWithin(centeredY, yMin, yMax),
+      width,
+      height,
+    },
+    {
+      x: avoid.left - width - sideGap,
+      y: clampWithin(centeredY, yMin, yMax),
+      width,
+      height,
+    },
+  ];
+
+  return candidates
+    .filter((candidate) => !rectsOverlap(rectFromBox(candidate), avoid))
+    .sort((a, b) => viewportOverflowScore(a, viewport) - viewportOverflowScore(b, viewport))[0]
+    || candidates.sort((a, b) => viewportOverflowScore(a, viewport) - viewportOverflowScore(b, viewport))[0];
 }
 
 function normalizeDisplayText(value = ''): string {
@@ -364,24 +503,18 @@ export const FormulaNode = React.memo(
         y: (anchorRect.top + anchorRect.height / 2 - nodeRect.top) / scale,
       };
       const width = nodeRef.current.offsetWidth;
-      const height = nodeRef.current.offsetHeight;
       const { width: boxWidth, height: boxHeight } = estimateCalloutBox(annotation.note, annotation.symbol, width);
-      const margin = 18;
-      const placeRight = anchor.x < width * 0.55;
-      const preferredY = anchor.y + 42;
-      const fallbackY = anchor.y - boxHeight - 34;
-      const maxY = Math.max(margin, height - boxHeight - margin);
-      const boxY = preferredY + boxHeight <= height - margin ? preferredY : clamp(fallbackY, margin, maxY);
-      const box = {
-        x: placeRight ? clamp(anchor.x + 28, margin, Math.max(margin, width - boxWidth - margin)) : clamp(anchor.x - boxWidth - 28, margin, Math.max(margin, width - boxWidth - margin)),
-        y: boxY,
+      const renderedFormula = nodeRef.current.querySelector<HTMLElement>('.formula-node__math .katex');
+      const formulaRect = rectToLocal(renderedFormula?.getBoundingClientRect() || anchorRect, nodeRect, scale);
+      const box = placeCalloutAwayFromFormula({
+        anchor,
+        formulaRect,
+        nodeRect,
+        scale,
         width: boxWidth,
         height: boxHeight,
-      };
-      const lineStart = {
-        x: placeRight ? box.x : box.x + box.width,
-        y: box.y + box.height / 2,
-      };
+      });
+      const lineStart = lineStartForBox(box, anchor);
 
       setActiveCallout({ annotation, anchor, box, lineStart });
     }, []);

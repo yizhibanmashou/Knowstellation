@@ -6724,7 +6724,7 @@
         {
           "formula_id": "formula_5.7d",
           "formula_label": "Formula 5.7d",
-          "formula_latex": "W_{i}=\\overline{W}for all i with0<\\widehat{p}_{i}<1",
+          "formula_latex": "W_{i}=\\overline{W}\\quad \\text{for all } i \\text{ with } 0<\\widehat{p}_{i}<1",
           "formula_position": 24,
           "formula_section": "SINGLE-LOCUS SELECTION: MULTIPLE ALLELES",
           "formula_subsection": "Marginal Fitnesses and Average Excesses",

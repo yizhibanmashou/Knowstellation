@@ -1273,7 +1273,7 @@
     },
     {
       "id": "formula_22.23a",
-      "latex": "\\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,i and j in the same group\\\\ 0&i\\neq j,i and j in different groups\\end{array}\\right.",
+      "latex": "\\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,\\text{ i and j in the same group}\\\\ 0&i\\neq j,\\text{ i and j in different groups}\\end{array}\\right.",
       "label": "Formula 22.23a",
       "chapter_id": "chapter22",
       "section": "Associative Effects: Competition, Social Interactions, Group and Kin Selection: Introduction",
@@ -1281,7 +1281,7 @@
       "position": 55,
       "source_position": 65,
       "depth": 0,
-      "context_text": "ental values can be correlated within the same individual, while the second term accounts for the shared environmental values contributed by the other n−2 group members. Putting these together yields $$ \\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,i and j in the same group\\\\ 0&i\\neq j,i and j in different groups\\end{array}\\right. $$ (22.23a) where $$ \\sigma^{2}(e)=\\sigma^{2}(E_{d})+(n-1)\\sigma^{2}(E_{s})\\quad and\\quad\\rho=\\frac{2\\sigma(E_{d},E_{s})+(n-2)\\sigma^{2}(E_{s})}{\\sigma^{2}(e)} $$ (22.23b)",
+      "context_text": "ental values can be correlated within the same individual, while the second term accounts for the shared environmental values contributed by the other n−2 group members. Putting these together yields $$ \\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,\\text{ i and j in the same group}\\\\ 0&i\\neq j,\\text{ i and j in different groups}\\end{array}\\right. $$ (22.23a) where $$ \\sigma^{2}(e)=\\sigma^{2}(E_{d})+(n-1)\\sigma^{2}(E_{s})\\quad and\\quad\\rho=\\frac{2\\sigma(E_{d},E_{s})+(n-2)\\sigma^{2}(E_{s})}{\\sigma^{2}(e)} $$ (22.23b)",
       "symbols_used": [
         "\\rho",
         "\\sigma^{2}(e)",
@@ -1315,7 +1315,7 @@
       "position": 56,
       "source_position": 66,
       "depth": 0,
-      "context_text": "elds $$ \\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,i and j in the same group\\\\ 0&i\\neq j,i and j in different groups\\end{array}\\right. $$ (22.23a) where $$ \\sigma^{2}(e)=\\sigma^{2}(E_{d})+(n-1)\\sigma^{2}(E_{s})\\quad and\\quad\\rho=\\frac{2\\sigma(E_{d},E_{s})+(n-2)\\sigma^{2}(E_{s})}{\\sigma^{2}(e)} $$ (22.23b)",
+      "context_text": "elds $$ \\sigma(e_{i},e_{j})=\\left\\{\\begin{array}{ll}\\sigma^{2}(e)&i=j\\\\ \\rho\\sigma^{2}(e)&i\\neq j,\\text{ i and j in the same group}\\\\ 0&i\\neq j,\\text{ i and j in different groups}\\end{array}\\right. $$ (22.23a) where $$ \\sigma^{2}(e)=\\sigma^{2}(E_{d})+(n-1)\\sigma^{2}(E_{s})\\quad and\\quad\\rho=\\frac{2\\sigma(E_{d},E_{s})+(n-2)\\sigma^{2}(E_{s})}{\\sigma^{2}(e)} $$ (22.23b)",
       "symbols_used": [
         "E_{d}",
         "E_{s}",

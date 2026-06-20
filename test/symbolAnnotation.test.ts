@@ -4,6 +4,7 @@ import {
   compressTextToShortLabel,
   isFocusAnnotationLabel,
   isGenericAnnotationLabel,
+  isGenericAnnotationText,
   resolveSymbolMeaning,
   resolveSymbolShortLabel,
 } from '../src/shared/utils/symbolAnnotation.ts';
@@ -193,7 +194,25 @@ test('compressTextToShortLabel keeps short phrases intact', () => {
 
 test('isGenericAnnotationLabel detects template-like labels', () => {
   assert.equal(isGenericAnnotationLabel('关键符号'), true);
+  assert.equal(isGenericAnnotationLabel('分式比值'), true);
   assert.equal(isGenericAnnotationLabel('选择梯度'), false);
+});
+
+test('resolveSymbolMeaning filters generic fraction explanations', () => {
+  const meaning = resolveSymbolMeaning(
+    {
+      type: 'variable_definition',
+      symbol: '\\frac{A}{B}',
+      meaning: '分式比值，表示分子这一项相对于分母尺度的归一化结果。',
+      definition: '分式比值',
+      confidence: 0.8,
+      kind: 'compound',
+    } as Parameters<typeof resolveSymbolMeaning>[0],
+    { llmText: '归一化结果。' },
+  );
+
+  assert.equal(isGenericAnnotationText('分式比值，表示分子这一项相对于分母尺度的归一化结果。'), true);
+  assert.doesNotMatch(meaning, /分式比值|分子这一项|归一化结果/);
 });
 
 test('isGenericAnnotationLabel rejects ASCII math symbols as labels', () => {

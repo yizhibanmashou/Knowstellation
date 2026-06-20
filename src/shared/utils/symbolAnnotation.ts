@@ -18,6 +18,7 @@ const BAD_LABEL_RULES: Array<{ symbol: RegExp; label: RegExp }> = [
 const GENERIC_LABEL_PATTERNS = [
   /直接使用的符号/,
   /关键符号/,
+  /^分式比值(?:\d+(?:\/\d+)?)?$/,
   /当前公式中的关键符号/,
   /^是这个公式/,
   /^出现在当前公式附近/,
@@ -28,8 +29,16 @@ const EXTRA_GENERIC_LABEL_PATTERNS = [
   /这个公式直接使用/,
   /当前公式附近/,
   /关键符号/,
+  /^分式比值/,
   /^是这个公式/,
   /^出现在当前公式/,
+];
+
+const GENERIC_MEANING_PATTERNS = [
+  /分式比值[，,]?\s*表示分子(?:这一项|项)相对于分母尺度的归一化结果/,
+  /表示分子(?:这一项|项)相对于分母尺度的归一化结果/,
+  /^归一化结果[。.]*$/,
+  /^分式比值(?:\d+(?:\/\d+)?)?[。.\s]*$/,
 ];
 
 export function isGenericAnnotationLabel(value: string): boolean {
@@ -37,6 +46,12 @@ export function isGenericAnnotationLabel(value: string): boolean {
   if (!normalized) return true;
   if (ASCII_MATH_SYMBOL_LABEL.test(normalized)) return true;
   return GENERIC_LABEL_PATTERNS.some((pattern) => pattern.test(normalized)) || EXTRA_GENERIC_LABEL_PATTERNS.some((pattern) => pattern.test(normalized));
+}
+
+export function isGenericAnnotationText(value: string): boolean {
+  const normalized = value.replace(/\s+/g, ' ').trim();
+  if (!normalized) return true;
+  return GENERIC_MEANING_PATTERNS.some((pattern) => pattern.test(normalized));
 }
 
 export function compressTextToShortLabel(text: string, maxLength = 16): string {
@@ -108,7 +123,8 @@ function compoundShortLabel(prereq: FormulaPrerequisite): string {
 
 function compoundMeaning(prereq: FormulaPrerequisite): string {
   if ((prereq as { kind?: string }).kind !== 'compound') return '';
-  return prereq.meaning?.trim() || prereq.definition?.trim() || '';
+  const meaning = prereq.meaning?.trim() || prereq.definition?.trim() || '';
+  return isGenericAnnotationText(meaning) ? '' : meaning;
 }
 
 export function resolveSymbolShortLabel(prereq: FormulaPrerequisite, options: SymbolAnnotationOptions = {}): string {
@@ -145,7 +161,13 @@ export function resolveSymbolMeaning(prereq: FormulaPrerequisite, options: Symbo
   const localFallback = conciseVariablePrerequisite(prereq);
   const symbol = normalizedSymbol(prereq);
   if (hasDomainLockedFallback(symbol, localFallback)) return localFallback;
-  return options.llmText?.trim() || prereq.meaning?.trim() || prereq.definition?.trim() || localFallback;
+  const llmText = options.llmText?.trim();
+  if (llmText && !isGenericAnnotationText(llmText)) return llmText;
+  const meaning = prereq.meaning?.trim();
+  if (meaning && !isGenericAnnotationText(meaning)) return meaning;
+  const definition = prereq.definition?.trim();
+  if (definition && !isGenericAnnotationText(definition)) return definition;
+  return isGenericAnnotationText(localFallback) || isGenericAnnotationLabel(localFallback) ? '' : localFallback;
 }
 
 export function isFocusAnnotationLabel(note: string): boolean {

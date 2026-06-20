@@ -21040,7 +21040,7 @@
         {
           "formula_id": "formula_28.47a",
           "formula_label": "Formula 28.47a",
-          "formula_latex": "\\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&HCA\\\\4n\\mu/(3\\kappa_{4})&Deleterious pleiotropy(with\\overline{k}\\ll1)\\\\s&Deleterious pleiotropy(with\\overline{k}\\gg1)\\end{cases}",
+          "formula_latex": "\\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&\\text{HCA}\\\\4n\\mu/(3\\kappa_{4})&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\ll1)\\\\s&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\gg1)\\end{cases}",
           "formula_position": 142,
           "formula_section": "MAINTENANCE OF VARIATION BY PLEIOTROPIC DELETERIOUS ALLELES",
           "formula_subsection": "The Hill-Keightley Pleiotropic Side-effects Model",

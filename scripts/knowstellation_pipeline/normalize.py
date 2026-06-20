@@ -18,6 +18,30 @@ APPENDIX_HEADING_RE = re.compile(r"^(?:#{1,6}\s*)?appendix\s+([A-Z]|\d+)\b[:.\-\
 NUMERIC_HEADING_RE = re.compile(r"^#{1,3}\s*(\d+)\s+(.+)$")
 FORMULA_NUMBER_RE = re.compile(r"\(([A]?\d+(?:\.\d+)+(?:[a-z])?)\)", re.IGNORECASE)
 LOOSE_FORMULA_NUMBER_RE = re.compile(r"\b(A?\d+(?:\.\d+)+(?:[a-z])?)\b", re.IGNORECASE)
+INLINE_PROSE_DEFINITION_RE = re.compile(
+    r"\s*\\(?:quad|qquad)\s*(?:with|where)\s*\\(?:quad|qquad)\s*"
+    r"(?P<symbol>\\?[A-Za-z](?:_\{?[^{}\s]+\}?|\^\{?[^{}\s]+\}?)*)\s*=\s*"
+    r"(?P<definition>[A-Za-z][A-Za-z0-9\s,'\-]{12,})$",
+    re.IGNORECASE,
+)
+TEXT_LABEL_REPLACEMENTS = (
+    (re.compile(r"(?<!\\text\{)&\s*if\s+([^\\&]+?)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r"&\\text{if \1}"),
+    (re.compile(r"(?<!\\text\{)&\s*if(?=\s*[0-9A-Za-z\\])", re.IGNORECASE), r"&\\text{if }"),
+    (re.compile(r"(?<!\\text\{)&\s*for\s+(a\s+[A-Za-z][A-Za-z\s-]*?)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r"&\\text{for \1}"),
+    (re.compile(r"(?<!\\text\{)&\s*for(?=\s*[0-9A-Za-z\\])", re.IGNORECASE), r"&\\text{for }"),
+    (re.compile(r"(?<!\\text\{)&\s*(recessive|additive|dominant)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r"&\\text{\1}"),
+    (re.compile(r"(?<!\\text\{)&\s*HCA(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r"&\\text{HCA}"),
+    (
+        re.compile(r"(?<!\\text\{)&\s*Deleterious\s+pleiotropy\s*\(with\s*([^)]*?)\)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE),
+        r"&\\text{deleterious pleiotropy }(\\text{with }\1)",
+    ),
+    (re.compile(r",\s*(i\s+and\s+j\s+in\s+the\s+same\s+group)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r",\\text{ \1}"),
+    (re.compile(r",\s*(i\s+and\s+j\s+in\s+different\s+groups)(?=\\\\|&|\\end|\s*$)", re.IGNORECASE), r",\\text{ \1}"),
+    (re.compile(r"(?<!\\text\{)(\\(?:quad|qquad)\s*)with\s+probability\s*", re.IGNORECASE), r"\1\\text{with probability }"),
+    (re.compile(r"(?<!\\text\{)(\\(?:quad|qquad)\s*)where\s*\\(?:quad|qquad)\s*", re.IGNORECASE), r"\1\\text{where }"),
+    (re.compile(r"(?<!\\text\{)(\\(?:quad|qquad)\s*)for\s+all\s+", re.IGNORECASE), r"\1\\text{for all }"),
+    (re.compile(r"(?<!\\text\{)(\\(?:quad|qquad)\s*)for(?=\s*[0-9A-Za-z\\])", re.IGNORECASE), r"\1\\text{for }"),
+)
 
 
 @dataclass
@@ -156,6 +180,7 @@ def normalize_formulas(events: list[Event], *, source_pdf: str) -> list[FormulaR
     chapter_counters: dict[str, int] = {}
     for position, (event_index, event) in enumerate(formula_events):
         latex = clean_latex(event.text)
+        latex, inline_context, sanitize_flags = sanitize_formula_latex(latex)
         before_text = nearby_text(events, event_index, -1, 3)
         after_text = nearby_text(events, event_index, 1, 3)
         number = extract_formula_number(event.text, after_text)
@@ -174,8 +199,11 @@ def normalize_formulas(events: list[Event], *, source_pdf: str) -> list[FormulaR
         if duplicate:
             formula_id = f"{formula_id}_dup{duplicate_index + 1}"
 
-        context = " ".join(part for part in [before_text, after_text] if part).strip()
+        context = " ".join(part for part in [before_text, inline_context, after_text] if part).strip()
         confidence, review_flags = score_formula(latex, raw_id, context, duplicate=duplicate, numbered=bool(number))
+        for flag in sanitize_flags:
+            if flag not in review_flags:
+                review_flags.append(flag)
         if event.chapter_id != inferred_chapter_id and not number:
             inferred_chapter_id = event.chapter_id
             inferred_chapter = event.chapter
@@ -254,6 +282,30 @@ def clean_latex(value: str) -> str:
     latex = re.sub(r"\\tag\{([^{}]+)\}", "", latex)
     latex = FORMULA_NUMBER_RE.sub("", latex)
     return " ".join(latex.split())
+
+
+def sanitize_formula_latex(latex: str) -> tuple[str, str, list[str]]:
+    """Keep prose definitions out of math while preserving their context."""
+    next_latex = latex
+    extracted_context = ""
+    flags: list[str] = []
+
+    definition_match = INLINE_PROSE_DEFINITION_RE.search(next_latex)
+    if definition_match:
+        symbol = definition_match.group("symbol").strip()
+        definition = " ".join(definition_match.group("definition").split()).strip(" .,;")
+        next_latex = next_latex[: definition_match.start()].strip()
+        extracted_context = f"{symbol} is {definition}."
+        flags.append("formula_inline_prose_definition")
+
+    for pattern, replacement in TEXT_LABEL_REPLACEMENTS:
+        replaced = pattern.sub(replacement, next_latex)
+        if replaced != next_latex:
+            next_latex = replaced
+            if "formula_text_labels_normalized" not in flags:
+                flags.append("formula_text_labels_normalized")
+
+    return next_latex, extracted_context, flags
 
 
 def nearby_text(events: list[Event], index: int, direction: int, limit: int) -> str:

@@ -79,7 +79,7 @@ export function MathFormula({ latex = '', className = '', inline = false, annota
               ? Math.hypot(point.x - (rect.left + rect.width / 2), point.y - (rect.top + rect.height / 2))
               : 0;
             return (kind === 'symbol' ? 0 : kind === 'compound' && shape.startsWith('fraction-') ? 1_000 : 2_000)
-              + (element === lineFraction ? -300 : 0)
+              + (element === lineFraction ? -3_000 : 0)
               + area
               + centerDistance * 4;
           };

@@ -3232,7 +3232,7 @@
     },
     {
       "id": "formula_28.47a",
-      "latex": "\\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&HCA\\\\4n\\mu/(3\\kappa_{4})&Deleterious pleiotropy(with\\overline{k}\\ll1)\\\\s&Deleterious pleiotropy(with\\overline{k}\\gg1)\\end{cases}",
+      "latex": "\\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&\\text{HCA}\\\\4n\\mu/(3\\kappa_{4})&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\ll1)\\\\s&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\gg1)\\end{cases}",
       "label": "Formula 28.47a",
       "chapter_id": "chapter28",
       "section": "MAINTENANCE OF VARIATION BY PLEIOTROPIC DELETERIOUS ALLELES",
@@ -3240,7 +3240,7 @@
       "position": 142,
       "source_position": 164,
       "depth": 6,
-      "context_text": "CA and pleiotropy models (Equations 28.12b and 28.45b), the ratio of the equilibrium additive-genetic variance to the apparent strength of stabilizing selection is rather different between models, as $$ \\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&HCA\\\\4n\\mu/(3\\kappa_{4})&Deleterious pleiotropy(with\\overline{k}\\ll1)\\\\s&Deleterious pleiotropy(with\\overline{k}\\gg1)\\end{cases} $$ (28.47a)",
+      "context_text": "CA and pleiotropy models (Equations 28.12b and 28.45b), the ratio of the equilibrium additive-genetic variance to the apparent strength of stabilizing selection is rather different between models, as $$ \\widetilde{\\sigma}_{A}^{2}/\\widehat{V}_{s}=\\begin{cases}4n\\mu&\\text{HCA}\\\\4n\\mu/(3\\kappa_{4})&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\ll1)\\\\s&\\text{deleterious pleiotropy }(\\text{with }\\overline{k}\\gg1)\\end{cases} $$ (28.47a)",
       "symbols_used": [
         "A",
         "C",

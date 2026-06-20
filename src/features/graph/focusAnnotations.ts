@@ -90,7 +90,65 @@ function collectFractions(latex: string): Array<{ raw: string; numerator: string
   return fractions;
 }
 
+function firstFractionParts(latex: string): { numerator: string; denominator: string } | null {
+  const commandPattern = /\\(?:dfrac|tfrac|frac)/g;
+  const match = commandPattern.exec(latex);
+  if (!match) return null;
+  const firstStart = skipWhitespace(latex, commandPattern.lastIndex);
+  const numerator = readBracedGroup(latex, firstStart);
+  if (!numerator) return null;
+  const secondStart = skipWhitespace(latex, numerator.end);
+  const denominator = readBracedGroup(latex, secondStart);
+  if (!denominator) return null;
+  return {
+    numerator: numerator.value,
+    denominator: denominator.value,
+  };
+}
+
+function isSimpleFractionPart(value: string): boolean {
+  return /^\\?[A-Za-z]+(?:_\{?[A-Za-z0-9]+\}?|\^\{?[A-Za-z0-9]+\}?)*$/.test(normalizeLatex(stripOuterBraces(value)));
+}
+
+function isNumericConstant(value: string): boolean {
+  return /^[0-9]+(?:\.[0-9]+)?$/.test(normalizeLatex(stripOuterBraces(value)));
+}
+
+function describeFractionCompound(symbol: string, latex: string, context: string): string {
+  const compact = normalizeLatex(symbol);
+  const parts = firstFractionParts(symbol);
+  const compactContext = `${latex} ${context}`;
+  const contextMentionsWaples = /Waples|test statistic|χ|chi|卡方|检验统计量/i.test(compactContext);
+
+  if (isTaroneGreenlandMkFraction(symbol) || isTaroneGreenlandMkFraction(latex)) {
+    return 'TG 加权 MK 比值。Tarone-Greenland 中性指数的核心比例：分子汇总沉默分化与替换多态性，分母汇总沉默多态性与替换分化。';
+  }
+  if (contextMentionsWaples && /\\widehat\{?\\delta/.test(compact) && /\\sigma\^\{?2\}?\(?\\widehat\{?\\delta/.test(compact)) {
+    return 'Waples 调整检验统计量，用观测到的等位基因频率变化平方除以零假设下的变化方差，衡量偏离随机漂变预期的强度。';
+  }
+  if (compact.includes('\\partial')) return '导数分式，表示分子中的变化量相对于分母变量的局部变化率。';
+  if (/2N|N_\{?e\}?/.test(compact)) return '按群体大小归一化的分式项，用来把概率、频率或漂变强度缩放到合适尺度。';
+
+  if (parts && isNumericConstant(parts.numerator) && isNumericConstant(parts.denominator)) {
+    return '常数缩放因子，用来把后续项按固定比例放大或缩小。';
+  }
+
+  if (parts) {
+    const numerator = normalizeLatex(parts.numerator);
+    const denominator = normalizeLatex(parts.denominator);
+    if (/\^\{?2\}?/.test(numerator) && /\\sigma\^\{?2\}?/.test(denominator)) {
+      return '标准化平方偏离量，把平方差异放到方差尺度上比较，用来衡量该偏离相对随机变异是否足够大。';
+    }
+    if (isSimpleFractionPart(parts.numerator) && isSimpleFractionPart(parts.denominator) && /\bratio\b|比值|比较/.test(context)) {
+      return '局部比值，表示分子量相对于分母量的相对大小，需要结合相邻教材文字解释两者的生物学含义。';
+    }
+  }
+
+  return '';
+}
+
 function addCompound(seen: Set<string>, items: FocusAnnotationNote[], symbol: string, meaning: string, sourceExcerpt?: string, target = symbol) {
+  if (!meaning.trim()) return;
   const normalized = normalizeLatex(canonicalizeDisplaySymbol(target));
   if (!normalized || normalized.length < 3 || seen.has(normalized)) return;
   if (!/[A-Za-z\\]/.test(normalized) && !/(?:frac|\/)/.test(normalized)) return;
@@ -169,7 +227,7 @@ function isTaroneGreenlandMkFraction(value: string): boolean {
   );
 }
 
-function describeCompound(symbol: string, latex: string): string {
+function describeCompound(symbol: string, latex: string, context = ''): string {
   const compact = normalizeLatex(symbol);
   const whole = normalizeLatex(latex);
   const oneMinus = compact.match(/^\(?1-([^)]+)\)?(?:\^\{?(.+)\}?)?$/);
@@ -192,12 +250,7 @@ function describeCompound(symbol: string, latex: string): string {
   }
 
   if (/^\\(?:dfrac|tfrac|frac)\{/.test(compact)) {
-    if (isTaroneGreenlandMkFraction(symbol) || isTaroneGreenlandMkFraction(latex)) {
-      return 'TG 加权 MK 比值。Tarone-Greenland 中性指数的核心比例：分子汇总沉默分化与替换多态性，分母汇总沉默多态性与替换分化。';
-    }
-    if (compact.includes('\\partial')) return '导数分式，表示分子中的变化量相对于分母变量的局部变化率。';
-    if (/2N|N_\{?e\}?/.test(compact)) return '按群体大小归一化的分式项，用来把概率、频率或漂变强度缩放到合适尺度。';
-    return '分式比值，表示分子这一项相对于分母尺度的归一化结果。';
+    return describeFractionCompound(symbol, latex, context);
   }
 
   if (/^\(?1-\\frac\{?1\}?\{?2N/.test(compact)) {
@@ -224,7 +277,7 @@ export function buildCompoundFocusAnnotations(formula?: Pick<ChapterFormula, 'la
     const inner = stripOuterBraces(match[1] || '');
     const power = match[2] || match[3] || '';
     const symbol = `(1-${inner})${formatPower(power)}`;
-    addCompound(seen, items, symbol, describeCompound(symbol, latex), context);
+    addCompound(seen, items, symbol, describeCompound(symbol, latex, context), context);
   }
 
   const poweredGroupPattern = /(?:\\left)?\(\s*([^()]{1,90}[+\-][^()]{1,90})\s*(?:\\right)?\)(?:\^\{([^{}]+)\}|\^([A-Za-z0-9])|(T)(?=\\|[\s,;=+\-)]|$))/g;
@@ -233,23 +286,23 @@ export function buildCompoundFocusAnnotations(formula?: Pick<ChapterFormula, 'la
     if (/^1\s*-/.test(inner)) continue;
     const power = match[2] || match[3] || match[4] || '';
     const symbol = `(${inner})${formatPower(power)}`;
-    addCompound(seen, items, symbol, describeCompound(symbol, latex), context);
+    addCompound(seen, items, symbol, describeCompound(symbol, latex, context), context);
   }
 
   const ftProductPattern = /(?:f_\{?t\}?\\left\(\s*1\s*-\s*f_\{?t\}?\s*\\right\)|f_\{?t\}?\(\s*1\s*-\s*f_\{?t\}?\s*\)|\\left\(\s*1\s*-\s*f_\{?t\}?\s*\\right\)f_\{?t\}?|\(\s*1\s*-\s*f_\{?t\}?\s*\)f_\{?t\}?)/g;
   while ((match = ftProductPattern.exec(latex)) && items.length < MAX_COMPOUND_NOTES) {
     const raw = match[0].replace(/\\left|\\right/g, '');
-    addCompound(seen, items, raw, describeCompound(raw, latex), context);
+    addCompound(seen, items, raw, describeCompound(raw, latex, context), context);
   }
 
   const varianceAtZeroPattern = /(\\sigma_(?:\{[^{}]+\}|[A-Za-z]+)(?:\^\{?2\}?)?\(0\))/g;
   while ((match = varianceAtZeroPattern.exec(latex)) && items.length < MAX_COMPOUND_NOTES) {
-    addCompound(seen, items, match[1], describeCompound(match[1], latex), context);
+    addCompound(seen, items, match[1], describeCompound(match[1], latex, context), context);
   }
 
   for (const fraction of collectFractions(latex)) {
     if (items.length >= MAX_COMPOUND_NOTES) break;
-    addCompound(seen, items, fraction.raw, describeCompound(fraction.raw, latex), context);
+    addCompound(seen, items, fraction.raw, describeCompound(fraction.raw, latex, context), context);
     addFractionPartCompounds(seen, items, fraction, context);
   }
 

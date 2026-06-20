@@ -4100,7 +4100,7 @@
         {
           "formula_id": "formula_26.12",
           "formula_label": "Formula 26.12",
-          "formula_latex": "\\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad with probability u_{i}(p_{0})\\\\&=\\quad0-m_{i}(p_{0})\\quad with probability1-u_{i}(p_{0})\\end{aligned}",
+          "formula_latex": "\\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad \\text{with probability }u_{i}(p_{0})\\\\&=0-m_{i}(p_{0})\\quad \\text{with probability }1-u_{i}(p_{0})\\end{aligned}",
           "formula_position": 22,
           "formula_section": "DRIFT AND LONG-TERM SELECTION RESPONSE",
           "formula_subsection": "Basic Theory",

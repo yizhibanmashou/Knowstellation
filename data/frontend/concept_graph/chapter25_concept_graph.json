@@ -5558,7 +5558,7 @@
       "defined_by_formula_id": "formula_25.9d",
       "defined_symbol": "p_{0}",
       "supporting_formula_label": "Formula 25.9d",
-      "supporting_formula_latex": "p_{0}>\\begin{cases}2/b&recessive\\\\e^{-b/4}&additive\\\\e^{-b/2}&dominant\\end{cases}\\qquad where\\quad b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}}",
+      "supporting_formula_latex": "p_{0}>\\begin{cases}2/b&\\text{recessive}\\\\e^{-b/4}&\\text{additive}\\\\e^{-b/2}&\\text{dominant}\\end{cases}\\qquad \\text{where }b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}}",
       "formula_position": 25,
       "formula_section": "MAJOR GENES VERSUS POLYGENIC RESPONSE: THEORY",
       "formula_subsection": "Lande's Model: Response With a Major Gene in an Infinitesimal Background",

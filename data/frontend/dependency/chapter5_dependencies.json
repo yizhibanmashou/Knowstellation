@@ -503,7 +503,7 @@
       "position": 23,
       "source_position": 24,
       "depth": 2,
-      "context_text": "$ W_i < \\overline{W} $, $ A_i $ will decrease in frequency. Finally, if $ W_i = \\overline{W} $, the frequency of $ A_i $ will be unchanged. From Equation 5.7a, the expected allele-frequency change is $$ \\Delta p_{i}=p_{i}^{\\prime}-p_{i}=p_{i}\\frac{W_{i}-\\overline{W}}{\\overline{W}} $$ (5.7c) which implies that at a polymorphic equilibrium (e.g., $ \\hat{p}_i \\neq 0, 1 $), $$ W_{i}=\\overline{W}for all i with0<\\widehat{p}_{i}<1 $$ (5.7d)",
+      "context_text": "$ W_i < \\overline{W} $, $ A_i $ will decrease in frequency. Finally, if $ W_i = \\overline{W} $, the frequency of $ A_i $ will be unchanged. From Equation 5.7a, the expected allele-frequency change is $$ \\Delta p_{i}=p_{i}^{\\prime}-p_{i}=p_{i}\\frac{W_{i}-\\overline{W}}{\\overline{W}} $$ (5.7c) which implies that at a polymorphic equilibrium (e.g., $ \\hat{p}_i \\neq 0, 1 $), $$ W_{i}=\\overline{W}\\quad \\text{for all } i \\text{ with } 0<\\widehat{p}_{i}<1 $$ (5.7d)",
       "symbols_used": [
         "W_{i}",
         "\\Delta",
@@ -515,7 +515,7 @@
     },
     {
       "id": "formula_5.7d",
-      "latex": "W_{i}=\\overline{W}for all i with0<\\widehat{p}_{i}<1",
+      "latex": "W_{i}=\\overline{W}\\quad \\text{for all } i \\text{ with } 0<\\widehat{p}_{i}<1",
       "label": "Formula 5.7d",
       "chapter_id": "chapter5",
       "section": "SINGLE-LOCUS SELECTION: MULTIPLE ALLELES",
@@ -523,7 +523,7 @@
       "position": 24,
       "source_position": 25,
       "depth": 1,
-      "context_text": "allele-frequency change is $$ \\Delta p_{i}=p_{i}^{\\prime}-p_{i}=p_{i}\\frac{W_{i}-\\overline{W}}{\\overline{W}} $$ (5.7c) which implies that at a polymorphic equilibrium (e.g., $ \\hat{p}_i \\neq 0, 1 $), $$ W_{i}=\\overline{W}for all i with0<\\widehat{p}_{i}<1 $$ (5.7d)",
+      "context_text": "allele-frequency change is $$ \\Delta p_{i}=p_{i}^{\\prime}-p_{i}=p_{i}\\frac{W_{i}-\\overline{W}}{\\overline{W}} $$ (5.7c) which implies that at a polymorphic equilibrium (e.g., $ \\hat{p}_i \\neq 0, 1 $), $$ W_{i}=\\overline{W}\\quad \\text{for all } i \\text{ with } 0<\\widehat{p}_{i}<1 $$ (5.7d)",
       "symbols_used": [
         "W_{i}",
         "\\overline{W}",

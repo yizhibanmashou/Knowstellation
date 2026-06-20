@@ -113,6 +113,45 @@ $$
             self.assertTrue(report["accuracy_checks"]["low_confidence_ocr_has_no_accepted_edges"])
             self.assertEqual(report["summaries"]["low_confidence_formula_count"], 1)
 
+    def test_inline_prose_definition_is_moved_from_latex_to_context(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            jsonl = root / "sample.jsonl"
+            write_sample_jsonl(
+                jsonl,
+                [
+                    r"""
+# Chapter 1 Diversity
+
+The haplotype statistic is introduced as follows.
+$$
+H=1-\sum_{i=1}^{k}p_{i}^{2}\quad with\quad p_i=frequency of the ith haplotype
+$$
+(1.1)
+""",
+                ],
+            )
+
+            summary = build_from_ocr_jsonl(
+                jsonl_path=jsonl,
+                book_id="Synthetic Diversity Book",
+                source_pdf="synthetic.pdf",
+                work_root=root / "pipeline",
+            )
+
+            output_dir = Path(summary["output_dir"])
+            dependency = read_json(output_dir / "frontend" / "dependency" / "chapter1_dependencies.json")
+            formula = next(item for item in dependency["formulas"] if item["id"] == "formula_1.1")
+            self.assertEqual(formula["latex"], r"H=1-\sum_{i=1}^{k}p_{i}^{2}")
+            self.assertNotIn("frequency", formula["latex"])
+            self.assertIn("p_i is frequency of the ith haplotype.", formula["context_text"])
+            self.assertIn("formula_inline_prose_definition", formula["review_flags"])
+
+            search_index = read_json(output_dir / "frontend" / "formula_search_index.json")
+            search_formula = next(item for item in search_index if item["id"] == "formula_1.1")
+            self.assertEqual(search_formula["latex_preview"], formula["latex"])
+            self.assertIn("p_i is frequency of the ith haplotype.", search_formula["context"])
+
 
 def write_sample_jsonl(path: Path, pages: list[str]) -> None:
     with path.open("w", encoding="utf-8") as fh:

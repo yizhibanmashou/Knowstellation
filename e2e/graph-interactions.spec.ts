@@ -51,6 +51,68 @@ test('guided formula hover shows a symbol explanation callout', async ({ page })
   await expect(callout).toContainText(note || '');
 });
 
+test('formula symbol callout does not cover the original formula', async ({ page }) => {
+  await page.goto('/graph/formula_9.26d?chapterId=chapter9&mode=formula', { waitUntil: 'domcontentloaded' });
+
+  const annotation = page.locator('[data-note][data-symbol]').first();
+  await expect(annotation).toBeVisible();
+  await annotation.hover();
+  await expect(page.locator('.formula-node__callout')).toBeVisible();
+
+  const overlapArea = await page.evaluate(() => {
+    const callout = document.querySelector('.formula-node__callout')?.getBoundingClientRect();
+    const formula = document.querySelector('.formula-node__math .katex')?.getBoundingClientRect();
+    if (!callout || !formula) return Number.POSITIVE_INFINITY;
+    const xOverlap = Math.max(0, Math.min(callout.right, formula.right) - Math.max(callout.left, formula.left));
+    const yOverlap = Math.max(0, Math.min(callout.bottom, formula.bottom) - Math.max(callout.top, formula.top));
+    return xOverlap * yOverlap;
+  });
+  expect(overlapArea).toBe(0);
+});
+
+test('formula 9.34a renders haplotype diversity without prose definition in math', async ({ page }) => {
+  await page.goto('/graph/formula_9.34a?chapterId=chapter9&mode=formula', { waitUntil: 'domcontentloaded' });
+
+  const formulaNode = page.getByTestId('formula-node').and(page.locator('[data-formula-id="formula_9.34a"]'));
+  await expect(formulaNode).toBeVisible();
+
+  const mathText = ((await formulaNode.locator('.formula-node__math').textContent()) || '').replace(/\s+/g, '');
+  expect(mathText).not.toMatch(/frequencyoftheithhaplotype/i);
+  expect(mathText).not.toMatch(/p_i=frequency/i);
+});
+
+test('formula 9.2d fraction hover uses semantic Waples statistic text', async ({ page }) => {
+  await page.goto('/graph/formula_9.2d?chapterId=chapter9&mode=formula', { waitUntil: 'domcontentloaded' });
+
+  const annotations = page.locator('[data-note][data-symbol]');
+  await expect(annotations.first()).toBeVisible();
+  const fractionIndex = await annotations.evaluateAll((nodes) =>
+    nodes.findIndex((node) => {
+      const symbol = (node as HTMLElement).dataset.symbol || '';
+      const note = (node as HTMLElement).dataset.note || '';
+      return symbol.includes('\\frac') && /Waples|检验统计量|标准化平方偏离量/.test(note);
+    }),
+  );
+  expect(fractionIndex).toBeGreaterThanOrEqual(0);
+
+  const fraction = annotations.nth(fractionIndex);
+  const semanticText = [await fraction.getAttribute('data-note'), await fraction.getAttribute('data-text')].filter(Boolean).join(' ');
+  expect(semanticText).toMatch(/Waples|检验统计量|标准化平方偏离量/);
+  expect(semanticText).not.toMatch(/分式比值|分子这一项|归一化结果/);
+
+  const fractionLine = fraction.locator('.frac-line').first();
+  if (await fractionLine.isVisible().catch(() => false)) {
+    await fractionLine.hover();
+  } else {
+    await fraction.hover();
+  }
+  const callout = page.locator('.formula-node__callout');
+  await expect(callout).toBeVisible();
+  const text = (await callout.textContent()) || '';
+
+  expect(text).not.toMatch(/分式比值|分子这一项|归一化结果/);
+});
+
 test('formula successor buttons expand in place without resetting the graph', async ({ page }) => {
   await page.goto('/graph/formula_18.3?study=chapter&layer=full&mode=formula&chapterId=chapter18&selected=formula_18.3', { waitUntil: 'domcontentloaded' });
 

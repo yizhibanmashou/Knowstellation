@@ -476,7 +476,7 @@
     },
     {
       "id": "formula_26.12",
-      "latex": "\\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad with probability u_{i}(p_{0})\\\\&=\\quad0-m_{i}(p_{0})\\quad with probability1-u_{i}(p_{0})\\end{aligned}",
+      "latex": "\\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad \\text{with probability }u_{i}(p_{0})\\\\&=0-m_{i}(p_{0})\\quad \\text{with probability }1-u_{i}(p_{0})\\end{aligned}",
       "label": "Formula 26.12",
       "chapter_id": "chapter26",
       "section": "DRIFT AND LONG-TERM SELECTION RESPONSE",
@@ -484,7 +484,7 @@
       "position": 22,
       "source_position": 34,
       "depth": 0,
-      "context_text": "The variance (and indeed all higher moments) of the total response at the selection limit are easily computed, as, regardless of the value of $ k $, $ \\Delta_{i}(\\infty) $ takes on only two values, $$ \\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad with probability u_{i}(p_{0})\\\\&=\\quad0-m_{i}(p_{0})\\quad with probability1-u_{i}(p_{0})\\end{aligned} $$ (26.12)",
+      "context_text": "The variance (and indeed all higher moments) of the total response at the selection limit are easily computed, as, regardless of the value of $ k $, $ \\Delta_{i}(\\infty) $ takes on only two values, $$ \\begin{aligned}\\Delta_{i}(\\infty)&=2a-m_{i}(p_{0})\\quad \\text{with probability }u_{i}(p_{0})\\\\&=0-m_{i}(p_{0})\\quad \\text{with probability }1-u_{i}(p_{0})\\end{aligned} $$ (26.12)",
       "symbols_used": [
         "\\Delta_{i}",
         "a",

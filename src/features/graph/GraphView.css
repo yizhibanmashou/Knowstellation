@@ -2240,6 +2240,7 @@
 
 .react-flow__node-formula {
   visibility: visible !important;
+  overflow: visible;
 }
 
 /* Concept Graph */

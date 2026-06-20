@@ -555,7 +555,7 @@
     },
     {
       "id": "formula_25.9d",
-      "latex": "p_{0}>\\begin{cases}2/b&recessive\\\\e^{-b/4}&additive\\\\e^{-b/2}&dominant\\end{cases}\\qquad where\\quad b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}}",
+      "latex": "p_{0}>\\begin{cases}2/b&\\text{recessive}\\\\e^{-b/4}&\\text{additive}\\\\e^{-b/2}&\\text{dominant}\\end{cases}\\qquad \\text{where }b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}}",
       "label": "Formula 25.9d",
       "chapter_id": "chapter25",
       "section": "MAJOR GENES VERSUS POLYGENIC RESPONSE: THEORY",
@@ -563,7 +563,7 @@
       "position": 25,
       "source_position": 36,
       "depth": 1,
-      "context_text": "primarily polygenic, even if B is fixed. For weak exponential selection (Equation 25.9c), the resulting initial frequencies above which the major gene exceeds the polygenic response are approximately $$ p_{0}>\\begin{cases}2/b&recessive\\\\e^{-b/4}&additive\\\\e^{-b/2}&dominant\\end{cases}\\qquad where\\quad b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}} $$ (25.9d) where, before, $ \\beta $ is the strength of directional selection on the trait.",
+      "context_text": "primarily polygenic, even if B is fixed. For weak exponential selection (Equation 25.9c), the resulting initial frequencies above which the major gene exceeds the polygenic response are approximately $$ p_{0}>\\begin{cases}2/b&\\text{recessive}\\\\e^{-b/4}&\\text{additive}\\\\e^{-b/2}&\\text{dominant}\\end{cases}\\qquad \\text{where }b=\\left(1-\\frac{s}{\\beta\\alpha}\\right)\\frac{\\alpha^{2}}{\\sigma_{A}^{2}} $$ (25.9d) where, before, $ \\beta $ is the strength of directional selection on the trait.",
       "symbols_used": [
         "\\alpha",
         "\\alpha^{2}",
