@@ -80,10 +80,6 @@ Guided mode keeps the learner inside a single formula card first. Hover or tap h
   <img src="public/assets/readme/guided.png" alt="Guided formula reading" width="100%">
 </p>
 
-<p align="center">
-  <img src="public/assets/readme/formula-focus.png" alt="Formula dependency focus view" width="100%">
-</p>
-
 ### Concept Map and Formula Map
 
 Concept Map and Formula Map are the chapter-scale navigation pair. Concept Map organizes the vocabulary of a chapter into prerequisite and follow-up relationships, so learners can scan the conceptual terrain before entering a specific formula. Formula Map exposes the formula dependency structure directly, making it easier to see which results prepare, branch into, or depend on a target equation.
@@ -287,12 +283,6 @@ For frontend checks, manually verify:
 - Run `npm run audit:graph` before publishing a new textbook or chapter batch.
 - Keep the generated screenshots under `public/assets/readme` current when the visual design changes.
 - The UI includes user-readable fallbacks for data loading, LLM proxy failure, and WebGL initialization failure; check those paths before a public deployment.
-
-## Documentation
-
-- [Concept graph advisor progress report](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/advisor-progress-report-concept-graph.md)
-- [Formula prerequisite graph design](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/formula_prerequisite_graph_design.md)
-- [Product release acceptance checklist](https://github.com/yizhibanmashou/Knowstellation/blob/main/docs/product-release-acceptance.md)
 
 ## Roadmap
 
